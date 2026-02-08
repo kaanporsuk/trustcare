@@ -1,0 +1,1 @@
+// Rating slider view placeholder.

@@ -1,0 +1,1 @@
+// Claim view model placeholder.

@@ -1,0 +1,1 @@
+// Services catalog view placeholder.

@@ -1,0 +1,1 @@
+// Provider card view placeholder.
