@@ -1,0 +1,11 @@
+# Supabase keys — never commit
+Config/Supabase.xcconfig
+TrustCare/Config/Supabase.xcconfig
+
+# Xcode
+*.xcuserdata
+build/
+DerivedData/
+
+# OS
+.DS_Store

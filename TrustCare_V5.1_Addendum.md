@@ -624,7 +624,7 @@ CREATE INDEX idx_providers_geohash ON providers(geohash);
 
 ### 4.2 Connection Pooling
 
-Configure in Supabase Dashboard → Settings → Database:
+Configure in Supabase Dashboard → Settings → Database (remote/production only — local dev uses direct connection):
 - **Pool Mode:** Transaction (recommended for serverless)
 - **Pool Size:** Start with default, increase if connection errors appear
 - **Use connection string with pooler** (port 6543, not 5432) in Edge Functions
@@ -813,7 +813,7 @@ The agent MUST implement Apple Sign-In with the following exact flow:
 
 5. Enable "Sign in with Apple" in both:
    - Xcode → Target → Signing & Capabilities
-   - Supabase Dashboard → Authentication → Providers → Apple
+   - Supabase Dashboard → Authentication → Providers → Apple (this is one of the few steps that requires the web Dashboard — CLI doesn't support OAuth provider config yet)
 ```
 
 ---
@@ -1527,17 +1527,30 @@ Add to the admin panel:
 
 ## 18. UPDATED VIBE CODING PROMPTS {#18-updated-prompts}
 
-### Changes to Prompt 2 (Auth):
+### Supabase CLI Integration (applies to all prompts):
+The project now uses the Supabase CLI for local development and deployment. Key changes:
+- **Prompt 0:** Added Rule 11 (Supabase CLI) and Rule 12 (Supabase Config via xcconfig). The `supabase/` directory is pre-initialized.
+- **Prompt 1:** Supabase keys now managed via `Config/Supabase.xcconfig` (git-ignored) + `Config/SupabaseConfig.swift`, not hardcoded in Info.plist. Step numbering expanded (4-6 for config, 7+ for LocationManager etc.).
+- **Prompt 2:** No longer generates SQL to paste into Dashboard. Instead creates `supabase/migrations/00001_schema.sql` + `supabase/seed.sql` + updates `supabase/config.toml` for storage buckets. Agent runs `supabase db reset` to apply locally.
+- **New Prompt 7:** Edge Functions created in `supabase/functions/`, tested via `supabase functions serve`, deployed via `supabase functions deploy`. Database webhook migration in `supabase/migrations/00002_verification_webhook.sql`.
+- **Prompt A1 (Admin):** `.env.local` now defaults to local Supabase URL (`http://127.0.0.1:54321`).
+- **Troubleshooting:** All "check Dashboard" references replaced with CLI commands (`supabase status`, `supabase db reset`, `supabase functions logs`).
+- **New Deployment Checklist:** Added at end of document with production deployment commands.
+
+### Changes to Prompt 3 (Auth):
 Add the **exact Apple Sign-In nonce code** from Section 6 above. Add age gating (date of birth picker, 16+ validation). Add consent recording on signup.
 
-### Changes to Prompt 3 (Home + Detail):
+### Changes to Prompt 4 (Home + Detail):
 Add the **exact MapKit iOS 17 code** from Section 7. Add media strip to `ReviewItemView`. Add full-screen image gallery and video player.
 
-### Changes to Prompt 4 (Review Submission):
+### Changes to Prompt 5 (Review Submission):
 **Now 7 steps instead of 6.** Add Step 6: Photos & Video (multi-image PhotosPicker, video picker with 30s limit, client-side compression, thumbnail generation). Update ReviewSubmissionViewModel with `selectedImages: [UIImage]`, `selectedVideo: URL?`, `mediaUploadProgress`. Add `review_media` inserts after review creation.
 
-### Changes to Prompt 5 (Profile + Admin):
-Add notifications table queries (show unread count badge on Profile tab). Add data export button in Settings (calls `export-user-data` Edge Function). Add age verification display. Add enhanced admin panel pages: `/media-moderation`, `/failed-verifications`, `/analytics`. Deploy spam prevention triggers.
+### Changes to Prompt 6 (Profile + Settings):
+Add notifications table queries (show unread count badge on Profile tab). Add data export button in Settings (calls `export-user-data` Edge Function via URL). Add age verification display.
+
+### Changes to Prompt A1 (Admin Panel):
+Add enhanced admin panel pages: `/media-moderation`, `/failed-verifications`, `/analytics`. Deploy spam prevention triggers.
 
 ### New: Prompt 0 (Pre-Flight — Run BEFORE Prompt 1):
 
@@ -1545,7 +1558,7 @@ Add notifications table queries (show unread count badge on Profile tab). Add da
 IMPORTANT AGENT INSTRUCTIONS — Read before starting any code:
 
 1. APPLE SIGN-IN: You MUST use SignInWithAppleButton (SwiftUI native) with
-   raw nonce + SHA256 hash. See exact code pattern provided in Prompt 2.
+   raw nonce + SHA256 hash. See exact code pattern provided in Prompt 3.
    Do NOT use ASAuthorizationAppleIDProvider delegate methods.
 
 2. MAPKIT: You MUST use the iOS 17 SwiftUI Map API (Map(position:) with
@@ -1576,6 +1589,14 @@ IMPORTANT AGENT INSTRUCTIONS — Read before starting any code:
 
 10. TESTING: Write XCTest unit tests for all ViewModels. At minimum test
     validation logic, state transitions, and computed properties.
+
+11. SUPABASE CLI: The supabase/ directory already exists. All SQL goes in
+    supabase/migrations/. Seed data goes in supabase/seed.sql. Edge Functions
+    go in supabase/functions/. Storage config goes in supabase/config.toml.
+    Run "supabase db reset" after creating migration files.
+
+12. SUPABASE CONFIG: Keys managed via Config/Supabase.xcconfig (git-ignored).
+    SupabaseConfig.swift reads from xcconfig. Never hardcode keys.
 
 Acknowledge these instructions before proceeding to Prompt 1.
 ```

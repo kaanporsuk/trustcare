@@ -7,11 +7,9 @@ class SupabaseManager {
     let client: SupabaseClient
 
     private init() {
-        guard let urlString = Bundle.main.infoDictionary?["SUPABASE_URL"] as? String,
-              let url = URL(string: urlString),
-              let anonKey = Bundle.main.infoDictionary?["SUPABASE_ANON_KEY"] as? String else {
-            fatalError("Missing Supabase configuration in Info.plist")
+        guard let url = URL(string: SupabaseConfig.url) else {
+            fatalError("Invalid SUPABASE_URL")
         }
-        client = SupabaseClient(supabaseURL: url, supabaseKey: anonKey)
+        client = SupabaseClient(supabaseURL: url, supabaseKey: SupabaseConfig.anonKey)
     }
 }

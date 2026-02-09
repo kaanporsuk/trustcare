@@ -74,6 +74,57 @@ dependencies: [
 
 > Only 2 dependencies. SwiftUI provides ProgressView, PhotosPicker, Charts, and NavigationStack natively. Localization uses native String Catalogs.
 
+### Supabase CLI — Local Development & Deployment
+
+The project uses the Supabase CLI for database management, Edge Function deployment, and local development. This replaces manual use of the Supabase Dashboard for all development tasks.
+
+**Prerequisites:**
+- Docker Desktop (Supabase CLI runs PostgreSQL, Auth, Storage, etc. in Docker containers)
+- Supabase CLI: `brew install supabase/tap/supabase`
+
+**Project structure (supabase/ directory):**
+```
+supabase/
+├── config.toml              ← Local config + storage bucket definitions
+├── migrations/
+│   ├── 00001_schema.sql     ← Full schema (22 tables, indexes, triggers, RLS)
+│   └── 00002_verification_webhook.sql  ← pg_net trigger for AI verification
+├── seed.sql                 ← Specialties, sample providers, feature flags
+└── functions/
+    ├── verify-review/index.ts        ← AI verification Edge Function
+    └── export-user-data/index.ts     ← GDPR data export Edge Function
+```
+
+**Development workflow:**
+```bash
+supabase start                        # Start local Supabase stack (Postgres, Auth, Storage, etc.)
+supabase db reset                     # Wipe local DB + re-apply migrations + seed
+supabase functions serve              # Hot-reload Edge Functions locally
+# → Local dashboard at http://localhost:54323
+# → Local API at http://127.0.0.1:54321
+```
+
+**Production deployment:**
+```bash
+supabase link --project-ref <ref-id>  # Link to remote project (one-time)
+supabase db push                      # Push migrations to remote
+supabase functions deploy verify-review
+supabase functions deploy export-user-data
+supabase secrets set OPENAI_API_KEY=sk-...
+```
+
+**Supabase keys management:**
+- Keys stored in `Config/Supabase.xcconfig` (git-ignored, never committed)
+- Reads into app via `Config/SupabaseConfig.swift` → `Bundle.main.infoDictionary` → xcconfig
+- Development: local URL + local anon key from `supabase status`
+- Production: remote project URL + remote anon key from Supabase Dashboard → Settings → API
+
+**Steps that still require the Supabase web Dashboard:**
+1. Creating the cloud project (one-time)
+2. Enabling Apple OAuth provider (Authentication → Providers → Apple)
+3. Upgrading to paid plan before launch
+4. Configuring custom SMTP for emails (optional)
+
 ---
 
 ## PART C: DESIGN SYSTEM
@@ -1484,7 +1535,7 @@ Respond with JSON only:
 })
 ```
 
-**Trigger mechanism:** Call this Edge Function via a Supabase Database Webhook on INSERT to `reviews` table WHERE `proof_image_url IS NOT NULL`. Configure in Supabase Dashboard → Database → Webhooks.
+**Trigger mechanism:** This Edge Function is triggered via a `pg_net` database trigger on INSERT to `reviews` table WHERE `proof_image_url IS NOT NULL`. The trigger is defined in `supabase/migrations/00002_verification_webhook.sql` and deployed via `supabase db push`. It uses `net.http_post()` to call the Edge Function URL with the review_id.
 
 ### F.2 AI Health Chat (V2)
 
@@ -1800,24 +1851,31 @@ STEP 2 — Core/Theme.swift:
   caption(15,regular), footnote(13,regular)
 - Color+Hex.swift extension
 
-STEP 3 — Core/SupabaseManager.swift:
-- Singleton, lazy SupabaseClient
-- Read SUPABASE_URL and SUPABASE_ANON_KEY from Info.plist
+STEP 3 — Config/Supabase.xcconfig + Config/SupabaseConfig.swift:
+- Supabase.xcconfig: SUPABASE_URL and SUPABASE_ANON_KEY values (git-ignored)
+- SupabaseConfig.swift: reads from Bundle.main.infoDictionary (populated via xcconfig)
+- Info.plist entries: $(SUPABASE_URL) and $(SUPABASE_ANON_KEY) — resolved from xcconfig at build time
+- For development: use local values from `supabase status` (http://127.0.0.1:54321)
+- For production: swap to remote project URL/key
 
-STEP 4 — Core/LocationManager.swift:
+STEP 4 — Core/SupabaseManager.swift:
+- Singleton, lazy SupabaseClient
+- Reads URL and key from SupabaseConfig (which reads from xcconfig via Info.plist)
+
+STEP 5 — Core/LocationManager.swift:
 - ObservableObject wrapping CLLocationManager
 - @Published userLocation, authorizationStatus
 - requestPermission(), startUpdating()
 
-STEP 5 — Core/LocalizationManager.swift:
+STEP 6 — Core/LocalizationManager.swift:
 - @AppStorage("appLanguage") with supported languages list
 - layoutDirection computed property (RTL for Arabic)
 
-STEP 6 — Create Localizable.xcstrings (String Catalog) with keys for:
+STEP 7 — Create Localizable.xcstrings (String Catalog) with keys for:
 - All screen titles, button labels, specialty names, error messages
 - 6 language columns: en (filled), de/nl/pl/tr/ar (placeholders)
 
-STEP 7 — Models/ (all Codable, CodingKeys mapping to snake_case):
+STEP 8 — Models/ (all Codable, CodingKeys mapping to snake_case):
 - Provider.swift: id, name, specialty, clinicName, address, city, countryCode,
   latitude, longitude, phone, email, website, photoUrl, coverUrl,
   ratingOverall, ratingWaitTime, ratingBedside, ratingEfficacy, ratingCleanliness,
@@ -1837,14 +1895,28 @@ STEP 7 — Models/ (all Codable, CodingKeys mapping to snake_case):
 - Enums.swift: VisitType, PriceLevel, ReviewStatus, SubscriptionTier,
   ClaimStatus, AppError (all as shown in spec).
 
-STEP 8 — SQL migration file (supabase/migrations/001_schema.sql):
-[Paste the ENTIRE SQL from Part E sections E.1 through E.7]
+STEP 9 — SQL migration file (supabase/migrations/00001_schema.sql):
+[The ENTIRE SQL from Part E sections E.1 through E.7]
+After creating: run `supabase db reset` to apply locally.
+For production: run `supabase db push` to deploy to remote.
 
-STEP 9 — Info.plist:
+STEP 10 — Seed data (supabase/seed.sql):
+[Specialties, sample providers, feature flags from Part E.7]
+Automatically applied by `supabase db reset`.
+
+STEP 11 — Storage config (supabase/config.toml):
+Add [storage.buckets] section for all 5 buckets with public/private flags and mime types.
+Applied on `supabase start` / `supabase stop && supabase start`.
+
+STEP 12 — Info.plist:
 - NSLocationWhenInUseUsageDescription
 - NSPhotoLibraryUsageDescription
 - NSCameraUsageDescription
-- SUPABASE_URL / SUPABASE_ANON_KEY placeholders
+- $(SUPABASE_URL) and $(SUPABASE_ANON_KEY) — resolved from xcconfig
+
+STEP 13 — .gitignore:
+- Config/Supabase.xcconfig (never commit Supabase keys)
+- *.xcuserdata, build/, DerivedData/, .DS_Store
 
 Use MVVM. NavigationStack with NavigationPath. No Coordinator pattern.
 ```
@@ -2123,11 +2195,16 @@ Create a new Next.js 14 project "trustcare-admin" with:
 - Use @supabase/supabase-js for all data fetching.
 - Responsive design (works on tablet for on-the-go moderation).
 
-STEP 8 — Edge Function deployment:
-- Deploy verify-review Edge Function (from spec)
-- Configure Database Webhook: ON INSERT to reviews WHERE proof_image_url IS NOT NULL
-  → POST to verify-review function with { review_id: NEW.id }
-- Set secrets: OPENAI_API_KEY
+STEP 8 — Edge Functions (via Supabase CLI):
+- Create supabase/functions/verify-review/index.ts (AI verification with 3-tier confidence)
+- Create supabase/functions/export-user-data/index.ts (GDPR data export)
+- Create supabase/migrations/00002_verification_webhook.sql (pg_net trigger for auto-verification)
+- Test locally: supabase functions serve
+- Deploy to remote:
+  supabase functions deploy verify-review
+  supabase functions deploy export-user-data
+  supabase secrets set OPENAI_API_KEY=sk-your-key
+  supabase db push
 
 Test complete flow: Sign up with referral code → Browse providers → View detail
 with services → Submit review with price level + photo → AI verification triggers →
@@ -2151,14 +2228,16 @@ updates. Also test: add new provider, claim provider flow, language switching.
 
 ### Supabase Production
 - [ ] Upgrade to paid plan before launch
-- [ ] Enable email confirmation
-- [ ] Configure Apple OAuth
+- [ ] Push schema to remote: `supabase db push`
+- [ ] Deploy Edge Functions: `supabase functions deploy verify-review` + `export-user-data`
+- [ ] Set production secrets: `supabase secrets set OPENAI_API_KEY=sk-your-key`
+- [ ] Enable email confirmation (Dashboard → Authentication → Settings)
+- [ ] Configure Apple OAuth (Dashboard → Authentication → Providers → Apple)
 - [ ] Configure phone auth (Twilio) for multi-country
-- [ ] Deploy verify-review Edge Function + webhook
-- [ ] Set OPENAI_API_KEY secret
-- [ ] Daily database backups enabled
+- [ ] Daily database backups enabled (Dashboard → Settings → Database)
 - [ ] Rate limiting on auth endpoints
-- [ ] Create initial admin user in user_roles
+- [ ] Create initial admin user: `supabase db execute "INSERT INTO user_roles ..."`
+- [ ] Update Supabase.xcconfig with production URL and anon key
 
 ### Admin Panel
 - [ ] Deploy to Vercel (or similar)
@@ -2167,7 +2246,8 @@ updates. Also test: add new provider, claim provider flow, language switching.
 - [ ] All CRUD operations tested
 
 ### Security
-- [ ] Supabase keys in Info.plist / .xcconfig (not hardcoded)
+- [ ] Supabase keys in Supabase.xcconfig (git-ignored, never committed)
+- [ ] .gitignore excludes Config/Supabase.xcconfig
 - [ ] RLS policies tested (cross-user access prevented)
 - [ ] proof_image_url not exposed to non-owners in SELECT
 - [ ] claim-documents bucket only readable by admins
@@ -2183,7 +2263,7 @@ updates. Also test: add new provider, claim provider flow, language switching.
 ### Monitoring
 - [ ] Crashlytics or Sentry integrated
 - [ ] Supabase dashboard monitored for slow queries
-- [ ] Edge Function error logging
+- [ ] Edge Function logging: `supabase functions logs verify-review`
 - [ ] AI verification success rate tracked
 
 ---
