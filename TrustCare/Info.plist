@@ -12,5 +12,16 @@
 	<string>TrustCare needs access to your photos to upload review images and verification documents.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>TrustCare needs camera access to take photos for reviews and verification.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>trustcare</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>trustcare</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
