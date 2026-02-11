@@ -1,6 +1,6 @@
 import Foundation
 
-struct Notification: Identifiable, Codable {
+struct AppNotification: Identifiable, Codable {
     let id: UUID
     let userId: UUID
     let type: String

@@ -22,10 +22,10 @@ struct Review: Identifiable, Codable {
     let helpfulCount: Int
     let createdAt: Date
 
-    // Joined fields
     let reviewerName: String?
     let reviewerAvatar: String?
     let media: [ReviewMedia]?
+    let providerName: String?
 
     enum CodingKeys: String, CodingKey {
         case id, title, comment, status, media
@@ -47,5 +47,6 @@ struct Review: Identifiable, Codable {
         case createdAt = "created_at"
         case reviewerName = "reviewer_name"
         case reviewerAvatar = "reviewer_avatar"
+        case providerName = "provider_name"
     }
 }

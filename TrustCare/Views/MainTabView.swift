@@ -1,28 +1,47 @@
 import SwiftUI
+import UIKit
 
 struct MainTabView: View {
-    @Binding var appState: AppState
+    @StateObject private var profileVM = ProfileViewModel()
+    @State private var selectedTab: Int = 0
 
     var body: some View {
-        TabView {
-            Text(String(localized: "tab_find"))
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text(String(localized: "tab_find"))
-                }
+        TabView(selection: $selectedTab) {
+            NavigationStack {
+                HomeView()
+            }
+            .tabItem {
+                Image(systemName: "house.fill")
+                Text(String(localized: "tab_find"))
+            }
+            .tag(0)
 
-            Text(String(localized: "tab_review"))
-                .tabItem {
-                    Image(systemName: "plus.circle.fill")
-                    Text(String(localized: "tab_review"))
-                }
+            NavigationStack {
+                SubmitReviewView(selectedTab: $selectedTab)
+            }
+            .tabItem {
+                Image(systemName: "plus.circle.fill")
+                Text(String(localized: "tab_review"))
+            }
+            .tag(1)
 
-            Text(String(localized: "tab_profile"))
-                .tabItem {
-                    Image(systemName: "person.circle.fill")
-                    Text(String(localized: "tab_profile"))
-                }
+            NavigationStack {
+                ProfileView()
+            }
+            .tabItem {
+                Image(systemName: "person.circle")
+                Text(String(localized: "tab_profile"))
+            }
+            .tag(2)
+            .badge(profileVM.unreadNotificationCount)
         }
+        .environmentObject(profileVM)
         .tint(AppColor.trustBlue)
+        .onChange(of: selectedTab) { _, _ in
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
+        .task {
+            await profileVM.loadNotificationCount()
+        }
     }
 }

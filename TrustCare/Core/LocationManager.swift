@@ -1,3 +1,4 @@
+import Combine
 import CoreLocation
 import SwiftUI
 
@@ -49,6 +50,6 @@ extension LocationManager: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didFailWithError error: Error
     ) {
-        // Silently handle — never crash on location failure
+        // Silently handle - never crash on location failure
     }
 }

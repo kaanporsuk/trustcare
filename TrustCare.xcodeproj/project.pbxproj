@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E13DC9922F3A9CBF00EF0D2E /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC9912F3A9CBF00EF0D2E /* Auth */; };
+		E13DC9942F3A9CBF00EF0D2E /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC9932F3A9CBF00EF0D2E /* Functions */; };
+		E13DC9962F3A9CBF00EF0D2E /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC9952F3A9CBF00EF0D2E /* PostgREST */; };
+		E13DC9982F3A9CBF00EF0D2E /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC9972F3A9CBF00EF0D2E /* Realtime */; };
+		E13DC99A2F3A9CBF00EF0D2E /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC9992F3A9CBF00EF0D2E /* Storage */; };
+		E13DC99C2F3A9CBF00EF0D2E /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC99B2F3A9CBF00EF0D2E /* Supabase */; };
+		E13DC99F2F3A9E7200EF0D2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E13DC99E2F3A9E7200EF0D2E /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E13DC9822F3A9B6300EF0D2E /* TrustCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrustCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +33,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13DC99F2F3A9E7200EF0D2E /* SDWebImageSwiftUI in Frameworks */,
+				E13DC9962F3A9CBF00EF0D2E /* PostgREST in Frameworks */,
+				E13DC9942F3A9CBF00EF0D2E /* Functions in Frameworks */,
+				E13DC99C2F3A9CBF00EF0D2E /* Supabase in Frameworks */,
+				E13DC9922F3A9CBF00EF0D2E /* Auth in Frameworks */,
+				E13DC99A2F3A9CBF00EF0D2E /* Storage in Frameworks */,
+				E13DC9982F3A9CBF00EF0D2E /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +82,13 @@
 			);
 			name = TrustCare;
 			packageProductDependencies = (
+				E13DC9912F3A9CBF00EF0D2E /* Auth */,
+				E13DC9932F3A9CBF00EF0D2E /* Functions */,
+				E13DC9952F3A9CBF00EF0D2E /* PostgREST */,
+				E13DC9972F3A9CBF00EF0D2E /* Realtime */,
+				E13DC9992F3A9CBF00EF0D2E /* Storage */,
+				E13DC99B2F3A9CBF00EF0D2E /* Supabase */,
+				E13DC99E2F3A9E7200EF0D2E /* SDWebImageSwiftUI */,
 			);
 			productName = TrustCare;
 			productReference = E13DC9822F3A9B6300EF0D2E /* TrustCare.app */;
@@ -94,6 +118,10 @@
 			);
 			mainGroup = E13DC9792F3A9B6300EF0D2E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				E13DC99D2F3A9E7100EF0D2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E13DC9832F3A9B6300EF0D2E /* Products */;
 			projectDirPath = "";
@@ -256,11 +284,15 @@
 				DEVELOPMENT_TEAM = W38S57AM55;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "TrustCare needs camera access to take photos for reviews and verification.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TrustCare uses your location to find nearby healthcare providers.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "TrustCare needs access to your photos to upload review images and verification documents.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,11 +320,15 @@
 				DEVELOPMENT_TEAM = W38S57AM55;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "TrustCare needs camera access to take photos for reviews and verification.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TrustCare uses your location to find nearby healthcare providers.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "TrustCare needs access to your photos to upload review images and verification documents.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +368,63 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+		E13DC99D2F3A9E7100EF0D2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E13DC9912F3A9CBF00EF0D2E /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		E13DC9932F3A9CBF00EF0D2E /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		E13DC9952F3A9CBF00EF0D2E /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		E13DC9972F3A9CBF00EF0D2E /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		E13DC9992F3A9CBF00EF0D2E /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		E13DC99B2F3A9CBF00EF0D2E /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC9902F3A9CBE00EF0D2E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		E13DC99E2F3A9E7200EF0D2E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13DC99D2F3A9E7100EF0D2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E13DC97A2F3A9B6300EF0D2E /* Project object */;
 }
