@@ -11,11 +11,17 @@ type ClaimRow = {
   provider_id?: string | null;
   claimant_user_id?: string | null;
   claimant_role?: string | null;
+  business_email?: string | null;
   status?: string | null;
   created_at?: string | null;
   proof_document_url?: string | null;
   provider?: { name?: string; website?: string; email?: string } | null;
   claimant?: { full_name?: string } | null;
+};
+
+type StoragePath = {
+  bucket: string;
+  path: string;
 };
 
 export default function ClaimsPage() {
@@ -35,7 +41,7 @@ export default function ClaimsPage() {
     let query = supabase
       .from("provider_claims")
       .select(
-        "id, provider_id, claimant_user_id, claimant_role, status, created_at, proof_document_url, provider:providers(name, website, email), claimant:profiles(full_name)",
+        "id, provider_id, claimant_user_id, claimant_role, business_email, status, created_at, proof_document_url, provider:providers(name, website, email), claimant:profiles(full_name)",
         { count: "exact" },
       )
       .order("created_at", { ascending: false })
@@ -56,6 +62,42 @@ export default function ClaimsPage() {
     setIsLoading(false);
   };
 
+  const extractStoragePath = (value: string): StoragePath | null => {
+    if (!value) return null;
+
+    if (value.startsWith("http")) {
+      const match = value.match(
+        /\/storage\/v1\/object\/(?:public\/)?([^/]+)\/(.+)$/,
+      );
+      if (match) {
+        return {
+          bucket: match[1],
+          path: decodeURIComponent(match[2]),
+        };
+      }
+      return null;
+    }
+
+    const trimmed = value.replace(/^\/+/, "");
+    if (!trimmed) return null;
+    return { bucket: "claim-documents", path: trimmed };
+  };
+
+  const openClaimDetail = async (claim: ClaimRow) => {
+    let proofUrl = claim.proof_document_url ?? null;
+    const storagePath = extractStoragePath(proofUrl ?? "");
+    if (storagePath) {
+      const { data: signed } = await supabase.storage
+        .from(storagePath.bucket)
+        .createSignedUrl(storagePath.path, 60 * 10);
+      if (signed?.signedUrl) {
+        proofUrl = signed.signedUrl;
+      }
+    }
+
+    setSelectedClaim({ ...claim, proof_document_url: proofUrl });
+  };
+
   useEffect(() => {
     loadClaims();
   }, [page, showAll]);
@@ -67,6 +109,9 @@ export default function ClaimsPage() {
       .eq("id", claim.id);
 
     if (claim.provider_id && claim.claimant_user_id) {
+      const trialExpiresAt = new Date();
+      trialExpiresAt.setDate(trialExpiresAt.getDate() + 14);
+
       await supabase
         .from("providers")
         .update({
@@ -77,9 +122,10 @@ export default function ClaimsPage() {
 
       await supabase.from("provider_subscriptions").insert({
         provider_id: claim.provider_id,
+        user_id: claim.claimant_user_id,
         tier: "basic",
-        is_trial: true,
-        status: "active",
+        status: "trial",
+        expires_at: trialExpiresAt.toISOString(),
       });
     }
 
@@ -138,6 +184,7 @@ export default function ClaimsPage() {
               <th className="px-4 py-3">Claim ID</th>
               <th className="px-4 py-3">Provider</th>
               <th className="px-4 py-3">Claimant</th>
+              <th className="px-4 py-3">Claimant Email</th>
               <th className="px-4 py-3">Role</th>
               <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3">Date</th>
@@ -157,6 +204,9 @@ export default function ClaimsPage() {
                   {claim.claimant?.full_name ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
+                  {claim.business_email ?? "-"}
+                </td>
+                <td className="px-4 py-3 text-gray-700">
                   {claim.claimant_role ?? "-"}
                 </td>
                 <td className="px-4 py-3">
@@ -170,7 +220,7 @@ export default function ClaimsPage() {
                 <td className="px-4 py-3">
                   <button
                     className="rounded-lg border border-gray-200 px-3 py-1 text-xs font-semibold"
-                    onClick={() => setSelectedClaim(claim)}
+                    onClick={() => openClaimDetail(claim)}
                     type="button"
                   >
                     Review
@@ -180,7 +230,7 @@ export default function ClaimsPage() {
             ))}
             {isLoading ? (
               <tr>
-                <td className="px-4 py-6 text-center text-sm text-gray-500" colSpan={7}>
+                <td className="px-4 py-6 text-center text-sm text-gray-500" colSpan={8}>
                   Loading claims...
                 </td>
               </tr>
@@ -251,6 +301,9 @@ export default function ClaimsPage() {
                   Role: {selectedClaim.claimant_role ?? "-"}
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
+                  Claimant Email: {selectedClaim.business_email ?? "-"}
+                </p>
+                <p className="mt-1 text-xs text-gray-500">
                   Proof: {selectedClaim.proof_document_url ? "Uploaded" : "Missing"}
                 </p>
               </div>
@@ -258,7 +311,7 @@ export default function ClaimsPage() {
 
             <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm text-gray-600">
               Domain check: claimant email domain ({extractDomain(
-                undefined,
+                selectedClaim.business_email,
               )}) vs provider website domain ({extractDomain(
                 selectedClaim.provider?.website,
               )}).

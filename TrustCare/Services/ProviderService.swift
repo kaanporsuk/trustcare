@@ -29,8 +29,17 @@ enum ProviderService {
         if let specialty {
             params["specialty_filter"] = .string(specialty)
         }
+        if let country {
+            params["country_filter"] = .string(country)
+        }
+        if let priceLevel {
+            params["price_level_filter"] = .double(Double(priceLevel))
+        }
         if let minRating {
             params["min_rating"] = .double(minRating)
+        }
+        if let verifiedOnly {
+            params["verified_only"] = .bool(verifiedOnly)
         }
         if let lat {
             params["user_lat"] = .double(lat)
@@ -43,7 +52,19 @@ enum ProviderService {
             .rpc("search_providers", params: params)
             .execute()
 
-        return response.value
+        guard let lat, let lng else {
+            return response.value
+        }
+
+        return response.value.map { provider in
+            let distance = haversineDistanceKm(
+                lat1: lat,
+                lon1: lng,
+                lat2: provider.latitude,
+                lon2: provider.longitude
+            )
+            return withDistance(provider, distanceKm: distance)
+        }
     }
 
     static func fetchProviderById(_ id: UUID) async throws -> Provider {
@@ -262,5 +283,56 @@ enum ProviderService {
             .execute()
 
         return Dictionary(grouping: response.value, by: { $0.reviewId })
+    }
+
+    private static func withDistance(_ provider: Provider, distanceKm: Double?) -> Provider {
+        Provider(
+            id: provider.id,
+            name: provider.name,
+            specialty: provider.specialty,
+            clinicName: provider.clinicName,
+            address: provider.address,
+            city: provider.city,
+            countryCode: provider.countryCode,
+            latitude: provider.latitude,
+            longitude: provider.longitude,
+            phone: provider.phone,
+            email: provider.email,
+            website: provider.website,
+            photoUrl: provider.photoUrl,
+            coverUrl: provider.coverUrl,
+            languagesSpoken: provider.languagesSpoken,
+            ratingOverall: provider.ratingOverall,
+            ratingWaitTime: provider.ratingWaitTime,
+            ratingBedside: provider.ratingBedside,
+            ratingEfficacy: provider.ratingEfficacy,
+            ratingCleanliness: provider.ratingCleanliness,
+            reviewCount: provider.reviewCount,
+            verifiedReviewCount: provider.verifiedReviewCount,
+            priceLevelAvg: provider.priceLevelAvg,
+            isClaimed: provider.isClaimed,
+            subscriptionTier: provider.subscriptionTier,
+            isFeatured: provider.isFeatured,
+            isActive: provider.isActive,
+            createdAt: provider.createdAt,
+            distanceKm: distanceKm
+        )
+    }
+
+    private static func haversineDistanceKm(
+        lat1: Double,
+        lon1: Double,
+        lat2: Double,
+        lon2: Double
+    ) -> Double {
+        let radius = 6371.0
+        let dLat = (lat2 - lat1) * .pi / 180
+        let dLon = (lon2 - lon1) * .pi / 180
+        let a =
+            sin(dLat / 2) * sin(dLat / 2)
+            + cos(lat1 * .pi / 180) * cos(lat2 * .pi / 180)
+            * sin(dLon / 2) * sin(dLon / 2)
+        let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        return radius * c
     }
 }

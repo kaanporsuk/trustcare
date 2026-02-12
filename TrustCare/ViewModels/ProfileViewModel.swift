@@ -162,7 +162,7 @@ final class ProfileViewModel: ObservableObject {
                 throw AppError.uploadFailed
             }
 
-            let path = "avatars/\(session.user.id.uuidString)/\(UUID().uuidString).jpg"
+            let path = "\(session.user.id.uuidString)/\(UUID().uuidString).jpg"
             let url = try await ImageService.uploadToStorage(
                 bucket: "avatars",
                 path: path,
@@ -242,23 +242,7 @@ final class ProfileViewModel: ObservableObject {
 
     func deleteAccount() async {
         do {
-            let session = try await SupabaseManager.shared.client.auth.session
-
-            struct DeletePayload: Encodable {
-                let deletedAt: Date
-
-                enum CodingKeys: String, CodingKey {
-                    case deletedAt = "deleted_at"
-                }
-            }
-
-            _ = try await SupabaseManager.shared.client
-                .from("profiles")
-                .update(DeletePayload(deletedAt: Date()))
-                .eq("id", value: session.user.id.uuidString)
-                .execute()
-
-            try await SupabaseManager.shared.client.auth.signOut()
+            try await AuthService.deleteAccount()
         } catch {
             errorMessage = localizedErrorMessage(error)
         }

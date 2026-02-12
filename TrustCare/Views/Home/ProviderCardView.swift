@@ -52,8 +52,13 @@ struct ProviderCardView: View {
                     }
 
                     HStack(spacing: 6) {
-                        if provider.verifiedReviewCount > 0 {
-                            VerifiedBadge()
+                        if provider.reviewCount > 0 {
+                            Image(systemName: "checkmark.seal.fill")
+                                .font(.caption)
+                                .foregroundStyle(AppColor.success)
+                            Text(String(format: String(localized: "verified_percentage"), provider.verifiedPercentage))
+                                .font(AppFont.caption)
+                                .foregroundStyle(.secondary)
                         }
                         Text("·")
                             .font(AppFont.caption)

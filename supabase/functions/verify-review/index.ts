@@ -21,8 +21,55 @@ function jsonResponse(status: number, body: Record<string, unknown>) {
   return new Response(JSON.stringify(body), { status, headers: jsonHeaders });
 }
 
-async function downloadImage(url: string): Promise<string> {
-  const response = await fetch(url);
+type StoragePath = {
+  bucket: string;
+  path: string;
+};
+
+function extractStoragePath(value: string): StoragePath | null {
+  if (!value) return null;
+
+  if (value.startsWith("http")) {
+    const match = value.match(
+      /\/storage\/v1\/object\/(?:public\/)?([^/]+)\/(.+)$/,
+    );
+    if (match) {
+      return {
+        bucket: match[1],
+        path: decodeURIComponent(match[2]),
+      };
+    }
+    return null;
+  }
+
+  const trimmed = value.replace(/^\/+/, "");
+  if (!trimmed) return null;
+  return { bucket: "verification-proofs", path: trimmed };
+}
+
+async function downloadImage(
+  source: string,
+  supabase: ReturnType<typeof createClient>,
+): Promise<string> {
+  const storagePath = extractStoragePath(source);
+
+  if (storagePath) {
+    const { data, error } = await supabase.storage
+      .from(storagePath.bucket)
+      .download(storagePath.path);
+
+    if (!error && data) {
+      const buffer = await data.arrayBuffer();
+      const bytes = new Uint8Array(buffer);
+      let binary = "";
+      for (const byte of bytes) {
+        binary += String.fromCharCode(byte);
+      }
+      return btoa(binary);
+    }
+  }
+
+  const response = await fetch(source);
   if (!response.ok) {
     throw new Error(`Failed to download proof image: ${response.status}`);
   }
@@ -163,7 +210,7 @@ Deno.serve(async (req) => {
 
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const imageBase64 = await downloadImage(review.proof_image_url);
+      const imageBase64 = await downloadImage(review.proof_image_url, supabase);
       const result = await callOpenAI(imageBase64);
 
       const confidence = Math.max(0, Math.min(100, result.confidence ?? 0));

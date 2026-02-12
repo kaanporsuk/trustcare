@@ -9,6 +9,7 @@ const PAGE_SIZE = 20;
 type UserRow = {
   id: string;
   full_name?: string | null;
+  email?: string | null;
   avatar_url?: string | null;
   phone?: string | null;
   country_code?: string | null;
@@ -34,7 +35,7 @@ export default function UsersPage() {
     let query = supabase
       .from("profiles")
       .select(
-        "id, full_name, avatar_url, phone, country_code, preferred_language, created_at, deleted_at",
+        "id, full_name, email, avatar_url, phone, country_code, preferred_language, created_at, deleted_at",
         { count: "exact" },
       )
       .order("created_at", { ascending: false })
@@ -42,7 +43,7 @@ export default function UsersPage() {
 
     if (search.trim()) {
       query = query.or(
-        `full_name.ilike.%${search.trim()}%,phone.ilike.%${search.trim()}%`,
+        `full_name.ilike.%${search.trim()}%,phone.ilike.%${search.trim()}%,email.ilike.%${search.trim()}%`,
       );
     }
 

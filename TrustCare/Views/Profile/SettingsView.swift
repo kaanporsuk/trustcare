@@ -55,7 +55,11 @@ struct SettingsView: View {
                 Button(String(localized: "Change Password")) {
                     Task {
                         if !email.isEmpty {
-                            try? await AuthService.resetPassword(email: email)
+                            do {
+                                try await AuthService.resetPassword(email: email)
+                            } catch {
+                                profileVM.errorMessage = localizedErrorMessage(error)
+                            }
                         }
                     }
                 }
@@ -64,7 +68,7 @@ struct SettingsView: View {
             Section(String(localized: "Language")) {
                 Picker(String(localized: "Language"), selection: $selectedLanguage) {
                     ForEach(languages, id: \.code) { language in
-                        Text("\(language.name) (\(language.code.uppercased()))")
+                        Text("\(flagEmoji(for: language.flag)) \(language.name) (\(language.code.uppercased()))")
                             .tag(language.code)
                     }
                 }
@@ -328,6 +332,17 @@ struct SettingsView: View {
         } catch {
             profileVM.errorMessage = localizedErrorMessage(error)
         }
+    }
+
+    private func flagEmoji(for regionCode: String) -> String {
+        let base: UInt32 = 0x1F1E6
+        let uppercased = regionCode.uppercased()
+        var scalars: [UnicodeScalar] = []
+        for scalar in uppercased.unicodeScalars {
+            guard scalar.value >= 65 && scalar.value <= 90 else { continue }
+            scalars.append(UnicodeScalar(base + UInt32(scalar.value - 65))!)
+        }
+        return String(String.UnicodeScalarView(scalars))
     }
 
     private func localizedErrorMessage(_ error: Error) -> String {

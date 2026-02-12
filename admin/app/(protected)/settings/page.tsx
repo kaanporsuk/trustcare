@@ -67,7 +67,7 @@ export default function SettingsPage() {
     const { data: profile } = await supabase
       .from("profiles")
       .select("id")
-      .eq("full_name", inviteEmail.trim())
+      .eq("email", inviteEmail.trim())
       .single();
 
     if (!profile?.id) return;
@@ -142,7 +142,7 @@ export default function SettingsPage() {
         <div className="mt-4 flex flex-wrap gap-3">
           <input
             className="flex-1 rounded-lg border border-gray-200 px-3 py-2 text-sm"
-            placeholder="Admin name"
+            placeholder="Admin email"
             value={inviteEmail}
             onChange={(event) => setInviteEmail(event.target.value)}
           />

@@ -11,6 +11,7 @@ struct MediaPickerView: View {
     @State private var videoItem: PhotosPickerItem?
     @State private var videoThumbnail: UIImage?
     @State private var videoDuration: Double?
+    @State private var errorMessage: String?
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
@@ -140,11 +141,23 @@ struct MediaPickerView: View {
                 if let url = await loadVideoURL(from: newItem) {
                     selectedVideo = url
                     videoThumbnail = await ImageService.extractVideoThumbnail(from: url)
-                    let duration = try? await AVAsset(url: url).load(.duration)
-                    videoDuration = duration?.seconds
-                    selectedVideoDuration = duration?.seconds
+                    do {
+                        let duration = try await AVAsset(url: url).load(.duration)
+                        videoDuration = duration.seconds
+                        selectedVideoDuration = duration.seconds
+                    } catch {
+                        errorMessage = String(localized: "Something went wrong.")
+                    }
                 }
             }
+        }
+        .alert(String(localized: "Error"), isPresented: Binding(
+            get: { errorMessage != nil },
+            set: { if !$0 { errorMessage = nil } }
+        )) {
+            Button(String(localized: "Done")) { errorMessage = nil }
+        } message: {
+            Text(errorMessage ?? "")
         }
     }
 
@@ -164,11 +177,19 @@ struct MediaPickerView: View {
             if let url = try await item.loadTransferable(type: URL.self) {
                 let tempURL = FileManager.default.temporaryDirectory
                     .appendingPathComponent("review_video_\(UUID().uuidString).mov")
-                try? FileManager.default.removeItem(at: tempURL)
+                do {
+                    if FileManager.default.fileExists(atPath: tempURL.path) {
+                        try FileManager.default.removeItem(at: tempURL)
+                    }
+                } catch {
+                    errorMessage = String(localized: "Something went wrong.")
+                    return nil
+                }
                 try FileManager.default.copyItem(at: url, to: tempURL)
                 return tempURL
             }
         } catch {
+            errorMessage = String(localized: "Something went wrong.")
             return nil
         }
         return nil

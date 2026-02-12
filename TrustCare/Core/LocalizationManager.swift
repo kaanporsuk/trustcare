@@ -5,12 +5,12 @@ class LocalizationManager: ObservableObject {
     @AppStorage("appLanguage") var appLanguage: String = "en"
 
     static let supportedLanguages: [(code: String, name: String, flag: String, isRTL: Bool)] = [
-        ("en", "English", "GB", false),
-        ("de", "German", "DE", false),
-        ("nl", "Dutch", "NL", false),
-        ("pl", "Polish", "PL", false),
-        ("tr", "Turkish", "TR", false),
-        ("ar", "Arabic", "SA", true)
+        ("en", String(localized: "English"), "GB", false),
+        ("de", String(localized: "German"), "DE", false),
+        ("nl", String(localized: "Dutch"), "NL", false),
+        ("pl", String(localized: "Polish"), "PL", false),
+        ("tr", String(localized: "Turkish"), "TR", false),
+        ("ar", String(localized: "Arabic"), "SA", true)
     ]
 
     var layoutDirection: LayoutDirection {

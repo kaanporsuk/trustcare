@@ -326,7 +326,8 @@ struct ProviderDetailView: View {
                 }
             }
 
-            Button {
+            NavigationLink {
+                ReviewListView(providerId: providerId)
             } label: {
                 Text(String(localized: "See All Reviews"))
                     .font(AppFont.caption)
@@ -334,7 +335,11 @@ struct ProviderDetailView: View {
             }
 
             NavigationLink {
-                SubmitReviewView()
+                if let provider = detailVM.provider {
+                    SubmitReviewView(preselectedProvider: provider)
+                } else {
+                    SubmitReviewView()
+                }
             } label: {
                 Text(String(localized: "Write a Review"))
                     .font(AppFont.headline)

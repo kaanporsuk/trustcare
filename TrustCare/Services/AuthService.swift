@@ -73,12 +73,20 @@ enum AuthService {
     }
 
     static func currentSession() async -> Session? {
-        try? await client.auth.session
+        do {
+            return try await client.auth.session
+        } catch {
+            return nil
+        }
     }
 
     static func currentUserEmail() async -> String? {
-        let session = try? await client.auth.session
-        return session?.user.email
+        do {
+            let session = try await client.auth.session
+            return session.user.email
+        } catch {
+            return nil
+        }
     }
 
     static func fetchProfile() async throws -> UserProfile {

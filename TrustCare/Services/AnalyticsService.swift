@@ -27,17 +27,21 @@ final class AnalyticsService {
         }
 
         Task {
-            let session = try? await client.auth.session
-            let payload = UserEventInsert(
-                userId: session?.user.id,
-                eventType: event,
-                eventData: eventData,
-                createdAt: Date()
-            )
-            _ = try? await client
-                .from("user_events")
-                .insert(payload)
-                .execute()
+            do {
+                let session = try await client.auth.session
+                let payload = UserEventInsert(
+                    userId: session.user.id,
+                    eventType: event,
+                    eventData: eventData,
+                    createdAt: Date()
+                )
+                _ = try await client
+                    .from("user_events")
+                    .insert(payload)
+                    .execute()
+            } catch {
+                return
+            }
         }
     }
 }

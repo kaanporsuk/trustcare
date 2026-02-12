@@ -37,10 +37,15 @@ struct ProfileView: View {
         }
         .onChange(of: avatarItem) { _, newItem in
             Task {
-                guard let newItem,
-                      let data = try? await newItem.loadTransferable(type: Data.self),
-                      let image = UIImage(data: data) else { return }
-                await profileVM.updateAvatar(image: image)
+                guard let newItem else { return }
+                do {
+                    if let data = try await newItem.loadTransferable(type: Data.self),
+                       let image = UIImage(data: data) {
+                        await profileVM.updateAvatar(image: image)
+                    }
+                } catch {
+                    profileVM.errorMessage = String(localized: "Unable to upload media. Please try again.")
+                }
             }
         }
         .alert(String(localized: "Error"), isPresented: Binding(

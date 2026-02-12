@@ -4,12 +4,17 @@ import UIKit
 
 struct SubmitReviewView: View {
     @Binding var selectedTab: Int
+    let preselectedProvider: Provider?
     @StateObject private var viewModel = ReviewSubmissionViewModel()
     @State private var showAddProviderSheet: Bool = false
     @State private var proofItem: PhotosPickerItem?
 
-    init(selectedTab: Binding<Int> = .constant(0)) {
+    init(
+        selectedTab: Binding<Int> = .constant(0),
+        preselectedProvider: Provider? = nil
+    ) {
         _selectedTab = selectedTab
+        self.preselectedProvider = preselectedProvider
     }
 
     var body: some View {
@@ -36,15 +41,25 @@ struct SubmitReviewView: View {
                     viewModel.searchText = provider.name
                 }
             }
+            .task(id: preselectedProvider?.id) {
+                if let provider = preselectedProvider, viewModel.selectedProvider == nil {
+                    viewModel.selectedProvider = provider
+                    viewModel.searchText = provider.name
+                }
+            }
             .onChange(of: viewModel.searchText) { _, _ in
                 viewModel.searchProviders()
             }
             .onChange(of: proofItem) { _, newItem in
                 Task {
                     guard let newItem else { return }
-                    if let data = try? await newItem.loadTransferable(type: Data.self),
-                       let image = UIImage(data: data) {
-                        viewModel.proofImage = image
+                    do {
+                        if let data = try await newItem.loadTransferable(type: Data.self),
+                           let image = UIImage(data: data) {
+                            viewModel.proofImage = image
+                        }
+                    } catch {
+                        viewModel.errorMessage = String(localized: "Unable to upload media. Please try again.")
                     }
                 }
             }

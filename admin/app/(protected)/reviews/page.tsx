@@ -17,6 +17,11 @@ type ReviewRow = {
   created_at?: string | null;
 };
 
+type StoragePath = {
+  bucket: string;
+  path: string;
+};
+
 export default function ReviewsPage() {
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [reviews, setReviews] = useState<ReviewRow[]>([]);
@@ -74,7 +79,23 @@ export default function ReviewsPage() {
       .eq("id", reviewId)
       .single();
 
-    setSelectedReview(data ?? null);
+    if (!data) {
+      setSelectedReview(null);
+      return;
+    }
+
+    let proofUrl = data.proof_image_url ?? null;
+    const storagePath = extractStoragePath(proofUrl ?? "");
+    if (storagePath) {
+      const { data: signed } = await supabase.storage
+        .from(storagePath.bucket)
+        .createSignedUrl(storagePath.path, 60 * 10);
+      if (signed?.signedUrl) {
+        proofUrl = signed.signedUrl;
+      }
+    }
+
+    setSelectedReview({ ...data, proof_image_url: proofUrl });
   };
 
   const updateStatus = async (reviewIds: string[], status: string) => {
@@ -91,6 +112,27 @@ export default function ReviewsPage() {
     if (value >= 80) return "active";
     if (value >= 50) return "pending";
     return "flagged";
+  };
+
+  const extractStoragePath = (value: string): StoragePath | null => {
+    if (!value) return null;
+
+    if (value.startsWith("http")) {
+      const match = value.match(
+        /\/storage\/v1\/object\/(?:public\/)?([^/]+)\/(.+)$/,
+      );
+      if (match) {
+        return {
+          bucket: match[1],
+          path: decodeURIComponent(match[2]),
+        };
+      }
+      return null;
+    }
+
+    const trimmed = value.replace(/^\/+/, "");
+    if (!trimmed) return null;
+    return { bucket: "verification-proofs", path: trimmed };
   };
 
   const toggleSelection = (reviewId: string) => {

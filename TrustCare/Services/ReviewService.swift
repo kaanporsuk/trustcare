@@ -19,10 +19,23 @@ enum ReviewService {
         wouldRecommend: Bool,
         proofImage: UIImage?,
         images: [UIImage],
-        videoURL: URL?
+        videoURL: URL?,
+        progressHandler: ((Double) -> Void)? = nil
     ) async throws -> Review {
         let session = try await client.auth.session
         let userId = session.user.id
+
+        let imageCount = min(images.count, 5)
+        let totalSteps = Double(1
+            + (proofImage != nil ? 1 : 0)
+            + imageCount
+            + (videoURL != nil ? 1 : 0))
+        var completedSteps = 0.0
+        let advanceProgress: () -> Void = {
+            completedSteps += 1
+            let progress = min(1, completedSteps / max(1, totalSteps))
+            progressHandler?(progress)
+        }
 
         var proofUrl: String?
         if let proofImage,
@@ -35,6 +48,7 @@ enum ReviewService {
                 data: proofData,
                 contentType: "image/jpeg"
             )
+            advanceProgress()
         }
 
         let overall = Double(ratings.wait + ratings.bedside + ratings.efficacy + ratings.cleanliness) / 4.0
@@ -99,18 +113,21 @@ enum ReviewService {
             .execute()
 
         let review = reviewResponse.value
+        advanceProgress()
 
         try await uploadImages(
             images: images,
             userId: userId,
-            reviewId: review.id
+            reviewId: review.id,
+            onStep: advanceProgress
         )
 
         if let videoURL {
             try await uploadVideo(
                 videoURL: videoURL,
                 userId: userId,
-                reviewId: review.id
+                reviewId: review.id,
+                onStep: advanceProgress
             )
         }
 
@@ -131,7 +148,8 @@ enum ReviewService {
     private static func uploadImages(
         images: [UIImage],
         userId: UUID,
-        reviewId: UUID
+        reviewId: UUID,
+        onStep: (() -> Void)?
     ) async throws {
         let limitedImages = Array(images.prefix(5))
 
@@ -177,13 +195,16 @@ enum ReviewService {
                 height: height,
                 displayOrder: index + 1
             )
+
+            onStep?()
         }
     }
 
     private static func uploadVideo(
         videoURL: URL,
         userId: UUID,
-        reviewId: UUID
+        reviewId: UUID,
+        onStep: (() -> Void)?
     ) async throws {
         let compressedURL = try await ImageService.compressVideo(inputURL: videoURL)
         let asset = AVAsset(url: compressedURL)
@@ -192,7 +213,8 @@ enum ReviewService {
 
         let fileName = "\(UUID().uuidString).mp4"
         let path = "\(userId.uuidString)/\(reviewId.uuidString)/\(fileName)"
-        let thumbPath = "\(userId.uuidString)/\(reviewId.uuidString)/thumb_\(fileName).jpg"
+        let thumbName = "thumb_\(UUID().uuidString).jpg"
+        let thumbPath = "\(userId.uuidString)/\(reviewId.uuidString)/\(thumbName)"
 
         let videoData = try Data(contentsOf: compressedURL)
         let url = try await ImageService.uploadToStorage(
@@ -236,6 +258,8 @@ enum ReviewService {
             height: height,
             displayOrder: 1
         )
+
+        onStep?()
     }
 
     private static func insertMediaRow(

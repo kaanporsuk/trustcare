@@ -26,7 +26,11 @@ struct SplashView: View {
             }
         }
         .task {
-            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            do {
+                try await Task.sleep(nanoseconds: 2_000_000_000)
+            } catch {
+                return
+            }
             let session = await AuthService.currentSession()
             if session != nil {
                 appState = .main

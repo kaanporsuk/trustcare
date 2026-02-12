@@ -50,7 +50,11 @@ final class HomeViewModel: ObservableObject {
     }
 
     func searchWithDebounce() async {
-        try? await Task.sleep(nanoseconds: 300_000_000)
+        do {
+            try await Task.sleep(nanoseconds: 300_000_000)
+        } catch {
+            return
+        }
         await refresh()
     }
 

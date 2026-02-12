@@ -27,6 +27,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isComplete: Bool = false
     @Published var mediaUploadProgress: Double = 0
+    @Published var isLoading: Bool = false
 
     private var searchTask: Task<Void, Never>?
 
@@ -69,11 +70,18 @@ final class ReviewSubmissionViewModel: ObservableObject {
         let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             searchResults = []
+            isLoading = false
             return
         }
 
+        isLoading = true
         searchTask = Task { [weak self] in
-            try? await Task.sleep(nanoseconds: 300_000_000)
+            do {
+                try await Task.sleep(nanoseconds: 300_000_000)
+            } catch {
+                self?.isLoading = false
+                return
+            }
             guard !Task.isCancelled, let self else { return }
             do {
                 let results = try await ProviderService.searchProviders(
@@ -87,8 +95,10 @@ final class ReviewSubmissionViewModel: ObservableObject {
                     lng: nil
                 )
                 self.searchResults = results
+                self.isLoading = false
             } catch {
                 self.errorMessage = self.localizedErrorMessage(error)
+                self.isLoading = false
             }
         }
     }
@@ -127,7 +137,12 @@ final class ReviewSubmissionViewModel: ObservableObject {
                 wouldRecommend: wouldRecommend,
                 proofImage: proofImage,
                 images: selectedImages,
-                videoURL: selectedVideo
+                videoURL: selectedVideo,
+                progressHandler: { [weak self] progress in
+                    Task { @MainActor in
+                        self?.mediaUploadProgress = progress
+                    }
+                }
             )
             _ = review
             mediaUploadProgress = 1

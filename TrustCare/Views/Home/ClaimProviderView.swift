@@ -54,6 +54,15 @@ struct ClaimProviderView: View {
                 }
             }
             .navigationTitle(providerName)
+            .overlay {
+                if claimVM.isLoading {
+                    Color.black.opacity(0.3)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(.white)
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "Cancel")) { dismiss() }
@@ -63,9 +72,13 @@ struct ClaimProviderView: View {
             .onChange(of: selectedItem) { _, newItem in
                 guard let newItem else { return }
                 Task {
-                    if let data = try? await newItem.loadTransferable(type: Data.self),
-                       let image = UIImage(data: data) {
-                        claimVM.proofImage = image
+                    do {
+                        if let data = try await newItem.loadTransferable(type: Data.self),
+                           let image = UIImage(data: data) {
+                            claimVM.proofImage = image
+                        }
+                    } catch {
+                        claimVM.errorMessage = String(localized: "Unable to upload media. Please try again.")
                     }
                 }
             }

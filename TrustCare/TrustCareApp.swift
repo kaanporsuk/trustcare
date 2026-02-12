@@ -84,10 +84,13 @@ struct TrustCareApp: App {
 
         if host == "review", let idString = pathComponents.first, let reviewId = UUID(uuidString: idString) {
             Task {
-                if let review = try? await ReviewService.fetchReviewById(reviewId) {
+                do {
+                    let review = try await ReviewService.fetchReviewById(reviewId)
                     appState = .main
                     path = NavigationPath()
                     path.append(AppRoute.provider(review.providerId))
+                } catch {
+                    return
                 }
             }
         }
