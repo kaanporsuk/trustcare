@@ -89,6 +89,20 @@ struct SettingsView: View {
                 }
             }
 
+            Section(String(localized: "Help & Information")) {
+                NavigationLink(String(localized: "Help & Support")) {
+                    HelpSupportView()
+                }
+
+                NavigationLink(String(localized: "Privacy Policy")) {
+                    PrivacyPolicyView()
+                }
+
+                NavigationLink(String(localized: "Terms of Service")) {
+                    TermsOfServiceView()
+                }
+            }
+
             Section(String(localized: "Privacy & Consent")) {
                 Toggle(String(localized: "Analytics Tracking"), isOn: $analyticsConsentGranted)
                     .onChange(of: analyticsConsentGranted) { _, newValue in
@@ -113,9 +127,6 @@ struct SettingsView: View {
                         guard !isLoadingConsent else { return }
                         Task { await updateConsent(type: "ai_verification_consent", granted: newValue) }
                     }
-
-                Link(String(localized: "Terms of Service"), destination: URL(string: "https://trustcare.app/terms")!)
-                Link(String(localized: "Privacy Policy"), destination: URL(string: "https://trustcare.app/privacy")!)
             }
 
             Section(String(localized: "Data Export")) {
