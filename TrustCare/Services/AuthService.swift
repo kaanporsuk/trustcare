@@ -17,6 +17,7 @@ enum AuthService {
     private struct ProfileUpdate: Encodable {
         let fullName: String?
         let avatarUrl: String?
+        let bio: String?
         let phone: String?
         let countryCode: String?
         let preferredLanguage: String?
@@ -25,6 +26,7 @@ enum AuthService {
         enum CodingKeys: String, CodingKey {
             case fullName = "full_name"
             case avatarUrl = "avatar_url"
+            case bio
             case phone
             case countryCode = "country_code"
             case preferredLanguage = "preferred_language"
@@ -125,6 +127,7 @@ enum AuthService {
     static func updateProfile(
         fullName: String?,
         avatarUrl: String?,
+        bio: String?,
         phone: String?,
         countryCode: String?,
         language: String?,
@@ -134,6 +137,7 @@ enum AuthService {
 
         if fullName == nil
             && avatarUrl == nil
+            && bio == nil
             && phone == nil
             && countryCode == nil
             && language == nil
@@ -144,6 +148,7 @@ enum AuthService {
         let updates = ProfileUpdate(
             fullName: fullName,
             avatarUrl: avatarUrl,
+            bio: bio,
             phone: phone,
             countryCode: countryCode,
             preferredLanguage: language,
@@ -170,6 +175,7 @@ enum AuthService {
         let updates = ProfileUpdate(
             fullName: String(localized: "Deleted User"),
             avatarUrl: nil,
+            bio: nil,
             phone: nil,
             countryCode: nil,
             preferredLanguage: nil,
@@ -190,5 +196,16 @@ enum AuthService {
             .execute()
 
         try await client.auth.signOut()
+    }
+
+    static func updatePassword(currentPassword: String, newPassword: String) async throws {
+        let session = try await client.auth.session
+        guard let email = session.user.email else {
+            throw AppError.validationError(String(localized: "Email is required to update password."))
+        }
+
+        _ = try await client.auth.signIn(email: email, password: currentPassword)
+
+        try await client.auth.update(user: UserAttributes(password: newPassword))
     }
 }

@@ -6,6 +6,23 @@ enum ProviderService {
         SupabaseManager.shared.client
     }
 
+    static func searchProvidersTable(query: String, limit: Int = 20) async throws -> [Provider] {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return [] }
+
+        let filter = "name.ilike.%\(trimmed)%,specialty.ilike.%\(trimmed)%,clinic_name.ilike.%\(trimmed)%,address.ilike.%\(trimmed)%"
+
+        let response: PostgrestResponse<[Provider]> = try await client
+            .from("providers")
+            .select()
+            .or(filter)
+            .order("name", ascending: true)
+            .limit(limit)
+            .execute()
+
+        return response.value
+    }
+
     static func searchProviders(
         text: String?,
         specialty: String?,
@@ -200,7 +217,8 @@ enum ProviderService {
                 reviewerName: row.profile?.fullName,
                 reviewerAvatar: row.profile?.avatarUrl,
                 media: reviewMedia,
-                providerName: nil
+                providerName: nil,
+                providerSpecialty: nil
             )
         }
     }

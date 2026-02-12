@@ -4,6 +4,7 @@ struct UserProfile: Identifiable, Codable {
     let id: UUID
     var fullName: String?
     var avatarUrl: String?
+    var bio: String?
     var phone: String?
     var countryCode: String
     var preferredLanguage: String
@@ -23,6 +24,7 @@ struct UserProfile: Identifiable, Codable {
         case id, phone
         case fullName = "full_name"
         case avatarUrl = "avatar_url"
+        case bio
         case countryCode = "country_code"
         case preferredLanguage = "preferred_language"
         case preferredCurrency = "preferred_currency"

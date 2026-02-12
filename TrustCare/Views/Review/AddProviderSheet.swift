@@ -9,39 +9,47 @@ struct AddProviderSheet: View {
     @State private var name: String = ""
     @State private var clinicName: String = ""
     @State private var address: String = ""
-    @State private var city: String = ""
-    @State private var countryCode: String = Locale.current.region?.identifier ?? "US"
     @State private var phone: String = ""
-    @State private var specialties: [Specialty] = []
-    @State private var selectedSpecialtyId: Int?
+    @State private var selectedSpecialty: String = "General"
     @State private var isSubmitting: Bool = false
     @State private var errorMessage: String?
+
+    private let specialties = [
+        "General",
+        "Dentist",
+        "Cardiologist",
+        "Dermatologist",
+        "Pediatrician",
+        "Orthopedic",
+        "Gynecology",
+        "Psychiatry",
+        "Ophthalmology",
+        "ENT",
+        "Urologist",
+        "Neurologist",
+        "Other"
+    ]
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    TextField(String(localized: "Full Name"), text: $name)
-                    Picker(String(localized: "Specialty"), selection: $selectedSpecialtyId) {
-                        if specialties.isEmpty {
-                            Text(String(localized: "Loading...")).tag(Optional<Int>.none)
-                        } else {
-                            ForEach(specialties) { specialty in
-                                Text(specialty.nameEn).tag(Optional(specialty.id))
-                            }
+                    TextField(String(localized: "Provider Name"), text: $name)
+                    Picker(String(localized: "Specialty"), selection: $selectedSpecialty) {
+                        ForEach(specialties, id: \.self) { specialty in
+                            Text(specialty).tag(specialty)
                         }
                     }
                     .pickerStyle(.menu)
-                    .disabled(specialties.isEmpty)
                     TextField(String(localized: "Clinic / Hospital"), text: $clinicName)
                     TextField(String(localized: "Address"), text: $address)
-                    TextField(String(localized: "City"), text: $city)
-                    TextField(String(localized: "Country"), text: $countryCode)
                     TextField(String(localized: "Phone"), text: $phone)
                 }
 
             }
             .navigationTitle(String(localized: "Add a Healthcare Provider"))
+            .dismissKeyboardOnTap()
+            .keyboardDoneToolbar()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "Cancel")) {
@@ -65,9 +73,6 @@ struct AddProviderSheet: View {
                         .tint(.white)
                 }
             }
-            .task {
-                await loadSpecialties()
-            }
             .alert(String(localized: "Error"), isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
@@ -81,36 +86,29 @@ struct AddProviderSheet: View {
 
     private var isValid: Bool {
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            && selectedSpecialtyId != nil
+            && !selectedSpecialty.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             && !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
-    private func loadSpecialties() async {
-        do {
-            specialties = try await ProviderService.fetchSpecialties()
-            if selectedSpecialtyId == nil {
-                selectedSpecialtyId = specialties.first?.id
-            }
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-    }
-
     private func submit() async {
-          guard let selectedId = selectedSpecialtyId,
-              let specialty = specialties.first(where: { $0.id == selectedId }) else { return }
+        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedAddress = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedAddress.isEmpty {
+            errorMessage = String(localized: "Address is required to add a provider.")
+            return
+        }
         isSubmitting = true
         errorMessage = nil
 
         do {
-            let coordinate = try await geocodeAddress()
+            let coordinate = try await geocodeAddress(address: trimmedAddress)
             let provider = try await ProviderService.addProvider(
-                name: name,
-                specialty: specialty.nameEn,
+                name: trimmedName,
+                specialty: selectedSpecialty,
                 clinicName: clinicName.isEmpty ? nil : clinicName,
-                address: address,
-                city: city.isEmpty ? nil : city,
-                countryCode: countryCode.isEmpty ? "US" : countryCode,
+                address: trimmedAddress,
+                city: nil,
+                countryCode: Locale.current.region?.identifier ?? "US",
                 latitude: coordinate.latitude,
                 longitude: coordinate.longitude,
                 phone: phone.isEmpty ? nil : phone
@@ -124,11 +122,10 @@ struct AddProviderSheet: View {
         isSubmitting = false
     }
 
-    private func geocodeAddress() async throws -> CLLocationCoordinate2D {
+    private func geocodeAddress(address: String) async throws -> CLLocationCoordinate2D {
         let geocoder = CLGeocoder()
-        let composed = [address, city, countryCode]
-            .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
-            .joined(separator: ", ")
+        let country = Locale.current.region?.identifier ?? "US"
+        let composed = [address, country].joined(separator: ", ")
 
         let placemarks = try await geocoder.geocodeAddressString(composed)
         if let coordinate = placemarks.first?.location?.coordinate {

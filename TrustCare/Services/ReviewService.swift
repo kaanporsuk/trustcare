@@ -20,6 +20,7 @@ enum ReviewService {
         proofImage: UIImage?,
         images: [UIImage],
         videoURL: URL?,
+        statusOverride: String? = nil,
         progressHandler: ((Double) -> Void)? = nil
     ) async throws -> Review {
         // Check if user is authenticated
@@ -29,6 +30,17 @@ enum ReviewService {
             )
         }
         let userId = session.user.id
+
+        print("🔵 ReviewService.submitReview started")
+        print("  Provider ID: \(providerId)")
+        print("  User ID: \(userId)")
+        print("  Visit date: \(visitDate)")
+        print("  Visit type: \(visitType.rawValue)")
+        print("  Ratings: wait=\(ratings.wait), bedside=\(ratings.bedside), efficacy=\(ratings.efficacy), cleanliness=\(ratings.cleanliness)")
+        print("  Price level: \(priceLevel)")
+        print("  Comment length: \(comment.count)")
+        print("  Proof image selected: \(proofImage != nil)")
+        print("  Images: \(images.count), video: \(videoURL != nil)")
 
         let imageCount = min(images.count, 5)
         let totalSteps = Double(1
@@ -58,6 +70,7 @@ enum ReviewService {
 
         let overall = Double(ratings.wait + ratings.bedside + ratings.efficacy + ratings.cleanliness) / 4.0
         let roundedOverall = Double(round(overall * 10) / 10)
+        let status = statusOverride ?? (proofImage != nil ? "pending_verification" : "active")
 
         struct ReviewInsert: Encodable {
             let providerId: String
@@ -74,6 +87,8 @@ enum ReviewService {
             let comment: String
             let wouldRecommend: Bool
             let proofImageUrl: String?
+            let isVerified: Bool
+            let status: String
 
             enum CodingKeys: String, CodingKey {
                 case providerId = "provider_id"
@@ -90,6 +105,8 @@ enum ReviewService {
                 case comment
                 case wouldRecommend = "would_recommend"
                 case proofImageUrl = "proof_image_url"
+                case isVerified = "is_verified"
+                case status
             }
         }
 
@@ -107,15 +124,28 @@ enum ReviewService {
             title: title,
             comment: comment,
             wouldRecommend: wouldRecommend,
-            proofImageUrl: proofUrl
+            proofImageUrl: proofUrl,
+            isVerified: false,
+            status: status
         )
 
-        let reviewResponse: PostgrestResponse<Review> = try await client
-            .from("reviews")
-            .insert(insertPayload)
-            .select()
-            .single()
-            .execute()
+        print("  Insert payload: status=\(status), proof_url=\(proofUrl ?? "nil")")
+
+        let reviewResponse: PostgrestResponse<Review>
+        do {
+            reviewResponse = try await client
+                .from("reviews")
+                .insert(insertPayload)
+                .select()
+                .single()
+                .execute()
+        } catch {
+            print("❌ ReviewService.submitReview insert failed")
+            print("  Error: \(error)")
+            print("  Error type: \(type(of: error))")
+            print("  Localized: \(error.localizedDescription)")
+            throw error
+        }
 
         let review = reviewResponse.value
         advanceProgress()

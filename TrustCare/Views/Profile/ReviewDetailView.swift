@@ -26,5 +26,6 @@ struct ReviewDetailView: View {
         .scrollDismissesKeyboard(.interactively)
         .navigationTitle(String(localized: "Review"))
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
     }
 }

@@ -27,9 +27,9 @@ struct MainTabView: View {
             .tag(1)
 
             NavigationStack {
-                ProfileView()
-                    .environmentObject(profileVM)
+                ProfileView(selectedTab: $selectedTab)
             }
+            .environmentObject(profileVM)
             .tabItem {
                 Image(systemName: "person.circle")
                 Text(String(localized: "tab_profile"))

@@ -8,6 +8,7 @@ struct SubmitReviewView: View {
     @StateObject private var viewModel = ReviewSubmissionViewModel()
     @State private var showAddProviderSheet: Bool = false
     @State private var proofItem: PhotosPickerItem?
+    @State private var showProviderAddedToast: Bool = false
 
     init(
         selectedTab: Binding<Int> = .constant(0),
@@ -34,11 +35,15 @@ struct SubmitReviewView: View {
             .padding(.vertical, AppSpacing.lg)
             .navigationTitle(String(localized: "Write a Review"))
             .navigationBarTitleDisplayMode(.inline)
+            .dismissKeyboardOnTap()
+            .keyboardDoneToolbar()
             .sheet(isPresented: $showAddProviderSheet) {
                 AddProviderSheet { provider in
-                    viewModel.selectedProvider = provider
-                    viewModel.searchResults = []
-                    viewModel.searchText = provider.name
+                    viewModel.selectProvider(provider, advanceToStep2: true)
+                    showProviderAddedToast = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                        showProviderAddedToast = false
+                    }
                 }
             }
             .task(id: preselectedProvider?.id) {
@@ -57,9 +62,10 @@ struct SubmitReviewView: View {
                         if let data = try await newItem.loadTransferable(type: Data.self),
                            let image = UIImage(data: data) {
                             viewModel.proofImage = image
+                            viewModel.showSkipVerificationNote = false
                         }
                     } catch {
-                        viewModel.errorMessage = String(localized: "Unable to upload media. Please try again.")
+                        viewModel.submissionErrorMessage = String(localized: "Unable to upload media. Please try again.")
                     }
                 }
             }
@@ -80,20 +86,33 @@ struct SubmitReviewView: View {
                     .cornerRadius(AppRadius.card)
                 }
             }
+            .overlay(alignment: .top) {
+                if showProviderAddedToast {
+                    Text(String(localized: "Provider added successfully"))
+                        .font(AppFont.caption)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 12)
+                        .background(Color.black.opacity(0.8))
+                        .foregroundStyle(.white)
+                        .cornerRadius(AppRadius.standard)
+                        .padding(.top, AppSpacing.lg)
+                }
+            }
             .alert(String(localized: "Error"), isPresented: Binding(
-                get: { viewModel.errorMessage != nil },
-                set: { if !$0 { viewModel.errorMessage = nil } }
+                get: { viewModel.submissionErrorMessage != nil },
+                set: { if !$0 { viewModel.submissionErrorMessage = nil } }
             )) {
                 Button(String(localized: "Done")) {
-                    viewModel.errorMessage = nil
+                    viewModel.submissionErrorMessage = nil
                 }
             } message: {
-                Text(viewModel.errorMessage ?? "")
+                Text(viewModel.submissionErrorMessage ?? "")
             }
             .fullScreenCover(isPresented: $viewModel.isComplete) {
                 ReviewConfirmationView(hasProof: viewModel.proofImage != nil) {
                     viewModel.isComplete = false
                     viewModel.currentStep = 1
+                    viewModel.showSkipVerificationNote = false
                     selectedTab = 0
                 }
             }
@@ -125,6 +144,13 @@ struct SubmitReviewView: View {
             SearchBarView(text: $viewModel.searchText)
                 .padding(.horizontal, AppSpacing.lg)
 
+            if let message = viewModel.searchErrorMessage {
+                Text(message)
+                    .font(AppFont.caption)
+                    .foregroundStyle(AppColor.error)
+                    .padding(.horizontal, AppSpacing.lg)
+            }
+
             if let provider = viewModel.selectedProvider {
                 Button {
                     viewModel.selectedProvider = nil
@@ -137,6 +163,9 @@ struct SubmitReviewView: View {
                             Text(provider.name)
                                 .font(AppFont.headline)
                             Text(provider.specialty)
+                                .font(AppFont.caption)
+                                .foregroundStyle(.secondary)
+                            Text(provider.address)
                                 .font(AppFont.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -166,7 +195,11 @@ struct SubmitReviewView: View {
                                 } label: {
                                     Text(String(localized: "Add a new provider"))
                                         .font(AppFont.body)
-                                        .foregroundStyle(AppColor.trustBlue)
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, AppSpacing.md)
+                                        .background(AppColor.trustBlue)
+                                        .cornerRadius(AppRadius.button)
                                 }
                             }
                             .padding(.top, AppSpacing.lg)
@@ -174,24 +207,35 @@ struct SubmitReviewView: View {
 
                         ForEach(viewModel.searchResults) { provider in
                             Button {
-                                viewModel.selectedProvider = provider
+                                viewModel.selectProvider(provider)
                             } label: {
-                                HStack {
+                                HStack(alignment: .top, spacing: AppSpacing.sm) {
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text(provider.name)
                                             .font(AppFont.headline)
                                         Text(provider.specialty)
                                             .font(AppFont.caption)
                                             .foregroundStyle(.secondary)
+                                        Text(provider.address)
+                                            .font(AppFont.caption)
+                                            .foregroundStyle(.secondary)
                                     }
                                     Spacer()
-                                    Text(String(format: "%.1f", provider.ratingOverall))
-                                        .font(AppFont.caption)
-                                        .foregroundStyle(.secondary)
+                                    if viewModel.selectedProvider?.id == provider.id {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundStyle(AppColor.trustBlue)
+                                    }
                                 }
                                 .padding(AppSpacing.md)
                                 .background(AppColor.cardBackground)
                                 .cornerRadius(AppRadius.card)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: AppRadius.card)
+                                        .stroke(
+                                            viewModel.selectedProvider?.id == provider.id ? AppColor.trustBlue : .clear,
+                                            lineWidth: 2
+                                        )
+                                )
                             }
                             .buttonStyle(.plain)
                         }
@@ -206,7 +250,11 @@ struct SubmitReviewView: View {
             } label: {
                 Text(String(localized: "Can't find them? Add a new provider"))
                     .font(AppFont.caption)
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(.white)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, AppSpacing.md)
+                    .background(AppColor.trustBlue)
+                    .cornerRadius(AppRadius.button)
                     .padding(.horizontal, AppSpacing.lg)
             }
         }
@@ -324,6 +372,14 @@ struct SubmitReviewView: View {
                 selectedVideoDuration: $viewModel.selectedVideoDuration
             )
             .padding(.horizontal, AppSpacing.lg)
+
+            Button(String(localized: "Skip")) {
+                viewModel.skipPhotos()
+            }
+            .font(AppFont.body)
+            .foregroundStyle(AppColor.trustBlue)
+            .padding(.horizontal, AppSpacing.lg)
+            .padding(.top, AppSpacing.sm)
         }
         .scrollDismissesKeyboard(.interactively)
     }
@@ -355,10 +411,17 @@ struct SubmitReviewView: View {
                     .foregroundStyle(.secondary)
 
                 Button(String(localized: "Skip Verification")) {
-                    viewModel.proofImage = nil
                     proofItem = nil
+                    Task { await viewModel.skipVerification() }
                 }
                 .font(AppFont.body)
+
+                if viewModel.showSkipVerificationNote {
+                    Text(String(localized: "Your review will be marked as unverified."))
+                        .font(AppFont.footnote)
+                        .foregroundStyle(.secondary)
+                        .padding(.top, AppSpacing.xs)
+                }
             }
             .padding(.horizontal, AppSpacing.lg)
         }
@@ -370,6 +433,12 @@ struct SubmitReviewView: View {
             if viewModel.currentStep > 1 {
                 Button(String(localized: "Back")) {
                     viewModel.previousStep()
+                }
+                .buttonStyle(.bordered)
+            } else {
+                Button(String(localized: "Cancel")) {
+                    viewModel.resetFlow()
+                    selectedTab = 0
                 }
                 .buttonStyle(.bordered)
             }

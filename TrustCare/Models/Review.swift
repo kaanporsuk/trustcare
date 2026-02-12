@@ -26,6 +26,7 @@ struct Review: Identifiable, Codable {
     let reviewerAvatar: String?
     let media: [ReviewMedia]?
     let providerName: String?
+    let providerSpecialty: String?
 
     enum CodingKeys: String, CodingKey {
         case id, title, comment, status, media
@@ -48,5 +49,6 @@ struct Review: Identifiable, Codable {
         case reviewerName = "reviewer_name"
         case reviewerAvatar = "reviewer_avatar"
         case providerName = "provider_name"
+        case providerSpecialty = "provider_specialty"
     }
 }

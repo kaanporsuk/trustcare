@@ -2,8 +2,14 @@ import SwiftUI
 
 struct MyReviewsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
+    @Environment(\.dismiss) private var dismiss
+    @Binding var selectedTab: Int
     @State private var pendingDeleteReviewId: UUID?
     @State private var showDeleteConfirm: Bool = false
+
+    init(selectedTab: Binding<Int> = .constant(2)) {
+        _selectedTab = selectedTab
+    }
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
@@ -22,30 +28,40 @@ struct MyReviewsView: View {
             } else if profileVM.myReviews.isEmpty {
                 emptyState
             } else {
-                List {
-                    ForEach(profileVM.myReviews) { review in
-                        NavigationLink {
-                            ReviewDetailView(review: review)
-                        } label: {
-                            reviewRow(review)
-                        }
-                        .swipeActions {
-                            Button(role: .destructive) {
-                                pendingDeleteReviewId = review.id
-                                showDeleteConfirm = true
+                ScrollView {
+                    LazyVStack(spacing: AppSpacing.md) {
+                        ForEach(profileVM.myReviews) { review in
+                            NavigationLink {
+                                ReviewDetailView(review: review)
                             } label: {
-                                Text(String(localized: "Delete"))
+                                reviewCard(review)
+                            }
+                            .buttonStyle(.plain)
+                            .swipeActions {
+                                Button(role: .destructive) {
+                                    pendingDeleteReviewId = review.id
+                                    showDeleteConfirm = true
+                                } label: {
+                                    Text(String(localized: "Delete"))
+                                }
                             }
                         }
                     }
+                    .padding(.horizontal, AppSpacing.lg)
+                    .padding(.bottom, AppSpacing.xxl)
                 }
-                .listStyle(.plain)
                 .refreshable {
                     await profileVM.loadReviews()
                 }
             }
         }
         .navigationTitle(String(localized: "My Reviews"))
+        .toolbar(.hidden, for: .tabBar)
+        .task {
+            if profileVM.myReviews.isEmpty {
+                await profileVM.loadReviews()
+            }
+        }
         .confirmationDialog(String(localized: "Delete Review"), isPresented: $showDeleteConfirm) {
             Button(String(localized: "Delete"), role: .destructive) {
                 if let id = pendingDeleteReviewId {
@@ -74,30 +90,36 @@ struct MyReviewsView: View {
         }
     }
 
-    private func reviewRow(_ review: Review) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(review.providerName ?? String(localized: "Unknown Provider"))
-                .font(AppFont.headline)
+    private func reviewCard(_ review: Review) -> some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(review.providerName ?? String(localized: "Unknown Provider"))
+                        .font(AppFont.headline)
+                    if let specialty = review.providerSpecialty {
+                        Text(specialty)
+                            .font(AppFont.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Spacer()
+                verificationBadge(review)
+            }
+
+            StarRatingView(rating: review.ratingOverall)
+
+            Text(reviewSnippet(review.comment))
+                .font(AppFont.body)
+                .foregroundStyle(.secondary)
+                .lineLimit(2)
+
             Text(formattedDate(review.createdAt))
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
-
-            StarRatingView(rating: review.ratingOverall)
-            PriceLevelView(level: Double(review.priceLevel))
-
-            if review.isVerified {
-                VerifiedBadge()
-            } else if review.status == .pendingVerification {
-                Text(String(localized: "Pending"))
-                    .font(AppFont.footnote)
-                    .foregroundStyle(AppColor.pending)
-            } else {
-                Text(String(localized: "Unverified"))
-                    .font(AppFont.footnote)
-                    .foregroundStyle(AppColor.unverified)
-            }
         }
-        .padding(.vertical, 6)
+        .padding(AppSpacing.md)
+        .background(AppColor.cardBackground)
+        .cornerRadius(AppRadius.card)
     }
 
     private var emptyState: some View {
@@ -110,6 +132,12 @@ struct MyReviewsView: View {
             Text(String(localized: "Share your first experience!"))
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
+            Button(String(localized: "Write a Review")) {
+                selectedTab = 1
+                dismiss()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(AppColor.trustBlue)
         }
         .padding(.top, AppSpacing.xxl)
     }
@@ -118,5 +146,30 @@ struct MyReviewsView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter.string(from: date)
+    }
+
+    private func reviewSnippet(_ text: String) -> String {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.count <= 100 {
+            return trimmed
+        }
+        return String(trimmed.prefix(100)) + "..."
+    }
+
+    @ViewBuilder
+    private func verificationBadge(_ review: Review) -> some View {
+        if review.isVerified {
+            Text(String(localized: "Verified"))
+                .font(AppFont.footnote)
+                .foregroundStyle(AppColor.success)
+        } else if review.status == .pendingVerification {
+            Text(String(localized: "Pending"))
+                .font(AppFont.footnote)
+                .foregroundStyle(AppColor.pending)
+        } else {
+            Text(String(localized: "Unverified"))
+                .font(AppFont.footnote)
+                .foregroundStyle(AppColor.unverified)
+        }
     }
 }

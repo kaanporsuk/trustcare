@@ -98,7 +98,8 @@ final class ProviderDetailViewModel: ObservableObject {
                     reviewerName: current.reviewerName,
                     reviewerAvatar: current.reviewerAvatar,
                     media: current.media,
-                    providerName: current.providerName
+                    providerName: current.providerName,
+                    providerSpecialty: current.providerSpecialty
                 )
             }
         } catch {

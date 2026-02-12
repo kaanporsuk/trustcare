@@ -63,6 +63,7 @@ struct ProviderDetailView: View {
         } message: {
             Text(detailVM.errorMessage ?? "")
         }
+        .toolbar(.hidden, for: .tabBar)
     }
 
     private var heroSection: some View {

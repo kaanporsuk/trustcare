@@ -6,8 +6,20 @@ struct ProfileView: View {
     @EnvironmentObject private var authVM: AuthViewModel
     @EnvironmentObject private var profileVM: ProfileViewModel
 
+    @Binding var selectedTab: Int
+
     @State private var avatarItem: PhotosPickerItem?
+    @State private var showAvatarOptions: Bool = false
+    @State private var showPhotoPicker: Bool = false
+    @State private var showCameraPicker: Bool = false
+    @State private var capturedImage: UIImage?
+    @State private var showEditProfile: Bool = false
+    @State private var showProfileSavedToast: Bool = false
     @State private var showLogoutConfirm: Bool = false
+
+    init(selectedTab: Binding<Int> = .constant(2)) {
+        _selectedTab = selectedTab
+    }
 
     var body: some View {
         ScrollView {
@@ -30,6 +42,7 @@ struct ProfileView: View {
             }
         }
         .scrollDismissesKeyboard(.interactively)
+        .dismissKeyboardOnTap()
         .task {
             await profileVM.loadProfile()
             await profileVM.loadReviews()
@@ -46,6 +59,51 @@ struct ProfileView: View {
                 } catch {
                     profileVM.errorMessage = String(localized: "Unable to upload media. Please try again.")
                 }
+            }
+        }
+        .onChange(of: capturedImage) { _, newImage in
+            guard let newImage else { return }
+            Task { await profileVM.updateAvatar(image: newImage) }
+        }
+        .photosPicker(isPresented: $showPhotoPicker, selection: $avatarItem, matching: .images)
+        .sheet(isPresented: $showCameraPicker) {
+            ImagePicker(sourceType: .camera, image: $capturedImage)
+        }
+        .sheet(isPresented: $showEditProfile) {
+            EditProfileView(
+                fullName: profileVM.profile?.fullName ?? "",
+                bio: profileVM.profile?.bio ?? "",
+                phone: profileVM.profile?.phone ?? "",
+                onSave: { fullName, bio, phone in
+                    await profileVM.updateProfile(fullName: fullName, bio: bio, phone: phone)
+                    showProfileSavedToast = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                        showProfileSavedToast = false
+                    }
+                }
+            )
+        }
+        .confirmationDialog(String(localized: "Change Avatar"), isPresented: $showAvatarOptions) {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                Button(String(localized: "Take Photo")) {
+                    showCameraPicker = true
+                }
+            }
+            Button(String(localized: "Choose from Library")) {
+                showPhotoPicker = true
+            }
+            Button(String(localized: "Cancel"), role: .cancel) { }
+        }
+        .overlay(alignment: .top) {
+            if showProfileSavedToast {
+                Text(String(localized: "Profile updated"))
+                    .font(AppFont.caption)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 12)
+                    .background(Color.black.opacity(0.8))
+                    .foregroundStyle(.white)
+                    .cornerRadius(AppRadius.standard)
+                    .padding(.top, AppSpacing.lg)
             }
         }
         .alert(String(localized: "Error"), isPresented: Binding(
@@ -70,14 +128,32 @@ struct ProfileView: View {
 
     private var headerSection: some View {
         HStack(spacing: AppSpacing.md) {
-            PhotosPicker(selection: $avatarItem, matching: .images) {
-                avatarView
+            Button {
+                showAvatarOptions = true
+            } label: {
+                ZStack {
+                    avatarView
+                    if profileVM.isUpdatingAvatar {
+                        ProgressView()
+                            .tint(.white)
+                    }
+                }
             }
+            .buttonStyle(.plain)
             .accessibilityLabel(String(localized: "Change Avatar"))
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(profileVM.profile?.displayName ?? String(localized: "Anonymous"))
-                    .font(AppFont.title2)
+                HStack(spacing: AppSpacing.xs) {
+                    Text(profileVM.profile?.displayName ?? String(localized: "Anonymous"))
+                        .font(AppFont.title2)
+                    Button {
+                        showEditProfile = true
+                    } label: {
+                        Image(systemName: "pencil")
+                            .foregroundStyle(AppColor.trustBlue)
+                    }
+                    .accessibilityLabel(String(localized: "Edit Profile"))
+                }
                 Text(memberSinceText)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
@@ -122,7 +198,7 @@ struct ProfileView: View {
     private var menuSection: some View {
         VStack(spacing: AppSpacing.sm) {
             NavigationLink {
-                MyReviewsView()
+                MyReviewsView(selectedTab: $selectedTab)
             } label: {
                 menuRow(title: String(localized: "My Reviews"))
             }

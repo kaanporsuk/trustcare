@@ -5,12 +5,11 @@ import UIKit
 struct SettingsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
+    @EnvironmentObject private var authVM: AuthViewModel
 
     @State private var email: String = ""
     @State private var phone: String = ""
     @State private var selectedLanguage: String = "en"
-    @State private var selectedRegion: String = "US"
-    @State private var selectedCurrency: String = "USD"
     @State private var showDeleteDialog: Bool = false
     @State private var showDeleteConfirm: Bool = false
     @State private var deleteConfirmText: String = ""
@@ -19,6 +18,10 @@ struct SettingsView: View {
     @State private var showShareSheet: Bool = false
     @State private var isLoadingConsent: Bool = false
 
+    @AppStorage("notifyReviewUpdates") private var notifyReviewUpdates: Bool = true
+    @AppStorage("notifyVerificationStatus") private var notifyVerificationStatus: Bool = true
+    @AppStorage("notifyNewProvidersNearby") private var notifyNewProvidersNearby: Bool = false
+
     @AppStorage("analyticsConsentGranted") private var analyticsConsentGranted: Bool = false
     @AppStorage("marketingConsentGranted") private var marketingConsentGranted: Bool = false
     @AppStorage("consentDataProcessing") private var consentDataProcessing: Bool = true
@@ -26,14 +29,13 @@ struct SettingsView: View {
 
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
-    private let languages = LocalizationManager.supportedLanguages
-    private let regions: [(code: String, currency: String)] = [
-        ("US", "USD"),
-        ("GB", "GBP"),
-        ("DE", "EUR"),
-        ("NL", "EUR"),
-        ("PL", "PLN"),
-        ("TR", "TRY")
+    private let languages: [(code: String, name: String)] = [
+        ("en", "English"),
+        ("de", "Deutsch"),
+        ("nl", "Nederlands"),
+        ("pl", "Polski"),
+        ("tr", "Turkce"),
+        ("ar", "العربية")
     ]
 
     var body: some View {
@@ -46,29 +48,32 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                 }
 
-                TextField(String(localized: "Phone"), text: $phone)
-                    .keyboardType(.phonePad)
-                    .onChange(of: phone) { _, newValue in
-                        Task { await profileVM.updatePhone(newValue.isEmpty ? nil : newValue) }
-                    }
+                HStack {
+                    Text(String(localized: "Phone"))
+                    Spacer()
+                    Text(phone.isEmpty ? "-" : phone)
+                        .foregroundStyle(.secondary)
+                }
 
-                Button(String(localized: "Change Password")) {
-                    Task {
-                        if !email.isEmpty {
-                            do {
-                                try await AuthService.resetPassword(email: email)
-                            } catch {
-                                profileVM.errorMessage = localizedErrorMessage(error)
-                            }
-                        }
-                    }
+                NavigationLink(String(localized: "Change Password")) {
+                    ChangePasswordView(email: email)
+                }
+
+                Button(String(localized: "Sign Out"), role: .destructive) {
+                    authVM.signOut()
                 }
             }
 
-            Section(String(localized: "Language")) {
+            Section(String(localized: "Notifications")) {
+                Toggle(String(localized: "Review Updates"), isOn: $notifyReviewUpdates)
+                Toggle(String(localized: "Verification Status"), isOn: $notifyVerificationStatus)
+                Toggle(String(localized: "New Providers Nearby"), isOn: $notifyNewProvidersNearby)
+            }
+
+            Section(String(localized: "Preferences")) {
                 Picker(String(localized: "Language"), selection: $selectedLanguage) {
                     ForEach(languages, id: \.code) { language in
-                        Text("\(flagEmoji(for: language.flag)) \(language.name) (\(language.code.uppercased()))")
+                        Text("\(language.name)")
                             .tag(language.code)
                     }
                 }
@@ -77,27 +82,7 @@ struct SettingsView: View {
                     Task { await profileVM.updateLanguage(newValue) }
                 }
 
-                Text(String(localized: "App will restart to apply language change"))
-                    .font(AppFont.footnote)
-                    .foregroundStyle(.secondary)
-            }
-
-            Section(String(localized: "Region")) {
-                Picker(String(localized: "Country"), selection: $selectedRegion) {
-                    ForEach(regions, id: \.code) { region in
-                        Text(region.code).tag(region.code)
-                    }
-                }
-                .onChange(of: selectedRegion) { _, newValue in
-                    if let region = regions.first(where: { $0.code == newValue }) {
-                        selectedCurrency = region.currency
-                        Task { await profileVM.updateRegion(countryCode: region.code, currency: region.currency) }
-                    }
-                }
-            }
-
-            Section(String(localized: "Appearance")) {
-                Picker(String(localized: "Appearance"), selection: $colorSchemePreference) {
+                Picker(String(localized: "Theme"), selection: $colorSchemePreference) {
                     Text(String(localized: "System")).tag("system")
                     Text(String(localized: "Light")).tag("light")
                     Text(String(localized: "Dark")).tag("dark")
@@ -153,9 +138,11 @@ struct SettingsView: View {
                 HStack {
                     Text(String(localized: "Version"))
                     Spacer()
-                    Text("1.0.0")
+                    Text(appVersion)
                         .foregroundStyle(.secondary)
                 }
+
+                Link(String(localized: "Rate App"), destination: URL(string: "https://example.com/app-store")!)
             }
 
             Section {
@@ -168,7 +155,10 @@ struct SettingsView: View {
             }
         }
         .scrollDismissesKeyboard(.interactively)
+        .dismissKeyboardOnTap()
+        .keyboardDoneToolbar()
         .navigationTitle(String(localized: "Settings"))
+        .toolbar(.hidden, for: .tabBar)
         .confirmationDialog(String(localized: "Delete Account"), isPresented: $showDeleteDialog) {
             Button(String(localized: "Continue"), role: .destructive) {
                 showDeleteConfirm = true
@@ -194,8 +184,6 @@ struct SettingsView: View {
             if let profile = profileVM.profile {
                 phone = profile.phone ?? ""
                 selectedLanguage = profile.preferredLanguage
-                selectedRegion = profile.countryCode
-                selectedCurrency = profile.preferredCurrency
             }
 
             if email.isEmpty {
@@ -334,15 +322,8 @@ struct SettingsView: View {
         }
     }
 
-    private func flagEmoji(for regionCode: String) -> String {
-        let base: UInt32 = 0x1F1E6
-        let uppercased = regionCode.uppercased()
-        var scalars: [UnicodeScalar] = []
-        for scalar in uppercased.unicodeScalars {
-            guard scalar.value >= 65 && scalar.value <= 90 else { continue }
-            scalars.append(UnicodeScalar(base + UInt32(scalar.value - 65))!)
-        }
-        return String(String.UnicodeScalarView(scalars))
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
     }
 
     private func localizedErrorMessage(_ error: Error) -> String {

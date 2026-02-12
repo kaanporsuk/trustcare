@@ -23,6 +23,8 @@ struct HomeView: View {
                 contentSection
             }
             .navigationBarHidden(true)
+            .dismissKeyboardOnTap()
+            .keyboardDoneToolbar()
             .task(id: homeVM.searchText) {
                 // Only trigger search if user actually typed something or cleared text
                 // Skip the initial "" value on view load

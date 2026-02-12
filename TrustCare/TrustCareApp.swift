@@ -48,6 +48,7 @@ struct TrustCareApp: App {
                     }
                 }
             }
+            .dismissKeyboardOnTap()
             .environment(\.layoutDirection, localizationManager.layoutDirection)
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)

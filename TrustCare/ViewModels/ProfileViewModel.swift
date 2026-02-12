@@ -9,6 +9,8 @@ final class ProfileViewModel: ObservableObject {
     @Published var myReviews: [Review] = []
     @Published var reviewFilter: String = "all"
     @Published var isLoading: Bool = false
+    @Published var isUpdatingAvatar: Bool = false
+    @Published var isSavingProfile: Bool = false
     @Published var errorMessage: String?
     @Published var unreadNotificationCount: Int = 0
     
@@ -39,7 +41,12 @@ final class ProfileViewModel: ObservableObject {
         do {
             let session = try await SupabaseManager.shared.client.auth.session
 
-            struct ReviewRow: Decodable {
+            struct ProviderRow: Decodable {
+                let name: String
+                let specialty: String
+            }
+
+            struct ReviewProviderRow: Decodable {
                 let id: UUID
                 let userId: UUID
                 let providerId: UUID
@@ -60,9 +67,10 @@ final class ProfileViewModel: ObservableObject {
                 let status: ReviewStatus
                 let helpfulCount: Int
                 let createdAt: Date
+                let providers: ProviderRow?
 
                 enum CodingKeys: String, CodingKey {
-                    case id, title, comment, status
+                    case id, title, comment, status, providers
                     case userId = "user_id"
                     case providerId = "provider_id"
                     case visitDate = "visit_date"
@@ -82,14 +90,9 @@ final class ProfileViewModel: ObservableObject {
                 }
             }
 
-            struct ProviderNameRow: Decodable {
-                let id: UUID
-                let name: String
-            }
-
             var query = SupabaseManager.shared.client
                 .from("reviews")
-                .select()
+                .select("*, providers(name, specialty)")
                 .eq("user_id", value: session.user.id.uuidString)
 
             if selectedFilter == "verified" {
@@ -98,48 +101,37 @@ final class ProfileViewModel: ObservableObject {
                 query = query.eq("status", value: ReviewStatus.pendingVerification.rawValue)
             }
 
-            let response: PostgrestResponse<[ReviewRow]> = try await query
+            let response: PostgrestResponse<[ReviewProviderRow]> = try await query
                 .order("created_at", ascending: false)
                 .execute()
 
-            let providerIds = Set(response.value.map { $0.providerId })
-            var providerNames: [UUID: String] = [:]
-            if !providerIds.isEmpty {
-                let ids = providerIds.map { $0.uuidString }
-                let providersResponse: PostgrestResponse<[ProviderNameRow]> = try await SupabaseManager.shared.client
-                    .from("providers")
-                    .select("id, name")
-                    .in("id", values: ids)
-                    .execute()
-                providerNames = Dictionary(uniqueKeysWithValues: providersResponse.value.map { ($0.id, $0.name) })
-            }
-
-            myReviews = response.value.map { review in
+            myReviews = response.value.map { row in
                 return Review(
-                    id: review.id,
-                    userId: review.userId,
-                    providerId: review.providerId,
-                    visitDate: review.visitDate,
-                    visitType: review.visitType,
-                    ratingWaitTime: review.ratingWaitTime,
-                    ratingBedside: review.ratingBedside,
-                    ratingEfficacy: review.ratingEfficacy,
-                    ratingCleanliness: review.ratingCleanliness,
-                    ratingOverall: review.ratingOverall,
-                    priceLevel: review.priceLevel,
-                    title: review.title,
-                    comment: review.comment,
-                    wouldRecommend: review.wouldRecommend,
-                    proofImageUrl: review.proofImageUrl,
-                    isVerified: review.isVerified,
-                    verificationConfidence: review.verificationConfidence,
-                    status: review.status,
-                    helpfulCount: review.helpfulCount,
-                    createdAt: review.createdAt,
+                    id: row.id,
+                    userId: row.userId,
+                    providerId: row.providerId,
+                    visitDate: row.visitDate,
+                    visitType: row.visitType,
+                    ratingWaitTime: row.ratingWaitTime,
+                    ratingBedside: row.ratingBedside,
+                    ratingEfficacy: row.ratingEfficacy,
+                    ratingCleanliness: row.ratingCleanliness,
+                    ratingOverall: row.ratingOverall,
+                    priceLevel: row.priceLevel,
+                    title: row.title,
+                    comment: row.comment,
+                    wouldRecommend: row.wouldRecommend,
+                    proofImageUrl: row.proofImageUrl,
+                    isVerified: row.isVerified,
+                    verificationConfidence: row.verificationConfidence,
+                    status: row.status,
+                    helpfulCount: row.helpfulCount,
+                    createdAt: row.createdAt,
                     reviewerName: nil,
                     reviewerAvatar: nil,
                     media: nil,
-                    providerName: providerNames[review.providerId]
+                    providerName: row.providers?.name,
+                    providerSpecialty: row.providers?.specialty
                 )
             }
         } catch {
@@ -163,15 +155,17 @@ final class ProfileViewModel: ObservableObject {
     }
 
     func updateAvatar(image: UIImage) async {
+        isUpdatingAvatar = true
+        defer { isUpdatingAvatar = false }
         do {
             let session = try await SupabaseManager.shared.client.auth.session
-            guard let data = ImageService.compressImage(image, maxSizeKB: 512) else {
+            guard let data = ImageService.compressImage(image, maxSizeKB: 500) else {
                 throw AppError.uploadFailed
             }
 
-            let path = "\(session.user.id.uuidString)/\(UUID().uuidString).jpg"
+            let path = "\(session.user.id.uuidString)/avatar.jpg"
             let url = try await ImageService.uploadToStorage(
-                bucket: "avatars",
+                bucket: "user-avatars",
                 path: path,
                 data: data,
                 contentType: "image/jpeg"
@@ -180,6 +174,7 @@ final class ProfileViewModel: ObservableObject {
             try await AuthService.updateProfile(
                 fullName: nil,
                 avatarUrl: url,
+                bio: nil,
                 phone: nil,
                 countryCode: nil,
                 language: nil,
@@ -196,6 +191,7 @@ final class ProfileViewModel: ObservableObject {
             try await AuthService.updateProfile(
                 fullName: nil,
                 avatarUrl: nil,
+                bio: nil,
                 phone: phone,
                 countryCode: nil,
                 language: nil,
@@ -212,6 +208,7 @@ final class ProfileViewModel: ObservableObject {
             try await AuthService.updateProfile(
                 fullName: nil,
                 avatarUrl: nil,
+                bio: nil,
                 phone: nil,
                 countryCode: nil,
                 language: language,
@@ -228,10 +225,33 @@ final class ProfileViewModel: ObservableObject {
             try await AuthService.updateProfile(
                 fullName: nil,
                 avatarUrl: nil,
+                bio: nil,
                 phone: nil,
                 countryCode: countryCode,
                 language: nil,
                 currency: currency
+            )
+            await loadProfile()
+        } catch {
+            errorMessage = localizedErrorMessage(error)
+        }
+    }
+
+    func updateProfile(fullName: String?, bio: String?, phone: String?) async {
+        isSavingProfile = true
+        defer { isSavingProfile = false }
+        do {
+            let trimmedName = fullName?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedBio = bio?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedPhone = phone?.trimmingCharacters(in: .whitespacesAndNewlines)
+            try await AuthService.updateProfile(
+                fullName: trimmedName?.isEmpty == true ? nil : trimmedName,
+                avatarUrl: nil,
+                bio: trimmedBio?.isEmpty == true ? nil : trimmedBio,
+                phone: trimmedPhone?.isEmpty == true ? nil : trimmedPhone,
+                countryCode: nil,
+                language: nil,
+                currency: nil
             )
             await loadProfile()
         } catch {
