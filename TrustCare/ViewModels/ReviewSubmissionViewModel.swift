@@ -169,27 +169,39 @@ final class ReviewSubmissionViewModel: ObservableObject {
     func submit(statusOverride: String? = nil) async {
         guard let provider = selectedProvider else {
             submissionErrorMessage = String(localized: "Please select a provider before submitting.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
-        if comment.trimmingCharacters(in: .whitespacesAndNewlines).count < 50 {
-            submissionErrorMessage = String(localized: "Please enter at least 50 characters in your review.")
+        
+        let trimmedComment = comment.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedComment.count < 50 {
+            submissionErrorMessage = String(localized: "Your review must be at least 50 characters. Currently \(trimmedComment.count) / 50.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
+        
         if ratingWaitTime < 1 || ratingBedside < 1 || ratingEfficacy < 1 || ratingCleanliness < 1 {
             submissionErrorMessage = String(localized: "Please complete all ratings before submitting.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
+        
         if selectedImages.count > 5 {
             submissionErrorMessage = String(localized: "You can upload up to 5 photos.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
+        
         if let duration = selectedVideoDuration, duration > 30 {
             submissionErrorMessage = String(localized: "Videos must be 30 seconds or less.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
+        
         isSubmitting = true
         submissionErrorMessage = nil
         mediaUploadProgress = 0
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 
         let waitRating = max(1, min(5, Int(round(ratingWaitTime / 2.0))))
         let bedsideRating = max(1, min(5, Int(round(ratingBedside / 2.0))))
@@ -236,10 +248,12 @@ final class ReviewSubmissionViewModel: ObservableObject {
             mediaUploadProgress = 1
             isComplete = true
             showSkipVerificationNote = false
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
         } catch {
             let message = localizedErrorMessage(error)
             print("❌ ReviewSubmissionViewModel.submit failed: \(message)")
             submissionErrorMessage = message
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
 
         isSubmitting = false
@@ -255,13 +269,26 @@ final class ReviewSubmissionViewModel: ObservableObject {
         }
 
         let message = error.localizedDescription.lowercased()
-        if message.contains("network") || message.contains("offline") {
-            return String(localized: "Network error. Please check your connection.")
+        
+        if message.contains("network") || message.contains("offline") || message.contains("connection") {
+            return String(localized: "Network error. Please check your connection and try again.")
         }
-        if message.contains("upload") {
-            return String(localized: "Unable to upload media. Please try again.")
+        if message.contains("upload") || message.contains("media") {
+            return String(localized: "Failed to upload media. Please try again or skip verification.")
         }
-        return error.localizedDescription
+        if message.contains("auth") || message.contains("permission") || message.contains("denied") {
+            return String(localized: "You don't have permission to perform this action. Please sign in again.")
+        }
+        if message.contains("timeout") {
+            return String(localized: "Request timed out. Please check your connection and try again.")
+        }
+        
+        // Try to extract meaningful error details from the message
+        if !error.localizedDescription.isEmpty {
+            return error.localizedDescription
+        }
+        
+        return String(localized: "Something went wrong. Please try again.")
     }
 
     private func localizedSearchErrorMessage(_ error: Error) -> String {

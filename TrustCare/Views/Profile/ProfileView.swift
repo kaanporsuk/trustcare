@@ -15,6 +15,7 @@ struct ProfileView: View {
     @State private var capturedImage: UIImage?
     @State private var showEditProfile: Bool = false
     @State private var showProfileSavedToast: Bool = false
+    @State private var showAvatarUpdatedToast: Bool = false
     @State private var showLogoutConfirm: Bool = false
 
     init(selectedTab: Binding<Int> = .constant(2)) {
@@ -55,15 +56,28 @@ struct ProfileView: View {
                     if let data = try await newItem.loadTransferable(type: Data.self),
                        let image = UIImage(data: data) {
                         await profileVM.updateAvatar(image: image)
+                        showAvatarUpdatedToast = true
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                            showAvatarUpdatedToast = false
+                        }
                     }
                 } catch {
                     profileVM.errorMessage = String(localized: "Unable to upload media. Please try again.")
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             }
         }
         .onChange(of: capturedImage) { _, newImage in
             guard let newImage else { return }
-            Task { await profileVM.updateAvatar(image: newImage) }
+            Task { 
+                await profileVM.updateAvatar(image: newImage) 
+                showAvatarUpdatedToast = true
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    showAvatarUpdatedToast = false
+                }
+            }
         }
         .photosPicker(isPresented: $showPhotoPicker, selection: $avatarItem, matching: .images)
         .sheet(isPresented: $showCameraPicker) {
@@ -76,6 +90,7 @@ struct ProfileView: View {
                 phone: profileVM.profile?.phone ?? "",
                 onSave: { fullName, bio, phone in
                     await profileVM.updateProfile(fullName: fullName, bio: bio, phone: phone)
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                     showProfileSavedToast = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
                         showProfileSavedToast = false
@@ -104,6 +119,15 @@ struct ProfileView: View {
                     .foregroundStyle(.white)
                     .cornerRadius(AppRadius.standard)
                     .padding(.top, AppSpacing.lg)
+            } else if showAvatarUpdatedToast {
+                Text(String(localized: "Photo updated"))
+                    .font(AppFont.caption)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 12)
+                    .background(Color.black.opacity(0.8))
+                    .foregroundStyle(.white)
+                    .cornerRadius(AppRadius.standard)
+                    .padding(.top, AppSpacing.lg)
             }
         }
         .alert(String(localized: "Error"), isPresented: Binding(
@@ -118,6 +142,7 @@ struct ProfileView: View {
         }
         .confirmationDialog(String(localized: "Log Out"), isPresented: $showLogoutConfirm) {
             Button(String(localized: "Log Out"), role: .destructive) {
+                UINotificationFeedbackGenerator().notificationOccurred(.warning)
                 authVM.signOut()
             }
             Button(String(localized: "Cancel"), role: .cancel) { }
@@ -129,6 +154,7 @@ struct ProfileView: View {
     private var headerSection: some View {
         HStack(spacing: AppSpacing.md) {
             Button {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 showAvatarOptions = true
             } label: {
                 ZStack {
@@ -147,6 +173,7 @@ struct ProfileView: View {
                     Text(profileVM.profile?.displayName ?? String(localized: "Anonymous"))
                         .font(AppFont.title2)
                     Button {
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         showEditProfile = true
                     } label: {
                         Image(systemName: "pencil")
@@ -173,6 +200,7 @@ struct ProfileView: View {
             Spacer()
             Button {
                 UIPasteboard.general.string = profileVM.profile?.referralCode ?? ""
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
                 Image(systemName: "doc.on.doc")
                     .foregroundStyle(AppColor.trustBlue)
@@ -222,6 +250,7 @@ struct ProfileView: View {
             }
 
             Button {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 showLogoutConfirm = true
             } label: {
                 menuRow(title: String(localized: "Log Out"), isDestructive: true)

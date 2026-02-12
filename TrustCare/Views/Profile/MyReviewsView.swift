@@ -22,11 +22,24 @@ struct MyReviewsView: View {
             .padding(.horizontal, AppSpacing.lg)
 
             if profileVM.isLoading && profileVM.myReviews.isEmpty {
-                Spacer()
-                ProgressView()
-                Spacer()
+                ScrollView {
+                    VStack(spacing: AppSpacing.md) {
+                        ForEach(0..<3, id: \.self) { _ in
+                            SkeletonReviewCard()
+                        }
+                    }
+                    .padding(.horizontal, AppSpacing.lg)
+                }
             } else if profileVM.myReviews.isEmpty {
-                emptyState
+                EmptyStateView(
+                    icon: "pencil.and.list.clipboard",
+                    title: String(localized: "No reviews yet"),
+                    message: String(localized: "Share your healthcare experience to help others"),
+                    actionTitle: String(localized: "Write a Review")
+                ) {
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    selectedTab = 1
+                }
             } else {
                 ScrollView {
                     LazyVStack(spacing: AppSpacing.md) {
@@ -120,26 +133,6 @@ struct MyReviewsView: View {
         .padding(AppSpacing.md)
         .background(AppColor.cardBackground)
         .cornerRadius(AppRadius.card)
-    }
-
-    private var emptyState: some View {
-        VStack(spacing: AppSpacing.sm) {
-            Image(systemName: "magnifyingglass")
-                .font(.title2)
-                .foregroundStyle(.secondary)
-            Text(String(localized: "No reviews yet"))
-                .font(AppFont.headline)
-            Text(String(localized: "Share your first experience!"))
-                .font(AppFont.caption)
-                .foregroundStyle(.secondary)
-            Button(String(localized: "Write a Review")) {
-                selectedTab = 1
-                dismiss()
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(AppColor.trustBlue)
-        }
-        .padding(.top, AppSpacing.xxl)
     }
 
     private func formattedDate(_ date: Date) -> String {
