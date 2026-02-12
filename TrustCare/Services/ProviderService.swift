@@ -26,7 +26,9 @@ enum ProviderService {
         
         var params: [String: AnyJSON] = [
             "limit_val": .double(Double(limit)),
-            "offset_val": .double(Double(offset))
+            "offset_val": .double(Double(offset)),
+            "min_rating": .double(minRating ?? 0),  // Default to 0 to match SQL function
+            "verified_only": .bool(verifiedOnly ?? false)  // Default to false
         ]
 
         if let text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -40,12 +42,6 @@ enum ProviderService {
         }
         if let priceLevel {
             params["price_level_filter"] = .double(Double(priceLevel))
-        }
-        if let minRating {
-            params["min_rating"] = .double(minRating)
-        }
-        if let verifiedOnly {
-            params["verified_only"] = .bool(verifiedOnly)
         }
         if let lat {
             params["user_lat"] = .double(lat)
