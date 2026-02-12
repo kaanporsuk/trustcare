@@ -7,15 +7,8 @@
     "·" : {
 
     },
-    "%@ %@ (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@ (%3$@)"
-          }
-        }
-      }
+    "%@" : {
+
     },
     "%@%@" : {
       "localizations" : {
@@ -46,6 +39,16 @@
     "%lld of 5 photos" : {
 
     },
+    "%lld. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
     "%lld/10" : {
 
     },
@@ -59,13 +62,16 @@
         }
       }
     },
+    "•" : {
+
+    },
     "$" : {
 
     },
-    "1.0.0" : {
+    "A claim already exists for this provider." : {
 
     },
-    "A claim already exists for this provider." : {
+    "A: %@" : {
 
     },
     "About" : {
@@ -175,6 +181,9 @@
           }
         }
       }
+    },
+    "Address is required to add a provider." : {
+
     },
     "AI verification consent" : {
 
@@ -463,6 +472,9 @@
         }
       }
     },
+    "Choose from Library" : {
+
+    },
     "City" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -540,6 +552,9 @@
         }
       }
     },
+    "Confirm New Password" : {
+
+    },
     "Confirm Password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -562,6 +577,9 @@
         }
       }
     },
+    "Contact" : {
+
+    },
     "Contact for Booking" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -572,6 +590,9 @@
           }
         }
       }
+    },
+    "Contact Us" : {
+
     },
     "Continue" : {
       "extractionState" : "manual",
@@ -617,6 +638,9 @@
         }
       }
     },
+    "Current Password" : {
+
+    },
     "Danger Zone" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -640,6 +664,12 @@
       }
     },
     "Data Export" : {
+
+    },
+    "Data Retention" : {
+
+    },
+    "Data Storage & Security" : {
 
     },
     "Date of Birth" : {
@@ -755,6 +785,9 @@
         }
       }
     },
+    "Edit Profile" : {
+
+    },
     "Email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -767,6 +800,12 @@
       }
     },
     "Email address is invalid. Please use a valid email." : {
+
+    },
+    "Email is required to update password." : {
+
+    },
+    "Email:" : {
 
     },
     "Emergency" : {
@@ -816,6 +855,9 @@
     "Export endpoint is unavailable." : {
 
     },
+    "Failed to upload media. Please try again or skip verification." : {
+
+    },
     "Filter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -850,6 +892,9 @@
       }
     },
     "Flagged" : {
+
+    },
+    "For privacy inquiries: privacy@trustcare.app" : {
 
     },
     "Free" : {
@@ -888,6 +933,9 @@
         }
       }
     },
+    "Getting Started" : {
+
+    },
     "Give your review a title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -898,6 +946,9 @@
           }
         }
       }
+    },
+    "Go Home" : {
+
     },
     "Good Afternoon" : {
       "extractionState" : "manual",
@@ -931,6 +982,9 @@
           }
         }
       }
+    },
+    "Help & Information" : {
+
     },
     "Help & Support" : {
       "extractionState" : "manual",
@@ -987,6 +1041,9 @@
         }
       }
     },
+    "How We Use Your Information" : {
+
+    },
     "I agree to Terms & Privacy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -999,6 +1056,9 @@
       }
     },
     "Image" : {
+
+    },
+    "Information We Collect" : {
 
     },
     "Invalid email or password." : {
@@ -1036,6 +1096,9 @@
           }
         }
       }
+    },
+    "Last Updated: February 2026" : {
+
     },
     "License Number" : {
       "extractionState" : "manual",
@@ -1178,7 +1241,16 @@
         }
       }
     },
+    "Network error. Please check your connection and try again." : {
+
+    },
     "Network error. Please check your connection." : {
+
+    },
+    "New Password" : {
+
+    },
+    "New Providers Nearby" : {
 
     },
     "Newest" : {
@@ -1261,6 +1333,9 @@
         }
       }
     },
+    "Notifications" : {
+
+    },
     "OK" : {
 
     },
@@ -1330,6 +1405,12 @@
         }
       }
     },
+    "Password must be at least 8 characters." : {
+
+    },
+    "Passwords do not match." : {
+
+    },
     "Pending" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1355,6 +1436,9 @@
         }
       }
     },
+    "Photo updated" : {
+
+    },
     "Photos and videos are visible to everyone." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1369,7 +1453,13 @@
     "Play video" : {
 
     },
+    "Please complete all ratings before submitting." : {
+
+    },
     "Please enter a valid email address." : {
+
+    },
+    "Please select a provider before submitting." : {
 
     },
     "Please sign in to add a healthcare provider." : {
@@ -1399,6 +1489,9 @@
           }
         }
       }
+    },
+    "Preferences" : {
+
     },
     "Premium" : {
       "extractionState" : "manual",
@@ -1450,6 +1543,18 @@
         }
       }
     },
+    "Profile" : {
+
+    },
+    "Profile updated" : {
+
+    },
+    "Provider added successfully" : {
+
+    },
+    "Provider Name" : {
+
+    },
     "Provider not found." : {
 
     },
@@ -1466,6 +1571,12 @@
           }
         }
       }
+    },
+    "Q: %@" : {
+
+    },
+    "Rate App" : {
+
     },
     "Read more" : {
       "extractionState" : "manual",
@@ -1528,6 +1639,12 @@
     "Removed" : {
 
     },
+    "Request timed out. Please check your connection and try again." : {
+
+    },
+    "Response time:" : {
+
+    },
     "Review" : {
 
     },
@@ -1545,6 +1662,9 @@
         }
       }
     },
+    "Review Updates" : {
+
+    },
     "Reviews" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1555,6 +1675,9 @@
           }
         }
       }
+    },
+    "Reviews & Verification" : {
+
     },
     "reviews_count" : {
       "extractionState" : "manual",
@@ -1568,6 +1691,9 @@
       }
     },
     "Role" : {
+
+    },
+    "Save" : {
 
     },
     "search_placeholder" : {
@@ -1591,6 +1717,9 @@
           }
         }
       }
+    },
+    "Send Feedback" : {
+
     },
     "Services & Prices" : {
       "extractionState" : "manual",
@@ -1647,6 +1776,9 @@
         }
       }
     },
+    "Share your healthcare experience to help others" : {
+
+    },
     "Show less" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1657,6 +1789,9 @@
           }
         }
       }
+    },
+    "Sign Out" : {
+
     },
     "skip" : {
       "extractionState" : "manual",
@@ -1777,6 +1912,9 @@
     "Success" : {
 
     },
+    "support@trustcare.app" : {
+
+    },
     "System" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1832,6 +1970,9 @@
         }
       }
     },
+    "Take Photo" : {
+
+    },
     "Tap to set location" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1853,6 +1994,9 @@
           }
         }
       }
+    },
+    "Theme" : {
+
     },
     "there" : {
 
@@ -1895,6 +2039,9 @@
           }
         }
       }
+    },
+    "TrustCare (\"we\", \"our\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information." : {
+
     },
     "Turkish" : {
       "extractionState" : "manual",
@@ -1941,9 +2088,6 @@
     "Unable to submit claim. Please try again." : {
 
     },
-    "Unable to submit review. Please try again." : {
-
-    },
     "Unable to upload media. Please try again." : {
 
     },
@@ -1972,6 +2116,9 @@
         }
       }
     },
+    "Update Password" : {
+
+    },
     "Upload failed. Please try again." : {
 
     },
@@ -1996,6 +2143,9 @@
           }
         }
       }
+    },
+    "Verification Status" : {
+
     },
     "Verified" : {
       "extractionState" : "manual",
@@ -2077,6 +2227,9 @@
         }
       }
     },
+    "Videos must be 30 seconds or less." : {
+
+    },
     "View All" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2116,6 +2269,9 @@
     "We could not find that item." : {
 
     },
+    "We'll verify your proof within 24-48 hours and notify you" : {
+
+    },
     "Welcome Back" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2127,6 +2283,9 @@
         }
       }
     },
+    "Welcome to TrustCare. By using our app, you agree to these terms." : {
+
+    },
     "When was your visit?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2137,6 +2296,9 @@
           }
         }
       }
+    },
+    "Within 48 hours" : {
+
     },
     "Would you recommend?" : {
       "extractionState" : "manual",
@@ -2160,6 +2322,18 @@
         }
       }
     },
+    "Write Another Review" : {
+
+    },
+    "You can add verification documents anytime" : {
+
+    },
+    "You can upload up to 5 photos." : {
+
+    },
+    "You don't have permission to perform this action. Please sign in again." : {
+
+    },
     "Your code:" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2171,6 +2345,21 @@
         }
       }
     },
+    "Your password has been updated." : {
+
+    },
+    "Your review has been submitted" : {
+
+    },
+    "Your review is pending verification" : {
+
+    },
+    "Your review must be at least 50 characters. Currently %lld / 50." : {
+
+    },
+    "Your review will be marked as unverified." : {
+
+    },
     "Your reviews guide others to better healthcare" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2181,6 +2370,9 @@
           }
         }
       }
+    },
+    "Your Rights" : {
+
     },
     "Your session expired. Please sign in again." : {
 

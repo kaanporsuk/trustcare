@@ -227,12 +227,14 @@ struct ProfileView: View {
         VStack(spacing: AppSpacing.sm) {
             NavigationLink {
                 MyReviewsView(selectedTab: $selectedTab)
+                    .environmentObject(profileVM)
             } label: {
                 menuRow(title: String(localized: "My Reviews"))
             }
 
             NavigationLink {
                 SettingsView()
+                    .environmentObject(profileVM)
             } label: {
                 menuRow(title: String(localized: "Settings"))
             }
