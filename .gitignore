@@ -5,6 +5,8 @@ TrustCare/Config/Supabase.xcconfig
 # Xcode
 *.xcuserdata
 *.xcuserdata/
+build/
+DerivedData/
 *.ipa
 *.dSYM.zip
 *.dSYM
@@ -13,12 +15,6 @@ TrustCare/Config/Supabase.xcconfig
 *.mode1v3
 *.mode2v3
 *.perspectivev3
-build/
-DerivedData/
-
-# OS
-.DS_Store
-Thumbs.db
 
 # Supabase local
 .supabase/
@@ -28,6 +24,10 @@ supabase/.temp/
 .env
 .env.local
 .env.production
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Admin panel
 trustcare-admin/node_modules/
