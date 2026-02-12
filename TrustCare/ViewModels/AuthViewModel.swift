@@ -11,6 +11,7 @@ final class AuthViewModel: ObservableObject {
     @Published var dateOfBirth: Date?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var successMessage: String?
     @Published var isAuthenticated: Bool = false
     @Published var isSignUpMode: Bool = false
 
@@ -111,6 +112,7 @@ final class AuthViewModel: ObservableObject {
     private func performSignUp() async {
         guard !isLoading else { return }
         errorMessage = nil
+        successMessage = nil
         isLoading = true
         do {
             let referral = referralCode.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -120,7 +122,16 @@ final class AuthViewModel: ObservableObject {
                 fullName: fullName,
                 referralCode: referral.isEmpty ? nil : referral
             )
-            isAuthenticated = true
+            
+            // Check if we have an active session (email confirmation disabled)
+            let session = await AuthService.currentSession()
+            if session != nil {
+                isAuthenticated = true
+            } else {
+                // Email confirmation required
+                successMessage = String(localized: "Account created! Please check your email to confirm your account.")
+                isSignUpMode = false // Switch back to login mode
+            }
         } catch {
             errorMessage = localizedErrorMessage(error)
         }
@@ -165,9 +176,19 @@ final class AuthViewModel: ObservableObject {
         if message.contains("already registered") || message.contains("already in use") {
             return String(localized: "This email is already registered.")
         }
+        if message.contains("email_address_invalid") || message.contains("invalid email") {
+            return String(localized: "Email address is invalid. Please use a valid email.")
+        }
         if message.contains("network") || message.contains("offline") {
             return String(localized: "Network error. Please check your connection.")
         }
+        
+        // For debugging: show the actual error in development
+        #if DEBUG
+        print("Auth Error: \(error.localizedDescription)")
+        return "Error: \(error.localizedDescription)"
+        #else
         return String(localized: "Unable to complete your request. Please try again.")
+        #endif
     }
 }

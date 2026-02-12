@@ -128,6 +128,16 @@ struct AuthView: View {
         } message: {
             Text(authVM.errorMessage ?? "")
         }
+        .alert(String(localized: "Success"), isPresented: Binding(
+            get: { authVM.successMessage != nil },
+            set: { if !$0 { authVM.successMessage = nil } }
+        )) {
+            Button(String(localized: "Done")) {
+                authVM.successMessage = nil
+            }
+        } message: {
+            Text(authVM.successMessage ?? "")
+        }
         .onChange(of: authVM.isAuthenticated) { _, isAuthenticated in
             if isAuthenticated {
                 appState = .main
