@@ -101,7 +101,7 @@ export default function DashboardPage() {
       const { data: recent } = await supabase
         .from("reviews")
         .select(
-          "id, rating, status, created_at, provider:providers(name), user:profiles(full_name, email)",
+          "id, rating_overall, status, created_at, provider:providers(name), user:profiles(full_name)",
         )
         .order("created_at", { ascending: false })
         .limit(10);
@@ -188,10 +188,10 @@ export default function DashboardPage() {
                     {review.provider?.name ?? "-"}
                   </td>
                   <td className="px-3 py-3 text-gray-700">
-                    {review.user?.full_name ?? review.user?.email ?? "-"}
+                    {review.user?.full_name ?? "-"}
                   </td>
                   <td className="px-3 py-3 text-gray-700">
-                    {review.rating ?? "-"}
+                    {review.rating_overall ?? "-"}
                   </td>
                   <td className="px-3 py-3">
                     <Badge

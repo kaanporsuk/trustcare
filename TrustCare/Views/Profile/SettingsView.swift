@@ -1,4 +1,6 @@
+import Supabase
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
@@ -12,6 +14,15 @@ struct SettingsView: View {
     @State private var showDeleteDialog: Bool = false
     @State private var showDeleteConfirm: Bool = false
     @State private var deleteConfirmText: String = ""
+    @State private var isExporting: Bool = false
+    @State private var exportFileURL: URL?
+    @State private var showShareSheet: Bool = false
+    @State private var isLoadingConsent: Bool = false
+
+    @AppStorage("analyticsConsentGranted") private var analyticsConsentGranted: Bool = false
+    @AppStorage("marketingConsentGranted") private var marketingConsentGranted: Bool = false
+    @AppStorage("consentDataProcessing") private var consentDataProcessing: Bool = true
+    @AppStorage("consentAIVerification") private var consentAIVerification: Bool = true
 
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
@@ -89,6 +100,51 @@ struct SettingsView: View {
                 }
             }
 
+            Section(String(localized: "Privacy & Consent")) {
+                Toggle(String(localized: "Analytics Tracking"), isOn: $analyticsConsentGranted)
+                    .onChange(of: analyticsConsentGranted) { _, newValue in
+                        guard !isLoadingConsent else { return }
+                        Task { await updateConsent(type: "analytics_tracking", granted: newValue) }
+                    }
+
+                Toggle(String(localized: "Marketing Communications"), isOn: $marketingConsentGranted)
+                    .onChange(of: marketingConsentGranted) { _, newValue in
+                        guard !isLoadingConsent else { return }
+                        Task { await updateConsent(type: "marketing_communications", granted: newValue) }
+                    }
+
+                Toggle(String(localized: "Review data processing"), isOn: $consentDataProcessing)
+                    .onChange(of: consentDataProcessing) { _, newValue in
+                        guard !isLoadingConsent else { return }
+                        Task { await updateConsent(type: "review_data_processing", granted: newValue) }
+                    }
+
+                Toggle(String(localized: "AI verification consent"), isOn: $consentAIVerification)
+                    .onChange(of: consentAIVerification) { _, newValue in
+                        guard !isLoadingConsent else { return }
+                        Task { await updateConsent(type: "ai_verification_consent", granted: newValue) }
+                    }
+
+                Link(String(localized: "Terms of Service"), destination: URL(string: "https://trustcare.app/terms")!)
+                Link(String(localized: "Privacy Policy"), destination: URL(string: "https://trustcare.app/privacy")!)
+            }
+
+            Section(String(localized: "Data Export")) {
+                Button {
+                    Task { await exportUserData() }
+                } label: {
+                    if isExporting {
+                        HStack(spacing: AppSpacing.sm) {
+                            ProgressView()
+                            Text(String(localized: "Preparing export"))
+                        }
+                    } else {
+                        Text(String(localized: "Download My Data"))
+                    }
+                }
+                .disabled(isExporting)
+            }
+
             Section(String(localized: "About")) {
                 HStack {
                     Text(String(localized: "Version"))
@@ -96,8 +152,6 @@ struct SettingsView: View {
                     Text("1.0.0")
                         .foregroundStyle(.secondary)
                 }
-                Link(String(localized: "Terms of Service"), destination: URL(string: "https://trustcare.app/terms")!)
-                Link(String(localized: "Privacy Policy"), destination: URL(string: "https://trustcare.app/privacy")!)
             }
 
             Section {
@@ -143,6 +197,8 @@ struct SettingsView: View {
             if email.isEmpty {
                 email = await AuthService.currentUserEmail() ?? ""
             }
+
+            await loadConsentState()
         }
         .alert(String(localized: "Error"), isPresented: Binding(
             get: { profileVM.errorMessage != nil },
@@ -154,5 +210,148 @@ struct SettingsView: View {
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
+        .sheet(isPresented: $showShareSheet) {
+            if let exportFileURL {
+                ShareSheet(items: [exportFileURL])
+            }
+        }
     }
+
+    private func loadConsentState() async {
+        isLoadingConsent = true
+        defer { isLoadingConsent = false }
+        do {
+            let session = try await SupabaseManager.shared.client.auth.session
+
+            struct ConsentRow: Decodable {
+                let consentType: String
+                let granted: Bool
+
+                enum CodingKeys: String, CodingKey {
+                    case consentType = "consent_type"
+                    case granted
+                }
+            }
+
+            let response: PostgrestResponse<[ConsentRow]> = try await SupabaseManager.shared.client
+                .from("consent_records")
+                .select("consent_type, granted")
+                .eq("user_id", value: session.user.id.uuidString)
+                .eq("version", value: "1.0")
+                .execute()
+
+            for record in response.value {
+                switch record.consentType {
+                case "analytics_tracking":
+                    analyticsConsentGranted = record.granted
+                case "marketing_communications":
+                    marketingConsentGranted = record.granted
+                case "review_data_processing":
+                    consentDataProcessing = record.granted
+                case "ai_verification_consent":
+                    consentAIVerification = record.granted
+                default:
+                    break
+                }
+            }
+        } catch {
+            profileVM.errorMessage = localizedErrorMessage(error)
+        }
+    }
+
+    private func updateConsent(type: String, granted: Bool) async {
+        do {
+            let session = try await SupabaseManager.shared.client.auth.session
+
+            struct ConsentPayload: Encodable {
+                let userId: String
+                let consentType: String
+                let version: String
+                let granted: Bool
+                let grantedAt: String
+
+                enum CodingKeys: String, CodingKey {
+                    case userId = "user_id"
+                    case consentType = "consent_type"
+                    case version
+                    case granted
+                    case grantedAt = "granted_at"
+                }
+            }
+
+            let now = ISO8601DateFormatter().string(from: Date())
+            let payload = ConsentPayload(
+                userId: session.user.id.uuidString,
+                consentType: type,
+                version: "1.0",
+                granted: granted,
+                grantedAt: now
+            )
+
+            _ = try await SupabaseManager.shared.client
+                .from("consent_records")
+                .upsert(payload, onConflict: "user_id,consent_type,version")
+                .execute()
+        } catch {
+            profileVM.errorMessage = localizedErrorMessage(error)
+        }
+    }
+
+    private func exportUserData() async {
+        guard !isExporting else { return }
+        isExporting = true
+        defer { isExporting = false }
+
+        do {
+            let session = try await SupabaseManager.shared.client.auth.session
+            guard let url = URL(string: "\(SupabaseConfig.url)/functions/v1/export-user-data") else {
+                throw AppError.validationError(String(localized: "Export endpoint is unavailable."))
+            }
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = try JSONSerialization.data(withJSONObject: [:], options: [])
+
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                throw AppError.networkError(String(localized: "Unable to export your data."))
+            }
+
+            let fileURL = FileManager.default.temporaryDirectory
+                .appendingPathComponent("trustcare-export.json")
+            try data.write(to: fileURL, options: .atomic)
+            exportFileURL = fileURL
+            showShareSheet = true
+        } catch {
+            profileVM.errorMessage = localizedErrorMessage(error)
+        }
+    }
+
+    private func localizedErrorMessage(_ error: Error) -> String {
+        if let appError = error as? AppError {
+            return appError.localizedDescription
+        }
+
+        let message = error.localizedDescription.lowercased()
+        if message.contains("network") || message.contains("offline") {
+            return String(localized: "Network error. Please check your connection.")
+        }
+        if message.contains("expired") || message.contains("token") {
+            return String(localized: "Your session expired. Please sign in again.")
+        }
+        return String(localized: "Something went wrong. Please try again.")
+    }
+}
+
+private struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

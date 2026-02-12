@@ -28,7 +28,7 @@ enum ReviewService {
         if let proofImage,
            let proofData = ImageService.compressImage(proofImage, maxSizeKB: 1024) {
             let fileName = "\(UUID().uuidString).jpg"
-            let path = "verification-proofs/\(userId.uuidString)/\(fileName)"
+            let path = "\(userId.uuidString)/\(fileName)"
             proofUrl = try await ImageService.uploadToStorage(
                 bucket: "verification-proofs",
                 path: path,
@@ -136,13 +136,13 @@ enum ReviewService {
         let limitedImages = Array(images.prefix(5))
 
         for (index, image) in limitedImages.enumerated() {
-            guard let imageData = ImageService.compressImage(image, maxSizeKB: 2048) else { continue }
+            guard let imageData = ImageService.compressImage(image, maxSizeKB: 1024) else { continue }
             let thumbnailImage = ImageService.generateThumbnail(image)
             let thumbnailData = thumbnailImage?.jpegData(compressionQuality: 0.7)
 
             let fileName = "\(UUID().uuidString).jpg"
-            let path = "review-media/\(userId.uuidString)/\(reviewId.uuidString)/\(fileName)"
-            let thumbPath = "review-media/\(userId.uuidString)/\(reviewId.uuidString)/thumb_\(fileName)"
+            let path = "\(userId.uuidString)/\(reviewId.uuidString)/\(fileName)"
+            let thumbPath = "\(userId.uuidString)/\(reviewId.uuidString)/thumb_\(fileName)"
 
             let url = try await ImageService.uploadToStorage(
                 bucket: "review-media",
@@ -191,8 +191,8 @@ enum ReviewService {
         let durationSeconds = Int(duration.seconds.rounded())
 
         let fileName = "\(UUID().uuidString).mp4"
-        let path = "review-media/\(userId.uuidString)/\(reviewId.uuidString)/\(fileName)"
-        let thumbPath = "review-media/\(userId.uuidString)/\(reviewId.uuidString)/thumb_\(fileName).jpg"
+        let path = "\(userId.uuidString)/\(reviewId.uuidString)/\(fileName)"
+        let thumbPath = "\(userId.uuidString)/\(reviewId.uuidString)/thumb_\(fileName).jpg"
 
         let videoData = try Data(contentsOf: compressedURL)
         let url = try await ImageService.uploadToStorage(

@@ -11,15 +11,39 @@ struct ProviderDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: AppSpacing.lg) {
-                heroSection
-                claimBanner
-                infoSection
-                quickActions
-                statsGrid
-                servicesSection
-                reviewsSection
+            if detailVM.isLoading && detailVM.provider == nil {
+                VStack {
+                    Spacer(minLength: AppSpacing.xxl)
+                    ProgressView()
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+            } else if detailVM.provider == nil {
+                VStack(spacing: AppSpacing.sm) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.title2)
+                        .foregroundStyle(.secondary)
+                    Text(String(localized: "Provider unavailable"))
+                        .font(AppFont.body)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.top, AppSpacing.xxl)
+                .frame(maxWidth: .infinity)
+            } else {
+                VStack(spacing: AppSpacing.lg) {
+                    heroSection
+                    claimBanner
+                    infoSection
+                    quickActions
+                    statsGrid
+                    servicesSection
+                    reviewsSection
+                }
             }
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .refreshable {
+            await detailVM.loadDetails(id: providerId)
         }
         .task {
             await detailVM.loadDetails(id: providerId)

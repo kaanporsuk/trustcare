@@ -19,12 +19,12 @@ export default function SettingsPage() {
   const loadSettings = async () => {
     const { data: flagsData } = await supabase
       .from("feature_flags")
-      .select("id, name, is_enabled, rollout_percentage")
-      .order("name", { ascending: true });
+      .select("id, flag_name, is_enabled, rollout_percentage")
+      .order("flag_name", { ascending: true });
 
     const { data: adminData } = await supabase
       .from("user_roles")
-      .select("id, role, user:profiles(full_name, email)")
+      .select("id, role, user:profiles(full_name)")
       .in("role", ["admin", "moderator"]);
 
     const [profilesCount, reviewsCount, providersCount] = await Promise.all([
@@ -67,7 +67,7 @@ export default function SettingsPage() {
     const { data: profile } = await supabase
       .from("profiles")
       .select("id")
-      .eq("email", inviteEmail.trim())
+      .eq("full_name", inviteEmail.trim())
       .single();
 
     if (!profile?.id) return;
@@ -102,7 +102,7 @@ export default function SettingsPage() {
             <tbody className="divide-y divide-gray-100">
               {flags.map((flag) => (
                 <tr key={flag.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-gray-700">{flag.name}</td>
+                  <td className="px-4 py-3 text-gray-700">{flag.flag_name}</td>
                   <td className="px-4 py-3">
                     <label className="flex items-center gap-2 text-sm">
                       <input
@@ -142,7 +142,7 @@ export default function SettingsPage() {
         <div className="mt-4 flex flex-wrap gap-3">
           <input
             className="flex-1 rounded-lg border border-gray-200 px-3 py-2 text-sm"
-            placeholder="Admin email"
+            placeholder="Admin name"
             value={inviteEmail}
             onChange={(event) => setInviteEmail(event.target.value)}
           />
@@ -167,7 +167,6 @@ export default function SettingsPage() {
             <thead className="bg-gray-50 text-xs uppercase text-gray-400">
               <tr>
                 <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Role</th>
               </tr>
             </thead>
@@ -176,9 +175,6 @@ export default function SettingsPage() {
                 <tr key={admin.id}>
                   <td className="px-4 py-3 text-gray-700">
                     {admin.user?.full_name ?? "-"}
-                  </td>
-                  <td className="px-4 py-3 text-gray-700">
-                    {admin.user?.email ?? "-"}
                   </td>
                   <td className="px-4 py-3">
                     <Badge label={admin.role} tone="active" />

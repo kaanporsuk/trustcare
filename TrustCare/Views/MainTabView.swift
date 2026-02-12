@@ -43,5 +43,13 @@ struct MainTabView: View {
         .task {
             await profileVM.loadNotificationCount()
         }
+        .alert(String(localized: "Error"), isPresented: Binding(
+            get: { profileVM.errorMessage != nil },
+            set: { if !$0 { profileVM.errorMessage = nil } }
+        )) {
+            Button(String(localized: "OK")) { profileVM.errorMessage = nil }
+        } message: {
+            Text(profileVM.errorMessage ?? "")
+        }
     }
 }

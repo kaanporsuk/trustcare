@@ -9,11 +9,11 @@ const PAGE_SIZE = 20;
 type ReviewRow = {
   id: string;
   provider?: { name?: string } | null;
-  user?: { full_name?: string; email?: string } | null;
-  rating?: number | null;
+  user?: { full_name?: string } | null;
+  rating_overall?: number | null;
   price_level?: number | null;
   status?: string | null;
-  ai_confidence?: number | null;
+  verification_confidence?: number | null;
   created_at?: string | null;
 };
 
@@ -35,7 +35,7 @@ export default function ReviewsPage() {
     let query = supabase
       .from("reviews")
       .select(
-        "id, rating, price_level, status, ai_confidence, created_at, provider:providers(name), user:profiles(full_name, email)",
+        "id, rating_overall, price_level, status, verification_confidence, created_at, provider:providers(name), user:profiles(full_name)",
         { count: "exact" },
       )
       .order("created_at", { ascending: false })
@@ -46,7 +46,7 @@ export default function ReviewsPage() {
     }
 
     if (search.trim()) {
-      query = query.ilike("content", `%${search.trim()}%`);
+      query = query.ilike("comment", `%${search.trim()}%`);
     }
 
     const { data, count } = await query;
@@ -69,7 +69,7 @@ export default function ReviewsPage() {
     const { data } = await supabase
       .from("reviews")
       .select(
-        "id, content, rating, status, ai_confidence, ai_reason, created_at, price_level, proof_url, ratings_breakdown, provider:providers(name), user:profiles(full_name, email), review_media(id, url, media_type, content_status)",
+        "id, comment, rating_overall, status, verification_confidence, verification_reason, created_at, price_level, proof_image_url, provider:providers(name), user:profiles(full_name), review_media(id, url, media_type, content_status)",
       )
       .eq("id", reviewId)
       .single();
@@ -202,10 +202,10 @@ export default function ReviewsPage() {
                   {review.provider?.name ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
-                  {review.user?.full_name ?? review.user?.email ?? "-"}
+                  {review.user?.full_name ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
-                  {review.rating ?? "-"}
+                  {review.rating_overall ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
                   {review.price_level ?? "-"}
@@ -219,12 +219,12 @@ export default function ReviewsPage() {
                 <td className="px-4 py-3">
                   <Badge
                     label={
-                      review.ai_confidence !== null &&
-                      review.ai_confidence !== undefined
-                        ? `${review.ai_confidence}%`
+                      review.verification_confidence !== null &&
+                      review.verification_confidence !== undefined
+                        ? `${review.verification_confidence}%`
                         : "-"
                     }
-                    tone={confidenceTone(review.ai_confidence)}
+                    tone={confidenceTone(review.verification_confidence)}
                   />
                 </td>
                 <td className="px-4 py-3 text-gray-500">
@@ -303,35 +303,38 @@ export default function ReviewsPage() {
               <div>
                 <p className="text-xs uppercase text-gray-400">Review Text</p>
                 <p className="mt-2 rounded-lg bg-gray-50 p-3">
-                  {selectedReview.content ?? "-"}
+                  {selectedReview.comment ?? "-"}
                 </p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <p className="text-xs uppercase text-gray-400">Ratings</p>
-                  <pre className="mt-2 whitespace-pre-wrap rounded-lg bg-gray-50 p-3 text-xs">
-                    {selectedReview.ratings_breakdown
-                      ? JSON.stringify(selectedReview.ratings_breakdown, null, 2)
-                      : "No ratings breakdown"}
-                  </pre>
+                  <p className="text-xs uppercase text-gray-400">Rating</p>
+                  <div className="mt-2 rounded-lg bg-gray-50 p-3">
+                    <p className="text-sm font-semibold">
+                      {selectedReview.rating_overall ?? "-"}
+                    </p>
+                    <p className="mt-1 text-xs text-gray-500">
+                      Price level: {selectedReview.price_level ?? "-"}
+                    </p>
+                  </div>
                 </div>
                 <div>
                   <p className="text-xs uppercase text-gray-400">AI Verdict</p>
                   <div className="mt-2 rounded-lg bg-gray-50 p-3">
                     <p className="text-sm font-semibold">
-                      {selectedReview.ai_confidence ?? "-"}% confidence
+                      {selectedReview.verification_confidence ?? "-"}% confidence
                     </p>
                     <p className="mt-1 text-xs text-gray-500">
-                      {selectedReview.ai_reason ?? "No AI summary available."}
+                      {selectedReview.verification_reason ?? "No AI summary available."}
                     </p>
                   </div>
                 </div>
               </div>
               <div>
                 <p className="text-xs uppercase text-gray-400">Proof</p>
-                {selectedReview.proof_url ? (
+                {selectedReview.proof_image_url ? (
                   <img
-                    src={selectedReview.proof_url}
+                    src={selectedReview.proof_image_url}
                     alt="Proof"
                     className="mt-2 max-h-64 rounded-lg border"
                   />

@@ -1,19 +1,24 @@
 import Foundation
 
 enum SupabaseConfig {
+    static let devUrl: String = "http://127.0.0.1:54321"
+    static let devAnonKey: String = "sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH"
+    static let prodUrl: String = "https://your-project.supabase.co"
+    static let prodAnonKey: String = "sb_publishable_your_production_key"
+
     static var url: String {
-        guard let value = Bundle.main.infoDictionary?["SUPABASE_URL"] as? String,
-              !value.isEmpty else {
-            fatalError("SUPABASE_URL not set in xcconfig")
-        }
-        return value
+        isProduction ? prodUrl : devUrl
     }
 
     static var anonKey: String {
-        guard let value = Bundle.main.infoDictionary?["SUPABASE_ANON_KEY"] as? String,
-              !value.isEmpty else {
-            fatalError("SUPABASE_ANON_KEY not set in xcconfig")
-        }
-        return value
+        isProduction ? prodAnonKey : devAnonKey
+    }
+
+    private static var isProduction: Bool {
+        #if DEBUG
+        return false
+        #else
+        return true
+        #endif
     }
 }

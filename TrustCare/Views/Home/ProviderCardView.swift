@@ -52,9 +52,9 @@ struct ProviderCardView: View {
                     }
 
                     HStack(spacing: 6) {
-                        Text("\(provider.verifiedPercentage)% \(String(localized: "Verified"))")
-                            .font(AppFont.caption)
-                            .foregroundStyle(AppColor.success)
+                        if provider.verifiedReviewCount > 0 {
+                            VerifiedBadge()
+                        }
                         Text("·")
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)

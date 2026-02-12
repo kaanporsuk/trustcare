@@ -100,7 +100,7 @@ struct HomeView: View {
                 Spacer()
             }
         } else if homeVM.viewMode == .map {
-            ProviderMapView(providers: homeVM.providers)
+            ProviderMapView(providers: homeVM.providers, isLoading: homeVM.isLoading)
         } else if homeVM.providers.isEmpty {
             VStack(spacing: AppSpacing.sm) {
                 Image(systemName: "magnifyingglass")
@@ -128,6 +128,7 @@ struct HomeView: View {
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.bottom, AppSpacing.xxl)
             }
+            .scrollDismissesKeyboard(.interactively)
             .refreshable {
                 await homeVM.refresh()
             }
@@ -148,8 +149,12 @@ struct HomeView: View {
     }
 
     private func loadDisplayName() async {
-        if let profile = try? await AuthService.fetchProfile() {
+        do {
+            let profile = try await AuthService.fetchProfile()
             displayName = profile.displayName
+        } catch {
+            // Non-critical — just use default name, no alert needed
+            displayName = String(localized: "there")
         }
     }
 }

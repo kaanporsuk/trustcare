@@ -3,6 +3,8 @@ import SwiftUI
 struct ServicesCatalogView: View {
     let providerName: String
     let services: [ProviderServiceItem]
+    @State private var isLoading: Bool = true
+    @State private var errorMessage: String?
 
     private var groupedServices: [(String, [ProviderServiceItem])] {
         let grouped = Dictionary(grouping: services, by: { $0.category ?? String(localized: "Other") })
@@ -15,7 +17,13 @@ struct ServicesCatalogView: View {
                 Text(String(localized: "Services & Prices"))
                     .font(AppFont.title2)
 
-                if services.isEmpty {
+                if isLoading && services.isEmpty {
+                    VStack {
+                        ProgressView()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, AppSpacing.lg)
+                } else if services.isEmpty {
                     VStack(spacing: AppSpacing.sm) {
                         Image(systemName: "stethoscope")
                             .font(.title2)
@@ -76,6 +84,18 @@ struct ServicesCatalogView: View {
             }
             .padding(AppSpacing.lg)
         }
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle(providerName)
+        .onAppear {
+            isLoading = false
+        }
+        .alert(String(localized: "Error"), isPresented: Binding(
+            get: { errorMessage != nil },
+            set: { if !$0 { errorMessage = nil } }
+        )) {
+            Button(String(localized: "OK")) { errorMessage = nil }
+        } message: {
+            Text(errorMessage ?? "")
+        }
     }
 }

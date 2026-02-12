@@ -7,9 +7,7 @@ class SupabaseManager {
     let client: SupabaseClient
 
     private init() {
-        guard let url = URL(string: SupabaseConfig.url) else {
-            fatalError("Invalid SUPABASE_URL")
-        }
+        let url = URL(string: SupabaseConfig.url) ?? URL(string: "http://127.0.0.1:54321")!
         client = SupabaseClient(supabaseURL: url, supabaseKey: SupabaseConfig.anonKey)
     }
 }

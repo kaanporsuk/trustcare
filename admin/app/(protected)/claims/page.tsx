@@ -10,12 +10,12 @@ type ClaimRow = {
   id: string;
   provider_id?: string | null;
   claimant_user_id?: string | null;
-  role?: string | null;
+  claimant_role?: string | null;
   status?: string | null;
   created_at?: string | null;
-  proof_url?: string | null;
-  provider?: { name?: string; website?: string; business_email?: string } | null;
-  claimant?: { email?: string; full_name?: string } | null;
+  proof_document_url?: string | null;
+  provider?: { name?: string; website?: string; email?: string } | null;
+  claimant?: { full_name?: string } | null;
 };
 
 export default function ClaimsPage() {
@@ -35,7 +35,7 @@ export default function ClaimsPage() {
     let query = supabase
       .from("provider_claims")
       .select(
-        "id, provider_id, claimant_user_id, role, status, created_at, proof_url, provider:providers(name, website, business_email), claimant:profiles(full_name, email)",
+        "id, provider_id, claimant_user_id, claimant_role, status, created_at, proof_document_url, provider:providers(name, website, email), claimant:profiles(full_name)",
         { count: "exact" },
       )
       .order("created_at", { ascending: false })
@@ -154,10 +154,10 @@ export default function ClaimsPage() {
                   {claim.provider?.name ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
-                  {claim.claimant?.email ?? "-"}
+                  {claim.claimant?.full_name ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
-                  {claim.role ?? "-"}
+                  {claim.claimant_role ?? "-"}
                 </td>
                 <td className="px-4 py-3">
                   <Badge label={claim.status ?? "-"} tone={claim.status ?? "pending"} />
@@ -239,34 +239,34 @@ export default function ClaimsPage() {
                   Website: {selectedClaim.provider?.website ?? "-"}
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
-                  Business Email: {selectedClaim.provider?.business_email ?? "-"}
+                  Business Email: {selectedClaim.provider?.email ?? "-"}
                 </p>
               </div>
               <div className="rounded-xl bg-gray-50 p-4">
                 <h3 className="text-sm font-semibold text-gray-800">Claim</h3>
                 <p className="mt-2 text-sm text-gray-600">
-                  Claimant: {selectedClaim.claimant?.email ?? "-"}
+                  Claimant: {selectedClaim.claimant?.full_name ?? "-"}
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
-                  Role: {selectedClaim.role ?? "-"}
+                  Role: {selectedClaim.claimant_role ?? "-"}
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
-                  Proof: {selectedClaim.proof_url ? "Uploaded" : "Missing"}
+                  Proof: {selectedClaim.proof_document_url ? "Uploaded" : "Missing"}
                 </p>
               </div>
             </div>
 
             <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm text-gray-600">
               Domain check: claimant email domain ({extractDomain(
-                selectedClaim.claimant?.email,
+                undefined,
               )}) vs provider website domain ({extractDomain(
                 selectedClaim.provider?.website,
               )}).
             </div>
 
-            {selectedClaim.proof_url ? (
+            {selectedClaim.proof_document_url ? (
               <img
-                src={selectedClaim.proof_url}
+                src={selectedClaim.proof_document_url}
                 alt="Proof"
                 className="mt-4 max-h-64 w-full rounded-lg border object-contain"
               />

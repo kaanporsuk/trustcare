@@ -9,10 +9,10 @@ const PAGE_SIZE = 20;
 type UserRow = {
   id: string;
   full_name?: string | null;
-  email?: string | null;
-  country?: string | null;
-  reviews_count?: number | null;
-  verified_percent?: number | null;
+  avatar_url?: string | null;
+  phone?: string | null;
+  country_code?: string | null;
+  preferred_language?: string | null;
   created_at?: string | null;
   deleted_at?: string | null;
 };
@@ -33,13 +33,16 @@ export default function UsersPage() {
     setIsLoading(true);
     let query = supabase
       .from("profiles")
-      .select("*", { count: "exact" })
+      .select(
+        "id, full_name, avatar_url, phone, country_code, preferred_language, created_at, deleted_at",
+        { count: "exact" },
+      )
       .order("created_at", { ascending: false })
       .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
 
     if (search.trim()) {
       query = query.or(
-        `full_name.ilike.%${search.trim()}%,email.ilike.%${search.trim()}%`,
+        `full_name.ilike.%${search.trim()}%,phone.ilike.%${search.trim()}%`,
       );
     }
 
@@ -57,7 +60,7 @@ export default function UsersPage() {
     setSelectedUser(user);
     const { data } = await supabase
       .from("reviews")
-      .select("id, rating, status, created_at, provider:providers(name)")
+      .select("id, rating_overall, status, created_at, provider:providers(name)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     setUserReviews(data ?? []);
@@ -66,7 +69,7 @@ export default function UsersPage() {
   const suspendUser = async (userId: string) => {
     await supabase
       .from("profiles")
-      .update({ is_suspended: true })
+      .update({ deleted_at: new Date().toISOString() })
       .eq("id", userId);
     await loadUsers();
   };
@@ -91,7 +94,7 @@ export default function UsersPage() {
       <div className="flex flex-wrap gap-3 rounded-xl bg-white p-4 shadow-sm">
         <input
           className="flex-1 rounded-lg border border-gray-200 px-3 py-2 text-sm"
-          placeholder="Search by name or email"
+          placeholder="Search by name or phone"
           value={search}
           onChange={(event) => {
             setPage(1);
@@ -106,10 +109,9 @@ export default function UsersPage() {
             <tr>
               <th className="px-4 py-3">ID</th>
               <th className="px-4 py-3">Name</th>
-              <th className="px-4 py-3">Email</th>
+              <th className="px-4 py-3">Phone</th>
               <th className="px-4 py-3">Country</th>
-              <th className="px-4 py-3">Reviews</th>
-              <th className="px-4 py-3">Verified %</th>
+              <th className="px-4 py-3">Language</th>
               <th className="px-4 py-3">Joined</th>
               <th className="px-4 py-3">Actions</th>
             </tr>
@@ -124,30 +126,13 @@ export default function UsersPage() {
                   {user.full_name ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-700">
-                  {user.email ?? "-"}
+                  {user.phone ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {user.country ?? "-"}
+                  {user.country_code ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {user.reviews_count ?? "-"}
-                </td>
-                <td className="px-4 py-3">
-                  <Badge
-                    label={
-                      user.verified_percent !== null &&
-                      user.verified_percent !== undefined
-                        ? `${user.verified_percent}%`
-                        : "-"
-                    }
-                    tone={
-                      (user.verified_percent ?? 0) >= 80
-                        ? "active"
-                        : (user.verified_percent ?? 0) >= 50
-                          ? "pending"
-                          : "flagged"
-                    }
-                  />
+                  {user.preferred_language ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-500">
                   {user.created_at
@@ -183,7 +168,7 @@ export default function UsersPage() {
             ))}
             {isLoading ? (
               <tr>
-                <td className="px-4 py-6 text-center text-sm text-gray-500" colSpan={8}>
+                <td className="px-4 py-6 text-center text-sm text-gray-500" colSpan={7}>
                   Loading users...
                 </td>
               </tr>
@@ -238,13 +223,16 @@ export default function UsersPage() {
                   {selectedUser.full_name ?? "-"}
                 </p>
                 <p className="mt-2 text-xs text-gray-500">
-                  {selectedUser.email ?? "-"}
+                  {selectedUser.phone ?? "-"}
                 </p>
               </div>
               <div className="rounded-xl bg-gray-50 p-4 text-sm">
                 <p className="text-xs uppercase text-gray-400">Country</p>
                 <p className="mt-2 font-semibold text-gray-900">
-                  {selectedUser.country ?? "-"}
+                  {selectedUser.country_code ?? "-"}
+                </p>
+                <p className="mt-2 text-xs text-gray-500">
+                  Language: {selectedUser.preferred_language ?? "-"}
                 </p>
                 <p className="mt-2 text-xs text-gray-500">
                   Joined: {selectedUser.created_at
@@ -273,7 +261,7 @@ export default function UsersPage() {
                           {review.provider?.name ?? "-"}
                         </td>
                         <td className="px-3 py-2 text-gray-700">
-                          {review.rating ?? "-"}
+                          {review.rating_overall ?? "-"}
                         </td>
                         <td className="px-3 py-2">
                           <Badge

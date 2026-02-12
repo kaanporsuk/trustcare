@@ -11,9 +11,9 @@ type ProviderRow = {
   name?: string | null;
   specialty?: string | null;
   city?: string | null;
-  country?: string | null;
-  rating?: number | null;
-  reviews_count?: number | null;
+  country_code?: string | null;
+  rating_overall?: number | null;
+  review_count?: number | null;
   is_claimed?: boolean | null;
   is_featured?: boolean | null;
   is_active?: boolean | null;
@@ -82,7 +82,7 @@ export default function ProvidersPage() {
       name: form.name.trim(),
       specialty: form.specialty.trim(),
       city: form.city.trim(),
-      country: form.country.trim(),
+      country_code: form.country.trim(),
       is_active: true,
     });
     setShowAddModal(false);
@@ -98,7 +98,7 @@ export default function ProvidersPage() {
         name: selectedProvider.name,
         specialty: selectedProvider.specialty,
         city: selectedProvider.city,
-        country: selectedProvider.country,
+          country_code: selectedProvider.country_code,
       })
       .eq("id", selectedProvider.id);
     setSelectedProvider(null);
@@ -185,13 +185,13 @@ export default function ProvidersPage() {
                   {provider.city ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {provider.country ?? "-"}
+                  {provider.country_code ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {provider.rating ?? "-"}
+                  {provider.rating_overall ?? "-"}
                 </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {provider.reviews_count ?? "-"}
+                  {provider.review_count ?? "-"}
                 </td>
                 <td className="px-4 py-3">
                   <Badge
@@ -396,10 +396,10 @@ export default function ProvidersPage() {
                 />
                 <input
                   className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm"
-                  value={selectedProvider.country ?? ""}
+                  value={selectedProvider.country_code ?? ""}
                   onChange={(event) =>
                     setSelectedProvider((prev) =>
-                      prev ? { ...prev, country: event.target.value } : prev,
+                      prev ? { ...prev, country_code: event.target.value } : prev,
                     )
                   }
                 />

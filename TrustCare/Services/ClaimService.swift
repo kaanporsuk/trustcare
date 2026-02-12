@@ -18,7 +18,8 @@ enum ClaimService {
         let session = try await client.auth.session
 
         var proofPath: String?
-        if let proofImage, let data = proofImage.jpegData(compressionQuality: 0.7) {
+        if let proofImage,
+           let data = ImageService.compressImage(proofImage, maxSizeKB: 1024, quality: 0.7) {
             let fileName = "\(UUID().uuidString).jpg"
             let path = "\(session.user.id.uuidString)/\(fileName)"
             let options = FileOptions(contentType: "image/jpeg")

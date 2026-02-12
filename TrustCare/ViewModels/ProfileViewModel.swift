@@ -18,7 +18,7 @@ final class ProfileViewModel: ObservableObject {
         do {
             profile = try await AuthService.fetchProfile()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
     }
@@ -136,7 +136,7 @@ final class ProfileViewModel: ObservableObject {
                 )
             }
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
 
         isLoading = false
@@ -151,7 +151,7 @@ final class ProfileViewModel: ObservableObject {
                 .execute()
             myReviews.removeAll { $0.id == id }
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
@@ -180,7 +180,7 @@ final class ProfileViewModel: ObservableObject {
             )
             await loadProfile()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
@@ -196,7 +196,7 @@ final class ProfileViewModel: ObservableObject {
             )
             await loadProfile()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
@@ -212,7 +212,7 @@ final class ProfileViewModel: ObservableObject {
             )
             await loadProfile()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
@@ -228,7 +228,7 @@ final class ProfileViewModel: ObservableObject {
             )
             await loadProfile()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
@@ -236,15 +236,46 @@ final class ProfileViewModel: ObservableObject {
         do {
             unreadNotificationCount = try await NotificationService.fetchUnreadCount()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
     func deleteAccount() async {
         do {
-            try await AuthService.deleteAccount()
+            let session = try await SupabaseManager.shared.client.auth.session
+
+            struct DeletePayload: Encodable {
+                let deletedAt: Date
+
+                enum CodingKeys: String, CodingKey {
+                    case deletedAt = "deleted_at"
+                }
+            }
+
+            _ = try await SupabaseManager.shared.client
+                .from("profiles")
+                .update(DeletePayload(deletedAt: Date()))
+                .eq("id", value: session.user.id.uuidString)
+                .execute()
+
+            try await SupabaseManager.shared.client.auth.signOut()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
+    }
+
+    private func localizedErrorMessage(_ error: Error) -> String {
+        if let appError = error as? AppError {
+            return appError.localizedDescription
+        }
+
+        let message = error.localizedDescription.lowercased()
+        if message.contains("network") || message.contains("offline") {
+            return String(localized: "Network error. Please check your connection.")
+        }
+        if message.contains("not found") {
+            return String(localized: "We could not find that item.")
+        }
+        return String(localized: "Something went wrong. Please try again.")
     }
 }

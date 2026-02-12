@@ -39,7 +39,7 @@ enum ImageService {
         let asset = AVAsset(url: inputURL)
         guard let exportSession = AVAssetExportSession(
             asset: asset,
-            presetName: AVAssetExportPresetMediumQuality
+            presetName: AVAssetExportPreset1280x720
         ) else {
             throw AppError.uploadFailed
         }

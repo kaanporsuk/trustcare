@@ -88,7 +88,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
                 )
                 self.searchResults = results
             } catch {
-                self.errorMessage = error.localizedDescription
+                self.errorMessage = self.localizedErrorMessage(error)
             }
         }
     }
@@ -133,7 +133,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
             mediaUploadProgress = 1
             isComplete = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
 
         isSubmitting = false
@@ -141,5 +141,20 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     private func videoDurationSeconds(for url: URL) -> Double? {
         nil
+    }
+
+    private func localizedErrorMessage(_ error: Error) -> String {
+        if let appError = error as? AppError {
+            return appError.localizedDescription
+        }
+
+        let message = error.localizedDescription.lowercased()
+        if message.contains("network") || message.contains("offline") {
+            return String(localized: "Network error. Please check your connection.")
+        }
+        if message.contains("upload") {
+            return String(localized: "Unable to upload media. Please try again.")
+        }
+        return String(localized: "Unable to submit review. Please try again.")
     }
 }

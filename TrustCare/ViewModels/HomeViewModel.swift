@@ -59,7 +59,7 @@ final class HomeViewModel: ObservableObject {
             let results = try await ProviderService.fetchSpecialties()
             specialties = results
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
     }
 
@@ -91,7 +91,7 @@ final class HomeViewModel: ObservableObject {
             }
             hasMoreResults = results.count == pageSize
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
     }
@@ -120,5 +120,20 @@ final class HomeViewModel: ObservableObject {
         } catch {
             locationName = String(localized: "Tap to set location")
         }
+    }
+
+    private func localizedErrorMessage(_ error: Error) -> String {
+        if let appError = error as? AppError {
+            return appError.localizedDescription
+        }
+
+        let message = error.localizedDescription.lowercased()
+        if message.contains("network") || message.contains("offline") {
+            return String(localized: "Network error. Please check your connection.")
+        }
+        if message.contains("location") || message.contains("geocode") {
+            return String(localized: "Unable to use your location right now.")
+        }
+        return String(localized: "Unable to load providers. Please try again.")
     }
 }

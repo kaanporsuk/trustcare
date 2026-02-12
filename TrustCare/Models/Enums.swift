@@ -31,18 +31,50 @@ enum ReviewStatus: String, Codable {
     case active
     case pendingVerification = "pending_verification"
     case flagged, removed
+
+    var displayName: String {
+        switch self {
+        case .active: return String(localized: "Active")
+        case .pendingVerification: return String(localized: "Pending Verification")
+        case .flagged: return String(localized: "Flagged")
+        case .removed: return String(localized: "Removed")
+        }
+    }
 }
 
 enum MediaType: String, Codable {
     case image, video
+
+    var displayName: String {
+        switch self {
+        case .image: return String(localized: "Image")
+        case .video: return String(localized: "Video")
+        }
+    }
 }
 
 enum SubscriptionTier: String, Codable {
     case free, basic, premium
+
+    var displayName: String {
+        switch self {
+        case .free: return String(localized: "Free")
+        case .basic: return String(localized: "Basic")
+        case .premium: return String(localized: "Premium")
+        }
+    }
 }
 
 enum ClaimStatus: String, Codable {
     case pending, approved, rejected
+
+    var displayName: String {
+        switch self {
+        case .pending: return String(localized: "Pending")
+        case .approved: return String(localized: "Approved")
+        case .rejected: return String(localized: "Rejected")
+        }
+    }
 }
 
 enum ClaimRole: String, Codable, CaseIterable, Identifiable {

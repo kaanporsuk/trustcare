@@ -5,15 +5,8 @@ struct ClaimProviderView: View {
     let providerId: UUID
     let providerName: String
     @Environment(\.dismiss) private var dismiss
-    @State private var role: ClaimRole = .owner
-    @State private var businessEmail: String = ""
-    @State private var phone: String = ""
-    @State private var licenseNumber: String = ""
+    @StateObject private var claimVM = ClaimViewModel()
     @State private var selectedItem: PhotosPickerItem?
-    @State private var proofImage: UIImage?
-    @State private var isLoading: Bool = false
-    @State private var errorMessage: String?
-    @State private var showSuccess: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -24,21 +17,21 @@ struct ClaimProviderView: View {
                 }
 
                 Section {
-                    Picker(String(localized: "Role"), selection: $role) {
+                    Picker(String(localized: "Role"), selection: $claimVM.role) {
                         ForEach(ClaimRole.allCases) { item in
                             Text(item.displayName).tag(item)
                         }
                     }
 
-                    TextField(String(localized: "Business Email"), text: $businessEmail)
+                    TextField(String(localized: "Business Email"), text: $claimVM.businessEmail)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
 
-                    TextField(String(localized: "Phone"), text: $phone)
+                    TextField(String(localized: "Phone"), text: $claimVM.phone)
                         .keyboardType(.phonePad)
 
-                    TextField(String(localized: "License Number"), text: $licenseNumber)
+                    TextField(String(localized: "License Number"), text: $claimVM.licenseNumber)
                 }
 
                 Section {
@@ -52,12 +45,12 @@ struct ClaimProviderView: View {
 
                 Section {
                     Button {
-                        Task { await submitClaim() }
+                        Task { await claimVM.submit(providerId: providerId) }
                     } label: {
                         Text(String(localized: "Submit Claim"))
                             .frame(maxWidth: .infinity)
                     }
-                    .disabled(isLoading || businessEmail.isEmpty)
+                    .disabled(claimVM.isLoading || !claimVM.isFormValid)
                 }
             }
             .navigationTitle(providerName)
@@ -72,43 +65,24 @@ struct ClaimProviderView: View {
                 Task {
                     if let data = try? await newItem.loadTransferable(type: Data.self),
                        let image = UIImage(data: data) {
-                        proofImage = image
+                        claimVM.proofImage = image
                     }
                 }
             }
             .alert(String(localized: "Error"), isPresented: Binding(
-                get: { errorMessage != nil },
-                set: { if !$0 { errorMessage = nil } }
+                get: { claimVM.errorMessage != nil },
+                set: { if !$0 { claimVM.errorMessage = nil } }
             )) {
-                Button(String(localized: "Done")) { errorMessage = nil }
+                Button(String(localized: "Done")) { claimVM.errorMessage = nil }
             } message: {
-                Text(errorMessage ?? "")
+                Text(claimVM.errorMessage ?? "")
             }
-            .alert(String(localized: "Claim submitted"), isPresented: $showSuccess) {
+            .alert(String(localized: "Claim submitted"), isPresented: $claimVM.isSubmitted) {
                 Button(String(localized: "Done")) {
+                    claimVM.reset()
                     dismiss()
                 }
             }
         }
-    }
-
-    private func submitClaim() async {
-        guard !isLoading else { return }
-        isLoading = true
-        errorMessage = nil
-        do {
-            try await ClaimService.submitClaim(
-                providerId: providerId,
-                role: role,
-                email: businessEmail,
-                phone: phone.isEmpty ? nil : phone,
-                license: licenseNumber.isEmpty ? nil : licenseNumber,
-                proofImage: proofImage
-            )
-            showSuccess = true
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-        isLoading = false
     }
 }

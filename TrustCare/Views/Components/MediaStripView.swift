@@ -34,6 +34,10 @@ struct MediaStripView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(item.mediaType == .video
+                        ? String(localized: "Play video")
+                        : String(localized: "View image")
+                    )
                 }
             }
         }

@@ -103,7 +103,7 @@ final class AuthViewModel: ObservableObject {
             try await AuthService.signIn(email: email, password: password)
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
     }
@@ -122,7 +122,7 @@ final class AuthViewModel: ObservableObject {
             )
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
     }
@@ -135,7 +135,7 @@ final class AuthViewModel: ObservableObject {
             try await AuthService.signInWithApple(idToken: idToken, nonce: nonce)
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
     }
@@ -148,8 +148,26 @@ final class AuthViewModel: ObservableObject {
             try await AuthService.signOut()
             isAuthenticated = false
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
+    }
+
+    private func localizedErrorMessage(_ error: Error) -> String {
+        if let appError = error as? AppError {
+            return appError.localizedDescription
+        }
+
+        let message = error.localizedDescription.lowercased()
+        if message.contains("invalid login") || message.contains("invalid credentials") {
+            return String(localized: "Invalid email or password.")
+        }
+        if message.contains("already registered") || message.contains("already in use") {
+            return String(localized: "This email is already registered.")
+        }
+        if message.contains("network") || message.contains("offline") {
+            return String(localized: "Network error. Please check your connection.")
+        }
+        return String(localized: "Unable to complete your request. Please try again.")
     }
 }

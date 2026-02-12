@@ -13,7 +13,7 @@ type MediaRow = {
   media_type?: string | null;
   content_status?: string | null;
   created_at?: string | null;
-  uploader?: { full_name?: string; email?: string } | null;
+  uploader?: { full_name?: string } | null;
 };
 
 export default function MediaPage() {
@@ -31,7 +31,7 @@ export default function MediaPage() {
     let query = supabase
       .from("review_media")
       .select(
-        "id, review_id, url, media_type, content_status, created_at, uploader:profiles(full_name, email)",
+        "id, review_id, url, media_type, content_status, created_at, uploader:profiles(full_name)",
         { count: "exact" },
       )
       .order("created_at", { ascending: false })
@@ -112,7 +112,7 @@ export default function MediaPage() {
               </div>
               <div className="mt-3 space-y-1 text-xs text-gray-500">
                 <p className="text-sm font-semibold text-gray-900">
-                  {item.uploader?.full_name ?? item.uploader?.email ?? "-"}
+                  {item.uploader?.full_name ?? "-"}
                 </p>
                 <p>Review: {item.review_id?.slice(0, 8) ?? "-"}</p>
                 <p>

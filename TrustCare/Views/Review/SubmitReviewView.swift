@@ -139,6 +139,24 @@ struct SubmitReviewView: View {
             } else {
                 ScrollView {
                     LazyVStack(spacing: AppSpacing.sm) {
+                        if !viewModel.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                            && viewModel.searchResults.isEmpty
+                            && !viewModel.isLoading {
+                            VStack(spacing: AppSpacing.sm) {
+                                Text(String(localized: "No providers found"))
+                                    .font(AppFont.body)
+                                    .foregroundStyle(.secondary)
+                                Button {
+                                    showAddProviderSheet = true
+                                } label: {
+                                    Text(String(localized: "Add a new provider"))
+                                        .font(AppFont.body)
+                                        .foregroundStyle(AppColor.trustBlue)
+                                }
+                            }
+                            .padding(.top, AppSpacing.lg)
+                        }
+
                         ForEach(viewModel.searchResults) { provider in
                             Button {
                                 viewModel.selectedProvider = provider

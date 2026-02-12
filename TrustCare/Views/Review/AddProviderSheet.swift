@@ -34,11 +34,6 @@ struct AddProviderSheet: View {
                     TextField(String(localized: "Phone"), text: $phone)
                 }
 
-                if let errorMessage {
-                    Text(errorMessage)
-                        .font(AppFont.footnote)
-                        .foregroundStyle(AppColor.error)
-                }
             }
             .navigationTitle(String(localized: "Add a Healthcare Provider"))
             .toolbar {
@@ -55,8 +50,25 @@ struct AddProviderSheet: View {
                 }
             }
             .scrollDismissesKeyboard(.interactively)
+            .overlay {
+                if isSubmitting {
+                    Color.black.opacity(0.3)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(.white)
+                }
+            }
             .task {
                 await loadSpecialties()
+            }
+            .alert(String(localized: "Error"), isPresented: Binding(
+                get: { errorMessage != nil },
+                set: { if !$0 { errorMessage = nil } }
+            )) {
+                Button(String(localized: "Done")) { errorMessage = nil }
+            } message: {
+                Text(errorMessage ?? "")
             }
         }
     }

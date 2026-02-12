@@ -24,7 +24,7 @@ final class ProviderDetailViewModel: ObservableObject {
             reviews = reviewsResult
             services = servicesResult
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
     }
@@ -102,7 +102,22 @@ final class ProviderDetailViewModel: ObservableObject {
                 )
             }
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = localizedErrorMessage(error)
         }
+    }
+
+    private func localizedErrorMessage(_ error: Error) -> String {
+        if let appError = error as? AppError {
+            return appError.localizedDescription
+        }
+
+        let message = error.localizedDescription.lowercased()
+        if message.contains("network") || message.contains("offline") {
+            return String(localized: "Network error. Please check your connection.")
+        }
+        if message.contains("not found") {
+            return String(localized: "Provider not found.")
+        }
+        return String(localized: "Unable to load provider details. Please try again.")
     }
 }

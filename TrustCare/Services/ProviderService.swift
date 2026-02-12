@@ -9,43 +9,34 @@ enum ProviderService {
     static func searchProviders(
         text: String?,
         specialty: String?,
-        country: String?,
-        priceLevel: Int?,
-        minRating: Double?,
-        verifiedOnly: Bool?,
+        country: String? = nil,
+        priceLevel: Int? = nil,
+        minRating: Double? = nil,
+        verifiedOnly: Bool? = nil,
         lat: Double?,
         lng: Double?,
         limit: Int = 20,
         offset: Int = 0
     ) async throws -> [Provider] {
         var params: [String: AnyJSON] = [
-            "limit": .double(Double(limit)),
-            "offset": .double(Double(offset))
+            "limit_val": .double(Double(limit)),
+            "offset_val": .double(Double(offset))
         ]
 
         if let text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            params["text"] = .string(text)
+            params["search_query"] = .string(text)
         }
         if let specialty {
-            params["specialty"] = .string(specialty)
-        }
-        if let country {
-            params["country"] = .string(country)
-        }
-        if let priceLevel {
-            params["price_level"] = .double(Double(priceLevel))
+            params["specialty_filter"] = .string(specialty)
         }
         if let minRating {
             params["min_rating"] = .double(minRating)
         }
-        if let verifiedOnly {
-            params["verified_only"] = .bool(verifiedOnly)
-        }
         if let lat {
-            params["lat"] = .double(lat)
+            params["user_lat"] = .double(lat)
         }
         if let lng {
-            params["lng"] = .double(lng)
+            params["user_lng"] = .double(lng)
         }
 
         let response: PostgrestResponse<[Provider]> = try await client
