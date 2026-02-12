@@ -22,7 +22,12 @@ enum ReviewService {
         videoURL: URL?,
         progressHandler: ((Double) -> Void)? = nil
     ) async throws -> Review {
-        let session = try await client.auth.session
+        // Check if user is authenticated
+        guard let session = try? await client.auth.session else {
+            throw AppError.authError(
+                String(localized: "Please sign in to submit a review.")
+            )
+        }
         let userId = session.user.id
 
         let imageCount = min(images.count, 5)

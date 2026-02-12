@@ -23,10 +23,16 @@ struct AddProviderSheet: View {
                 Section {
                     TextField(String(localized: "Full Name"), text: $name)
                     Picker(String(localized: "Specialty"), selection: $selectedSpecialtyId) {
-                        ForEach(specialties) { specialty in
-                            Text(specialty.nameEn).tag(Optional(specialty.id))
+                        if specialties.isEmpty {
+                            Text(String(localized: "Loading...")).tag(Optional<Int>.none)
+                        } else {
+                            ForEach(specialties) { specialty in
+                                Text(specialty.nameEn).tag(Optional(specialty.id))
+                            }
                         }
                     }
+                    .pickerStyle(.menu)
+                    .disabled(specialties.isEmpty)
                     TextField(String(localized: "Clinic / Hospital"), text: $clinicName)
                     TextField(String(localized: "Address"), text: $address)
                     TextField(String(localized: "City"), text: $city)
@@ -82,6 +88,9 @@ struct AddProviderSheet: View {
     private func loadSpecialties() async {
         do {
             specialties = try await ProviderService.fetchSpecialties()
+            if selectedSpecialtyId == nil {
+                selectedSpecialtyId = specialties.first?.id
+            }
         } catch {
             errorMessage = error.localizedDescription
         }

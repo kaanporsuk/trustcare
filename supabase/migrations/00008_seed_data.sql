@@ -1,5 +1,25 @@
 -- Seed data for TrustCare
 
+-- Disable spam check triggers temporarily for seed data
+ALTER TABLE public.providers DISABLE TRIGGER check_provider_spam;
+ALTER TABLE public.reviews DISABLE TRIGGER check_review_spam;
+
+-- Delete existing seed data to make migration idempotent
+DELETE FROM public.providers WHERE name IN (
+    'Harbor View Clinic',
+    'Spree Medical Center',
+    'Canal Health Group',
+    'Vistula Care',
+    'Cukurova Health',
+    'San Francisco Orthopedic Institute'
+);
+
+DELETE FROM auth.users WHERE id IN (
+    '123e4567-e89b-12d3-a456-426614174000',
+    '223e4567-e89b-12d3-a456-426614174000',
+    '323e4567-e89b-12d3-a456-426614174000'
+);
+
 INSERT INTO public.specialties (name_key, name_en, name_de, name_nl, name_pl, name_tr, name_ar, icon_name, display_order, is_active)
 VALUES
     ('general_practice', 'General Practice', 'Allgemeinmedizin', 'Huisarts', 'Medycyna rodzinna', 'Aile Hekimligi', 'طب عام', 'stethoscope', 1, TRUE),
@@ -594,3 +614,8 @@ VALUES
     ('appointments', 'Appointment requests', FALSE, 0),
     ('push_notifications', 'Push notifications', FALSE, 0)
 ON CONFLICT (flag_name) DO NOTHING;
+
+
+-- Re-enable spam check triggers
+ALTER TABLE public.providers ENABLE TRIGGER check_provider_spam;
+ALTER TABLE public.reviews ENABLE TRIGGER check_review_spam;

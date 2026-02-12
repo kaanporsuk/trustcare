@@ -17,6 +17,6 @@ enum SupabaseConfig {
     // static let anonKey = "sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH"
     
     // --- MODE 3: Cloud Supabase (TestFlight / Production) ---
-    static let url = "https://fapkawhpiitivtinbvnf.supabase.co"
-    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcGthd2hwaWl0aXZ0aW5idm5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1ODgwODYsImV4cCI6MjA4NjE2NDA4Nn0.7pxgXBxKoVLo8Fe4A3mvp58vODmOj_tNhbYKvMvS5mY"
+    static let url = "https://wabgklhhrviqcfdiwofu.supabase.co"
+    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndhYmdrbGhocnZpcWNmZGl3b2Z1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MTc4MDksImV4cCI6MjA4NjQ5MzgwOX0.4SGTbcbFImfTPCqPBPG32EO3N7tDitV9HyBI_S3RkBo"
 }
