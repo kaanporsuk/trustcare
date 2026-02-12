@@ -27,9 +27,10 @@ final class HomeViewModel: ObservableObject {
 
     init() {
         observeLocation()
-        Task {
-            await loadSpecialties()
-        }
+    }
+    
+    func onAppear() async {
+        await loadSpecialties()
     }
 
     func refresh() async {

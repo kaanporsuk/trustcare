@@ -31,6 +31,7 @@ struct HomeView: View {
             }
             .task {
                 homeVM.startLocationUpdates()
+                await homeVM.onAppear()
                 await loadDisplayName()
             }
             .alert(String(localized: "Error"), isPresented: Binding(
