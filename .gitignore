@@ -4,8 +4,42 @@ TrustCare/Config/Supabase.xcconfig
 
 # Xcode
 *.xcuserdata
+*.xcuserdata/
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.hmap
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
 build/
 DerivedData/
 
 # OS
 .DS_Store
+Thumbs.db
+
+# Supabase local
+.supabase/
+supabase/.temp/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Admin panel
+trustcare-admin/node_modules/
+trustcare-admin/.next/
+trustcare-admin/.env.local
+
+# Swift Package Manager cache
+.build/
+Packages/
+
+# Fastlane (will be added later)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output

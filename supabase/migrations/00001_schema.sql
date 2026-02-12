@@ -2,6 +2,14 @@
 
 -- EXTENSIONS
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE OR REPLACE FUNCTION public.uuid_generate_v4()
+RETURNS uuid
+LANGUAGE SQL
+AS $$
+    SELECT gen_random_uuid();
+$$;
 
 -- TABLES
 CREATE TABLE IF NOT EXISTS public.profiles (

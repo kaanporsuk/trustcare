@@ -18,15 +18,22 @@ enum ClaimService {
         let session = try await client.auth.session
 
         var proofPath: String?
-        if let proofImage,
-           let data = ImageService.compressImage(proofImage, maxSizeKB: 1024, quality: 0.7) {
+        if let proofImage {
+            guard let compressedData = ImageService.compressImage(
+                proofImage,
+                maxSizeKB: 1024,
+                quality: 0.7
+            ) else {
+                throw AppError.uploadFailed
+            }
+
             let fileName = "\(UUID().uuidString).jpg"
             let path = "\(session.user.id.uuidString)/\(fileName)"
             let options = FileOptions(contentType: "image/jpeg")
             let upload = try await client
                 .storage
                 .from("claim-documents")
-                .upload(path, data: data, options: options)
+                .upload(path, data: compressedData, options: options)
             proofPath = upload.path
         }
 
