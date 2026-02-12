@@ -2,6 +2,7 @@ import SwiftUI
 import UIKit
 
 struct MainTabView: View {
+    @EnvironmentObject private var authVM: AuthViewModel
     @StateObject private var profileVM = ProfileViewModel()
     @State private var selectedTab: Int = 0
 
@@ -27,6 +28,7 @@ struct MainTabView: View {
 
             NavigationStack {
                 ProfileView()
+                    .environmentObject(profileVM)
             }
             .tabItem {
                 Image(systemName: "person.circle")
@@ -35,7 +37,6 @@ struct MainTabView: View {
             .tag(2)
             .badge(profileVM.unreadNotificationCount)
         }
-        .environmentObject(profileVM)
         .tint(AppColor.trustBlue)
         .onChange(of: selectedTab) { _, _ in
             UIImpactFeedbackGenerator(style: .light).impactOccurred()

@@ -11,13 +11,20 @@ final class ProfileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var unreadNotificationCount: Int = 0
+    
+    init() {
+        print("🔵 ProfileViewModel initialized")
+    }
 
     func loadProfile() async {
+        print("🔵 ProfileViewModel.loadProfile called")
         isLoading = true
         errorMessage = nil
         do {
             profile = try await AuthService.fetchProfile()
+            print("✅ Profile loaded: \(profile?.displayName ?? "nil")")
         } catch {
+            print("❌ loadProfile failed: \(error)")
             errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
