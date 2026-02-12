@@ -59,16 +59,24 @@ final class HomeViewModel: ObservableObject {
     }
 
     private func loadSpecialties() async {
+        print("🔵 HomeViewModel.loadSpecialties started")
         do {
             let results = try await ProviderService.fetchSpecialties()
             specialties = results
+            print("✅ Loaded \(results.count) specialties")
         } catch {
-            errorMessage = localizedErrorMessage(error)
+            let errorMsg = localizedErrorMessage(error)
+            print("❌ loadSpecialties failed: \(errorMsg)")
+            errorMessage = errorMsg
         }
     }
 
     private func searchProviders(reset: Bool) async {
-        guard !isLoading else { return }
+        guard !isLoading else {
+            print("⚠️ searchProviders skipped - already loading")
+            return
+        }
+        print("🔵 HomeViewModel.searchProviders started (reset: \(reset))")
         isLoading = true
         errorMessage = nil
         let lat = locationManager.userLocation?.latitude
@@ -88,6 +96,7 @@ final class HomeViewModel: ObservableObject {
                 offset: currentOffset
             )
 
+            print("✅ searchProviders returned \(results.count) providers")
             if reset {
                 providers = results
             } else {
@@ -95,9 +104,12 @@ final class HomeViewModel: ObservableObject {
             }
             hasMoreResults = results.count == pageSize
         } catch {
-            errorMessage = localizedErrorMessage(error)
+            let errorMsg = localizedErrorMessage(error)
+            print("❌ searchProviders failed: \(errorMsg)")
+            errorMessage = errorMsg
         }
         isLoading = false
+        print("🔵 HomeViewModel.searchProviders completed")
     }
 
     private func observeLocation() {

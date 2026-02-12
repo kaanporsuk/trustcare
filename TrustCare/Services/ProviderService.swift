@@ -18,6 +18,12 @@ enum ProviderService {
         limit: Int = 20,
         offset: Int = 0
     ) async throws -> [Provider] {
+        print("🔵 ProviderService.searchProviders called")
+        print("  Text: '\(text ?? "nil")'")
+        print("  Specialty: '\(specialty ?? "nil")'")
+        print("  Location: \(lat != nil && lng != nil ? "(\(lat!), \(lng!))" : "nil")")
+        print("  Limit: \(limit), Offset: \(offset)")
+        
         var params: [String: AnyJSON] = [
             "limit_val": .double(Double(limit)),
             "offset_val": .double(Double(offset))
@@ -48,22 +54,34 @@ enum ProviderService {
             params["user_lng"] = .double(lng)
         }
 
-        let response: PostgrestResponse<[Provider]> = try await client
-            .rpc("search_providers", params: params)
-            .execute()
+        print("  Calling search_providers RPC with params: \(params)")
+        
+        do {
+            let response: PostgrestResponse<[Provider]> = try await client
+                .rpc("search_providers", params: params)
+                .execute()
+            
+            print("✅ search_providers RPC returned \(response.value.count) providers")
 
-        guard let lat, let lng else {
-            return response.value
-        }
+            guard let lat, let lng else {
+                return response.value
+            }
 
-        return response.value.map { provider in
-            let distance = haversineDistanceKm(
-                lat1: lat,
-                lon1: lng,
-                lat2: provider.latitude,
-                lon2: provider.longitude
-            )
-            return withDistance(provider, distanceKm: distance)
+            return response.value.map { provider in
+                let distance = haversineDistanceKm(
+                    lat1: lat,
+                    lon1: lng,
+                    lat2: provider.latitude,
+                    lon2: provider.longitude
+                )
+                return withDistance(provider, distanceKm: distance)
+            }
+        } catch {
+            print("❌ search_providers RPC failed")
+            print("  Error: \(error)")
+            print("  Error type: \(type(of: error))")
+            print("  Localized: \(error.localizedDescription)")
+            throw error
         }
     }
 
@@ -266,14 +284,25 @@ enum ProviderService {
     }
 
     static func fetchSpecialties() async throws -> [Specialty] {
-        let response: PostgrestResponse<[Specialty]> = try await client
-            .from("specialties")
-            .select("id, name_key, name_en, icon_name")
-            .eq("is_active", value: true)
-            .order("display_order", ascending: true)
-            .execute()
+        print("🔵 ProviderService.fetchSpecialties called")
+        
+        do {
+            let response: PostgrestResponse<[Specialty]> = try await client
+                .from("specialties")
+                .select("id, name_key, name_en, icon_name")
+                .eq("is_active", value: true)
+                .order("display_order", ascending: true)
+                .execute()
 
-        return response.value
+            print("✅ fetchSpecialties returned \(response.value.count) specialties")
+            return response.value
+        } catch {
+            print("❌ fetchSpecialties failed")
+            print("  Error: \(error)")
+            print("  Error type: \(type(of: error))")
+            print("  Localized: \(error.localizedDescription)")
+            throw error
+        }
     }
 
     private static func fetchReviewMedia(_ reviewIds: [UUID]) async throws -> [UUID: [ReviewMedia]] {
