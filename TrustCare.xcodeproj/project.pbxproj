@@ -283,7 +283,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W38S57AM55;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "TrustCare needs camera access to take photos for reviews and verification.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TrustCare uses your location to find nearby healthcare providers.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "TrustCare needs access to your photos to upload review images and verification documents.";
@@ -319,7 +320,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W38S57AM55;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "TrustCare needs camera access to take photos for reviews and verification.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TrustCare uses your location to find nearby healthcare providers.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "TrustCare needs access to your photos to upload review images and verification documents.";
