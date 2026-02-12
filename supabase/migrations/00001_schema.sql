@@ -1,7 +1,7 @@
 -- TrustCare schema
 
 -- EXTENSIONS
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA extensions;
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE OR REPLACE FUNCTION public.uuid_generate_v4()
