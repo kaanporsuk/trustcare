@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="iY7-bC-9Pg">
             <objects>
-                <viewController id="UJZ-1g-KX1" sceneMemberID="viewController">
+                <viewController id="UJZ-1g-KX1" sceneMemberID="viewController" storyboardIdentifier="LaunchScreen">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2a0-gv-2cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
 </document>
