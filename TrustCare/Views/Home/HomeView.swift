@@ -24,9 +24,14 @@ struct HomeView: View {
             }
             .navigationBarHidden(true)
             .task(id: homeVM.searchText) {
+                // Only trigger search if user actually typed something or cleared text
+                // Skip the initial "" value on view load
+                guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
             .task(id: homeVM.selectedSpecialty) {
+                // Only trigger search after initial load
+                guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
             .task {

@@ -20,17 +20,22 @@ final class HomeViewModel: ObservableObject {
     @Published var hasMoreResults: Bool = true
     @Published var locationName: String = String(localized: "Tap to set location")
 
+    private(set) var hasLoadedInitially = false
     private let locationManager = LocationManager()
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
+    private var hasLoadedInitially = false
 
     init() {
         observeLocation()
     }
     
     func onAppear() async {
+        guard !hasLoadedInitially else { return }
+        hasLoadedInitially = true
         await loadSpecialties()
+        await searchProviders(reset: true)  // Load initial providers
     }
 
     func refresh() async {
@@ -51,9 +56,11 @@ final class HomeViewModel: ObservableObject {
     }
 
     func searchWithDebounce() async {
+        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', specialty: '\(selectedSpecialty ?? "nil")')")
         do {
             try await Task.sleep(nanoseconds: 300_000_000)
         } catch {
+            print("⚠️ searchWithDebounce cancelled")
             return
         }
         await refresh()
