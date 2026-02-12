@@ -38,19 +38,40 @@ enum AuthService {
         fullName: String,
         referralCode: String? = nil
     ) async throws {
-        let response = try await client.auth.signUp(
-            email: email,
-            password: password,
-            data: ["full_name": .string(fullName)]
-        )
+        print("🔵 AuthService.signUp started")
+        print("  Email: \(email)")
+        print("  Full Name: \(fullName)")
+        print("  Has Referral Code: \(referralCode != nil)")
+        
+        do {
+            let response = try await client.auth.signUp(
+                email: email,
+                password: password,
+                data: ["full_name": .string(fullName)]
+            )
+            print("✅ Signup API call successful")
+            print("  User ID: \(response.user.id)")
+            print("  Email: \(response.user.email ?? "nil")")
+            print("  Session exists: \(response.session != nil)")
 
-        if let referralCode, !referralCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            let update = ReferralUpdate(referredBy: referralCode)
-            try await client
-                .from("profiles")
-                .update(update)
-                .eq("id", value: response.user.id.uuidString)
-                .execute()
+            if let referralCode, !referralCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                print("🔵 Updating referral code...")
+                let update = ReferralUpdate(referredBy: referralCode)
+                try await client
+                    .from("profiles")
+                    .update(update)
+                    .eq("id", value: response.user.id.uuidString)
+                    .execute()
+                print("✅ Referral code updated")
+            }
+            
+            print("✅ AuthService.signUp completed successfully")
+        } catch {
+            print("❌ AuthService.signUp failed")
+            print("  Error: \(error)")
+            print("  Error type: \(type(of: error))")
+            print("  Localized description: \(error.localizedDescription)")
+            throw error
         }
     }
 

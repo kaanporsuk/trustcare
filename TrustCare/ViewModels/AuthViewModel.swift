@@ -111,11 +111,16 @@ final class AuthViewModel: ObservableObject {
 
     private func performSignUp() async {
         guard !isLoading else { return }
+        print("🔵 AuthViewModel.performSignUp started")
         errorMessage = nil
         successMessage = nil
         isLoading = true
         do {
             let referral = referralCode.trimmingCharacters(in: .whitespacesAndNewlines)
+            print("  Email: \(email)")
+            print("  Full Name: \(fullName)")
+            print("  Referral Code: '\(referral)'")
+            
             try await AuthService.signUp(
                 email: email,
                 password: password,
@@ -123,19 +128,32 @@ final class AuthViewModel: ObservableObject {
                 referralCode: referral.isEmpty ? nil : referral
             )
             
+            print("✅ AuthService.signUp returned successfully")
+            
             // Check if we have an active session (email confirmation disabled)
             let session = await AuthService.currentSession()
+            print("  Session check: \(session != nil ? "Active session" : "No session (email confirmation required)")")
+            
             if session != nil {
+                print("✅ User authenticated, setting isAuthenticated = true")
                 isAuthenticated = true
             } else {
                 // Email confirmation required
-                successMessage = String(localized: "Account created! Please check your email to confirm your account.")
+                let message = String(localized: "Account created! Please check your email to confirm your account.")
+                print("📧 Email confirmation required, showing message: \(message)")
+                successMessage = message
                 isSignUpMode = false // Switch back to login mode
             }
         } catch {
-            errorMessage = localizedErrorMessage(error)
+            print("❌ Sign up failed with error")
+            print("  Error: \(error)")
+            print("  Error type: \(type(of: error))")
+            let errorMsg = localizedErrorMessage(error)
+            print("  Displaying error: \(errorMsg)")
+            errorMessage = errorMsg
         }
         isLoading = false
+        print("🔵 AuthViewModel.performSignUp completed (isLoading = false)")
     }
 
     private func performAppleSignIn(idToken: String, nonce: String) async {
