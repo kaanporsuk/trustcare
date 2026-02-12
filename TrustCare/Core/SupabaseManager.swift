@@ -7,9 +7,18 @@ class SupabaseManager {
     let client: SupabaseClient
     
     private init() {
+        let supabaseURL = URL(string: SupabaseConfig.url)!
+        let supabaseKey = SupabaseConfig.anonKey
+        
+        // Configure AuthClient with emitLocalSessionAsInitialSession to opt-in to new behavior
+        var options = SupabaseClientOptions()
+        options.auth.flowType = .implicit
+        options.auth.emitLocalSessionAsInitialSession = true
+        
         client = SupabaseClient(
-            supabaseURL: URL(string: SupabaseConfig.url)!,
-            supabaseKey: SupabaseConfig.anonKey
+            supabaseURL: supabaseURL,
+            supabaseKey: supabaseKey,
+            options: options
         )
     }
 }

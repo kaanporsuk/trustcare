@@ -1,8 +1,7 @@
 import SwiftUI
+import MessageUI
 
 struct HelpSupportView: View {
-    @State private var emailTapped = false
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
@@ -122,13 +121,8 @@ struct HelpSupportView: View {
     }
     
     private func sendFeedback() {
-        if MFMailComposeViewController.canSendMail() {
-            // Present mail composer if available
-            emailTapped = true
-        } else {
-            // Copy email to clipboard
-            UIPasteboard.general.string = "support@trustcare.app"
-        }
+        UIPasteboard.general.string = "support@trustcare.app"
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
 
