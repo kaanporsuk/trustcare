@@ -5,6 +5,7 @@ TrustCare/Config/Supabase.xcconfig
 # Xcode
 *.xcuserdata
 *.xcuserdata/
+*.xcuserstate
 build/
 DerivedData/
 *.ipa

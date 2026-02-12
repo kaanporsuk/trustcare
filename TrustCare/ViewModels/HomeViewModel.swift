@@ -25,7 +25,6 @@ final class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
-    private var hasLoadedInitially = false
 
     init() {
         observeLocation()
