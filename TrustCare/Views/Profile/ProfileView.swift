@@ -239,15 +239,21 @@ struct ProfileView: View {
                 menuRow(title: String(localized: "Settings"))
             }
 
-            Link(destination: URL(string: "mailto:support@trustcare.app")!) {
+            NavigationLink {
+                HelpSupportView()
+            } label: {
                 menuRow(title: String(localized: "Help & Support"))
             }
 
-            Link(destination: URL(string: "https://trustcare.app/privacy")!) {
+            NavigationLink {
+                PrivacyPolicyView()
+            } label: {
                 menuRow(title: String(localized: "Privacy Policy"))
             }
 
-            Link(destination: URL(string: "https://trustcare.app/terms")!) {
+            NavigationLink {
+                TermsOfServiceView()
+            } label: {
                 menuRow(title: String(localized: "Terms of Service"))
             }
 
