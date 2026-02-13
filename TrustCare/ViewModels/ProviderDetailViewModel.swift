@@ -84,6 +84,8 @@ final class ProviderDetailViewModel: ObservableObject {
                     ratingBedside: current.ratingBedside,
                     ratingEfficacy: current.ratingEfficacy,
                     ratingCleanliness: current.ratingCleanliness,
+                    ratingStaff: current.ratingStaff,
+                    ratingValue: current.ratingValue,
                     ratingOverall: current.ratingOverall,
                     priceLevel: current.priceLevel,
                     title: current.title,

@@ -59,6 +59,8 @@ final class ProfileViewModel: ObservableObject {
                 let ratingBedside: Int
                 let ratingEfficacy: Int
                 let ratingCleanliness: Int
+                let ratingStaff: Int
+                let ratingValue: Int
                 let ratingOverall: Double
                 let priceLevel: Int
                 let title: String?
@@ -82,6 +84,8 @@ final class ProfileViewModel: ObservableObject {
                     case ratingBedside = "rating_bedside"
                     case ratingEfficacy = "rating_efficacy"
                     case ratingCleanliness = "rating_cleanliness"
+                    case ratingStaff = "rating_staff"
+                    case ratingValue = "rating_value"
                     case ratingOverall = "rating_overall"
                     case priceLevel = "price_level"
                     case wouldRecommend = "would_recommend"
@@ -119,6 +123,8 @@ final class ProfileViewModel: ObservableObject {
                     ratingBedside: row.ratingBedside,
                     ratingEfficacy: row.ratingEfficacy,
                     ratingCleanliness: row.ratingCleanliness,
+                    ratingStaff: row.ratingStaff,
+                    ratingValue: row.ratingValue,
                     ratingOverall: row.ratingOverall,
                     priceLevel: row.priceLevel,
                     title: row.title,
