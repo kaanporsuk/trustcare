@@ -35,8 +35,8 @@ final class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
-    private let selectedLocationKey = "selectedLocation"
-    private let recentLocationsKey = "recentLocations"
+    private static let selectedLocationKey = "selectedLocation"
+    private static let recentLocationsKey = "recentLocations"
 
     var locationManagerCoordinate: CLLocationCoordinate2D? {
         locationManager.userLocation
@@ -47,7 +47,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     init() {
-        if let savedLocation = loadSelectedLocation() {
+        if let savedLocation = Self.loadSelectedLocation() {
             selectedLocation = savedLocation
             locationName = savedLocation.name
         } else {
@@ -58,7 +58,7 @@ final class HomeViewModel: ObservableObject {
                 isCurrentLocation: true
             )
         }
-        recentLocations = loadRecentLocations()
+        recentLocations = Self.loadRecentLocations()
         observeLocation()
     }
     
@@ -118,7 +118,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     func searchWithDebounce() async {
-        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', specialty: '\(selectedSpecialty ?? "nil")')")
+        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', specialty: '\(selectedSpecialty?.name ?? "nil")')")
         do {
             try await Task.sleep(nanoseconds: 300_000_000)
         } catch {
@@ -246,12 +246,12 @@ final class HomeViewModel: ObservableObject {
 
     private func saveSelectedLocation(_ location: SelectedLocation) {
         if let data = try? JSONEncoder().encode(location) {
-            UserDefaults.standard.set(data, forKey: selectedLocationKey)
+            UserDefaults.standard.set(data, forKey: Self.selectedLocationKey)
         }
     }
 
-    private func loadSelectedLocation() -> SelectedLocation? {
-        guard let data = UserDefaults.standard.data(forKey: selectedLocationKey) else {
+    private static func loadSelectedLocation() -> SelectedLocation? {
+        guard let data = UserDefaults.standard.data(forKey: Self.selectedLocationKey) else {
             return nil
         }
         return try? JSONDecoder().decode(SelectedLocation.self, from: data)
@@ -259,12 +259,12 @@ final class HomeViewModel: ObservableObject {
 
     private func saveRecentLocations(_ locations: [SelectedLocation]) {
         if let data = try? JSONEncoder().encode(locations) {
-            UserDefaults.standard.set(data, forKey: recentLocationsKey)
+            UserDefaults.standard.set(data, forKey: Self.recentLocationsKey)
         }
     }
 
-    private func loadRecentLocations() -> [SelectedLocation] {
-        guard let data = UserDefaults.standard.data(forKey: recentLocationsKey) else {
+    private static func loadRecentLocations() -> [SelectedLocation] {
+        guard let data = UserDefaults.standard.data(forKey: Self.recentLocationsKey) else {
             return []
         }
         return (try? JSONDecoder().decode([SelectedLocation].self, from: data)) ?? []

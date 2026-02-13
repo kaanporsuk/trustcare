@@ -46,7 +46,7 @@ struct ProviderMapView: View {
             .onAppear {
                 recenterOnSelectedLocation(animated: false)
             }
-            .onChange(of: centerCoordinate) { _, _ in
+            .onChange(of: centerCoordinateToken) { _, _ in
                 recenterOnSelectedLocation(animated: true)
             }
 
@@ -97,5 +97,10 @@ struct ProviderMapView: View {
         } else {
             position = .region(region)
         }
+    }
+
+    private var centerCoordinateToken: String {
+        guard let centerCoordinate else { return "nil" }
+        return "\(centerCoordinate.latitude),\(centerCoordinate.longitude)"
     }
 }

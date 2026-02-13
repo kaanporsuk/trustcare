@@ -49,6 +49,9 @@
         }
       }
     },
+    "%lld/5" : {
+
+    },
     "%lld/10" : {
 
     },
@@ -123,9 +126,6 @@
           }
         }
       }
-    },
-    "Add a new provider" : {
-
     },
     "Add Photos" : {
       "extractionState" : "manual",
@@ -417,6 +417,17 @@
         }
       }
     },
+    "Can't find your provider?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can't find your provider?"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -530,6 +541,28 @@
         }
       }
     },
+    "Clear" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
+    "Clear Filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Filter"
+          }
+        }
+      }
+    },
     "Clear search" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -548,6 +581,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clinic / Hospital"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         }
       }
@@ -855,8 +899,16 @@
     "Export endpoint is unavailable." : {
 
     },
-    "Failed to upload media. Please try again or skip verification." : {
-
+    "Facility Cleanliness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facility Cleanliness"
+          }
+        }
+      }
     },
     "Filter" : {
       "extractionState" : "manual",
@@ -893,6 +945,17 @@
     },
     "Flagged" : {
 
+    },
+    "Follow-up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow-up"
+          }
+        }
+      }
     },
     "For privacy inquiries: privacy@trustcare.app" : {
 
@@ -1219,6 +1282,17 @@
         }
       }
     },
+    "min_chars_format" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d/50 min"
+          }
+        }
+      }
+    },
     "Moderate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1226,6 +1300,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moderate"
+          }
+        }
+      }
+    },
+    "More" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
           }
         }
       }
@@ -1241,8 +1326,16 @@
         }
       }
     },
-    "Network error. Please check your connection and try again." : {
-
+    "Nearby Providers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nearby Providers"
+          }
+        }
+      }
     },
     "Network error. Please check your connection." : {
 
@@ -1275,8 +1368,27 @@
         }
       }
     },
-    "Next" : {
-
+    "No" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "No locations found. Try a different search." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No locations found. Try a different search."
+          }
+        }
+      }
     },
     "No providers found" : {
       "extractionState" : "manual",
@@ -1459,8 +1571,16 @@
     "Please enter a valid email address." : {
 
     },
-    "Please select a provider before submitting." : {
-
+    "Please select a specialty." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a specialty."
+          }
+        }
+      }
     },
     "Please sign in to add a healthcare provider." : {
 
@@ -1486,6 +1606,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Poor"
+          }
+        }
+      }
+    },
+    "Popular Cities" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popular Cities"
           }
         }
       }
@@ -1549,9 +1680,6 @@
     "Profile updated" : {
 
     },
-    "Provider added successfully" : {
-
-    },
     "Provider Name" : {
 
     },
@@ -1578,6 +1706,17 @@
     "Rate App" : {
 
     },
+    "Rate Your Experience" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate Your Experience"
+          }
+        }
+      }
+    },
     "Read more" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1585,6 +1724,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Read more"
+          }
+        }
+      }
+    },
+    "Recent Locations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Locations"
+          }
+        }
+      }
+    },
+    "Recently Viewed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recently Viewed"
           }
         }
       }
@@ -1637,9 +1798,6 @@
       }
     },
     "Removed" : {
-
-    },
-    "Request timed out. Please check your connection and try again." : {
 
     },
     "Response time:" : {
@@ -1696,6 +1854,50 @@
     "Save" : {
 
     },
+    "Search city or region..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search city or region..."
+          }
+        }
+      }
+    },
+    "Search for a provider..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for a provider..."
+          }
+        }
+      }
+    },
+    "Search Location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Location"
+          }
+        }
+      }
+    },
+    "Search specialties" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search specialties"
+          }
+        }
+      }
+    },
     "search_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1714,6 +1916,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "See All Reviews"
+          }
+        }
+      }
+    },
+    "Select" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
           }
         }
       }
@@ -1843,6 +2056,17 @@
         }
       }
     },
+    "Specialties" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialties"
+          }
+        }
+      }
+    },
     "Specialty" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1861,6 +2085,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sponsored"
+          }
+        }
+      }
+    },
+    "Staff Friendliness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Staff Friendliness"
           }
         }
       }
@@ -1984,6 +2219,17 @@
         }
       }
     },
+    "Tell others about your visit..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tell others about your visit..."
+          }
+        }
+      }
+    },
     "Terms of Service" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2014,6 +2260,17 @@
     },
     "This email is already registered." : {
 
+    },
+    "Title (optional)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title (optional)"
+          }
+        }
+      }
     },
     "Too many requests. Please try again later." : {
 
@@ -2144,6 +2401,28 @@
         }
       }
     },
+    "Use My Current Location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use My Current Location"
+          }
+        }
+      }
+    },
+    "Value for Money" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value for Money"
+          }
+        }
+      }
+    },
     "Verification Status" : {
 
     },
@@ -2227,9 +2506,6 @@
         }
       }
     },
-    "Videos must be 30 seconds or less." : {
-
-    },
     "View All" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2255,17 +2531,6 @@
         }
       }
     },
-    "When did you visit?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "When did you visit?"
-          }
-        }
-      }
-    },
     "Wait Time" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2273,6 +2538,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wait Time"
+          }
+        }
+      }
+    },
+    "Waiting Time" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting Time"
           }
         }
       }
@@ -2297,6 +2573,17 @@
     "Welcome to TrustCare. By using our app, you agree to these terms." : {
 
     },
+    "When did you visit?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When did you visit?"
+          }
+        }
+      }
+    },
     "When was your visit?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2310,6 +2597,17 @@
     },
     "Within 48 hours" : {
 
+    },
+    "Would you recommend this provider?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Would you recommend this provider?"
+          }
+        }
+      }
     },
     "Would you recommend?" : {
       "extractionState" : "manual",
@@ -2336,13 +2634,21 @@
     "Write Another Review" : {
 
     },
+    "Yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
     "You can add verification documents anytime" : {
 
     },
     "You can upload up to 5 photos." : {
-
-    },
-    "You don't have permission to perform this action. Please sign in again." : {
 
     },
     "Your code:" : {
@@ -2352,266 +2658,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your code:"
-          }
-        }
-      }
-    },
-    "Your password has been updated." : {
-
-    },
-    "Your review has been submitted" : {
-
-    },
-    "Your review is pending verification" : {
-
-    },
-    "Your review must be at least 50 characters. Currently %lld / 50." : {
-
-    },
-    "Your review will be marked as unverified." : {
-
-    },
-    "Your reviews guide others to better healthcare" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your reviews guide others to better healthcare"
-          }
-        }
-      }
-    },
-    "Your Rights" : {
-
-    },
-    "Clear" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear"
-          }
-        }
-      }
-    },
-    "Clear Filter" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear Filter"
-          }
-        }
-      }
-    },
-    "Close" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Close"
-          }
-        }
-      }
-    },
-    "More" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "More"
-          }
-        }
-      }
-    },
-    "No locations found. Try a different search." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No locations found. Try a different search."
-          }
-        }
-      }
-    },
-    "Please select a specialty." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please select a specialty."
-          }
-        }
-      }
-    },
-    "Popular Cities" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Popular Cities"
-          }
-        }
-      }
-    },
-    "Recent Locations" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recent Locations"
-          }
-        }
-      }
-    },
-    "Search Location" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search Location"
-          }
-        }
-      }
-    },
-    "Search city or region..." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search city or region..."
-          }
-        }
-      }
-    },
-    "Search specialties" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search specialties"
-          }
-        }
-      }
-    },
-    "Select" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select"
-          }
-        }
-      }
-    },
-    "Specialties" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Specialties"
-          }
-        }
-      }
-    },
-    "Use My Current Location" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use My Current Location"
-          }
-        }
-      }
-    },
-    "Search for a provider..." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search for a provider..."
-          }
-        }
-      }
-    },
-    "Recently Viewed" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recently Viewed"
-          }
-        }
-      }
-    },
-    "Nearby Providers" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nearby Providers"
-          }
-        }
-      }
-    },
-    "Can't find your provider?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Can't find your provider?"
-          }
-        }
-      }
-    },
-    "Rate Your Experience" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rate Your Experience"
-          }
-        }
-      }
-    },
-    "Your Review" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your Review"
-          }
-        }
-      }
-    },
-    "Title (optional)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Title (optional)"
           }
         }
       }
@@ -2627,115 +2673,42 @@
         }
       }
     },
-    "Tell others about your visit..." : {
+    "Your password has been updated." : {
+
+    },
+    "Your Review" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tell others about your visit..."
+            "value" : "Your Review"
           }
         }
       }
     },
-    "Would you recommend this provider?" : {
+    "Your review has been submitted" : {
+
+    },
+    "Your review is pending verification" : {
+
+    },
+    "Your review must be at least 50 characters. Currently %lld / 50." : {
+
+    },
+    "Your reviews guide others to better healthcare" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Would you recommend this provider?"
+            "value" : "Your reviews guide others to better healthcare"
           }
         }
       }
     },
-    "Waiting Time" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waiting Time"
-          }
-        }
-      }
-    },
-    "Facility Cleanliness" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facility Cleanliness"
-          }
-        }
-      }
-    },
-    "Staff Friendliness" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Staff Friendliness"
-          }
-        }
-      }
-    },
-    "Value for Money" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Value for Money"
-          }
-        }
-      }
-    },
-    "Follow-up" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Follow-up"
-          }
-        }
-      }
-    },
-    "min_chars_format" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%d/50 min"
-          }
-        }
-      }
-    },
-    "Yes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yes"
-          }
-        }
-      }
-    },
-    "No" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No"
-          }
-        }
-      }
+    "Your Rights" : {
+
     },
     "Your session expired. Please sign in again." : {
 

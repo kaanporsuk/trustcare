@@ -17,6 +17,7 @@ struct ProfileView: View {
     @State private var showProfileSavedToast: Bool = false
     @State private var showAvatarUpdatedToast: Bool = false
     @State private var showLogoutConfirm: Bool = false
+    @State private var showErrorAlert: Bool = false
 
     init(selectedTab: Binding<Int> = .constant(2)) {
         _selectedTab = selectedTab
@@ -79,6 +80,14 @@ struct ProfileView: View {
                 }
             }
         }
+        .onChange(of: profileVM.errorMessage) { _, newValue in
+            showErrorAlert = newValue != nil
+        }
+        .onChange(of: showErrorAlert) { _, isShown in
+            if !isShown {
+                profileVM.errorMessage = nil
+            }
+        }
         .photosPicker(isPresented: $showPhotoPicker, selection: $avatarItem, matching: .images)
         .sheet(isPresented: $showCameraPicker) {
             ImagePicker(sourceType: .camera, image: $capturedImage)
@@ -130,11 +139,9 @@ struct ProfileView: View {
                     .padding(.top, AppSpacing.lg)
             }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
-            get: { profileVM.errorMessage != nil },
-            set: { if !$0 { profileVM.errorMessage = nil } }
-        )) {
+        .alert(String(localized: "Error"), isPresented: $showErrorAlert) {
             Button(String(localized: "Done")) {
+                showErrorAlert = false
                 profileVM.errorMessage = nil
             }
         } message: {

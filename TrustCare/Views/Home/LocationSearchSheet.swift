@@ -324,7 +324,7 @@ final class LocationSearchViewModel: NSObject, ObservableObject {
         fallbackName: String
     ) async throws -> HomeViewModel.SelectedLocation? {
         let search = MKLocalSearch(request: request)
-        let response = try await withCheckedThrowingContinuation { continuation in
+        let response = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<MKLocalSearch.Response, Error>) in
             search.start { response, error in
                 if let error {
                     continuation.resume(throwing: error)

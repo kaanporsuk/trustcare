@@ -1,4 +1,5 @@
 import SwiftUI
+import Supabase
 import CoreLocation
 
 struct HomeView: View {
