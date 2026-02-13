@@ -4,6 +4,7 @@ import CoreLocation
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @State private var displayName: String = String(localized: "Anonymous")
+    @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
     @State private var showSpecialtyBrowser: Bool = false
 
@@ -87,8 +88,23 @@ struct HomeView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            Text(greetingText)
-                .font(AppFont.title2)
+            HStack(spacing: AppSpacing.sm) {
+                Text(greetingText)
+                    .font(AppFont.title2)
+                if let urlString = avatarDisplayUrl, let url = URL(string: urlString) {
+                    AsyncImage(url: url) { image in
+                        image.resizable().scaledToFill()
+                    } placeholder: {
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+                }
+                Spacer()
+            }
             Button {
                 showLocationSearch = true
             } label: {
@@ -234,8 +250,29 @@ struct HomeView: View {
         do {
             let profile = try await AuthService.fetchProfile()
             displayName = profile.displayName
+            if let avatarUrl = profile.avatarUrl, let path = storagePath(from: avatarUrl) {
+                let signed = try await SupabaseManager.shared.client
+                    .storage
+                    .from("user-avatars")
+                    .createSignedURL(path: path, expiresIn: 3600)
+                avatarDisplayUrl = cacheBustedUrl(signed.absoluteString)
+            } else if let avatarUrl = profile.avatarUrl {
+                avatarDisplayUrl = cacheBustedUrl(avatarUrl)
+            }
         } catch {
             displayName = String(localized: "there")
         }
+    }
+
+    private func storagePath(from urlString: String) -> String? {
+        guard let range = urlString.range(of: "/user-avatars/") else {
+            return nil
+        }
+        return String(urlString[range.upperBound...])
+    }
+
+    private func cacheBustedUrl(_ url: String) -> String {
+        let separator = url.contains("?") ? "&" : "?"
+        return "\(url)\(separator)v=\(Int(Date().timeIntervalSince1970))"
     }
 }

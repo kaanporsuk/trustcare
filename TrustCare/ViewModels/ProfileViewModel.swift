@@ -13,6 +13,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var isSavingProfile: Bool = false
     @Published var errorMessage: String?
     @Published var unreadNotificationCount: Int = 0
+    @Published var avatarDisplayUrl: String?
     
     init() {
         print("🔵 ProfileViewModel initialized")
@@ -24,6 +25,8 @@ final class ProfileViewModel: ObservableObject {
         errorMessage = nil
         do {
             profile = try await AuthService.fetchProfile()
+            print("Avatar URL from profile: \(profile?.avatarUrl ?? "nil")")
+            await resolveAvatarDisplayUrl(from: profile?.avatarUrl)
             print("✅ Profile loaded: \(profile?.displayName ?? "nil")")
         } catch {
             print("❌ loadProfile failed: \(error)")
@@ -170,6 +173,7 @@ final class ProfileViewModel: ObservableObject {
                 data: data,
                 contentType: "image/jpeg"
             )
+            print("✅ Avatar uploaded: \(url)")
 
             try await AuthService.updateProfile(
                 fullName: nil,
@@ -180,10 +184,45 @@ final class ProfileViewModel: ObservableObject {
                 language: nil,
                 currency: nil
             )
+            avatarDisplayUrl = cacheBustedUrl(url)
             await loadProfile()
         } catch {
             errorMessage = localizedErrorMessage(error)
         }
+    }
+
+    private func resolveAvatarDisplayUrl(from rawUrl: String?) async {
+        guard let rawUrl, !rawUrl.isEmpty else {
+            avatarDisplayUrl = nil
+            return
+        }
+
+        if let path = storagePath(from: rawUrl) {
+            do {
+                let signed = try await SupabaseManager.shared.client
+                    .storage
+                    .from("user-avatars")
+                    .createSignedURL(path: path, expiresIn: 3600)
+                avatarDisplayUrl = cacheBustedUrl(signed.absoluteString)
+                return
+            } catch {
+                print("⚠️ Failed to create signed avatar URL: \(error)")
+            }
+        }
+
+        avatarDisplayUrl = cacheBustedUrl(rawUrl)
+    }
+
+    private func storagePath(from urlString: String) -> String? {
+        guard let range = urlString.range(of: "/user-avatars/") else {
+            return nil
+        }
+        return String(urlString[range.upperBound...])
+    }
+
+    private func cacheBustedUrl(_ url: String) -> String {
+        let separator = url.contains("?") ? "&" : "?"
+        return "\(url)\(separator)v=\(Int(Date().timeIntervalSince1970))"
     }
 
     func updatePhone(_ phone: String?) async {

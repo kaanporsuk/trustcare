@@ -268,7 +268,7 @@ struct ProfileView: View {
 
     private var avatarView: some View {
         Group {
-            if let urlString = profileVM.profile?.avatarUrl, let url = URL(string: urlString) {
+            if let urlString = profileVM.avatarDisplayUrl, let url = URL(string: urlString) {
                 AsyncImage(url: url) { image in
                     image.resizable().scaledToFill()
                 } placeholder: {
