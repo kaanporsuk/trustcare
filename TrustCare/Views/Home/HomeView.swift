@@ -1,8 +1,11 @@
 import SwiftUI
+import CoreLocation
 
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @State private var displayName: String = String(localized: "Anonymous")
+    @State private var showLocationSearch: Bool = false
+    @State private var showSpecialtyBrowser: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -26,13 +29,10 @@ struct HomeView: View {
             .dismissKeyboardOnTap()
             .keyboardDoneToolbar()
             .task(id: homeVM.searchText) {
-                // Only trigger search if user actually typed something or cleared text
-                // Skip the initial "" value on view load
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
             .task(id: homeVM.selectedSpecialty) {
-                // Only trigger search after initial load
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
@@ -51,6 +51,37 @@ struct HomeView: View {
             } message: {
                 Text(homeVM.errorMessage ?? "")
             }
+            .fullScreenCover(isPresented: $showLocationSearch) {
+                LocationSearchSheet(
+                    currentLocationName: homeVM.locationName,
+                    selectedLocation: homeVM.selectedLocation,
+                    recentLocations: homeVM.recentLocations,
+                    onSelectLocation: { location in
+                        await homeVM.selectLocation(location)
+                        showLocationSearch = false
+                    },
+                    onUseCurrentLocation: {
+                        await homeVM.useCurrentLocation()
+                        showLocationSearch = false
+                    },
+                    onClearRecents: {
+                        homeVM.clearRecentLocations()
+                    }
+                )
+            }
+            .sheet(isPresented: $showSpecialtyBrowser) {
+                SpecialtyBrowserSheet(
+                    specialties: homeVM.specialties,
+                    selectedSpecialty: homeVM.selectedSpecialty,
+                    onSelect: { specialty in
+                        homeVM.selectedSpecialty = specialty
+                        showSpecialtyBrowser = false
+                    },
+                    onClear: {
+                        homeVM.selectedSpecialty = nil
+                    }
+                )
+            }
         }
     }
 
@@ -59,17 +90,27 @@ struct HomeView: View {
             Text(greetingText)
                 .font(AppFont.title2)
             Button {
-                homeVM.startLocationUpdates()
+                showLocationSearch = true
             } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: "mappin.and.ellipse")
-                        .foregroundStyle(.secondary)
-                    Text(homeVM.locationName)
+                HStack(spacing: 8) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "mappin.and.ellipse")
+                            .foregroundStyle(.secondary)
+                        Text(homeVM.locationName)
+                            .font(AppFont.body)
+                            .foregroundStyle(.secondary)
+                        Image(systemName: "chevron.down")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    Text(String(localized: "Change"))
                         .font(AppFont.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(AppColor.trustBlue)
                 }
             }
             .buttonStyle(.plain)
+            .animation(.easeInOut(duration: 0.2), value: homeVM.locationName)
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.top, AppSpacing.lg)
@@ -86,14 +127,35 @@ struct HomeView: View {
                     homeVM.selectedSpecialty = nil
                 }
 
-                ForEach(homeVM.specialties) { specialty in
+                ForEach(homeVM.popularSpecialties) { specialty in
                     SpecialtyChipView(
-                        title: specialty.nameEn,
-                        isSelected: homeVM.selectedSpecialty == specialty.nameEn
+                        title: specialty.name,
+                        isSelected: homeVM.selectedSpecialty == specialty
                     ) {
-                        homeVM.selectedSpecialty = specialty.nameEn
+                        homeVM.selectedSpecialty = specialty
                     }
                 }
+
+                Button {
+                    showSpecialtyBrowser = true
+                } label: {
+                    HStack(spacing: 4) {
+                        Text(String(localized: "More"))
+                            .font(AppFont.caption)
+                        Image(systemName: "chevron.down")
+                            .font(.caption2)
+                    }
+                    .foregroundStyle(.primary)
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.vertical, AppSpacing.xs)
+                    .background(AppColor.cardBackground)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule()
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
+                }
+                .buttonStyle(.plain)
             }
             .padding(.horizontal, AppSpacing.lg)
         }
@@ -108,7 +170,16 @@ struct HomeView: View {
                 Spacer()
             }
         } else if homeVM.viewMode == .map {
-            ProviderMapView(providers: homeVM.providers, isLoading: homeVM.isLoading)
+            ProviderMapView(
+                providers: homeVM.providers,
+                isLoading: homeVM.isLoading,
+                centerCoordinate: homeVM.selectedLocation.isCurrentLocation
+                    ? homeVM.locationManagerCoordinate
+                    : CLLocationCoordinate2D(
+                        latitude: homeVM.selectedLocation.latitude,
+                        longitude: homeVM.selectedLocation.longitude
+                    )
+            )
         } else if homeVM.providers.isEmpty {
             VStack(spacing: AppSpacing.sm) {
                 Image(systemName: "magnifyingglass")
@@ -123,7 +194,10 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack(spacing: AppSpacing.md) {
                     ForEach(homeVM.providers) { provider in
-                        ProviderCardView(provider: provider)
+                        ProviderCardView(
+                            provider: provider,
+                            iconName: homeVM.iconName(for: provider.specialty)
+                        )
                     }
 
                     if homeVM.hasMoreResults {
@@ -138,7 +212,7 @@ struct HomeView: View {
             }
             .scrollDismissesKeyboard(.interactively)
             .refreshable {
-                await homeVM.refresh()
+                await homeVM.refresh(forceSpecialtiesRefresh: true)
             }
         }
     }
@@ -161,7 +235,6 @@ struct HomeView: View {
             let profile = try await AuthService.fetchProfile()
             displayName = profile.displayName
         } catch {
-            // Non-critical — just use default name, no alert needed
             displayName = String(localized: "there")
         }
     }

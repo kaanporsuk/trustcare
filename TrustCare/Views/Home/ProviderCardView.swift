@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ProviderCardView: View {
     let provider: Provider
+    let iconName: String?
 
     var body: some View {
         NavigationLink {
@@ -37,9 +38,16 @@ struct ProviderCardView: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    Text("\(provider.specialty)" + (provider.clinicName != nil ? " • \(provider.clinicName ?? "")" : ""))
-                        .font(AppFont.caption)
-                        .foregroundStyle(.secondary)
+                    HStack(spacing: 6) {
+                        if let iconName {
+                            Image(systemName: iconName)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Text("\(provider.specialty)" + (provider.clinicName != nil ? " • \(provider.clinicName ?? "")" : ""))
+                            .font(AppFont.caption)
+                            .foregroundStyle(.secondary)
+                    }
 
                     HStack(spacing: 6) {
                         StarRatingView(rating: provider.ratingOverall)

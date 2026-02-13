@@ -6,6 +6,11 @@ enum ProviderService {
         SupabaseManager.shared.client
     }
 
+    private static let specialtiesCacheKey = "specialtiesCache"
+    private static let specialtiesCacheDateKey = "specialtiesCacheDate"
+    private static var cachedSpecialties: [Specialty]?
+    private static var cachedSpecialtiesDate: Date?
+
     static func searchProvidersTable(query: String, limit: Int = 20) async throws -> [Provider] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return [] }
@@ -30,6 +35,7 @@ enum ProviderService {
         priceLevel: Int? = nil,
         minRating: Double? = nil,
         verifiedOnly: Bool? = nil,
+        radiusKm: Int = 50,
         lat: Double?,
         lng: Double?,
         limit: Int = 20,
@@ -45,7 +51,8 @@ enum ProviderService {
             "limit_val": .double(Double(limit)),
             "offset_val": .double(Double(offset)),
             "min_rating": .double(minRating ?? 0),  // Default to 0 to match SQL function
-            "verified_only": .bool(verifiedOnly ?? false)  // Default to false
+            "verified_only": .bool(verifiedOnly ?? false),  // Default to false
+            "max_distance_km": .double(Double(radiusKm))
         ]
 
         if let text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -297,26 +304,83 @@ enum ProviderService {
         return response.value
     }
 
-    static func fetchSpecialties() async throws -> [Specialty] {
-        print("🔵 ProviderService.fetchSpecialties called")
-        
+    static func fetchSpecialtiesCached(forceRefresh: Bool = false) async throws -> [Specialty] {
+        if !forceRefresh, let cached = cachedSpecialties,
+           let cachedDate = cachedSpecialtiesDate,
+           !isSpecialtiesCacheStale(cachedDate) {
+            return cached
+        }
+
+        if !forceRefresh,
+           let stored = loadSpecialtiesFromDefaults(),
+           let storedDate = loadSpecialtiesCacheDate(),
+           !isSpecialtiesCacheStale(storedDate) {
+            cachedSpecialties = stored
+            cachedSpecialtiesDate = storedDate
+            return stored
+        }
+
+        do {
+            let fresh = try await fetchSpecialtiesRemote()
+            cachedSpecialties = fresh
+            let now = Date()
+            cachedSpecialtiesDate = now
+            saveSpecialtiesToDefaults(fresh, date: now)
+            return fresh
+        } catch {
+            if let cached = cachedSpecialties {
+                return cached
+            }
+            if let stored = loadSpecialtiesFromDefaults() {
+                return stored
+            }
+            throw error
+        }
+    }
+
+    private static func fetchSpecialtiesRemote() async throws -> [Specialty] {
+        print("🔵 ProviderService.fetchSpecialtiesRemote called")
+
         do {
             let response: PostgrestResponse<[Specialty]> = try await client
                 .from("specialties")
-                .select("id, name_key, name_en, icon_name")
+                .select("id, name, category, subcategory, icon_name, display_order, is_popular, is_active")
                 .eq("is_active", value: true)
                 .order("display_order", ascending: true)
                 .execute()
 
-            print("✅ fetchSpecialties returned \(response.value.count) specialties")
+            print("✅ fetchSpecialtiesRemote returned \(response.value.count) specialties")
             return response.value
         } catch {
-            print("❌ fetchSpecialties failed")
+            print("❌ fetchSpecialtiesRemote failed")
             print("  Error: \(error)")
             print("  Error type: \(type(of: error))")
             print("  Localized: \(error.localizedDescription)")
             throw error
         }
+    }
+
+    private static func isSpecialtiesCacheStale(_ date: Date) -> Bool {
+        let maxAge: TimeInterval = 24 * 60 * 60
+        return Date().timeIntervalSince(date) > maxAge
+    }
+
+    private static func saveSpecialtiesToDefaults(_ specialties: [Specialty], date: Date) {
+        if let data = try? JSONEncoder().encode(specialties) {
+            UserDefaults.standard.set(data, forKey: specialtiesCacheKey)
+            UserDefaults.standard.set(date, forKey: specialtiesCacheDateKey)
+        }
+    }
+
+    private static func loadSpecialtiesFromDefaults() -> [Specialty]? {
+        guard let data = UserDefaults.standard.data(forKey: specialtiesCacheKey) else {
+            return nil
+        }
+        return try? JSONDecoder().decode([Specialty].self, from: data)
+    }
+
+    private static func loadSpecialtiesCacheDate() -> Date? {
+        UserDefaults.standard.object(forKey: specialtiesCacheDateKey) as? Date
     }
 
     private static func fetchReviewMedia(_ reviewIds: [UUID]) async throws -> [UUID: [ReviewMedia]] {
