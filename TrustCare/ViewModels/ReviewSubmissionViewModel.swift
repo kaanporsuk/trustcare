@@ -1,266 +1,138 @@
-import AVFoundation
-import Combine
 import Foundation
 import UIKit
 
 @MainActor
 final class ReviewSubmissionViewModel: ObservableObject {
-    @Published var currentStep: Int = 1
-    @Published var selectedProvider: Provider?
-    @Published var searchText: String = ""
-    @Published var searchResults: [Provider] = []
+    let provider: Provider
+
     @Published var visitDate: Date = Date()
     @Published var visitType: VisitType = .consultation
-    @Published var ratingWaitTime: Double = 5
-    @Published var ratingBedside: Double = 5
-    @Published var ratingEfficacy: Double = 5
-    @Published var ratingCleanliness: Double = 5
-    @Published var priceLevel: PriceLevel = .moderate
+
+    @Published var overallRating: Int = 0
+    @Published var ratingWaitTime: Int = 0
+    @Published var ratingBedside: Int = 0
+    @Published var ratingEfficacy: Int = 0
+    @Published var ratingCleanliness: Int = 0
+    @Published var ratingStaff: Int = 0
+    @Published var ratingValue: Int = 0
+
     @Published var title: String = ""
     @Published var comment: String = ""
     @Published var wouldRecommend: Bool = true
     @Published var selectedImages: [UIImage] = []
-    @Published var selectedVideo: URL?
-    @Published var selectedVideoDuration: Double?
     @Published var proofImage: UIImage?
+
     @Published var isSubmitting: Bool = false
     @Published var submissionErrorMessage: String?
-    @Published var searchErrorMessage: String?
-    @Published var showSkipVerificationNote: Bool = false
     @Published var isComplete: Bool = false
     @Published var mediaUploadProgress: Double = 0
-    @Published var isLoading: Bool = false
 
-    private var searchTask: Task<Void, Never>?
+    private var hasSetOverall: Bool = false
 
-    var canAdvance: Bool {
-        switch currentStep {
-        case 1:
-            return selectedProvider != nil
-        case 2:
-            return visitDate <= Date()
-        case 3:
-            return true
-        case 4:
-            return true
-        case 5:
-            return comment.count >= 50
-        case 6:
-            guard selectedImages.count <= 5 else { return false }
-            if let duration = selectedVideoDuration {
-                return duration <= 30
-            }
-            return true
-        case 7:
-            return true
-        default:
-            return false
-        }
+    init(provider: Provider) {
+        self.provider = provider
     }
 
-    var overallRating: Double {
-        let total = ratingWaitTime + ratingBedside + ratingEfficacy + ratingCleanliness
-        return (total / 4.0) / 2.0
+    var commentCharCount: Int {
+        comment.count
     }
 
-    var commentCharCount: String {
-        "\(comment.count) / 1000"
+    var isCommentValid: Bool {
+        comment.trimmingCharacters(in: .whitespacesAndNewlines).count >= 50
     }
 
-    func searchProviders() {
-        searchTask?.cancel()
-        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
-            searchResults = []
-            isLoading = false
-            searchErrorMessage = nil
+    var canSubmit: Bool {
+        overallRating > 0 && isCommentValid
+    }
+
+    func setOverallRating(_ value: Int) {
+        overallRating = value
+        hasSetOverall = true
+    }
+
+    func updateOverallIfNeeded() {
+        guard !hasSetOverall else { return }
+        let ratings = [ratingWaitTime, ratingBedside, ratingEfficacy, ratingCleanliness, ratingStaff, ratingValue]
+        guard ratings.allSatisfy({ $0 > 0 }) else {
+            overallRating = 0
             return
         }
-
-        isLoading = true
-        searchTask = Task { [weak self] in
-            do {
-                try await Task.sleep(nanoseconds: 300_000_000)
-            } catch {
-                self?.isLoading = false
-                return
-            }
-            guard !Task.isCancelled, let self else { return }
-            do {
-                let results = try await ProviderService.searchProvidersTable(query: trimmed)
-                self.searchResults = results
-                self.searchErrorMessage = nil
-                self.isLoading = false
-            } catch {
-                self.searchErrorMessage = self.localizedSearchErrorMessage(error)
-                self.isLoading = false
-            }
-        }
+        let average = Double(ratings.reduce(0, +)) / Double(ratings.count)
+        overallRating = Int(round(average))
     }
 
-    func selectProvider(_ provider: Provider, advanceToStep2: Bool = false) {
-        selectedProvider = provider
-        searchText = provider.name
-        searchResults = []
-        searchErrorMessage = nil
-        submissionErrorMessage = nil
-        if advanceToStep2 {
-            currentStep = 2
-        }
+    func removeImage(at index: Int) {
+        guard selectedImages.indices.contains(index) else { return }
+        selectedImages.remove(at: index)
     }
 
-    func nextStep() {
-        guard canAdvance else { return }
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        submissionErrorMessage = nil
-        showSkipVerificationNote = false
-        currentStep = min(7, currentStep + 1)
-    }
-
-    func previousStep() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        submissionErrorMessage = nil
-        showSkipVerificationNote = false
-        currentStep = max(1, currentStep - 1)
-    }
-
-    func skipPhotos() {
-        selectedImages = []
-        selectedVideo = nil
-        selectedVideoDuration = nil
-        nextStep()
-    }
-
-    func skipVerification() async {
-        proofImage = nil
-        showSkipVerificationNote = true
-        submissionErrorMessage = nil
-        try? await Task.sleep(nanoseconds: 700_000_000)
-        await submit(statusOverride: "pending_verification")
-    }
-
-    func resetFlow() {
-        currentStep = 1
-        selectedProvider = nil
-        searchText = ""
-        searchResults = []
-        visitDate = Date()
-        visitType = .consultation
-        ratingWaitTime = 5
-        ratingBedside = 5
-        ratingEfficacy = 5
-        ratingCleanliness = 5
-        priceLevel = .moderate
-        title = ""
-        comment = ""
-        wouldRecommend = true
-        selectedImages = []
-        selectedVideo = nil
-        selectedVideoDuration = nil
-        proofImage = nil
-        submissionErrorMessage = nil
-        searchErrorMessage = nil
-        showSkipVerificationNote = false
-        isComplete = false
-        mediaUploadProgress = 0
-        isLoading = false
-    }
-
-    func submit(statusOverride: String? = nil) async {
-        guard let provider = selectedProvider else {
-            submissionErrorMessage = String(localized: "Please select a provider before submitting.")
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-            return
-        }
-        
+    func submit() async {
         let trimmedComment = comment.trimmingCharacters(in: .whitespacesAndNewlines)
-        if trimmedComment.count < 50 {
-            submissionErrorMessage = String(localized: "Your review must be at least 50 characters. Currently \(trimmedComment.count) / 50.")
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-            return
-        }
-        
-        if ratingWaitTime < 1 || ratingBedside < 1 || ratingEfficacy < 1 || ratingCleanliness < 1 {
+        if overallRating < 1 {
             submissionErrorMessage = String(localized: "Please complete all ratings before submitting.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
-        
+        if trimmedComment.count < 50 {
+            submissionErrorMessage = String(format: String(localized: "Your review must be at least 50 characters. Currently %lld / 50."), commentCharCount)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            return
+        }
+        if [ratingWaitTime, ratingBedside, ratingEfficacy, ratingCleanliness, ratingStaff, ratingValue].contains(where: { $0 < 1 }) {
+            submissionErrorMessage = String(localized: "Please complete all ratings before submitting.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            return
+        }
         if selectedImages.count > 5 {
             submissionErrorMessage = String(localized: "You can upload up to 5 photos.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
-        
-        if let duration = selectedVideoDuration, duration > 30 {
-            submissionErrorMessage = String(localized: "Videos must be 30 seconds or less.")
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-            return
-        }
-        
+
         isSubmitting = true
         submissionErrorMessage = nil
         mediaUploadProgress = 0
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 
-        let waitRating = max(1, min(5, Int(round(ratingWaitTime / 2.0))))
-        let bedsideRating = max(1, min(5, Int(round(ratingBedside / 2.0))))
-        let efficacyRating = max(1, min(5, Int(round(ratingEfficacy / 2.0))))
-        let cleanlinessRating = max(1, min(5, Int(round(ratingCleanliness / 2.0))))
+        let priceLevel = max(1, min(4, Int(round(Double(ratingValue) / 1.25))))
 
         do {
-            print("🔵 ReviewSubmissionViewModel.submit started")
-            print("  Provider ID: \(provider.id)")
-            print("  Visit date: \(visitDate)")
-            print("  Visit type: \(visitType.rawValue)")
-            print("  Ratings (1-5): wait=\(waitRating), bedside=\(bedsideRating), efficacy=\(efficacyRating), cleanliness=\(cleanlinessRating)")
-            print("  Comment length: \(comment.count)")
-            print("  Proof image selected: \(proofImage != nil)")
-            print("  Media images: \(selectedImages.count), video: \(selectedVideo != nil)")
-            if let statusOverride {
-                print("  Status override: \(statusOverride)")
-            }
-            let review = try await ReviewService.submitReview(
+            _ = try await ReviewService.submitReview(
                 providerId: provider.id,
                 visitDate: visitDate,
                 visitType: visitType,
                 ratings: (
-                    wait: waitRating,
-                    bedside: bedsideRating,
-                    efficacy: efficacyRating,
-                    cleanliness: cleanlinessRating
+                    wait: ratingWaitTime,
+                    bedside: ratingBedside,
+                    efficacy: ratingEfficacy,
+                    cleanliness: ratingCleanliness,
+                    staff: ratingStaff,
+                    value: ratingValue
                 ),
-                priceLevel: priceLevel.rawValue,
+                overallRating: overallRating,
+                priceLevel: priceLevel,
                 title: title.isEmpty ? nil : title,
                 comment: comment,
                 wouldRecommend: wouldRecommend,
                 proofImage: proofImage,
                 images: selectedImages,
-                videoURL: selectedVideo,
-                statusOverride: statusOverride,
+                videoURL: nil,
                 progressHandler: { [weak self] progress in
                     Task { @MainActor in
                         self?.mediaUploadProgress = progress
                     }
                 }
             )
-            _ = review
             mediaUploadProgress = 1
             isComplete = true
-            showSkipVerificationNote = false
             UINotificationFeedbackGenerator().notificationOccurred(.success)
         } catch {
             let message = localizedErrorMessage(error)
-            print("❌ ReviewSubmissionViewModel.submit failed: \(message)")
             submissionErrorMessage = message
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
 
         isSubmitting = false
-    }
-
-    private func videoDurationSeconds(for url: URL) -> Double? {
-        nil
     }
 
     private func localizedErrorMessage(_ error: Error) -> String {
@@ -269,37 +141,12 @@ final class ReviewSubmissionViewModel: ObservableObject {
         }
 
         let message = error.localizedDescription.lowercased()
-        
-        if message.contains("network") || message.contains("offline") || message.contains("connection") {
-            return String(localized: "Network error. Please check your connection and try again.")
-        }
-        if message.contains("upload") || message.contains("media") {
-            return String(localized: "Failed to upload media. Please try again or skip verification.")
-        }
-        if message.contains("auth") || message.contains("permission") || message.contains("denied") {
-            return String(localized: "You don't have permission to perform this action. Please sign in again.")
-        }
-        if message.contains("timeout") {
-            return String(localized: "Request timed out. Please check your connection and try again.")
-        }
-        
-        // Try to extract meaningful error details from the message
-        if !error.localizedDescription.isEmpty {
-            return error.localizedDescription
-        }
-        
-        return String(localized: "Something went wrong. Please try again.")
-    }
-
-    private func localizedSearchErrorMessage(_ error: Error) -> String {
-        if let appError = error as? AppError {
-            return appError.localizedDescription
-        }
-
-        let message = error.localizedDescription.lowercased()
         if message.contains("network") || message.contains("offline") {
             return String(localized: "Network error. Please check your connection.")
         }
-        return String(localized: "Unable to load providers. Please try again.")
+        if message.contains("expired") || message.contains("token") {
+            return String(localized: "Your session expired. Please sign in again.")
+        }
+        return String(localized: "Something went wrong. Please try again.")
     }
 }

@@ -141,6 +141,8 @@ enum ProviderService {
             let ratingBedside: Int
             let ratingEfficacy: Int
             let ratingCleanliness: Int
+            let ratingStaff: Int
+            let ratingValue: Int
             let ratingOverall: Double
             let priceLevel: Int
             let title: String?
@@ -163,6 +165,8 @@ enum ProviderService {
                 case ratingBedside = "rating_bedside"
                 case ratingEfficacy = "rating_efficacy"
                 case ratingCleanliness = "rating_cleanliness"
+                case ratingStaff = "rating_staff"
+                case ratingValue = "rating_value"
                 case ratingOverall = "rating_overall"
                 case priceLevel = "price_level"
                 case wouldRecommend = "would_recommend"
@@ -210,6 +214,8 @@ enum ProviderService {
                 ratingBedside: review.ratingBedside,
                 ratingEfficacy: review.ratingEfficacy,
                 ratingCleanliness: review.ratingCleanliness,
+                ratingStaff: review.ratingStaff,
+                ratingValue: review.ratingValue,
                 ratingOverall: review.ratingOverall,
                 priceLevel: review.priceLevel,
                 title: review.title,

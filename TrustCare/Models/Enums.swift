@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum VisitType: String, Codable, CaseIterable, Identifiable {
-    case consultation, procedure, checkup, emergency
+    case consultation, procedure, checkup, emergency, followUp = "follow_up"
     var id: String { rawValue }
     var displayName: String {
         switch self {
@@ -9,6 +9,7 @@ enum VisitType: String, Codable, CaseIterable, Identifiable {
         case .procedure: return String(localized: "Procedure")
         case .checkup: return String(localized: "Checkup")
         case .emergency: return String(localized: "Emergency")
+        case .followUp: return String(localized: "Follow-up")
         }
     }
 }

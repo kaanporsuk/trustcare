@@ -39,6 +39,7 @@ struct ProviderDetailView: View {
                     servicesSection
                     reviewsSection
                 }
+                .padding(.bottom, AppSpacing.xxxl)
             }
         }
         .scrollDismissesKeyboard(.interactively)
@@ -47,6 +48,11 @@ struct ProviderDetailView: View {
         }
         .task {
             await detailVM.loadDetails(id: providerId)
+        }
+        .onChange(of: detailVM.provider?.id) { _, _ in
+            if let provider = detailVM.provider {
+                RecentProvidersStore.add(provider)
+            }
         }
         .sheet(isPresented: $showClaimSheet) {
             if let provider = detailVM.provider {
@@ -64,6 +70,24 @@ struct ProviderDetailView: View {
             Text(detailVM.errorMessage ?? "")
         }
         .toolbar(.hidden, for: .tabBar)
+        .overlay(alignment: .bottom) {
+            if let provider = detailVM.provider {
+                NavigationLink {
+                    ReviewFormView(provider: provider)
+                } label: {
+                    Label(String(localized: "Write a Review"), systemImage: "star.bubble")
+                        .font(AppFont.headline)
+                        .foregroundStyle(.white)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, AppSpacing.lg)
+                        .background(AppColor.trustBlue)
+                        .cornerRadius(999)
+                        .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 4)
+                }
+                .buttonStyle(.plain)
+                .padding(.bottom, AppSpacing.lg)
+            }
+        }
     }
 
     private var heroSection: some View {
@@ -333,22 +357,6 @@ struct ProviderDetailView: View {
                 Text(String(localized: "See All Reviews"))
                     .font(AppFont.caption)
                     .foregroundStyle(AppColor.trustBlue)
-            }
-
-            NavigationLink {
-                if let provider = detailVM.provider {
-                    SubmitReviewView(preselectedProvider: provider)
-                } else {
-                    SubmitReviewView()
-                }
-            } label: {
-                Text(String(localized: "Write a Review"))
-                    .font(AppFont.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(AppColor.trustBlue)
-                    .cornerRadius(AppRadius.button)
             }
         }
         .padding(.horizontal, AppSpacing.lg)

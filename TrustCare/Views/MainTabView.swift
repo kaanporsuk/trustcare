@@ -18,7 +18,7 @@ struct MainTabView: View {
             .tag(0)
 
             NavigationStack {
-                SubmitReviewView(selectedTab: $selectedTab)
+                ReviewHubView()
             }
             .tabItem {
                 Image(systemName: "plus.circle.fill")

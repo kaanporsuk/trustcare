@@ -12,7 +12,8 @@ enum ReviewService {
         providerId: UUID,
         visitDate: Date,
         visitType: VisitType,
-        ratings: (wait: Int, bedside: Int, efficacy: Int, cleanliness: Int),
+        ratings: (wait: Int, bedside: Int, efficacy: Int, cleanliness: Int, staff: Int, value: Int),
+        overallRating: Int,
         priceLevel: Int,
         title: String?,
         comment: String,
@@ -36,7 +37,7 @@ enum ReviewService {
         print("  User ID: \(userId)")
         print("  Visit date: \(visitDate)")
         print("  Visit type: \(visitType.rawValue)")
-        print("  Ratings: wait=\(ratings.wait), bedside=\(ratings.bedside), efficacy=\(ratings.efficacy), cleanliness=\(ratings.cleanliness)")
+        print("  Ratings: wait=\(ratings.wait), bedside=\(ratings.bedside), efficacy=\(ratings.efficacy), cleanliness=\(ratings.cleanliness), staff=\(ratings.staff), value=\(ratings.value)")
         print("  Price level: \(priceLevel)")
         print("  Comment length: \(comment.count)")
         print("  Proof image selected: \(proofImage != nil)")
@@ -68,8 +69,9 @@ enum ReviewService {
             advanceProgress()
         }
 
-        let overall = Double(ratings.wait + ratings.bedside + ratings.efficacy + ratings.cleanliness) / 4.0
-        let roundedOverall = Double(round(overall * 10) / 10)
+        let derivedOverall = Double(ratings.wait + ratings.bedside + ratings.efficacy + ratings.cleanliness + ratings.staff + ratings.value) / 6.0
+        let resolvedOverall = overallRating > 0 ? Double(overallRating) : derivedOverall
+        let roundedOverall = Double(round(resolvedOverall * 10) / 10)
         let status = statusOverride ?? (proofImage != nil ? "pending_verification" : "active")
 
         struct ReviewInsert: Encodable {
@@ -81,6 +83,8 @@ enum ReviewService {
             let ratingBedside: Int
             let ratingEfficacy: Int
             let ratingCleanliness: Int
+            let ratingStaff: Int
+            let ratingValue: Int
             let ratingOverall: Double
             let priceLevel: Int
             let title: String?
@@ -99,6 +103,8 @@ enum ReviewService {
                 case ratingBedside = "rating_bedside"
                 case ratingEfficacy = "rating_efficacy"
                 case ratingCleanliness = "rating_cleanliness"
+                case ratingStaff = "rating_staff"
+                case ratingValue = "rating_value"
                 case ratingOverall = "rating_overall"
                 case priceLevel = "price_level"
                 case title
@@ -119,6 +125,8 @@ enum ReviewService {
             ratingBedside: ratings.bedside,
             ratingEfficacy: ratings.efficacy,
             ratingCleanliness: ratings.cleanliness,
+            ratingStaff: ratings.staff,
+            ratingValue: ratings.value,
             ratingOverall: roundedOverall,
             priceLevel: priceLevel,
             title: title,
