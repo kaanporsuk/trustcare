@@ -100,7 +100,7 @@ struct ReviewFormView: View {
     private var providerSubtitle: String {
         let specialty = viewModel.provider.specialty
         if let clinic = viewModel.provider.clinicName, !clinic.isEmpty {
-            return "\(specialty) \u2022 \(clinic)"
+            return "\(specialty) \u{2022} \(clinic)"
         }
         return specialty
     }
