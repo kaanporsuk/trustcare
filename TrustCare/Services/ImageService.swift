@@ -115,4 +115,60 @@ enum ImageService {
         let url = try client.storage.from(bucket).getPublicURL(path: path)
         return url.absoluteString
     }
-}
+
+    /// Gets public URL for a path in a public storage bucket
+    /// Used for: avatars, review-media (public buckets)
+    static func getPublicURL(bucket: String, path: String) -> URL? {
+        do {
+            let url = try client.storage.from(bucket).getPublicURL(path: path)
+            return url
+        } catch {
+            print("❌ Failed to get public URL for bucket: \(bucket), path: \(path) - Error: \(error)")
+            return nil
+        }
+    }
+
+    /// Gets signed URL for a path in a private storage bucket
+    /// Used for: verification-proofs (private bucket, expires in 1 hour)
+    static func getSignedURL(bucket: String, path: String, expiresIn: Int = 3600) async -> URL? {
+        do {
+            let url = try await client
+                .storage
+                .from(bucket)
+                .createSignedURL(path: path, expiresIn: expiresIn)
+            return url
+        } catch {
+            print("❌ Failed to get signed URL for bucket: \(bucket), path: \(path) - Error: \(error)")
+            return nil
+        }
+    }
+
+    /// Extracts storage path from a full URL
+    /// Handles formats like:
+    ///   - https://...storage/v1/object/public/avatars/uuid/avatar.jpg
+    ///   - https://...storage/v1/object/public/review-media/uuid/file.jpg
+    ///   - /avatars/uuid/avatar.jpg (relative path)
+    static func extractStoragePath(from urlString: String, bucket: String) -> String? {
+        guard !urlString.isEmpty else { return nil }
+
+        // Try to extract from full HTTP URL
+        if urlString.contains("storage/v1/object") {
+            if let range = urlString.range(of: "\(bucket)/") {
+                return String(urlString[range.upperBound...])
+            }
+        }
+
+        // Try to extract from relative path
+        if urlString.contains("/\(bucket)/") {
+            if let range = urlString.range(of: "/\(bucket)/") {
+                return String(urlString[range.upperBound...])
+            }
+        }
+
+        // Return as-is if it looks like a plain path
+        if !urlString.contains("://") && !urlString.contains("http") {
+            return urlString
+        }
+
+        return nil
+    }}

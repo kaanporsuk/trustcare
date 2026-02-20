@@ -1,5 +1,7 @@
 import Foundation
 import Supabase
+import MapKit
+import CoreLocation
 
 enum ProviderService {
     private static var client: SupabaseClient {
@@ -39,19 +41,21 @@ enum ProviderService {
         lat: Double?,
         lng: Double?,
         limit: Int = 20,
-        offset: Int = 0
+        offset: Int = 0,
+        enableAppleMaps: Bool = true  // Enable Apple Maps fallback
     ) async throws -> [Provider] {
         print("🔵 ProviderService.searchProviders called")
         print("  Text: '\(text ?? "nil")'")
         print("  Specialty: '\(specialty ?? "nil")'")
         print("  Location: \(lat != nil && lng != nil ? "(\(lat!), \(lng!))" : "nil")")
         print("  Limit: \(limit), Offset: \(offset)")
+        print("  Apple Maps fallback enabled: \(enableAppleMaps)")
         
         var params: [String: AnyJSON] = [
             "limit_val": .double(Double(limit)),
             "offset_val": .double(Double(offset)),
-            "min_rating": .double(minRating ?? 0),  // Default to 0 to match SQL function
-            "verified_only": .bool(verifiedOnly ?? false),  // Default to false
+            "min_rating": .double(minRating ?? 0),
+            "verified_only": .bool(verifiedOnly ?? false),
             "max_distance_km": .double(Double(radiusKm))
         ]
 
@@ -76,18 +80,21 @@ enum ProviderService {
 
         print("  Calling search_providers RPC with params: \(params)")
         
+        var supabaseProviders: [Provider] = []
+        
         do {
             let response: PostgrestResponse<[Provider]> = try await client
                 .rpc("search_providers", params: params)
                 .execute()
             
             print("✅ search_providers RPC returned \(response.value.count) providers")
+            supabaseProviders = response.value
 
             guard let lat, let lng else {
-                return response.value
+                return supabaseProviders
             }
 
-            return response.value.map { provider in
+            supabaseProviders = supabaseProviders.map { provider in
                 let distance = haversineDistanceKm(
                     lat1: lat,
                     lon1: lng,
@@ -103,6 +110,60 @@ enum ProviderService {
             print("  Localized: \(error.localizedDescription)")
             throw error
         }
+        
+        // TIER 2: Apple Maps fallback if results are insufficient and enableAppleMaps is true
+        if enableAppleMaps && supabaseProviders.count < 5, let searchText = text, !searchText.isEmpty {
+            print("📍 Triggering Apple Maps fallback (Supabase only found \(supabaseProviders.count) results)")
+            
+            let userCoordinate: CLLocationCoordinate2D? = if let lat, let lng {
+                CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            } else {
+                nil
+            }
+            
+            do {
+                let appleMapsResults = try await AppleMapsService.searchHealthcareProviders(
+                    query: searchText,
+                    coordinate: userCoordinate,
+                    radiusMeters: CLLocationDistance(radiusKm * 1000)
+                )
+                
+                print("📍 Apple Maps returned \(appleMapsResults.count) results")
+                
+                // Convert to temporary providers and deduplicate
+                var appleMapsProviders = appleMapsResults.map { $0.toTemporaryProvider() }
+                
+                // Add distance if location available
+                if let lat, let lng {
+                    appleMapsProviders = appleMapsProviders.map { provider in
+                        let distance = haversineDistanceKm(
+                            lat1: lat,
+                            lon1: lng,
+                            lat2: provider.latitude,
+                            lon2: provider.longitude
+                        )
+                        return withDistance(provider, distanceKm: distance)
+                    }
+                }
+                
+                // Deduplicate by name and address
+                let deduplicatedApple = appleMapsProviders.filter { appleProvider in
+                    !supabaseProviders.contains { supabaseProvider in
+                        supabaseProvider.name.lowercased() == appleProvider.name.lowercased() &&
+                        supabaseProvider.address.lowercased() == appleProvider.address.lowercased()
+                    }
+                }
+                
+                print("📍 Adding \(deduplicatedApple.count) unique Apple Maps results")
+                supabaseProviders.append(contentsOf: deduplicatedApple)
+                
+            } catch {
+                print("⚠️ Apple Maps fallback failed: \(error.localizedDescription)")
+                // Continue with Supabase results only
+            }
+        }
+        
+        return supabaseProviders
     }
 
     static func fetchProviderById(_ id: UUID) async throws -> Provider {
@@ -433,8 +494,96 @@ enum ProviderService {
             isFeatured: provider.isFeatured,
             isActive: provider.isActive,
             createdAt: provider.createdAt,
-            distanceKm: distanceKm
+            distanceKm: distanceKm,
+            dataSource: provider.dataSource,
+            externalId: provider.externalId,
+            updatedAt: provider.updatedAt,
+            deletedAt: provider.deletedAt,
+            priceLevel: provider.priceLevel
         )
+    }
+
+    // MARK: - Apple Maps Capture
+    
+    /// Capture an Apple Maps provider and save it to Supabase
+    /// This creates a new provider in the database from Apple Maps data
+    static func captureAndSaveProvider(
+        from appleMapsProvider: AppleMapsService.AppleMapsProvider
+    ) async throws -> Provider {
+        print("🔵 ProviderService.captureAndSaveProvider called")
+        print("  Name: \(appleMapsProvider.name)")
+        print("  Address: \(appleMapsProvider.address)")
+        let externalId = "\(appleMapsProvider.mapItem.name ?? "unknown")_\(appleMapsProvider.coordinate.latitude)_\(appleMapsProvider.coordinate.longitude)"
+        print("  External ID: \(externalId)")
+        
+        // Check if provider already exists by external_id
+        if let existingId = try await AppleMapsService.existsWithExternalId(externalId) {
+            print("ℹ️ Provider already exists with ID: \(existingId)")
+            return try await fetchProviderById(existingId)
+        }
+        
+        // Create new provider record
+        let newProviderId = UUID()
+        
+        struct ProviderInsert: Encodable {
+            let id: String
+            let name: String
+            let specialty: String
+            let clinic_name: String?
+            let address: String
+            let city: String?
+            let country_code: String
+            let latitude: Double
+            let longitude: Double
+            let phone: String?
+            let email: String?
+            let website: String?
+            let data_source: String
+            let external_id: String
+            let is_active: Bool
+            let is_claimed: Bool
+            let is_featured: Bool
+        }
+        
+        let insert = ProviderInsert(
+            id: newProviderId.uuidString,
+            name: appleMapsProvider.name,
+            specialty: "General",
+            clinic_name: nil,
+            address: appleMapsProvider.address,
+            city: appleMapsProvider.mapItem.placemark.locality,
+            country_code: appleMapsProvider.mapItem.placemark.country ?? "GB",
+            latitude: appleMapsProvider.coordinate.latitude,
+            longitude: appleMapsProvider.coordinate.longitude,
+            phone: appleMapsProvider.phone,
+            email: nil,
+            website: appleMapsProvider.mapItem.url?.absoluteString,
+            data_source: "apple_maps",
+            external_id: externalId,
+            is_active: true,
+            is_claimed: false,
+            is_featured: false
+        )
+        
+        print("  Inserting provider with ID: \(newProviderId)")
+        
+        do {
+            let _ = try await client
+                .from("providers")
+                .insert([insert])
+                .execute()
+            
+            print("✅ Provider inserted successfully: \(newProviderId)")
+            
+            // Fetch and return the newly created provider
+            return try await fetchProviderById(newProviderId)
+        } catch {
+            print("❌ Failed to insert provider")
+            print("  Error: \(error)")
+            print("  Error type: \(type(of: error))")
+            print("  Localized: \(error.localizedDescription)")
+            throw error
+        }
     }
 
     private static func haversineDistanceKm(

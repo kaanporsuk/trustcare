@@ -21,7 +21,7 @@ final class HomeViewModel: ObservableObject {
     @Published var specialties: [Specialty] = []
     @Published var popularSpecialties: [Specialty] = []
     @Published var searchText: String = ""
-    @Published var selectedSpecialty: Specialty?
+    @Published var selectedCategory: ProviderCategory = .all
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
@@ -40,10 +40,6 @@ final class HomeViewModel: ObservableObject {
 
     var locationManagerCoordinate: CLLocationCoordinate2D? {
         locationManager.userLocation
-    }
-
-    func iconName(for specialtyName: String) -> String? {
-        specialties.first(where: { $0.name == specialtyName })?.iconName
     }
 
     init() {
@@ -118,7 +114,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     func searchWithDebounce() async {
-        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', specialty: '\(selectedSpecialty?.name ?? "nil")')")
+        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', category: '\(selectedCategory.displayName)')")
         do {
             try await Task.sleep(nanoseconds: 300_000_000)
         } catch {
@@ -164,7 +160,7 @@ final class HomeViewModel: ObservableObject {
         do {
             let results = try await ProviderService.searchProviders(
                 text: searchText,
-                specialty: selectedSpecialty?.name,
+                specialty: nil,  // Don't filter by specialty in RPC, we'll filter client-side
                 country: nil,
                 priceLevel: nil,
                 minRating: nil,
@@ -175,11 +171,14 @@ final class HomeViewModel: ObservableObject {
                 offset: currentOffset
             )
 
-            print("✅ searchProviders returned \(results.count) providers")
+            // Apply client-side category filtering
+            let filteredResults = filterProvidersByCategory(results, selectedCategory)
+            
+            print("✅ searchProviders returned \(results.count) providers, \(filteredResults.count) after category filter")
             if reset {
-                providers = results
+                providers = filteredResults
             } else {
-                providers.append(contentsOf: results)
+                providers.append(contentsOf: filteredResults)
             }
             hasMoreResults = results.count == pageSize
         } catch {
@@ -189,6 +188,20 @@ final class HomeViewModel: ObservableObject {
         }
         isLoading = false
         print("🔵 HomeViewModel.searchProviders completed")
+    }
+
+    private func filterProvidersByCategory(_ providers: [Provider], _ category: ProviderCategory) -> [Provider] {
+        if category == .all {
+            return providers
+        }
+        
+        let categorySpecialties = category.specialtyNames.map { $0.lowercased() }
+        return providers.filter { provider in
+            let providerSpecialty = provider.specialty.lowercased()
+            return categorySpecialties.contains { specialty in
+                providerSpecialty.contains(specialty) || providerSpecialty.hasPrefix(specialty)
+            }
+        }
     }
 
     private func observeLocation() {

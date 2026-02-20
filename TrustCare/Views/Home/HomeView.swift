@@ -7,7 +7,6 @@ struct HomeView: View {
     @State private var displayName: String = String(localized: "Anonymous")
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
-    @State private var showSpecialtyBrowser: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -34,7 +33,7 @@ struct HomeView: View {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
-            .task(id: homeVM.selectedSpecialty) {
+            .task(id: homeVM.selectedCategory) {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
@@ -71,19 +70,6 @@ struct HomeView: View {
                     }
                 )
             }
-            .sheet(isPresented: $showSpecialtyBrowser) {
-                SpecialtyBrowserSheet(
-                    specialties: homeVM.specialties,
-                    selectedSpecialty: homeVM.selectedSpecialty,
-                    onSelect: { specialty in
-                        homeVM.selectedSpecialty = specialty
-                        showSpecialtyBrowser = false
-                    },
-                    onClear: {
-                        homeVM.selectedSpecialty = nil
-                    }
-                )
-            }
         }
     }
 
@@ -93,13 +79,30 @@ struct HomeView: View {
                 Text(greetingText)
                     .font(AppFont.title2)
                 if let urlString = avatarDisplayUrl, let url = URL(string: urlString) {
-                    AsyncImage(url: url) { image in
-                        image.resizable().scaledToFill()
-                    } placeholder: {
-                        Image(systemName: "person.crop.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(.secondary)
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                        case .empty:
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(.secondary)
+                        case .success(let image):
+                            image.resizable().scaledToFill()
+                        case .failure(let error):
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(.secondary)
+                                .onAppear {
+                                    print("⚠️ HomeView avatar failed to load from: \(urlString)")
+                                    print("   Error: \(error.localizedDescription)")
+                                }
+                        @unknown default:
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(.secondary)
+                        }
                     }
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
@@ -137,42 +140,14 @@ struct HomeView: View {
     private var specialtyScroll: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: AppSpacing.sm) {
-                SpecialtyChipView(
-                    title: String(localized: "All"),
-                    isSelected: homeVM.selectedSpecialty == nil
-                ) {
-                    homeVM.selectedSpecialty = nil
-                }
-
-                ForEach(homeVM.popularSpecialties) { specialty in
-                    SpecialtyChipView(
-                        title: specialty.name,
-                        isSelected: homeVM.selectedSpecialty == specialty
+                ForEach(ProviderCategory.allCases) { category in
+                    CategoryChipView(
+                        category: category,
+                        isSelected: homeVM.selectedCategory == category
                     ) {
-                        homeVM.selectedSpecialty = specialty
+                        homeVM.selectedCategory = category
                     }
                 }
-
-                Button {
-                    showSpecialtyBrowser = true
-                } label: {
-                    HStack(spacing: 4) {
-                        Text(String(localized: "More"))
-                            .font(AppFont.caption)
-                        Image(systemName: "chevron.down")
-                            .font(.caption2)
-                    }
-                    .foregroundStyle(.primary)
-                    .padding(.horizontal, AppSpacing.md)
-                    .padding(.vertical, AppSpacing.xs)
-                    .background(AppColor.cardBackground)
-                    .clipShape(Capsule())
-                    .overlay(
-                        Capsule()
-                            .stroke(AppColor.border, lineWidth: 1)
-                    )
-                }
-                .buttonStyle(.plain)
             }
             .padding(.horizontal, AppSpacing.lg)
         }
@@ -211,10 +186,7 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack(spacing: AppSpacing.md) {
                     ForEach(homeVM.providers) { provider in
-                        ProviderCardView(
-                            provider: provider,
-                            iconName: homeVM.iconName(for: provider.specialty)
-                        )
+                        ProviderCardView(provider: provider)
                     }
 
                     if homeVM.hasMoreResults {

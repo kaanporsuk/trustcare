@@ -72,6 +72,11 @@ final class AuthViewModel: ObservableObject {
         authListenerTask?.cancel()
     }
 
+    func verifySessionState() async {
+        let session = await AuthService.currentSession()
+        isAuthenticated = (session != nil)
+    }
+
     func login() {
         Task {
             await performLogin()

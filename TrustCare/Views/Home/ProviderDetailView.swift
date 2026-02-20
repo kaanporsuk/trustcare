@@ -7,7 +7,9 @@ struct ProviderDetailView: View {
     let providerId: UUID
     @StateObject private var detailVM = ProviderDetailViewModel()
     @State private var showClaimSheet: Bool = false
+    @State private var showAuthRequiredAlert: Bool = false
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var authVM: AuthViewModel
 
     var body: some View {
         ScrollView {
@@ -69,25 +71,47 @@ struct ProviderDetailView: View {
         } message: {
             Text(detailVM.errorMessage ?? "")
         }
+        .alert(String(localized: "Sign In Required"), isPresented: $showAuthRequiredAlert) {
+            Button(String(localized: "Login / Sign Up")) {
+                NotificationCenter.default.post(name: .trustCareRouteToAuth, object: nil)
+            }
+            Button(String(localized: "Cancel"), role: .cancel) {}
+        } message: {
+            Text(String(localized: "You must be signed in to leave a review."))
+        }
         .toolbar(.hidden, for: .tabBar)
         .overlay(alignment: .bottom) {
             if let provider = detailVM.provider {
-                NavigationLink {
-                    ReviewFormView(provider: provider)
-                } label: {
-                    Label(String(localized: "Write a Review"), systemImage: "star.bubble")
-                        .font(AppFont.headline)
-                        .foregroundStyle(.white)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, AppSpacing.lg)
-                        .background(AppColor.trustBlue)
-                        .cornerRadius(999)
-                        .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 4)
+                if authVM.isAuthenticated {
+                    NavigationLink {
+                        ReviewFormView(provider: provider)
+                    } label: {
+                        reviewButtonLabel
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.bottom, AppSpacing.lg)
+                } else {
+                    Button {
+                        showAuthRequiredAlert = true
+                    } label: {
+                        reviewButtonLabel
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.bottom, AppSpacing.lg)
                 }
-                .buttonStyle(.plain)
-                .padding(.bottom, AppSpacing.lg)
             }
         }
+    }
+
+    private var reviewButtonLabel: some View {
+        Label(String(localized: "Write a Review"), systemImage: "star.bubble")
+            .font(AppFont.headline)
+            .foregroundStyle(.white)
+            .padding(.vertical, 12)
+            .padding(.horizontal, AppSpacing.lg)
+            .background(AppColor.trustBlue)
+            .cornerRadius(999)
+            .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 4)
     }
 
     private var heroSection: some View {

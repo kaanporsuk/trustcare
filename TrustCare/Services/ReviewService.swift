@@ -8,6 +8,18 @@ enum ReviewService {
         SupabaseManager.shared.client
     }
 
+    private struct UploadedMediaAsset {
+        let mediaType: MediaType
+        let storagePath: String
+        let url: String
+        let thumbnailUrl: String?
+        let fileSizeBytes: Int
+        let durationSeconds: Int?
+        let width: Int?
+        let height: Int?
+        let displayOrder: Int
+    }
+
     static func submitReview(
         providerId: UUID,
         visitDate: Date,
@@ -55,6 +67,22 @@ enum ReviewService {
             progressHandler?(progress)
         }
 
+        let pendingReviewId = UUID()
+
+        let uploadedImages = try await uploadImagesToStorage(
+            images: images,
+            userId: userId,
+            reviewId: pendingReviewId,
+            onStep: advanceProgress
+        )
+
+        let uploadedVideo = try await uploadVideoToStorage(
+            videoURL: videoURL,
+            userId: userId,
+            reviewId: pendingReviewId,
+            onStep: advanceProgress
+        )
+
         var proofUrl: String?
         if let proofImage,
            let proofData = ImageService.compressImage(proofImage, maxSizeKB: 1024) {
@@ -75,6 +103,7 @@ enum ReviewService {
         let status = statusOverride ?? (proofImage != nil ? "pending_verification" : "active")
 
         struct ReviewInsert: Encodable {
+            let id: String
             let providerId: String
             let userId: String
             let visitDate: Date
@@ -95,6 +124,7 @@ enum ReviewService {
             let status: String
 
             enum CodingKeys: String, CodingKey {
+                case id
                 case providerId = "provider_id"
                 case userId = "user_id"
                 case visitDate = "visit_date"
@@ -117,6 +147,7 @@ enum ReviewService {
         }
 
         let insertPayload = ReviewInsert(
+            id: pendingReviewId.uuidString,
             providerId: providerId.uuidString,
             userId: userId.uuidString,
             visitDate: visitDate,
@@ -158,21 +189,16 @@ enum ReviewService {
         let review = reviewResponse.value
         advanceProgress()
 
-        try await uploadImages(
-            images: images,
-            userId: userId,
-            reviewId: review.id,
-            onStep: advanceProgress
-        )
-
-        if let videoURL {
-            try await uploadVideo(
-                videoURL: videoURL,
-                userId: userId,
-                reviewId: review.id,
-                onStep: advanceProgress
-            )
+        var uploadedAssets = uploadedImages
+        if let uploadedVideo {
+            uploadedAssets.append(uploadedVideo)
         }
+
+        try await persistUploadedMedia(
+            assets: uploadedAssets,
+            userId: userId,
+            reviewId: review.id
+        )
 
         return review
     }
@@ -188,13 +214,14 @@ enum ReviewService {
         return response.value
     }
 
-    private static func uploadImages(
+    private static func uploadImagesToStorage(
         images: [UIImage],
         userId: UUID,
         reviewId: UUID,
         onStep: (() -> Void)?
-    ) async throws {
+    ) async throws -> [UploadedMediaAsset] {
         let limitedImages = Array(images.prefix(5))
+        var uploadedAssets: [UploadedMediaAsset] = []
 
         for (index, image) in limitedImages.enumerated() {
             guard let imageData = ImageService.compressImage(image, maxSizeKB: 1024) else { continue }
@@ -225,30 +252,36 @@ enum ReviewService {
             let width = Int(image.size.width)
             let height = Int(image.size.height)
 
-            try await insertMediaRow(
-                reviewId: reviewId,
-                userId: userId,
-                mediaType: .image,
-                storagePath: path,
-                url: url,
-                thumbnailUrl: thumbnailUrl,
-                fileSizeBytes: imageData.count,
-                durationSeconds: nil,
-                width: width,
-                height: height,
-                displayOrder: index + 1
+            uploadedAssets.append(
+                UploadedMediaAsset(
+                    mediaType: .image,
+                    storagePath: path,
+                    url: url,
+                    thumbnailUrl: thumbnailUrl,
+                    fileSizeBytes: imageData.count,
+                    durationSeconds: nil,
+                    width: width,
+                    height: height,
+                    displayOrder: index + 1
+                )
             )
 
             onStep?()
         }
+
+        return uploadedAssets
     }
 
-    private static func uploadVideo(
-        videoURL: URL,
+    private static func uploadVideoToStorage(
+        videoURL: URL?,
         userId: UUID,
         reviewId: UUID,
         onStep: (() -> Void)?
-    ) async throws {
+    ) async throws -> UploadedMediaAsset? {
+        guard let videoURL else {
+            return nil
+        }
+
         let compressedURL = try await ImageService.compressVideo(inputURL: videoURL)
         let asset = AVAsset(url: compressedURL)
         let duration = try await asset.load(.duration)
@@ -288,9 +321,9 @@ enum ReviewService {
             height = Int(abs(size.height))
         }
 
-        try await insertMediaRow(
-            reviewId: reviewId,
-            userId: userId,
+        onStep?()
+
+        return UploadedMediaAsset(
             mediaType: .video,
             storagePath: path,
             url: url,
@@ -301,8 +334,28 @@ enum ReviewService {
             height: height,
             displayOrder: 1
         )
+    }
 
-        onStep?()
+    private static func persistUploadedMedia(
+        assets: [UploadedMediaAsset],
+        userId: UUID,
+        reviewId: UUID
+    ) async throws {
+        for asset in assets {
+            try await insertMediaRow(
+                reviewId: reviewId,
+                userId: userId,
+                mediaType: asset.mediaType,
+                storagePath: asset.storagePath,
+                url: asset.url,
+                thumbnailUrl: asset.thumbnailUrl,
+                fileSizeBytes: asset.fileSizeBytes,
+                durationSeconds: asset.durationSeconds,
+                width: asset.width,
+                height: asset.height,
+                displayOrder: asset.displayOrder
+            )
+        }
     }
 
     private static func insertMediaRow(

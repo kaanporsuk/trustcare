@@ -68,6 +68,12 @@ final class ReviewSubmissionViewModel: ObservableObject {
     }
 
     func submit() async {
+        guard await AuthService.currentSession() != nil else {
+            submissionErrorMessage = String(localized: "Please sign in to submit a review.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            return
+        }
+
         let trimmedComment = comment.trimmingCharacters(in: .whitespacesAndNewlines)
         if overallRating < 1 {
             submissionErrorMessage = String(localized: "Please complete all ratings before submitting.")
@@ -141,13 +147,17 @@ final class ReviewSubmissionViewModel: ObservableObject {
             return appError.localizedDescription
         }
 
-        let message = error.localizedDescription.lowercased()
-        if message.contains("network") || message.contains("offline") {
-            return String(localized: "Network error. Please check your connection.")
+        let localized = error.localizedDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !localized.isEmpty,
+           localized != "The operation couldn’t be completed." {
+            return localized
         }
-        if message.contains("expired") || message.contains("token") {
-            return String(localized: "Your session expired. Please sign in again.")
+
+        let debugDescription = String(describing: error).trimmingCharacters(in: .whitespacesAndNewlines)
+        if !debugDescription.isEmpty {
+            return debugDescription
         }
-        return String(localized: "Something went wrong. Please try again.")
+
+        return String(localized: "Unknown error")
     }
 }

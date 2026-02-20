@@ -75,13 +75,30 @@ struct ReviewItemView: View {
     private var avatarView: some View {
         Group {
             if let urlString = review.reviewerAvatar, let url = URL(string: urlString) {
-                AsyncImage(url: url) { image in
-                    image.resizable().scaledToFill()
-                } placeholder: {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(.secondary)
+                AsyncImage(url: url) { phase in
+                    switch phase {
+                    case .empty:
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.secondary)
+                    case .success(let image):
+                        image.resizable().scaledToFill()
+                    case .failure(let error):
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.secondary)
+                            .onAppear {
+                                print("⚠️ ReviewItemView reviewer avatar failed to load from: \(urlString)")
+                                print("   Error: \(error.localizedDescription)")
+                            }
+                    @unknown default:
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.secondary)
+                    }
                 }
             } else {
                 Image(systemName: "person.crop.circle.fill")

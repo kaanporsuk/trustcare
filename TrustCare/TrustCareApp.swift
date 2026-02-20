@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+extension Notification.Name {
+    static let trustCareRouteToAuth = Notification.Name("trustCareRouteToAuth")
+}
+
 enum AppState {
     case splash
     case onboarding
@@ -20,6 +24,7 @@ enum AppRoute: Hashable {
 
 @main
 struct TrustCareApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var localizationManager = LocalizationManager()
     @StateObject private var authViewModel = AuthViewModel()
     @State private var appState: AppState = .splash
@@ -55,6 +60,22 @@ struct TrustCareApp: App {
             .preferredColorScheme(preferredColorScheme)
             .onOpenURL { url in
                 handleDeepLink(url)
+            }
+            .onChange(of: scenePhase) { _, newPhase in
+                guard newPhase == .active else { return }
+                Task {
+                    await authViewModel.verifySessionState()
+                }
+            }
+            .onChange(of: authViewModel.isAuthenticated) { _, isAuthenticated in
+                if !isAuthenticated, appState == .main {
+                    path = NavigationPath()
+                    appState = .auth
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .trustCareRouteToAuth)) { _ in
+                path = NavigationPath()
+                appState = .auth
             }
         }
     }

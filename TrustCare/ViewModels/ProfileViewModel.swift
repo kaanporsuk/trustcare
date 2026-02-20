@@ -203,27 +203,31 @@ final class ProfileViewModel: ObservableObject {
             return
         }
 
-        if let path = storagePath(from: rawUrl) {
-            do {
-                let signed = try await SupabaseManager.shared.client
-                    .storage
-                    .from("user-avatars")
-                    .createSignedURL(path: path, expiresIn: 3600)
-                avatarDisplayUrl = cacheBustedUrl(signed.absoluteString)
+        // Try to extract path from the raw URL
+        if let path = ImageService.extractStoragePath(from: rawUrl, bucket: "avatars") {
+            if let publicUrl = ImageService.getPublicURL(bucket: "avatars", path: path) {
+                avatarDisplayUrl = cacheBustedUrl(publicUrl.absoluteString)
+                print("✅ Avatar public URL resolved: \(publicUrl.absoluteString)")
                 return
-            } catch {
-                print("⚠️ Failed to create signed avatar URL: \(error)")
             }
         }
 
+        // Also try old user-avatars path for backward compatibility
+        if let path = ImageService.extractStoragePath(from: rawUrl, bucket: "user-avatars") {
+            if let publicUrl = ImageService.getPublicURL(bucket: "avatars", path: path) {
+                avatarDisplayUrl = cacheBustedUrl(publicUrl.absoluteString)
+                print("✅ Avatar public URL resolved from legacy path: \(publicUrl.absoluteString)")
+                return
+            }
+        }
+
+        // Fallback: use raw URL if extraction or URL generation fails
+        print("📌 Using raw avatar URL as fallback: \(rawUrl)")
         avatarDisplayUrl = cacheBustedUrl(rawUrl)
     }
 
     private func storagePath(from urlString: String) -> String? {
-        guard let range = urlString.range(of: "/user-avatars/") else {
-            return nil
-        }
-        return String(urlString[range.upperBound...])
+        return ImageService.extractStoragePath(from: urlString, bucket: "avatars")
     }
 
     private func cacheBustedUrl(_ url: String) -> String {

@@ -3,26 +3,13 @@ import SwiftUI
 
 struct ProviderCardView: View {
     let provider: Provider
-    let iconName: String?
 
     var body: some View {
         NavigationLink {
             ProviderDetailView(providerId: provider.id)
         } label: {
             HStack(spacing: AppSpacing.md) {
-                if let urlString = provider.photoUrl, let url = URL(string: urlString) {
-                    WebImage(url: url)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 64, height: 64)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 64, height: 64)
-                        .foregroundStyle(.secondary)
-                }
+                DynamicProviderAvatarView(provider: provider)
 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 6) {
@@ -39,11 +26,6 @@ struct ProviderCardView: View {
                     }
 
                     HStack(spacing: 6) {
-                        if let iconName {
-                            Image(systemName: iconName)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
                         Text("\(provider.specialty)" + (provider.clinicName != nil ? " • \(provider.clinicName ?? "")" : ""))
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)

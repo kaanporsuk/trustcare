@@ -30,6 +30,11 @@ struct Provider: Identifiable, Codable, Hashable {
     let isActive: Bool
     let createdAt: Date
     let distanceKm: Double?
+    let dataSource: String?  // "system" or "apple_maps"
+    let externalId: String?  // Apple Maps MKMapItem identifier
+    let updatedAt: Date?
+    let deletedAt: Date?
+    let priceLevel: Int?
 
     var verifiedPercentage: Int {
         guard reviewCount > 0 else { return 0 }
@@ -58,5 +63,10 @@ struct Provider: Identifiable, Codable, Hashable {
         case isActive = "is_active"
         case createdAt = "created_at"
         case distanceKm = "distance_km"
+        case dataSource = "data_source"
+        case externalId = "external_id"
+        case updatedAt = "updated_at"
+        case deletedAt = "deleted_at"
+        case priceLevel = "price_level"
     }
 }
