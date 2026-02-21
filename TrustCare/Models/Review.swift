@@ -6,12 +6,30 @@ struct Review: Identifiable, Codable {
     let providerId: UUID
     let visitDate: Date
     let visitType: VisitType
-    let ratingWaitTime: Int
-    let ratingBedside: Int
-    let ratingEfficacy: Int
-    let ratingCleanliness: Int
-    let ratingStaff: Int
-    let ratingValue: Int
+    let surveyType: String?
+    let ratingWaitTime: Int?
+    let ratingBedside: Int?
+    let ratingEfficacy: Int?
+    let ratingCleanliness: Int?
+    let ratingStaff: Int?
+    let ratingValue: Int?
+    let ratingPainMgmt: Int?
+    let ratingAccuracy: Int?
+    let ratingKnowledge: Int?
+    let ratingCourtesy: Int?
+    let ratingCareQuality: Int?
+    let ratingAdmin: Int?
+    let ratingComfort: Int?
+    let ratingTurnaround: Int?
+    let ratingEmpathy: Int?
+    let ratingEnvironment: Int?
+    let ratingCommunication: Int?
+    let ratingEffectiveness: Int?
+    let ratingAttentiveness: Int?
+    let ratingEquipment: Int?
+    let ratingConsultation: Int?
+    let ratingResults: Int?
+    let ratingAftercare: Int?
     let ratingOverall: Double
     let priceLevel: Int
     let title: String?
@@ -24,7 +42,6 @@ struct Review: Identifiable, Codable {
     let helpfulCount: Int
     let createdAt: Date
     
-    // Contextual review metrics (1-5 scale, optional)
     let waitingTime: Int?
     let facilityCleanliness: Int?
     let doctorCommunication: Int?
@@ -63,12 +80,30 @@ struct Review: Identifiable, Codable {
         case providerId = "provider_id"
         case visitDate = "visit_date"
         case visitType = "visit_type"
+        case surveyType = "survey_type"
         case ratingWaitTime = "rating_wait_time"
         case ratingBedside = "rating_bedside"
         case ratingEfficacy = "rating_efficacy"
         case ratingCleanliness = "rating_cleanliness"
         case ratingStaff = "rating_staff"
         case ratingValue = "rating_value"
+        case ratingPainMgmt = "rating_pain_mgmt"
+        case ratingAccuracy = "rating_accuracy"
+        case ratingKnowledge = "rating_knowledge"
+        case ratingCourtesy = "rating_courtesy"
+        case ratingCareQuality = "rating_care_quality"
+        case ratingAdmin = "rating_admin"
+        case ratingComfort = "rating_comfort"
+        case ratingTurnaround = "rating_turnaround"
+        case ratingEmpathy = "rating_empathy"
+        case ratingEnvironment = "rating_environment"
+        case ratingCommunication = "rating_communication"
+        case ratingEffectiveness = "rating_effectiveness"
+        case ratingAttentiveness = "rating_attentiveness"
+        case ratingEquipment = "rating_equipment"
+        case ratingConsultation = "rating_consultation"
+        case ratingResults = "rating_results"
+        case ratingAftercare = "rating_aftercare"
         case ratingOverall = "rating_overall"
         case priceLevel = "price_level"
         case wouldRecommend = "would_recommend"
@@ -106,5 +141,178 @@ struct Review: Identifiable, Codable {
         case reviewerAvatar = "reviewer_avatar"
         case providerName = "provider_name"
         case providerSpecialty = "provider_specialty"
+    }
+
+    init(
+        id: UUID,
+        userId: UUID,
+        providerId: UUID,
+        visitDate: Date,
+        visitType: VisitType,
+        surveyType: String? = nil,
+        ratingWaitTime: Int? = nil,
+        ratingBedside: Int? = nil,
+        ratingEfficacy: Int? = nil,
+        ratingCleanliness: Int? = nil,
+        ratingStaff: Int? = nil,
+        ratingValue: Int? = nil,
+        ratingPainMgmt: Int? = nil,
+        ratingAccuracy: Int? = nil,
+        ratingKnowledge: Int? = nil,
+        ratingCourtesy: Int? = nil,
+        ratingCareQuality: Int? = nil,
+        ratingAdmin: Int? = nil,
+        ratingComfort: Int? = nil,
+        ratingTurnaround: Int? = nil,
+        ratingEmpathy: Int? = nil,
+        ratingEnvironment: Int? = nil,
+        ratingCommunication: Int? = nil,
+        ratingEffectiveness: Int? = nil,
+        ratingAttentiveness: Int? = nil,
+        ratingEquipment: Int? = nil,
+        ratingConsultation: Int? = nil,
+        ratingResults: Int? = nil,
+        ratingAftercare: Int? = nil,
+        ratingOverall: Double,
+        priceLevel: Int,
+        title: String?,
+        comment: String,
+        wouldRecommend: Bool?,
+        proofImageUrl: String?,
+        isVerified: Bool,
+        verificationConfidence: Int?,
+        status: ReviewStatus,
+        helpfulCount: Int,
+        createdAt: Date,
+        waitingTime: Int? = nil,
+        facilityCleanliness: Int? = nil,
+        doctorCommunication: Int? = nil,
+        treatmentOutcome: Int? = nil,
+        proceduralComfort: Int? = nil,
+        clearExplanations: Int? = nil,
+        checkoutSpeed: Int? = nil,
+        stockAvailability: Int? = nil,
+        pharmacistAdvice: Int? = nil,
+        staffCourtesy: Int? = nil,
+        responseTime: Int? = nil,
+        nursingCare: Int? = nil,
+        checkInProcess: Int? = nil,
+        testComfort: Int? = nil,
+        resultTurnaround: Int? = nil,
+        sessionPunctuality: Int? = nil,
+        empathyListening: Int? = nil,
+        sessionPrivacy: Int? = nil,
+        actionableAdvice: Int? = nil,
+        therapyProgress: Int? = nil,
+        activeSupervision: Int? = nil,
+        facilityGear: Int? = nil,
+        consultationQuality: Int? = nil,
+        resultSatisfaction: Int? = nil,
+        aftercareSupport: Int? = nil,
+        reviewerName: String?,
+        reviewerAvatar: String?,
+        media: [ReviewMedia]?,
+        providerName: String?,
+        providerSpecialty: String?
+    ) {
+        self.id = id
+        self.userId = userId
+        self.providerId = providerId
+        self.visitDate = visitDate
+        self.visitType = visitType
+        self.surveyType = surveyType
+        self.ratingWaitTime = ratingWaitTime
+        self.ratingBedside = ratingBedside
+        self.ratingEfficacy = ratingEfficacy
+        self.ratingCleanliness = ratingCleanliness
+        self.ratingStaff = ratingStaff
+        self.ratingValue = ratingValue
+        self.ratingPainMgmt = ratingPainMgmt
+        self.ratingAccuracy = ratingAccuracy
+        self.ratingKnowledge = ratingKnowledge
+        self.ratingCourtesy = ratingCourtesy
+        self.ratingCareQuality = ratingCareQuality
+        self.ratingAdmin = ratingAdmin
+        self.ratingComfort = ratingComfort
+        self.ratingTurnaround = ratingTurnaround
+        self.ratingEmpathy = ratingEmpathy
+        self.ratingEnvironment = ratingEnvironment
+        self.ratingCommunication = ratingCommunication
+        self.ratingEffectiveness = ratingEffectiveness
+        self.ratingAttentiveness = ratingAttentiveness
+        self.ratingEquipment = ratingEquipment
+        self.ratingConsultation = ratingConsultation
+        self.ratingResults = ratingResults
+        self.ratingAftercare = ratingAftercare
+        self.ratingOverall = ratingOverall
+        self.priceLevel = priceLevel
+        self.title = title
+        self.comment = comment
+        self.wouldRecommend = wouldRecommend
+        self.proofImageUrl = proofImageUrl
+        self.isVerified = isVerified
+        self.verificationConfidence = verificationConfidence
+        self.status = status
+        self.helpfulCount = helpfulCount
+        self.createdAt = createdAt
+        self.waitingTime = waitingTime
+        self.facilityCleanliness = facilityCleanliness
+        self.doctorCommunication = doctorCommunication
+        self.treatmentOutcome = treatmentOutcome
+        self.proceduralComfort = proceduralComfort
+        self.clearExplanations = clearExplanations
+        self.checkoutSpeed = checkoutSpeed
+        self.stockAvailability = stockAvailability
+        self.pharmacistAdvice = pharmacistAdvice
+        self.staffCourtesy = staffCourtesy
+        self.responseTime = responseTime
+        self.nursingCare = nursingCare
+        self.checkInProcess = checkInProcess
+        self.testComfort = testComfort
+        self.resultTurnaround = resultTurnaround
+        self.sessionPunctuality = sessionPunctuality
+        self.empathyListening = empathyListening
+        self.sessionPrivacy = sessionPrivacy
+        self.actionableAdvice = actionableAdvice
+        self.therapyProgress = therapyProgress
+        self.activeSupervision = activeSupervision
+        self.facilityGear = facilityGear
+        self.consultationQuality = consultationQuality
+        self.resultSatisfaction = resultSatisfaction
+        self.aftercareSupport = aftercareSupport
+        self.reviewerName = reviewerName
+        self.reviewerAvatar = reviewerAvatar
+        self.media = media
+        self.providerName = providerName
+        self.providerSpecialty = providerSpecialty
+    }
+}
+
+extension Review {
+    func ratingValue(for dbColumn: String) -> Int? {
+        switch dbColumn {
+        case "rating_wait_time": return ratingWaitTime
+        case "rating_bedside": return ratingBedside
+        case "rating_efficacy": return ratingEfficacy
+        case "rating_cleanliness": return ratingCleanliness
+        case "rating_pain_mgmt": return ratingPainMgmt
+        case "rating_accuracy": return ratingAccuracy
+        case "rating_knowledge": return ratingKnowledge
+        case "rating_courtesy": return ratingCourtesy
+        case "rating_care_quality": return ratingCareQuality
+        case "rating_admin": return ratingAdmin
+        case "rating_comfort": return ratingComfort
+        case "rating_turnaround": return ratingTurnaround
+        case "rating_empathy": return ratingEmpathy
+        case "rating_environment": return ratingEnvironment
+        case "rating_communication": return ratingCommunication
+        case "rating_effectiveness": return ratingEffectiveness
+        case "rating_attentiveness": return ratingAttentiveness
+        case "rating_equipment": return ratingEquipment
+        case "rating_consultation": return ratingConsultation
+        case "rating_results": return ratingResults
+        case "rating_aftercare": return ratingAftercare
+        default: return nil
+        }
     }
 }

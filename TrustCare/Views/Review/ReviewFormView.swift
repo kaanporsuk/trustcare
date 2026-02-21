@@ -20,7 +20,6 @@ struct ReviewFormView: View {
                 providerCard
                 visitSection
                 ratingsSection
-                contextualMetricsSection
                 reviewSection
                 photoSection
                 verificationSection
@@ -32,12 +31,6 @@ struct ReviewFormView: View {
         .navigationTitle(String(localized: "Write a Review"))
         .navigationBarTitleDisplayMode(.inline)
         .scrollDismissesKeyboard(.interactively)
-        .onChange(of: viewModel.ratingWaitTime) { _, _ in viewModel.updateOverallIfNeeded() }
-        .onChange(of: viewModel.ratingBedside) { _, _ in viewModel.updateOverallIfNeeded() }
-        .onChange(of: viewModel.ratingEfficacy) { _, _ in viewModel.updateOverallIfNeeded() }
-        .onChange(of: viewModel.ratingCleanliness) { _, _ in viewModel.updateOverallIfNeeded() }
-        .onChange(of: viewModel.ratingStaff) { _, _ in viewModel.updateOverallIfNeeded() }
-        .onChange(of: viewModel.ratingValue) { _, _ in viewModel.updateOverallIfNeeded() }
         .onChange(of: viewModel.comment) { _, newValue in
             if newValue.count > 1000 {
                 viewModel.comment = String(newValue.prefix(1000))
@@ -86,7 +79,7 @@ struct ReviewFormView: View {
 
     private var providerCard: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(viewModel.provider.name)
+            Text(viewModel.selectedProvider.name)
                 .font(AppFont.title3)
             Text(providerSubtitle)
                 .font(AppFont.caption)
@@ -99,8 +92,8 @@ struct ReviewFormView: View {
     }
 
     private var providerSubtitle: String {
-        let specialty = viewModel.provider.specialty
-        if let clinic = viewModel.provider.clinicName, !clinic.isEmpty {
+        let specialty = viewModel.selectedProvider.specialty
+        if let clinic = viewModel.selectedProvider.clinicName, !clinic.isEmpty {
             return "\(specialty) \u{2022} \(clinic)"
         }
         return specialty
@@ -132,18 +125,40 @@ struct ReviewFormView: View {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
                 Text(String(localized: "Overall Rating"))
                     .font(AppFont.body)
+                Text(String(localized: "How was your overall experience?"))
+                    .font(AppFont.footnote)
+                    .foregroundStyle(.secondary)
                 StarRatingInput(rating: Binding(
                     get: { viewModel.overallRating },
                     set: { viewModel.setOverallRating($0) }
-                ), size: 28, showsValue: true)
+                ), starSize: 36)
             }
 
-            RatingRow(label: String(localized: "Waiting Time"), rating: $viewModel.ratingWaitTime)
-            RatingRow(label: String(localized: "Bedside Manner"), rating: $viewModel.ratingBedside)
-            RatingRow(label: String(localized: "Treatment Efficacy"), rating: $viewModel.ratingEfficacy)
-            RatingRow(label: String(localized: "Facility Cleanliness"), rating: $viewModel.ratingCleanliness)
-            RatingRow(label: String(localized: "Staff Friendliness"), rating: $viewModel.ratingStaff)
-            RatingRow(label: String(localized: "Value for Money"), rating: $viewModel.ratingValue)
+            ForEach(viewModel.surveyConfig.metrics) { metric in
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 6) {
+                        Image(systemName: metric.icon)
+                            .foregroundStyle(Color(hex: "#0055FF"))
+                            .frame(width: 20)
+                        Text(metric.label)
+                            .font(AppFont.headline)
+                    }
+                    Text(metric.subtext)
+                        .font(AppFont.footnote)
+                        .foregroundStyle(.secondary)
+                    StarRatingInput(
+                        rating: Binding(
+                            get: { viewModel.metricRatings[metric.dbColumn] ?? 0 },
+                            set: { newValue in
+                                viewModel.metricRatings[metric.dbColumn] = newValue
+                                viewModel.updateOverallIfNeeded()
+                            }
+                        ),
+                        starSize: 28
+                    )
+                }
+                .padding(.vertical, 4)
+            }
         }
     }
 
@@ -269,29 +284,6 @@ struct ReviewFormView: View {
         }
     }
 
-    private var contextualMetricsSection: some View {
-        let metrics = viewModel.contextualMetricsForProvider()
-        
-        return VStack(alignment: .leading, spacing: AppSpacing.md) {
-            if !metrics.isEmpty {
-                Text(String(localized: "Facility-Specific Questions"))
-                    .font(AppFont.headline)
-                
-                VStack(alignment: .leading, spacing: AppSpacing.md) {
-                    ForEach(Array(metrics.enumerated()), id: \.offset) { index, metric in
-                        ContextualMetricSliderView(
-                            metric: metric,
-                            currentValue: viewModel.getContextualMetricValue(index: index),
-                            onValueChange: { newValue in
-                                viewModel.updateContextualMetric(index: index, value: newValue)
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    }
-
     private var verificationSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text(String(localized: "Verify Your Visit"))
@@ -368,19 +360,6 @@ struct ReviewFormView: View {
             }
         }
         viewModel.selectedImages = images
-    }
-}
-
-private struct RatingRow: View {
-    let label: String
-    @Binding var rating: Int
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(label)
-                .font(AppFont.body)
-            StarRatingInput(rating: $rating, size: 22, showsValue: true)
-        }
     }
 }
 

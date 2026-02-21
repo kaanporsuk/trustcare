@@ -198,12 +198,30 @@ enum ProviderService {
             let providerId: UUID
             let visitDate: Date
             let visitType: VisitType
-            let ratingWaitTime: Int
-            let ratingBedside: Int
-            let ratingEfficacy: Int
-            let ratingCleanliness: Int
-            let ratingStaff: Int
-            let ratingValue: Int
+            let surveyType: String?
+            let ratingWaitTime: Int?
+            let ratingBedside: Int?
+            let ratingEfficacy: Int?
+            let ratingCleanliness: Int?
+            let ratingStaff: Int?
+            let ratingValue: Int?
+            let ratingPainMgmt: Int?
+            let ratingAccuracy: Int?
+            let ratingKnowledge: Int?
+            let ratingCourtesy: Int?
+            let ratingCareQuality: Int?
+            let ratingAdmin: Int?
+            let ratingComfort: Int?
+            let ratingTurnaround: Int?
+            let ratingEmpathy: Int?
+            let ratingEnvironment: Int?
+            let ratingCommunication: Int?
+            let ratingEffectiveness: Int?
+            let ratingAttentiveness: Int?
+            let ratingEquipment: Int?
+            let ratingConsultation: Int?
+            let ratingResults: Int?
+            let ratingAftercare: Int?
             let ratingOverall: Double
             let priceLevel: Int
             let title: String?
@@ -247,12 +265,30 @@ enum ProviderService {
                 case providerId = "provider_id"
                 case visitDate = "visit_date"
                 case visitType = "visit_type"
+                case surveyType = "survey_type"
                 case ratingWaitTime = "rating_wait_time"
                 case ratingBedside = "rating_bedside"
                 case ratingEfficacy = "rating_efficacy"
                 case ratingCleanliness = "rating_cleanliness"
                 case ratingStaff = "rating_staff"
                 case ratingValue = "rating_value"
+                case ratingPainMgmt = "rating_pain_mgmt"
+                case ratingAccuracy = "rating_accuracy"
+                case ratingKnowledge = "rating_knowledge"
+                case ratingCourtesy = "rating_courtesy"
+                case ratingCareQuality = "rating_care_quality"
+                case ratingAdmin = "rating_admin"
+                case ratingComfort = "rating_comfort"
+                case ratingTurnaround = "rating_turnaround"
+                case ratingEmpathy = "rating_empathy"
+                case ratingEnvironment = "rating_environment"
+                case ratingCommunication = "rating_communication"
+                case ratingEffectiveness = "rating_effectiveness"
+                case ratingAttentiveness = "rating_attentiveness"
+                case ratingEquipment = "rating_equipment"
+                case ratingConsultation = "rating_consultation"
+                case ratingResults = "rating_results"
+                case ratingAftercare = "rating_aftercare"
                 case ratingOverall = "rating_overall"
                 case priceLevel = "price_level"
                 case wouldRecommend = "would_recommend"
@@ -321,12 +357,30 @@ enum ProviderService {
                 providerId: review.providerId,
                 visitDate: review.visitDate,
                 visitType: review.visitType,
+                surveyType: review.surveyType,
                 ratingWaitTime: review.ratingWaitTime,
                 ratingBedside: review.ratingBedside,
                 ratingEfficacy: review.ratingEfficacy,
                 ratingCleanliness: review.ratingCleanliness,
                 ratingStaff: review.ratingStaff,
                 ratingValue: review.ratingValue,
+                ratingPainMgmt: review.ratingPainMgmt,
+                ratingAccuracy: review.ratingAccuracy,
+                ratingKnowledge: review.ratingKnowledge,
+                ratingCourtesy: review.ratingCourtesy,
+                ratingCareQuality: review.ratingCareQuality,
+                ratingAdmin: review.ratingAdmin,
+                ratingComfort: review.ratingComfort,
+                ratingTurnaround: review.ratingTurnaround,
+                ratingEmpathy: review.ratingEmpathy,
+                ratingEnvironment: review.ratingEnvironment,
+                ratingCommunication: review.ratingCommunication,
+                ratingEffectiveness: review.ratingEffectiveness,
+                ratingAttentiveness: review.ratingAttentiveness,
+                ratingEquipment: review.ratingEquipment,
+                ratingConsultation: review.ratingConsultation,
+                ratingResults: review.ratingResults,
+                ratingAftercare: review.ratingAftercare,
                 ratingOverall: review.ratingOverall,
                 priceLevel: review.priceLevel,
                 title: review.title,

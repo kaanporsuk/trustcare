@@ -227,7 +227,7 @@ struct ProviderDetailView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                StarRatingView(rating: detailVM.provider?.ratingOverall ?? 0)
+                StarRatingDisplay(rating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
                 Text(String(format: String(localized: "reviews_count"), detailVM.provider?.reviewCount ?? 0))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)

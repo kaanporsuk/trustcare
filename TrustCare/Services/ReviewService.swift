@@ -24,7 +24,8 @@ enum ReviewService {
         providerId: UUID,
         visitDate: Date,
         visitType: VisitType,
-        ratings: (wait: Int, bedside: Int, efficacy: Int, cleanliness: Int, staff: Int, value: Int),
+        surveyType: String,
+        metricRatings: [String: Int],
         overallRating: Int,
         priceLevel: Int,
         title: String?,
@@ -49,7 +50,8 @@ enum ReviewService {
         print("  User ID: \(userId)")
         print("  Visit date: \(visitDate)")
         print("  Visit type: \(visitType.rawValue)")
-        print("  Ratings: wait=\(ratings.wait), bedside=\(ratings.bedside), efficacy=\(ratings.efficacy), cleanliness=\(ratings.cleanliness), staff=\(ratings.staff), value=\(ratings.value)")
+        print("  Survey type: \(surveyType)")
+        print("  Dynamic metric ratings: \(metricRatings)")
         print("  Price level: \(priceLevel)")
         print("  Comment length: \(comment.count)")
         print("  Proof image selected: \(proofImage != nil)")
@@ -97,10 +99,20 @@ enum ReviewService {
             advanceProgress()
         }
 
-        let derivedOverall = Double(ratings.wait + ratings.bedside + ratings.efficacy + ratings.cleanliness + ratings.staff + ratings.value) / 6.0
+        let validMetricValues = metricRatings.values.filter { (1...5).contains($0) }
+        let derivedOverall = validMetricValues.isEmpty
+            ? Double(overallRating)
+            : Double(validMetricValues.reduce(0, +)) / Double(validMetricValues.count)
         let resolvedOverall = overallRating > 0 ? Double(overallRating) : derivedOverall
         let roundedOverall = Double(round(resolvedOverall * 10) / 10)
         let status = statusOverride ?? (proofImage != nil ? "pending_verification" : "active")
+
+        func metric(_ key: String) -> Int? {
+            guard let value = metricRatings[key], (1...5).contains(value) else {
+                return nil
+            }
+            return value
+        }
 
         struct ReviewInsert: Encodable {
             let id: String
@@ -108,12 +120,30 @@ enum ReviewService {
             let userId: String
             let visitDate: Date
             let visitType: String
-            let ratingWaitTime: Int
-            let ratingBedside: Int
-            let ratingEfficacy: Int
-            let ratingCleanliness: Int
+            let surveyType: String
+            let ratingWaitTime: Int?
+            let ratingBedside: Int?
+            let ratingEfficacy: Int?
+            let ratingCleanliness: Int?
             let ratingStaff: Int
             let ratingValue: Int
+            let ratingPainMgmt: Int?
+            let ratingAccuracy: Int?
+            let ratingKnowledge: Int?
+            let ratingCourtesy: Int?
+            let ratingCareQuality: Int?
+            let ratingAdmin: Int?
+            let ratingComfort: Int?
+            let ratingTurnaround: Int?
+            let ratingEmpathy: Int?
+            let ratingEnvironment: Int?
+            let ratingCommunication: Int?
+            let ratingEffectiveness: Int?
+            let ratingAttentiveness: Int?
+            let ratingEquipment: Int?
+            let ratingConsultation: Int?
+            let ratingResults: Int?
+            let ratingAftercare: Int?
             let ratingOverall: Double
             let priceLevel: Int
             let title: String?
@@ -129,12 +159,30 @@ enum ReviewService {
                 case userId = "user_id"
                 case visitDate = "visit_date"
                 case visitType = "visit_type"
+                case surveyType = "survey_type"
                 case ratingWaitTime = "rating_wait_time"
                 case ratingBedside = "rating_bedside"
                 case ratingEfficacy = "rating_efficacy"
                 case ratingCleanliness = "rating_cleanliness"
                 case ratingStaff = "rating_staff"
                 case ratingValue = "rating_value"
+                case ratingPainMgmt = "rating_pain_mgmt"
+                case ratingAccuracy = "rating_accuracy"
+                case ratingKnowledge = "rating_knowledge"
+                case ratingCourtesy = "rating_courtesy"
+                case ratingCareQuality = "rating_care_quality"
+                case ratingAdmin = "rating_admin"
+                case ratingComfort = "rating_comfort"
+                case ratingTurnaround = "rating_turnaround"
+                case ratingEmpathy = "rating_empathy"
+                case ratingEnvironment = "rating_environment"
+                case ratingCommunication = "rating_communication"
+                case ratingEffectiveness = "rating_effectiveness"
+                case ratingAttentiveness = "rating_attentiveness"
+                case ratingEquipment = "rating_equipment"
+                case ratingConsultation = "rating_consultation"
+                case ratingResults = "rating_results"
+                case ratingAftercare = "rating_aftercare"
                 case ratingOverall = "rating_overall"
                 case priceLevel = "price_level"
                 case title
@@ -152,12 +200,30 @@ enum ReviewService {
             userId: userId.uuidString,
             visitDate: visitDate,
             visitType: visitType.rawValue,
-            ratingWaitTime: ratings.wait,
-            ratingBedside: ratings.bedside,
-            ratingEfficacy: ratings.efficacy,
-            ratingCleanliness: ratings.cleanliness,
-            ratingStaff: ratings.staff,
-            ratingValue: ratings.value,
+            surveyType: surveyType,
+            ratingWaitTime: metric("rating_wait_time"),
+            ratingBedside: metric("rating_bedside"),
+            ratingEfficacy: metric("rating_efficacy"),
+            ratingCleanliness: metric("rating_cleanliness"),
+            ratingStaff: max(1, min(5, overallRating)),
+            ratingValue: max(1, min(5, overallRating)),
+            ratingPainMgmt: metric("rating_pain_mgmt"),
+            ratingAccuracy: metric("rating_accuracy"),
+            ratingKnowledge: metric("rating_knowledge"),
+            ratingCourtesy: metric("rating_courtesy"),
+            ratingCareQuality: metric("rating_care_quality"),
+            ratingAdmin: metric("rating_admin"),
+            ratingComfort: metric("rating_comfort"),
+            ratingTurnaround: metric("rating_turnaround"),
+            ratingEmpathy: metric("rating_empathy"),
+            ratingEnvironment: metric("rating_environment"),
+            ratingCommunication: metric("rating_communication"),
+            ratingEffectiveness: metric("rating_effectiveness"),
+            ratingAttentiveness: metric("rating_attentiveness"),
+            ratingEquipment: metric("rating_equipment"),
+            ratingConsultation: metric("rating_consultation"),
+            ratingResults: metric("rating_results"),
+            ratingAftercare: metric("rating_aftercare"),
             ratingOverall: roundedOverall,
             priceLevel: priceLevel,
             title: title,

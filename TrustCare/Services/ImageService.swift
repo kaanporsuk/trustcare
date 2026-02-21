@@ -8,6 +8,8 @@ enum ImageService {
         SupabaseManager.shared.client
     }
 
+    private static let avatarMaxBytes = 5 * 1024 * 1024
+
     static func compressImage(
         _ image: UIImage,
         maxSizeKB: Int = 1024,
@@ -23,6 +25,39 @@ enum ImageService {
         }
 
         return data
+    }
+
+    static func prepareAvatarUploadData(
+        _ image: UIImage,
+        maxDimension: CGFloat = 1600,
+        compressionQuality: CGFloat = 0.7
+    ) -> Data? {
+        let originalSize = image.size
+        guard originalSize.width > 0, originalSize.height > 0 else { return nil }
+
+        let longestSide = max(originalSize.width, originalSize.height)
+        let scaleRatio = min(1, maxDimension / longestSide)
+        let targetSize = CGSize(
+            width: max(1, floor(originalSize.width * scaleRatio)),
+            height: max(1, floor(originalSize.height * scaleRatio))
+        )
+
+        let rendererFormat = UIGraphicsImageRendererFormat.default()
+        rendererFormat.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: targetSize, format: rendererFormat)
+        let downsampled = renderer.image { _ in
+            image.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+
+        guard let jpegData = downsampled.jpegData(compressionQuality: compressionQuality) else {
+            return nil
+        }
+
+        guard jpegData.count <= avatarMaxBytes else {
+            return nil
+        }
+
+        return jpegData
     }
 
     static func generateThumbnail(
@@ -104,9 +139,10 @@ enum ImageService {
         bucket: String,
         path: String,
         data: Data,
-        contentType: String
+        contentType: String,
+        upsert: Bool = false
     ) async throws -> String {
-        let options = FileOptions(contentType: contentType)
+        let options = FileOptions(contentType: contentType, upsert: upsert)
         _ = try await client
             .storage
             .from(bucket)

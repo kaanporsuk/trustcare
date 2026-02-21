@@ -55,12 +55,30 @@ final class ProfileViewModel: ObservableObject {
                 let providerId: UUID
                 let visitDate: Date
                 let visitType: VisitType
-                let ratingWaitTime: Int
-                let ratingBedside: Int
-                let ratingEfficacy: Int
-                let ratingCleanliness: Int
-                let ratingStaff: Int
-                let ratingValue: Int
+                let surveyType: String?
+                let ratingWaitTime: Int?
+                let ratingBedside: Int?
+                let ratingEfficacy: Int?
+                let ratingCleanliness: Int?
+                let ratingStaff: Int?
+                let ratingValue: Int?
+                let ratingPainMgmt: Int?
+                let ratingAccuracy: Int?
+                let ratingKnowledge: Int?
+                let ratingCourtesy: Int?
+                let ratingCareQuality: Int?
+                let ratingAdmin: Int?
+                let ratingComfort: Int?
+                let ratingTurnaround: Int?
+                let ratingEmpathy: Int?
+                let ratingEnvironment: Int?
+                let ratingCommunication: Int?
+                let ratingEffectiveness: Int?
+                let ratingAttentiveness: Int?
+                let ratingEquipment: Int?
+                let ratingConsultation: Int?
+                let ratingResults: Int?
+                let ratingAftercare: Int?
                 let ratingOverall: Double
                 let priceLevel: Int
                 let title: String?
@@ -105,12 +123,30 @@ final class ProfileViewModel: ObservableObject {
                     case providerId = "provider_id"
                     case visitDate = "visit_date"
                     case visitType = "visit_type"
+                    case surveyType = "survey_type"
                     case ratingWaitTime = "rating_wait_time"
                     case ratingBedside = "rating_bedside"
                     case ratingEfficacy = "rating_efficacy"
                     case ratingCleanliness = "rating_cleanliness"
                     case ratingStaff = "rating_staff"
                     case ratingValue = "rating_value"
+                    case ratingPainMgmt = "rating_pain_mgmt"
+                    case ratingAccuracy = "rating_accuracy"
+                    case ratingKnowledge = "rating_knowledge"
+                    case ratingCourtesy = "rating_courtesy"
+                    case ratingCareQuality = "rating_care_quality"
+                    case ratingAdmin = "rating_admin"
+                    case ratingComfort = "rating_comfort"
+                    case ratingTurnaround = "rating_turnaround"
+                    case ratingEmpathy = "rating_empathy"
+                    case ratingEnvironment = "rating_environment"
+                    case ratingCommunication = "rating_communication"
+                    case ratingEffectiveness = "rating_effectiveness"
+                    case ratingAttentiveness = "rating_attentiveness"
+                    case ratingEquipment = "rating_equipment"
+                    case ratingConsultation = "rating_consultation"
+                    case ratingResults = "rating_results"
+                    case ratingAftercare = "rating_aftercare"
                     case ratingOverall = "rating_overall"
                     case priceLevel = "price_level"
                     case wouldRecommend = "would_recommend"
@@ -169,12 +205,30 @@ final class ProfileViewModel: ObservableObject {
                     providerId: row.providerId,
                     visitDate: row.visitDate,
                     visitType: row.visitType,
+                    surveyType: row.surveyType,
                     ratingWaitTime: row.ratingWaitTime,
                     ratingBedside: row.ratingBedside,
                     ratingEfficacy: row.ratingEfficacy,
                     ratingCleanliness: row.ratingCleanliness,
                     ratingStaff: row.ratingStaff,
                     ratingValue: row.ratingValue,
+                    ratingPainMgmt: row.ratingPainMgmt,
+                    ratingAccuracy: row.ratingAccuracy,
+                    ratingKnowledge: row.ratingKnowledge,
+                    ratingCourtesy: row.ratingCourtesy,
+                    ratingCareQuality: row.ratingCareQuality,
+                    ratingAdmin: row.ratingAdmin,
+                    ratingComfort: row.ratingComfort,
+                    ratingTurnaround: row.ratingTurnaround,
+                    ratingEmpathy: row.ratingEmpathy,
+                    ratingEnvironment: row.ratingEnvironment,
+                    ratingCommunication: row.ratingCommunication,
+                    ratingEffectiveness: row.ratingEffectiveness,
+                    ratingAttentiveness: row.ratingAttentiveness,
+                    ratingEquipment: row.ratingEquipment,
+                    ratingConsultation: row.ratingConsultation,
+                    ratingResults: row.ratingResults,
+                    ratingAftercare: row.ratingAftercare,
                     ratingOverall: row.ratingOverall,
                     priceLevel: row.priceLevel,
                     title: row.title,
@@ -238,13 +292,17 @@ final class ProfileViewModel: ObservableObject {
         }
     }
 
-    func updateAvatar(image: UIImage) async {
+    func updateAvatar(image: UIImage) async -> Bool {
         isUpdatingAvatar = true
         defer { isUpdatingAvatar = false }
         do {
             let session = try await SupabaseManager.shared.client.auth.session
-            guard let data = ImageService.compressImage(image, maxSizeKB: 500) else {
-                throw AppError.uploadFailed
+            guard let data = ImageService.prepareAvatarUploadData(image, maxDimension: 1600, compressionQuality: 0.7) else {
+                throw NSError(
+                    domain: "ProfileAvatarUpload",
+                    code: 1001,
+                    userInfo: [NSLocalizedDescriptionKey: String(localized: "Avatar processing failed. Please use a different photo under 5 MB.")]
+                )
             }
 
             let path = "\(session.user.id.uuidString)/avatar.jpg"
@@ -252,7 +310,8 @@ final class ProfileViewModel: ObservableObject {
                 bucket: "user-avatars",
                 path: path,
                 data: data,
-                contentType: "image/jpeg"
+                contentType: "image/jpeg",
+                upsert: true
             )
             print("✅ Avatar uploaded: \(url)")
 
@@ -267,8 +326,10 @@ final class ProfileViewModel: ObservableObject {
             )
             avatarDisplayUrl = cacheBustedUrl(url)
             await loadProfile()
+            return true
         } catch {
-            errorMessage = localizedErrorMessage(error)
+            errorMessage = error.localizedDescription
+            return false
         }
     }
 
@@ -289,7 +350,7 @@ final class ProfileViewModel: ObservableObject {
 
         // Also try old user-avatars path for backward compatibility
         if let path = ImageService.extractStoragePath(from: rawUrl, bucket: "user-avatars") {
-            if let publicUrl = ImageService.getPublicURL(bucket: "avatars", path: path) {
+            if let publicUrl = ImageService.getPublicURL(bucket: "user-avatars", path: path) {
                 avatarDisplayUrl = cacheBustedUrl(publicUrl.absoluteString)
                 print("✅ Avatar public URL resolved from legacy path: \(publicUrl.absoluteString)")
                 return
@@ -404,13 +465,17 @@ final class ProfileViewModel: ObservableObject {
             return appError.localizedDescription
         }
 
-        let message = error.localizedDescription.lowercased()
-        if message.contains("network") || message.contains("offline") {
-            return String(localized: "Network error. Please check your connection.")
+        let localized = error.localizedDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !localized.isEmpty,
+           localized != "The operation couldn’t be completed." {
+            return localized
         }
-        if message.contains("not found") {
-            return String(localized: "We could not find that item.")
+
+        let debugDescription = String(describing: error).trimmingCharacters(in: .whitespacesAndNewlines)
+        if !debugDescription.isEmpty {
+            return debugDescription
         }
-        return String(localized: "Something went wrong. Please try again.")
+
+        return String(localized: "Unknown error")
     }
 }

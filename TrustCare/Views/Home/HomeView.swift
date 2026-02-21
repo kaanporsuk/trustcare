@@ -33,7 +33,7 @@ struct HomeView: View {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
-            .task(id: homeVM.selectedCategory) {
+            .task(id: homeVM.selectedSurveyType) {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
@@ -138,14 +138,28 @@ struct HomeView: View {
     }
 
     private var specialtyScroll: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        let categories: [(type: String?, label: String, icon: String)] = [
+            (nil, "All", "line.3.horizontal.decrease.circle"),
+            ("general_clinic", "Clinic", ProviderMapColor.icon(for: "general_clinic")),
+            ("pharmacy", "Pharmacy", ProviderMapColor.icon(for: "pharmacy")),
+            ("hospital", "Hospital", ProviderMapColor.icon(for: "hospital")),
+            ("dental", "Dental", ProviderMapColor.icon(for: "dental")),
+            ("aesthetics", "Aesthetics", ProviderMapColor.icon(for: "aesthetics")),
+            ("diagnostic", "Lab", ProviderMapColor.icon(for: "diagnostic")),
+            ("mental_health", "Mental Health", ProviderMapColor.icon(for: "mental_health")),
+            ("rehabilitation", "Rehab", ProviderMapColor.icon(for: "rehabilitation"))
+        ]
+
+        return ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: AppSpacing.sm) {
-                ForEach(ProviderCategory.allCases) { category in
+                ForEach(categories, id: \.label) { category in
                     CategoryChipView(
-                        category: category,
-                        isSelected: homeVM.selectedCategory == category
+                        title: category.label,
+                        iconName: category.icon,
+                        isSelected: homeVM.selectedSurveyType == category.type,
+                        tint: category.type.map { ProviderMapColor.color(for: $0) } ?? AppColor.trustBlue
                     ) {
-                        homeVM.selectedCategory = category
+                        homeVM.selectedSurveyType = category.type
                     }
                 }
             }
@@ -163,6 +177,7 @@ struct HomeView: View {
             }
         } else if homeVM.viewMode == .map {
             ProviderMapView(
+                viewModel: homeVM,
                 providers: homeVM.providers,
                 isLoading: homeVM.isLoading,
                 centerCoordinate: homeVM.selectedLocation.isCurrentLocation

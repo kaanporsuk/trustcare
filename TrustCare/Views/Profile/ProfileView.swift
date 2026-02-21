@@ -56,27 +56,35 @@ struct ProfileView: View {
                 do {
                     if let data = try await newItem.loadTransferable(type: Data.self),
                        let image = UIImage(data: data) {
-                        await profileVM.updateAvatar(image: image)
-                        showAvatarUpdatedToast = true
-                        UINotificationFeedbackGenerator().notificationOccurred(.success)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                            showAvatarUpdatedToast = false
+                        let didUpdate = await profileVM.updateAvatar(image: image)
+                        if didUpdate {
+                            showAvatarUpdatedToast = true
+                            UINotificationFeedbackGenerator().notificationOccurred(.success)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                                showAvatarUpdatedToast = false
+                            }
+                        } else {
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
                         }
                     }
                 } catch {
-                    profileVM.errorMessage = String(localized: "Unable to upload media. Please try again.")
+                    profileVM.errorMessage = error.localizedDescription
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             }
         }
         .onChange(of: capturedImage) { _, newImage in
             guard let newImage else { return }
-            Task { 
-                await profileVM.updateAvatar(image: newImage) 
-                showAvatarUpdatedToast = true
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                    showAvatarUpdatedToast = false
+            Task {
+                let didUpdate = await profileVM.updateAvatar(image: newImage)
+                if didUpdate {
+                    showAvatarUpdatedToast = true
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                        showAvatarUpdatedToast = false
+                    }
+                } else {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             }
         }

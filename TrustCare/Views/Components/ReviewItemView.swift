@@ -33,12 +33,14 @@ struct ReviewItemView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                StarRatingView(rating: review.ratingOverall)
+                StarRatingDisplay(rating: Int(round(review.ratingOverall)))
                 Text(formattedDate)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 PriceLevelView(level: Double(review.priceLevel))
             }
+
+            reviewMetricsView
 
             Text(review.comment)
                 .font(AppFont.body)
@@ -109,5 +111,25 @@ struct ReviewItemView: View {
         }
         .frame(width: 32, height: 32)
         .clipShape(Circle())
+    }
+
+    @ViewBuilder
+    private var reviewMetricsView: some View {
+        let config = SurveyConfigurations.config(for: review.surveyType ?? "general_clinic")
+        VStack(alignment: .leading, spacing: 4) {
+            ForEach(config.metrics) { metric in
+                if let ratingValue = review.ratingValue(for: metric.dbColumn), ratingValue > 0 {
+                    HStack(spacing: 6) {
+                        Image(systemName: metric.icon)
+                            .frame(width: 16)
+                            .foregroundStyle(.secondary)
+                        Text(metric.label)
+                            .font(AppFont.footnote)
+                        Spacer()
+                        StarRatingDisplay(rating: ratingValue, starSize: 12)
+                    }
+                }
+            }
+        }
     }
 }

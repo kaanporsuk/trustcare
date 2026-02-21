@@ -119,7 +119,7 @@ struct MyReviewsView: View {
                 verificationBadge(review)
             }
 
-            StarRatingView(rating: review.ratingOverall)
+            StarRatingDisplay(rating: Int(round(review.ratingOverall)), starSize: 14)
 
             Text(reviewSnippet(review.comment))
                 .font(AppFont.body)

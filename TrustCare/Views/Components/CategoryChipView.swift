@@ -1,23 +1,24 @@
 import SwiftUI
 
-/// A chip view for displaying and selecting a provider category
 struct CategoryChipView: View {
-    let category: ProviderCategory
+    let title: String
+    let iconName: String
     let isSelected: Bool
+    let tint: Color
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             HStack(spacing: 4) {
-                Image(systemName: category.iconName)
+                Image(systemName: iconName)
                     .font(.caption)
-                Text(category.displayName)
+                Text(title)
                     .font(AppFont.caption)
             }
             .foregroundStyle(isSelected ? .white : .primary)
             .padding(.horizontal, AppSpacing.md)
             .padding(.vertical, AppSpacing.xs)
-            .background(isSelected ? category.backgroundColor : AppColor.cardBackground)
+            .background(isSelected ? tint : AppColor.cardBackground)
             .clipShape(Capsule())
             .overlay(
                 Capsule()
@@ -31,14 +32,8 @@ struct CategoryChipView: View {
 #Preview {
     ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 8) {
-            ForEach(ProviderCategory.allCases) { category in
-                CategoryChipView(
-                    category: category,
-                    isSelected: category == .pharmacy
-                ) {
-                    print("Tapped \(category.displayName)")
-                }
-            }
+            CategoryChipView(title: "Pharmacy", iconName: "pills.circle.fill", isSelected: true, tint: .green) {}
+            CategoryChipView(title: "Hospital", iconName: "cross.case.fill", isSelected: false, tint: .indigo) {}
         }
         .padding()
     }

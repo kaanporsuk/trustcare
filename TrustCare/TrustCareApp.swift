@@ -31,6 +31,12 @@ struct TrustCareApp: App {
     @State private var path = NavigationPath()
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
+    init() {
+        Task {
+            await SpecialtyService.shared.loadSpecialties()
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $path) {

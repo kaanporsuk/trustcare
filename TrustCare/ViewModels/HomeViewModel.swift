@@ -21,7 +21,8 @@ final class HomeViewModel: ObservableObject {
     @Published var specialties: [Specialty] = []
     @Published var popularSpecialties: [Specialty] = []
     @Published var searchText: String = ""
-    @Published var selectedCategory: ProviderCategory = .all
+    @Published var selectedSurveyType: String? = nil
+    @Published var mapFilterSurveyType: String? = nil
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
@@ -114,7 +115,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     func searchWithDebounce() async {
-        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', category: '\(selectedCategory.displayName)')")
+        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', surveyType: '\(selectedSurveyType ?? "all")')")
         do {
             try await Task.sleep(nanoseconds: 300_000_000)
         } catch {
@@ -172,7 +173,7 @@ final class HomeViewModel: ObservableObject {
             )
 
             // Apply client-side category filtering
-            let filteredResults = filterProvidersByCategory(results, selectedCategory)
+            let filteredResults = filterProvidersBySurveyType(results, selectedSurveyType)
             
             print("✅ searchProviders returned \(results.count) providers, \(filteredResults.count) after category filter")
             if reset {
@@ -190,17 +191,13 @@ final class HomeViewModel: ObservableObject {
         print("🔵 HomeViewModel.searchProviders completed")
     }
 
-    private func filterProvidersByCategory(_ providers: [Provider], _ category: ProviderCategory) -> [Provider] {
-        if category == .all {
+    private func filterProvidersBySurveyType(_ providers: [Provider], _ surveyType: String?) -> [Provider] {
+        guard let surveyType else {
             return providers
         }
-        
-        let categorySpecialties = category.specialtyNames.map { $0.lowercased() }
+
         return providers.filter { provider in
-            let providerSpecialty = provider.specialty.lowercased()
-            return categorySpecialties.contains { specialty in
-                providerSpecialty.contains(specialty) || providerSpecialty.hasPrefix(specialty)
-            }
+            SpecialtyService.shared.surveyType(for: provider.specialty) == surveyType
         }
     }
 

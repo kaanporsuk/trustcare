@@ -2,6 +2,7 @@ import MapKit
 import SwiftUI
 
 struct ProviderMapView: View {
+    @ObservedObject var viewModel: HomeViewModel
     let providers: [Provider]
     let isLoading: Bool
     let centerCoordinate: CLLocationCoordinate2D?
@@ -13,7 +14,8 @@ struct ProviderMapView: View {
         ZStack {
             Map(position: $position, selection: $selectedProvider) {
                 UserAnnotation()
-                ForEach(providers) { provider in
+                ForEach(filteredProviders) { provider in
+                    let surveyType = SpecialtyService.shared.surveyType(for: provider.specialty)
                     Annotation(
                         provider.name,
                         coordinate: CLLocationCoordinate2D(
@@ -23,15 +25,15 @@ struct ProviderMapView: View {
                         anchor: .bottom
                     ) {
                         VStack(spacing: 0) {
-                            Image(systemName: "cross.case.fill")
+                            Image(systemName: ProviderMapColor.icon(for: surveyType))
                                 .font(.caption)
                                 .foregroundStyle(.white)
                                 .padding(6)
-                                .background(provider.verifiedPercentage > 50 ? AppColor.success : AppColor.trustBlue)
+                                .background(ProviderMapColor.color(for: surveyType))
                                 .clipShape(Circle())
                             Image(systemName: "triangle.fill")
                                 .font(.system(size: 6))
-                                .foregroundStyle(provider.verifiedPercentage > 50 ? AppColor.success : AppColor.trustBlue)
+                                .foregroundStyle(ProviderMapColor.color(for: surveyType))
                                 .offset(y: -3)
                         }
                     }
@@ -50,8 +52,18 @@ struct ProviderMapView: View {
                 recenterOnSelectedLocation(animated: true)
             }
 
-            if providers.isEmpty && isLoading {
+            if filteredProviders.isEmpty && isLoading {
                 ProgressView()
+            }
+
+            VStack {
+                HStack {
+                    Spacer()
+                    MapLegendView(viewModel: viewModel)
+                        .padding(.top, 12)
+                        .padding(.trailing, 12)
+                }
+                Spacer()
             }
         }
         .overlay(alignment: .bottomTrailing) {
@@ -102,5 +114,14 @@ struct ProviderMapView: View {
     private var centerCoordinateToken: String {
         guard let centerCoordinate else { return "nil" }
         return "\(centerCoordinate.latitude),\(centerCoordinate.longitude)"
+    }
+
+    private var filteredProviders: [Provider] {
+        guard let filterType = viewModel.mapFilterSurveyType else {
+            return providers
+        }
+        return providers.filter { provider in
+            SpecialtyService.shared.surveyType(for: provider.specialty) == filterType
+        }
     }
 }

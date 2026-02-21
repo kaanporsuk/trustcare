@@ -32,7 +32,7 @@ struct ProviderCardView: View {
                     }
 
                     HStack(spacing: 6) {
-                        StarRatingView(rating: provider.ratingOverall)
+                        StarRatingDisplay(rating: Int(round(provider.ratingOverall)))
                         Text(String(format: "%.1f", provider.ratingOverall))
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)

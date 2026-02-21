@@ -3,60 +3,109 @@ import UIKit
 
 struct StarRatingInput: View {
     @Binding var rating: Int
-    let size: CGFloat
-    let showsValue: Bool
+    var starSize: CGFloat = 28
+    var spacing: CGFloat = 6
+    var filledColor: Color = Color(hex: "#FFCC00")
+    var emptyColor: Color = Color(hex: "#E5E5EA")
 
-    @State private var lastHapticRating: Int = 0
+    private let selectionGenerator = UISelectionFeedbackGenerator()
+    private let impactGenerator = UIImpactFeedbackGenerator(style: .light)
 
-    init(rating: Binding<Int>, size: CGFloat = 22, showsValue: Bool = true) {
+    @State private var isDragging = false
+
+    init(
+        rating: Binding<Int>,
+        starSize: CGFloat = 28,
+        spacing: CGFloat = 6,
+        filledColor: Color = Color(hex: "#FFCC00"),
+        emptyColor: Color = Color(hex: "#E5E5EA")
+    ) {
         _rating = rating
-        self.size = size
-        self.showsValue = showsValue
+        self.starSize = starSize
+        self.spacing = spacing
+        self.filledColor = filledColor
+        self.emptyColor = emptyColor
+    }
+
+    init(rating: Binding<Int>, size: CGFloat = 28, showsValue: Bool = true) {
+        _rating = rating
+        self.starSize = size
     }
 
     var body: some View {
-        HStack(spacing: AppSpacing.sm) {
-            GeometryReader { proxy in
-                HStack(spacing: 6) {
-                    ForEach(1...5, id: \.self) { index in
-                        Image(systemName: rating >= index ? "star.fill" : "star")
-                            .resizable()
-                            .frame(width: size, height: size)
-                            .foregroundStyle(rating >= index ? AppColor.starFilled : AppColor.starEmpty)
-                            .animation(.easeInOut(duration: 0.15), value: rating)
-                    }
-                }
-                .contentShape(Rectangle())
-                .gesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            let newRating = ratingFromLocation(value.location.x, width: proxy.size.width)
-                            if newRating != rating {
-                                rating = newRating
-                                triggerHaptic(for: newRating)
-                            }
-                        }
-                )
+        HStack(spacing: spacing) {
+            ForEach(1...5, id: \.self) { star in
+                Image(systemName: star <= rating ? "star.fill" : "star")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: starSize, height: starSize)
+                    .foregroundStyle(star <= rating ? filledColor : emptyColor)
+                    .scaleEffect(isDragging && star == rating ? 1.15 : 1.0)
+                    .animation(.spring(response: 0.2, dampingFraction: 0.6), value: rating)
             }
-            .frame(height: size)
-
-            if showsValue {
-                Text("\(rating)/5")
-                    .font(AppFont.caption)
-                    .foregroundStyle(.secondary)
+            Spacer()
+            Text("\(rating)/5")
+                .font(.system(size: 15, weight: .medium))
+                .foregroundStyle(rating > 0 ? .primary : .secondary)
+                .frame(width: 35)
+        }
+        .contentShape(Rectangle())
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { value in
+                    isDragging = true
+                    updateRating(from: value.location.x)
+                }
+                .onEnded { _ in
+                    isDragging = false
+                    impactGenerator.impactOccurred()
+                }
+        )
+        .onAppear {
+            selectionGenerator.prepare()
+            impactGenerator.prepare()
+        }
+        .accessibilityValue("\(rating) out of 5 stars")
+        .accessibilityAdjustableAction { direction in
+            switch direction {
+            case .increment:
+                if rating < 5 { rating += 1 }
+            case .decrement:
+                if rating > 1 { rating -= 1 }
+            @unknown default:
+                break
             }
         }
+        .accessibilityHint("Swipe up or down to adjust rating")
     }
 
-    private func ratingFromLocation(_ x: CGFloat, width: CGFloat) -> Int {
-        guard width > 0 else { return 0 }
-        let raw = Int(ceil((x / width) * 5.0))
-        return max(1, min(5, raw))
+    private func updateRating(from xPosition: CGFloat) {
+        let totalWidth = (starSize + spacing) * 5
+        let clampedX = max(0, min(xPosition, totalWidth))
+        let newRating = max(1, min(5, Int(clampedX / (starSize + spacing)) + 1))
+        if newRating != rating {
+            rating = newRating
+            selectionGenerator.selectionChanged()
+            selectionGenerator.prepare()
+        }
     }
+}
 
-    private func triggerHaptic(for newRating: Int) {
-        guard newRating != lastHapticRating else { return }
-        lastHapticRating = newRating
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+struct StarRatingDisplay: View {
+    let rating: Int
+    var starSize: CGFloat = 12
+    var filledColor: Color = Color(hex: "#FFCC00")
+    var emptyColor: Color = Color(hex: "#E5E5EA")
+
+    var body: some View {
+        HStack(spacing: 2) {
+            ForEach(1...5, id: \.self) { star in
+                Image(systemName: star <= rating ? "star.fill" : "star")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: starSize, height: starSize)
+                    .foregroundStyle(star <= rating ? filledColor : emptyColor)
+            }
+        }
     }
 }

@@ -39,7 +39,7 @@ struct RatingSliderView: View {
                     .foregroundStyle(.secondary)
             }
 
-            StarRatingView(rating: value / 2.0)
+            StarRatingDisplay(rating: Int(round(value / 2.0)), starSize: 12)
         }
         .padding(AppSpacing.md)
         .background(AppColor.cardBackground)
