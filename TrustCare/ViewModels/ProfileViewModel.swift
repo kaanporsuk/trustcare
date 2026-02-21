@@ -311,13 +311,13 @@ final class ProfileViewModel: ObservableObject {
                 )
             }
 
-            let path = "\(session.user.id.uuidString)/avatar.jpg"
+            let userId = session.user.id.uuidString
+            let path = "avatars/\(userId)/avatar_\(UUID().uuidString).jpg"
             let url = try await ImageService.uploadToStorage(
-                bucket: "user-avatars",
+                bucket: "avatars",
                 path: path,
                 data: data,
-                contentType: "image/jpeg",
-                upsert: true
+                contentType: "image/jpeg"
             )
             verboseLog("✅ Avatar uploaded: \(url)")
 

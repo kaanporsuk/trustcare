@@ -6,13 +6,16 @@ struct ProviderMapView: View {
     let providers: [Provider]
     let isLoading: Bool
     let centerCoordinate: CLLocationCoordinate2D?
-    @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var showSearchAreaButton = false
+    @State private var mapCameraPosition: MapCameraPosition = .automatic
+    @State private var currentRegion: MKCoordinateRegion?
+    @State private var didSetInitialRegion = false
     @State private var selectedProvider: Provider?
     @State private var errorMessage: String?
 
     var body: some View {
         ZStack {
-            Map(position: $position, selection: $selectedProvider) {
+            Map(position: $mapCameraPosition, selection: $selectedProvider) {
                 UserAnnotation()
                 ForEach(filteredProviders) { provider in
                     let surveyType = SpecialtyService.shared.surveyType(for: provider.specialty)
@@ -45,6 +48,14 @@ struct ProviderMapView: View {
                 MapCompass()
                 MapScaleView()
             }
+            .onMapCameraChange(frequency: .onEnd) { context in
+                currentRegion = context.region
+                if didSetInitialRegion {
+                    showSearchAreaButton = true
+                } else {
+                    didSetInitialRegion = true
+                }
+            }
             .onAppear {
                 recenterOnSelectedLocation(animated: false)
             }
@@ -57,6 +68,26 @@ struct ProviderMapView: View {
             }
 
             VStack {
+                if showSearchAreaButton {
+                    Button {
+                        guard let currentRegion else { return }
+                        Task {
+                            await viewModel.fetchProviders(in: currentRegion)
+                            showSearchAreaButton = false
+                        }
+                    } label: {
+                        Label(String(localized: "Search this area"), systemImage: "magnifyingglass")
+                            .font(AppFont.callout)
+                            .foregroundStyle(.primary)
+                            .padding(.horizontal, AppSpacing.md)
+                            .padding(.vertical, AppSpacing.sm)
+                            .background(.ultraThinMaterial)
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, AppSpacing.sm)
+                }
+
                 HStack {
                     Spacer()
                     MapLegendView(viewModel: viewModel)
@@ -102,12 +133,13 @@ struct ProviderMapView: View {
             center: centerCoordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
         )
+        currentRegion = region
         if animated {
             withAnimation(.easeInOut(duration: 0.25)) {
-                position = .region(region)
+                mapCameraPosition = .region(region)
             }
         } else {
-            position = .region(region)
+            mapCameraPosition = .region(region)
         }
     }
 
@@ -117,7 +149,7 @@ struct ProviderMapView: View {
     }
 
     private var filteredProviders: [Provider] {
-        guard let filterType = viewModel.mapFilterSurveyType else {
+        guard let filterType = viewModel.selectedSurveyType else {
             return providers
         }
         return providers.filter { provider in

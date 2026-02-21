@@ -25,12 +25,12 @@ struct MapLegendView: View {
                     Image(systemName: "line.3.horizontal.decrease.circle.fill")
                         .font(.system(size: 18))
                         .foregroundStyle(
-                            viewModel.mapFilterSurveyType.map { ProviderMapColor.color(for: $0) }
+                            viewModel.selectedSurveyType.map { ProviderMapColor.color(for: $0) }
                             ?? Color.primary
                         )
                     if !isExpanded {
                         Text(
-                            viewModel.mapFilterSurveyType.map { ProviderMapColor.label(for: $0) }
+                            viewModel.selectedSurveyType.map { ProviderMapColor.label(for: $0) }
                             ?? "Filter"
                         )
                         .font(.system(size: 13, weight: .semibold))
@@ -46,28 +46,28 @@ struct MapLegendView: View {
             if isExpanded {
                 VStack(alignment: .leading, spacing: 2) {
                     Button {
-                        viewModel.mapFilterSurveyType = nil
+                        viewModel.selectedSurveyType = nil
                     } label: {
                         HStack(spacing: 8) {
                             Circle()
                                 .fill(Color.primary.opacity(0.3))
                                 .frame(width: 12, height: 12)
                             Text("Show All")
-                                .font(.system(size: 12, weight: viewModel.mapFilterSurveyType == nil ? .bold : .regular))
+                                .font(.system(size: 12, weight: viewModel.selectedSurveyType == nil ? .bold : .regular))
                         }
                         .padding(.vertical, 4)
                         .padding(.horizontal, 6)
-                        .background(viewModel.mapFilterSurveyType == nil ? Color.primary.opacity(0.08) : Color.clear)
+                        .background(viewModel.selectedSurveyType == nil ? Color.primary.opacity(0.08) : Color.clear)
                         .cornerRadius(6)
                     }
                     .buttonStyle(.plain)
 
                     ForEach(categories, id: \.type) { cat in
                         Button {
-                            if viewModel.mapFilterSurveyType == cat.type {
-                                viewModel.mapFilterSurveyType = nil
+                            if viewModel.selectedSurveyType == cat.type {
+                                viewModel.selectedSurveyType = nil
                             } else {
-                                viewModel.mapFilterSurveyType = cat.type
+                                viewModel.selectedSurveyType = cat.type
                             }
                         } label: {
                             HStack(spacing: 8) {
@@ -75,12 +75,12 @@ struct MapLegendView: View {
                                     .fill(ProviderMapColor.color(for: cat.type))
                                     .frame(width: 12, height: 12)
                                 Text(cat.label)
-                                    .font(.system(size: 12, weight: viewModel.mapFilterSurveyType == cat.type ? .bold : .regular))
+                                    .font(.system(size: 12, weight: viewModel.selectedSurveyType == cat.type ? .bold : .regular))
                             }
                             .padding(.vertical, 4)
                             .padding(.horizontal, 6)
                             .background(
-                                viewModel.mapFilterSurveyType == cat.type
+                                viewModel.selectedSurveyType == cat.type
                                 ? ProviderMapColor.color(for: cat.type).opacity(0.12)
                                 : Color.clear
                             )

@@ -16,21 +16,28 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: AppSpacing.lg) {
+            VStack(spacing: 0) {
                 headerSection
-                SearchBarView(text: $homeVM.searchText)
+
+                VStack(spacing: AppSpacing.lg) {
+                    SearchBarView(text: $homeVM.searchText)
+                        .padding(.horizontal, AppSpacing.lg)
+
+                    specialtyScroll
+
+                    Picker("", selection: $homeVM.viewMode) {
+                        Text(String(localized: "List")).tag(HomeViewModel.ViewMode.list)
+                        Text(String(localized: "Map")).tag(HomeViewModel.ViewMode.map)
+                    }
+                    .pickerStyle(.segmented)
                     .padding(.horizontal, AppSpacing.lg)
-
-                specialtyScroll
-
-                Picker("", selection: $homeVM.viewMode) {
-                    Text(String(localized: "List")).tag(HomeViewModel.ViewMode.list)
-                    Text(String(localized: "Map")).tag(HomeViewModel.ViewMode.map)
                 }
-                .pickerStyle(.segmented)
-                .padding(.horizontal, AppSpacing.lg)
+                .padding(.bottom, AppSpacing.md)
 
-                contentSection
+                ZStack {
+                    contentSection
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .navigationBarHidden(true)
             .dismissKeyboardOnTap()

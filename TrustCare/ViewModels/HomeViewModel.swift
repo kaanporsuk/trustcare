@@ -1,6 +1,7 @@
 import Combine
 import CoreLocation
 import Foundation
+import MapKit
 
 @MainActor
 final class HomeViewModel: ObservableObject {
@@ -22,7 +23,6 @@ final class HomeViewModel: ObservableObject {
     @Published var popularSpecialties: [Specialty] = []
     @Published var searchText: String = ""
     @Published var selectedSurveyType: String? = nil
-    @Published var mapFilterSurveyType: String? = nil
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
@@ -126,6 +126,20 @@ final class HomeViewModel: ObservableObject {
         guard !isLoading, hasMoreResults else { return }
         currentOffset += pageSize
         await searchProviders(reset: false)
+    }
+
+    func fetchProviders(in region: MKCoordinateRegion) async {
+        let updatedLocation = SelectedLocation(
+            name: locationName,
+            latitude: region.center.latitude,
+            longitude: region.center.longitude,
+            isCurrentLocation: false
+        )
+        selectedLocation = updatedLocation
+        saveSelectedLocation(updatedLocation)
+        currentOffset = 0
+        hasMoreResults = true
+        await searchProviders(reset: true)
     }
 
     func searchWithDebounce() async {
