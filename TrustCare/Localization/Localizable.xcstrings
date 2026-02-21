@@ -130,6 +130,9 @@
         }
       }
     },
+    "Add Number" : {
+
+    },
     "Add Photos" : {
       "extractionState" : "manual",
       "localizations" : {
