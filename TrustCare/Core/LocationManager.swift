@@ -13,6 +13,8 @@ class LocationManager: NSObject, ObservableObject {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        manager.distanceFilter = 100
+        manager.pausesLocationUpdatesAutomatically = true
         authorizationStatus = manager.authorizationStatus
     }
 

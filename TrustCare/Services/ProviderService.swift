@@ -8,6 +8,13 @@ enum ProviderService {
         SupabaseManager.shared.client
     }
 
+    private static let verboseLogging = false
+
+    private static func verboseLog(_ message: @autoclosure () -> String) {
+        guard verboseLogging else { return }
+        print(message())
+    }
+
     private static let specialtiesCacheKey = "specialtiesCache"
     private static let specialtiesCacheDateKey = "specialtiesCacheDate"
     private static var cachedSpecialties: [Specialty]?
@@ -44,12 +51,12 @@ enum ProviderService {
         offset: Int = 0,
         enableAppleMaps: Bool = true  // Enable Apple Maps fallback
     ) async throws -> [Provider] {
-        print("🔵 ProviderService.searchProviders called")
-        print("  Text: '\(text ?? "nil")'")
-        print("  Specialty: '\(specialty ?? "nil")'")
-        print("  Location: \(lat != nil && lng != nil ? "(\(lat!), \(lng!))" : "nil")")
-        print("  Limit: \(limit), Offset: \(offset)")
-        print("  Apple Maps fallback enabled: \(enableAppleMaps)")
+        verboseLog("🔵 ProviderService.searchProviders called")
+        verboseLog("  Text: '\(text ?? "nil")'")
+        verboseLog("  Specialty: '\(specialty ?? "nil")'")
+        verboseLog("  Location: \(lat != nil && lng != nil ? "(\(lat!), \(lng!))" : "nil")")
+        verboseLog("  Limit: \(limit), Offset: \(offset)")
+        verboseLog("  Apple Maps fallback enabled: \(enableAppleMaps)")
         
         var params: [String: AnyJSON] = [
             "limit_val": .double(Double(limit)),
@@ -78,7 +85,7 @@ enum ProviderService {
             params["user_lng"] = .double(lng)
         }
 
-        print("  Calling search_providers RPC with params: \(params)")
+        verboseLog("  Calling search_providers RPC with params: \(params)")
         
         var supabaseProviders: [Provider] = []
         
@@ -87,7 +94,7 @@ enum ProviderService {
                 .rpc("search_providers", params: params)
                 .execute()
             
-            print("✅ search_providers RPC returned \(response.value.count) providers")
+            verboseLog("✅ search_providers RPC returned \(response.value.count) providers")
             supabaseProviders = response.value
 
             guard let lat, let lng else {
@@ -113,7 +120,7 @@ enum ProviderService {
         
         // TIER 2: Apple Maps fallback if results are insufficient and enableAppleMaps is true
         if enableAppleMaps && supabaseProviders.count < 5, let searchText = text, !searchText.isEmpty {
-            print("📍 Triggering Apple Maps fallback (Supabase only found \(supabaseProviders.count) results)")
+            verboseLog("📍 Triggering Apple Maps fallback (Supabase only found \(supabaseProviders.count) results)")
             
             let userCoordinate: CLLocationCoordinate2D? = if let lat, let lng {
                 CLLocationCoordinate2D(latitude: lat, longitude: lng)
@@ -128,7 +135,7 @@ enum ProviderService {
                     radiusMeters: CLLocationDistance(radiusKm * 1000)
                 )
                 
-                print("📍 Apple Maps returned \(appleMapsResults.count) results")
+                verboseLog("📍 Apple Maps returned \(appleMapsResults.count) results")
                 
                 // Convert to temporary providers and deduplicate
                 var appleMapsProviders = appleMapsResults.map { $0.toTemporaryProvider() }
@@ -154,7 +161,7 @@ enum ProviderService {
                     }
                 }
                 
-                print("📍 Adding \(deduplicatedApple.count) unique Apple Maps results")
+                verboseLog("📍 Adding \(deduplicatedApple.count) unique Apple Maps results")
                 supabaseProviders.append(contentsOf: deduplicatedApple)
                 
             } catch {
@@ -535,7 +542,7 @@ enum ProviderService {
     }
 
     private static func fetchSpecialtiesRemote() async throws -> [Specialty] {
-        print("🔵 ProviderService.fetchSpecialtiesRemote called")
+        verboseLog("🔵 ProviderService.fetchSpecialtiesRemote called")
 
         do {
             let response: PostgrestResponse<[Specialty]> = try await client
@@ -545,7 +552,7 @@ enum ProviderService {
                 .order("display_order", ascending: true)
                 .execute()
 
-            print("✅ fetchSpecialtiesRemote returned \(response.value.count) specialties")
+            verboseLog("✅ fetchSpecialtiesRemote returned \(response.value.count) specialties")
             return response.value
         } catch {
             print("❌ fetchSpecialtiesRemote failed")
@@ -639,15 +646,15 @@ enum ProviderService {
     static func captureAndSaveProvider(
         from appleMapsProvider: AppleMapsService.AppleMapsProvider
     ) async throws -> Provider {
-        print("🔵 ProviderService.captureAndSaveProvider called")
-        print("  Name: \(appleMapsProvider.name)")
-        print("  Address: \(appleMapsProvider.address)")
+        verboseLog("🔵 ProviderService.captureAndSaveProvider called")
+        verboseLog("  Name: \(appleMapsProvider.name)")
+        verboseLog("  Address: \(appleMapsProvider.address)")
         let externalId = "\(appleMapsProvider.mapItem.name ?? "unknown")_\(appleMapsProvider.coordinate.latitude)_\(appleMapsProvider.coordinate.longitude)"
-        print("  External ID: \(externalId)")
+        verboseLog("  External ID: \(externalId)")
         
         // Check if provider already exists by external_id
         if let existingId = try await AppleMapsService.existsWithExternalId(externalId) {
-            print("ℹ️ Provider already exists with ID: \(existingId)")
+            verboseLog("ℹ️ Provider already exists with ID: \(existingId)")
             return try await fetchProviderById(existingId)
         }
         
@@ -694,7 +701,7 @@ enum ProviderService {
             is_featured: false
         )
         
-        print("  Inserting provider with ID: \(newProviderId)")
+        verboseLog("  Inserting provider with ID: \(newProviderId)")
         
         do {
             let _ = try await client
@@ -702,7 +709,7 @@ enum ProviderService {
                 .insert([insert])
                 .execute()
             
-            print("✅ Provider inserted successfully: \(newProviderId)")
+            verboseLog("✅ Provider inserted successfully: \(newProviderId)")
             
             // Fetch and return the newly created provider
             return try await fetchProviderById(newProviderId)

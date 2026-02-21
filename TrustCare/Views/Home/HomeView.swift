@@ -7,6 +7,12 @@ struct HomeView: View {
     @State private var displayName: String = String(localized: "Anonymous")
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
+    private let verboseLogging = false
+
+    private func verboseLog(_ message: @autoclosure () -> String) {
+        guard verboseLogging else { return }
+        print(message())
+    }
 
     var body: some View {
         NavigationStack {
@@ -94,8 +100,8 @@ struct HomeView: View {
                                 .scaledToFit()
                                 .foregroundStyle(.secondary)
                                 .onAppear {
-                                    print("⚠️ HomeView avatar failed to load from: \(urlString)")
-                                    print("   Error: \(error.localizedDescription)")
+                                    verboseLog("⚠️ HomeView avatar failed to load from: \(urlString)")
+                                    verboseLog("   Error: \(error.localizedDescription)")
                                 }
                         @unknown default:
                             Image(systemName: "person.crop.circle.fill")
@@ -246,9 +252,12 @@ struct HomeView: View {
                 avatarDisplayUrl = cacheBustedUrl(signed.absoluteString)
             } else if let avatarUrl = profile.avatarUrl {
                 avatarDisplayUrl = cacheBustedUrl(avatarUrl)
+            } else {
+                avatarDisplayUrl = nil
             }
         } catch {
             displayName = String(localized: "there")
+            avatarDisplayUrl = nil
         }
     }
 
@@ -259,8 +268,16 @@ struct HomeView: View {
         return String(urlString[range.upperBound...])
     }
 
-    private func cacheBustedUrl(_ url: String) -> String {
-        let separator = url.contains("?") ? "&" : "?"
-        return "\(url)\(separator)v=\(Int(Date().timeIntervalSince1970))"
+    private func cacheBustedUrl(_ url: String) -> String? {
+        let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty,
+              let parsed = URL(string: trimmed),
+              let scheme = parsed.scheme,
+              scheme == "http" || scheme == "https" else {
+            return nil
+        }
+
+        let separator = trimmed.contains("?") ? "&" : "?"
+        return "\(trimmed)\(separator)v=\(Int(Date().timeIntervalSince1970))"
     }
 }

@@ -36,8 +36,22 @@ final class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
+    private var lastSearchLocation: CLLocation?
+    private var lastSearchAt: Date?
+    private var lastGeocodedLocation: CLLocation?
+    private var lastGeocodedAt: Date?
+    private let minSearchDistanceMeters: CLLocationDistance = 200
+    private let minSearchInterval: TimeInterval = 8
+    private let minGeocodeDistanceMeters: CLLocationDistance = 120
+    private let minGeocodeInterval: TimeInterval = 20
+    private static let verboseLogging = false
     private static let selectedLocationKey = "selectedLocation"
     private static let recentLocationsKey = "recentLocations"
+
+    private func verboseLog(_ message: @autoclosure () -> String) {
+        guard Self.verboseLogging else { return }
+        print(message())
+    }
 
     var locationManagerCoordinate: CLLocationCoordinate2D? {
         locationManager.userLocation
@@ -115,25 +129,25 @@ final class HomeViewModel: ObservableObject {
     }
 
     func searchWithDebounce() async {
-        print("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', surveyType: '\(selectedSurveyType ?? "all")')")
+        verboseLog("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', surveyType: '\(selectedSurveyType ?? "all")')")
         do {
             try await Task.sleep(nanoseconds: 300_000_000)
         } catch {
-            print("⚠️ searchWithDebounce cancelled")
+            verboseLog("⚠️ searchWithDebounce cancelled")
             return
         }
         await refresh()
     }
 
     private func loadSpecialties(forceRefresh: Bool) async {
-        print("🔵 HomeViewModel.loadSpecialties started")
+        verboseLog("🔵 HomeViewModel.loadSpecialties started")
         do {
             let results = try await ProviderService.fetchSpecialtiesCached(forceRefresh: forceRefresh)
             specialties = results
             popularSpecialties = results
                 .filter { $0.isPopular }
                 .sorted { $0.displayOrder < $1.displayOrder }
-            print("✅ Loaded \(results.count) specialties")
+            verboseLog("✅ Loaded \(results.count) specialties")
         } catch {
             let errorMsg = localizedErrorMessage(error)
             print("❌ loadSpecialties failed: \(errorMsg)")
@@ -143,10 +157,10 @@ final class HomeViewModel: ObservableObject {
 
     private func searchProviders(reset: Bool) async {
         guard !isLoading else {
-            print("⚠️ searchProviders skipped - already loading")
+            verboseLog("⚠️ searchProviders skipped - already loading")
             return
         }
-        print("🔵 HomeViewModel.searchProviders started (reset: \(reset))")
+        verboseLog("🔵 HomeViewModel.searchProviders started (reset: \(reset))")
         isLoading = true
         errorMessage = nil
         let activeCoordinate = selectedLocation.isCurrentLocation
@@ -175,7 +189,7 @@ final class HomeViewModel: ObservableObject {
             // Apply client-side category filtering
             let filteredResults = filterProvidersBySurveyType(results, selectedSurveyType)
             
-            print("✅ searchProviders returned \(results.count) providers, \(filteredResults.count) after category filter")
+            verboseLog("✅ searchProviders returned \(results.count) providers, \(filteredResults.count) after category filter")
             if reset {
                 providers = filteredResults
             } else {
@@ -188,7 +202,7 @@ final class HomeViewModel: ObservableObject {
             errorMessage = errorMsg
         }
         isLoading = false
-        print("🔵 HomeViewModel.searchProviders completed")
+        verboseLog("🔵 HomeViewModel.searchProviders completed")
     }
 
     private func filterProvidersBySurveyType(_ providers: [Provider], _ surveyType: String?) -> [Provider] {
@@ -207,14 +221,52 @@ final class HomeViewModel: ObservableObject {
             .compactMap { $0 }
             .sink { [weak self] location in
                 Task { @MainActor in
-                    await self?.reverseGeocode(location: location)
-                    if self?.selectedLocation.isCurrentLocation == true,
-                       self?.hasLoadedInitially == true {
-                        await self?.refresh()
+                    guard let self else { return }
+                    let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+
+                    if self.shouldReverseGeocode(for: currentLocation) {
+                        await self.reverseGeocode(location: location)
+                        self.lastGeocodedLocation = currentLocation
+                        self.lastGeocodedAt = Date()
+                    }
+
+                    if self.selectedLocation.isCurrentLocation,
+                       self.hasLoadedInitially,
+                       self.shouldRefreshProviders(for: currentLocation),
+                       !self.isLoading {
+                        await self.refresh()
+                        self.lastSearchLocation = currentLocation
+                        self.lastSearchAt = Date()
                     }
                 }
             }
             .store(in: &cancellables)
+    }
+
+    private func shouldRefreshProviders(for location: CLLocation) -> Bool {
+        if let lastSearchAt,
+           Date().timeIntervalSince(lastSearchAt) < minSearchInterval {
+            return false
+        }
+
+        guard let lastSearchLocation else {
+            return true
+        }
+
+        return location.distance(from: lastSearchLocation) >= minSearchDistanceMeters
+    }
+
+    private func shouldReverseGeocode(for location: CLLocation) -> Bool {
+        if let lastGeocodedAt,
+           Date().timeIntervalSince(lastGeocodedAt) < minGeocodeInterval {
+            return false
+        }
+
+        guard let lastGeocodedLocation else {
+            return true
+        }
+
+        return location.distance(from: lastGeocodedLocation) >= minGeocodeDistanceMeters
     }
 
     private func reverseGeocode(location: CLLocationCoordinate2D) async {

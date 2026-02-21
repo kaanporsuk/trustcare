@@ -14,20 +14,26 @@ final class ProfileViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var unreadNotificationCount: Int = 0
     @Published var avatarDisplayUrl: String?
+    private static let verboseLogging = false
+
+    private func verboseLog(_ message: @autoclosure () -> String) {
+        guard Self.verboseLogging else { return }
+        print(message())
+    }
     
     init() {
-        print("🔵 ProfileViewModel initialized")
+        verboseLog("🔵 ProfileViewModel initialized")
     }
 
     func loadProfile() async {
-        print("🔵 ProfileViewModel.loadProfile called")
+        verboseLog("🔵 ProfileViewModel.loadProfile called")
         isLoading = true
         errorMessage = nil
         do {
             profile = try await AuthService.fetchProfile()
-            print("Avatar URL from profile: \(profile?.avatarUrl ?? "nil")")
+            verboseLog("Avatar URL from profile: \(profile?.avatarUrl ?? "nil")")
             await resolveAvatarDisplayUrl(from: profile?.avatarUrl)
-            print("✅ Profile loaded: \(profile?.displayName ?? "nil")")
+            verboseLog("✅ Profile loaded: \(profile?.displayName ?? "nil")")
         } catch {
             print("❌ loadProfile failed: \(error)")
             errorMessage = localizedErrorMessage(error)
@@ -313,7 +319,7 @@ final class ProfileViewModel: ObservableObject {
                 contentType: "image/jpeg",
                 upsert: true
             )
-            print("✅ Avatar uploaded: \(url)")
+            verboseLog("✅ Avatar uploaded: \(url)")
 
             try await AuthService.updateProfile(
                 fullName: nil,
@@ -343,7 +349,7 @@ final class ProfileViewModel: ObservableObject {
         if let path = ImageService.extractStoragePath(from: rawUrl, bucket: "avatars") {
             if let publicUrl = ImageService.getPublicURL(bucket: "avatars", path: path) {
                 avatarDisplayUrl = cacheBustedUrl(publicUrl.absoluteString)
-                print("✅ Avatar public URL resolved: \(publicUrl.absoluteString)")
+                verboseLog("✅ Avatar public URL resolved: \(publicUrl.absoluteString)")
                 return
             }
         }
@@ -352,13 +358,13 @@ final class ProfileViewModel: ObservableObject {
         if let path = ImageService.extractStoragePath(from: rawUrl, bucket: "user-avatars") {
             if let publicUrl = ImageService.getPublicURL(bucket: "user-avatars", path: path) {
                 avatarDisplayUrl = cacheBustedUrl(publicUrl.absoluteString)
-                print("✅ Avatar public URL resolved from legacy path: \(publicUrl.absoluteString)")
+                verboseLog("✅ Avatar public URL resolved from legacy path: \(publicUrl.absoluteString)")
                 return
             }
         }
 
         // Fallback: use raw URL if extraction or URL generation fails
-        print("📌 Using raw avatar URL as fallback: \(rawUrl)")
+        verboseLog("📌 Using raw avatar URL as fallback: \(rawUrl)")
         avatarDisplayUrl = cacheBustedUrl(rawUrl)
     }
 
