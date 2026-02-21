@@ -118,41 +118,28 @@ struct ReviewFormView: View {
     }
 
     private var ratingsSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text(String(localized: "Rate Your Experience"))
-                .font(AppFont.headline)
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Rate Your Experience")
+                .font(.system(size: 20, weight: .bold, design: .rounded))
 
-            VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text(String(localized: "Overall Rating"))
-                    .font(AppFont.body)
-                Text(String(localized: "How was your overall experience?"))
-                    .font(AppFont.footnote)
-                    .foregroundStyle(.secondary)
-                StarRatingInput(rating: Binding(
-                    get: { viewModel.overallRating },
-                    set: { viewModel.setOverallRating($0) }
-                ), starSize: 36)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Overall Rating").font(.system(size: 17, weight: .semibold))
+                Text("How was your overall experience?").font(.system(size: 13)).foregroundColor(.secondary)
+                StarRatingInput(rating: $viewModel.overallRating, starSize: 36)
             }
+            .padding(.bottom, 8)
 
             ForEach(viewModel.surveyConfig.metrics) { metric in
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 6) {
-                        Image(systemName: metric.icon)
-                            .foregroundStyle(Color(hex: "#0055FF"))
-                            .frame(width: 20)
-                        Text(metric.label)
-                            .font(AppFont.headline)
+                        Image(systemName: metric.icon).foregroundColor(Color(hex: "#0055FF")).frame(width: 20)
+                        Text(metric.label).font(.system(size: 17, weight: .semibold))
                     }
-                    Text(metric.subtext)
-                        .font(AppFont.footnote)
-                        .foregroundStyle(.secondary)
+                    Text(metric.subtext).font(.system(size: 13)).foregroundColor(.secondary)
                     StarRatingInput(
                         rating: Binding(
                             get: { viewModel.metricRatings[metric.dbColumn] ?? 0 },
-                            set: { newValue in
-                                viewModel.metricRatings[metric.dbColumn] = newValue
-                                viewModel.updateOverallIfNeeded()
-                            }
+                            set: { viewModel.metricRatings[metric.dbColumn] = $0 }
                         ),
                         starSize: 28
                     )

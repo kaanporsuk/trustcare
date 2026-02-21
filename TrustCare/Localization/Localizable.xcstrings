@@ -1910,6 +1910,9 @@
         }
       }
     },
+    "Search this area" : {
+
+    },
     "search_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {

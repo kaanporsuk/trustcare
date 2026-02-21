@@ -275,18 +275,28 @@ struct ProviderDetailView: View {
     }
 
     private var quickActions: some View {
-        HStack(spacing: AppSpacing.md) {
+        let provider = detailVM.provider
+        let hasPhone = provider?.phone != nil && !(provider?.phone?.isEmpty ?? true)
+
+        return HStack(spacing: AppSpacing.md) {
             Button {
-                if let phone = detailVM.provider?.phone {
-                    openPhone(phone)
+                if hasPhone {
+                    callProvider(phone: provider?.phone)
+                } else {
+                    print("Add phone number tapped")
                 }
             } label: {
-                Label(String(localized: "Call"), systemImage: "phone.fill")
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 44)
-                    .background(AppColor.trustBlue)
-                    .foregroundStyle(.white)
-                    .cornerRadius(AppRadius.button)
+                VStack {
+                    Image(systemName: hasPhone ? "phone.fill" : "phone.badge.plus")
+                        .font(.system(size: 20))
+                    Text(hasPhone ? "Call" : "Add Number")
+                        .font(.system(size: 12, weight: .medium))
+                }
+                .foregroundColor(hasPhone ? .white : Color(hex: "#0055FF"))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .background(hasPhone ? Color(hex: "#0055FF") : Color(hex: "#0055FF").opacity(0.1))
+                .cornerRadius(12)
             }
 
             Button {
@@ -305,6 +315,14 @@ struct ProviderDetailView: View {
             }
         }
         .padding(.horizontal, AppSpacing.lg)
+    }
+
+    private func callProvider(phone: String?) {
+        guard let phone = phone, !phone.isEmpty else { return }
+        let cleanedPhone = phone.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        if let url = URL(string: "tel://\(cleanedPhone)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 
     private var statsGrid: some View {
