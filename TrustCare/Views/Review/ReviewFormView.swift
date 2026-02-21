@@ -20,6 +20,7 @@ struct ReviewFormView: View {
                 providerCard
                 visitSection
                 ratingsSection
+                contextualMetricsSection
                 reviewSection
                 photoSection
                 verificationSection
@@ -265,6 +266,29 @@ struct ReviewFormView: View {
             Text(String(format: String(localized: "%lld of 5 photos"), viewModel.selectedImages.count))
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
+        }
+    }
+
+    private var contextualMetricsSection: some View {
+        let metrics = viewModel.contextualMetricsForProvider()
+        
+        return VStack(alignment: .leading, spacing: AppSpacing.md) {
+            if !metrics.isEmpty {
+                Text(String(localized: "Facility-Specific Questions"))
+                    .font(AppFont.headline)
+                
+                VStack(alignment: .leading, spacing: AppSpacing.md) {
+                    ForEach(Array(metrics.enumerated()), id: \.offset) { index, metric in
+                        ContextualMetricSliderView(
+                            metric: metric,
+                            currentValue: viewModel.getContextualMetricValue(index: index),
+                            onValueChange: { newValue in
+                                viewModel.updateContextualMetric(index: index, value: newValue)
+                            }
+                        )
+                    }
+                }
+            }
         }
     }
 

@@ -113,7 +113,13 @@
     "Account created! Please check your email to confirm your account." : {
 
     },
+    "Actionable Advice" : {
+
+    },
     "Active" : {
+
+    },
+    "Active Supervision" : {
 
     },
     "Add a Healthcare Provider" : {
@@ -183,6 +189,9 @@
       }
     },
     "Address is required to add a provider." : {
+
+    },
+    "Aftercare Support" : {
 
     },
     "AI verification consent" : {
@@ -472,6 +481,12 @@
         }
       }
     },
+    "Check-in Process" : {
+
+    },
+    "Checkout Speed" : {
+
+    },
     "Checkup" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -552,6 +567,9 @@
         }
       }
     },
+    "Clear Explanations" : {
+
+    },
     "Clear Filter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -620,6 +638,9 @@
           }
         }
       }
+    },
+    "Consultation Quality" : {
+
     },
     "Contact" : {
 
@@ -771,6 +792,18 @@
         }
       }
     },
+    "Did they have your medications or offer clear alternatives?" : {
+
+    },
+    "Did you receive actionable advice and strategies?" : {
+
+    },
+    "Did you receive clear home exercise instructions?" : {
+
+    },
+    "Did your session start on time?" : {
+
+    },
     "Directions" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -792,6 +825,15 @@
           }
         }
       }
+    },
+    "Do you feel improvement in your condition?" : {
+
+    },
+    "Do you feel you're making progress toward your goals?" : {
+
+    },
+    "Doctor Comm." : {
+
     },
     "Don't have an account? Sign Up" : {
       "extractionState" : "manual",
@@ -863,6 +905,9 @@
         }
       }
     },
+    "Empathy & Listening" : {
+
+    },
     "English" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -899,6 +944,9 @@
     "Export endpoint is unavailable." : {
 
     },
+    "Facility & Gear" : {
+
+    },
     "Facility Cleanliness" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -909,6 +957,9 @@
           }
         }
       }
+    },
+    "Facility-Specific Questions" : {
+
     },
     "Filter" : {
       "extractionState" : "manual",
@@ -1093,6 +1144,36 @@
         }
       }
     },
+    "How attentive and competent were the nursing staff?" : {
+
+    },
+    "How carefully did the doctor listen and explain things?" : {
+
+    },
+    "How clean and hygienic was the clinic?" : {
+
+    },
+    "How clean and sanitary was the facility?" : {
+
+    },
+    "How clean were the patient rooms and public areas?" : {
+
+    },
+    "How clean were the treatment rooms and equipment?" : {
+
+    },
+    "How clearly did the dentist explain the procedure and costs?" : {
+
+    },
+    "How clearly were risks and benefits explained?" : {
+
+    },
+    "How closely did the therapist supervise your exercises?" : {
+
+    },
+    "How comfortable did the staff make the blood draw or imaging process?" : {
+
+    },
     "How expensive was your visit?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1104,7 +1185,67 @@
         }
       }
     },
+    "How good was the follow-up and aftercare support?" : {
+
+    },
+    "How helpful was the aftercare guidance?" : {
+
+    },
+    "How helpful was the pharmacist's guidance on usage and side effects?" : {
+
+    },
+    "How long did you wait past your appointment time?" : {
+
+    },
+    "How patient and courteous was the support staff?" : {
+
+    },
+    "How professional was the facility and equipment?" : {
+
+    },
+    "How quickly were you assisted and checked out?" : {
+
+    },
+    "How quickly were you attended to by the medical team?" : {
+
+    },
+    "How quickly were you called in for your test?" : {
+
+    },
+    "How quickly were you seated for your appointment?" : {
+
+    },
+    "How satisfied are you with the results?" : {
+
+    },
+    "How secure and private was the session environment?" : {
+
+    },
+    "How smooth was the admission, billing, and discharge process?" : {
+
+    },
+    "How thorough and personalized was the consultation?" : {
+
+    },
     "How We Use Your Information" : {
+
+    },
+    "How well did the advice or treatment address your concern?" : {
+
+    },
+    "How well did the therapist listen and understand you?" : {
+
+    },
+    "How well did the therapist listen to your concerns?" : {
+
+    },
+    "How well did they manage your comfort during the procedure?" : {
+
+    },
+    "How well did they meet the promised timeframe for your results?" : {
+
+    },
+    "How well-maintained was the equipment and facility?" : {
 
     },
     "I agree to Terms & Privacy" : {
@@ -1234,6 +1375,9 @@
           }
         }
       }
+    },
+    "Login / Sign Up" : {
+
     },
     "Manager" : {
       "extractionState" : "manual",
@@ -1448,6 +1592,9 @@
     "Notifications" : {
 
     },
+    "Nursing Care" : {
+
+    },
     "OK" : {
 
     },
@@ -1535,6 +1682,9 @@
       }
     },
     "Pending Verification" : {
+
+    },
+    "Pharmacist Advice" : {
 
     },
     "Phone" : {
@@ -1662,6 +1812,9 @@
           }
         }
       }
+    },
+    "Procedural Comfort" : {
+
     },
     "Procedure" : {
       "extractionState" : "manual",
@@ -1800,7 +1953,16 @@
     "Removed" : {
 
     },
+    "Response Time" : {
+
+    },
     "Response time:" : {
+
+    },
+    "Result Satisfaction" : {
+
+    },
+    "Result Turnaround" : {
 
     },
     "Review" : {
@@ -1945,6 +2107,12 @@
         }
       }
     },
+    "Session Privacy" : {
+
+    },
+    "Session Punctuality" : {
+
+    },
     "Settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2002,6 +2170,9 @@
           }
         }
       }
+    },
+    "Sign In Required" : {
+
     },
     "Sign Out" : {
 
@@ -2089,6 +2260,9 @@
         }
       }
     },
+    "Staff Courtesy" : {
+
+    },
     "Staff Friendliness" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2099,6 +2273,9 @@
           }
         }
       }
+    },
+    "Stock Availability" : {
+
     },
     "Submit" : {
       "extractionState" : "manual",
@@ -2241,7 +2418,13 @@
         }
       }
     },
+    "Test Comfort" : {
+
+    },
     "Theme" : {
+
+    },
+    "Therapy Progress" : {
 
     },
     "there" : {
@@ -2296,6 +2479,9 @@
           }
         }
       }
+    },
+    "Treatment Outcome" : {
+
     },
     "TrustCare (\"we\", \"our\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information." : {
 
@@ -2652,6 +2838,9 @@
 
     },
     "You can upload up to 5 photos." : {
+
+    },
+    "You must be signed in to leave a review." : {
 
     },
     "Your code:" : {

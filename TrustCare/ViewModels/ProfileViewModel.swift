@@ -72,6 +72,31 @@ final class ProfileViewModel: ObservableObject {
                 let status: ReviewStatus
                 let helpfulCount: Int
                 let createdAt: Date
+                let waitingTime: Int?
+                let facilityCleanliness: Int?
+                let doctorCommunication: Int?
+                let treatmentOutcome: Int?
+                let proceduralComfort: Int?
+                let clearExplanations: Int?
+                let checkoutSpeed: Int?
+                let stockAvailability: Int?
+                let pharmacistAdvice: Int?
+                let staffCourtesy: Int?
+                let responseTime: Int?
+                let nursingCare: Int?
+                let checkInProcess: Int?
+                let testComfort: Int?
+                let resultTurnaround: Int?
+                let sessionPunctuality: Int?
+                let empathyListening: Int?
+                let sessionPrivacy: Int?
+                let actionableAdvice: Int?
+                let therapyProgress: Int?
+                let activeSupervision: Int?
+                let facilityGear: Int?
+                let consultationQuality: Int?
+                let resultSatisfaction: Int?
+                let aftercareSupport: Int?
                 let providers: ProviderRow?
 
                 enum CodingKeys: String, CodingKey {
@@ -94,6 +119,31 @@ final class ProfileViewModel: ObservableObject {
                     case verificationConfidence = "verification_confidence"
                     case helpfulCount = "helpful_count"
                     case createdAt = "created_at"
+                    case waitingTime = "waiting_time"
+                    case facilityCleanliness = "facility_cleanliness"
+                    case doctorCommunication = "doctor_communication"
+                    case treatmentOutcome = "treatment_outcome"
+                    case proceduralComfort = "procedural_comfort"
+                    case clearExplanations = "clear_explanations"
+                    case checkoutSpeed = "checkout_speed"
+                    case stockAvailability = "stock_availability"
+                    case pharmacistAdvice = "pharmacist_advice"
+                    case staffCourtesy = "staff_courtesy"
+                    case responseTime = "response_time"
+                    case nursingCare = "nursing_care"
+                    case checkInProcess = "check_in_process"
+                    case testComfort = "test_comfort"
+                    case resultTurnaround = "result_turnaround"
+                    case sessionPunctuality = "session_punctuality"
+                    case empathyListening = "empathy_listening"
+                    case sessionPrivacy = "session_privacy"
+                    case actionableAdvice = "actionable_advice"
+                    case therapyProgress = "therapy_progress"
+                    case activeSupervision = "active_supervision"
+                    case facilityGear = "facility_gear"
+                    case consultationQuality = "consultation_quality"
+                    case resultSatisfaction = "result_satisfaction"
+                    case aftercareSupport = "aftercare_support"
                 }
             }
 
@@ -136,6 +186,31 @@ final class ProfileViewModel: ObservableObject {
                     status: row.status,
                     helpfulCount: row.helpfulCount,
                     createdAt: row.createdAt,
+                    waitingTime: row.waitingTime,
+                    facilityCleanliness: row.facilityCleanliness,
+                    doctorCommunication: row.doctorCommunication,
+                    treatmentOutcome: row.treatmentOutcome,
+                    proceduralComfort: row.proceduralComfort,
+                    clearExplanations: row.clearExplanations,
+                    checkoutSpeed: row.checkoutSpeed,
+                    stockAvailability: row.stockAvailability,
+                    pharmacistAdvice: row.pharmacistAdvice,
+                    staffCourtesy: row.staffCourtesy,
+                    responseTime: row.responseTime,
+                    nursingCare: row.nursingCare,
+                    checkInProcess: row.checkInProcess,
+                    testComfort: row.testComfort,
+                    resultTurnaround: row.resultTurnaround,
+                    sessionPunctuality: row.sessionPunctuality,
+                    empathyListening: row.empathyListening,
+                    sessionPrivacy: row.sessionPrivacy,
+                    actionableAdvice: row.actionableAdvice,
+                    therapyProgress: row.therapyProgress,
+                    activeSupervision: row.activeSupervision,
+                    facilityGear: row.facilityGear,
+                    consultationQuality: row.consultationQuality,
+                    resultSatisfaction: row.resultSatisfaction,
+                    aftercareSupport: row.aftercareSupport,
                     reviewerName: nil,
                     reviewerAvatar: nil,
                     media: nil,
