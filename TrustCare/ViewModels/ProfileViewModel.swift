@@ -198,6 +198,9 @@ final class ProfileViewModel: ObservableObject {
                 query = query.eq("is_verified", value: true)
             } else if selectedFilter == "pending" {
                 query = query.eq("status", value: ReviewStatus.pendingVerification.rawValue)
+            } else if selectedFilter == "unverified" {
+                query = query.eq("is_verified", value: false)
+                    .neq("status", value: ReviewStatus.pendingVerification.rawValue)
             }
 
             let response: PostgrestResponse<[ReviewProviderRow]> = try await query
@@ -293,6 +296,30 @@ final class ProfileViewModel: ObservableObject {
                 .eq("id", value: id.uuidString)
                 .execute()
             myReviews.removeAll { $0.id == id }
+        } catch {
+            errorMessage = localizedErrorMessage(error)
+        }
+    }
+
+    func updateReview(id: UUID, title: String?, comment: String) async {
+        struct ReviewUpdate: Encodable {
+            let title: String?
+            let comment: String
+        }
+
+        do {
+            let payload = ReviewUpdate(
+                title: title?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true ? nil : title?.trimmingCharacters(in: .whitespacesAndNewlines),
+                comment: comment.trimmingCharacters(in: .whitespacesAndNewlines)
+            )
+
+            _ = try await SupabaseManager.shared.client
+                .from("reviews")
+                .update(payload)
+                .eq("id", value: id.uuidString)
+                .execute()
+
+            await loadReviews(filter: reviewFilter)
         } catch {
             errorMessage = localizedErrorMessage(error)
         }

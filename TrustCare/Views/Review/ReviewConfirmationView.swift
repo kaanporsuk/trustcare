@@ -2,15 +2,15 @@ import SwiftUI
 
 struct ReviewConfirmationView: View {
     let hasProof: Bool
-    let onDone: () -> Void
+    let onAnotherReview: () -> Void
+    let onGoHome: () -> Void
 
     @State private var animateCheck: Bool = false
 
     var body: some View {
         VStack(spacing: AppSpacing.xl) {
             Spacer()
-            
-            // Animated checkmark
+
             ZStack {
                 Circle()
                     .fill(AppColor.success.opacity(0.15))
@@ -25,38 +25,33 @@ struct ReviewConfirmationView: View {
             .animation(.spring(response: 0.6, dampingFraction: 0.6), value: animateCheck)
 
             VStack(spacing: AppSpacing.sm) {
-                Text(String(localized: "Review Submitted!"))
-                    .font(.title2)
-                    .fontWeight(.bold)
+                Text("Değerlendirmeniz gönderildi!")
+                    .font(AppFont.title2)
                     .foregroundStyle(AppColor.trustBlue)
-                
+
                 if hasProof {
-                    Text(String(localized: "Your review is pending verification"))
-                        .font(.body)
-                        .foregroundStyle(.secondary)
-                    Text(String(localized: "We'll verify your proof within 24-48 hours and notify you"))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
+                    HStack(spacing: AppSpacing.xs) {
+                        Image(systemName: "clock.badge.exclamationmark")
+                            .foregroundStyle(AppColor.pending)
+                        Text("Doğrulama beklemede")
+                            .font(AppFont.body)
+                            .foregroundStyle(AppColor.pending)
+                    }
                 } else {
-                    Text(String(localized: "Your review has been submitted"))
-                        .font(.body)
+                    Text("Teşekkürler! Yorumunuz yayın kuyruğuna alındı.")
+                        .font(AppFont.body)
                         .foregroundStyle(.secondary)
-                    Text(String(localized: "You can add verification documents anytime"))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
                 }
             }
 
             Spacer()
 
             VStack(spacing: AppSpacing.md) {
-                Button(action: {
+                Button {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    onDone()
-                }) {
-                    Text(String(localized: "Write Another Review"))
+                    onAnotherReview()
+                } label: {
+                    Text("Başka Değerlendir")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(.white)
@@ -64,11 +59,11 @@ struct ReviewConfirmationView: View {
                         .cornerRadius(AppRadius.button)
                 }
 
-                Button(action: {
+                Button {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    onDone()
-                }) {
-                    Text(String(localized: "Go Home"))
+                    onGoHome()
+                } label: {
+                    Text("Ana Sayfaya Dön")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(AppColor.trustBlue)

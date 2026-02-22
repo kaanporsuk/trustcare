@@ -10,61 +10,44 @@ struct ProviderCardView: View {
         } label: {
             HStack(spacing: AppSpacing.md) {
                 DynamicProviderAvatarView(provider: provider)
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
 
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: 6) {
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    HStack(spacing: AppSpacing.sm) {
                         Text(provider.name)
-                            .font(AppFont.headline)
+                            .font(AppFont.title3)
                             .foregroundStyle(.primary)
-                        if provider.isClaimed {
-                            ClaimedBadge()
-                        }
                         Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
                     }
 
-                    HStack(spacing: 6) {
-                        Text("\(provider.specialty)" + (provider.clinicName != nil ? " • \(provider.clinicName ?? "")" : ""))
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text(provider.specialty)
+                        .font(AppFont.body)
+                        .foregroundStyle(.secondary)
 
-                    HStack(spacing: 6) {
-                        StarRatingDisplay(rating: Int(round(provider.ratingOverall)))
+                    HStack(spacing: AppSpacing.xs) {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(AppColor.starFilled)
                         Text(String(format: "%.1f", provider.ratingOverall))
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                        Text(String(format: String(localized: "reviews_count"), provider.reviewCount))
-                            .font(AppFont.caption)
+                            .font(AppFont.body)
+                        Text("(\(provider.reviewCount))")
+                            .font(AppFont.body)
                             .foregroundStyle(.secondary)
                     }
 
-                    HStack(spacing: 6) {
-                        if provider.reviewCount > 0 {
+                    if provider.verifiedReviewCount > 0 {
+                        HStack(spacing: AppSpacing.xs) {
                             Image(systemName: "checkmark.seal.fill")
-                                .font(.caption)
                                 .foregroundStyle(AppColor.success)
-                            Text(String(format: String(localized: "verified_percentage"), provider.verifiedPercentage))
+                            Text("Doğrulanmış")
                                 .font(AppFont.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        Text("·")
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                        PriceLevelView(level: provider.priceLevelAvg)
                     }
 
                     if let distance = provider.distanceKm {
-                        Text(String(format: String(localized: "km_away"), distance))
+                        Text(String(format: "%.1f km", distance))
                             .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    if provider.isFeatured {
-                        Text(String(localized: "Sponsored"))
-                            .font(AppFont.footnote)
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -73,11 +56,7 @@ struct ProviderCardView: View {
             .padding(AppSpacing.lg)
             .background(AppColor.cardBackground)
             .cornerRadius(AppRadius.card)
-            .overlay(
-                RoundedRectangle(cornerRadius: AppRadius.card)
-                    .stroke(provider.isFeatured ? AppColor.featuredBorder : Color.clear, lineWidth: 1)
-            )
-            .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 2)
+            .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
         }
         .buttonStyle(.plain)
     }

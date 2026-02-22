@@ -1,297 +1,393 @@
 import CoreLocation
+import MapKit
 import SwiftUI
 
 struct AddProviderSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var specialtyService = SpecialtyService.shared
 
     let onComplete: (Provider) -> Void
 
     @State private var name: String = ""
-    @State private var clinicName: String = ""
     @State private var address: String = ""
     @State private var phone: String = ""
     @State private var selectedSpecialty: Specialty?
-    @State private var specialties: [Specialty] = []
+    @State private var selectedCoordinate: CLLocationCoordinate2D?
+    @State private var placeSuggestions: [PlaceSuggestion] = []
+
     @State private var isSubmitting: Bool = false
     @State private var errorMessage: String?
     @State private var showSpecialtyPicker: Bool = false
+    @State private var showMapPicker: Bool = false
 
     var body: some View {
         NavigationStack {
             Form {
-                Section {
-                    TextField(String(localized: "Provider Name"), text: $name)
+                Section("Sağlayıcı") {
+                    TextField("Ad", text: $name)
+
+                    if !placeSuggestions.isEmpty {
+                        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                            ForEach(placeSuggestions) { suggestion in
+                                Button {
+                                    applySuggestion(suggestion)
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Bu mu? \(suggestion.name)")
+                                            .font(AppFont.body)
+                                            .foregroundStyle(.primary)
+                                        Text(suggestion.address)
+                                            .font(AppFont.footnote)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.vertical, 6)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+
                     Button {
                         showSpecialtyPicker = true
                     } label: {
                         HStack {
-                            Text(String(localized: "Specialty"))
+                            Text("Uzmanlık")
                             Spacer()
-                            Text(selectedSpecialty?.name ?? String(localized: "Select"))
+                            Text(selectedSpecialty?.name ?? "Seç")
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    TextField(String(localized: "Clinic / Hospital"), text: $clinicName)
-                    TextField(String(localized: "Address"), text: $address)
-                    TextField(String(localized: "Phone"), text: $phone)
+
+                    TextField("Adres", text: $address)
+                    TextField("Telefon (opsiyonel)", text: $phone)
+                        .keyboardType(.phonePad)
                 }
 
-            }
-            .navigationTitle(String(localized: "Add a Healthcare Provider"))
-            .dismissKeyboardOnTap()
-            .keyboardDoneToolbar()
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "Cancel")) {
-                        dismiss()
+                Section("Konum") {
+                    Button("Haritada İşaretle") {
+                        showMapPicker = true
+                    }
+
+                    if let selectedCoordinate {
+                        Text(String(format: "%.5f, %.5f", selectedCoordinate.latitude, selectedCoordinate.longitude))
+                            .font(AppFont.footnote)
+                            .foregroundStyle(.secondary)
                     }
                 }
+            }
+            .navigationTitle("Yeni Sağlayıcı")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Vazgeç") { dismiss() }
+                }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "Add Provider")) {
+                    Button("Ekle") {
                         Task { await submit() }
                     }
                     .disabled(!isValid || isSubmitting)
                 }
             }
-            .scrollDismissesKeyboard(.interactively)
             .overlay {
                 if isSubmitting {
-                    Color.black.opacity(0.3)
-                        .ignoresSafeArea()
-                    ProgressView()
-                        .controlSize(.large)
-                        .tint(.white)
+                    Color.black.opacity(0.2).ignoresSafeArea()
+                    ProgressView().tint(.white)
                 }
             }
-            .alert(String(localized: "Error"), isPresented: Binding(
+            .alert("Hata", isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )) {
-                Button(String(localized: "Done")) { errorMessage = nil }
+                Button("Tamam") { errorMessage = nil }
             } message: {
                 Text(errorMessage ?? "")
             }
             .sheet(isPresented: $showSpecialtyPicker) {
-                SpecialtyPickerSheet(
-                    specialties: specialties,
-                    selected: selectedSpecialty,
-                    onSelect: { specialty in
-                        selectedSpecialty = specialty
-                        showSpecialtyPicker = false
-                    }
-                )
+                SpecialtyPickerSheet(selected: selectedSpecialty) { specialty in
+                    selectedSpecialty = specialty
+                    showSpecialtyPicker = false
+                }
+            }
+            .sheet(isPresented: $showMapPicker) {
+                MapPinSelectorSheet(selectedCoordinate: $selectedCoordinate)
             }
             .task {
-                if specialties.isEmpty {
-                    do {
-                        specialties = try await ProviderService.fetchSpecialtiesCached()
-                    } catch {
-                        errorMessage = error.localizedDescription
-                    }
+                if specialtyService.specialties.isEmpty {
+                    await specialtyService.loadSpecialties()
                 }
+            }
+            .task(id: name) {
+                await searchMapSuggestions()
             }
         }
     }
 
     private var isValid: Bool {
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            && selectedSpecialty != nil
             && !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && selectedSpecialty != nil
     }
 
     private func submit() async {
-        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedAddress = address.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let selectedSpecialty else {
-            errorMessage = String(localized: "Please select a specialty.")
+            errorMessage = "Uzmanlık seçiniz."
             return
         }
-        if trimmedAddress.isEmpty {
-            errorMessage = String(localized: "Address is required to add a provider.")
-            return
-        }
+
         isSubmitting = true
-        errorMessage = nil
+        defer { isSubmitting = false }
 
         do {
-            let coordinate = try await geocodeAddress(address: trimmedAddress)
+            let coordinate: CLLocationCoordinate2D
+            if let selectedCoordinate {
+                coordinate = selectedCoordinate
+            } else {
+                coordinate = try await geocodeAddress(address)
+            }
+
             let provider = try await ProviderService.addProvider(
-                name: trimmedName,
+                name: name.trimmingCharacters(in: .whitespacesAndNewlines),
                 specialty: selectedSpecialty.name,
-                clinicName: clinicName.isEmpty ? nil : clinicName,
-                address: trimmedAddress,
+                clinicName: nil,
+                address: address.trimmingCharacters(in: .whitespacesAndNewlines),
                 city: nil,
-                countryCode: Locale.current.region?.identifier ?? "US",
+                countryCode: "TR",
                 latitude: coordinate.latitude,
                 longitude: coordinate.longitude,
-                phone: phone.isEmpty ? nil : phone
+                phone: phone.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : phone
             )
+
             onComplete(provider)
             dismiss()
         } catch {
             errorMessage = error.localizedDescription
         }
-
-        isSubmitting = false
     }
 
-    private func geocodeAddress(address: String) async throws -> CLLocationCoordinate2D {
+    private func geocodeAddress(_ address: String) async throws -> CLLocationCoordinate2D {
         let geocoder = CLGeocoder()
-        let country = Locale.current.region?.identifier ?? "US"
-        let composed = [address, country].joined(separator: ", ")
-
-        let placemarks = try await geocoder.geocodeAddressString(composed)
+        let placemarks = try await geocoder.geocodeAddressString("\(address), Türkiye")
         if let coordinate = placemarks.first?.location?.coordinate {
             return coordinate
         }
-
-        throw AppError.validationError(String(localized: "Unable to locate address."))
+        throw AppError.validationError("Adres konumu bulunamadı.")
     }
+
+    private func searchMapSuggestions() async {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmed.count >= 3 else {
+            placeSuggestions = []
+            return
+        }
+
+        do {
+            try await Task.sleep(nanoseconds: 300_000_000)
+        } catch {
+            return
+        }
+
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = trimmed
+        let center = selectedCoordinate ?? CLLocationCoordinate2D(latitude: 37.0, longitude: 35.33)
+        request.region = MKCoordinateRegion(
+            center: center,
+            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        )
+
+        let search = MKLocalSearch(request: request)
+
+        do {
+            let response = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<MKLocalSearch.Response, Error>) in
+                search.start { response, error in
+                    if let error {
+                        continuation.resume(throwing: error)
+                        return
+                    }
+                    guard let response else {
+                        continuation.resume(throwing: AppError.unknown)
+                        return
+                    }
+                    continuation.resume(returning: response)
+                }
+            }
+
+            placeSuggestions = response.mapItems.prefix(5).map { item in
+                PlaceSuggestion(
+                    name: item.name ?? trimmed,
+                    address: formatAddress(item.placemark),
+                    latitude: item.placemark.coordinate.latitude,
+                    longitude: item.placemark.coordinate.longitude
+                )
+            }
+        } catch {
+            placeSuggestions = []
+        }
+    }
+
+    private func applySuggestion(_ suggestion: PlaceSuggestion) {
+        name = suggestion.name
+        address = suggestion.address
+        selectedCoordinate = CLLocationCoordinate2D(latitude: suggestion.latitude, longitude: suggestion.longitude)
+        placeSuggestions = []
+    }
+
+    private func formatAddress(_ placemark: MKPlacemark) -> String {
+        let chunks = [
+            placemark.thoroughfare,
+            placemark.subThoroughfare,
+            placemark.locality,
+            placemark.administrativeArea
+        ]
+        .compactMap { $0 }
+        .filter { !$0.isEmpty }
+
+        if !chunks.isEmpty {
+            return chunks.joined(separator: ", ")
+        }
+        return placemark.title ?? "Adres bilgisi yok"
+    }
+}
+
+private struct PlaceSuggestion: Identifiable {
+    let id = UUID()
+    let name: String
+    let address: String
+    let latitude: Double
+    let longitude: Double
 }
 
 private struct SpecialtyPickerSheet: View {
-    let specialties: [Specialty]
+    @ObservedObject private var specialtyService = SpecialtyService.shared
+    @Environment(\.dismiss) private var dismiss
+
     let selected: Specialty?
     let onSelect: (Specialty) -> Void
 
-    @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
-    @State private var expandedCategories: Set<String> = []
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: AppSpacing.md) {
-                SearchField(text: $searchText)
-                    .padding(.horizontal, AppSpacing.lg)
-
-                ScrollView {
-                    VStack(spacing: AppSpacing.lg) {
-                        ForEach(groupedCategories, id: \.category) { group in
-                            DisclosureGroup(
-                                isExpanded: Binding(
-                                    get: { expandedCategories.contains(group.category) },
-                                    set: { isExpanded in
-                                        if isExpanded {
-                                            expandedCategories.insert(group.category)
-                                        } else {
-                                            expandedCategories.remove(group.category)
-                                        }
-                                    }
-                                )
-                            ) {
-                                VStack(spacing: AppSpacing.sm) {
-                                    ForEach(group.specialties) { specialty in
-                                        SpecialtyRow(
-                                            specialty: specialty,
-                                            isSelected: specialty == selected
-                                        ) {
-                                            onSelect(specialty)
-                                            dismiss()
-                                        }
-                                    }
-                                }
-                                .padding(.top, AppSpacing.sm)
+            List {
+                ForEach(filteredGroups, id: \.category) { group in
+                    Section(group.category) {
+                        ForEach(group.items) { specialty in
+                            Button {
+                                onSelect(specialty)
+                                dismiss()
                             } label: {
-                                HStack(spacing: AppSpacing.sm) {
-                                    Image(systemName: group.iconName)
-                                        .foregroundStyle(.secondary)
-                                    Text(group.category)
-                                        .font(AppFont.headline)
+                                HStack {
+                                    Image(systemName: specialty.iconName)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(specialty.name)
+                                        if let nameTr = specialty.nameTr, !nameTr.isEmpty {
+                                            Text(nameTr)
+                                                .font(AppFont.footnote)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
                                     Spacer()
+                                    if specialty.id == selected?.id {
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                             }
-                            .padding(AppSpacing.md)
-                            .background(AppColor.cardBackground)
-                            .cornerRadius(AppRadius.card)
                         }
                     }
-                    .padding(.horizontal, AppSpacing.lg)
-                    .padding(.bottom, AppSpacing.xxl)
                 }
             }
-            .navigationTitle(String(localized: "Specialty"))
-            .navigationBarTitleDisplayMode(.inline)
+            .searchable(text: $searchText)
+            .navigationTitle("Uzmanlık Seç")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "Close")) {
-                        dismiss()
-                    }
+                    Button("Kapat") { dismiss() }
                 }
-            }
-            .onAppear {
-                expandedCategories = Set(groupedCategories.map { $0.category })
             }
         }
     }
 
-    private var groupedCategories: [(category: String, iconName: String, specialties: [Specialty])] {
-        let filtered = specialties.filter { specialty in
-            guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return true }
-            let query = searchText.lowercased()
-            return specialty.name.lowercased().contains(query)
-                || specialty.category.lowercased().contains(query)
-                || (specialty.subcategory?.lowercased().contains(query) ?? false)
-        }
+    private var filteredGroups: [(category: String, items: [Specialty])] {
+        let groups = specialtyService.specialtiesByCategory()
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return groups }
 
-        let grouped = Dictionary(grouping: filtered, by: { $0.category })
-        return grouped.keys.sorted().compactMap { category in
-            guard let items = grouped[category] else { return nil }
-            let sorted = items.sorted { $0.displayOrder < $1.displayOrder }
-            let icon = sorted.first?.iconName ?? "stethoscope"
-            return (category: category, iconName: icon, specialties: sorted)
+        let normalized = query.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+        return groups.compactMap { group in
+            let filtered = group.items.filter { item in
+                let n1 = item.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                let n2 = item.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                return n1.contains(normalized) || (n2?.contains(normalized) ?? false)
+            }
+            return filtered.isEmpty ? nil : (category: group.category, items: filtered)
         }
     }
 }
 
-private struct SpecialtyRow: View {
-    let specialty: Specialty
-    let isSelected: Bool
-    let action: () -> Void
+private struct MapPinSelectorSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @Binding var selectedCoordinate: CLLocationCoordinate2D?
 
     var body: some View {
-        Button(action: action) {
-            HStack(spacing: AppSpacing.sm) {
-                Image(systemName: specialty.iconName)
-                    .foregroundStyle(.secondary)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(specialty.name)
-                        .font(AppFont.body)
-                        .foregroundStyle(.primary)
-                    if let subcategory = specialty.subcategory, !subcategory.isEmpty {
-                        Text(subcategory)
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
+        NavigationStack {
+            CoordinatePickerMap(selectedCoordinate: $selectedCoordinate)
+                .navigationTitle("Haritada İşaretle")
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Tamam") { dismiss() }
                     }
                 }
-                Spacer()
-                if isSelected {
-                    Image(systemName: "checkmark")
-                        .font(.caption)
-                        .foregroundStyle(AppColor.trustBlue)
-                }
-            }
-            .padding(AppSpacing.md)
-            .background(AppColor.background)
-            .cornerRadius(AppRadius.standard)
         }
-        .buttonStyle(.plain)
     }
 }
 
-private struct SearchField: View {
-    @Binding var text: String
+private struct CoordinatePickerMap: UIViewRepresentable {
+    @Binding var selectedCoordinate: CLLocationCoordinate2D?
 
-    var body: some View {
-        HStack(spacing: AppSpacing.sm) {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
-            TextField(String(localized: "Search specialties"), text: $text)
-                .font(AppFont.body)
-                .textInputAutocapitalization(.words)
-                .autocorrectionDisabled()
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView(frame: .zero)
+        mapView.delegate = context.coordinator
+
+        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
+        mapView.addGestureRecognizer(tap)
+
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 37.0000, longitude: 35.3213),
+            span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+        )
+        mapView.setRegion(region, animated: false)
+        context.coordinator.mapView = mapView
+        return mapView
+    }
+
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        guard let selectedCoordinate else { return }
+        uiView.removeAnnotations(uiView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = selectedCoordinate
+        uiView.addAnnotation(annotation)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(selectedCoordinate: $selectedCoordinate)
+    }
+
+    final class Coordinator: NSObject, MKMapViewDelegate {
+        @Binding var selectedCoordinate: CLLocationCoordinate2D?
+        weak var mapView: MKMapView?
+
+        init(selectedCoordinate: Binding<CLLocationCoordinate2D?>) {
+            _selectedCoordinate = selectedCoordinate
         }
-        .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
-        .cornerRadius(AppRadius.card)
+
+        @objc func handleTap(_ recognizer: UITapGestureRecognizer) {
+            guard let mapView else { return }
+            let point = recognizer.location(in: mapView)
+            let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+            selectedCoordinate = coordinate
+
+            mapView.removeAnnotations(mapView.annotations)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            mapView.addAnnotation(annotation)
+        }
     }
 }

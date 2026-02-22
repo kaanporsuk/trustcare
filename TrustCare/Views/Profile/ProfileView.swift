@@ -19,7 +19,7 @@ struct ProfileView: View {
     @State private var showLogoutConfirm: Bool = false
     @State private var showErrorAlert: Bool = false
 
-    init(selectedTab: Binding<Int> = .constant(2)) {
+    init(selectedTab: Binding<Int> = .constant(3)) {
         _selectedTab = selectedTab
     }
 
@@ -34,7 +34,6 @@ struct ProfileView: View {
             } else {
                 VStack(spacing: AppSpacing.lg) {
                     headerSection
-                    referralSection
                     statsSection
                     menuSection
                     footerSection
@@ -156,13 +155,13 @@ struct ProfileView: View {
             Text(profileVM.errorMessage ?? "")
         }
         .confirmationDialog(String(localized: "Log Out"), isPresented: $showLogoutConfirm) {
-            Button(String(localized: "Log Out"), role: .destructive) {
+            Button("Çıkış Yap", role: .destructive) {
                 UINotificationFeedbackGenerator().notificationOccurred(.warning)
                 authVM.signOut()
             }
-            Button(String(localized: "Cancel"), role: .cancel) { }
+            Button("Vazgeç", role: .cancel) { }
         } message: {
-            Text(String(localized: "Are you sure you want to log out?"))
+            Text("Hesabınızdan çıkış yapmak istediğinize emin misiniz?")
         }
     }
 
@@ -199,32 +198,13 @@ struct ProfileView: View {
                 Text(memberSinceText)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
+                Text("Referral: \(profileVM.profile?.referralCode ?? "-")")
+                    .font(.system(.caption, design: .monospaced))
+                    .foregroundStyle(.secondary)
             }
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var referralSection: some View {
-        HStack(spacing: AppSpacing.sm) {
-            Text(String(localized: "Your code:"))
-                .font(AppFont.caption)
-                .foregroundStyle(.secondary)
-            Text(profileVM.profile?.referralCode ?? "-")
-                .font(.system(.caption, design: .monospaced))
-            Spacer()
-            Button {
-                UIPasteboard.general.string = profileVM.profile?.referralCode ?? ""
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            } label: {
-                Image(systemName: "doc.on.doc")
-                    .foregroundStyle(AppColor.trustBlue)
-            }
-            .accessibilityLabel(String(localized: "Copy referral code"))
-        }
-        .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
-        .cornerRadius(AppRadius.card)
     }
 
     private var statsSection: some View {
@@ -233,8 +213,8 @@ struct ProfileView: View {
         let verifiedPercent = totalReviews == 0 ? 0 : Int((Double(verifiedCount) / Double(totalReviews)) * 100)
 
         return HStack(spacing: AppSpacing.md) {
-            statCard(title: String(format: String(localized: "reviews_count"), totalReviews))
-            statCard(title: String(format: String(localized: "verified_percentage"), verifiedPercent))
+            statCard(title: "\(totalReviews) Değerlendirme")
+            statCard(title: "\(verifiedPercent)% Doğrulanmış")
         }
     }
 
@@ -244,39 +224,45 @@ struct ProfileView: View {
                 MyReviewsView(selectedTab: $selectedTab)
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: String(localized: "My Reviews"))
+                menuRow(title: "Değerlendirmelerim")
+            }
+
+            NavigationLink {
+                SavedProvidersView()
+            } label: {
+                menuRow(title: "Kaydedilenler")
             }
 
             NavigationLink {
                 SettingsView()
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: String(localized: "Settings"))
+                menuRow(title: "Ayarlar")
             }
 
             NavigationLink {
                 HelpSupportView()
             } label: {
-                menuRow(title: String(localized: "Help & Support"))
+                menuRow(title: "Yardım ve Destek")
             }
 
             NavigationLink {
                 PrivacyPolicyView()
             } label: {
-                menuRow(title: String(localized: "Privacy Policy"))
+                menuRow(title: "Gizlilik Politikası")
             }
 
             NavigationLink {
                 TermsOfServiceView()
             } label: {
-                menuRow(title: String(localized: "Terms of Service"))
+                menuRow(title: "Kullanım Koşulları")
             }
 
             Button {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 showLogoutConfirm = true
             } label: {
-                menuRow(title: String(localized: "Log Out"), isDestructive: true)
+                menuRow(title: "Çıkış Yap", isDestructive: true)
             }
         }
     }
@@ -355,8 +341,8 @@ struct ProfileView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         if let date = profileVM.profile?.createdAt {
-            return String(format: String(localized: "Member since %@"), formatter.string(from: date))
+            return "Üyelik: \(formatter.string(from: date))"
         }
-        return String(localized: "Member since -")
+        return "Üyelik: -"
     }
 }

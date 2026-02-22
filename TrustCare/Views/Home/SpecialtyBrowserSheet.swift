@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SpecialtyBrowserSheet: View {
-    let specialties: [Specialty]
+    @ObservedObject private var specialtyService = SpecialtyService.shared
     let selectedSpecialty: Specialty?
     let onSelect: (Specialty) -> Void
     let onClear: () -> Void
@@ -88,11 +88,17 @@ struct SpecialtyBrowserSheet: View {
     }
 
     private var groupedCategories: [(category: String, iconName: String, specialties: [Specialty])] {
-        let filtered = specialties.filter { specialty in
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+
+        let filtered = specialtyService.specialties.filter { specialty in
             guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return true }
-            let query = searchText.lowercased()
-            return specialty.name.lowercased().contains(query)
-                || specialty.category.lowercased().contains(query)
+            let name = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+            let nameTr = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+            let category = specialty.category.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+            return name.contains(query)
+                || (nameTr?.contains(query) ?? false)
+                || category.contains(query)
                 || (specialty.subcategory?.lowercased().contains(query) ?? false)
         }
 
@@ -129,8 +135,8 @@ private struct SpecialtyRow: View {
                     Text(specialty.name)
                         .font(AppFont.body)
                         .foregroundStyle(.primary)
-                    if let subcategory = specialty.subcategory, !subcategory.isEmpty {
-                        Text(subcategory)
+                    if let nameTr = specialty.nameTr, !nameTr.isEmpty {
+                        Text(nameTr)
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                     }

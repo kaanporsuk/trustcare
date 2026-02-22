@@ -343,7 +343,7 @@ enum ProviderService {
         }
 
         let response: PostgrestResponse<[ReviewProfileRow]> = try await client
-            .from("reviews")
+            .from("reviews_public")
             .select("*, profiles(full_name, avatar_url)")
             .eq("provider_id", value: id.uuidString)
             .is("deleted_at", value: nil)
@@ -475,12 +475,14 @@ enum ProviderService {
             let longitude: Double
             let phone: String?
             let createdBy: String
+            let dataSource: String
 
             enum CodingKeys: String, CodingKey {
                 case name, specialty, address, city, latitude, longitude, phone
                 case clinicName = "clinic_name"
                 case countryCode = "country_code"
                 case createdBy = "created_by"
+                case dataSource = "data_source"
             }
         }
 
@@ -494,7 +496,8 @@ enum ProviderService {
             latitude: latitude,
             longitude: longitude,
             phone: phone,
-            createdBy: session.user.id.uuidString
+            createdBy: session.user.id.uuidString,
+            dataSource: "user"
         )
 
         let response: PostgrestResponse<Provider> = try await client

@@ -5,6 +5,30 @@ import MapKit
 
 @MainActor
 final class HomeViewModel: ObservableObject {
+    struct CityOption: Identifiable, Hashable {
+        let id = UUID()
+        let name: String
+        let latitude: Double
+        let longitude: Double
+    }
+
+    static let majorTurkishCities: [CityOption] = [
+        CityOption(name: "Adana", latitude: 37.0, longitude: 35.33),
+        CityOption(name: "Ankara", latitude: 39.93, longitude: 32.86),
+        CityOption(name: "Antalya", latitude: 36.88, longitude: 30.71),
+        CityOption(name: "Bursa", latitude: 40.19, longitude: 29.06),
+        CityOption(name: "Diyarbakır", latitude: 37.91, longitude: 40.24),
+        CityOption(name: "Gaziantep", latitude: 37.06, longitude: 37.38),
+        CityOption(name: "Istanbul - Anadolu", latitude: 41.0, longitude: 29.1),
+        CityOption(name: "Istanbul - Avrupa", latitude: 41.01, longitude: 28.95),
+        CityOption(name: "İzmir", latitude: 38.42, longitude: 27.14),
+        CityOption(name: "Kayseri", latitude: 38.73, longitude: 35.49),
+        CityOption(name: "Konya", latitude: 37.87, longitude: 32.49),
+        CityOption(name: "Mersin", latitude: 36.80, longitude: 34.64),
+        CityOption(name: "Samsun", latitude: 41.29, longitude: 36.33),
+        CityOption(name: "Trabzon", latitude: 41.0, longitude: 39.72)
+    ]
+
     struct SelectedLocation: Codable, Equatable, Hashable {
         let name: String
         let latitude: Double
@@ -22,12 +46,19 @@ final class HomeViewModel: ObservableObject {
     @Published var specialties: [Specialty] = []
     @Published var popularSpecialties: [Specialty] = []
     @Published var searchText: String = ""
+    @Published var selectedSpecialtyName: String? = nil
     @Published var selectedSurveyType: String? = nil
+    @Published var providerSuggestions: [Provider] = []
+    @Published var specialtySuggestions: [Specialty] = []
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var hasMoreResults: Bool = true
     @Published var locationName: String = String(localized: "Tap to set location")
+    @Published var selectedCity: String = "Adana"
+    @Published var userLatitude: Double = 37.0
+    @Published var userLongitude: Double = 35.33
+    @Published var selectedRadiusKm: Int = 50
     @Published var selectedLocation: SelectedLocation
     @Published var recentLocations: [SelectedLocation] = []
 
@@ -47,6 +78,10 @@ final class HomeViewModel: ObservableObject {
     private static let verboseLogging = false
     private static let selectedLocationKey = "selectedLocation"
     private static let recentLocationsKey = "recentLocations"
+    private static let selectedCityKey = "home_selected_city"
+    private static let userLatitudeKey = "home_user_latitude"
+    private static let userLongitudeKey = "home_user_longitude"
+    private static let selectedRadiusKmKey = "home_selected_radius_km"
 
     private func verboseLog(_ message: @autoclosure () -> String) {
         guard Self.verboseLogging else { return }
@@ -58,19 +93,37 @@ final class HomeViewModel: ObservableObject {
     }
 
     init() {
+        selectedCity = UserDefaults.standard.string(forKey: Self.selectedCityKey) ?? "Adana"
+        userLatitude = UserDefaults.standard.object(forKey: Self.userLatitudeKey) as? Double ?? 37.0
+        userLongitude = UserDefaults.standard.object(forKey: Self.userLongitudeKey) as? Double ?? 35.33
+        let savedRadius = UserDefaults.standard.integer(forKey: Self.selectedRadiusKmKey)
+        selectedRadiusKm = [5, 10, 25, 50].contains(savedRadius) ? savedRadius : 50
+
         if let savedLocation = Self.loadSelectedLocation() {
             selectedLocation = savedLocation
             locationName = savedLocation.name
+            selectedCity = savedLocation.name
+            userLatitude = savedLocation.latitude
+            userLongitude = savedLocation.longitude
         } else {
+            let defaultCity = UserDefaults.standard.string(forKey: Self.selectedCityKey) ?? "Adana"
+            let defaultLatitude = UserDefaults.standard.object(forKey: Self.userLatitudeKey) as? Double ?? 37.0
+            let defaultLongitude = UserDefaults.standard.object(forKey: Self.userLongitudeKey) as? Double ?? 35.33
             selectedLocation = SelectedLocation(
-                name: String(localized: "Tap to set location"),
-                latitude: 0,
-                longitude: 0,
-                isCurrentLocation: true
+                name: defaultCity,
+                latitude: defaultLatitude,
+                longitude: defaultLongitude,
+                isCurrentLocation: false
             )
+            locationName = defaultCity
+            selectedCity = defaultCity
+            userLatitude = defaultLatitude
+            userLongitude = defaultLongitude
+            persistCityAndCoordinates()
         }
         recentLocations = Self.loadRecentLocations()
         observeLocation()
+        observeRehberSpecialtyRouting()
     }
     
     func onAppear() async {
@@ -92,7 +145,11 @@ final class HomeViewModel: ObservableObject {
     func selectLocation(_ location: SelectedLocation) async {
         selectedLocation = location
         locationName = location.name
+        selectedCity = location.name
+        userLatitude = location.latitude
+        userLongitude = location.longitude
         saveSelectedLocation(location)
+        persistCityAndCoordinates()
         addRecentLocation(location)
         await refresh()
     }
@@ -102,14 +159,32 @@ final class HomeViewModel: ObservableObject {
         let name = locationName.isEmpty ? String(localized: "Tap to set location") : locationName
         let coordinate = locationManager.userLocation
         let updated = SelectedLocation(
-            name: name,
+            name: "Mevcut Konum",
             latitude: coordinate?.latitude ?? 0,
             longitude: coordinate?.longitude ?? 0,
             isCurrentLocation: true
         )
         selectedLocation = updated
+        locationName = name
+        selectedCity = "Mevcut Konum"
+        userLatitude = updated.latitude
+        userLongitude = updated.longitude
         saveSelectedLocation(updated)
+        persistCityAndCoordinates()
         await refresh()
+    }
+
+    func selectRadius(_ radiusKm: Int) async {
+        guard [5, 10, 25, 50].contains(radiusKm) else { return }
+        selectedRadiusKm = radiusKm
+        UserDefaults.standard.set(radiusKm, forKey: Self.selectedRadiusKmKey)
+        await refresh()
+    }
+
+    func fetchProviders() async {
+        currentOffset = 0
+        hasMoreResults = true
+        await searchProviders(reset: true)
     }
 
     func clearRecentLocations() {
@@ -150,6 +225,53 @@ final class HomeViewModel: ObservableObject {
             verboseLog("⚠️ searchWithDebounce cancelled")
             return
         }
+        await loadSuggestions()
+        await refresh()
+    }
+
+    func clearSuggestions() {
+        providerSuggestions = []
+        specialtySuggestions = []
+    }
+
+    func applySpecialtyFilter(_ specialty: Specialty?) async {
+        selectedSpecialtyName = specialty?.name
+        if let specialty {
+            selectedSurveyType = specialty.surveyType
+        } else {
+            selectedSurveyType = nil
+        }
+        await refresh()
+    }
+
+    private func observeRehberSpecialtyRouting() {
+        NotificationCenter.default.publisher(for: .trustCareApplySpecialtyFilter)
+            .compactMap { $0.object as? String }
+            .sink { [weak self] specialtyName in
+                guard let self else { return }
+                Task { @MainActor in
+                    await self.applySpecialtyFilterByName(specialtyName)
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    private func applySpecialtyFilterByName(_ specialtyName: String) async {
+        if specialties.isEmpty {
+            await loadSpecialties(forceRefresh: false)
+        }
+
+        let normalizedTarget = specialtyName
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+
+        let match = specialties.first { specialty in
+            let n1 = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+            let n2 = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+            return n1 == normalizedTarget || n2 == normalizedTarget
+        }
+
+        selectedSpecialtyName = match?.name ?? specialtyName
+        selectedSurveyType = match?.surveyType
         await refresh()
     }
 
@@ -189,11 +311,12 @@ final class HomeViewModel: ObservableObject {
         do {
             let results = try await ProviderService.searchProviders(
                 text: searchText,
-                specialty: nil,  // Don't filter by specialty in RPC, we'll filter client-side
+                specialty: selectedSpecialtyName,
                 country: nil,
                 priceLevel: nil,
                 minRating: nil,
                 verifiedOnly: nil,
+                radiusKm: selectedRadiusKm,
                 lat: lat,
                 lng: lng,
                 limit: pageSize,
@@ -202,6 +325,13 @@ final class HomeViewModel: ObservableObject {
 
             // Apply client-side category filtering
             let filteredResults = filterProvidersBySurveyType(results, selectedSurveyType)
+                .filter { provider in
+                    guard let providerDistance = provider.distanceKm else { return true }
+                    return providerDistance <= Double(selectedRadiusKm)
+                }
+                .sorted {
+                    ($0.distanceKm ?? .greatestFiniteMagnitude) < ($1.distanceKm ?? .greatestFiniteMagnitude)
+                }
             
             verboseLog("✅ searchProviders returned \(results.count) providers, \(filteredResults.count) after category filter")
             if reset {
@@ -227,6 +357,31 @@ final class HomeViewModel: ObservableObject {
         return providers.filter { provider in
             SpecialtyService.shared.surveyType(for: provider.specialty) == surveyType
         }
+    }
+
+    private func loadSuggestions() async {
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            clearSuggestions()
+            return
+        }
+
+        do {
+            providerSuggestions = try await ProviderService.searchProvidersTable(query: trimmed, limit: 8)
+        } catch {
+            providerSuggestions = []
+        }
+
+        let query = trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+        specialtySuggestions = specialties
+            .filter { specialty in
+                let name = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                let nameTr = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                return name.contains(query) || (nameTr?.contains(query) ?? false)
+            }
+            .sorted { $0.displayOrder < $1.displayOrder }
+            .prefix(8)
+            .map { $0 }
     }
 
     private func observeLocation() {
@@ -324,6 +479,13 @@ final class HomeViewModel: ObservableObject {
         if let data = try? JSONEncoder().encode(location) {
             UserDefaults.standard.set(data, forKey: Self.selectedLocationKey)
         }
+    }
+
+    private func persistCityAndCoordinates() {
+        let defaults = UserDefaults.standard
+        defaults.set(selectedCity, forKey: Self.selectedCityKey)
+        defaults.set(userLatitude, forKey: Self.userLatitudeKey)
+        defaults.set(userLongitude, forKey: Self.userLongitudeKey)
     }
 
     private static func loadSelectedLocation() -> SelectedLocation? {

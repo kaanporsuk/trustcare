@@ -9,7 +9,7 @@ struct ReviewDetailView: View {
                 Text(review.providerName ?? String(localized: "Unknown Provider"))
                     .font(AppFont.title2)
 
-                StarRatingDisplay(rating: Int(round(review.ratingOverall)), starSize: 14)
+                StarRatingInput(readOnlyRating: Int(round(review.ratingOverall)), starSize: 14)
                 PriceLevelView(level: Double(review.priceLevel))
 
                 if let title = review.title {

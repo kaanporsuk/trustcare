@@ -7,6 +7,8 @@ struct StarRatingInput: View {
     var spacing: CGFloat = 6
     var filledColor: Color = Color(hex: "#FFCC00")
     var emptyColor: Color = Color(hex: "#E5E5EA")
+    var isInteractive: Bool = true
+    var showsValue: Bool = true
 
     private let selectionGenerator = UISelectionFeedbackGenerator()
     private let impactGenerator = UIImpactFeedbackGenerator(style: .light)
@@ -18,18 +20,32 @@ struct StarRatingInput: View {
         starSize: CGFloat = 28,
         spacing: CGFloat = 6,
         filledColor: Color = Color(hex: "#FFCC00"),
-        emptyColor: Color = Color(hex: "#E5E5EA")
+        emptyColor: Color = Color(hex: "#E5E5EA"),
+        isInteractive: Bool = true,
+        showsValue: Bool = true
     ) {
         _rating = rating
         self.starSize = starSize
         self.spacing = spacing
         self.filledColor = filledColor
         self.emptyColor = emptyColor
+        self.isInteractive = isInteractive
+        self.showsValue = showsValue
     }
 
     init(rating: Binding<Int>, size: CGFloat = 28, showsValue: Bool = true) {
         _rating = rating
         self.starSize = size
+        self.showsValue = showsValue
+    }
+
+    init(readOnlyRating: Int, starSize: CGFloat = 12, filledColor: Color = Color(hex: "#FFCC00"), emptyColor: Color = Color(hex: "#E5E5EA"), showsValue: Bool = false) {
+        _rating = .constant(readOnlyRating)
+        self.starSize = starSize
+        self.filledColor = filledColor
+        self.emptyColor = emptyColor
+        self.isInteractive = false
+        self.showsValue = showsValue
     }
 
     var body: some View {
@@ -43,14 +59,16 @@ struct StarRatingInput: View {
                     .scaleEffect(isDragging && star == rating ? 1.15 : 1.0)
                     .animation(.spring(response: 0.2, dampingFraction: 0.6), value: rating)
             }
-            Spacer()
-            Text("\(rating)/5")
-                .font(.system(size: 15, weight: .medium))
-                .foregroundStyle(rating > 0 ? .primary : .secondary)
-                .frame(width: 35)
+            if showsValue {
+                Spacer()
+                Text("\(rating)/5")
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundStyle(rating > 0 ? .primary : .secondary)
+                    .frame(width: 35)
+            }
         }
         .contentShape(Rectangle())
-        .gesture(
+        .gesture(isInteractive ?
             DragGesture(minimumDistance: 0)
                 .onChanged { value in
                     isDragging = true
@@ -60,6 +78,7 @@ struct StarRatingInput: View {
                     isDragging = false
                     impactGenerator.impactOccurred()
                 }
+            : nil
         )
         .onAppear {
             selectionGenerator.prepare()
@@ -87,25 +106,6 @@ struct StarRatingInput: View {
             rating = newRating
             selectionGenerator.selectionChanged()
             selectionGenerator.prepare()
-        }
-    }
-}
-
-struct StarRatingDisplay: View {
-    let rating: Int
-    var starSize: CGFloat = 12
-    var filledColor: Color = Color(hex: "#FFCC00")
-    var emptyColor: Color = Color(hex: "#E5E5EA")
-
-    var body: some View {
-        HStack(spacing: 2) {
-            ForEach(1...5, id: \.self) { star in
-                Image(systemName: star <= rating ? "star.fill" : "star")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: starSize, height: starSize)
-                    .foregroundStyle(star <= rating ? filledColor : emptyColor)
-            }
         }
     }
 }

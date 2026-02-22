@@ -6,88 +6,21 @@ struct ProviderMapView: View {
     let providers: [Provider]
     let isLoading: Bool
     let centerCoordinate: CLLocationCoordinate2D?
-    @State private var showSearchAreaButton = false
-    @State private var mapCameraPosition: MapCameraPosition = .automatic
-    @State private var currentRegion: MKCoordinateRegion?
-    @State private var didSetInitialRegion = false
-    @State private var selectedProvider: Provider?
-    @State private var errorMessage: String?
+    let onOpenProvider: (Provider) -> Void
 
     var body: some View {
         ZStack {
-            Map(position: $mapCameraPosition, selection: $selectedProvider) {
-                UserAnnotation()
-                ForEach(filteredProviders) { provider in
-                    let surveyType = SpecialtyService.shared.surveyType(for: provider.specialty)
-                    Annotation(
-                        provider.name,
-                        coordinate: CLLocationCoordinate2D(
-                            latitude: provider.latitude,
-                            longitude: provider.longitude
-                        ),
-                        anchor: .bottom
-                    ) {
-                        VStack(spacing: 0) {
-                            Image(systemName: ProviderMapColor.icon(for: surveyType))
-                                .font(.caption)
-                                .foregroundStyle(.white)
-                                .padding(6)
-                                .background(ProviderMapColor.color(for: surveyType))
-                                .clipShape(Circle())
-                            Image(systemName: "triangle.fill")
-                                .font(.system(size: 6))
-                                .foregroundStyle(ProviderMapColor.color(for: surveyType))
-                                .offset(y: -3)
-                        }
-                    }
-                    .tag(provider)
-                }
-            }
-            .mapControls {
-                MapUserLocationButton()
-                MapCompass()
-                MapScaleView()
-            }
-            .onMapCameraChange(frequency: .onEnd) { context in
-                currentRegion = context.region
-                if didSetInitialRegion {
-                    showSearchAreaButton = true
-                } else {
-                    didSetInitialRegion = true
-                }
-            }
-            .onAppear {
-                recenterOnSelectedLocation(animated: false)
-            }
-            .onChange(of: centerCoordinateToken) { _, _ in
-                recenterOnSelectedLocation(animated: true)
-            }
+            ProviderMapRepresentable(
+                providers: filteredProviders,
+                centerCoordinate: centerCoordinate,
+                onOpenProvider: onOpenProvider
+            )
 
             if filteredProviders.isEmpty && isLoading {
                 ProgressView()
             }
 
             VStack {
-                if showSearchAreaButton {
-                    Button {
-                        guard let currentRegion else { return }
-                        Task {
-                            await viewModel.fetchProviders(in: currentRegion)
-                            showSearchAreaButton = false
-                        }
-                    } label: {
-                        Label(String(localized: "Search this area"), systemImage: "magnifyingglass")
-                            .font(AppFont.callout)
-                            .foregroundStyle(.primary)
-                            .padding(.horizontal, AppSpacing.md)
-                            .padding(.vertical, AppSpacing.sm)
-                            .background(.ultraThinMaterial)
-                            .clipShape(Capsule())
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.top, AppSpacing.sm)
-                }
-
                 HStack {
                     Spacer()
                     MapLegendView(viewModel: viewModel)
@@ -97,55 +30,6 @@ struct ProviderMapView: View {
                 Spacer()
             }
         }
-        .overlay(alignment: .bottomTrailing) {
-            Button {
-                recenterOnSelectedLocation(animated: true)
-            } label: {
-                Image(systemName: "location.fill")
-                    .font(.headline)
-                    .foregroundStyle(AppColor.trustBlue)
-                    .padding(12)
-                    .background(AppColor.cardBackground)
-                    .clipShape(Circle())
-                    .shadow(color: Color.black.opacity(0.12), radius: 6, x: 0, y: 3)
-            }
-            .padding(AppSpacing.lg)
-        }
-        .sheet(item: $selectedProvider) { provider in
-            NavigationStack {
-                ProviderDetailView(providerId: provider.id)
-            }
-            .presentationDetents([.medium, .large])
-        }
-        .alert(String(localized: "Error"), isPresented: Binding(
-            get: { errorMessage != nil },
-            set: { if !$0 { errorMessage = nil } }
-        )) {
-            Button(String(localized: "OK")) { errorMessage = nil }
-        } message: {
-            Text(errorMessage ?? "")
-        }
-    }
-
-    private func recenterOnSelectedLocation(animated: Bool) {
-        guard let centerCoordinate else { return }
-        let region = MKCoordinateRegion(
-            center: centerCoordinate,
-            span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
-        )
-        currentRegion = region
-        if animated {
-            withAnimation(.easeInOut(duration: 0.25)) {
-                mapCameraPosition = .region(region)
-            }
-        } else {
-            mapCameraPosition = .region(region)
-        }
-    }
-
-    private var centerCoordinateToken: String {
-        guard let centerCoordinate else { return "nil" }
-        return "\(centerCoordinate.latitude),\(centerCoordinate.longitude)"
     }
 
     private var filteredProviders: [Provider] {
@@ -154,6 +38,85 @@ struct ProviderMapView: View {
         }
         return providers.filter { provider in
             SpecialtyService.shared.surveyType(for: provider.specialty) == filterType
+        }
+    }
+}
+
+final class ProviderAnnotation: NSObject, MKAnnotation {
+    let provider: Provider
+    let surveyType: String
+    dynamic var coordinate: CLLocationCoordinate2D
+    var title: String? { provider.name }
+    var subtitle: String? {
+        "\(provider.specialty) • \(String(format: "%.1f", provider.ratingOverall))"
+    }
+
+    init(provider: Provider) {
+        self.provider = provider
+        self.surveyType = SpecialtyService.shared.surveyType(for: provider.specialty)
+        self.coordinate = CLLocationCoordinate2D(latitude: provider.latitude, longitude: provider.longitude)
+    }
+}
+
+private struct ProviderMapRepresentable: UIViewRepresentable {
+    let providers: [Provider]
+    let centerCoordinate: CLLocationCoordinate2D?
+    let onOpenProvider: (Provider) -> Void
+
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView(frame: .zero)
+        mapView.delegate = context.coordinator
+        mapView.showsUserLocation = true
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "provider")
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "cluster")
+        return mapView
+    }
+
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        let existing = mapView.annotations.compactMap { $0 as? ProviderAnnotation }
+        mapView.removeAnnotations(existing)
+        mapView.addAnnotations(providers.map { ProviderAnnotation(provider: $0) })
+
+        if let centerCoordinate {
+            let region = MKCoordinateRegion(
+                center: centerCoordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
+            )
+            mapView.setRegion(region, animated: true)
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(onOpenProvider: onOpenProvider)
+    }
+
+    final class Coordinator: NSObject, MKMapViewDelegate {
+        let onOpenProvider: (Provider) -> Void
+
+        init(onOpenProvider: @escaping (Provider) -> Void) {
+            self.onOpenProvider = onOpenProvider
+        }
+
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard let providerAnnotation = annotation as? ProviderAnnotation else {
+                return nil
+            }
+
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: "provider", for: providerAnnotation) as! MKMarkerAnnotationView
+            view.canShowCallout = true
+            view.clusteringIdentifier = "provider"
+            view.markerTintColor = UIColor(ProviderMapColor.color(for: providerAnnotation.surveyType))
+            view.glyphTintColor = .white
+            view.glyphImage = UIImage(systemName: ProviderMapColor.markerIcon(for: providerAnnotation.surveyType))
+            let button = UIButton(type: .detailDisclosure)
+            button.tag = providerAnnotation.provider.id.hashValue
+            view.rightCalloutAccessoryView = button
+            return view
+        }
+
+        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            guard let annotation = view.annotation as? ProviderAnnotation else { return }
+            onOpenProvider(annotation.provider)
         }
     }
 }

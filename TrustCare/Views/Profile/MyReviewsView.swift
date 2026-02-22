@@ -2,137 +2,149 @@ import SwiftUI
 
 struct MyReviewsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
-    @Environment(\.dismiss) private var dismiss
     @Binding var selectedTab: Int
+
     @State private var pendingDeleteReviewId: UUID?
     @State private var showDeleteConfirm: Bool = false
+    @State private var editingReview: Review?
 
-    init(selectedTab: Binding<Int> = .constant(2)) {
+    init(selectedTab: Binding<Int> = .constant(3)) {
         _selectedTab = selectedTab
     }
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
-            Picker(String(localized: "Filter"), selection: $profileVM.reviewFilter) {
-                Text(String(localized: "All")).tag("all")
-                Text(String(localized: "Verified")).tag("verified")
-                Text(String(localized: "Pending")).tag("pending")
+            Picker("Filtre", selection: $profileVM.reviewFilter) {
+                Text("Tümü").tag("all")
+                Text("Doğrulanmış").tag("verified")
+                Text("Beklemede").tag("pending")
+                Text("Doğrulanmamış").tag("unverified")
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, AppSpacing.lg)
 
             if profileVM.isLoading && profileVM.myReviews.isEmpty {
-                ScrollView {
-                    VStack(spacing: AppSpacing.md) {
-                        ForEach(0..<3, id: \.self) { _ in
-                            SkeletonReviewCard()
-                        }
-                    }
-                    .padding(.horizontal, AppSpacing.lg)
-                }
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if profileVM.myReviews.isEmpty {
                 EmptyStateView(
                     icon: "pencil.and.list.clipboard",
-                    title: String(localized: "No reviews yet"),
-                    message: String(localized: "Share your healthcare experience to help others"),
-                    actionTitle: String(localized: "Write a Review")
+                    title: "Henüz değerlendirme yapmadınız",
+                    message: "Deneyiminizi paylaşarak diğer kullanıcılara yardımcı olun.",
+                    actionTitle: "Değerlendir"
                 ) {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    selectedTab = 1
+                    selectedTab = 2
                 }
             } else {
-                ScrollView {
-                    LazyVStack(spacing: AppSpacing.md) {
-                        ForEach(profileVM.myReviews) { review in
-                            NavigationLink {
-                                ReviewDetailView(review: review)
+                List {
+                    ForEach(profileVM.myReviews) { review in
+                        NavigationLink {
+                            ReviewDetailView(review: review)
+                        } label: {
+                            reviewRow(review)
+                        }
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                pendingDeleteReviewId = review.id
+                                showDeleteConfirm = true
                             } label: {
-                                reviewCard(review)
+                                Label("Sil", systemImage: "trash")
                             }
-                            .buttonStyle(.plain)
-                            .swipeActions {
-                                Button(role: .destructive) {
-                                    pendingDeleteReviewId = review.id
-                                    showDeleteConfirm = true
+
+                            if canEdit(review) {
+                                Button {
+                                    editingReview = review
                                 } label: {
-                                    Text(String(localized: "Delete"))
+                                    Label("Düzenle", systemImage: "pencil")
                                 }
+                                .tint(AppColor.trustBlue)
                             }
                         }
                     }
-                    .padding(.horizontal, AppSpacing.lg)
-                    .padding(.bottom, AppSpacing.xxl)
                 }
+                .listStyle(.plain)
                 .refreshable {
-                    await profileVM.loadReviews()
+                    await profileVM.loadReviews(filter: profileVM.reviewFilter)
                 }
             }
         }
-        .navigationTitle(String(localized: "My Reviews"))
+        .navigationTitle("Değerlendirmelerim")
         .toolbar(.hidden, for: .tabBar)
         .task {
             if profileVM.myReviews.isEmpty {
-                await profileVM.loadReviews()
+                await profileVM.loadReviews(filter: profileVM.reviewFilter)
             }
         }
-        .confirmationDialog(String(localized: "Delete Review"), isPresented: $showDeleteConfirm) {
-            Button(String(localized: "Delete"), role: .destructive) {
+        .onChange(of: profileVM.reviewFilter) { _, newValue in
+            Task { await profileVM.loadReviews(filter: newValue) }
+        }
+        .confirmationDialog("Değerlendirmeyi Sil", isPresented: $showDeleteConfirm) {
+            Button("Sil", role: .destructive) {
                 if let id = pendingDeleteReviewId {
                     Task { await profileVM.deleteReview(id: id) }
                 }
                 pendingDeleteReviewId = nil
             }
-            Button(String(localized: "Cancel"), role: .cancel) {
+            Button("Vazgeç", role: .cancel) {
                 pendingDeleteReviewId = nil
             }
         } message: {
-            Text(String(localized: "Are you sure you want to delete this review?"))
+            Text("Bu değerlendirmeyi silmek istediğinize emin misiniz?")
         }
-        .onChange(of: profileVM.reviewFilter) { _, newValue in
-            Task { await profileVM.loadReviews(filter: newValue) }
+        .sheet(item: $editingReview) { review in
+            EditReviewSheet(review: review) { title, comment in
+                await profileVM.updateReview(id: review.id, title: title, comment: comment)
+                editingReview = nil
+            }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Hata", isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button(String(localized: "Done")) {
-                profileVM.errorMessage = nil
-            }
+            Button("Tamam") { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
     }
 
-    private func reviewCard(_ review: Review) -> some View {
+    private func reviewRow(_ review: Review) -> some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            HStack {
+            HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(review.providerName ?? String(localized: "Unknown Provider"))
+                    Text(review.providerName ?? "Bilinmeyen Sağlayıcı")
                         .font(AppFont.headline)
-                    if let specialty = review.providerSpecialty {
-                        Text(specialty)
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text(formattedDate(review.createdAt))
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
                 }
                 Spacer()
-                verificationBadge(review)
+                statusBadge(review)
             }
 
-            StarRatingDisplay(rating: Int(round(review.ratingOverall)), starSize: 14)
+            StarRatingInput(readOnlyRating: Int(round(review.ratingOverall)), starSize: 14)
 
-            Text(reviewSnippet(review.comment))
+            HStack(spacing: AppSpacing.xs) {
+                Text((review.surveyType ?? "general_clinic").replacingOccurrences(of: "_", with: " ").capitalized)
+                    .font(AppFont.footnote)
+                    .padding(.horizontal, AppSpacing.sm)
+                    .padding(.vertical, 4)
+                    .background(AppColor.trustBlue.opacity(0.12))
+                    .foregroundStyle(AppColor.trustBlue)
+                    .cornerRadius(AppRadius.button)
+
+                if canEdit(review) {
+                    Text("24 saat içinde düzenlenebilir")
+                        .font(AppFont.footnote)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Text(review.comment)
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
                 .lineLimit(2)
-
-            Text(formattedDate(review.createdAt))
-                .font(AppFont.caption)
-                .foregroundStyle(.secondary)
         }
-        .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
-        .cornerRadius(AppRadius.card)
+        .padding(.vertical, 4)
     }
 
     private func formattedDate(_ date: Date) -> String {
@@ -141,28 +153,77 @@ struct MyReviewsView: View {
         return formatter.string(from: date)
     }
 
-    private func reviewSnippet(_ text: String) -> String {
-        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        if trimmed.count <= 100 {
-            return trimmed
-        }
-        return String(trimmed.prefix(100)) + "..."
+    private func canEdit(_ review: Review) -> Bool {
+        Date().timeIntervalSince(review.createdAt) <= 24 * 60 * 60
     }
 
     @ViewBuilder
-    private func verificationBadge(_ review: Review) -> some View {
+    private func statusBadge(_ review: Review) -> some View {
         if review.isVerified {
-            Text(String(localized: "Verified"))
-                .font(AppFont.footnote)
-                .foregroundStyle(AppColor.success)
+            badge("Doğrulanmış", color: AppColor.success)
         } else if review.status == .pendingVerification {
-            Text(String(localized: "Pending"))
-                .font(AppFont.footnote)
-                .foregroundStyle(AppColor.pending)
+            badge("Beklemede", color: AppColor.pending)
         } else {
-            Text(String(localized: "Unverified"))
-                .font(AppFont.footnote)
-                .foregroundStyle(AppColor.unverified)
+            badge("Doğrulanmamış", color: AppColor.unverified)
+        }
+    }
+
+    private func badge(_ text: String, color: Color) -> some View {
+        Text(text)
+            .font(AppFont.footnote)
+            .foregroundStyle(color)
+            .padding(.horizontal, AppSpacing.sm)
+            .padding(.vertical, 4)
+            .background(color.opacity(0.12))
+            .cornerRadius(AppRadius.button)
+    }
+}
+
+private struct EditReviewSheet: View {
+    let review: Review
+    let onSave: (_ title: String, _ comment: String) async -> Void
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var title: String
+    @State private var comment: String
+    @State private var isSaving: Bool = false
+
+    init(review: Review, onSave: @escaping (_ title: String, _ comment: String) async -> Void) {
+        self.review = review
+        self.onSave = onSave
+        _title = State(initialValue: review.title ?? "")
+        _comment = State(initialValue: review.comment)
+    }
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Başlık") {
+                    TextField("Başlık (opsiyonel)", text: $title)
+                }
+
+                Section("Yorum") {
+                    TextEditor(text: $comment)
+                        .frame(minHeight: 140)
+                }
+            }
+            .navigationTitle("Değerlendirmeyi Düzenle")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Vazgeç") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Kaydet") {
+                        Task {
+                            isSaving = true
+                            await onSave(title, comment)
+                            isSaving = false
+                            dismiss()
+                        }
+                    }
+                    .disabled(isSaving || comment.trimmingCharacters(in: .whitespacesAndNewlines).count < 10)
+                }
+            }
         }
     }
 }

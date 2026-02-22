@@ -1,189 +1,461 @@
+import PhotosUI
 import SwiftUI
+import UIKit
 
 struct ReviewHubView: View {
-    @StateObject private var viewModel = ReviewHubViewModel()
+    @StateObject private var viewModel = ReviewSubmissionViewModel()
+    @ObservedObject private var specialtyService = SpecialtyService.shared
+
+    @State private var providerSearchText: String = ""
+    @State private var providerResults: [Provider] = []
+    @State private var specialtyResults: [Specialty] = []
+    @State private var isSearchingProviders: Bool = false
     @State private var showAddProviderSheet: Bool = false
+    @State private var showProofPicker: Bool = false
+    @State private var photoItems: [PhotosPickerItem] = []
+    @State private var proofItem: PhotosPickerItem?
+
+    init(initialProvider: Provider? = nil) {
+        _viewModel = StateObject(wrappedValue: ReviewSubmissionViewModel(provider: initialProvider))
+        _providerSearchText = State(initialValue: initialProvider?.name ?? "")
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                    Text(String(localized: "Write a Review"))
-                        .font(AppFont.title2)
-
-                    SearchBarView(
-                        text: $viewModel.searchText,
-                        placeholder: String(localized: "Search for a provider...")
-                    )
-                        .onChange(of: viewModel.searchText) { _, _ in
-                            viewModel.searchProviders()
-                        }
-
-                    if !viewModel.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                        searchResultsSection
-                    } else {
-                        recentlyViewedSection
-                        nearbyProvidersSection
-                    }
-
-                    Button {
-                        showAddProviderSheet = true
-                    } label: {
-                        Text(String(localized: "Can't find your provider?"))
-                            .font(AppFont.caption)
-                            .foregroundStyle(AppColor.trustBlue)
-                    }
+                    providerSection
+                    visitDetailsSection
+                    overallRatingSection
+                    detailedRatingsSection
+                    writtenReviewSection
+                    photosSection
+                    verificationSection
                 }
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.top, AppSpacing.lg)
-                .padding(.bottom, AppSpacing.xxl)
+                .padding(.bottom, AppSpacing.xxxxl)
             }
-            .navigationBarHidden(true)
+            .navigationTitle("Değerlendir")
+            .navigationBarTitleDisplayMode(.inline)
             .task {
-                viewModel.onAppear()
+                await specialtyService.loadSpecialties()
             }
-            .onAppear {
-                viewModel.refreshRecents()
+            .task(id: providerSearchText) {
+                await searchProvidersAndSpecialties()
+            }
+            .onChange(of: photoItems) { _, items in
+                Task { await loadPhotos(items) }
+            }
+            .onChange(of: proofItem) { _, item in
+                Task { await loadProof(item) }
             }
             .sheet(isPresented: $showAddProviderSheet) {
-                AddProviderSheet { _ in
+                AddProviderSheet { provider in
+                    viewModel.selectProvider(provider)
+                    providerSearchText = provider.name
                     showAddProviderSheet = false
                 }
             }
+            .fullScreenCover(isPresented: $viewModel.isComplete) {
+                ReviewConfirmationView(
+                    hasProof: viewModel.didUploadProof,
+                    onAnotherReview: {
+                        viewModel.resetForm(keepProvider: false)
+                        providerSearchText = ""
+                    },
+                    onGoHome: {
+                        viewModel.isComplete = false
+                        NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
+                    }
+                )
+            }
+            .safeAreaInset(edge: .bottom) {
+                submitBar
+            }
         }
     }
 
-    private var searchResultsSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.md) {
-            if viewModel.isSearching {
-                ProgressView()
+    private var providerSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Kimi değerlendiriyorsunuz?")
+                .font(AppFont.title3)
+
+            if let provider = viewModel.selectedProvider {
+                ProviderMiniCard(provider: provider)
             }
-            if let message = viewModel.searchErrorMessage {
-                Text(message)
-                    .font(AppFont.caption)
-                    .foregroundStyle(AppColor.error)
-            }
-            if viewModel.searchResults.isEmpty && !viewModel.isSearching {
-                Text(String(localized: "No providers found"))
-                    .font(AppFont.body)
+
+            HStack(spacing: AppSpacing.sm) {
+                Image(systemName: "magnifyingglass")
                     .foregroundStyle(.secondary)
-            } else {
-                VStack(spacing: AppSpacing.sm) {
-                    ForEach(viewModel.searchResults) { provider in
-                        ReviewProviderRow(provider: provider)
+                TextField("Doktor, klinik veya uzmanlık ara...", text: $providerSearchText)
+                    .font(AppFont.body)
+                    .textInputAutocapitalization(.words)
+                    .autocorrectionDisabled()
+            }
+            .padding(.horizontal, AppSpacing.md)
+            .frame(height: 44)
+            .background(AppColor.cardBackground)
+            .cornerRadius(AppRadius.button)
+            .overlay(
+                RoundedRectangle(cornerRadius: AppRadius.button)
+                    .stroke(AppColor.border, lineWidth: 1)
+            )
+
+            if isSearchingProviders {
+                ProgressView()
+                    .padding(.top, AppSpacing.xs)
+            }
+
+            if !providerSearchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    ForEach(providerResults.prefix(6)) { provider in
+                        Button {
+                            viewModel.selectProvider(provider)
+                            providerSearchText = provider.name
+                            providerResults = []
+                            specialtyResults = []
+                        } label: {
+                            ProviderMiniRow(provider: provider)
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    ForEach(specialtyResults.prefix(4)) { specialty in
+                        Button {
+                            providerSearchText = specialty.name
+                        } label: {
+                            HStack(spacing: AppSpacing.sm) {
+                                Image(systemName: specialty.iconName)
+                                Text(specialty.name)
+                                    .font(AppFont.body)
+                                Spacer()
+                                Text("Uzmanlık")
+                                    .font(AppFont.footnote)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.vertical, 6)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
+                .padding(AppSpacing.md)
+                .background(AppColor.cardBackground)
+                .cornerRadius(AppRadius.card)
+            }
+
+            Button("Bulamadınız mı? Yeni ekle") {
+                showAddProviderSheet = true
+            }
+            .font(AppFont.caption)
+            .foregroundStyle(AppColor.trustBlue)
+        }
+    }
+
+    private var visitDetailsSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Ziyaret Detayları")
+                .font(AppFont.title3)
+
+            DatePicker("Ziyaret Tarihi", selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
+                .datePickerStyle(.compact)
+
+            Picker("Ziyaret Türü", selection: $viewModel.visitType) {
+                Text("Muayene").tag("Muayene")
+                Text("İşlem").tag("İşlem")
+                Text("Kontrol").tag("Kontrol")
+                Text("Acil").tag("Acil")
+            }
+            .pickerStyle(.segmented)
+        }
+    }
+
+    private var overallRatingSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Genel Değerlendirme")
+                .font(AppFont.title3)
+            Text("Genel deneyiminiz nasıldı?")
+                .font(AppFont.caption)
+                .foregroundStyle(.secondary)
+
+            StarRatingInput(rating: $viewModel.overallRating, starSize: 40)
+        }
+    }
+
+    private var detailedRatingsSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Detaylı Değerlendirme")
+                .font(AppFont.title3)
+
+            ForEach(viewModel.surveyConfig.metrics) { metric in
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    HStack(spacing: AppSpacing.xs) {
+                        Image(systemName: metric.icon)
+                            .foregroundStyle(AppColor.trustBlue)
+                        Text(metric.label)
+                            .font(.system(size: 17, weight: .semibold))
+                    }
+                    Text(metric.subtext)
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
+
+                    StarRatingInput(
+                        rating: Binding(
+                            get: { viewModel.metricRatings[metric.dbColumn] ?? 0 },
+                            set: { viewModel.metricRatings[metric.dbColumn] = $0 }
+                        ),
+                        starSize: 28
+                    )
+                }
+                .padding(.vertical, 4)
             }
         }
     }
 
-    private var recentlyViewedSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text(String(localized: "Recently Viewed"))
-                .font(AppFont.headline)
+    private var writtenReviewSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Yorumunuz")
+                .font(AppFont.title3)
 
-            if viewModel.recentlyViewed.isEmpty {
-                Text(String(localized: "No providers found"))
-                    .font(AppFont.caption)
-                    .foregroundStyle(.secondary)
-            } else {
+            ZStack(alignment: .topLeading) {
+                TextEditor(text: $viewModel.comment)
+                    .frame(minHeight: 120)
+                    .padding(8)
+                    .background(AppColor.cardBackground)
+                    .cornerRadius(AppRadius.standard)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.standard)
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
+
+                if viewModel.comment.isEmpty {
+                    Text("Deneyiminizi paylaşın... (en az 50 karakter)")
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.top, 16)
+                        .padding(.leading, 14)
+                }
+            }
+
+            Text("\(viewModel.commentCharCount)/50 minimum")
+                .font(AppFont.caption)
+                .foregroundStyle(viewModel.commentCharCount >= 50 ? AppColor.success : AppColor.error)
+        }
+    }
+
+    private var photosSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Fotoğraf Ekle")
+                .font(AppFont.title3)
+
+            PhotosPicker(selection: $photoItems, maxSelectionCount: 5, matching: .images) {
+                Label("Fotoğraf Ekle", systemImage: "photo.on.rectangle")
+                    .font(AppFont.body)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, AppSpacing.md)
+                    .background(AppColor.cardBackground)
+                    .cornerRadius(AppRadius.button)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.button)
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
+            }
+
+            if !viewModel.photos.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: AppSpacing.md) {
-                        ForEach(viewModel.recentlyViewed) { provider in
-                            ReviewProviderCard(provider: provider)
+                    HStack(spacing: AppSpacing.sm) {
+                        ForEach(Array(viewModel.photos.enumerated()), id: \.offset) { index, image in
+                            ZStack(alignment: .topTrailing) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 86, height: 86)
+                                    .clipShape(RoundedRectangle(cornerRadius: AppRadius.standard))
+
+                                Button {
+                                    viewModel.removePhoto(at: index)
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundStyle(.white)
+                                        .background(Color.black.opacity(0.4))
+                                        .clipShape(Circle())
+                                }
+                                .offset(x: 6, y: -6)
+                            }
                         }
                     }
                 }
             }
+
+            Text("Fotoğraflar herkes tarafından görülebilir")
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
         }
     }
 
-    private var nearbyProvidersSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text(String(localized: "Nearby Providers"))
-                .font(AppFont.headline)
-
-            if viewModel.isLoadingNearby {
-                ProgressView()
-            } else if viewModel.nearbyProviders.isEmpty {
-                Text(String(localized: "No providers found"))
-                    .font(AppFont.caption)
-                    .foregroundStyle(.secondary)
-            } else {
-                VStack(spacing: AppSpacing.sm) {
-                    ForEach(viewModel.nearbyProviders) { provider in
-                        ReviewProviderRow(provider: provider)
-                    }
-                }
-            }
-        }
-    }
-}
-
-private struct ReviewProviderCard: View {
-    let provider: Provider
-
-    var body: some View {
+    private var verificationSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(provider.name)
-                .font(AppFont.headline)
-            Text(provider.specialty)
+            Text("Ziyaretinizi Doğrulayın")
+                .font(AppFont.title3)
+            Text("Fatura, reçete veya randevu onayı yükleyin")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
-            NavigationLink {
-                ReviewFormView(provider: provider)
-            } label: {
-                Text(String(localized: "Review"))
-                    .font(AppFont.caption)
-                    .foregroundStyle(.white)
-                    .padding(.vertical, 6)
+            PhotosPicker(selection: $proofItem, matching: .images) {
+                Label("Doğrulama Belgesi Yükle", systemImage: "doc.badge.plus")
+                    .font(AppFont.body)
+                    .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
-                    .background(AppColor.trustBlue)
+                    .background(AppColor.cardBackground)
                     .cornerRadius(AppRadius.button)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.button)
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
             }
-            .buttonStyle(.plain)
+
+            if let proof = viewModel.proofImage {
+                Image(uiImage: proof)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 140)
+                    .clipShape(RoundedRectangle(cornerRadius: AppRadius.standard))
+            }
+
+            Text("Sadece doğrulama sistemimiz tarafından görülür")
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+
+            Button("Doğrulamayı Atla") {
+                viewModel.proofImage = nil
+            }
+            .font(AppFont.caption)
+            .foregroundStyle(AppColor.trustBlue)
         }
-        .padding(AppSpacing.md)
-        .frame(width: 220, alignment: .leading)
+    }
+
+    private var submitBar: some View {
+        VStack(spacing: AppSpacing.xs) {
+            if let error = viewModel.submissionErrorMessage {
+                Text(error)
+                    .font(AppFont.caption)
+                    .foregroundStyle(AppColor.error)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+
+            Button {
+                Task { await viewModel.submitReview() }
+            } label: {
+                HStack {
+                    if viewModel.isSubmitting {
+                        ProgressView()
+                            .tint(.white)
+                    }
+                    Text("Değerlendirme Gönder")
+                        .font(AppFont.headline)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+            }
+            .disabled(!viewModel.canSubmit || viewModel.isSubmitting)
+            .foregroundStyle(.white)
+            .background(viewModel.canSubmit ? AppColor.trustBlue : AppColor.border)
+            .cornerRadius(AppRadius.button)
+        }
+        .padding(.horizontal, AppSpacing.lg)
+        .padding(.vertical, AppSpacing.md)
         .background(AppColor.cardBackground)
-        .cornerRadius(AppRadius.card)
+    }
+
+    private func searchProvidersAndSpecialties() async {
+        let trimmed = providerSearchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            providerResults = []
+            specialtyResults = []
+            return
+        }
+
+        isSearchingProviders = true
+        defer { isSearchingProviders = false }
+
+        do {
+            try await Task.sleep(nanoseconds: 300_000_000)
+            providerResults = try await ProviderService.searchProvidersTable(query: trimmed, limit: 12)
+        } catch {
+            providerResults = []
+        }
+
+        let normalized = trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+        specialtyResults = specialtyService.specialties
+            .filter { specialty in
+                let n1 = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                let n2 = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                return n1.contains(normalized) || (n2?.contains(normalized) ?? false)
+            }
+            .sorted { $0.displayOrder < $1.displayOrder }
+    }
+
+    private func loadPhotos(_ items: [PhotosPickerItem]) async {
+        var images: [UIImage] = []
+        for item in items.prefix(5) {
+            if let data = try? await item.loadTransferable(type: Data.self),
+               let image = UIImage(data: data) {
+                images.append(image)
+            }
+        }
+        viewModel.photos = images
+    }
+
+    private func loadProof(_ item: PhotosPickerItem?) async {
+        guard let item else { return }
+        if let data = try? await item.loadTransferable(type: Data.self),
+           let image = UIImage(data: data) {
+            viewModel.proofImage = image
+        }
     }
 }
 
-private struct ReviewProviderRow: View {
+private struct ProviderMiniCard: View {
     let provider: Provider
 
     var body: some View {
         HStack(spacing: AppSpacing.sm) {
-            VStack(alignment: .leading, spacing: 4) {
+            DynamicProviderAvatarView(provider: provider)
+                .frame(width: 48, height: 48)
+                .clipShape(Circle())
+            VStack(alignment: .leading, spacing: 2) {
                 Text(provider.name)
-                    .font(AppFont.headline)
+                    .font(AppFont.body)
                 Text(provider.specialty)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
-                if let distance = provider.distanceKm {
-                    Text(String(format: String(localized: "km_away"), distance))
-                        .font(AppFont.caption)
-                        .foregroundStyle(.secondary)
-                }
             }
             Spacer()
-            NavigationLink {
-                ReviewFormView(provider: provider)
-            } label: {
-                Text(String(localized: "Review"))
-                    .font(AppFont.caption)
-                    .foregroundStyle(.white)
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, AppSpacing.md)
-                    .background(AppColor.trustBlue)
-                    .cornerRadius(AppRadius.button)
-            }
-            .buttonStyle(.plain)
         }
         .padding(AppSpacing.md)
         .background(AppColor.cardBackground)
         .cornerRadius(AppRadius.card)
+    }
+}
+
+private struct ProviderMiniRow: View {
+    let provider: Provider
+
+    var body: some View {
+        HStack(spacing: AppSpacing.sm) {
+            DynamicProviderAvatarView(provider: provider)
+                .frame(width: 40, height: 40)
+                .clipShape(Circle())
+            VStack(alignment: .leading, spacing: 2) {
+                Text(provider.name)
+                    .font(AppFont.body)
+                    .foregroundStyle(.primary)
+                Text(provider.specialty)
+                    .font(AppFont.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+        }
+        .padding(.vertical, 4)
     }
 }

@@ -8,6 +8,7 @@ struct ProviderDetailView: View {
     @StateObject private var detailVM = ProviderDetailViewModel()
     @State private var showClaimSheet: Bool = false
     @State private var showAuthRequiredAlert: Bool = false
+    @State private var isSaved: Bool = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var authVM: AuthViewModel
 
@@ -84,7 +85,7 @@ struct ProviderDetailView: View {
             if let provider = detailVM.provider {
                 if authVM.isAuthenticated {
                     NavigationLink {
-                        ReviewFormView(provider: provider)
+                        ReviewHubView(initialProvider: provider)
                     } label: {
                         reviewButtonLabel
                     }
@@ -104,7 +105,7 @@ struct ProviderDetailView: View {
     }
 
     private var reviewButtonLabel: some View {
-        Label(String(localized: "Write a Review"), systemImage: "star.bubble")
+        Label("Değerlendir", systemImage: "star.bubble")
             .font(AppFont.headline)
             .foregroundStyle(.white)
             .padding(.vertical, 12)
@@ -227,7 +228,7 @@ struct ProviderDetailView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                StarRatingDisplay(rating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
+                StarRatingInput(readOnlyRating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
                 Text(String(format: String(localized: "reviews_count"), detailVM.provider?.reviewCount ?? 0))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
@@ -278,7 +279,7 @@ struct ProviderDetailView: View {
         let provider = detailVM.provider
         let hasPhone = provider?.phone != nil && !(provider?.phone?.isEmpty ?? true)
 
-        return HStack(spacing: AppSpacing.md) {
+        return HStack(spacing: AppSpacing.sm) {
             Button {
                 if hasPhone {
                     callProvider(phone: provider?.phone)
@@ -288,8 +289,8 @@ struct ProviderDetailView: View {
             } label: {
                 VStack {
                     Image(systemName: hasPhone ? "phone.fill" : "phone.badge.plus")
-                        .font(.system(size: 20))
-                    Text(hasPhone ? "Call" : "Add Number")
+                        .font(.system(size: 16))
+                    Text("Ara")
                         .font(.system(size: 12, weight: .medium))
                 }
                 .foregroundColor(hasPhone ? .white : Color(hex: "#0055FF"))
@@ -304,9 +305,23 @@ struct ProviderDetailView: View {
                     openMaps(address: address)
                 }
             } label: {
-                Label(String(localized: "Directions"), systemImage: "map.fill")
+                Label("Yol Tarifi", systemImage: "map.fill")
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.button)
+                            .stroke(AppColor.trustBlue, lineWidth: 1)
+                    )
+                    .foregroundStyle(AppColor.trustBlue)
+            }
+
+            Button {
+                isSaved.toggle()
+            } label: {
+                Label("Kaydet", systemImage: isSaved ? "bookmark.fill" : "bookmark")
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .background(isSaved ? AppColor.trustBlue.opacity(0.12) : Color.clear)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
                             .stroke(AppColor.trustBlue, lineWidth: 1)

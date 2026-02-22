@@ -42,19 +42,19 @@ enum SurveyConfigurations {
             ),
             SurveyMetric(
                 label: "Bedside Manner",
-                subtext: "How well did the doctor listen to you and explain things?",
+                subtext: "How well did the doctor listen and explain?",
                 dbColumn: "rating_bedside",
                 icon: "heart"
             ),
             SurveyMetric(
                 label: "Treatment Effectiveness",
-                subtext: "How effectively did the treatment address your health concern?",
+                subtext: "How well did the treatment address your concern?",
                 dbColumn: "rating_efficacy",
                 icon: "cross.case"
             ),
             SurveyMetric(
                 label: "Facility Cleanliness",
-                subtext: "How would you rate the overall cleanliness and hygiene?",
+                subtext: "Was the clinic clean and hygienic?",
                 dbColumn: "rating_cleanliness",
                 icon: "sparkles"
             )
@@ -67,25 +67,25 @@ enum SurveyConfigurations {
         metrics: [
             SurveyMetric(
                 label: "Waiting Time",
-                subtext: "How quickly were you seated in the dentist's chair?",
+                subtext: "How quickly were you seated?",
                 dbColumn: "rating_wait_time",
                 icon: "clock"
             ),
             SurveyMetric(
                 label: "Pain Management",
-                subtext: "How well did they minimize your discomfort during the procedure?",
+                subtext: "How well did they minimize discomfort?",
                 dbColumn: "rating_pain_mgmt",
                 icon: "bolt.heart"
             ),
             SurveyMetric(
                 label: "Bedside Manner",
-                subtext: "How well did the dentist communicate and put you at ease?",
+                subtext: "Did the dentist communicate clearly?",
                 dbColumn: "rating_bedside",
                 icon: "heart"
             ),
             SurveyMetric(
                 label: "Facility Cleanliness",
-                subtext: "How would you rate the cleanliness of treatment rooms and equipment?",
+                subtext: "Were treatment rooms and equipment clean?",
                 dbColumn: "rating_cleanliness",
                 icon: "sparkles"
             )
@@ -98,25 +98,25 @@ enum SurveyConfigurations {
         metrics: [
             SurveyMetric(
                 label: "Speed of Service",
-                subtext: "How quickly were you assisted and checked out?",
+                subtext: "How quickly were you assisted?",
                 dbColumn: "rating_wait_time",
                 icon: "clock"
             ),
             SurveyMetric(
                 label: "Accuracy & Care",
-                subtext: "How accurately was your prescription filled?",
+                subtext: "Was your prescription filled correctly?",
                 dbColumn: "rating_accuracy",
                 icon: "checkmark.shield"
             ),
             SurveyMetric(
                 label: "Pharmacist Knowledge",
-                subtext: "How well did the pharmacist explain dosages and answer your questions?",
+                subtext: "Did the pharmacist explain dosages clearly?",
                 dbColumn: "rating_knowledge",
                 icon: "brain"
             ),
             SurveyMetric(
                 label: "Staff Courtesy",
-                subtext: "How patient and courteous was the staff?",
+                subtext: "Was the staff patient and helpful?",
                 dbColumn: "rating_courtesy",
                 icon: "face.smiling"
             )
@@ -135,19 +135,19 @@ enum SurveyConfigurations {
             ),
             SurveyMetric(
                 label: "Quality of Care",
-                subtext: "How would you rate the medical care and attention you received?",
+                subtext: "How would you rate the medical attention?",
                 dbColumn: "rating_care_quality",
                 icon: "heart.text.square"
             ),
             SurveyMetric(
                 label: "Admin Efficiency",
-                subtext: "How smooth was the admission, billing, and discharge process?",
+                subtext: "How smooth was admission and discharge?",
                 dbColumn: "rating_admin",
                 icon: "doc.text"
             ),
             SurveyMetric(
                 label: "Facility Cleanliness",
-                subtext: "How would you rate the cleanliness of rooms and public areas?",
+                subtext: "Were rooms and areas clean?",
                 dbColumn: "rating_cleanliness",
                 icon: "sparkles"
             )
@@ -160,25 +160,25 @@ enum SurveyConfigurations {
         metrics: [
             SurveyMetric(
                 label: "Waiting Time",
-                subtext: "How quickly were you called in for your test?",
+                subtext: "How quickly were you called for your test?",
                 dbColumn: "rating_wait_time",
                 icon: "clock"
             ),
             SurveyMetric(
                 label: "Procedure Comfort",
-                subtext: "How comfortable did the staff make the process?",
+                subtext: "Did staff make the process comfortable?",
                 dbColumn: "rating_comfort",
                 icon: "hand.raised"
             ),
             SurveyMetric(
                 label: "Result Turnaround",
-                subtext: "How promptly were your test results delivered?",
+                subtext: "Were results delivered on time?",
                 dbColumn: "rating_turnaround",
                 icon: "timer"
             ),
             SurveyMetric(
                 label: "Facility Cleanliness",
-                subtext: "How would you rate the facility's cleanliness?",
+                subtext: "Was the facility sanitary?",
                 dbColumn: "rating_cleanliness",
                 icon: "sparkles"
             )
@@ -191,25 +191,25 @@ enum SurveyConfigurations {
         metrics: [
             SurveyMetric(
                 label: "Punctuality",
-                subtext: "How well did the session start on time?",
+                subtext: "Did your session start on time?",
                 dbColumn: "rating_wait_time",
                 icon: "clock"
             ),
             SurveyMetric(
                 label: "Empathy & Listening",
-                subtext: "How well did you feel heard and understood?",
+                subtext: "Did you feel genuinely heard?",
                 dbColumn: "rating_empathy",
                 icon: "heart.circle"
             ),
             SurveyMetric(
                 label: "Environment Comfort",
-                subtext: "How calming and private was the office environment?",
+                subtext: "Was the office calming and private?",
                 dbColumn: "rating_environment",
                 icon: "leaf"
             ),
             SurveyMetric(
                 label: "Communication Clarity",
-                subtext: "How clearly were treatment plans or coping strategies explained?",
+                subtext: "Were treatment plans explained clearly?",
                 dbColumn: "rating_communication",
                 icon: "text.bubble"
             )
@@ -222,25 +222,25 @@ enum SurveyConfigurations {
         metrics: [
             SurveyMetric(
                 label: "Waiting Time",
-                subtext: "How quickly did your therapy session begin?",
+                subtext: "How quickly did your session begin?",
                 dbColumn: "rating_wait_time",
                 icon: "clock"
             ),
             SurveyMetric(
                 label: "Treatment Effectiveness",
-                subtext: "How much did the sessions improve your mobility or reduce pain?",
+                subtext: "Did sessions improve mobility or reduce pain?",
                 dbColumn: "rating_effectiveness",
                 icon: "figure.walk"
             ),
             SurveyMetric(
                 label: "Therapist Attentiveness",
-                subtext: "How actively did the therapist monitor and adjust your exercises?",
+                subtext: "Did the therapist monitor and adjust?",
                 dbColumn: "rating_attentiveness",
                 icon: "eye"
             ),
             SurveyMetric(
                 label: "Facility Equipment",
-                subtext: "How well-equipped and maintained was the therapy area?",
+                subtext: "Was the area well-equipped?",
                 dbColumn: "rating_equipment",
                 icon: "dumbbell"
             )
@@ -253,25 +253,25 @@ enum SurveyConfigurations {
         metrics: [
             SurveyMetric(
                 label: "Waiting Time",
-                subtext: "How long did you wait past your appointment time?",
+                subtext: "How long past your appointment time?",
                 dbColumn: "rating_wait_time",
                 icon: "clock"
             ),
             SurveyMetric(
                 label: "Consultation Quality",
-                subtext: "How clearly were the procedure, risks, and realistic outcomes explained?",
+                subtext: "Were procedure risks and outcomes explained?",
                 dbColumn: "rating_consultation",
                 icon: "text.bubble"
             ),
             SurveyMetric(
                 label: "Result Satisfaction",
-                subtext: "How satisfied are you with the results of your procedure?",
+                subtext: "Are you satisfied with results?",
                 dbColumn: "rating_results",
                 icon: "star.circle"
             ),
             SurveyMetric(
                 label: "Aftercare Support",
-                subtext: "How clear and accessible was the aftercare and follow-up support?",
+                subtext: "Were aftercare instructions and follow-up clear?",
                 dbColumn: "rating_aftercare",
                 icon: "bandage"
             )

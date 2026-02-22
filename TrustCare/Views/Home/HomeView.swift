@@ -4,9 +4,14 @@ import CoreLocation
 
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
+    @ObservedObject private var specialtyService = SpecialtyService.shared
     @State private var displayName: String = String(localized: "Anonymous")
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
+    @State private var showSpecialtyBrowser: Bool = false
+    @State private var selectedSpecialty: Specialty?
+    @State private var selectedProviderFromSearch: Provider?
+    @State private var selectedProviderFromMap: Provider?
     private let verboseLogging = false
 
     private func verboseLog(_ message: @autoclosure () -> String) {
@@ -20,14 +25,14 @@ struct HomeView: View {
                 headerSection
 
                 VStack(spacing: AppSpacing.lg) {
-                    SearchBarView(text: $homeVM.searchText)
+                    searchSection
                         .padding(.horizontal, AppSpacing.lg)
 
                     specialtyScroll
 
                     Picker("", selection: $homeVM.viewMode) {
-                        Text(String(localized: "List")).tag(HomeViewModel.ViewMode.list)
-                        Text(String(localized: "Map")).tag(HomeViewModel.ViewMode.map)
+                        Text("Harita").tag(HomeViewModel.ViewMode.map)
+                        Text("Liste").tag(HomeViewModel.ViewMode.list)
                     }
                     .pickerStyle(.segmented)
                     .padding(.horizontal, AppSpacing.lg)
@@ -50,10 +55,33 @@ struct HomeView: View {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
+            .task(id: homeVM.selectedSpecialtyName) {
+                guard homeVM.hasLoadedInitially else { return }
+                await homeVM.refresh()
+            }
             .task {
                 homeVM.startLocationUpdates()
                 await homeVM.onAppear()
                 await loadDisplayName()
+            }
+            .sheet(isPresented: $showSpecialtyBrowser) {
+                SpecialtyBrowserSheet(
+                    selectedSpecialty: selectedSpecialty,
+                    onSelect: { specialty in
+                        selectedSpecialty = specialty
+                        Task { await homeVM.applySpecialtyFilter(specialty) }
+                    },
+                    onClear: {
+                        selectedSpecialty = nil
+                        Task { await homeVM.applySpecialtyFilter(nil) }
+                    }
+                )
+            }
+            .navigationDestination(item: $selectedProviderFromSearch) { provider in
+                ProviderDetailView(providerId: provider.id)
+            }
+            .navigationDestination(item: $selectedProviderFromMap) { provider in
+                ProviderDetailView(providerId: provider.id)
             }
             .alert(String(localized: "Error"), isPresented: Binding(
                 get: { homeVM.errorMessage != nil },
@@ -65,21 +93,20 @@ struct HomeView: View {
             } message: {
                 Text(homeVM.errorMessage ?? "")
             }
-            .fullScreenCover(isPresented: $showLocationSearch) {
-                LocationSearchSheet(
-                    currentLocationName: homeVM.locationName,
+            .sheet(isPresented: $showLocationSearch) {
+                LocationSelectorView(
                     selectedLocation: homeVM.selectedLocation,
-                    recentLocations: homeVM.recentLocations,
-                    onSelectLocation: { location in
-                        await homeVM.selectLocation(location)
-                        showLocationSearch = false
-                    },
                     onUseCurrentLocation: {
                         await homeVM.useCurrentLocation()
-                        showLocationSearch = false
                     },
-                    onClearRecents: {
-                        homeVM.clearRecentLocations()
+                    onSelectCity: { city in
+                        let location = HomeViewModel.SelectedLocation(
+                            name: city.name,
+                            latitude: city.latitude,
+                            longitude: city.longitude,
+                            isCurrentLocation: false
+                        )
+                        await homeVM.selectLocation(location)
                     }
                 )
             }
@@ -87,106 +114,176 @@ struct HomeView: View {
     }
 
     private var headerSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            HStack(spacing: AppSpacing.sm) {
-                Text(greetingText)
-                    .font(AppFont.title2)
-                if let urlString = avatarDisplayUrl, let url = URL(string: urlString) {
-                    AsyncImage(url: url) { phase in
-                        switch phase {
-                        case .empty:
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundStyle(.secondary)
-                        case .success(let image):
-                            image.resizable().scaledToFill()
-                        case .failure(let error):
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundStyle(.secondary)
-                                .onAppear {
-                                    verboseLog("⚠️ HomeView avatar failed to load from: \(urlString)")
-                                    verboseLog("   Error: \(error.localizedDescription)")
-                                }
-                        @unknown default:
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-                }
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Keşfet")
+                .font(AppFont.largeTitle)
+
             Button {
                 showLocationSearch = true
             } label: {
-                HStack(spacing: 8) {
-                    HStack(spacing: 6) {
-                        Image(systemName: "mappin.and.ellipse")
-                            .foregroundStyle(.secondary)
-                        Text(homeVM.locationName)
-                            .font(AppFont.body)
-                            .foregroundStyle(.secondary)
-                        Image(systemName: "chevron.down")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                HStack(spacing: AppSpacing.xs) {
+                    Image(systemName: "mappin.and.ellipse")
+                        .foregroundStyle(.secondary)
+                    Text(homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location")
+                         ? "Adana, Türkiye"
+                         : homeVM.locationName)
+                        .font(AppFont.body)
+                        .foregroundStyle(.secondary)
                     Spacer()
-                    Text(String(localized: "Change"))
-                        .font(AppFont.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(.secondary)
                 }
             }
             .buttonStyle(.plain)
-            .animation(.easeInOut(duration: 0.2), value: homeVM.locationName)
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.top, AppSpacing.lg)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private var specialtyScroll: some View {
-        let categories: [(type: String?, label: String, icon: String)] = [
-            (nil, "All", "line.3.horizontal.decrease.circle"),
-            ("general_clinic", "Clinic", ProviderMapColor.icon(for: "general_clinic")),
-            ("pharmacy", "Pharmacy", ProviderMapColor.icon(for: "pharmacy")),
-            ("hospital", "Hospital", ProviderMapColor.icon(for: "hospital")),
-            ("dental", "Dental", ProviderMapColor.icon(for: "dental")),
-            ("aesthetics", "Aesthetics", ProviderMapColor.icon(for: "aesthetics")),
-            ("diagnostic", "Lab", ProviderMapColor.icon(for: "diagnostic")),
-            ("mental_health", "Mental Health", ProviderMapColor.icon(for: "mental_health")),
-            ("rehabilitation", "Rehab", ProviderMapColor.icon(for: "rehabilitation"))
-        ]
+    private var searchSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            HStack(spacing: AppSpacing.sm) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                TextField("Doktor, klinik veya uzmanlık ara...", text: $homeVM.searchText)
+                    .font(AppFont.body)
+                    .textInputAutocapitalization(.words)
+                    .autocorrectionDisabled()
+                if !homeVM.searchText.isEmpty {
+                    Button {
+                        homeVM.searchText = ""
+                        homeVM.clearSuggestions()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal, AppSpacing.md)
+            .frame(height: 44)
+            .background(AppColor.cardBackground)
+            .cornerRadius(AppRadius.button)
+            .overlay(
+                RoundedRectangle(cornerRadius: AppRadius.button)
+                    .stroke(AppColor.border, lineWidth: 1)
+            )
 
+            if !homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+               (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty) {
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    if !homeVM.specialtySuggestions.isEmpty {
+                        Text("Uzmanlıklar")
+                            .font(AppFont.caption)
+                            .foregroundStyle(.secondary)
+                            .padding(.top, AppSpacing.xs)
+                        ForEach(homeVM.specialtySuggestions.prefix(4)) { specialty in
+                            Button {
+                                selectedSpecialty = specialty
+                                homeVM.searchText = specialty.name
+                                homeVM.clearSuggestions()
+                                Task { await homeVM.applySpecialtyFilter(specialty) }
+                            } label: {
+                                HStack(spacing: AppSpacing.sm) {
+                                    Image(systemName: specialty.iconName)
+                                    Text(specialty.name)
+                                        .font(AppFont.body)
+                                    Spacer()
+                                }
+                                .foregroundStyle(.primary)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+
+                    if !homeVM.providerSuggestions.isEmpty {
+                        Text("Sağlayıcılar")
+                            .font(AppFont.caption)
+                            .foregroundStyle(.secondary)
+                            .padding(.top, AppSpacing.xs)
+                        ForEach(homeVM.providerSuggestions.prefix(5)) { provider in
+                            Button {
+                                homeVM.clearSuggestions()
+                                selectedProviderFromSearch = provider
+                            } label: {
+                                HStack(spacing: AppSpacing.sm) {
+                                    Image(systemName: "cross.case")
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(provider.name)
+                                            .font(AppFont.body)
+                                        Text(provider.specialty)
+                                            .font(AppFont.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                }
+                                .foregroundStyle(.primary)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+                .padding(AppSpacing.md)
+                .background(AppColor.cardBackground)
+                .cornerRadius(AppRadius.card)
+                .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
+            }
+        }
+    }
+
+    private var specialtyScroll: some View {
         return ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: AppSpacing.sm) {
-                ForEach(categories, id: \.label) { category in
-                    CategoryChipView(
-                        title: category.label,
-                        iconName: category.icon,
-                        isSelected: homeVM.selectedSurveyType == category.type,
-                        tint: category.type.map { ProviderMapColor.color(for: $0) } ?? AppColor.trustBlue
-                    ) {
-                        homeVM.selectedSurveyType = category.type
+                specialtyChip(title: "Tümü", isSelected: selectedSpecialty == nil) {
+                    selectedSpecialty = nil
+                    Task { await homeVM.applySpecialtyFilter(nil) }
+                }
+
+                ForEach(Array(specialtyService.popularSpecialties().prefix(20))) { specialty in
+                    specialtyChip(title: specialty.name, isSelected: selectedSpecialty?.id == specialty.id) {
+                        selectedSpecialty = specialty
+                        Task { await homeVM.applySpecialtyFilter(specialty) }
                     }
+                }
+
+                specialtyChip(title: "Daha Fazla ▾", isSelected: false) {
+                    showSpecialtyBrowser = true
                 }
             }
             .padding(.horizontal, AppSpacing.lg)
         }
     }
 
+    private func specialtyChip(title: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(title)
+                .font(AppFont.caption)
+                .foregroundStyle(isSelected ? Color.white : Color.primary)
+                .padding(.horizontal, AppSpacing.md)
+                .padding(.vertical, AppSpacing.sm)
+                .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button)
+                        .stroke(isSelected ? Color.clear : AppColor.border, lineWidth: 1)
+                )
+                .cornerRadius(AppRadius.button)
+        }
+        .buttonStyle(.plain)
+    }
+
     @ViewBuilder
     private var contentSection: some View {
         if homeVM.isLoading && homeVM.providers.isEmpty {
-            VStack {
-                Spacer()
-                ProgressView()
-                Spacer()
+            ScrollView {
+                LazyVStack(spacing: AppSpacing.md) {
+                    ForEach(0..<6, id: \.self) { _ in
+                        SkeletonProviderCard()
+                            .redacted(reason: .placeholder)
+                    }
+                }
+                .padding(.horizontal, AppSpacing.lg)
+                .padding(.top, AppSpacing.md)
             }
         } else if homeVM.viewMode == .map {
             ProviderMapView(
@@ -198,16 +295,26 @@ struct HomeView: View {
                     : CLLocationCoordinate2D(
                         latitude: homeVM.selectedLocation.latitude,
                         longitude: homeVM.selectedLocation.longitude
-                    )
+                    ),
+                onOpenProvider: { provider in
+                    selectedProviderFromMap = provider
+                }
             )
         } else if homeVM.providers.isEmpty {
             VStack(spacing: AppSpacing.sm) {
                 Image(systemName: "magnifyingglass")
                     .font(.title2)
                     .foregroundStyle(.secondary)
-                Text(String(localized: "No providers found"))
+                Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                     ? "Bu bölgede henüz sağlayıcı yok. İlk ekleyen siz olun!"
+                     : "Sonuç bulunamadı")
                     .font(AppFont.body)
                     .foregroundStyle(.secondary)
+                Button("Sağlayıcı Ekle") {
+                    NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
+                }
+                .font(AppFont.callout)
+                .foregroundStyle(AppColor.trustBlue)
             }
             .padding(.top, AppSpacing.xxl)
         } else {
@@ -232,19 +339,6 @@ struct HomeView: View {
                 await homeVM.refresh(forceSpecialtiesRefresh: true)
             }
         }
-    }
-
-    private var greetingText: String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        let greeting: String
-        if hour < 12 {
-            greeting = String(localized: "Good Morning")
-        } else if hour < 18 {
-            greeting = String(localized: "Good Afternoon")
-        } else {
-            greeting = String(localized: "Good Evening")
-        }
-        return "\(greeting), \(displayName)!"
     }
 
     private func loadDisplayName() async {
@@ -286,5 +380,30 @@ struct HomeView: View {
 
         let separator = trimmed.contains("?") ? "&" : "?"
         return "\(trimmed)\(separator)v=\(Int(Date().timeIntervalSince1970))"
+    }
+}
+
+private struct SkeletonProviderCard: View {
+    var body: some View {
+        HStack(spacing: AppSpacing.md) {
+            RoundedRectangle(cornerRadius: 30)
+                .fill(Color(.systemGray5))
+                .frame(width: 60, height: 60)
+            VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color(.systemGray5))
+                    .frame(height: 14)
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 180, height: 12)
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 120, height: 12)
+            }
+            Spacer()
+        }
+        .padding(AppSpacing.lg)
+        .background(AppColor.cardBackground)
+        .cornerRadius(AppRadius.card)
     }
 }

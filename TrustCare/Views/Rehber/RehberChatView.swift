@@ -1,0 +1,351 @@
+import SwiftUI
+import MapKit
+
+struct RehberChatView: View {
+    @StateObject private var viewModel = RehberViewModel()
+    @ObservedObject private var specialtyService = SpecialtyService.shared
+    @State private var inputText: String = ""
+
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                persistentInfoBar
+
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: AppSpacing.sm) {
+                            if viewModel.messages.isEmpty {
+                                emptyState
+                            }
+
+                            ForEach(viewModel.messages) { message in
+                                messageRow(message)
+                                    .id(message.id)
+                            }
+
+                            if viewModel.isLoading {
+                                typingIndicator
+                                    .id("typing")
+                            }
+                        }
+                        .padding(.horizontal, AppSpacing.md)
+                        .padding(.vertical, AppSpacing.md)
+                    }
+                    .onChange(of: viewModel.messages.count) { _, _ in
+                        scrollToBottom(proxy: proxy)
+                    }
+                    .onChange(of: viewModel.isLoading) { _, _ in
+                        scrollToBottom(proxy: proxy)
+                    }
+                }
+
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .font(AppFont.footnote)
+                        .foregroundStyle(AppColor.error)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, AppSpacing.md)
+                }
+
+                usageCounter
+
+                inputBar
+            }
+            .background(AppColor.background)
+            .navigationTitle("Rehber")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Yeni Sohbet") {
+                        viewModel.startNewChat()
+                    }
+                }
+            }
+
+            if viewModel.showEmergencyCard {
+                EmergencyCardView {
+                    viewModel.dismissEmergencyCard()
+                }
+                .transition(.opacity)
+                .zIndex(10)
+            }
+        }
+        .task {
+            if specialtyService.specialties.isEmpty {
+                await specialtyService.loadSpecialties()
+            }
+        }
+    }
+
+    private var persistentInfoBar: some View {
+        HStack(spacing: AppSpacing.xs) {
+            Text("🔵")
+            Text("TrustCare Rehber — Bilgilendirme Hizmetidir")
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+            Spacer()
+        }
+        .padding(.horizontal, AppSpacing.md)
+        .padding(.vertical, AppSpacing.sm)
+        .background(AppColor.trustBlue.opacity(0.08))
+    }
+
+    private var usageCounter: some View {
+        HStack {
+            Text("Ücretsiz deneme: \(viewModel.usageCount)/5")
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+            Spacer()
+        }
+        .padding(.horizontal, AppSpacing.md)
+        .padding(.bottom, AppSpacing.xs)
+    }
+
+    private var inputBar: some View {
+        HStack(spacing: AppSpacing.sm) {
+            TextField("Belirtinizi yazın...", text: $inputText)
+                .textFieldStyle(.plain)
+                .font(AppFont.body)
+                .padding(.horizontal, AppSpacing.md)
+                .padding(.vertical, AppSpacing.sm)
+                .background(AppColor.cardBackground)
+                .cornerRadius(AppRadius.button)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button)
+                        .stroke(AppColor.border, lineWidth: 1)
+                )
+                .submitLabel(.send)
+                .onSubmit {
+                    submitCurrentMessage()
+                }
+
+            Button {
+                submitCurrentMessage()
+            } label: {
+                Image(systemName: "paperplane.fill")
+                    .foregroundStyle(.white)
+                    .frame(width: 44, height: 44)
+                    .background(canSubmitMessage ? AppColor.trustBlue : AppColor.border)
+                    .clipShape(Circle())
+            }
+            .disabled(!canSubmitMessage)
+        }
+        .padding(.horizontal, AppSpacing.md)
+        .padding(.top, AppSpacing.xs)
+        .padding(.bottom, AppSpacing.md)
+        .background(AppColor.background)
+    }
+
+    private var canSubmitMessage: Bool {
+        !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !viewModel.isLoading
+    }
+
+    private func submitCurrentMessage() {
+        guard canSubmitMessage else { return }
+        let text = inputText
+        inputText = ""
+        Task {
+            await viewModel.sendMessage(text)
+        }
+    }
+
+    @ViewBuilder
+    private func messageRow(_ message: RehberMessage) -> some View {
+        VStack(alignment: message.role == "user" ? .trailing : .leading, spacing: AppSpacing.xs) {
+            HStack {
+                if message.role == "user" { Spacer(minLength: 50) }
+
+                Text(message.content)
+                    .font(AppFont.body)
+                    .foregroundStyle(message.role == "user" ? Color.white : Color.primary)
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.vertical, AppSpacing.sm)
+                    .background(message.role == "user" ? AppColor.trustBlue : Color(.systemGray6))
+                    .cornerRadius(AppRadius.card)
+
+                if message.role == "assistant" { Spacer(minLength: 50) }
+            }
+
+            if message.role == "assistant", let specialties = message.recommendedSpecialties, !specialties.isEmpty {
+                specialtyCards(specialties)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: message.role == "user" ? .trailing : .leading)
+    }
+
+    private func specialtyCards(_ specialties: [String]) -> some View {
+        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+            ForEach(specialties, id: \.self) { specialty in
+                Button {
+                    NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        NotificationCenter.default.post(name: .trustCareApplySpecialtyFilter, object: specialty)
+                    }
+                } label: {
+                    HStack(spacing: AppSpacing.sm) {
+                        Image(systemName: iconName(for: specialty))
+                            .foregroundStyle(AppColor.trustBlue)
+                        Text(specialty)
+                            .font(AppFont.body)
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Text("Sağlayıcı Bul →")
+                            .font(AppFont.footnote)
+                            .foregroundStyle(AppColor.trustBlue)
+                    }
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.vertical, AppSpacing.sm)
+                    .background(AppColor.cardBackground)
+                    .cornerRadius(AppRadius.button)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.button)
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.leading, AppSpacing.xs)
+    }
+
+    private var typingIndicator: some View {
+        HStack {
+            TypingDotsView()
+            Spacer(minLength: 50)
+        }
+        .padding(.vertical, AppSpacing.xs)
+    }
+
+    private var emptyState: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Belirtinizi paylaşın, sizi uygun uzmanlığa yönlendireyim.")
+                .font(AppFont.body)
+                .foregroundStyle(.secondary)
+            Text("Tanı veya tedavi sunulmaz; yalnızca yönlendirme yapılır.")
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+        }
+        .padding(AppSpacing.md)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.cardBackground)
+        .cornerRadius(AppRadius.card)
+    }
+
+    private func scrollToBottom(proxy: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            if viewModel.isLoading {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    proxy.scrollTo("typing", anchor: .bottom)
+                }
+            } else if let lastId = viewModel.messages.last?.id {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    proxy.scrollTo(lastId, anchor: .bottom)
+                }
+            }
+        }
+    }
+
+    private func iconName(for specialtyName: String) -> String {
+        if let specialty = specialtyService.specialties.first(where: {
+            $0.name.caseInsensitiveCompare(specialtyName) == .orderedSame
+            || ($0.nameTr?.caseInsensitiveCompare(specialtyName) == .orderedSame)
+        }) {
+            return specialty.iconName
+        }
+        return "cross.case"
+    }
+}
+
+private struct TypingDotsView: View {
+    @State private var isAnimating = false
+
+    var body: some View {
+        HStack(spacing: 6) {
+            dot(delay: 0)
+            dot(delay: 0.2)
+            dot(delay: 0.4)
+        }
+        .padding(.horizontal, AppSpacing.md)
+        .padding(.vertical, AppSpacing.sm)
+        .background(Color(.systemGray6))
+        .cornerRadius(AppRadius.card)
+        .onAppear {
+            isAnimating = true
+        }
+    }
+
+    private func dot(delay: Double) -> some View {
+        Circle()
+            .fill(Color.secondary)
+            .frame(width: 7, height: 7)
+            .scaleEffect(isAnimating ? 1.0 : 0.6)
+            .opacity(isAnimating ? 1 : 0.4)
+            .animation(
+                .easeInOut(duration: 0.6)
+                    .repeatForever()
+                    .delay(delay),
+                value: isAnimating
+            )
+    }
+}
+
+struct EmergencyCardView: View {
+    let onDismiss: () -> Void
+
+    var body: some View {
+        ZStack {
+            AppColor.error.opacity(0.95)
+                .ignoresSafeArea()
+
+            VStack(spacing: AppSpacing.lg) {
+                Spacer()
+
+                Text("🚨 ACİL DURUM")
+                    .font(AppFont.title1)
+                    .foregroundStyle(.white)
+
+                Text("Lütfen hemen 112'yi arayın")
+                    .font(AppFont.headline)
+                    .foregroundStyle(.white)
+
+                Button {
+                    if let url = URL(string: "tel://112"), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    Text("112'yi Ara")
+                        .font(AppFont.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 56)
+                        .background(Color.red)
+                        .cornerRadius(AppRadius.button)
+                }
+
+                Button {
+                    let query = "Acil Servis".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Acil%20Servis"
+                    if let url = URL(string: "http://maps.apple.com/?q=\(query)") {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    Text("En yakın Acil Servis")
+                        .font(AppFont.headline)
+                        .foregroundStyle(.red)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 56)
+                        .background(Color.white)
+                        .cornerRadius(AppRadius.button)
+                }
+
+                Spacer()
+
+                Button("Kapat") {
+                    onDismiss()
+                }
+                .font(AppFont.footnote)
+                .foregroundStyle(Color.white.opacity(0.85))
+                .padding(.bottom, AppSpacing.lg)
+            }
+            .padding(.horizontal, AppSpacing.lg)
+        }
+    }
+}

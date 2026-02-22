@@ -1,0 +1,116 @@
+import SwiftUI
+
+struct LocationSelectorView: View {
+    let selectedLocation: HomeViewModel.SelectedLocation
+    let onUseCurrentLocation: () async -> Void
+    let onSelectCity: (HomeViewModel.CityOption) async -> Void
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var searchText: String = ""
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: AppSpacing.md) {
+                HStack(spacing: AppSpacing.sm) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.secondary)
+                    TextField("Şehir ara...", text: $searchText)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                }
+                .padding(.horizontal, AppSpacing.md)
+                .frame(height: 44)
+                .background(AppColor.cardBackground)
+                .cornerRadius(AppRadius.button)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button)
+                        .stroke(AppColor.border, lineWidth: 1)
+                )
+                .padding(.horizontal, AppSpacing.lg)
+
+                List {
+                    Button {
+                        Task {
+                            await onUseCurrentLocation()
+                            dismiss()
+                        }
+                    } label: {
+                        HStack(spacing: AppSpacing.sm) {
+                            Image(systemName: "location.fill")
+                                .foregroundStyle(AppColor.trustBlue)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Mevcut Konum")
+                                    .font(AppFont.body)
+                                    .foregroundStyle(.primary)
+                                Text("Cihaz GPS konumunu kullan")
+                                    .font(AppFont.footnote)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            if selectedLocation.isCurrentLocation {
+                                Image(systemName: "checkmark")
+                                    .foregroundStyle(AppColor.trustBlue)
+                            }
+                        }
+                    }
+                    .buttonStyle(.plain)
+
+                    ForEach(filteredCities) { city in
+                        Button {
+                            Task {
+                                await onSelectCity(city)
+                                dismiss()
+                            }
+                        } label: {
+                            HStack(spacing: AppSpacing.sm) {
+                                Image(systemName: "building.2")
+                                    .foregroundStyle(.secondary)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(city.name)
+                                        .font(AppFont.body)
+                                        .foregroundStyle(.primary)
+                                    Text(String(format: "%.2f, %.2f", city.latitude, city.longitude))
+                                        .font(AppFont.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                if !selectedLocation.isCurrentLocation,
+                                   selectedLocation.name == city.name {
+                                    Image(systemName: "checkmark")
+                                        .foregroundStyle(AppColor.trustBlue)
+                                }
+                            }
+                            .padding(.vertical, 2)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .listStyle(.plain)
+            }
+            .background(AppColor.background)
+            .navigationTitle("Konum Seç")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Kapat") { dismiss() }
+                }
+            }
+        }
+    }
+
+    private var filteredCities: [HomeViewModel.CityOption] {
+        let query = searchText
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+
+        guard !query.isEmpty else {
+            return HomeViewModel.majorTurkishCities
+        }
+
+        return HomeViewModel.majorTurkishCities.filter { city in
+            city.name
+                .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                .contains(query)
+        }
+    }
+}

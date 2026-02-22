@@ -14,7 +14,23 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrustCare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkR-6A-zDq">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Güvenilir Sağlık Değerlendirmeleri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wV1-xU-0tm">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.33333333333333331" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wV1-xU-0tm" firstAttribute="top" secondItem="TkR-6A-zDq" secondAttribute="bottom" constant="12" id="3qJ-E0-zNf"/>
+                            <constraint firstItem="TkR-6A-zDq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9Bz-Vj-Hf4"/>
+                            <constraint firstItem="wV1-xU-0tm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="S8Q-6v-TR9"/>
+                            <constraint firstItem="TkR-6A-zDq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-8" id="XrJ-5Z-EfL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

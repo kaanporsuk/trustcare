@@ -3,15 +3,15 @@ import SwiftUI
 enum ProviderMapColor {
     static func color(for surveyType: String) -> Color {
         switch surveyType {
-        case "pharmacy": return Color(hex: "#34C759")
-        case "hospital": return Color(hex: "#5856D6")
-        case "dental": return Color(hex: "#007AFF")
-        case "general_clinic": return Color(hex: "#0055FF")
-        case "diagnostic": return Color(hex: "#FF9500")
-        case "mental_health": return Color(hex: "#AF52DE")
-        case "rehabilitation": return Color(hex: "#00C7BE")
-        case "aesthetics": return Color(hex: "#FF2D55")
-        default: return Color(hex: "#8E8E93")
+        case "pharmacy": return AppColor.mapPharmacy
+        case "hospital": return AppColor.mapHospital
+        case "dental": return AppColor.mapDental
+        case "general_clinic": return AppColor.mapClinic
+        case "diagnostic": return AppColor.mapDiagnostic
+        case "mental_health": return AppColor.mapMentalHealth
+        case "rehabilitation": return AppColor.mapRehab
+        case "aesthetics": return AppColor.mapAesthetics
+        default: return AppColor.unverified
         }
     }
 
@@ -21,7 +21,7 @@ enum ProviderMapColor {
     }
     #endif
 
-    static func icon(for surveyType: String) -> String {
+    static func markerIcon(for surveyType: String) -> String {
         switch surveyType {
         case "pharmacy": return "pills.circle.fill"
         case "hospital": return "cross.case.fill"
@@ -33,6 +33,10 @@ enum ProviderMapColor {
         case "aesthetics": return "sparkles"
         default: return "mappin.circle.fill"
         }
+    }
+
+    static func icon(for surveyType: String) -> String {
+        markerIcon(for: surveyType)
     }
 
     static func label(for surveyType: String) -> String {

@@ -2,34 +2,11 @@ import Combine
 import Foundation
 import Supabase
 
-struct SpecialtyItem: Codable, Identifiable, Hashable {
-    let id: Int
-    let name: String
-    let nameTr: String?
-    let category: String
-    let subcategory: String?
-    let iconName: String
-    let surveyType: String
-    let displayOrder: Int
-    let isPopular: Bool
-    let isActive: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, category, subcategory
-        case nameTr = "name_tr"
-        case iconName = "icon_name"
-        case surveyType = "survey_type"
-        case displayOrder = "display_order"
-        case isPopular = "is_popular"
-        case isActive = "is_active"
-    }
-}
-
 @MainActor
 final class SpecialtyService: ObservableObject {
     static let shared = SpecialtyService()
 
-    @Published var specialties: [SpecialtyItem] = []
+    @Published var specialties: [Specialty] = []
     @Published var isLoaded = false
 
     private let cacheKey = "cached_specialties_v2"
@@ -44,7 +21,7 @@ final class SpecialtyService: ObservableObject {
         }
 
         do {
-            let response: [SpecialtyItem] = try await SupabaseManager.shared.client
+            let response: [Specialty] = try await SupabaseManager.shared.client
                 .from("specialties")
                 .select()
                 .eq("is_active", value: true)
@@ -63,11 +40,11 @@ final class SpecialtyService: ObservableObject {
         }
     }
 
-    func popularSpecialties() -> [SpecialtyItem] {
+    func popularSpecialties() -> [Specialty] {
         specialties.filter { $0.isPopular }
     }
 
-    func specialtiesByCategory() -> [(category: String, items: [SpecialtyItem])] {
+    func specialtiesByCategory() -> [(category: String, items: [Specialty])] {
         let grouped = Dictionary(grouping: specialties) { $0.category }
         return grouped
             .sorted { ($0.value.first?.displayOrder ?? 0) < ($1.value.first?.displayOrder ?? 0) }
@@ -85,18 +62,7 @@ final class SpecialtyService: ObservableObject {
             return match.surveyType
         }
 
-        if let match = specialties.first(where: { $0.nameTr?.lowercased() == lower }) {
-            return match.surveyType
-        }
-
         if let match = specialties.first(where: { lower.contains($0.name.lowercased()) }) {
-            return match.surveyType
-        }
-
-        if let match = specialties.first(where: {
-            guard let tr = $0.nameTr?.lowercased() else { return false }
-            return lower.contains(tr)
-        }) {
             return match.surveyType
         }
 
@@ -109,26 +75,26 @@ final class SpecialtyService: ObservableObject {
 
     private func inferSurveyTypeFromKeywords(_ name: String) -> String {
         let lower = name.lowercased()
-        if lower.contains("pharmacy") || lower.contains("eczane") || lower.contains("apotek") { return "pharmacy" }
-        if lower.contains("hospital") || lower.contains("hastane") || lower.contains("urgent") || lower.contains("acil") { return "hospital" }
-        if lower.contains("dentist") || lower.contains("diş") || lower.contains("dental") || lower.contains("orthodon") { return "dental" }
-        if lower.contains("psychi") || lower.contains("psycho") || lower.contains("psiki") || lower.contains("terapi") || lower.contains("psikoloj") { return "mental_health" }
+        if lower.contains("pharmacy") || lower.contains("eczane") { return "pharmacy" }
+        if lower.contains("hospital") || lower.contains("hastane") { return "hospital" }
+        if lower.contains("dentist") || lower.contains("diş") || lower.contains("dental") { return "dental" }
+        if lower.contains("psychi") || lower.contains("psycho") || lower.contains("psiki") || lower.contains("terapi") { return "mental_health" }
         if lower.contains("physio") || lower.contains("fizik tedavi") || lower.contains("rehabilit") { return "rehabilitation" }
-        if lower.contains("lab") || lower.contains("radyoloj") || lower.contains("radiol") || lower.contains("patoloj") { return "diagnostic" }
-        if lower.contains("estetik") || lower.contains("aesthetic") || lower.contains("cosmetic") || lower.contains("saç ekimi") || lower.contains("hair transplant") { return "aesthetics" }
+        if lower.contains("lab") || lower.contains("radiol") || lower.contains("patol") || lower.contains("röntgen") { return "diagnostic" }
+        if lower.contains("estetik") || lower.contains("aesthetic") || lower.contains("cosmetic") || lower.contains("saç ekimi") { return "aesthetics" }
         return "general_clinic"
     }
 
-    private func saveToCache(_ data: [SpecialtyItem]) {
+    private func saveToCache(_ data: [Specialty]) {
         if let encoded = try? JSONEncoder().encode(data) {
             UserDefaults.standard.set(encoded, forKey: cacheKey)
             UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: cacheTimestampKey)
         }
     }
 
-    private func loadFromCache() -> [SpecialtyItem]? {
+    private func loadFromCache() -> [Specialty]? {
         guard let data = UserDefaults.standard.data(forKey: cacheKey),
-              let decoded = try? JSONDecoder().decode([SpecialtyItem].self, from: data) else {
+              let decoded = try? JSONDecoder().decode([Specialty].self, from: data) else {
             return nil
         }
         return decoded

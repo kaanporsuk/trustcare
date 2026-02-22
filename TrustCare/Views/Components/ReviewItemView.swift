@@ -33,7 +33,7 @@ struct ReviewItemView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                StarRatingDisplay(rating: Int(round(review.ratingOverall)))
+                StarRatingInput(readOnlyRating: Int(round(review.ratingOverall)), starSize: 12)
                 Text(formattedDate)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
@@ -126,7 +126,7 @@ struct ReviewItemView: View {
                         Text(metric.label)
                             .font(AppFont.footnote)
                         Spacer()
-                        StarRatingDisplay(rating: ratingValue, starSize: 12)
+                        StarRatingInput(readOnlyRating: ratingValue, starSize: 12)
                     }
                 }
             }

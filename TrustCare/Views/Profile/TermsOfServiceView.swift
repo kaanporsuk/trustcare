@@ -2,194 +2,104 @@ import SwiftUI
 
 struct TermsOfServiceView: View {
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                // Header
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Terms of Service")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundStyle(AppColor.trustBlue)
-                    
-                    Text("Last Updated: February 2026")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                // Introduction
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Welcome to TrustCare. By using our app, you agree to these terms.")
-                        .font(.body)
-                }
-                
-                Divider()
-                
-                // 1. Acceptance of Terms
-                TermsSection(
-                    number: 1,
-                    title: "Acceptance of Terms",
-                    content: "By creating an account or using TrustCare, you agree to be bound by these Terms of Service and our Privacy Policy."
-                )
-                
-                Divider()
-                
-                // 2. User Accounts
-                TermsSection(
-                    number: 2,
-                    title: "User Accounts",
-                    bulletPoints: [
-                        "You must provide accurate information when creating an account",
-                        "You are responsible for maintaining the security of your account",
-                        "You must be at least 18 years old to use TrustCare"
-                    ]
-                )
-                
-                Divider()
-                
-                // 3. Reviews & Content
-                TermsSection(
-                    number: 3,
-                    title: "Reviews & Content",
-                    bulletPoints: [
-                        "Reviews must be based on genuine personal healthcare experiences",
-                        "You must not post false, misleading, or defamatory content",
-                        "You must not post reviews for providers you have not visited",
-                        "Submitting fraudulent verification documents is strictly prohibited and may result in permanent account suspension",
-                        "We reserve the right to remove reviews that violate these terms"
-                    ]
-                )
-                
-                Divider()
-                
-                // 4. Verification
-                TermsSection(
-                    number: 4,
-                    title: "Verification",
-                    bulletPoints: [
-                        "Verification documents are used solely to confirm visit authenticity",
-                        "Documents are reviewed by authorized personnel only",
-                        "Verified reviews carry a verification badge visible to other users"
-                    ]
-                )
-                
-                Divider()
-                
-                // 5. Provider Information
-                TermsSection(
-                    number: 5,
-                    title: "Provider Information",
-                    bulletPoints: [
-                        "Provider listings may be submitted by users and are not independently verified by TrustCare unless marked as such",
-                        "We do not guarantee the accuracy of provider information",
-                        "Providers can claim their profiles by contacting us"
-                    ]
-                )
-                
-                Divider()
-                
-                // 6. Prohibited Conduct
-                TermsSection(
-                    number: 6,
-                    title: "Prohibited Conduct",
-                    bulletPoints: [
-                        "Harassment or abuse of other users or providers",
-                        "Spam or automated review submission",
-                        "Attempting to manipulate ratings or reviews",
-                        "Reverse engineering or scraping app data"
-                    ]
-                )
-                
-                Divider()
-                
-                // 7. Limitation of Liability
-                TermsSection(
-                    number: 7,
-                    title: "Limitation of Liability",
-                    content: "TrustCare provides information for general guidance only. We are not a medical advice service. Always consult qualified healthcare professionals for medical decisions."
-                )
-                
-                Divider()
-                
-                // 8. Changes to Terms
-                TermsSection(
-                    number: 8,
-                    title: "Changes to Terms",
-                    content: "We may update these terms from time to time. Continued use of the app constitutes acceptance of updated terms."
-                )
-                
-                Divider()
-                
-                // 9. Contact
-                TermsSection(
-                    number: 9,
-                    title: "Contact",
-                    content: "For questions about these terms: legal@trustcare.app"
-                )
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 20)
-        }
-        .navigationTitle("Terms of Service")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .tabBar)
-    }
-}
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: AppSpacing.lg) {
+                    termsSection(
+                        title: "Hizmet Tanımı",
+                        bullets: [
+                            "TrustCare, sağlık hizmeti sağlayıcı deneyimlerini paylaşma ve keşfetme platformudur.",
+                            "Sunulan bilgiler bilgilendirme amaçlıdır."
+                        ]
+                    )
 
-private struct TermsSection: View {
-    let number: Int
-    let title: String
-    let content: String?
-    let bulletPoints: [String]?
-    
-    init(number: Int, title: String, content: String) {
-        self.number = number
-        self.title = title
-        self.content = content
-        self.bulletPoints = nil
-    }
-    
-    init(number: Int, title: String, bulletPoints: [String]) {
-        self.number = number
-        self.title = title
-        self.content = nil
-        self.bulletPoints = bulletPoints
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("\(number). \(title)")
-                .font(.title3)
-                .fontWeight(.semibold)
-            
-            if let content = content {
-                Text(content)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(nil)
+                    termsSection(
+                        title: "Kullanıcı Yükümlülükleri",
+                        bullets: [
+                            "Doğru ve güncel hesap bilgisi sağlamak.",
+                            "Hesap güvenliğini korumak.",
+                            "Platformu hukuka ve etik kurallara uygun kullanmak."
+                        ]
+                    )
+
+                    termsSection(
+                        title: "Değerlendirme Kuralları",
+                        bullets: [
+                            "Yorumlar gerçek deneyime dayanmalıdır.",
+                            "Hakaret, yanıltıcı ve manipülatif içerik yasaktır.",
+                            "Doğrulama belgelerinde sahtecilik hesap kapatma sebebidir."
+                        ]
+                    )
+
+                    termsSection(
+                        title: "TrustCare Rehber Sorumluluk Reddi",
+                        bullets: [
+                            "TrustCare Rehber bir teşhis, reçete veya tedavi hizmeti değildir.",
+                            "Sadece uygun uzmanlık alanına yönlendirme yapar.",
+                            "Acil durumlarda kullanıcı 112'ye yönlendirilir."
+                        ]
+                    )
+
+                    termsSection(
+                        title: "Fikri Mülkiyet",
+                        bullets: [
+                            "Uygulama içeriği, marka ve yazılım hakları TrustCare'e aittir.",
+                            "İzinsiz çoğaltma ve ticari kullanım yasaktır."
+                        ]
+                    )
+
+                    termsSection(
+                        title: "Hesap Sonlandırma",
+                        bullets: [
+                            "Kullanıcı hesabını ayarlardan silme talebi oluşturabilir.",
+                            "Kural ihlali durumunda TrustCare hesabı askıya alabilir veya sonlandırabilir."
+                        ]
+                    )
+
+                    termsSection(
+                        title: "Uyuşmazlık Çözümü",
+                        bullets: [
+                            "Uyuşmazlıklarda öncelikle dostane çözüm hedeflenir.",
+                            "Çözüm sağlanamazsa Türkiye Cumhuriyeti mevzuatı uygulanır."
+                        ]
+                    )
+
+                    termsSection(
+                        title: "İletişim Bilgileri",
+                        bullets: [
+                            "E-posta: legal@trustcare.app",
+                            "Destek: support@trustcare.app"
+                        ]
+                    )
+                }
+                .padding(.horizontal, AppSpacing.lg)
+                .padding(.vertical, AppSpacing.lg)
             }
-            
-            if let bulletPoints = bulletPoints {
-                VStack(alignment: .leading, spacing: 8) {
-                    ForEach(bulletPoints, id: \.self) { point in
-                        HStack(alignment: .top, spacing: 12) {
-                            Text("•")
-                                .foregroundStyle(AppColor.trustBlue)
-                            
-                            Text(point)
-                                .font(.body)
-                                .foregroundStyle(.secondary)
-                                .lineLimit(nil)
-                        }
+            .navigationTitle("Kullanım Koşulları")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
+        }
+    }
+
+    private func termsSection(title: String, bullets: [String]) -> some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text(title)
+                .font(AppFont.title3)
+
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                ForEach(bullets, id: \.self) { line in
+                    HStack(alignment: .top, spacing: AppSpacing.xs) {
+                        Text("•")
+                            .foregroundStyle(AppColor.trustBlue)
+                        Text(line)
+                            .font(AppFont.body)
+                            .foregroundStyle(.secondary)
                     }
                 }
             }
         }
-    }
-}
-
-#Preview {
-    NavigationStack {
-        TermsOfServiceView()
+        .padding(AppSpacing.md)
+        .background(AppColor.cardBackground)
+        .cornerRadius(AppRadius.card)
     }
 }
