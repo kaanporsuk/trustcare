@@ -128,6 +128,17 @@ CREATE TABLE IF NOT EXISTS public.rehber_messages (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- Add user_id column to rehber_messages if it doesn't exist (for migration compatibility)
+DO $$ 
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM information_schema.columns 
+    WHERE table_name = 'rehber_messages' AND column_name = 'user_id'
+  ) THEN
+    ALTER TABLE public.rehber_messages ADD COLUMN user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE;
+  END IF;
+END $$;
+
 ALTER TABLE public.rehber_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.rehber_messages ENABLE ROW LEVEL SECURITY;
 
@@ -145,8 +156,8 @@ FOR UPDATE USING (user_id = auth.uid());
 
 DROP POLICY IF EXISTS rehber_messages_select_own ON public.rehber_messages;
 CREATE POLICY rehber_messages_select_own ON public.rehber_messages
-FOR SELECT USING (user_id = auth.uid());
+FOR SELECT USING (user_id IS NOT NULL AND user_id = auth.uid());
 
 DROP POLICY IF EXISTS rehber_messages_insert_own ON public.rehber_messages;
 CREATE POLICY rehber_messages_insert_own ON public.rehber_messages
-FOR INSERT WITH CHECK (user_id = auth.uid());
+FOR INSERT WITH CHECK (user_id IS NOT NULL AND user_id = auth.uid());
