@@ -21,6 +21,23 @@ struct Provider: Identifiable, Codable, Hashable {
     let ratingBedside: Double
     let ratingEfficacy: Double
     let ratingCleanliness: Double
+    let ratingPainMgmt: Double? = nil
+    let ratingAccuracy: Double? = nil
+    let ratingKnowledge: Double? = nil
+    let ratingCourtesy: Double? = nil
+    let ratingCareQuality: Double? = nil
+    let ratingAdmin: Double? = nil
+    let ratingComfort: Double? = nil
+    let ratingTurnaround: Double? = nil
+    let ratingEmpathy: Double? = nil
+    let ratingEnvironment: Double? = nil
+    let ratingCommunication: Double? = nil
+    let ratingEffectiveness: Double? = nil
+    let ratingAttentiveness: Double? = nil
+    let ratingEquipment: Double? = nil
+    let ratingConsultation: Double? = nil
+    let ratingResults: Double? = nil
+    let ratingAftercare: Double? = nil
     let reviewCount: Int
     let verifiedReviewCount: Int
     let priceLevelAvg: Double
@@ -54,6 +71,23 @@ struct Provider: Identifiable, Codable, Hashable {
         case ratingBedside = "rating_bedside"
         case ratingEfficacy = "rating_efficacy"
         case ratingCleanliness = "rating_cleanliness"
+        case ratingPainMgmt = "rating_pain_mgmt"
+        case ratingAccuracy = "rating_accuracy"
+        case ratingKnowledge = "rating_knowledge"
+        case ratingCourtesy = "rating_courtesy"
+        case ratingCareQuality = "rating_care_quality"
+        case ratingAdmin = "rating_admin"
+        case ratingComfort = "rating_comfort"
+        case ratingTurnaround = "rating_turnaround"
+        case ratingEmpathy = "rating_empathy"
+        case ratingEnvironment = "rating_environment"
+        case ratingCommunication = "rating_communication"
+        case ratingEffectiveness = "rating_effectiveness"
+        case ratingAttentiveness = "rating_attentiveness"
+        case ratingEquipment = "rating_equipment"
+        case ratingConsultation = "rating_consultation"
+        case ratingResults = "rating_results"
+        case ratingAftercare = "rating_aftercare"
         case reviewCount = "review_count"
         case verifiedReviewCount = "verified_review_count"
         case priceLevelAvg = "price_level_avg"
@@ -68,5 +102,34 @@ struct Provider: Identifiable, Codable, Hashable {
         case updatedAt = "updated_at"
         case deletedAt = "deleted_at"
         case priceLevel = "price_level"
+    }
+}
+
+extension Provider {
+    func aggregateRating(for dbColumn: String) -> Double? {
+        switch dbColumn {
+        case "rating_wait_time": return ratingWaitTime
+        case "rating_bedside": return ratingBedside
+        case "rating_efficacy": return ratingEfficacy
+        case "rating_cleanliness": return ratingCleanliness
+        case "rating_pain_mgmt": return ratingPainMgmt
+        case "rating_accuracy": return ratingAccuracy
+        case "rating_knowledge": return ratingKnowledge
+        case "rating_courtesy": return ratingCourtesy
+        case "rating_care_quality": return ratingCareQuality
+        case "rating_admin": return ratingAdmin
+        case "rating_comfort": return ratingComfort
+        case "rating_turnaround": return ratingTurnaround
+        case "rating_empathy": return ratingEmpathy
+        case "rating_environment": return ratingEnvironment
+        case "rating_communication": return ratingCommunication
+        case "rating_effectiveness": return ratingEffectiveness
+        case "rating_attentiveness": return ratingAttentiveness
+        case "rating_equipment": return ratingEquipment
+        case "rating_consultation": return ratingConsultation
+        case "rating_results": return ratingResults
+        case "rating_aftercare": return ratingAftercare
+        default: return nil
+        }
     }
 }

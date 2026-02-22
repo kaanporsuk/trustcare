@@ -326,14 +326,38 @@ struct ProviderDetailView: View {
     }
 
     private var statsGrid: some View {
-        let provider = detailVM.provider
-        return LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppSpacing.md) {
-            statCard(icon: "clock", label: String(localized: "Wait Time"), value: provider?.ratingWaitTime ?? 0)
-            statCard(icon: "heart", label: String(localized: "Bedside"), value: provider?.ratingBedside ?? 0)
-            statCard(icon: "cross.case", label: String(localized: "Treatment"), value: provider?.ratingEfficacy ?? 0)
-            statCard(icon: "sparkles", label: String(localized: "Cleanliness"), value: provider?.ratingCleanliness ?? 0)
+        guard let provider = detailVM.provider else {
+            return AnyView(EmptyView())
         }
-        .padding(.horizontal, AppSpacing.lg)
+
+        let config = SpecialtyService.shared.surveyConfig(for: provider.specialty)
+
+        return AnyView(
+            VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                Text(String(localized: "Ratings Breakdown"))
+                    .font(AppFont.title3)
+
+                ForEach(config.metrics) { metric in
+                    HStack(spacing: AppSpacing.sm) {
+                        Image(systemName: metric.icon)
+                            .foregroundStyle(.secondary)
+                        Text(metric.label)
+                            .font(AppFont.body)
+                        Spacer()
+                        if let value = provider.aggregateRating(for: metric.dbColumn), value > 0 {
+                            Text(String(format: "%.1f/5", value))
+                                .font(AppFont.headline)
+                        } else {
+                            Text(String(localized: "N/A"))
+                                .font(AppFont.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(.vertical, 6)
+                }
+            }
+            .padding(.horizontal, AppSpacing.lg)
+        )
     }
 
     private var servicesSection: some View {
@@ -403,21 +427,6 @@ struct ProviderDetailView: View {
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.bottom, AppSpacing.xxl)
-    }
-
-    private func statCard(icon: String, label: String, value: Double) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            Image(systemName: icon)
-                .foregroundStyle(AppColor.trustBlue)
-            Text(label)
-                .font(AppFont.caption)
-                .foregroundStyle(.secondary)
-            Text(String(format: "%.1f/5", value))
-                .font(AppFont.headline)
-        }
-        .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
-        .cornerRadius(AppRadius.standard)
     }
 
     private func openMaps(address: String) {
