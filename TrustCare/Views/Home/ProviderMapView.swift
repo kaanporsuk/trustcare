@@ -7,13 +7,20 @@ struct ProviderMapView: View {
     let isLoading: Bool
     let centerCoordinate: CLLocationCoordinate2D?
     let onOpenProvider: (Provider) -> Void
+    
+    @State private var showSearchAreaButton = false
+    @State private var currentMapRegion: MKCoordinateRegion?
 
     var body: some View {
         ZStack {
             ProviderMapRepresentable(
                 providers: filteredProviders,
                 centerCoordinate: centerCoordinate,
-                onOpenProvider: onOpenProvider
+                onOpenProvider: onOpenProvider,
+                onMapCameraChange: { region in
+                    currentMapRegion = region
+                    showSearchAreaButton = true
+                }
             )
 
             if filteredProviders.isEmpty && isLoading {
@@ -21,13 +28,40 @@ struct ProviderMapView: View {
             }
 
             VStack {
+                // Search This Area Button at top center
+                if showSearchAreaButton && currentMapRegion != nil {
+                    Button {
+                        if let region = currentMapRegion {
+                            Task {
+                                showSearchAreaButton = false
+                                await viewModel.fetchProviders(in: region)
+                            }
+                        }
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "magnifyingglass")
+                            Text("Bu alanda ara")
+                        }
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(AppColor.trustBlue)
+                        .cornerRadius(20)
+                    }
+                    .padding(.top, 12)
+                    .transition(.opacity.combined(with: .scale))
+                }
+                
+                Spacer()
+                
+                // Map legend at top right
                 HStack {
                     Spacer()
                     MapLegendView(viewModel: viewModel)
                         .padding(.top, 12)
                         .padding(.trailing, 12)
                 }
-                Spacer()
             }
         }
     }
@@ -62,6 +96,7 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
     let providers: [Provider]
     let centerCoordinate: CLLocationCoordinate2D?
     let onOpenProvider: (Provider) -> Void
+    let onMapCameraChange: (MKCoordinateRegion) -> Void
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -84,17 +119,21 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
             )
             mapView.setRegion(region, animated: true)
         }
+        
+        context.coordinator.onMapCameraChange = onMapCameraChange
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(onOpenProvider: onOpenProvider)
+        Coordinator(onOpenProvider: onOpenProvider, onMapCameraChange: onMapCameraChange)
     }
 
     final class Coordinator: NSObject, MKMapViewDelegate {
         let onOpenProvider: (Provider) -> Void
+        var onMapCameraChange: ((MKCoordinateRegion) -> Void)?
 
-        init(onOpenProvider: @escaping (Provider) -> Void) {
+        init(onOpenProvider: @escaping (Provider) -> Void, onMapCameraChange: @escaping (MKCoordinateRegion) -> Void) {
             self.onOpenProvider = onOpenProvider
+            self.onMapCameraChange = onMapCameraChange
         }
 
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -117,6 +156,11 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             guard let annotation = view.annotation as? ProviderAnnotation else { return }
             onOpenProvider(annotation.provider)
+        }
+        
+        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            let region = mapView.region
+            onMapCameraChange?(region)
         }
     }
 }

@@ -50,15 +50,31 @@ struct StarRatingInput: View {
 
     var body: some View {
         HStack(spacing: spacing) {
-            ForEach(1...5, id: \.self) { star in
-                Image(systemName: star <= rating ? "star.fill" : "star")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: starSize, height: starSize)
-                    .foregroundStyle(star <= rating ? filledColor : emptyColor)
-                    .scaleEffect(isDragging && star == rating ? 1.15 : 1.0)
-                    .animation(.spring(response: 0.2, dampingFraction: 0.6), value: rating)
+            HStack(spacing: spacing) {
+                ForEach(1...5, id: \.self) { star in
+                    Image(systemName: star <= rating ? "star.fill" : "star")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: starSize, height: starSize)
+                        .foregroundStyle(star <= rating ? filledColor : emptyColor)
+                        .scaleEffect(isDragging && star == rating ? 1.15 : 1.0)
+                        .animation(.spring(response: 0.2, dampingFraction: 0.6), value: rating)
+                }
             }
+            .contentShape(Rectangle())
+            .simultaneousGesture(isInteractive ?
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        isDragging = true
+                        updateRating(from: value.location.x)
+                    }
+                    .onEnded { _ in
+                        isDragging = false
+                        impactGenerator.impactOccurred()
+                    }
+                : nil
+            )
+            
             if showsValue {
                 Spacer()
                 Text("\(rating)/5")
@@ -67,19 +83,6 @@ struct StarRatingInput: View {
                     .frame(width: 35)
             }
         }
-        .contentShape(Rectangle())
-        .gesture(isInteractive ?
-            DragGesture(minimumDistance: 0)
-                .onChanged { value in
-                    isDragging = true
-                    updateRating(from: value.location.x)
-                }
-                .onEnded { _ in
-                    isDragging = false
-                    impactGenerator.impactOccurred()
-                }
-            : nil
-        )
         .onAppear {
             selectionGenerator.prepare()
             impactGenerator.prepare()

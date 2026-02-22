@@ -4,10 +4,7 @@
     "" : {
 
     },
-    "·" : {
-
-    },
-    "%@" : {
+    "(%lld)" : {
 
     },
     "%@%@" : {
@@ -42,20 +39,13 @@
     "%lld out of 5 stars" : {
 
     },
-    "%lld. %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld. %2$@"
-          }
-        }
-      }
-    },
     "%lld/5" : {
 
     },
     "%lld/10" : {
+
+    },
+    "%lld/50 minimum" : {
 
     },
     "%lld%% %@" : {
@@ -71,13 +61,25 @@
     "•" : {
 
     },
+    "⚠️ Bu hizmet tıbbi teşhis veya tedavi önerisi değildir. Her zaman bir sağlık uzmanına danışın." : {
+
+    },
+    "🔵" : {
+
+    },
+    "🚨 ACİL DURUM" : {
+
+    },
     "$" : {
 
     },
-    "A claim already exists for this provider." : {
+    "24 saat içinde düzenlenebilir" : {
 
     },
-    "A: %@" : {
+    "112'yi Ara" : {
+
+    },
+    "A claim already exists for this provider." : {
 
     },
     "About" : {
@@ -116,7 +118,13 @@
     "Account created! Please check your email to confirm your account." : {
 
     },
+    "Acil" : {
+
+    },
     "Active" : {
+
+    },
+    "Ad" : {
 
     },
     "Add a Healthcare Provider" : {
@@ -129,9 +137,6 @@
           }
         }
       }
-    },
-    "Add Number" : {
-
     },
     "Add Photos" : {
       "extractionState" : "manual",
@@ -188,10 +193,7 @@
         }
       }
     },
-    "Address is required to add a provider." : {
-
-    },
-    "AI verification consent" : {
+    "Adres" : {
 
     },
     "AI Verification in Progress" : {
@@ -238,7 +240,10 @@
         }
       }
     },
-    "Analytics Tracking" : {
+    "Ana Sayfaya Dön" : {
+
+    },
+    "Anladım: Bu öneriler sadece yönlendirme amaçlıdır, teşhis değildir" : {
 
     },
     "Anonymous" : {
@@ -288,6 +293,9 @@
     "Approved" : {
 
     },
+    "Ara" : {
+
+    },
     "Arabic" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -335,6 +343,9 @@
     "Avatar processing failed. Please use a different photo under 5 MB." : {
 
     },
+    "Ayarlar" : {
+
+    },
     "Back" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -360,6 +371,18 @@
     "Basic" : {
 
     },
+    "Başka Değerlendir" : {
+
+    },
+    "Başla" : {
+
+    },
+    "Başlık" : {
+
+    },
+    "Başlık (opsiyonel)" : {
+
+    },
     "Bedside" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -382,6 +405,30 @@
         }
       }
     },
+    "Beklemede" : {
+
+    },
+    "Belirtinizi paylaşın, sizi uygun uzmanlığa yönlendireyim." : {
+
+    },
+    "Belirtinizi yazın..." : {
+
+    },
+    "Bildirimler" : {
+
+    },
+    "Bu bölgede henüz sağlayıcı yok. İlk ekleyen siz olun!" : {
+
+    },
+    "Bu değerlendirmeyi silmek istediğinize emin misiniz?" : {
+
+    },
+    "Bu işlem geri alınamaz" : {
+
+    },
+    "Bu mu? %@" : {
+
+    },
     "Budget-friendly" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -392,6 +439,9 @@
           }
         }
       }
+    },
+    "Bulamadınız mı? Yeni ekle" : {
+
     },
     "Business Email" : {
       "extractionState" : "manual",
@@ -495,6 +545,9 @@
     "Choose from Library" : {
 
     },
+    "Cihaz GPS konumunu kullan" : {
+
+    },
     "City" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -505,6 +558,9 @@
           }
         }
       }
+    },
+    "Çıkış Yap" : {
+
     },
     "Claim submitted" : {
       "extractionState" : "manual",
@@ -630,9 +686,6 @@
         }
       }
     },
-    "Contact" : {
-
-    },
     "Contact for Booking" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -643,9 +696,6 @@
           }
         }
       }
-    },
-    "Contact Us" : {
-
     },
     "Continue" : {
       "extractionState" : "manual",
@@ -716,15 +766,6 @@
         }
       }
     },
-    "Data Export" : {
-
-    },
-    "Data Retention" : {
-
-    },
-    "Data Storage & Security" : {
-
-    },
     "Date of Birth" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -735,6 +776,24 @@
           }
         }
       }
+    },
+    "Değerlendir" : {
+
+    },
+    "Değerlendirme Gönder" : {
+
+    },
+    "Değerlendirmelerim" : {
+
+    },
+    "Değerlendirmeniz gönderildi!" : {
+
+    },
+    "Değerlendirmeyi Düzenle" : {
+
+    },
+    "Değerlendirmeyi Sil" : {
+
     },
     "Delete" : {
       "extractionState" : "manual",
@@ -780,6 +839,15 @@
         }
       }
     },
+    "Deneyiminizi paylaşın... (en az 50 karakter)" : {
+
+    },
+    "Detaylı Değerlendirme" : {
+
+    },
+    "Dil" : {
+
+    },
     "Directions" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -801,6 +869,24 @@
           }
         }
       }
+    },
+    "Doğrulama beklemede" : {
+
+    },
+    "Doğrulama Belgesi Yükle" : {
+
+    },
+    "Doğrulamayı Atla" : {
+
+    },
+    "Doğrulanmamış" : {
+
+    },
+    "Doğrulanmış" : {
+
+    },
+    "Doktor, klinik veya uzmanlık ara..." : {
+
     },
     "Don't have an account? Sign Up" : {
       "extractionState" : "manual",
@@ -824,9 +910,6 @@
         }
       }
     },
-    "Download My Data" : {
-
-    },
     "Dutch" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -838,7 +921,13 @@
         }
       }
     },
+    "Düzenle" : {
+
+    },
     "Edit Profile" : {
+
+    },
+    "Ekle" : {
 
     },
     "Email" : {
@@ -871,6 +960,9 @@
           }
         }
       }
+    },
+    "En yakın Acil Servis" : {
+
     },
     "English" : {
       "extractionState" : "manual",
@@ -905,9 +997,6 @@
         }
       }
     },
-    "Export endpoint is unavailable." : {
-
-    },
     "Facility Cleanliness" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -919,6 +1008,9 @@
         }
       }
     },
+    "Fatura, reçete veya randevu onayı yükleyin" : {
+
+    },
     "Filter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -929,6 +1021,9 @@
           }
         }
       }
+    },
+    "Filtre" : {
+
     },
     "Find Trusted Care" : {
       "extractionState" : "manual",
@@ -966,7 +1061,10 @@
         }
       }
     },
-    "For privacy inquiries: privacy@trustcare.app" : {
+    "Fotoğraf Ekle" : {
+
+    },
+    "Fotoğraflar herkes tarafından görülebilir" : {
 
     },
     "Free" : {
@@ -982,6 +1080,12 @@
           }
         }
       }
+    },
+    "Genel Değerlendirme" : {
+
+    },
+    "Genel deneyiminiz nasıldı?" : {
+
     },
     "German" : {
       "extractionState" : "manual",
@@ -1005,9 +1109,6 @@
         }
       }
     },
-    "Getting Started" : {
-
-    },
     "Give your review a title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1019,7 +1120,7 @@
         }
       }
     },
-    "Go Home" : {
+    "Gizlilik Politikası" : {
 
     },
     "Good Afternoon" : {
@@ -1055,7 +1156,13 @@
         }
       }
     },
-    "Help & Information" : {
+    "Harita" : {
+
+    },
+    "Haritada İşaretle" : {
+
+    },
+    "Hata" : {
 
     },
     "Help & Support" : {
@@ -1091,6 +1198,18 @@
         }
       }
     },
+    "Hesabı Sil" : {
+
+    },
+    "Hesabımı Sil" : {
+
+    },
+    "Hesabınızdan çıkış yapmak istediğinize emin misiniz?" : {
+
+    },
+    "Hesap" : {
+
+    },
     "Highest Rated" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1113,12 +1232,6 @@
         }
       }
     },
-    "How was your overall experience?" : {
-
-    },
-    "How We Use Your Information" : {
-
-    },
     "I agree to Terms & Privacy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1130,10 +1243,10 @@
         }
       }
     },
-    "Image" : {
+    "İletişim" : {
 
     },
-    "Information We Collect" : {
+    "Image" : {
 
     },
     "Invalid email or password." : {
@@ -1150,6 +1263,24 @@
         }
       }
     },
+    "İşlem" : {
+
+    },
+    "Kapat" : {
+
+    },
+    "Kaydedilenler" : {
+
+    },
+    "Kaydet" : {
+
+    },
+    "Keşfet" : {
+
+    },
+    "Kimi değerlendiriyorsunuz?" : {
+
+    },
     "km_away" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1161,6 +1292,21 @@
         }
       }
     },
+    "Kontrol" : {
+
+    },
+    "Konum" : {
+
+    },
+    "Konum Hizmetleri" : {
+
+    },
+    "Konum Seç" : {
+
+    },
+    "Kullanım Koşulları" : {
+
+    },
     "Language" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1171,9 +1317,6 @@
           }
         }
       }
-    },
-    "Last Updated: February 2026" : {
-
     },
     "License Number" : {
       "extractionState" : "manual",
@@ -1207,6 +1350,9 @@
           }
         }
       }
+    },
+    "Liste" : {
+
     },
     "Loading..." : {
       "extractionState" : "manual",
@@ -1250,6 +1396,9 @@
     "Login / Sign Up" : {
 
     },
+    "Lütfen hemen 112'yi arayın" : {
+
+    },
     "Manager" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1272,9 +1421,6 @@
         }
       }
     },
-    "Marketing Communications" : {
-
-    },
     "Member since -" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1296,6 +1442,9 @@
           }
         }
       }
+    },
+    "Mevcut Konum" : {
+
     },
     "min_chars_format" : {
       "extractionState" : "manual",
@@ -1330,6 +1479,9 @@
         }
       }
     },
+    "Muayene" : {
+
+    },
     "My Reviews" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1340,6 +1492,9 @@
           }
         }
       }
+    },
+    "N/A" : {
+
     },
     "Nearby Providers" : {
       "extractionState" : "manual",
@@ -1356,9 +1511,6 @@
 
     },
     "New Password" : {
-
-    },
-    "New Providers Nearby" : {
 
     },
     "Newest" : {
@@ -1460,9 +1612,6 @@
         }
       }
     },
-    "Notifications" : {
-
-    },
     "OK" : {
 
     },
@@ -1509,6 +1658,9 @@
           }
         }
       }
+    },
+    "Overall rating is required." : {
+
     },
     "Owner" : {
       "extractionState" : "manual",
@@ -1580,10 +1732,10 @@
     "Play video" : {
 
     },
-    "Please complete all ratings before submitting." : {
+    "Please enter a valid email address." : {
 
     },
-    "Please enter a valid email address." : {
+    "Please select a provider." : {
 
     },
     "Please select a specialty." : {
@@ -1601,6 +1753,9 @@
 
     },
     "Please sign in to submit a review." : {
+
+    },
+    "Plus" : {
 
     },
     "Polish" : {
@@ -1636,9 +1791,6 @@
         }
       }
     },
-    "Preferences" : {
-
-    },
     "Premium" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1650,9 +1802,6 @@
         }
       }
     },
-    "Preparing export" : {
-
-    },
     "Price" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1663,9 +1812,6 @@
           }
         }
       }
-    },
-    "Privacy & Consent" : {
-
     },
     "Privacy Policy" : {
       "extractionState" : "manual",
@@ -1689,13 +1835,13 @@
         }
       }
     },
+    "Profil" : {
+
+    },
     "Profile" : {
 
     },
     "Profile updated" : {
-
-    },
-    "Provider Name" : {
 
     },
     "Provider not found." : {
@@ -1715,12 +1861,6 @@
         }
       }
     },
-    "Q: %@" : {
-
-    },
-    "Rate App" : {
-
-    },
     "Rate Your Experience" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1731,6 +1871,9 @@
           }
         }
       }
+    },
+    "Ratings Breakdown" : {
+
     },
     "Read more" : {
       "extractionState" : "manual",
@@ -1776,6 +1919,9 @@
         }
       }
     },
+    "Referral: %@" : {
+
+    },
     "Region" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1786,6 +1932,9 @@
           }
         }
       }
+    },
+    "Rehber" : {
+
     },
     "Rejected" : {
 
@@ -1815,13 +1964,7 @@
     "Removed" : {
 
     },
-    "Response time:" : {
-
-    },
     "Review" : {
-
-    },
-    "Review data processing" : {
 
     },
     "Review Submitted!" : {
@@ -1835,9 +1978,6 @@
         }
       }
     },
-    "Review Updates" : {
-
-    },
     "Reviews" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1848,9 +1988,6 @@
           }
         }
       }
-    },
-    "Reviews & Verification" : {
-
     },
     "reviews_count" : {
       "extractionState" : "manual",
@@ -1864,6 +2001,24 @@
       }
     },
     "Role" : {
+
+    },
+    "Sadece doğrulama sistemimiz tarafından görülür" : {
+
+    },
+    "Sağlayıcı" : {
+
+    },
+    "Sağlayıcı Bul →" : {
+
+    },
+    "Sağlayıcı Ekle" : {
+
+    },
+    "Sağlayıcılar" : {
+
+    },
+    "Sağlık Bilgilendirme Hizmeti" : {
 
     },
     "Save" : {
@@ -1913,9 +2068,6 @@
         }
       }
     },
-    "Search this area" : {
-
-    },
     "search_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1938,6 +2090,9 @@
         }
       }
     },
+    "Şehir ara..." : {
+
+    },
     "Select" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1948,9 +2103,6 @@
           }
         }
       }
-    },
-    "Send Feedback" : {
-
     },
     "Services & Prices" : {
       "extractionState" : "manual",
@@ -2007,9 +2159,6 @@
         }
       }
     },
-    "Share your healthcare experience to help others" : {
-
-    },
     "Show All" : {
 
     },
@@ -2024,10 +2173,16 @@
         }
       }
     },
+    "Şifre Değiştir" : {
+
+    },
     "Sign In Required" : {
 
     },
-    "Sign Out" : {
+    "Sil" : {
+
+    },
+    "Sık Sorulan Sorular" : {
 
     },
     "skip" : {
@@ -2066,7 +2221,10 @@
         }
       }
     },
-    "Something went wrong. Please try again." : {
+    "Son güncelleme: 22 Şubat 2026" : {
+
+    },
+    "Sonuç bulunamadı" : {
 
     },
     "Sort" : {
@@ -2079,6 +2237,9 @@
           }
         }
       }
+    },
+    "Sorun Bildir" : {
+
     },
     "Specialties" : {
       "extractionState" : "manual",
@@ -2235,6 +2396,12 @@
     "Take Photo" : {
 
     },
+    "Tamam" : {
+
+    },
+    "Tanı veya tedavi sunulmaz; yalnızca yönlendirme yapılır." : {
+
+    },
     "Tap to set location" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2245,6 +2412,9 @@
           }
         }
       }
+    },
+    "Telefon (opsiyonel)" : {
+
     },
     "Tell others about your visit..." : {
       "extractionState" : "manual",
@@ -2257,6 +2427,9 @@
         }
       }
     },
+    "Tercihler" : {
+
+    },
     "Terms of Service" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2268,7 +2441,7 @@
         }
       }
     },
-    "Theme" : {
+    "Teşekkürler! Yorumunuz yayın kuyruğuna alındı." : {
 
     },
     "there" : {
@@ -2324,7 +2497,16 @@
         }
       }
     },
-    "TrustCare (\"we\", \"our\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information." : {
+    "TrustCare Plus özelliği — Ücretsiz deneme: günde 5 soru" : {
+
+    },
+    "TrustCare Rehber" : {
+
+    },
+    "TrustCare Rehber — Bilgilendirme Hizmetidir" : {
+
+    },
+    "Tümü" : {
 
     },
     "Turkish" : {
@@ -2349,7 +2531,7 @@
         }
       }
     },
-    "Unable to export your data." : {
+    "Ücretsiz deneme: %lld/5" : {
 
     },
     "Unable to load provider details. Please try again." : {
@@ -2442,6 +2624,15 @@
         }
       }
     },
+    "Uzmanlık" : {
+
+    },
+    "Uzmanlık Seç" : {
+
+    },
+    "Uzmanlıklar" : {
+
+    },
     "Value for Money" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2453,7 +2644,10 @@
         }
       }
     },
-    "Verification Status" : {
+    "Vazgeç" : {
+
+    },
+    "Veri ve Gizlilik" : {
 
     },
     "Verified" : {
@@ -2499,6 +2693,12 @@
           }
         }
       }
+    },
+    "Veriler hazırlanıyor" : {
+
+    },
+    "Verilerimi İndir" : {
+
     },
     "Version" : {
       "extractionState" : "manual",
@@ -2583,9 +2783,6 @@
         }
       }
     },
-    "We'll verify your proof within 24-48 hours and notify you" : {
-
-    },
     "Welcome Back" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2596,9 +2793,6 @@
           }
         }
       }
-    },
-    "Welcome to TrustCare. By using our app, you agree to these terms." : {
-
     },
     "When did you visit?" : {
       "extractionState" : "manual",
@@ -2621,9 +2815,6 @@
           }
         }
       }
-    },
-    "Within 48 hours" : {
-
     },
     "Would you recommend this provider?" : {
       "extractionState" : "manual",
@@ -2658,7 +2849,13 @@
         }
       }
     },
-    "Write Another Review" : {
+    "Yardım ve Destek" : {
+
+    },
+    "Yeni Sağlayıcı" : {
+
+    },
+    "Yeni Sohbet" : {
 
     },
     "Yes" : {
@@ -2672,7 +2869,13 @@
         }
       }
     },
-    "You can add verification documents anytime" : {
+    "Yol Tarifi" : {
+
+    },
+    "Yorum" : {
+
+    },
+    "Yorumunuz" : {
 
     },
     "You can upload up to 5 photos." : {
@@ -2717,13 +2920,7 @@
         }
       }
     },
-    "Your review has been submitted" : {
-
-    },
-    "Your review is pending verification" : {
-
-    },
-    "Your review must be at least 50 characters. Currently %lld / 50." : {
+    "Your review must be at least 50 characters." : {
 
     },
     "Your reviews guide others to better healthcare" : {
@@ -2737,10 +2934,16 @@
         }
       }
     },
-    "Your Rights" : {
+    "Ziyaret Detayları" : {
 
     },
-    "Your session expired. Please sign in again." : {
+    "Ziyaret Tarihi" : {
+
+    },
+    "Ziyaret Türü" : {
+
+    },
+    "Ziyaretinizi Doğrulayın" : {
 
     }
   },

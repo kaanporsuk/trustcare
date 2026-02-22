@@ -241,7 +241,7 @@ struct HomeView: View {
                 }
 
                 ForEach(Array(specialtyService.popularSpecialties().prefix(20))) { specialty in
-                    specialtyChip(title: specialty.name, isSelected: selectedSpecialty?.id == specialty.id) {
+                    specialtyChip(title: specialty.nameTr ?? specialty.name, isSelected: selectedSpecialty?.id == specialty.id) {
                         selectedSpecialty = specialty
                         Task { await homeVM.applySpecialtyFilter(specialty) }
                     }

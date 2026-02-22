@@ -130,6 +130,23 @@ final class HomeViewModel: ObservableObject {
         guard !hasLoadedInitially else { return }
         hasLoadedInitially = true
         await loadSpecialties(forceRefresh: false)
+        
+        // Prioritize user's current GPS location on initialization
+        if let userLocation = locationManager.userLocation {
+            let gpsLocation = SelectedLocation(
+                name: locationName.isEmpty || locationName == String(localized: "Tap to set location") 
+                    ? "Mevcut Konum" 
+                    : locationName,
+                latitude: userLocation.latitude,
+                longitude: userLocation.longitude,
+                isCurrentLocation: true
+            )
+            selectedLocation = gpsLocation
+            userLatitude = gpsLocation.latitude
+            userLongitude = gpsLocation.longitude
+            saveSelectedLocation(gpsLocation)
+        }
+        
         await searchProviders(reset: true)  // Load initial providers
     }
 

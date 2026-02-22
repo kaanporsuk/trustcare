@@ -82,73 +82,93 @@ struct ReviewHubView: View {
                 .font(AppFont.title3)
 
             if let provider = viewModel.selectedProvider {
-                ProviderMiniCard(provider: provider)
-            }
-
-            HStack(spacing: AppSpacing.sm) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.secondary)
-                TextField("Doktor, klinik veya uzmanlık ara...", text: $providerSearchText)
-                    .font(AppFont.body)
-                    .textInputAutocapitalization(.words)
-                    .autocorrectionDisabled()
-            }
-            .padding(.horizontal, AppSpacing.md)
-            .frame(height: 44)
-            .background(AppColor.cardBackground)
-            .cornerRadius(AppRadius.button)
-            .overlay(
-                RoundedRectangle(cornerRadius: AppRadius.button)
-                    .stroke(AppColor.border, lineWidth: 1)
-            )
-
-            if isSearchingProviders {
-                ProgressView()
-                    .padding(.top, AppSpacing.xs)
-            }
-
-            if !providerSearchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                    ForEach(providerResults.prefix(6)) { provider in
-                        Button {
-                            viewModel.selectProvider(provider)
-                            providerSearchText = provider.name
-                            providerResults = []
-                            specialtyResults = []
-                        } label: {
-                            ProviderMiniRow(provider: provider)
+                VStack(spacing: AppSpacing.sm) {
+                    ProviderMiniCard(provider: provider)
+                    
+                    Button {
+                        viewModel.selectProvider(nil)
+                        providerSearchText = ""
+                        providerResults = []
+                        specialtyResults = []
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text("Değiştir")
                         }
-                        .buttonStyle(.plain)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .foregroundStyle(.white)
+                        .background(AppColor.trustBlue)
+                        .cornerRadius(AppRadius.button)
                     }
-
-                    ForEach(specialtyResults.prefix(4)) { specialty in
-                        Button {
-                            providerSearchText = specialty.name
-                        } label: {
-                            HStack(spacing: AppSpacing.sm) {
-                                Image(systemName: specialty.iconName)
-                                Text(specialty.name)
-                                    .font(AppFont.body)
-                                Spacer()
-                                Text("Uzmanlık")
-                                    .font(AppFont.footnote)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding(.vertical, 6)
-                        }
-                        .buttonStyle(.plain)
-                    }
+                    .buttonStyle(.plain)
                 }
-                .padding(AppSpacing.md)
+            } else {
+                HStack(spacing: AppSpacing.sm) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.secondary)
+                    TextField("Doktor, klinik veya uzmanlık ara...", text: $providerSearchText)
+                        .font(AppFont.body)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                }
+                .padding(.horizontal, AppSpacing.md)
+                .frame(height: 44)
                 .background(AppColor.cardBackground)
-                .cornerRadius(AppRadius.card)
-            }
+                .cornerRadius(AppRadius.button)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button)
+                        .stroke(AppColor.border, lineWidth: 1)
+                )
 
-            Button("Bulamadınız mı? Yeni ekle") {
-                showAddProviderSheet = true
+                if isSearchingProviders {
+                    ProgressView()
+                        .padding(.top, AppSpacing.xs)
+                }
+
+                if !providerSearchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                        ForEach(providerResults.prefix(6)) { provider in
+                            Button {
+                                viewModel.selectProvider(provider)
+                                providerSearchText = provider.name
+                                providerResults = []
+                                specialtyResults = []
+                            } label: {
+                                ProviderMiniRow(provider: provider)
+                            }
+                            .buttonStyle(.plain)
+                        }
+
+                        ForEach(specialtyResults.prefix(4)) { specialty in
+                            Button {
+                                providerSearchText = specialty.name
+                            } label: {
+                                HStack(spacing: AppSpacing.sm) {
+                                    Image(systemName: specialty.iconName)
+                                    Text(specialty.name)
+                                        .font(AppFont.body)
+                                    Spacer()
+                                    Text("Uzmanlık")
+                                        .font(AppFont.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
+                                .padding(.vertical, 6)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(AppSpacing.md)
+                    .background(AppColor.cardBackground)
+                    .cornerRadius(AppRadius.card)
+                }
+
+                Button("Bulamadınız mı? Yeni ekle") {
+                    showAddProviderSheet = true
+                }
+                .font(AppFont.caption)
+                .foregroundStyle(AppColor.trustBlue)
             }
-            .font(AppFont.caption)
-            .foregroundStyle(AppColor.trustBlue)
         }
     }
 
