@@ -1,4 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 declare const Deno: {
   env: {
@@ -26,7 +27,28 @@ type RehberResponse = {
   message: string;
   recommended_specialties: string[] | null;
   is_emergency: boolean;
+  is_rate_limited?: boolean;
+  is_fallback?: boolean;
 };
+
+const RATE_LIMIT_WINDOW_HOURS = 1;
+const RATE_LIMIT_MAX_MESSAGES = 30;
+
+const EMERGENCY_KEYWORDS = [
+  "chest pain",
+  "can't breathe",
+  "difficulty breathing",
+  "heart attack",
+  "stroke",
+  "severe bleeding",
+  "unconscious",
+  "overdose",
+  "suicidal",
+  "göğüs ağrısı",
+  "nefes alamıyorum",
+  "kalp krizi",
+  "intihar",
+];
 
 const SYSTEM_PROMPT = `Sen TrustCare Rehber, Türkiye'de bir sağlık bilgilendirme asistanısın.
 SEN DOKTOR DEĞİLSİN. TEŞHİS KOYAMAZSIN. REÇETE YAZAMAZSIN. TEST SONUCU YORUMLAYAMAZSIN.
@@ -143,7 +165,51 @@ function normalizeResponse(parsed: any): RehberResponse {
     message,
     recommended_specialties: specialties,
     is_emergency: isEmergency,
+    is_rate_limited: Boolean(parsed?.is_rate_limited),
+    is_fallback: Boolean(parsed?.is_fallback),
   };
+}
+
+function base64UrlDecode(input: string): string {
+  const normalized = input.replace(/-/g, "+").replace(/_/g, "/");
+  const padding = normalized.length % 4;
+  const withPadding = padding === 0 ? normalized : normalized + "=".repeat(4 - padding);
+  return atob(withPadding);
+}
+
+function extractUserIdFromJwt(authHeader: string | null): string | null {
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return null;
+  }
+
+  const token = authHeader.slice("Bearer ".length).trim();
+  const parts = token.split(".");
+  if (parts.length < 2) {
+    return null;
+  }
+
+  try {
+    const payloadText = base64UrlDecode(parts[1]);
+    const payload = JSON.parse(payloadText);
+    if (typeof payload?.sub === "string" && payload.sub.length > 0) {
+      return payload.sub;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function normalizeForMatch(text: string): string {
+  return text
+    .toLocaleLowerCase("tr-TR")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function containsEmergencyKeyword(text: string): boolean {
+  const normalizedText = normalizeForMatch(text);
+  return EMERGENCY_KEYWORDS.some((keyword) => normalizedText.includes(normalizeForMatch(keyword)));
 }
 
 Deno.serve(async (req: Request) => {
@@ -160,6 +226,16 @@ Deno.serve(async (req: Request) => {
 
   try {
     const anthropicApiKey = Deno.env.get("ANTHROPIC_API_KEY");
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+    if (!supabaseUrl || !serviceRoleKey) {
+      return new Response(JSON.stringify({ error: "Missing Supabase configuration" }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     if (!anthropicApiKey) {
       return new Response(JSON.stringify({ error: "Missing ANTHROPIC_API_KEY" }), {
         status: 500,
@@ -179,35 +255,92 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    const anthropicResponse = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": anthropicApiKey,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: "claude-3-5-sonnet-20241022",
-        max_tokens: 700,
-        temperature: 0.2,
-        system: SYSTEM_PROMPT,
-        messages: messages.map((msg) => ({
-          role: msg.role,
-          content: msg.content,
-        })),
-      }),
-    });
+    const latestUserMessage = [...messages].reverse().find((msg) => msg.role === "user")?.content ?? "";
+    const emergencyBypass = containsEmergencyKeyword(latestUserMessage);
 
-    if (!anthropicResponse.ok) {
-      const errorText = await anthropicResponse.text();
-      return new Response(JSON.stringify({ error: `Anthropic error: ${errorText}` }), {
-        status: 502,
+    const userId = extractUserIdFromJwt(req.headers.get("Authorization"));
+    if (!userId) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const anthropicData = await anthropicResponse.json();
-    const rawText = extractTextFromAnthropic(anthropicData);
+    const supabase = createClient(supabaseUrl, serviceRoleKey, {
+      auth: { persistSession: false },
+    });
+
+    if (!emergencyBypass) {
+      const windowStart = new Date(Date.now() - RATE_LIMIT_WINDOW_HOURS * 60 * 60 * 1000).toISOString();
+
+      const { count, error: rateLimitError } = await supabase
+        .from("rehber_messages")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", userId)
+        .gte("created_at", windowStart);
+
+      if (rateLimitError) {
+        console.error("Failed to evaluate rate limit", rateLimitError);
+      } else if ((count ?? 0) >= RATE_LIMIT_MAX_MESSAGES) {
+        const rateLimitedResponse: RehberResponse = {
+          message:
+            "You've reached the message limit. Please wait a bit before sending more messages. If you're experiencing a medical emergency, please call 112 immediately.",
+          recommended_specialties: null,
+          is_emergency: false,
+          is_rate_limited: true,
+        };
+
+        return new Response(JSON.stringify(rateLimitedResponse), {
+          status: 429,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
+    let rawText = "";
+    try {
+      const anthropicResponse = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": anthropicApiKey,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: "claude-3-5-sonnet-20241022",
+          max_tokens: 700,
+          temperature: 0.2,
+          system: SYSTEM_PROMPT,
+          messages: messages.map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+          })),
+        }),
+      });
+
+      if (!anthropicResponse.ok) {
+        const errorText = await anthropicResponse.text();
+        throw new Error(`Anthropic error: ${anthropicResponse.status} ${errorText}`);
+      }
+
+      const anthropicData = await anthropicResponse.json();
+      rawText = extractTextFromAnthropic(anthropicData);
+    } catch (llmError) {
+      console.error("LLM call failed", llmError);
+
+      const fallbackResponse: RehberResponse = {
+        message:
+          "I'm temporarily unable to process your request. If you're experiencing a medical emergency, please call 112 immediately. For non-urgent concerns, please try again in a few minutes or use the Discover tab to search for healthcare providers by specialty.",
+        recommended_specialties: null,
+        is_emergency: false,
+        is_fallback: true,
+      };
+
+      return new Response(JSON.stringify(fallbackResponse), {
+        status: 503,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     if (rawText.includes("[EMERGENCY_TRIGGER_112]")) {
       const emergencyResponse: RehberResponse = {

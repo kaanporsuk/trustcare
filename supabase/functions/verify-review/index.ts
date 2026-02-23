@@ -208,69 +208,87 @@ Deno.serve(async (req) => {
     return jsonResponse(400, { error: "Review has no proof image" });
   }
 
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    try {
-      const imageBase64 = await downloadImage(review.proof_image_url, supabase);
-      const result = await callOpenAI(imageBase64);
+  const { data: existingFailure } = await supabase
+    .from("failed_verifications")
+    .select("retry_count")
+    .eq("review_id", review.id)
+    .maybeSingle();
 
-      const confidence = Math.max(0, Math.min(100, result.confidence ?? 0));
-      let status = "active";
-      let isVerified = false;
-      let notificationType = "review_flagged";
-      let notificationBody = "Your review could not be verified but is now published.";
-
-      if (confidence >= 80) {
-        isVerified = true;
-        status = "active";
-        notificationType = "review_verified";
-        notificationBody = "Your review was verified by our system.";
-      } else if (confidence >= 50) {
-        isVerified = false;
-        status = "pending_verification";
-        notificationType = "review_flagged";
-        notificationBody = "Your review is pending verification by our team.";
-      }
-
-      await supabase
-        .from("reviews")
-        .update({
-          is_verified: isVerified,
-          status,
-          verification_confidence: confidence,
-          verification_reason: result.reasoning,
-          verified_at: isVerified ? new Date().toISOString() : null,
-        })
-        .eq("id", review.id);
-
-      await supabase.from("notifications").insert({
-        user_id: review.user_id,
-        type: notificationType,
-        title: "Review verification",
-        body: notificationBody,
-        data: {
-          review_id: review.id,
-          detected_provider: result.detected_provider,
-          detected_date: result.detected_date,
-        },
-      });
-
-      return jsonResponse(200, {
-        review_id: review.id,
-        is_verified: isVerified,
-        status,
-        confidence,
-      });
-    } catch (error) {
-      await upsertFailure(supabase, review.id, (error as Error).message);
-
-      if (attempt < 3) {
-        await new Promise((resolve) => setTimeout(resolve, 5000));
-        continue;
-      }
-
-      return jsonResponse(500, { error: "Verification failed" });
-    }
+  if ((existingFailure?.retry_count ?? 0) >= 3) {
+    return jsonResponse(429, { error: "Maximum verification attempts reached." });
   }
 
-  return jsonResponse(500, { error: "Verification failed" });
+  try {
+    const imageBase64 = await downloadImage(review.proof_image_url, supabase);
+    const result = await callOpenAI(imageBase64);
+
+    const confidence = Math.max(0, Math.min(100, result.confidence ?? 0));
+    let status = "active";
+    let isVerified = false;
+    let notificationType = "review_flagged";
+    let notificationBody = "Your review could not be verified but is now published.";
+
+    if (confidence >= 80) {
+      isVerified = true;
+      status = "active";
+      notificationType = "review_verified";
+      notificationBody = "Your review was verified by our system.";
+    } else if (confidence >= 50) {
+      isVerified = false;
+      status = "pending_verification";
+      notificationType = "review_flagged";
+      notificationBody = "Your review is pending verification by our team.";
+    }
+
+    await supabase
+      .from("reviews")
+      .update({
+        is_verified: isVerified,
+        status,
+        verification_confidence: confidence,
+        verification_reason: result.reasoning,
+        verified_at: isVerified ? new Date().toISOString() : null,
+      })
+      .eq("id", review.id);
+
+    await supabase.from("notifications").insert({
+      user_id: review.user_id,
+      type: notificationType,
+      title: "Review verification",
+      body: notificationBody,
+      data: {
+        review_id: review.id,
+        detected_provider: result.detected_provider,
+        detected_date: result.detected_date,
+      },
+    });
+
+    return jsonResponse(200, {
+      review_id: review.id,
+      is_verified: isVerified,
+      status,
+      confidence,
+    });
+  } catch (error) {
+    console.error("OpenAI Vision verification failed", error);
+
+    await upsertFailure(supabase, review.id, (error as Error).message);
+
+    await supabase
+      .from("reviews")
+      .update({
+        verification_confidence: 0,
+        verification_reason:
+          "Automated verification temporarily unavailable. Queued for manual review.",
+        status: "pending_verification",
+        is_verified: false,
+        verified_at: null,
+      })
+      .eq("id", review.id);
+
+    return jsonResponse(503, {
+      error: "Automated verification temporarily unavailable. Queued for manual review.",
+      review_id: review.id,
+    });
+  }
 });

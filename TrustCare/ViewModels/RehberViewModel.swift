@@ -10,10 +10,13 @@ final class RehberViewModel: ObservableObject {
     @Published var usageCount: Int = 0
     @Published var errorMessage: String?
     @Published var showEmergencyCard: Bool = false
+    @Published var sendCooldownRemainingSeconds: Int = 0
 
     private let dailyLimit: Int = 5
     private static let usageDateKey = "rehber_usage_date"
     private static let usageCountKey = "rehber_usage_count"
+    private var cooldownCancellable: AnyCancellable?
+    private var lastRetryUserText: String?
 
     private static let emergencyKeywordsTR: [String] = [
         "göğüs ağrısı",
@@ -63,6 +66,7 @@ final class RehberViewModel: ObservableObject {
     func sendMessage(_ text: String) async {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
+        guard sendCooldownRemainingSeconds == 0 else { return }
 
         loadUsageCount()
         guard canSendMoreToday else {
@@ -97,6 +101,7 @@ final class RehberViewModel: ObservableObject {
             )
             messages.append(userMessage)
             try await saveMessage(userId: authSession.user.id, sessionId: sessionId, message: userMessage)
+            lastRetryUserText = trimmed
 
             if isEmergencyKeywordDetected(in: trimmed) {
                 showEmergencyCard = true
@@ -116,11 +121,13 @@ final class RehberViewModel: ObservableObject {
                 return
             }
 
-            let aiResponse = try await callRehberEdgeFunction(
+            let edgeResult = try await callRehberEdgeFunction(
                 authToken: authSession.accessToken,
                 sessionId: sessionId,
                 messages: messages.map { EdgeChatMessage(role: $0.role, content: $0.content) }
             )
+
+            let aiResponse = edgeResult.response
 
             let assistantText = aiResponse.message?.trimmingCharacters(in: .whitespacesAndNewlines)
             let emergencyFromAI = aiResponse.isEmergency || containsEmergencyTrigger(aiResponse.message)
@@ -135,11 +142,24 @@ final class RehberViewModel: ObservableObject {
                 content: assistantText?.isEmpty == false ? assistantText! : "Yanıt oluşturulamadı. Lütfen tekrar deneyin.",
                 recommendedSpecialties: aiResponse.recommendedSpecialties,
                 wasEmergency: emergencyFromAI,
+                isFallback: aiResponse.isFallback,
+                isRateLimited: aiResponse.isRateLimited,
                 createdAt: Date()
             )
 
             messages.append(assistantMessage)
             try await saveMessage(userId: authSession.user.id, sessionId: sessionId, message: assistantMessage)
+
+            if edgeResult.statusCode == 429 || aiResponse.isRateLimited {
+                startSendCooldown(seconds: 60)
+                isLoading = false
+                return
+            }
+
+            if edgeResult.statusCode == 503 || aiResponse.isFallback {
+                isLoading = false
+                return
+            }
 
             if emergencyFromAI {
                 await markSessionEmergency(userId: authSession.user.id, sessionId: sessionId)
@@ -151,6 +171,19 @@ final class RehberViewModel: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    func retryLastFailedMessage() {
+        guard let text = lastRetryUserText,
+              !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !isLoading,
+              sendCooldownRemainingSeconds == 0 else {
+            return
+        }
+
+        Task {
+            await sendMessage(text)
+        }
     }
 
     private func createSession(userId: UUID, firstText: String) async throws -> UUID {
@@ -297,7 +330,7 @@ final class RehberViewModel: ObservableObject {
         authToken: String,
         sessionId: UUID,
         messages: [EdgeChatMessage]
-    ) async throws -> RehberEdgeResponse {
+    ) async throws -> RehberEdgeCallResult {
         guard let endpoint = URL(string: "\(SupabaseConfig.url)/functions/v1/rehber-chat") else {
             throw AppError.unknown
         }
@@ -317,24 +350,64 @@ final class RehberViewModel: ObservableObject {
             throw AppError.unknown
         }
 
-        guard (200...299).contains(http.statusCode) else {
-            if let decodedError = try? JSONDecoder().decode(EdgeErrorResponse.self, from: data),
-               let message = decodedError.error,
-               !message.isEmpty {
-                throw NSError(domain: "Rehber", code: http.statusCode, userInfo: [NSLocalizedDescriptionKey: message])
-            }
-            throw NSError(domain: "Rehber", code: http.statusCode, userInfo: [NSLocalizedDescriptionKey: "Rehber yanıt veremedi. Lütfen tekrar deneyin."])
+        if let structured = try? JSONDecoder().decode(RehberEdgeResponse.self, from: data) {
+            return RehberEdgeCallResult(statusCode: http.statusCode, response: structured)
         }
 
-        if let structured = try? JSONDecoder().decode(RehberEdgeResponse.self, from: data) {
-            return structured
+        if let decodedError = try? JSONDecoder().decode(EdgeErrorResponse.self, from: data) {
+            let message = decodedError.message ?? decodedError.error ?? "Rehber yanıt veremedi. Lütfen tekrar deneyin."
+            let fallback = RehberEdgeResponse(
+                message: message,
+                recommendedSpecialties: nil,
+                isEmergency: false,
+                isFallback: decodedError.isFallback,
+                isRateLimited: decodedError.isRateLimited
+            )
+            return RehberEdgeCallResult(statusCode: http.statusCode, response: fallback)
         }
 
         if let fallbackText = String(data: data, encoding: .utf8), !fallbackText.isEmpty {
-            return RehberEdgeResponse(message: fallbackText, recommendedSpecialties: nil, isEmergency: containsEmergencyTrigger(fallbackText))
+            return RehberEdgeCallResult(
+                statusCode: http.statusCode,
+                response: RehberEdgeResponse(
+                    message: fallbackText,
+                    recommendedSpecialties: nil,
+                    isEmergency: containsEmergencyTrigger(fallbackText),
+                    isFallback: http.statusCode == 503,
+                    isRateLimited: http.statusCode == 429
+                )
+            )
         }
 
-        return RehberEdgeResponse(message: "Yanıt alınamadı.", recommendedSpecialties: nil, isEmergency: false)
+        return RehberEdgeCallResult(
+            statusCode: http.statusCode,
+            response: RehberEdgeResponse(
+                message: "Yanıt alınamadı.",
+                recommendedSpecialties: nil,
+                isEmergency: false,
+                isFallback: http.statusCode == 503,
+                isRateLimited: http.statusCode == 429
+            )
+        )
+    }
+
+    private func startSendCooldown(seconds: Int) {
+        cooldownCancellable?.cancel()
+        sendCooldownRemainingSeconds = max(0, seconds)
+
+        guard sendCooldownRemainingSeconds > 0 else { return }
+
+        cooldownCancellable = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self else { return }
+                if self.sendCooldownRemainingSeconds > 0 {
+                    self.sendCooldownRemainingSeconds -= 1
+                } else {
+                    self.cooldownCancellable?.cancel()
+                    self.cooldownCancellable = nil
+                }
+            }
     }
 
     private func isEmergencyKeywordDetected(in text: String) -> Bool {
@@ -412,14 +485,64 @@ struct RehberEdgeResponse: Decodable {
     let message: String?
     let recommendedSpecialties: [String]?
     let isEmergency: Bool
+    let isFallback: Bool
+    let isRateLimited: Bool
 
     enum CodingKeys: String, CodingKey {
         case message
         case recommendedSpecialties = "recommended_specialties"
         case isEmergency = "is_emergency"
+        case isFallback = "is_fallback"
+        case isRateLimited = "is_rate_limited"
     }
+
+    init(
+        message: String?,
+        recommendedSpecialties: [String]?,
+        isEmergency: Bool,
+        isFallback: Bool = false,
+        isRateLimited: Bool = false
+    ) {
+        self.message = message
+        self.recommendedSpecialties = recommendedSpecialties
+        self.isEmergency = isEmergency
+        self.isFallback = isFallback
+        self.isRateLimited = isRateLimited
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        message = try container.decodeIfPresent(String.self, forKey: .message)
+        recommendedSpecialties = try container.decodeIfPresent([String].self, forKey: .recommendedSpecialties)
+        isEmergency = try container.decodeIfPresent(Bool.self, forKey: .isEmergency) ?? false
+        isFallback = try container.decodeIfPresent(Bool.self, forKey: .isFallback) ?? false
+        isRateLimited = try container.decodeIfPresent(Bool.self, forKey: .isRateLimited) ?? false
+    }
+}
+
+private struct RehberEdgeCallResult {
+    let statusCode: Int
+    let response: RehberEdgeResponse
 }
 
 private struct EdgeErrorResponse: Decodable {
     let error: String?
+    let message: String?
+    let isFallback: Bool
+    let isRateLimited: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case error
+        case message
+        case isFallback = "is_fallback"
+        case isRateLimited = "is_rate_limited"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        error = try container.decodeIfPresent(String.self, forKey: .error)
+        message = try container.decodeIfPresent(String.self, forKey: .message)
+        isFallback = try container.decodeIfPresent(Bool.self, forKey: .isFallback) ?? false
+        isRateLimited = try container.decodeIfPresent(Bool.self, forKey: .isRateLimited) ?? false
+    }
 }

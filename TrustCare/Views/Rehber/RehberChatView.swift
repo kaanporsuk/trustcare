@@ -101,33 +101,41 @@ struct RehberChatView: View {
     }
 
     private var inputBar: some View {
-        HStack(spacing: AppSpacing.sm) {
-            TextField("Belirtinizi yazın...", text: $inputText)
-                .textFieldStyle(.plain)
-                .font(AppFont.body)
-                .padding(.horizontal, AppSpacing.md)
-                .padding(.vertical, AppSpacing.sm)
-                .background(AppColor.cardBackground)
-                .cornerRadius(AppRadius.button)
-                .overlay(
-                    RoundedRectangle(cornerRadius: AppRadius.button)
-                        .stroke(AppColor.border, lineWidth: 1)
-                )
-                .submitLabel(.send)
-                .onSubmit {
-                    submitCurrentMessage()
-                }
+        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+            HStack(spacing: AppSpacing.sm) {
+                TextField("Belirtinizi yazın...", text: $inputText)
+                    .textFieldStyle(.plain)
+                    .font(AppFont.body)
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.vertical, AppSpacing.sm)
+                    .background(AppColor.cardBackground)
+                    .cornerRadius(AppRadius.button)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.button)
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
+                    .submitLabel(.send)
+                    .onSubmit {
+                        submitCurrentMessage()
+                    }
 
-            Button {
-                submitCurrentMessage()
-            } label: {
-                Image(systemName: "paperplane.fill")
-                    .foregroundStyle(.white)
-                    .frame(width: 44, height: 44)
-                    .background(canSubmitMessage ? AppColor.trustBlue : AppColor.border)
-                    .clipShape(Circle())
+                Button {
+                    submitCurrentMessage()
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                        .foregroundStyle(.white)
+                        .frame(width: 44, height: 44)
+                        .background(canSubmitMessage ? AppColor.trustBlue : AppColor.border)
+                        .clipShape(Circle())
+                }
+                .disabled(!canSubmitMessage)
             }
-            .disabled(!canSubmitMessage)
+
+            if viewModel.sendCooldownRemainingSeconds > 0 {
+                Text("Tekrar göndermek için \(viewModel.sendCooldownRemainingSeconds) sn bekleyin.")
+                    .font(AppFont.footnote)
+                    .foregroundStyle(.secondary)
+            }
         }
         .padding(.horizontal, AppSpacing.md)
         .padding(.top, AppSpacing.xs)
@@ -136,7 +144,9 @@ struct RehberChatView: View {
     }
 
     private var canSubmitMessage: Bool {
-        !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !viewModel.isLoading
+        !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && !viewModel.isLoading
+            && viewModel.sendCooldownRemainingSeconds == 0
     }
 
     private func submitCurrentMessage() {
@@ -150,19 +160,46 @@ struct RehberChatView: View {
 
     @ViewBuilder
     private func messageRow(_ message: RehberMessage) -> some View {
+        let infoStyleMessage = message.isFallback || message.isRateLimited
+
         VStack(alignment: message.role == "user" ? .trailing : .leading, spacing: AppSpacing.xs) {
             HStack {
                 if message.role == "user" { Spacer(minLength: 50) }
 
-                Text(message.content)
-                    .font(AppFont.body)
-                    .foregroundStyle(message.role == "user" ? Color.white : Color.primary)
+                if infoStyleMessage && message.role == "assistant" {
+                    HStack(alignment: .top, spacing: AppSpacing.xs) {
+                        Image(systemName: "info.circle.fill")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.secondary)
+
+                        Text(message.content)
+                            .font(AppFont.body)
+                            .foregroundStyle(Color.primary)
+                    }
                     .padding(.horizontal, AppSpacing.md)
                     .padding(.vertical, AppSpacing.sm)
-                    .background(message.role == "user" ? AppColor.trustBlue : Color(.systemGray6))
+                    .background(Color(.systemGray5))
                     .cornerRadius(AppRadius.card)
+                } else {
+                    Text(message.content)
+                        .font(AppFont.body)
+                        .foregroundStyle(message.role == "user" ? Color.white : Color.primary)
+                        .padding(.horizontal, AppSpacing.md)
+                        .padding(.vertical, AppSpacing.sm)
+                        .background(message.role == "user" ? AppColor.trustBlue : Color(.systemGray6))
+                        .cornerRadius(AppRadius.card)
+                }
 
                 if message.role == "assistant" { Spacer(minLength: 50) }
+            }
+
+            if message.role == "assistant", message.isFallback {
+                Button("Try Again") {
+                    viewModel.retryLastFailedMessage()
+                }
+                .font(AppFont.footnote)
+                .foregroundStyle(AppColor.trustBlue)
+                .padding(.leading, AppSpacing.xs)
             }
 
             if message.role == "assistant", let specialties = message.recommendedSpecialties, !specialties.isEmpty {
