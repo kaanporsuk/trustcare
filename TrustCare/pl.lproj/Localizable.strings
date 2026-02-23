@@ -1,37 +1,32 @@
-"tab_discover" = "Odkrywaj";
-"tab_guide" = "Przewodnik";
+"tab_discover" = "Znajdź opiekę";
+"tab_guide" = "Rehber";
 "tab_review" = "Oceń";
 "tab_profile" = "Profil";
-
-"search_placeholder" = "Szukaj lekarza, kliniki...";
+"search_placeholder" = "Szukaj lekarzy, klinik lub specjalizacji...";
 "search_this_area" = "Szukaj w tym obszarze";
 "map_toggle_map" = "Mapa";
 "map_toggle_list" = "Lista";
 "filter_all" = "Wszystkie";
 "filter_more" = "Więcej ▾";
-
-"review_who" = "Kogo oceniasz?";
+"review_who" = "Kogo dotyczy opinia?";
 "review_visit_date" = "Data wizyty";
 "review_overall" = "Ocena ogólna";
 "review_detailed" = "Ocena szczegółowa";
-"review_comment" = "Twoja opinia";
+"review_comment" = "Treść opinii";
 "review_add_photo" = "Dodaj zdjęcie";
-"review_verify" = "Zweryfikuj swoją wizytę";
+"review_verify" = "Zweryfikuj wizytę";
 "review_submit" = "Wyślij opinię";
 "review_change_provider" = "Zmień";
-
 "empty_home_title" = "Brak dostawców w tym obszarze";
 "empty_home_cta" = "Dodaj pierwszego!";
-"empty_search" = "Nie znaleziono wyników";
-
+"empty_search" = "Nie znaleziono placówek";
 "menu_my_reviews" = "Moje opinie";
-"menu_saved" = "Zapisani dostawcy";
+"menu_saved" = "Zapisane placówki";
 "menu_settings" = "Ustawienia";
 "menu_help" = "Pomoc i wsparcie";
 "menu_privacy" = "Polityka prywatności";
-"menu_terms" = "Warunki korzystania";
+"menu_terms" = "Regulamin";
 "menu_logout" = "Wyloguj";
-// Kategorie
 "category_general_practice" = "Praktyka ogólna";
 "category_cardiology" = "Kardiologia";
 "category_dermatology" = "Dermatologia";
@@ -49,8 +44,6 @@
 "category_endocrinology" = "Endokrynologia";
 "category_nephrology" = "Nefrologia";
 "category_anesthesiology" = "Anestezjologia";
-
-// Podkategorie
 "sub_general_consultation" = "Konsultacja ogólna";
 "sub_preventive_care" = "Opieka profilaktyczna";
 "sub_chronic_disease_management" = "Zarządzanie chorobą przewlekłą";

@@ -1,37 +1,32 @@
-"tab_discover" = "Keşfet";
+"tab_discover" = "Bakım Bul";
 "tab_guide" = "Rehber";
 "tab_review" = "Değerlendir";
 "tab_profile" = "Profil";
-
-"search_placeholder" = "Doktor, klinik veya uzmanlık ara...";
+"search_placeholder" = "Doktor, klinik veya uzmanlık arayın...";
 "search_this_area" = "Bu alanda ara";
 "map_toggle_map" = "Harita";
 "map_toggle_list" = "Liste";
 "filter_all" = "Tümü";
 "filter_more" = "Daha Fazla ▾";
-
 "review_who" = "Kimi değerlendiriyorsunuz?";
 "review_visit_date" = "Ziyaret Tarihi";
 "review_overall" = "Genel Değerlendirme";
 "review_detailed" = "Detaylı Değerlendirme";
-"review_comment" = "Yorumunuz";
+"review_comment" = "Değerlendirmeniz";
 "review_add_photo" = "Fotoğraf Ekle";
 "review_verify" = "Ziyaretinizi Doğrulayın";
 "review_submit" = "Değerlendirme Gönder";
 "review_change_provider" = "Değiştir";
-
 "empty_home_title" = "Bu bölgede henüz sağlayıcı yok";
 "empty_home_cta" = "İlk ekleyen siz olun!";
-"empty_search" = "Sonuç bulunamadı";
-
+"empty_search" = "Sağlık hizmeti bulunamadı";
 "menu_my_reviews" = "Değerlendirmelerim";
-"menu_saved" = "Kaydedilenler";
+"menu_saved" = "Kayıtlı Sağlık Hizmetleri";
 "menu_settings" = "Ayarlar";
 "menu_help" = "Yardım ve Destek";
 "menu_privacy" = "Gizlilik Politikası";
 "menu_terms" = "Kullanım Koşulları";
 "menu_logout" = "Çıkış Yap";
-// Kategoriler
 "category_general_practice" = "Pratisyen Hekim";
 "category_cardiology" = "Kardiyoloji";
 "category_dermatology" = "Dermatoloji";
@@ -49,8 +44,6 @@
 "category_endocrinology" = "Endokrinoloji";
 "category_nephrology" = "Nefroloji";
 "category_anesthesiology" = "Anestezi";
-
-// Alt Kategoriler
 "sub_general_consultation" = "Genel Muayene";
 "sub_preventive_care" = "Koruyucu Sağlık";
 "sub_chronic_disease_management" = "Kronik Hastalık Yönetimi";

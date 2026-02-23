@@ -1,37 +1,32 @@
-"tab_discover" = "Ontdekken";
-"tab_guide" = "Gids";
+"tab_discover" = "Zorg zoeken";
+"tab_guide" = "Rehber";
 "tab_review" = "Beoordelen";
 "tab_profile" = "Profiel";
-
-"search_placeholder" = "Zoek arts, kliniek...";
+"search_placeholder" = "Zoek artsen, klinieken of specialismen...";
 "search_this_area" = "Zoek in dit gebied";
 "map_toggle_map" = "Kaart";
 "map_toggle_list" = "Lijst";
-"filter_all" = "Alles";
+"filter_all" = "Alle";
 "filter_more" = "Meer ▾";
-
-"review_who" = "Wie beoordeel je?";
+"review_who" = "Wie wilt u beoordelen?";
 "review_visit_date" = "Bezoekdatum";
 "review_overall" = "Algemene beoordeling";
 "review_detailed" = "Gedetailleerde beoordeling";
-"review_comment" = "Jouw beoordeling";
+"review_comment" = "Uw beoordeling";
 "review_add_photo" = "Foto toevoegen";
-"review_verify" = "Verifieer je bezoek";
+"review_verify" = "Verifieer uw bezoek";
 "review_submit" = "Beoordeling indienen";
 "review_change_provider" = "Wijzigen";
-
 "empty_home_title" = "Geen aanbieders in dit gebied";
 "empty_home_cta" = "Wees de eerste die er één toevoegt!";
-"empty_search" = "Geen resultaten gevonden";
-
+"empty_search" = "Geen zorgverleners gevonden";
 "menu_my_reviews" = "Mijn beoordelingen";
-"menu_saved" = "Opgeslagen aanbieders";
+"menu_saved" = "Opgeslagen zorgverleners";
 "menu_settings" = "Instellingen";
 "menu_help" = "Hulp en ondersteuning";
 "menu_privacy" = "Privacybeleid";
-"menu_terms" = "Servicevoorwaarden";
+"menu_terms" = "Gebruiksvoorwaarden";
 "menu_logout" = "Uitloggen";
-// Categorieën
 "category_general_practice" = "Huisartspraktijk";
 "category_cardiology" = "Cardiologie";
 "category_dermatology" = "Dermatologie";
@@ -49,8 +44,6 @@
 "category_endocrinology" = "Endocrinologie";
 "category_nephrology" = "Nephrologie";
 "category_anesthesiology" = "Anesthesiologie";
-
-// Subcategorieën
 "sub_general_consultation" = "Algemeen consult";
 "sub_preventive_care" = "Preventieve zorg";
 "sub_chronic_disease_management" = "Beheer van chronische ziekten";

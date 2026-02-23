@@ -1,37 +1,32 @@
-"tab_discover" = "Entdecken";
-"tab_guide" = "Ratgeber";
+"tab_discover" = "Versorgung finden";
+"tab_guide" = "Rehber";
 "tab_review" = "Bewerten";
 "tab_profile" = "Profil";
-
-"search_placeholder" = "Arzt, Klinik oder Fachgebiet suchen...";
+"search_placeholder" = "Ärzte, Kliniken oder Fachgebiete suchen...";
 "search_this_area" = "In diesem Bereich suchen";
 "map_toggle_map" = "Karte";
 "map_toggle_list" = "Liste";
 "filter_all" = "Alle";
 "filter_more" = "Mehr ▾";
-
-"review_who" = "Wen bewerten Sie?";
+"review_who" = "Wen möchten Sie bewerten?";
 "review_visit_date" = "Besuchsdatum";
 "review_overall" = "Gesamtbewertung";
 "review_detailed" = "Detaillierte Bewertung";
 "review_comment" = "Ihre Bewertung";
 "review_add_photo" = "Foto hinzufügen";
-"review_verify" = "Besuch verifizieren";
+"review_verify" = "Bestätigen Sie Ihren Besuch";
 "review_submit" = "Bewertung senden";
 "review_change_provider" = "Ändern";
-
 "empty_home_title" = "Keine Anbieter in diesem Bereich";
 "empty_home_cta" = "Seien Sie der Erste, der einen hinzufügt!";
-"empty_search" = "Keine Ergebnisse gefunden";
-
+"empty_search" = "Keine Anbieter gefunden";
 "menu_my_reviews" = "Meine Bewertungen";
 "menu_saved" = "Gespeicherte Anbieter";
 "menu_settings" = "Einstellungen";
-"menu_help" = "Hilfe & Support";
+"menu_help" = "Hilfe und Support";
 "menu_privacy" = "Datenschutzrichtlinie";
 "menu_terms" = "Nutzungsbedingungen";
 "menu_logout" = "Abmelden";
-// Kategorien
 "category_general_practice" = "Allgemeinmedizin";
 "category_cardiology" = "Kardiologie";
 "category_dermatology" = "Dermatologie";
@@ -49,8 +44,6 @@
 "category_endocrinology" = "Endokrinologie";
 "category_nephrology" = "Nephrologie";
 "category_anesthesiology" = "Anästhesiologie";
-
-// Unterkategorien
 "sub_general_consultation" = "Allgemeine Konsultation";
 "sub_preventive_care" = "Vorsorgeuntersuchung";
 "sub_chronic_disease_management" = "Chronische Erkrankungsverwaltung";
