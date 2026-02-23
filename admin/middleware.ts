@@ -30,7 +30,9 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/login") ||
     pathname.startsWith("/provider/") ||
     pathname.startsWith("/p/") ||
-    pathname.startsWith("/providers")
+    pathname.startsWith("/providers") ||
+    pathname.startsWith("/privacy") ||
+    pathname.startsWith("/terms")
   ) {
     return response;
   }
