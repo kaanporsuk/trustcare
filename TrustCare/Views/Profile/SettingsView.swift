@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import Supabase
 
 struct SettingsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
@@ -131,8 +132,12 @@ struct SettingsView: View {
         Button {
             localizationManager.currentLanguage = language.code
             Task {
-                let userId = SupabaseManager.shared.client.auth.session.user.id.uuidString
-                try? await SupabaseManager.shared.client
+                guard let session = try? await SupabaseManager.shared.client.auth.session else {
+                    return
+                }
+
+                let userId = session.user.id.uuidString
+                _ = try? await SupabaseManager.shared.client
                     .from("profiles")
                     .update(["preferred_language": language.code])
                     .eq("id", value: userId)
