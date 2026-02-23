@@ -99,6 +99,75 @@
 "sub_lupus" = "Lupus";
 "sub_vasculitis" = "Vasculitis";
 "sub_diabetes" = "Diabetes";
+"sub_thyroid_disease" = "Schildklieraandoening";
+"sub_hormone_replacement" = "Hormonale vervangingstherapie";
+"sub_hypertension_mgmt" = "Hypertensiebeheersing";
+"sub_chronic_kidney_disease" = "Chronische nierziekte";
+"sub_dialysis" = "Dialyse";
+"sub_kidney_transplant" = "Niertransplantatie";
+"sub_pain_management" = "Pijnbestrijding";
+"sub_pre_operative_assessment" = "Preoperatieve beoordeling";
+"sub_post_operative_care" = "Postoperatieve zorg";
+
+// App Splash
+"app_name" = "TrustCare";
+"tagline" = "Gezondheidszorg, Geverifieerd.";
+
+// Language Settings
+"language_section_title" = "Taal";
+"language_changed_alert" = "Taal gewijzigd";
+"language_changed_message" = "De app moet opnieuw worden gestart om de nieuwe taal toe te passen.";
+"language_restart_now" = "Nu herstarten";
+"language_later" = "Later";
+"language_english" = "English";
+"language_turkish" = "Türkçe";
+"language_german" = "Deutsch";
+"language_polish" = "Polski";
+"language_dutch" = "Nederlands";
+"language_danish" = "Dansk";
+
+// Database Category Translations
+"category_primary_care" = "Eerstelijnszorg";
+"category_surgical" = "Chirurgie";
+"category_medical_specialties" = "Medische specialismen";
+"category_womens_health" = "Vrouwengezondheid";
+"category_dental" = "Tandheelkunde";
+"category_eye_care" = "Oogzorg";
+"category_mental_health" = "Geestelijke gezondheid";
+"category_rehabilitation" = "Revalidatie";
+"category_aesthetic_cosmetic" = "Esthetische geneeskunde";
+"category_diagnostic" = "Diagnostiek";
+"category_emergency" = "Spoedeisend";
+"category_alternative" = "Alternatieve geneeskunde";
+"category_pharmacy" = "Apotheek";
+"category_hospital" = "Ziekenhuis";
+"category_other" = "Overig";
+
+// UI Strings
+"specialties_title" = "Specialismen";
+"clear_filter" = "Filter wissen";
+"close_button" = "Sluiten";
+"error_generic" = "Fout";
+"button_ok" = "OK";
+"button_done" = "Klaar";
+
+// Settings Screen
+"settings_account" = "Account";
+"settings_email" = "E-mailadres";
+"settings_phone" = "Telefoonnummer";
+"settings_change_password" = "Wachtwoord wijzigen";
+"settings_preferences" = "Instellingen";
+"settings_notifications" = "Meldingen";
+"settings_location_services" = "Locatieservices";
+"settings_data_privacy" = "Gegevens en privacy";
+"settings_download_data" = "Mijn gegevens downloaden";
+"settings_downloading_data" = "Gegevens worden voorbereid...";
+"settings_delete_account" = "Account verwijderen";
+"settings_delete_account_confirm" = "Mijn account verwijderen";
+"settings_cancel" = "Annuleren";
+"settings_delete_account_warning" = "Deze actie kan niet ongedaan worden gemaakt";
+"unauthorized_area" = "Onbekend gebied";
+"sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Schildklierziekte";
 "sub_hormone_replacement" = "Hormoonvervanging";
 "sub_hypertension_mgmt" = "Hypertensie-management";

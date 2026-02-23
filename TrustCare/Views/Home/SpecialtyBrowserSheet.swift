@@ -59,7 +59,7 @@ struct SpecialtyBrowserSheet: View {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: group.iconName)
                                         .foregroundStyle(.secondary)
-                                    Text(localizedCategoryName(group.category))
+                                    Text(localizationManager.localizedCategory(group.category))
                                         .font(AppFont.headline)
                                     Spacer()
                                 }
@@ -73,11 +73,11 @@ struct SpecialtyBrowserSheet: View {
                     .padding(.bottom, AppSpacing.xxl)
                 }
             }
-            .navigationTitle(String(localized: "Specialties"))
+            .navigationTitle(String(localized: "specialties_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "Close")) {
+                    Button(String(localized: "close_button")) {
                         dismiss()
                     }
                 }
@@ -86,11 +86,6 @@ struct SpecialtyBrowserSheet: View {
                 expandedCategories = Set(groupedCategories.map { $0.category })
             }
         }
-    }
-
-    private func localizedCategoryName(_ categoryEnglish: String) -> String {
-        let categoryKey = "category_" + categoryEnglish.lowercased().replacingOccurrences(of: " & ", with: "_").replacingOccurrences(of: " ", with: "_").replacingOccurrences(of: ",", with: "")
-        return NSLocalizedString(categoryKey, comment: "")
     }
 
     private var groupedCategories: [(category: String, iconName: String, specialties: [Specialty])] {

@@ -108,3 +108,61 @@
 "sub_pain_management" = "Ağrı Yönetimi";
 "sub_pre_operative_assessment" = "Ameliyat Öncesi Değerlendirme";
 "sub_post_operative_care" = "Ameliyat Sonrası Bakım";
+// App Splash
+"app_name" = "TrustCare";
+"tagline" = "Sağlık, Doğrulanmış.";
+
+// Language Settings
+"language_section_title" = "Dil";
+"language_changed_alert" = "Dil Değiştirildi";
+"language_changed_message" = "Yeni dili uygulamak için uygulamanın yeniden başlatılması gerekiyor.";
+"language_restart_now" = "Şimdi Yeniden Başlat";
+"language_later" = "Daha Sonra";
+"language_english" = "English";
+"language_turkish" = "Türkçe";
+"language_german" = "Deutsch";
+"language_polish" = "Polski";
+"language_dutch" = "Nederlands";
+"language_danish" = "Dansk";
+
+// Database Category Translations
+"category_primary_care" = "Birinci Basamak";
+"category_surgical" = "Cerrahi";
+"category_medical_specialties" = "Tıbbi Uzmanlıklar";
+"category_womens_health" = "Kadın Sağlığı";
+"category_dental" = "Diş Sağlığı";
+"category_eye_care" = "Göz Sağlığı";
+"category_mental_health" = "Ruh Sağlığı";
+"category_rehabilitation" = "Rehabilitasyon";
+"category_aesthetic_cosmetic" = "Estetik ve Kozmetik";
+"category_diagnostic" = "Tanı ve Teşhis";
+"category_emergency" = "Acil";
+"category_alternative" = "Alternatif Tıp";
+"category_pharmacy" = "Eczane";
+"category_hospital" = "Hastane";
+"category_other" = "Diğer";
+
+// UI Strings
+"specialties_title" = "Uzmanlıklar";
+"clear_filter" = "Filtreyi Temizle";
+"close_button" = "Kapat";
+"error_generic" = "Hata";
+"button_ok" = "Tamam";
+"button_done" = "Bitti";
+
+// Settings Screen
+"settings_account" = "Hesap";
+"settings_email" = "Email";
+"settings_phone" = "Telefon";
+"settings_change_password" = "Şifre Değiştir";
+"settings_preferences" = "Tercihler";
+"settings_notifications" = "Bildirimler";
+"settings_location_services" = "Konum Hizmetleri";
+"settings_data_privacy" = "Veri ve Gizlilik";
+"settings_download_data" = "Verilerimi İndir";
+"settings_downloading_data" = "Veriler hazırlanıyor...";
+"settings_delete_account" = "Hesabı Sil";
+"settings_delete_account_confirm" = "Hesabımı Sil";
+"settings_cancel" = "VazGeç";
+"settings_delete_account_warning" = "Bu işlem geri alınamaz";
+"unauthorized_area" = "Bilinmeyen alan";

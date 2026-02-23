@@ -108,3 +108,61 @@
 "sub_pain_management" = "Zarządzanie bólem";
 "sub_pre_operative_assessment" = "Ocena preoperacyjna";
 "sub_post_operative_care" = "Opieka pooperacyjna";
+// App Splash
+"app_name" = "TrustCare";
+"tagline" = "Zdrowie, Zweryfikowane.";
+
+// Language Settings
+"language_section_title" = "Język";
+"language_changed_alert" = "Język zmieniony";
+"language_changed_message" = "Aplikacja musi zostać ponownie uruchomiona, aby zastosować nowy język.";
+"language_restart_now" = "Uruchom ponownie";
+"language_later" = "Później";
+"language_english" = "English";
+"language_turkish" = "Türkçe";
+"language_german" = "Deutsch";
+"language_polish" = "Polski";
+"language_dutch" = "Nederlands";
+"language_danish" = "Dansk";
+
+// Database Category Translations
+"category_primary_care" = "Podstawowa opieka zdrowotna";
+"category_surgical" = "Chirurgia";
+"category_medical_specialties" = "Specjalizacje medyczne";
+"category_womens_health" = "Zdrowie kobiet";
+"category_dental" = "Stomatologia";
+"category_eye_care" = "Okulistyka";
+"category_mental_health" = "Zdrowie psychiczne";
+"category_rehabilitation" = "Rehabilitacja";
+"category_aesthetic_cosmetic" = "Medycyna estetyczna";
+"category_diagnostic" = "Diagnostyka";
+"category_emergency" = "Ratunkowe";
+"category_alternative" = "Medycyna alternatywna";
+"category_pharmacy" = "Apteka";
+"category_hospital" = "Szpital";
+"category_other" = "Inne";
+
+// UI Strings
+"specialties_title" = "Specjalizacje";
+"clear_filter" = "Wyczyść filtr";
+"close_button" = "Zamknij";
+"error_generic" = "Błąd";
+"button_ok" = "OK";
+"button_done" = "Gotowe";
+
+// Settings Screen
+"settings_account" = "Konto";
+"settings_email" = "E-mail";
+"settings_phone" = "Telefon";
+"settings_change_password" = "Zmień hasło";
+"settings_preferences" = "Preferencje";
+"settings_notifications" = "Powiadomienia";
+"settings_location_services" = "Usługi lokalizacji";
+"settings_data_privacy" = "Dane i prywatność";
+"settings_download_data" = "Pobierz moje dane";
+"settings_downloading_data" = "Przygotowywanie danych...";
+"settings_delete_account" = "Usuń konto";
+"settings_delete_account_confirm" = "Usuń moje konto";
+"settings_cancel" = "Anuluj";
+"settings_delete_account_warning" = "Ta akcja nie może być cofnięta";
+"unauthorized_area" = "Nieznany obszar";

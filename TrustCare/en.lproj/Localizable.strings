@@ -115,3 +115,62 @@
 "sub_pain_management" = "Pain Management";
 "sub_pre_operative_assessment" = "Pre-operative Assessment";
 "sub_post_operative_care" = "Post-operative Care";
+
+// App Splash
+"app_name" = "TrustCare";
+"tagline" = "Healthcare, Verified.";
+
+// Language Settings
+"language_section_title" = "Language";
+"language_changed_alert" = "Language Changed";
+"language_changed_message" = "The app needs to restart to apply the new language.";
+"language_restart_now" = "Restart Now";
+"language_later" = "Later";
+"language_english" = "English";
+"language_turkish" = "Türkçe";
+"language_german" = "Deutsch";
+"language_polish" = "Polski";
+"language_dutch" = "Nederlands";
+"language_danish" = "Dansk";
+
+// Database Category Translations
+"category_primary_care" = "Primary Care";
+"category_surgical" = "Surgical";
+"category_medical_specialties" = "Medical Specialties";
+"category_womens_health" = "Women's Health";
+"category_dental" = "Dental";
+"category_eye_care" = "Eye Care";
+"category_mental_health" = "Mental Health";
+"category_rehabilitation" = "Rehabilitation";
+"category_aesthetic_cosmetic" = "Aesthetic & Cosmetic";
+"category_diagnostic" = "Diagnostic";
+"category_emergency" = "Emergency";
+"category_alternative" = "Alternative";
+"category_pharmacy" = "Pharmacy";
+"category_hospital" = "Hospital";
+"category_other" = "Other";
+
+// UI Strings
+"specialties_title" = "Specialties";
+"clear_filter" = "Clear Filter";
+"close_button" = "Close";
+"error_generic" = "Error";
+"button_ok" = "OK";
+"button_done" = "Done";
+
+// Settings Screen
+"settings_account" = "Account";
+"settings_email" = "Email";
+"settings_phone" = "Phone";
+"settings_change_password" = "Change Password";
+"settings_preferences" = "Preferences";
+"settings_notifications" = "Notifications";
+"settings_location_services" = "Location Services";
+"settings_data_privacy" = "Data & Privacy";
+"settings_download_data" = "Download My Data";
+"settings_downloading_data" = "Preparing data...";
+"settings_delete_account" = "Delete Account";
+"settings_delete_account_confirm" = "Delete My Account";
+"settings_cancel" = "Cancel";
+"settings_delete_account_warning" = "This action cannot be undone";
+"unauthorized_area" = "Unknown area";

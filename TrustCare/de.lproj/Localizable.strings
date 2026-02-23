@@ -108,3 +108,61 @@
 "sub_pain_management" = "Schmerztherapie";
 "sub_pre_operative_assessment" = "Präoperative Bewertung";
 "sub_post_operative_care" = "Postoperative Versorgung";
+// App Splash
+"app_name" = "TrustCare";
+"tagline" = "Gesundheit, Verifiziert.";
+
+// Language Settings
+"language_section_title" = "Sprache";
+"language_changed_alert" = "Sprache geändert";
+"language_changed_message" = "Die App muss neu gestartet werden, um die neue Sprache anzuwenden.";
+"language_restart_now" = "Jetzt neu starten";
+"language_later" = "Später";
+"language_english" = "English";
+"language_turkish" = "Türkçe";
+"language_german" = "Deutsch";
+"language_polish" = "Polski";
+"language_dutch" = "Nederlands";
+"language_danish" = "Dansk";
+
+// Database Category Translations
+"category_primary_care" = "Hausärztliche Versorgung";
+"category_surgical" = "Chirurgie";
+"category_medical_specialties" = "Fachärztliche Medizin";
+"category_womens_health" = "Frauengesundheit";
+"category_dental" = "Zahnmedizin";
+"category_eye_care" = "Augenheilkunde";
+"category_mental_health" = "Psychische Gesundheit";
+"category_rehabilitation" = "Rehabilitation";
+"category_aesthetic_cosmetic" = "Ästhetik und Kosmetik";
+"category_diagnostic" = "Diagnostik";
+"category_emergency" = "Notfall";
+"category_alternative" = "Alternativmedizin";
+"category_pharmacy" = "Apotheke";
+"category_hospital" = "Krankenhaus";
+"category_other" = "Sonstiges";
+
+// UI Strings
+"specialties_title" = "Fachgebiete";
+"clear_filter" = "Filter löschen";
+"close_button" = "Schließen";
+"error_generic" = "Fehler";
+"button_ok" = "OK";
+"button_done" = "Fertig";
+
+// Settings Screen
+"settings_account" = "Konto";
+"settings_email" = "E-Mail";
+"settings_phone" = "Telefon";
+"settings_change_password" = "Passwort ändern";
+"settings_preferences" = "Einstellungen";
+"settings_notifications" = "Benachrichtigungen";
+"settings_location_services" = "Ortungsdienste";
+"settings_data_privacy" = "Daten und Datenschutz";
+"settings_download_data" = "Meine Daten herunterladen";
+"settings_downloading_data" = "Daten werden vorbereitet...";
+"settings_delete_account" = "Konto löschen";
+"settings_delete_account_confirm" = "Mein Konto löschen";
+"settings_cancel" = "Abbrechen";
+"settings_delete_account_warning" = "Diese Aktion kann nicht rükgängig gemacht werden";
+"unauthorized_area" = "Unbekanntes Gebiet";

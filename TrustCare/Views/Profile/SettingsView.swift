@@ -12,6 +12,7 @@ struct SettingsView: View {
     @State private var isExporting: Bool = false
     @State private var exportFileURL: URL?
     @State private var showShareSheet: Bool = false
+    @State private var showLanguageChangeAlert: Bool = false
 
     @AppStorage("settings_notifications_enabled") private var notificationsEnabled: Bool = true
     @AppStorage("settings_location_services_enabled") private var locationServicesEnabled: Bool = true
@@ -35,21 +36,29 @@ struct SettingsView: View {
             email = await AuthService.currentUserEmail() ?? ""
             phone = profileVM.profile?.phone ?? ""
         }
-        .confirmationDialog("Hesabı Sil", isPresented: $showDeleteConfirm) {
-            Button("Hesabımı Sil", role: .destructive) {
+        .confirmationDialog(String(localized: "settings_delete_account"), isPresented: $showDeleteConfirm) {
+            Button(String(localized: "settings_delete_account_confirm"), role: .destructive) {
                 Task { await profileVM.deleteAccount() }
             }
-            Button("Vazgeç", role: .cancel) { }
+            Button(String(localized: "settings_cancel"), role: .cancel) { }
         } message: {
-            Text("Bu işlem geri alınamaz")
+            Text(String(localized: "settings_delete_account_warning"))
         }
-        .alert("Hata", isPresented: Binding(
+        .alert(String(localized: "error_generic"), isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button("Tamam") { profileVM.errorMessage = nil }
+            Button(String(localized: "button_ok")) { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
+        }
+        .alert(String(localized: "language_changed_alert"), isPresented: $showLanguageChangeAlert) {
+            Button(String(localized: "language_restart_now")) {
+                exit(0)
+            }
+            Button(String(localized: "language_later"), role: .cancel) { }
+        } message: {
+            Text(String(localized: "language_changed_message"))
         }
         .sheet(isPresented: $showShareSheet) {
             if let exportFileURL {
@@ -99,29 +108,29 @@ struct SettingsView: View {
     }
 
     private var accountSection: some View {
-        Section("Hesap") {
+        Section(String(localized: "settings_account")) {
             HStack {
-                Text("Email")
+                Text(String(localized: "settings_email"))
                 Spacer()
                 Text(email.isEmpty ? "-" : email)
                     .foregroundStyle(.secondary)
             }
 
             HStack {
-                Text("Phone")
+                Text(String(localized: "settings_phone"))
                 Spacer()
                 Text(phone.isEmpty ? "-" : phone)
                     .foregroundStyle(.secondary)
             }
 
-            NavigationLink("Şifre Değiştir") {
+            NavigationLink(String(localized: "settings_change_password")) {
                 ChangePasswordView(email: email)
             }
         }
     }
 
     private var languageSection: some View {
-        Section(String(localized: "Language")) {
+        Section(String(localized: "language_section_title")) {
             ForEach(LocalizationManager.supportedLanguages) { language in
                 languageRow(language)
             }
@@ -130,27 +139,30 @@ struct SettingsView: View {
 
     private func languageRow(_ language: LocalizationManager.AppLanguage) -> some View {
         Button {
-            localizationManager.currentLanguage = language.code
-            Task {
-                guard let session = try? await SupabaseManager.shared.client.auth.session else {
-                    return
-                }
+            if localizationManager.effectiveLanguage != language.code {
+                localizationManager.changeLanguage(to: language.code)
+                Task {
+                    guard let session = try? await SupabaseManager.shared.client.auth.session else {
+                        return
+                    }
 
-                let userId = session.user.id.uuidString
-                _ = try? await SupabaseManager.shared.client
-                    .from("profiles")
-                    .update(["preferred_language": language.code])
-                    .eq("id", value: userId)
-                    .execute()
+                    let userId = session.user.id.uuidString
+                    _ = try? await SupabaseManager.shared.client
+                        .from("profiles")
+                        .update(["preferred_language": language.code])
+                        .eq("id", value: userId)
+                        .execute()
+                }
+                showLanguageChangeAlert = true
             }
         } label: {
             HStack {
-                Text(flag(for: language.flag))
+                Text(language.flag)
                     .font(.title3)
                 Text(language.name)
                     .foregroundStyle(.primary)
                 Spacer()
-                if localizationManager.currentLanguage == language.code {
+                if localizationManager.effectiveLanguage == language.code {
                     Image(systemName: "checkmark")
                         .foregroundStyle(AppColor.trustBlue)
                         .fontWeight(.semibold)
@@ -160,40 +172,32 @@ struct SettingsView: View {
     }
 
     private var preferencesSection: some View {
-        Section("Tercihler") {
-            Toggle("Bildirimler", isOn: $notificationsEnabled)
-            Toggle("Konum Hizmetleri", isOn: $locationServicesEnabled)
+        Section(String(localized: "settings_preferences")) {
+            Toggle(String(localized: "settings_notifications"), isOn: $notificationsEnabled)
+            Toggle(String(localized: "settings_location_services"), isOn: $locationServicesEnabled)
         }
     }
 
     private var dataPrivacySection: some View {
-        Section("Veri ve Gizlilik") {
+        Section(String(localized: "settings_data_privacy")) {
             Button {
                 Task { await exportMyData() }
             } label: {
                 if isExporting {
                     HStack(spacing: AppSpacing.sm) {
                         ProgressView()
-                        Text("Veriler hazırlanıyor")
+                        Text(String(localized: "settings_downloading_data"))
                     }
                 } else {
-                    Text("Verilerimi İndir")
+                    Text(String(localized: "settings_download_data"))
                 }
             }
             .disabled(isExporting)
 
-            Button("Hesabımı Sil", role: .destructive) {
+            Button(String(localized: "settings_delete_account"), role: .destructive) {
                 showDeleteConfirm = true
             }
         }
-    }
-
-    private func flag(for countryCode: String) -> String {
-        countryCode
-            .unicodeScalars
-            .compactMap { Unicode.Scalar(127397 + $0.value) }
-            .map { String($0) }
-            .joined()
     }
 }
 

@@ -99,6 +99,75 @@
 "sub_lupus" = "Lupus";
 "sub_vasculitis" = "Vaskulitis";
 "sub_diabetes" = "Diabetes";
+"sub_thyroid_disease" = "Skjoldbruskjertelsygdom";
+"sub_hormone_replacement" = "Hormonudskiftningsbehandling";
+"sub_hypertension_mgmt" = "Hypertensionsstyring";
+"sub_chronic_kidney_disease" = "Kronisk nyrersygdom";
+"sub_dialysis" = "Dialyse";
+"sub_kidney_transplant" = "Nyretransplantation";
+"sub_pain_management" = "Smertebehandling";
+"sub_pre_operative_assessment" = "Præoperativ vurdering";
+"sub_post_operative_care" = "Postoperativ pleje";
+
+// App Splash
+"app_name" = "TrustCare";
+"tagline" = "Sundhed, Verificeret.";
+
+// Language Settings
+"language_section_title" = "Sprog";
+"language_changed_alert" = "Sprog ændret";
+"language_changed_message" = "Appen skal genstartes for at anvende det nye sprog.";
+"language_restart_now" = "Genstart nu";
+"language_later" = "Senere";
+"language_english" = "English";
+"language_turkish" = "Türkçe";
+"language_german" = "Deutsch";
+"language_polish" = "Polski";
+"language_dutch" = "Nederlands";
+"language_danish" = "Dansk";
+
+// Database Category Translations
+"category_primary_care" = "Almen praksis";
+"category_surgical" = "Kirurgi";
+"category_medical_specialties" = "Medicinske specialer";
+"category_womens_health" = "Kvinders sundhed";
+"category_dental" = "Tandpleje";
+"category_eye_care" = "Øjenpleje";
+"category_mental_health" = "Mental sundhed";
+"category_rehabilitation" = "Genoptræning";
+"category_aesthetic_cosmetic" = "Æstetik og kosmetik";
+"category_diagnostic" = "Diagnostik";
+"category_emergency" = "Akut";
+"category_alternative" = "Alternativ behandling";
+"category_pharmacy" = "Apotek";
+"category_hospital" = "Hospital";
+"category_other" = "Øvrige";
+
+// UI Strings
+"specialties_title" = "Specialiteter";
+"clear_filter" = "Ryd filter";
+"close_button" = "Luk";
+"error_generic" = "Fejl";
+"button_ok" = "OK";
+"button_done" = "Udført";
+
+// Settings Screen
+"settings_account" = "Konto";
+"settings_email" = "E-mail";
+"settings_phone" = "Telefon";
+"settings_change_password" = "Ændr adgangskode";
+"settings_preferences" = "Indstillinger";
+"settings_notifications" = "Meddelelser";
+"settings_location_services" = "Lokationstjenester";
+"settings_data_privacy" = "Data og privatlivspolitik";
+"settings_download_data" = "Download mine data";
+"settings_downloading_data" = "Data bliver forberedt...";
+"settings_delete_account" = "Slet konto";
+"settings_delete_account_confirm" = "Slet min konto";
+"settings_cancel" = "Annuller";
+"settings_delete_account_warning" = "Denne handling kan ikke fortrydes";
+"unauthorized_area" = "Ukendt område";
+"sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Skjoldbruskkirtelsygdom";
 "sub_hormone_replacement" = "Hormonerstatning";
 "sub_hypertension_mgmt" = "Hypertensionsbehandling";
