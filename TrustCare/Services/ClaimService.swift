@@ -74,17 +74,16 @@ enum ClaimService {
             return nil
         }
         
-        let response: PostgrestResponse<ProviderClaim> = try await client
+        let response: PostgrestResponse<[ProviderClaim]> = try await client
             .from("provider_claims")
             .select()
             .eq("provider_id", value: providerId.uuidString)
             .eq("claimant_user_id", value: session.user.id.uuidString)
             .order("created_at", ascending: false)
             .limit(1)
-            .maybeSingle()
             .execute()
         
-        return response.value
+        return response.value.first
     }
     
     static func hasPendingClaim(providerId: UUID) async throws -> Bool {

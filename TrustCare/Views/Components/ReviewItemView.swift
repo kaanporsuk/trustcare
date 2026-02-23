@@ -1,4 +1,6 @@
 import SwiftUI
+import Supabase
+import Auth
 
 struct ReviewItemView: View {
     let review: Review
@@ -192,7 +194,6 @@ struct ReviewItemView: View {
             }
         }
     }
-}
 
     private var avatarView: some View {
         Group {

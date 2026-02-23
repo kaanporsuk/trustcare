@@ -537,15 +537,15 @@ enum ReviewService {
         }
         let userId = session.user.id
         
-        let response: PostgrestResponse<ReviewVote> = try await client
+        let response: PostgrestResponse<[ReviewVote]> = try await client
             .from("review_votes")
             .select()
             .eq("review_id", value: reviewId.uuidString)
             .eq("user_id", value: userId.uuidString)
-            .maybeSingle()
+            .limit(1)
             .execute()
         
-        return response.value?.isHelpful
+        return response.value.first?.isHelpful
     }
     
     static func getHelpfulCount(reviewId: UUID) async throws -> Int {

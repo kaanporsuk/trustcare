@@ -228,7 +228,7 @@ final class RehberViewModel: ObservableObject {
     
     func deleteSession(id: UUID) async throws {
         guard let authSession = await AuthService.currentSession() else {
-            throw AppError.unauthorized
+            throw AppError.authError(String(localized: "Please sign in to continue."))
         }
         
         try await SupabaseManager.shared.client
@@ -250,7 +250,7 @@ final class RehberViewModel: ObservableObject {
     
     func loadSessionMessages(sessionId: UUID) async throws {
         guard let authSession = await AuthService.currentSession() else {
-            throw AppError.unauthorized
+            throw AppError.authError(String(localized: "Please sign in to continue."))
         }
         
         isLoading = true
