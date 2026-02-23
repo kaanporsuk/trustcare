@@ -89,7 +89,7 @@ struct SpecialtyBrowserSheet: View {
 
     private func localizedCategoryName(_ categoryEnglish: String) -> String {
         let categoryKey = "category_" + categoryEnglish.lowercased().replacingOccurrences(of: " & ", with: "_").replacingOccurrences(of: " ", with: "_").replacingOccurrences(of: ",", with: "")
-        return String(localized: LocalizationValue(categoryKey))
+        return NSLocalizedString(categoryKey, comment: "")
     }
 
     private var groupedCategories: [(category: String, iconName: String, specialties: [Specialty])] {

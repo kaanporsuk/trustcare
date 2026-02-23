@@ -376,6 +376,23 @@ final class HomeViewModel: ObservableObject {
         } catch {
             let errorMsg = localizedErrorMessage(error)
             print("❌ searchProviders failed: \(errorMsg)")
+            print("  Full error: \(error)")
+            print("  Error type: \(type(of: error))")
+            if let decodingError = error as? DecodingError {
+                print("  Decoding error detected!")
+                switch decodingError {
+                case .keyNotFound(let key, let context):
+                    print("    Missing key: \(key.stringValue) in \(context.codingPath)")
+                case .typeMismatch(let type, let context):
+                    print("    Type mismatch for \(type) at \(context.codingPath)")
+                case .valueNotFound(let type, let context):
+                    print("    Value not found for \(type) at \(context.codingPath)")
+                case .dataCorrupted(let context):
+                    print("    Data corrupted at \(context.codingPath)")
+                @unknown default:
+                    print("    Unknown decoding error")
+                }
+            }
             errorMessage = errorMsg
         }
         isLoading = false
