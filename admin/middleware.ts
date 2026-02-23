@@ -24,7 +24,14 @@ export async function middleware(request: NextRequest) {
   });
 
   const pathname = request.nextUrl.pathname;
-  if (pathname.startsWith("/login")) {
+  
+  // Allow public routes without authentication
+  if (
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/provider/") ||
+    pathname.startsWith("/p/") ||
+    pathname.startsWith("/providers")
+  ) {
     return response;
   }
 

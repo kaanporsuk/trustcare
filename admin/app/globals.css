@@ -3,6 +3,18 @@
 :root {
   --background: #f7f8fb;
   --foreground: #0f172a;
+  
+  /* TrustCare brand colors */
+  --trust-blue: #0055ff;
+  --trust-blue-light: #4d88ff;
+  --color-success: #34c759;
+  --color-warning: #ff9500;
+  --color-error: #ff3b30;
+  --color-star: #ffcc00;
+  --color-bg-light: #f2f2f7;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #000000;
+  --color-text-secondary: #8e8e93;
 }
 
 @theme inline {
@@ -10,6 +22,18 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-jakarta);
   --font-mono: var(--font-jetbrains);
+  
+  /* Add TrustCare colors */
+  --color-trust-blue: var(--trust-blue);
+  --color-trust-blue-light: var(--trust-blue-light);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-star: var(--color-star);
+  --color-bg-light: var(--color-bg-light);
+  --color-card-bg: var(--color-card-bg);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
 }
 
 body {
