@@ -1,63 +1,86 @@
 import Combine
-import Foundation
 import SwiftUI
 
-enum AppLanguage: String, CaseIterable, Identifiable {
-    case en
-    case tr
-    case de
-    case pl
-    case nl
-
-    var id: String { rawValue }
-
-    var nativeName: String {
-        switch self {
-        case .en: return "English"
-        case .tr: return "Türkçe"
-        case .de: return "Deutsch"
-        case .pl: return "Polski"
-        case .nl: return "Nederlands"
-        }
-    }
-}
-
 final class LocalizationManager: ObservableObject {
-    static let shared = LocalizationManager()
 
-    @Published private(set) var currentLanguage: AppLanguage
+    // ── Supported languages ─────────────────────────────────
+    struct AppLanguage: Identifiable, Hashable {
+        let code: String
+        let name: String          // Native name (shown in picker)
+        let englishName: String   // English name (for accessibility)
+        let flag: String          // Country code for flag emoji or image
+        var id: String { code }
+    }
 
-    private let languageDefaultsKey = "AppLanguage"
+    static let supportedLanguages: [AppLanguage] = [
+        AppLanguage(code: "en", name: "English",    englishName: "English",  flag: "GB"),
+        AppLanguage(code: "tr", name: "Türkçe",     englishName: "Turkish",  flag: "TR"),
+        AppLanguage(code: "de", name: "Deutsch",     englishName: "German",   flag: "DE"),
+        AppLanguage(code: "pl", name: "Polski",      englishName: "Polish",   flag: "PL"),
+        AppLanguage(code: "nl", name: "Nederlands",  englishName: "Dutch",    flag: "NL"),
+        AppLanguage(code: "da", name: "Dansk",       englishName: "Danish",   flag: "DK"),
+    ]
 
-    private init() {
-        let defaults = UserDefaults.standard
+    static let supportedCodes: Set<String> = Set(supportedLanguages.map(\.code))
 
-        if let savedCode = defaults.string(forKey: languageDefaultsKey),
-           let savedLanguage = AppLanguage(rawValue: savedCode) {
-            currentLanguage = savedLanguage
-        } else {
-            let detected = Self.detectSystemLanguage()
-            currentLanguage = detected
-            defaults.set(detected.rawValue, forKey: languageDefaultsKey)
+    // ── Persisted language ──────────────────────────────────
+    @AppStorage("appLanguage") var currentLanguage: String = LocalizationManager.detectSystemLanguage() {
+        didSet {
+            objectWillChange.send()
+            Bundle.setLanguage(currentLanguage)
         }
     }
 
-    func setLanguage(_ lang: AppLanguage) {
-        guard currentLanguage != lang else { return }
-        currentLanguage = lang
-        UserDefaults.standard.set(lang.rawValue, forKey: languageDefaultsKey)
+    // ── Detect system language on first launch ──────────────
+    static func detectSystemLanguage() -> String {
+        // Check the user's preferred languages from iOS Settings
+        for preferred in Locale.preferredLanguages {
+            // Extract the language code (e.g., "de-DE" → "de", "tr" → "tr")
+            let code = Locale(identifier: preferred).language.languageCode?.identifier ?? ""
+            if supportedCodes.contains(code) {
+                return code
+            }
+        }
+        // Fallback to English
+        return "en"
     }
 
+    // ── Convenience ─────────────────────────────────────────
     var layoutDirection: LayoutDirection {
+        // All current languages are LTR
         .leftToRight
     }
 
-    private static func detectSystemLanguage() -> AppLanguage {
-        guard let preferredLanguage = Locale.preferredLanguages.first?.lowercased() else {
-            return .en
+    /// Returns the correct specialty name column for the active language.
+    /// Usage: specialty[languageColumn] on the Supabase query.
+    var specialtyNameColumn: String {
+        switch currentLanguage {
+        case "tr": return "name_tr"
+        case "de": return "name_de"
+        case "pl": return "name_pl"
+        case "nl": return "name_nl"
+        case "da": return "name_da"
+        default:   return "name"    // English = canonical name column
         }
+    }
 
-        let prefix = String(preferredLanguage.prefix(2))
-        return AppLanguage(rawValue: prefix) ?? .en
+    /// Resolves the best available translated name for a specialty.
+    /// Pass in the full specialty object (with all name_xx fields).
+    func resolvedSpecialtyName(
+        canonical: String,
+        tr: String? = nil,
+        de: String? = nil,
+        pl: String? = nil,
+        nl: String? = nil,
+        da: String? = nil
+    ) -> String {
+        switch currentLanguage {
+        case "tr": return tr ?? canonical
+        case "de": return de ?? canonical
+        case "pl": return pl ?? canonical
+        case "nl": return nl ?? canonical
+        case "da": return da ?? canonical
+        default:   return canonical
+        }
     }
 }

@@ -11,6 +11,7 @@ struct ProviderDetailView: View {
     @State private var isSaved: Bool = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var authVM: AuthViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
         ScrollView {
@@ -291,7 +292,7 @@ struct ProviderDetailView: View {
                 }
             }
 
-            Text(detailVM.provider?.specialty ?? "")
+            Text(localizedProviderSpecialty)
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
 
@@ -346,6 +347,27 @@ struct ProviderDetailView: View {
         }
         .padding(.horizontal, AppSpacing.lg)
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var localizedProviderSpecialty: String {
+        guard let provider = detailVM.provider else { return "" }
+
+        guard let specialty = SpecialtyService.shared.specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0 }
+            .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+
+        return specialty.resolvedName(using: localizationManager)
     }
 
     private var quickActions: some View {

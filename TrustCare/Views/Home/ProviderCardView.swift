@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ProviderCardView: View {
     let provider: Provider
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
         NavigationLink {
@@ -21,7 +22,7 @@ struct ProviderCardView: View {
                         Spacer()
                     }
 
-                    Text(provider.specialty)
+                    Text(localizedProviderSpecialty)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
@@ -59,5 +60,24 @@ struct ProviderCardView: View {
             .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
         }
         .buttonStyle(.plain)
+    }
+
+    private var localizedProviderSpecialty: String {
+        guard let specialty = SpecialtyService.shared.specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0 }
+            .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+
+        return specialty.resolvedName(using: localizationManager)
     }
 }

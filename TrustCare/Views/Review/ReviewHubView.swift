@@ -5,6 +5,7 @@ import UIKit
 struct ReviewHubView: View {
     @StateObject private var viewModel = ReviewSubmissionViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     @State private var providerSearchText: String = ""
     @State private var providerResults: [Provider] = []
@@ -142,11 +143,11 @@ struct ReviewHubView: View {
 
                         ForEach(specialtyResults.prefix(4)) { specialty in
                             Button {
-                                providerSearchText = specialty.localizedName
+                                providerSearchText = specialty.resolvedName(using: localizationManager)
                             } label: {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: specialty.iconName)
-                                    Text(specialty.localizedName)
+                                    Text(specialty.resolvedName(using: localizationManager))
                                         .font(AppFont.body)
                                     Spacer()
                                     Text("Uzmanlık")
@@ -408,9 +409,7 @@ struct ReviewHubView: View {
         let normalized = trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
         specialtyResults = specialtyService.specialties
             .filter { specialty in
-                let n1 = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                let n2 = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                return n1.contains(normalized) || (n2?.contains(normalized) ?? false)
+                specialty.matchesSearch(normalized)
             }
             .sorted { $0.displayOrder < $1.displayOrder }
     }
@@ -437,6 +436,7 @@ struct ReviewHubView: View {
 
 private struct ProviderMiniCard: View {
     let provider: Provider
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
         HStack(spacing: AppSpacing.sm) {
@@ -446,7 +446,7 @@ private struct ProviderMiniCard: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(provider.name)
                     .font(AppFont.body)
-                Text(provider.specialty)
+                Text(localizedProviderSpecialty)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }
@@ -456,10 +456,30 @@ private struct ProviderMiniCard: View {
         .background(AppColor.cardBackground)
         .cornerRadius(AppRadius.card)
     }
+
+    private var localizedProviderSpecialty: String {
+        guard let specialty = SpecialtyService.shared.specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0 }
+            .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+
+        return specialty.resolvedName(using: localizationManager)
+    }
 }
 
 private struct ProviderMiniRow: View {
     let provider: Provider
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
         HStack(spacing: AppSpacing.sm) {
@@ -470,12 +490,31 @@ private struct ProviderMiniRow: View {
                 Text(provider.name)
                     .font(AppFont.body)
                     .foregroundStyle(.primary)
-                Text(provider.specialty)
+                Text(localizedProviderSpecialty)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer()
         }
         .padding(.vertical, 4)
+    }
+
+    private var localizedProviderSpecialty: String {
+        guard let specialty = SpecialtyService.shared.specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0 }
+            .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+
+        return specialty.resolvedName(using: localizationManager)
     }
 }

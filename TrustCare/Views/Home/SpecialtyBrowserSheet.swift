@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SpecialtyBrowserSheet: View {
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var localizationManager: LocalizationManager
     let selectedSpecialty: Specialty?
     let onSelect: (Specialty) -> Void
     let onClear: () -> Void
@@ -98,13 +99,7 @@ struct SpecialtyBrowserSheet: View {
 
         let filtered = specialtyService.specialties.filter { specialty in
             guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return true }
-            let name = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-            let nameTr = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-            let category = specialty.category.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-            return name.contains(query)
-                || (nameTr?.contains(query) ?? false)
-                || category.contains(query)
-                || (specialty.subcategory?.lowercased().contains(query) ?? false)
+            return specialty.matchesSearch(query)
         }
 
         let grouped = Dictionary(grouping: filtered, by: { $0.category })
@@ -130,6 +125,7 @@ private struct SpecialtyRow: View {
     let specialty: Specialty
     let isSelected: Bool
     let action: () -> Void
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
         Button(action: action) {
@@ -137,7 +133,7 @@ private struct SpecialtyRow: View {
                 Image(systemName: specialty.iconName)
                     .foregroundStyle(.secondary)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(specialty.localizedName)
+                    Text(specialty.resolvedName(using: localizationManager))
                         .font(AppFont.body)
                         .foregroundStyle(.primary)
                 }

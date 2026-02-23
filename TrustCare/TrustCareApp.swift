@@ -27,13 +27,14 @@ enum AppRoute: Hashable {
 @main
 struct TrustCareApp: App {
     @Environment(\.scenePhase) private var scenePhase
-    @StateObject private var localizationManager = LocalizationManager.shared
+    @StateObject private var localizationManager = LocalizationManager()
     @StateObject private var authViewModel = AuthViewModel()
     @State private var appState: AppState = .splash
     @State private var path = NavigationPath()
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
     init() {
+        Bundle.setLanguage(LocalizationManager.detectSystemLanguage())
         Task {
             await SpecialtyService.shared.loadSpecialties()
         }
@@ -64,10 +65,13 @@ struct TrustCareApp: App {
             }
             .dismissKeyboardOnTap()
             .environment(\.layoutDirection, localizationManager.layoutDirection)
-            .environment(\.locale, Locale(identifier: localizationManager.currentLanguage.rawValue))
+            .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
             .preferredColorScheme(preferredColorScheme)
+            .onAppear {
+                Bundle.setLanguage(localizationManager.currentLanguage)
+            }
             .onOpenURL { url in
                 handleDeepLink(url)
             }

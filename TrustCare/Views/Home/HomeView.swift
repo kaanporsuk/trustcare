@@ -5,6 +5,7 @@ import CoreLocation
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @State private var displayName: String = String(localized: "Anonymous")
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
@@ -181,13 +182,13 @@ struct HomeView: View {
                         ForEach(homeVM.specialtySuggestions.prefix(4)) { specialty in
                             Button {
                                 selectedSpecialty = specialty
-                                homeVM.searchText = specialty.localizedName
+                                homeVM.searchText = specialty.resolvedName(using: localizationManager)
                                 homeVM.clearSuggestions()
                                 Task { await homeVM.applySpecialtyFilter(specialty) }
                             } label: {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: specialty.iconName)
-                                    Text(specialty.localizedName)
+                                    Text(specialty.resolvedName(using: localizationManager))
                                         .font(AppFont.body)
                                     Spacer()
                                 }
@@ -241,7 +242,7 @@ struct HomeView: View {
                 }
 
                 ForEach(Array(specialtyService.popularSpecialties().prefix(20))) { specialty in
-                    specialtyChip(title: specialty.localizedName, isSelected: selectedSpecialty?.id == specialty.id) {
+                    specialtyChip(title: specialty.resolvedName(using: localizationManager), isSelected: selectedSpecialty?.id == specialty.id) {
                         selectedSpecialty = specialty
                         Task { await homeVM.applySpecialtyFilter(specialty) }
                     }

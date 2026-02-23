@@ -3,7 +3,7 @@ import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
-    @EnvironmentObject var locManager: LocalizationManager
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     @State private var email: String = ""
     @State private var phone: String = ""
@@ -14,7 +14,6 @@ struct SettingsView: View {
 
     @AppStorage("settings_notifications_enabled") private var notificationsEnabled: Bool = true
     @AppStorage("settings_location_services_enabled") private var locationServicesEnabled: Bool = true
-    @State private var selectedLanguage: AppLanguage = .en
 
     var body: some View {
         Form {
@@ -38,17 +37,36 @@ struct SettingsView: View {
                 }
             }
 
-            Section("Tercihler") {
-                Picker("Dil", selection: $selectedLanguage) {
-                    ForEach(AppLanguage.allCases) { language in
-                        Text(language.nativeName).tag(language)
+            Section(String(localized: "Language")) {
+                ForEach(LocalizationManager.supportedLanguages) { lang in
+                    Button {
+                        localizationManager.currentLanguage = lang.code
+                        // Also update Supabase profile
+                        Task {
+                            try? await SupabaseManager.shared.client
+                                .from("profiles")
+                                .update(["preferred_language": lang.code])
+                                .eq("id", SupabaseManager.shared.client.auth.session?.user.id.uuidString ?? "")
+                                .execute()
+                        }
+                    } label: {
+                        HStack {
+                            Text(flag(for: lang.flag))
+                                .font(.title3)
+                            Text(lang.name)
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            if localizationManager.currentLanguage == lang.code {
+                                Image(systemName: "checkmark")
+                                    .foregroundStyle(AppColor.trustBlue)
+                                    .fontWeight(.semibold)
+                            }
+                        }
                     }
                 }
-                .onChange(of: selectedLanguage) { _, newLanguage in
-                    locManager.setLanguage(newLanguage)
-                    Task { await profileVM.updateLanguage(newLanguage.rawValue) }
-                }
+            }
 
+            Section("Tercihler") {
                 Toggle("Bildirimler", isOn: $notificationsEnabled)
                 Toggle("Konum Hizmetleri", isOn: $locationServicesEnabled)
             }
@@ -84,7 +102,6 @@ struct SettingsView: View {
             }
             email = await AuthService.currentUserEmail() ?? ""
             phone = profileVM.profile?.phone ?? ""
-            selectedLanguage = locManager.currentLanguage
         }
         .confirmationDialog("Hesabı Sil", isPresented: $showDeleteConfirm) {
             Button("Hesabımı Sil", role: .destructive) {
@@ -147,6 +164,14 @@ struct SettingsView: View {
         } catch {
             profileVM.errorMessage = error.localizedDescription
         }
+    }
+
+    private func flag(for countryCode: String) -> String {
+        countryCode
+            .unicodeScalars
+            .compactMap { Unicode.Scalar(127397 + $0.value) }
+            .map { String($0) }
+            .joined()
     }
 }
 

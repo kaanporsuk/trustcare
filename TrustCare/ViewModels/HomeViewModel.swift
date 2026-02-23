@@ -298,9 +298,16 @@ final class HomeViewModel: ObservableObject {
             .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
 
         let match = specialties.first { specialty in
-            let n1 = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-            let n2 = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-            return n1 == normalizedTarget || n2 == normalizedTarget
+            [
+                specialty.name,
+                specialty.nameTr,
+                specialty.nameDe,
+                specialty.namePl,
+                specialty.nameNl,
+                specialty.nameDa,
+            ]
+            .compactMap { $0?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR")) }
+            .contains(normalizedTarget)
         }
 
         selectedSpecialtyName = match?.name ?? specialtyName
@@ -425,9 +432,7 @@ final class HomeViewModel: ObservableObject {
         let query = trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
         specialtySuggestions = specialties
             .filter { specialty in
-                let name = specialty.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                let nameTr = specialty.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                return name.contains(query) || (nameTr?.contains(query) ?? false)
+                specialty.matchesSearch(query)
             }
             .sorted { $0.displayOrder < $1.displayOrder }
             .prefix(8)

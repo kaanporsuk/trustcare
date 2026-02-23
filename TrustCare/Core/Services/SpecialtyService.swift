@@ -23,7 +23,7 @@ final class SpecialtyService: ObservableObject {
         do {
             let response: [Specialty] = try await SupabaseManager.shared.client
                 .from("specialties")
-                .select()
+                .select("id, name, name_tr, name_de, name_pl, name_nl, name_da, category, subcategory, icon_name, survey_type, color_hex, display_order, is_popular, is_active")
                 .eq("is_active", value: true)
                 .order("display_order")
                 .execute()
@@ -56,13 +56,35 @@ final class SpecialtyService: ObservableObject {
             return inferSurveyTypeFromKeywords(specialtyName)
         }
 
-        let lower = specialtyName.lowercased()
+        let lower = specialtyName.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
 
-        if let match = specialties.first(where: { $0.name.lowercased() == lower }) {
+        if let match = specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR")) }
+            .contains(lower)
+        }) {
             return match.surveyType
         }
 
-        if let match = specialties.first(where: { lower.contains($0.name.lowercased()) }) {
+        if let match = specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR")) }
+            .contains { lower.contains($0) }
+        }) {
             return match.surveyType
         }
 

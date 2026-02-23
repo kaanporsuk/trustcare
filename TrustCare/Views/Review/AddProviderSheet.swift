@@ -5,6 +5,7 @@ import SwiftUI
 struct AddProviderSheet: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     let onComplete: (Provider) -> Void
 
@@ -54,7 +55,7 @@ struct AddProviderSheet: View {
                         HStack {
                             Text("Uzmanlık")
                             Spacer()
-                            Text(selectedSpecialty?.name ?? "Seç")
+                            Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? "Seç")
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -259,6 +260,7 @@ private struct PlaceSuggestion: Identifiable {
 private struct SpecialtyPickerSheet: View {
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     let selected: Specialty?
     let onSelect: (Specialty) -> Void
@@ -278,9 +280,9 @@ private struct SpecialtyPickerSheet: View {
                                 HStack {
                                     Image(systemName: specialty.iconName)
                                     VStack(alignment: .leading, spacing: 2) {
-                                        Text(specialty.name)
-                                        if let nameTr = specialty.nameTr, !nameTr.isEmpty {
-                                            Text(nameTr)
+                                        Text(specialty.resolvedName(using: localizationManager))
+                                        if specialty.name != specialty.resolvedName(using: localizationManager) {
+                                            Text(specialty.name)
                                                 .font(AppFont.footnote)
                                                 .foregroundStyle(.secondary)
                                         }
@@ -313,9 +315,7 @@ private struct SpecialtyPickerSheet: View {
         let normalized = query.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
         return groups.compactMap { group in
             let filtered = group.items.filter { item in
-                let n1 = item.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                let n2 = item.nameTr?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                return n1.contains(normalized) || (n2?.contains(normalized) ?? false)
+                item.matchesSearch(normalized)
             }
             return filtered.isEmpty ? nil : (category: group.category, items: filtered)
         }

@@ -45,7 +45,7 @@ enum SurveyConfigurations {
     }
 
     private static func localized(_ key: String, fallback: String) -> String {
-        let languageCode = LocalizationManager.shared.currentLanguage.rawValue
+        let languageCode = UserDefaults.standard.string(forKey: "appLanguage") ?? LocalizationManager.detectSystemLanguage()
         guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
               let bundle = Bundle(path: path) else {
             return fallback

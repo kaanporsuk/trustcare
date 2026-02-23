@@ -550,7 +550,7 @@ enum ProviderService {
         do {
             let response: PostgrestResponse<[Specialty]> = try await client
                 .from("specialties")
-                .select("id, name, category, subcategory, icon_name, display_order, is_popular, is_active")
+                .select("id, name, name_tr, name_de, name_pl, name_nl, name_da, category, subcategory, icon_name, survey_type, color_hex, display_order, is_popular, is_active")
                 .eq("is_active", value: true)
                 .order("display_order", ascending: true)
                 .execute()
