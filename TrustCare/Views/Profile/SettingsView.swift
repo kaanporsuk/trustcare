@@ -17,79 +17,10 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section("Hesap") {
-                HStack {
-                    Text("Email")
-                    Spacer()
-                    Text(email.isEmpty ? "-" : email)
-                        .foregroundStyle(.secondary)
-                }
-
-                HStack {
-                    Text("Phone")
-                    Spacer()
-                    Text(phone.isEmpty ? "-" : phone)
-                        .foregroundStyle(.secondary)
-                }
-
-                NavigationLink("Şifre Değiştir") {
-                    ChangePasswordView(email: email)
-                }
-            }
-
-            Section(String(localized: "Language")) {
-                ForEach(LocalizationManager.supportedLanguages) { lang in
-                    Button {
-                        localizationManager.currentLanguage = lang.code
-                        // Also update Supabase profile
-                        Task {
-                            try? await SupabaseManager.shared.client
-                                .from("profiles")
-                                .update(["preferred_language": lang.code])
-                                .eq("id", SupabaseManager.shared.client.auth.session?.user.id.uuidString ?? "")
-                                .execute()
-                        }
-                    } label: {
-                        HStack {
-                            Text(flag(for: lang.flag))
-                                .font(.title3)
-                            Text(lang.name)
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            if localizationManager.currentLanguage == lang.code {
-                                Image(systemName: "checkmark")
-                                    .foregroundStyle(AppColor.trustBlue)
-                                    .fontWeight(.semibold)
-                            }
-                        }
-                    }
-                }
-            }
-
-            Section("Tercihler") {
-                Toggle("Bildirimler", isOn: $notificationsEnabled)
-                Toggle("Konum Hizmetleri", isOn: $locationServicesEnabled)
-            }
-
-            Section("Veri ve Gizlilik") {
-                Button {
-                    Task { await exportMyData() }
-                } label: {
-                    if isExporting {
-                        HStack(spacing: AppSpacing.sm) {
-                            ProgressView()
-                            Text("Veriler hazırlanıyor")
-                        }
-                    } else {
-                        Text("Verilerimi İndir")
-                    }
-                }
-                .disabled(isExporting)
-
-                Button("Hesabımı Sil", role: .destructive) {
-                    showDeleteConfirm = true
-                }
-            }
+            accountSection
+            languageSection
+            preferencesSection
+            dataPrivacySection
         }
         .navigationTitle(String(localized: "menu_settings"))
         .toolbar(.hidden, for: .tabBar)
@@ -163,6 +94,91 @@ struct SettingsView: View {
             showShareSheet = true
         } catch {
             profileVM.errorMessage = error.localizedDescription
+        }
+    }
+
+    private var accountSection: some View {
+        Section("Hesap") {
+            HStack {
+                Text("Email")
+                Spacer()
+                Text(email.isEmpty ? "-" : email)
+                    .foregroundStyle(.secondary)
+            }
+
+            HStack {
+                Text("Phone")
+                Spacer()
+                Text(phone.isEmpty ? "-" : phone)
+                    .foregroundStyle(.secondary)
+            }
+
+            NavigationLink("Şifre Değiştir") {
+                ChangePasswordView(email: email)
+            }
+        }
+    }
+
+    private var languageSection: some View {
+        Section(String(localized: "Language")) {
+            ForEach(LocalizationManager.supportedLanguages) { language in
+                languageRow(language)
+            }
+        }
+    }
+
+    private func languageRow(_ language: LocalizationManager.AppLanguage) -> some View {
+        Button {
+            localizationManager.currentLanguage = language.code
+            Task {
+                try? await SupabaseManager.shared.client
+                    .from("profiles")
+                    .update(["preferred_language": language.code])
+                    .eq("id", SupabaseManager.shared.client.auth.session?.user.id.uuidString ?? "")
+                    .execute()
+            }
+        } label: {
+            HStack {
+                Text(flag(for: language.flag))
+                    .font(.title3)
+                Text(language.name)
+                    .foregroundStyle(.primary)
+                Spacer()
+                if localizationManager.currentLanguage == language.code {
+                    Image(systemName: "checkmark")
+                        .foregroundStyle(AppColor.trustBlue)
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+    }
+
+    private var preferencesSection: some View {
+        Section("Tercihler") {
+            Toggle("Bildirimler", isOn: $notificationsEnabled)
+            Toggle("Konum Hizmetleri", isOn: $locationServicesEnabled)
+        }
+    }
+
+    private var dataPrivacySection: some View {
+        Section("Veri ve Gizlilik") {
+            Button {
+                Task { await exportMyData() }
+            } label: {
+                if isExporting {
+                    HStack(spacing: AppSpacing.sm) {
+                        ProgressView()
+                        Text("Veriler hazırlanıyor")
+                    }
+                } else {
+                    Text("Verilerimi İndir")
+                }
+            }
+            .disabled(isExporting)
+
+            Button("Hesabımı Sil", role: .destructive) {
+                showDeleteConfirm = true
+            }
         }
     }
 
