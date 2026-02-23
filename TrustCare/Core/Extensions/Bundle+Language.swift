@@ -2,7 +2,7 @@ import Foundation
 
 private var bundleKey: UInt8 = 0
 
-final class BundleExtension: Bundle {
+final class BundleExtension: Bundle, @unchecked Sendable {
     override func localizedString(forKey key: String, value: String?, table tableName: String?) -> String {
         guard let bundle = objc_getAssociatedObject(self, &bundleKey) as? Bundle else {
             return super.localizedString(forKey: key, value: value, table: tableName)
