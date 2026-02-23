@@ -24,10 +24,7 @@ export default function PublicLayout({
               href="https://apps.apple.com/app/trustcare"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg font-medium text-white transition-colors"
-              style={{ backgroundColor: "#0055FF" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#4D88FF")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#0055FF")}
+              className="px-4 py-2 rounded-lg font-medium text-white transition-colors bg-[#0055FF] hover:bg-[#4D88FF]"
             >
               Download the App
             </a>
