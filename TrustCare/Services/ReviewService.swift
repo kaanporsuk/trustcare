@@ -484,4 +484,129 @@ enum ReviewService {
             .insert(payload)
             .execute()
     }
+    
+    // MARK: - Review Voting
+    
+    static func voteReview(reviewId: UUID, isHelpful: Bool) async throws {
+        guard let session = try? await client.auth.session else {
+            throw AppError.authError(String(localized: "Please sign in to vote."))
+        }
+        let userId = session.user.id
+        
+        struct VoteUpsert: Encodable {
+            let reviewId: String
+            let userId: String
+            let isHelpful: Bool
+            
+            enum CodingKeys: String, CodingKey {
+                case reviewId = "review_id"
+                case userId = "user_id"
+                case isHelpful = "is_helpful"
+            }
+        }
+        
+        let payload = VoteUpsert(
+            reviewId: reviewId.uuidString,
+            userId: userId.uuidString,
+            isHelpful: isHelpful
+        )
+        
+        _ = try await client
+            .from("review_votes")
+            .upsert(payload, onConflict: "review_id,user_id")
+            .execute()
+    }
+    
+    static func removeVote(reviewId: UUID) async throws {
+        guard let session = try? await client.auth.session else {
+            throw AppError.authError(String(localized: "Please sign in."))
+        }
+        let userId = session.user.id
+        
+        _ = try await client
+            .from("review_votes")
+            .delete()
+            .eq("review_id", value: reviewId.uuidString)
+            .eq("user_id", value: userId.uuidString)
+            .execute()
+    }
+    
+    static func getMyVote(reviewId: UUID) async throws -> Bool? {
+        guard let session = try? await client.auth.session else {
+            return nil
+        }
+        let userId = session.user.id
+        
+        let response: PostgrestResponse<ReviewVote> = try await client
+            .from("review_votes")
+            .select()
+            .eq("review_id", value: reviewId.uuidString)
+            .eq("user_id", value: userId.uuidString)
+            .maybeSingle()
+            .execute()
+        
+        return response.value?.isHelpful
+    }
+    
+    static func getHelpfulCount(reviewId: UUID) async throws -> Int {
+        let response = try await client
+            .from("review_votes")
+            .select("*", head: true, count: .exact)
+            .eq("review_id", value: reviewId.uuidString)
+            .eq("is_helpful", value: true)
+            .execute()
+        
+        return response.count ?? 0
+    }
+    
+    // MARK: - Report Review
+    
+    static func reportReview(reviewId: UUID, reason: ReportReason, description: String?) async throws {
+        guard let session = try? await client.auth.session else {
+            throw AppError.authError(String(localized: "Please sign in to report."))
+        }
+        let userId = session.user.id
+        
+        struct ReportInsert: Encodable {
+            let reviewId: String
+            let reporterId: String
+            let reason: String
+            let description: String?
+            
+            enum CodingKeys: String, CodingKey {
+                case reviewId = "review_id"
+                case reporterId = "reporter_id"
+                case reason
+                case description
+            }
+        }
+        
+        let payload = ReportInsert(
+            reviewId: reviewId.uuidString,
+            reporterId: userId.uuidString,
+            reason: reason.rawValue,
+            description: description
+        )
+        
+        _ = try await client
+            .from("reported_reviews")
+            .insert(payload)
+            .execute()
+    }
+    
+    static func hasReported(reviewId: UUID) async throws -> Bool {
+        guard let session = try? await client.auth.session else {
+            return false
+        }
+        let userId = session.user.id
+        
+        let response = try await client
+            .from("reported_reviews")
+            .select("id", head: true, count: .exact)
+            .eq("review_id", value: reviewId.uuidString)
+            .eq("reporter_id", value: userId.uuidString)
+            .execute()
+        
+        return (response.count ?? 0) > 0
+    }
 }

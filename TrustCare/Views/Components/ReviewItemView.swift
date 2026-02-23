@@ -4,11 +4,22 @@ struct ReviewItemView: View {
     let review: Review
     var onHelpful: ((Bool) -> Void)?
     @State private var isExpanded: Bool = false
+    @State private var hasVoted: Bool = false
+    @State private var helpfulCount: Int = 0
+    @State private var isVoting: Bool = false
+    @State private var showingReportSheet: Bool = false
+    @State private var hasReported: Bool = false
+    @State private var currentUserId: UUID?
 
     private var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter.string(from: review.createdAt)
+    }
+    
+    private var isOwnReview: Bool {
+        guard let currentUserId else { return false }
+        return currentUserId == review.userId
     }
 
     var body: some View {
@@ -60,19 +71,128 @@ struct ReviewItemView: View {
             if let media = review.media, !media.isEmpty {
                 MediaStripView(media: media)
             }
-
-            Button {
-                onHelpful?(true)
-            } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: "hand.thumbsup")
-                    Text("\(review.helpfulCount)")
+            
+            HStack(spacing: AppSpacing.lg) {
+                Button {
+                    toggleVote()
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: hasVoted ? "hand.thumbsup.fill" : "hand.thumbsup")
+                            .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
+                        Text("\(helpfulCount) helpful")
+                            .font(AppFont.caption)
+                            .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
+                    }
+                }
+                .buttonStyle(.plain)
+                .disabled(isVoting)
+                
+                Spacer()
+                
+                if !isOwnReview {
+                    Button {
+                        if !hasReported {
+                            showingReportSheet = true
+                        }
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "flag")
+                            Text(hasReported ? "Reported" : "Report")
+                        }
+                        .font(AppFont.footnote)
+                        .foregroundStyle(hasReported ? .secondary : .secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(hasReported)
                 }
             }
-            .font(AppFont.caption)
-            .foregroundStyle(.secondary)
+        }
+        .task {
+            await loadVoteData()
+        }
+        .sheet(isPresented: $showingReportSheet) {
+            ReportReviewSheet(reviewId: review.id) {
+                hasReported = true
+            }
         }
     }
+    
+    private func loadVoteData() async {
+        // Get current user ID
+        if let session = try? await SupabaseManager.shared.client.auth.session {
+            currentUserId = session.user.id
+        }
+        
+        // Load existing vote
+        if let vote = try? await ReviewService.getMyVote(reviewId: review.id) {
+            hasVoted = vote
+        }
+        
+        // Load helpful count
+        if let count = try? await ReviewService.getHelpfulCount(reviewId: review.id) {
+            helpfulCount = count
+        } else {
+            helpfulCount = review.helpfulCount
+        }
+        
+        // Check if already reported
+        if let reported = try? await ReviewService.hasReported(reviewId: review.id) {
+            hasReported = reported
+        }
+    }
+    
+    private func toggleVote() {
+        guard !isVoting else { return }
+        isVoting = true
+        
+        let previousVoteState = hasVoted
+        let previousCount = helpfulCount
+        
+        // Optimistic UI update
+        if hasVoted {
+            hasVoted = false
+            helpfulCount = max(0, helpfulCount - 1)
+        } else {
+            hasVoted = true
+            helpfulCount += 1
+        }
+        
+        // Haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
+        Task {
+            do {
+                if previousVoteState {
+                    // Remove vote
+                    try await ReviewService.removeVote(reviewId: review.id)
+                } else {
+                    // Add vote
+                    try await ReviewService.voteReview(reviewId: review.id, isHelpful: true)
+                }
+                
+                // Refresh count from server
+                if let count = try? await ReviewService.getHelpfulCount(reviewId: review.id) {
+                    await MainActor.run {
+                        helpfulCount = count
+                    }
+                }
+                
+                await MainActor.run {
+                    isVoting = false
+                }
+            } catch {
+                // Revert on error
+                await MainActor.run {
+                    hasVoted = previousVoteState
+                    helpfulCount = previousCount
+                    isVoting = false
+                }
+                print("⚠️ Failed to vote: \(error.localizedDescription)")
+            }
+        }
+    }
+}
 
     private var avatarView: some View {
         Group {
