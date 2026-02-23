@@ -27,7 +27,7 @@ enum AppRoute: Hashable {
 @main
 struct TrustCareApp: App {
     @Environment(\.scenePhase) private var scenePhase
-    @StateObject private var localizationManager = LocalizationManager()
+    @StateObject private var localizationManager = LocalizationManager.shared
     @StateObject private var authViewModel = AuthViewModel()
     @State private var appState: AppState = .splash
     @State private var path = NavigationPath()
@@ -52,6 +52,7 @@ struct TrustCareApp: App {
                         AuthView(appState: $appState)
                     case .main:
                         MainTabView()
+                            .environmentObject(localizationManager)
                     }
                 }
                 .navigationDestination(for: AppRoute.self) { route in
@@ -63,6 +64,7 @@ struct TrustCareApp: App {
             }
             .dismissKeyboardOnTap()
             .environment(\.layoutDirection, localizationManager.layoutDirection)
+            .environment(\.locale, Locale(identifier: localizationManager.currentLanguage.rawValue))
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
             .preferredColorScheme(preferredColorScheme)

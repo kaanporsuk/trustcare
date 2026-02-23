@@ -31,8 +31,8 @@ struct HomeView: View {
                     specialtyScroll
 
                     Picker("", selection: $homeVM.viewMode) {
-                        Text("Harita").tag(HomeViewModel.ViewMode.map)
-                        Text("Liste").tag(HomeViewModel.ViewMode.list)
+                        Text(String(localized: "map_toggle_map")).tag(HomeViewModel.ViewMode.map)
+                        Text(String(localized: "map_toggle_list")).tag(HomeViewModel.ViewMode.list)
                     }
                     .pickerStyle(.segmented)
                     .padding(.horizontal, AppSpacing.lg)
@@ -115,7 +115,7 @@ struct HomeView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Keşfet")
+            Text(String(localized: "tab_discover"))
                 .font(AppFont.largeTitle)
 
             Button {
@@ -146,7 +146,7 @@ struct HomeView: View {
             HStack(spacing: AppSpacing.sm) {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(.secondary)
-                TextField("Doktor, klinik veya uzmanlık ara...", text: $homeVM.searchText)
+                TextField(String(localized: "search_placeholder"), text: $homeVM.searchText)
                     .font(AppFont.body)
                     .textInputAutocapitalization(.words)
                     .autocorrectionDisabled()
@@ -181,13 +181,13 @@ struct HomeView: View {
                         ForEach(homeVM.specialtySuggestions.prefix(4)) { specialty in
                             Button {
                                 selectedSpecialty = specialty
-                                homeVM.searchText = specialty.name
+                                homeVM.searchText = specialty.localizedName
                                 homeVM.clearSuggestions()
                                 Task { await homeVM.applySpecialtyFilter(specialty) }
                             } label: {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: specialty.iconName)
-                                    Text(specialty.name)
+                                    Text(specialty.localizedName)
                                         .font(AppFont.body)
                                     Spacer()
                                 }
@@ -235,19 +235,19 @@ struct HomeView: View {
     private var specialtyScroll: some View {
         return ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: AppSpacing.sm) {
-                specialtyChip(title: "Tümü", isSelected: selectedSpecialty == nil) {
+                specialtyChip(title: String(localized: "filter_all"), isSelected: selectedSpecialty == nil) {
                     selectedSpecialty = nil
                     Task { await homeVM.applySpecialtyFilter(nil) }
                 }
 
                 ForEach(Array(specialtyService.popularSpecialties().prefix(20))) { specialty in
-                    specialtyChip(title: specialty.nameTr ?? specialty.name, isSelected: selectedSpecialty?.id == specialty.id) {
+                    specialtyChip(title: specialty.localizedName, isSelected: selectedSpecialty?.id == specialty.id) {
                         selectedSpecialty = specialty
                         Task { await homeVM.applySpecialtyFilter(specialty) }
                     }
                 }
 
-                specialtyChip(title: "Daha Fazla ▾", isSelected: false) {
+                specialtyChip(title: String(localized: "filter_more"), isSelected: false) {
                     showSpecialtyBrowser = true
                 }
             }
@@ -290,12 +290,8 @@ struct HomeView: View {
                 viewModel: homeVM,
                 providers: homeVM.providers,
                 isLoading: homeVM.isLoading,
-                centerCoordinate: homeVM.selectedLocation.isCurrentLocation
-                    ? homeVM.locationManagerCoordinate
-                    : CLLocationCoordinate2D(
-                        latitude: homeVM.selectedLocation.latitude,
-                        longitude: homeVM.selectedLocation.longitude
-                    ),
+                centerCoordinate: homeVM.mapCenterCoordinate,
+                centerUpdateToken: homeVM.mapCenterUpdateToken,
                 onOpenProvider: { provider in
                     selectedProviderFromMap = provider
                 }
@@ -306,11 +302,11 @@ struct HomeView: View {
                     .font(.title2)
                     .foregroundStyle(.secondary)
                 Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                     ? "Bu bölgede henüz sağlayıcı yok. İlk ekleyen siz olun!"
-                     : "Sonuç bulunamadı")
+                     ? String(localized: "empty_home_title")
+                     : String(localized: "empty_search"))
                     .font(AppFont.body)
                     .foregroundStyle(.secondary)
-                Button("Sağlayıcı Ekle") {
+                Button(String(localized: "empty_home_cta")) {
                     NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
                 }
                 .font(AppFont.callout)
@@ -319,7 +315,7 @@ struct HomeView: View {
             .padding(.top, AppSpacing.xxl)
         } else {
             ScrollView {
-                LazyVStack(spacing: AppSpacing.md) {
+                LazyVStack(spacing: 12) {
                     ForEach(homeVM.providers) { provider in
                         ProviderCardView(provider: provider)
                     }

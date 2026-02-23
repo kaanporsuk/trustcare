@@ -36,7 +36,7 @@ struct ReviewHubView: View {
                 .padding(.top, AppSpacing.lg)
                 .padding(.bottom, AppSpacing.xxxxl)
             }
-            .navigationTitle("Değerlendir")
+            .navigationTitle(String(localized: "tab_review"))
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 await specialtyService.loadSpecialties()
@@ -78,7 +78,7 @@ struct ReviewHubView: View {
 
     private var providerSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Kimi değerlendiriyorsunuz?")
+            Text(String(localized: "review_who"))
                 .font(AppFont.title3)
 
             if let provider = viewModel.selectedProvider {
@@ -86,14 +86,14 @@ struct ReviewHubView: View {
                     ProviderMiniCard(provider: provider)
                     
                     Button {
-                        viewModel.selectProvider(nil)
+                        viewModel.selectedProvider = nil
                         providerSearchText = ""
                         providerResults = []
                         specialtyResults = []
                     } label: {
                         HStack {
                             Image(systemName: "arrow.clockwise")
-                            Text("Değiştir")
+                            Text(String(localized: "review_change_provider"))
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -107,7 +107,7 @@ struct ReviewHubView: View {
                 HStack(spacing: AppSpacing.sm) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(.secondary)
-                    TextField("Doktor, klinik veya uzmanlık ara...", text: $providerSearchText)
+                    TextField(String(localized: "search_placeholder"), text: $providerSearchText)
                         .font(AppFont.body)
                         .textInputAutocapitalization(.words)
                         .autocorrectionDisabled()
@@ -142,11 +142,11 @@ struct ReviewHubView: View {
 
                         ForEach(specialtyResults.prefix(4)) { specialty in
                             Button {
-                                providerSearchText = specialty.name
+                                providerSearchText = specialty.localizedName
                             } label: {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: specialty.iconName)
-                                    Text(specialty.name)
+                                    Text(specialty.localizedName)
                                         .font(AppFont.body)
                                     Spacer()
                                     Text("Uzmanlık")
@@ -177,7 +177,7 @@ struct ReviewHubView: View {
             Text("Ziyaret Detayları")
                 .font(AppFont.title3)
 
-            DatePicker("Ziyaret Tarihi", selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
+            DatePicker(String(localized: "review_visit_date"), selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
                 .datePickerStyle(.compact)
 
             Picker("Ziyaret Türü", selection: $viewModel.visitType) {
@@ -192,7 +192,7 @@ struct ReviewHubView: View {
 
     private var overallRatingSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Genel Değerlendirme")
+            Text(String(localized: "review_overall"))
                 .font(AppFont.title3)
             Text("Genel deneyiminiz nasıldı?")
                 .font(AppFont.caption)
@@ -204,7 +204,7 @@ struct ReviewHubView: View {
 
     private var detailedRatingsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Detaylı Değerlendirme")
+            Text(String(localized: "review_detailed"))
                 .font(AppFont.title3)
 
             ForEach(viewModel.surveyConfig.metrics) { metric in
@@ -234,7 +234,7 @@ struct ReviewHubView: View {
 
     private var writtenReviewSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Yorumunuz")
+            Text(String(localized: "review_comment"))
                 .font(AppFont.title3)
 
             ZStack(alignment: .topLeading) {
@@ -265,11 +265,11 @@ struct ReviewHubView: View {
 
     private var photosSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Fotoğraf Ekle")
+            Text(String(localized: "review_add_photo"))
                 .font(AppFont.title3)
 
             PhotosPicker(selection: $photoItems, maxSelectionCount: 5, matching: .images) {
-                Label("Fotoğraf Ekle", systemImage: "photo.on.rectangle")
+                Label(String(localized: "review_add_photo"), systemImage: "photo.on.rectangle")
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
@@ -315,7 +315,7 @@ struct ReviewHubView: View {
 
     private var verificationSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Ziyaretinizi Doğrulayın")
+            Text(String(localized: "review_verify"))
                 .font(AppFont.title3)
             Text("Fatura, reçete veya randevu onayı yükleyin")
                 .font(AppFont.caption)
@@ -371,7 +371,7 @@ struct ReviewHubView: View {
                         ProgressView()
                             .tint(.white)
                     }
-                    Text("Değerlendirme Gönder")
+                    Text(String(localized: "review_submit"))
                         .font(AppFont.headline)
                 }
                 .frame(maxWidth: .infinity)

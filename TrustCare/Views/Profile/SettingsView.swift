@@ -3,7 +3,7 @@ import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
-    @EnvironmentObject private var localizationManager: LocalizationManager
+    @EnvironmentObject var locManager: LocalizationManager
 
     @State private var email: String = ""
     @State private var phone: String = ""
@@ -12,18 +12,9 @@ struct SettingsView: View {
     @State private var exportFileURL: URL?
     @State private var showShareSheet: Bool = false
 
-    @AppStorage("appLanguage") private var appLanguage: String = "tr"
     @AppStorage("settings_notifications_enabled") private var notificationsEnabled: Bool = true
     @AppStorage("settings_location_services_enabled") private var locationServicesEnabled: Bool = true
-
-    private let languages: [(code: String, name: String)] = [
-        ("tr", "Türkçe"),
-        ("en", "English"),
-        ("de", "Deutsch"),
-        ("nl", "Nederlands"),
-        ("pl", "Polski"),
-        ("ar", "العربية")
-    ]
+    @State private var selectedLanguage: AppLanguage = .en
 
     var body: some View {
         Form {
@@ -48,14 +39,14 @@ struct SettingsView: View {
             }
 
             Section("Tercihler") {
-                Picker("Dil", selection: $appLanguage) {
-                    ForEach(languages, id: \.code) { language in
-                        Text(language.name).tag(language.code)
+                Picker("Dil", selection: $selectedLanguage) {
+                    ForEach(AppLanguage.allCases) { language in
+                        Text(language.nativeName).tag(language)
                     }
                 }
-                .onChange(of: appLanguage) { _, newValue in
-                    localizationManager.appLanguage = newValue
-                    Task { await profileVM.updateLanguage(newValue) }
+                .onChange(of: selectedLanguage) { _, newLanguage in
+                    locManager.setLanguage(newLanguage)
+                    Task { await profileVM.updateLanguage(newLanguage.rawValue) }
                 }
 
                 Toggle("Bildirimler", isOn: $notificationsEnabled)
@@ -82,7 +73,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .navigationTitle("Ayarlar")
+        .navigationTitle(String(localized: "menu_settings"))
         .toolbar(.hidden, for: .tabBar)
         .task {
             if profileVM.profile == nil {
@@ -93,9 +84,7 @@ struct SettingsView: View {
             }
             email = await AuthService.currentUserEmail() ?? ""
             phone = profileVM.profile?.phone ?? ""
-            if appLanguage != localizationManager.appLanguage {
-                localizationManager.appLanguage = appLanguage
-            }
+            selectedLanguage = locManager.currentLanguage
         }
         .confirmationDialog("Hesabı Sil", isPresented: $showDeleteConfirm) {
             Button("Hesabımı Sil", role: .destructive) {

@@ -6,6 +6,7 @@ struct ProviderMapView: View {
     let providers: [Provider]
     let isLoading: Bool
     let centerCoordinate: CLLocationCoordinate2D?
+    let centerUpdateToken: Int
     let onOpenProvider: (Provider) -> Void
     
     @State private var showSearchAreaButton = false
@@ -16,6 +17,7 @@ struct ProviderMapView: View {
             ProviderMapRepresentable(
                 providers: filteredProviders,
                 centerCoordinate: centerCoordinate,
+                centerUpdateToken: centerUpdateToken,
                 onOpenProvider: onOpenProvider,
                 onMapCameraChange: { region in
                     currentMapRegion = region
@@ -40,7 +42,7 @@ struct ProviderMapView: View {
                     } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "magnifyingglass")
-                            Text("Bu alanda ara")
+                            Text(String(localized: "search_this_area"))
                         }
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundStyle(.white)
@@ -95,6 +97,7 @@ final class ProviderAnnotation: NSObject, MKAnnotation {
 private struct ProviderMapRepresentable: UIViewRepresentable {
     let providers: [Provider]
     let centerCoordinate: CLLocationCoordinate2D?
+    let centerUpdateToken: Int
     let onOpenProvider: (Provider) -> Void
     let onMapCameraChange: (MKCoordinateRegion) -> Void
 
@@ -113,10 +116,24 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         mapView.addAnnotations(providers.map { ProviderAnnotation(provider: $0) })
 
         if let centerCoordinate {
+            let currentCenter = mapView.region.center
+            let latitudeDistance = abs(currentCenter.latitude - centerCoordinate.latitude)
+            let longitudeDistance = abs(currentCenter.longitude - centerCoordinate.longitude)
+            let centerThreshold = 0.0001
+            let centerChangedSignificantly = latitudeDistance > centerThreshold || longitudeDistance > centerThreshold
+            let shouldForceUpdate = context.coordinator.lastCenterUpdateToken != centerUpdateToken
+
+            guard centerChangedSignificantly || shouldForceUpdate else {
+                context.coordinator.onMapCameraChange = onMapCameraChange
+                return
+            }
+
             let region = MKCoordinateRegion(
                 center: centerCoordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
             )
+            context.coordinator.isSettingRegionProgrammatically = true
+            context.coordinator.lastCenterUpdateToken = centerUpdateToken
             mapView.setRegion(region, animated: true)
         }
         
@@ -130,6 +147,8 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
     final class Coordinator: NSObject, MKMapViewDelegate {
         let onOpenProvider: (Provider) -> Void
         var onMapCameraChange: ((MKCoordinateRegion) -> Void)?
+        var isSettingRegionProgrammatically = false
+        var lastCenterUpdateToken: Int = -1
 
         init(onOpenProvider: @escaping (Provider) -> Void, onMapCameraChange: @escaping (MKCoordinateRegion) -> Void) {
             self.onOpenProvider = onOpenProvider
@@ -159,6 +178,10 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            if isSettingRegionProgrammatically {
+                isSettingRegionProgrammatically = false
+                return
+            }
             let region = mapView.region
             onMapCameraChange?(region)
         }

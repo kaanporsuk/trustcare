@@ -55,7 +55,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
             return
         }
 
-        guard let session = await AuthService.currentSession() else {
+        guard let session = try? await SupabaseManager.shared.client.auth.session else {
             submissionErrorMessage = String(localized: "Please sign in to submit a review.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
@@ -207,6 +207,9 @@ final class ReviewSubmissionViewModel: ObservableObject {
                 return value
             }
 
+            let dbVisitType = mappedVisitType(for: visitType)
+            let submissionStatus = proofURL != nil ? "pending_verification" : "active"
+
             let payload = ReviewInsert(
                 id: reviewId.uuidString,
                 userId: session.user.id.uuidString,
@@ -217,7 +220,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
                 comment: trimmedComment,
                 wouldRecommend: overallRating >= 4,
                 visitDate: visitDate,
-                visitType: visitTypeRawValue,
+                visitType: dbVisitType,
                 surveyType: surveyConfig.type,
                 ratingWaitTime: value("rating_wait_time"),
                 ratingBedside: value("rating_bedside"),
@@ -242,7 +245,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
                 ratingAftercare: value("rating_aftercare"),
                 photoUrls: uploadedPhotoUrls,
                 proofImageUrl: proofURL,
-                status: proofURL != nil ? "pending" : "unverified"
+                status: submissionStatus
             )
 
             _ = try await retry(times: 3) {
@@ -289,14 +292,15 @@ final class ReviewSubmissionViewModel: ObservableObject {
         isComplete = false
     }
 
-    private var visitTypeRawValue: String {
-        switch visitType {
-        case "Muayene": return VisitType.consultation.rawValue
-        case "İşlem": return VisitType.procedure.rawValue
-        case "Kontrol": return VisitType.checkup.rawValue
-        case "Acil": return VisitType.emergency.rawValue
-        default: return VisitType.consultation.rawValue
-        }
+    private func mappedVisitType(for uiValue: String) -> String {
+        let mapping: [String: String] = [
+            "Muayene": "consultation",
+            "İşlem": "procedure",
+            "Kontrol": "checkup",
+            "Acil": "emergency"
+        ]
+
+        return mapping[uiValue] ?? "consultation"
     }
 
     private func localizedErrorMessage(_ error: Error) -> String {

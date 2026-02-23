@@ -10,28 +10,28 @@ struct ProviderCardView: View {
         } label: {
             HStack(spacing: AppSpacing.md) {
                 DynamicProviderAvatarView(provider: provider)
-                    .frame(width: 60, height: 60)
+                    .frame(width: 48, height: 48)
                     .clipShape(Circle())
 
-                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: AppSpacing.sm) {
                         Text(provider.name)
-                            .font(AppFont.title3)
+                            .font(.headline)
                             .foregroundStyle(.primary)
                         Spacer()
                     }
 
                     Text(provider.specialty)
-                        .font(AppFont.body)
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
 
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: "star.fill")
                             .foregroundStyle(AppColor.starFilled)
                         Text(String(format: "%.1f", provider.ratingOverall))
-                            .font(AppFont.body)
+                            .font(.subheadline)
                         Text("(\(provider.reviewCount))")
-                            .font(AppFont.body)
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
 
@@ -40,20 +40,20 @@ struct ProviderCardView: View {
                             Image(systemName: "checkmark.seal.fill")
                                 .foregroundStyle(AppColor.success)
                             Text("Doğrulanmış")
-                                .font(AppFont.caption)
+                                .font(.footnote)
                                 .foregroundStyle(.secondary)
                         }
                     }
 
                     if let distance = provider.distanceKm {
                         Text(String(format: "%.1f km", distance))
-                            .font(AppFont.caption)
+                            .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(AppSpacing.lg)
+            .padding(12)
             .background(AppColor.cardBackground)
             .cornerRadius(AppRadius.card)
             .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)

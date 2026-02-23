@@ -224,45 +224,45 @@ struct ProfileView: View {
                 MyReviewsView(selectedTab: $selectedTab)
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: "Değerlendirmelerim")
+                menuRow(title: String(localized: "menu_my_reviews"))
             }
 
             NavigationLink {
                 SavedProvidersView()
             } label: {
-                menuRow(title: "Kaydedilenler")
+                menuRow(title: String(localized: "menu_saved"))
             }
 
             NavigationLink {
                 SettingsView()
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: "Ayarlar")
+                menuRow(title: String(localized: "menu_settings"))
             }
 
             NavigationLink {
                 HelpSupportView()
             } label: {
-                menuRow(title: "Yardım ve Destek")
+                menuRow(title: String(localized: "menu_help"))
             }
 
             NavigationLink {
                 PrivacyPolicyView()
             } label: {
-                menuRow(title: "Gizlilik Politikası")
+                menuRow(title: String(localized: "menu_privacy"))
             }
 
             NavigationLink {
                 TermsOfServiceView()
             } label: {
-                menuRow(title: "Kullanım Koşulları")
+                menuRow(title: String(localized: "menu_terms"))
             }
 
             Button {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 showLogoutConfirm = true
             } label: {
-                menuRow(title: "Çıkış Yap", isDestructive: true)
+                menuRow(title: String(localized: "menu_logout"), isDestructive: true)
             }
         }
     }

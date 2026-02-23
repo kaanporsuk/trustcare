@@ -360,10 +360,22 @@ private struct CoordinatePickerMap: UIViewRepresentable {
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
         guard let selectedCoordinate else { return }
-        uiView.removeAnnotations(uiView.annotations)
+
+        let threshold = 0.0001
+        if let lastCoordinate = context.coordinator.lastRenderedCoordinate {
+            let latitudeDistance = abs(lastCoordinate.latitude - selectedCoordinate.latitude)
+            let longitudeDistance = abs(lastCoordinate.longitude - selectedCoordinate.longitude)
+            if latitudeDistance <= threshold && longitudeDistance <= threshold {
+                return
+            }
+        }
+
+        let existingPointAnnotations = uiView.annotations.compactMap { $0 as? MKPointAnnotation }
+        uiView.removeAnnotations(existingPointAnnotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = selectedCoordinate
         uiView.addAnnotation(annotation)
+        context.coordinator.lastRenderedCoordinate = selectedCoordinate
     }
 
     func makeCoordinator() -> Coordinator {
@@ -373,6 +385,7 @@ private struct CoordinatePickerMap: UIViewRepresentable {
     final class Coordinator: NSObject, MKMapViewDelegate {
         @Binding var selectedCoordinate: CLLocationCoordinate2D?
         weak var mapView: MKMapView?
+        var lastRenderedCoordinate: CLLocationCoordinate2D?
 
         init(selectedCoordinate: Binding<CLLocationCoordinate2D?>) {
             _selectedCoordinate = selectedCoordinate
@@ -384,10 +397,12 @@ private struct CoordinatePickerMap: UIViewRepresentable {
             let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
             selectedCoordinate = coordinate
 
-            mapView.removeAnnotations(mapView.annotations)
+            let existingPointAnnotations = mapView.annotations.compactMap { $0 as? MKPointAnnotation }
+            mapView.removeAnnotations(existingPointAnnotations)
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
+            lastRenderedCoordinate = coordinate
         }
     }
 }

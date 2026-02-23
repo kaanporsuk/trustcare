@@ -31,7 +31,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
-                Text("Keşfet")
+                Text(String(localized: "tab_discover"))
             }
             .tag(0)
 
@@ -40,7 +40,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "bubble.left.and.text.bubble.right")
-                Text("Rehber")
+                Text(String(localized: "tab_guide"))
             }
             .tag(1)
             .badge("Plus")
@@ -50,7 +50,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "plus.circle.fill")
-                Text("Değerlendir")
+                Text(String(localized: "tab_review"))
             }
             .tag(2)
 
@@ -60,7 +60,7 @@ struct MainTabView: View {
             .environmentObject(profileVM)
             .tabItem {
                 Image(systemName: "person.circle")
-                Text("Profil")
+                Text(String(localized: "tab_profile"))
             }
             .tag(3)
             .badge(profileVM.unreadNotificationCount)

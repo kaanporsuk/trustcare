@@ -58,7 +58,7 @@ struct SpecialtyBrowserSheet: View {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: group.iconName)
                                         .foregroundStyle(.secondary)
-                                    Text(group.category)
+                                    Text(localizedCategoryName(group.category))
                                         .font(AppFont.headline)
                                     Spacer()
                                 }
@@ -85,6 +85,11 @@ struct SpecialtyBrowserSheet: View {
                 expandedCategories = Set(groupedCategories.map { $0.category })
             }
         }
+    }
+
+    private func localizedCategoryName(_ categoryEnglish: String) -> String {
+        let categoryKey = "category_" + categoryEnglish.lowercased().replacingOccurrences(of: " & ", with: "_").replacingOccurrences(of: " ", with: "_").replacingOccurrences(of: ",", with: "")
+        return String(localized: LocalizationValue(categoryKey))
     }
 
     private var groupedCategories: [(category: String, iconName: String, specialties: [Specialty])] {
@@ -132,14 +137,9 @@ private struct SpecialtyRow: View {
                 Image(systemName: specialty.iconName)
                     .foregroundStyle(.secondary)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(specialty.name)
+                    Text(specialty.localizedName)
                         .font(AppFont.body)
                         .foregroundStyle(.primary)
-                    if let nameTr = specialty.nameTr, !nameTr.isEmpty {
-                        Text(nameTr)
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                    }
                 }
                 Spacer()
                 if isSelected {

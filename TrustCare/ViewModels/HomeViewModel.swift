@@ -61,6 +61,8 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedRadiusKm: Int = 50
     @Published var selectedLocation: SelectedLocation
     @Published var recentLocations: [SelectedLocation] = []
+    @Published var mapCenterCoordinate: CLLocationCoordinate2D?
+    @Published var mapCenterUpdateToken: Int = 0
 
     private(set) var hasLoadedInitially = false
     private let locationManager = LocationManager()
@@ -121,6 +123,10 @@ final class HomeViewModel: ObservableObject {
             userLongitude = defaultLongitude
             persistCityAndCoordinates()
         }
+        mapCenterCoordinate = CLLocationCoordinate2D(
+            latitude: selectedLocation.latitude,
+            longitude: selectedLocation.longitude
+        )
         recentLocations = Self.loadRecentLocations()
         observeLocation()
         observeRehberSpecialtyRouting()
@@ -168,6 +174,7 @@ final class HomeViewModel: ObservableObject {
         saveSelectedLocation(location)
         persistCityAndCoordinates()
         addRecentLocation(location)
+        recenterMap(to: location.latitude, longitude: location.longitude)
         await refresh()
     }
 
@@ -188,6 +195,9 @@ final class HomeViewModel: ObservableObject {
         userLongitude = updated.longitude
         saveSelectedLocation(updated)
         persistCityAndCoordinates()
+        if let coordinate {
+            recenterMap(to: coordinate.latitude, longitude: coordinate.longitude)
+        }
         await refresh()
     }
 
@@ -229,9 +239,15 @@ final class HomeViewModel: ObservableObject {
         )
         selectedLocation = updatedLocation
         saveSelectedLocation(updatedLocation)
+        recenterMap(to: region.center.latitude, longitude: region.center.longitude)
         currentOffset = 0
         hasMoreResults = true
         await searchProviders(reset: true)
+    }
+
+    private func recenterMap(to latitude: Double, longitude: Double) {
+        mapCenterCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        mapCenterUpdateToken += 1
     }
 
     func searchWithDebounce() async {

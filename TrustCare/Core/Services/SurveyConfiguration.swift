@@ -17,17 +17,42 @@ struct SurveyConfig {
 enum SurveyConfigurations {
 
     static func config(for surveyType: String) -> SurveyConfig {
+        let baseConfig: SurveyConfig
         switch surveyType {
-        case "general_clinic": return generalClinic
-        case "dental": return dental
-        case "pharmacy": return pharmacy
-        case "hospital": return hospital
-        case "diagnostic": return diagnostic
-        case "mental_health": return mentalHealth
-        case "rehabilitation": return rehabilitation
-        case "aesthetics": return aesthetics
-        default: return generalClinic
+        case "general_clinic": baseConfig = generalClinic
+        case "dental": baseConfig = dental
+        case "pharmacy": baseConfig = pharmacy
+        case "hospital": baseConfig = hospital
+        case "diagnostic": baseConfig = diagnostic
+        case "mental_health": baseConfig = mentalHealth
+        case "rehabilitation": baseConfig = rehabilitation
+        case "aesthetics": baseConfig = aesthetics
+        default: baseConfig = generalClinic
         }
+
+        return SurveyConfig(
+            type: baseConfig.type,
+            displayName: localized("survey.\(baseConfig.type).display_name", fallback: baseConfig.displayName),
+            metrics: baseConfig.metrics.map { metric in
+                SurveyMetric(
+                    label: localized("survey.\(baseConfig.type).\(metric.dbColumn).label", fallback: metric.label),
+                    subtext: localized("survey.\(baseConfig.type).\(metric.dbColumn).subtext", fallback: metric.subtext),
+                    dbColumn: metric.dbColumn,
+                    icon: metric.icon
+                )
+            }
+        )
+    }
+
+    private static func localized(_ key: String, fallback: String) -> String {
+        let languageCode = LocalizationManager.shared.currentLanguage.rawValue
+        guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            return fallback
+        }
+
+        let localizedValue = NSLocalizedString(key, tableName: "Localizable", bundle: bundle, value: fallback, comment: "")
+        return localizedValue.isEmpty ? fallback : localizedValue
     }
 
     static let generalClinic = SurveyConfig(
