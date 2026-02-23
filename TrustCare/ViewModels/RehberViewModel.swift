@@ -11,6 +11,8 @@ final class RehberViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var showEmergencyCard: Bool = false
     @Published var sendCooldownRemainingSeconds: Int = 0
+    @Published var sessions: [RehberSession] = []
+    @Published var isLoadingSessions: Bool = false
 
     private let dailyLimit: Int = 5
     private static let usageDateKey = "rehber_usage_date"
@@ -61,6 +63,20 @@ final class RehberViewModel: ObservableObject {
 
     func dismissEmergencyCard() {
         showEmergencyCard = false
+    }
+    
+    func closeCurrentSession() async {
+        // If we have a current session and messages, auto-generate title from first user message
+        if let sessionId = currentSessionId, !messages.isEmpty {
+            let firstUserMessage = messages.first(where: { $0.role == "user" })
+            if let firstText = firstUserMessage?.content, !firstText.isEmpty {
+                let title = String(firstText.prefix(60))
+                await updateSessionTitle(sessionId: sessionId, title: title)
+            }
+        }
+        
+        // Clear current state
+        startNewChat()
     }
 
     func sendMessage(_ text: String) async {
@@ -183,6 +199,98 @@ final class RehberViewModel: ObservableObject {
 
         Task {
             await sendMessage(text)
+        }
+    }
+    
+    func loadSessions() async {
+        guard let authSession = await AuthService.currentSession() else {
+            return
+        }
+        
+        isLoadingSessions = true
+        
+        do {
+            let response: PostgrestResponse<[RehberSession]> = try await SupabaseManager.shared.client
+                .from("rehber_sessions")
+                .select()
+                .eq("user_id", value: authSession.user.id.uuidString)
+                .order("updated_at", ascending: false)
+                .limit(50)
+                .execute()
+            
+            sessions = response.value
+        } catch {
+            // Silently fail for now
+        }
+        
+        isLoadingSessions = false
+    }
+    
+    func deleteSession(id: UUID) async throws {
+        guard let authSession = await AuthService.currentSession() else {
+            throw AppError.unauthorized
+        }
+        
+        try await SupabaseManager.shared.client
+            .from("rehber_sessions")
+            .delete()
+            .eq("id", value: id.uuidString)
+            .eq("user_id", value: authSession.user.id.uuidString)
+            .execute()
+        
+        // Remove from local array
+        sessions.removeAll { $0.id == id }
+        
+        // Clear current session if it was deleted
+        if currentSessionId == id {
+            currentSessionId = nil
+            messages = []
+        }
+    }
+    
+    func loadSessionMessages(sessionId: UUID) async throws {
+        guard let authSession = await AuthService.currentSession() else {
+            throw AppError.unauthorized
+        }
+        
+        isLoading = true
+        
+        do {
+            let response: PostgrestResponse<[RehberMessage]> = try await SupabaseManager.shared.client
+                .from("rehber_messages")
+                .select()
+                .eq("session_id", value: sessionId.uuidString)
+                .eq("user_id", value: authSession.user.id.uuidString)
+                .order("created_at", ascending: true)
+                .execute()
+            
+            messages = response.value
+            currentSessionId = sessionId
+        } catch {
+            throw error
+        }
+        
+        isLoading = false
+    }
+    
+    func updateSessionTitle(sessionId: UUID, title: String) async {
+        guard let authSession = await AuthService.currentSession() else {
+            return
+        }
+        
+        struct TitleUpdate: Encodable {
+            let title: String
+        }
+        
+        do {
+            _ = try await SupabaseManager.shared.client
+                .from("rehber_sessions")
+                .update(TitleUpdate(title: title))
+                .eq("id", value: sessionId.uuidString)
+                .eq("user_id", value: authSession.user.id.uuidString)
+                .execute()
+        } catch {
+            // Silently fail
         }
     }
 

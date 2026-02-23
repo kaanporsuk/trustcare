@@ -9,6 +9,7 @@ final class ProviderDetailViewModel: ObservableObject {
     @Published var services: [ProviderServiceItem] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var myClaimStatus: ProviderClaim?
 
     func loadDetails(id: UUID) async {
         guard !isLoading else { return }
@@ -18,11 +19,13 @@ final class ProviderDetailViewModel: ObservableObject {
             async let providerTask = ProviderService.fetchProviderById(id)
             async let reviewsTask = ProviderService.fetchReviewsForProvider(id, limit: 20, offset: 0)
             async let servicesTask = ProviderService.fetchServicesForProvider(id)
+            async let claimTask = ClaimService.getMyClaimStatus(providerId: id)
 
-            let (providerResult, reviewsResult, servicesResult) = try await (providerTask, reviewsTask, servicesTask)
+            let (providerResult, reviewsResult, servicesResult, claimResult) = try await (providerTask, reviewsTask, servicesTask, claimTask)
             provider = providerResult
             reviews = reviewsResult
             services = servicesResult
+            myClaimStatus = claimResult
         } catch {
             errorMessage = localizedErrorMessage(error)
         }

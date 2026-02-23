@@ -189,21 +189,94 @@ struct ProviderDetailView: View {
     private var claimBanner: some View {
         Group {
             if detailVM.provider?.isClaimed == false {
-                Button {
-                    showClaimSheet = true
-                } label: {
-                    HStack {
-                        Text(String(localized: "Is this your practice? Claim it ->"))
-                        Spacer()
-                        Image(systemName: "chevron.right")
+                if let claim = detailVM.myClaimStatus {
+                    // User has already submitted a claim
+                    if claim.status == .pending {
+                        HStack(spacing: AppSpacing.sm) {
+                            Image(systemName: "clock.fill")
+                                .foregroundStyle(.orange)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Claim Pending")
+                                    .font(AppFont.headline)
+                                    .foregroundStyle(.primary)
+                                Text("Under review — we'll notify you within 1-3 business days")
+                                    .font(AppFont.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .padding(AppSpacing.md)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.orange.opacity(0.1))
+                        .cornerRadius(AppRadius.card)
+                        .padding(.horizontal, AppSpacing.lg)
+                    } else if claim.status == .rejected {
+                        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                            HStack(spacing: AppSpacing.sm) {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundStyle(.red)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Claim Rejected")
+                                        .font(AppFont.headline)
+                                        .foregroundStyle(.primary)
+                                    if let reason = claim.rejectionReason {
+                                        Text(reason)
+                                            .font(AppFont.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                                Spacer()
+                            }
+                            Button {
+                                showClaimSheet = true
+                            } label: {
+                                Text("Resubmit Claim")
+                                    .font(AppFont.footnote)
+                                    .foregroundStyle(AppColor.trustBlue)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, AppSpacing.md)
+                                    .background(AppColor.trustBlue.opacity(0.1))
+                                    .cornerRadius(AppRadius.button)
+                            }
+                        }
+                        .padding(AppSpacing.md)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.red.opacity(0.1))
+                        .cornerRadius(AppRadius.card)
+                        .padding(.horizontal, AppSpacing.lg)
                     }
-                    .font(AppFont.caption)
-                    .foregroundStyle(.white)
-                    .padding(AppSpacing.md)
-                    .background(AppColor.trustBlue)
-                    .cornerRadius(AppRadius.button)
+                } else {
+                    // No claim yet - show claim button
+                    Button {
+                        showClaimSheet = true
+                    } label: {
+                        HStack(spacing: AppSpacing.sm) {
+                            Image(systemName: "building.2.fill")
+                                .foregroundStyle(AppColor.trustBlue)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Is this your practice?")
+                                    .font(AppFont.headline)
+                                    .foregroundStyle(.primary)
+                                Text("Claim this profile to manage it")
+                                    .font(AppFont.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Text("Claim Profile")
+                                .font(AppFont.footnote)
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, AppSpacing.md)
+                                .background(AppColor.trustBlue)
+                                .cornerRadius(AppRadius.button)
+                        }
+                        .padding(AppSpacing.md)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(AppColor.trustBlue.opacity(0.1))
+                        .cornerRadius(AppRadius.card)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, AppSpacing.lg)
                 }
-                .padding(.horizontal, AppSpacing.lg)
             }
         }
     }

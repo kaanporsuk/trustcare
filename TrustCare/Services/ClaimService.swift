@@ -10,12 +10,12 @@ enum ClaimService {
     static func submitClaim(
         providerId: UUID,
         role: ClaimRole,
-        email: String,
-        phone: String?,
-        license: String?,
         proofImage: UIImage?
     ) async throws {
         let session = try await client.auth.session
+        
+        // Use the user's email from their auth session as the business email
+        let businessEmail = session.user.email ?? "no-email@trustcare.app"
 
         var proofPath: String?
         if let proofImage {
@@ -27,8 +27,10 @@ enum ClaimService {
                 throw AppError.uploadFailed
             }
 
-            let fileName = "\(UUID().uuidString).jpg"
-            let path = "\(session.user.id.uuidString)/\(fileName)"
+            // Path format: {user_id}/{provider_id}/{timestamp}.jpg
+            let timestamp = Int(Date().timeIntervalSince1970)
+            let fileName = "\(timestamp).jpg"
+            let path = "\(session.user.id.uuidString)/\(providerId.uuidString)/\(fileName)"
             let options = FileOptions(contentType: "image/jpeg")
             let upload = try await client
                 .storage
@@ -42,8 +44,6 @@ enum ClaimService {
             let claimantUserId: String
             let claimantRole: String
             let businessEmail: String
-            let phone: String?
-            let licenseNumber: String?
             let proofDocumentUrl: String?
 
             enum CodingKeys: String, CodingKey {
@@ -51,8 +51,6 @@ enum ClaimService {
                 case claimantUserId = "claimant_user_id"
                 case claimantRole = "claimant_role"
                 case businessEmail = "business_email"
-                case phone
-                case licenseNumber = "license_number"
                 case proofDocumentUrl = "proof_document_url"
             }
         }
@@ -61,9 +59,7 @@ enum ClaimService {
             providerId: providerId.uuidString,
             claimantUserId: session.user.id.uuidString,
             claimantRole: role.rawValue,
-            businessEmail: email,
-            phone: phone,
-            licenseNumber: license,
+            businessEmail: businessEmail,
             proofDocumentUrl: proofPath
         )
 
@@ -71,5 +67,30 @@ enum ClaimService {
             .from("provider_claims")
             .insert(payload)
             .execute()
+    }
+    
+    static func getMyClaimStatus(providerId: UUID) async throws -> ProviderClaim? {
+        guard let session = try? await client.auth.session else {
+            return nil
+        }
+        
+        let response: PostgrestResponse<ProviderClaim> = try await client
+            .from("provider_claims")
+            .select()
+            .eq("provider_id", value: providerId.uuidString)
+            .eq("claimant_user_id", value: session.user.id.uuidString)
+            .order("created_at", ascending: false)
+            .limit(1)
+            .maybeSingle()
+            .execute()
+        
+        return response.value
+    }
+    
+    static func hasPendingClaim(providerId: UUID) async throws -> Bool {
+        guard let claim = try await getMyClaimStatus(providerId: providerId) else {
+            return false
+        }
+        return claim.status == .pending
     }
 }

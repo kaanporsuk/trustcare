@@ -2,76 +2,97 @@ import SwiftUI
 import MapKit
 
 struct RehberChatView: View {
-    @StateObject private var viewModel = RehberViewModel()
+    @ObservedObject var viewModel: RehberViewModel
+    @Binding var showChat: Bool
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @State private var inputText: String = ""
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                persistentInfoBar
+        NavigationStack {
+            ZStack {
+                VStack(spacing: 0) {
+                    persistentInfoBar
 
-                ScrollViewReader { proxy in
-                    ScrollView {
-                        LazyVStack(alignment: .leading, spacing: AppSpacing.sm) {
-                            if viewModel.messages.isEmpty {
-                                emptyState
+                    ScrollViewReader { proxy in
+                        ScrollView {
+                            LazyVStack(alignment: .leading, spacing: AppSpacing.sm) {
+                                if viewModel.messages.isEmpty {
+                                    emptyState
+                                }
+
+                                ForEach(viewModel.messages) { message in
+                                    messageRow(message)
+                                        .id(message.id)
+                                }
+
+                                if viewModel.isLoading {
+                                    typingIndicator
+                                        .id("typing")
+                                }
                             }
+                            .padding(.horizontal, AppSpacing.md)
+                            .padding(.vertical, AppSpacing.md)
+                        }
+                        .onChange(of: viewModel.messages.count) { _, _ in
+                            scrollToBottom(proxy: proxy)
+                        }
+                        .onChange(of: viewModel.isLoading) { _, _ in
+                            scrollToBottom(proxy: proxy)
+                        }
+                    }
 
-                            ForEach(viewModel.messages) { message in
-                                messageRow(message)
-                                    .id(message.id)
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .font(AppFont.footnote)
+                            .foregroundStyle(AppColor.error)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, AppSpacing.md)
+                    }
+
+                    usageCounter
+
+                    inputBar
+                }
+                .background(AppColor.background)
+                .navigationTitle("Rehber")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            Task {
+                                await viewModel.closeCurrentSession()
+                                showChat = false
                             }
-
-                            if viewModel.isLoading {
-                                typingIndicator
-                                    .id("typing")
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "chevron.left")
+                                Text("Sessions")
                             }
                         }
-                        .padding(.horizontal, AppSpacing.md)
-                        .padding(.vertical, AppSpacing.md)
                     }
-                    .onChange(of: viewModel.messages.count) { _, _ in
-                        scrollToBottom(proxy: proxy)
-                    }
-                    .onChange(of: viewModel.isLoading) { _, _ in
-                        scrollToBottom(proxy: proxy)
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("New") {
+                            Task {
+                                await viewModel.closeCurrentSession()
+                                viewModel.startNewChat()
+                            }
+                        }
                     }
                 }
 
-                if let errorMessage = viewModel.errorMessage {
-                    Text(errorMessage)
-                        .font(AppFont.footnote)
-                        .foregroundStyle(AppColor.error)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, AppSpacing.md)
-                }
-
-                usageCounter
-
-                inputBar
-            }
-            .background(AppColor.background)
-            .navigationTitle("Rehber")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Yeni Sohbet") {
-                        viewModel.startNewChat()
+                if viewModel.showEmergencyCard {
+                    EmergencyCardView {
+                        viewModel.dismissEmergencyCard()
                     }
+                    .transition(.opacity)
+                    .zIndex(10)
                 }
             }
-
-            if viewModel.showEmergencyCard {
-                EmergencyCardView {
-                    viewModel.dismissEmergencyCard()
+            .task {
+                if specialtyService.specialties.isEmpty {
+                    await specialtyService.loadSpecialties()
                 }
-                .transition(.opacity)
-                .zIndex(10)
-            }
-        }
-        .task {
-            if specialtyService.specialties.isEmpty {
-                await specialtyService.loadSpecialties()
             }
         }
     }
@@ -188,9 +209,18 @@ struct RehberChatView: View {
                         .padding(.vertical, AppSpacing.sm)
                         .background(message.role == "user" ? AppColor.trustBlue : Color(.systemGray6))
                         .cornerRadius(AppRadius.card)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: AppRadius.card)
+                                .stroke(message.wasEmergency ? AppColor.error : Color.clear, lineWidth: 2)
+                        )
                 }
 
                 if message.role == "assistant" { Spacer(minLength: 50) }
+            }
+            
+            // Emergency action card for emergency messages
+            if message.role == "assistant", message.wasEmergency {
+                emergencyActionCard
             }
 
             if message.role == "assistant", message.isFallback {
@@ -207,6 +237,53 @@ struct RehberChatView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: message.role == "user" ? .trailing : .leading)
+        .onAppear {
+            if message.role == "assistant", message.wasEmergency {
+                // Trigger heavy haptic feedback for emergency
+                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                generator.impactOccurred()
+            }
+        }
+    }
+    
+    private var emergencyActionCard: some View {
+        Button {
+            if let url = URL(string: "tel://112"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        } label: {
+            VStack(spacing: AppSpacing.sm) {
+                HStack(spacing: AppSpacing.md) {
+                    Image(systemName: "phone.fill")
+                        .font(.system(size: 32))
+                        .foregroundStyle(.white)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Call Emergency Services")
+                            .font(AppFont.headline)
+                            .foregroundStyle(.white)
+                        
+                        Text("112")
+                            .font(AppFont.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(AppSpacing.md)
+                
+                Text("If you or someone else is in danger, call immediately.")
+                    .font(AppFont.footnote)
+                    .foregroundStyle(.white.opacity(0.9))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.bottom, AppSpacing.sm)
+            }
+            .background(AppColor.error)
+            .cornerRadius(AppRadius.card)
+        }
+        .buttonStyle(.plain)
     }
 
     private func specialtyCards(_ specialties: [String]) -> some View {

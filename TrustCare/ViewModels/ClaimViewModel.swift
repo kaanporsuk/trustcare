@@ -5,23 +5,19 @@ import UIKit
 @MainActor
 final class ClaimViewModel: ObservableObject {
 	@Published var role: ClaimRole = .owner
-	@Published var businessEmail: String = ""
-	@Published var phone: String = ""
-	@Published var licenseNumber: String = ""
 	@Published var proofImage: UIImage?
 	@Published var isLoading: Bool = false
 	@Published var errorMessage: String?
 	@Published var isSubmitted: Bool = false
 
 	var isFormValid: Bool {
-		let trimmedEmail = businessEmail.trimmingCharacters(in: .whitespacesAndNewlines)
-		return trimmedEmail.contains("@") && trimmedEmail.contains(".")
+		proofImage != nil
 	}
 
 	func submit(providerId: UUID) async {
 		guard !isLoading else { return }
 		guard isFormValid else {
-			errorMessage = String(localized: "Please enter a valid email address.")
+			errorMessage = String(localized: "Please upload a verification document.")
 			return
 		}
 
@@ -32,9 +28,6 @@ final class ClaimViewModel: ObservableObject {
 			try await ClaimService.submitClaim(
 				providerId: providerId,
 				role: role,
-				email: businessEmail,
-				phone: phone.isEmpty ? nil : phone,
-				license: licenseNumber.isEmpty ? nil : licenseNumber,
 				proofImage: proofImage
 			)
 			isSubmitted = true
@@ -47,9 +40,6 @@ final class ClaimViewModel: ObservableObject {
 
 	func reset() {
 		role = .owner
-		businessEmail = ""
-		phone = ""
-		licenseNumber = ""
 		proofImage = nil
 		errorMessage = nil
 		isSubmitted = false
