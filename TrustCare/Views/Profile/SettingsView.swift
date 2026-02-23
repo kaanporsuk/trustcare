@@ -131,10 +131,11 @@ struct SettingsView: View {
         Button {
             localizationManager.currentLanguage = language.code
             Task {
+                let userId = SupabaseManager.shared.client.auth.session.user.id.uuidString
                 try? await SupabaseManager.shared.client
                     .from("profiles")
                     .update(["preferred_language": language.code])
-                    .eq("id", SupabaseManager.shared.client.auth.session?.user.id.uuidString ?? "")
+                    .eq("id", value: userId)
                     .execute()
             }
         } label: {
