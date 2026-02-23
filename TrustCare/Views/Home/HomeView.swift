@@ -492,7 +492,7 @@ private struct CompactProviderCardForSheet: View {
                     .lineLimit(2)
 
                 // Verification Badge
-                if provider.isVerified {
+                if provider.verifiedReviewCount > 0 {
                     HStack(spacing: 4) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(AppFont.footnote)
