@@ -20,8 +20,3 @@ extension View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }
-
-// MARK: - Notification Names
-extension Notification.Name {
-    static let trustCareSwitchTab = Notification.Name("com.trustcare.switchTab")
-}
