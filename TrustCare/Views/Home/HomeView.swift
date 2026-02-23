@@ -175,7 +175,7 @@ struct HomeView: View {
                (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty) {
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
                     if !homeVM.specialtySuggestions.isEmpty {
-                        Text("Uzmanlıklar")
+                        Text(String(localized: "specialties_label"))
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                             .padding(.top, AppSpacing.xs)
@@ -199,7 +199,7 @@ struct HomeView: View {
                     }
 
                     if !homeVM.providerSuggestions.isEmpty {
-                        Text("Sağlayıcılar")
+                        Text(String(localized: "providers_label"))
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                             .padding(.top, AppSpacing.xs)

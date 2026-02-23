@@ -174,3 +174,13 @@
 "settings_cancel" = "Cancel";
 "settings_delete_account_warning" = "This action cannot be undone";
 "unauthorized_area" = "Unknown area";
+"specialties_label" = "Specialties";
+"providers_label" = "Providers";
+"current_location" = "Current Location";
+"use_device_location" = "Use device location";
+"show_all" = "Show All";
+"verified_badge" = "Verified";
+"claim_profile" = "Claim Profile";
+"is_this_your_practice" = "Is this your practice?";
+"claim_description" = "Claim this profile to manage it";
+"search_specialties" = "Search specialties";

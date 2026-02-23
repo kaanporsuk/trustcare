@@ -167,6 +167,16 @@
 "settings_cancel" = "Annuller";
 "settings_delete_account_warning" = "Denne handling kan ikke fortrydes";
 "unauthorized_area" = "Ukendt område";
+"specialties_label" = "Specialiteter";
+"providers_label" = "Behandlere";
+"current_location" = "Aktuel placering";
+"use_device_location" = "Brug enhedens placering";
+"show_all" = "Vis alt";
+"verified_badge" = "Verificeret";
+"claim_profile" = "Kræv profil";
+"is_this_your_practice" = "Er det din praksis?";
+"claim_description" = "Kræv denne profil for at styre den";
+"search_specialties" = "Søg i specialiteter";
 "sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Skjoldbruskkirtelsygdom";
 "sub_hormone_replacement" = "Hormonerstatning";

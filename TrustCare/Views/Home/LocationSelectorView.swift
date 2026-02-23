@@ -14,7 +14,7 @@ struct LocationSelectorView: View {
                 HStack(spacing: AppSpacing.sm) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(.secondary)
-                    TextField("Şehir ara...", text: $searchText)
+                    TextField(String(localized: "search_placeholder"), text: $searchText)
                         .textInputAutocapitalization(.words)
                         .autocorrectionDisabled()
                 }
@@ -39,10 +39,10 @@ struct LocationSelectorView: View {
                             Image(systemName: "location.fill")
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Mevcut Konum")
+                                Text(String(localized: "current_location"))
                                     .font(AppFont.body)
                                     .foregroundStyle(.primary)
-                                Text("Cihaz GPS konumunu kullan")
+                                Text(String(localized: "use_device_location"))
                                     .font(AppFont.footnote)
                                     .foregroundStyle(.secondary)
                             }

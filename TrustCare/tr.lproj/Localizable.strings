@@ -166,3 +166,13 @@
 "settings_cancel" = "VazGeç";
 "settings_delete_account_warning" = "Bu işlem geri alınamaz";
 "unauthorized_area" = "Bilinmeyen alan";
+"specialties_label" = "Uzmanlıklar";
+"providers_label" = "Sağlayıcılar";
+"current_location" = "Mevcut Konum";
+"use_device_location" = "Cihaz GPS konumunu kullan";
+"show_all" = "Tümünü Göster";
+"verified_badge" = "Doğrulanmış";
+"claim_profile" = "Profili İddia Et";
+"is_this_your_practice" = "Bu senin pratiğin mi?";
+"claim_description" = "Bu profili yönetmek için talep edin";
+"search_specialties" = "Uzmanlık ara";

@@ -40,7 +40,7 @@ struct ProviderCardView: View {
                         HStack(spacing: AppSpacing.xs) {
                             Image(systemName: "checkmark.seal.fill")
                                 .foregroundStyle(AppColor.success)
-                            Text("Doğrulanmış")
+                            Text(String(localized: "verified_badge"))
                                 .font(.footnote)
                                 .foregroundStyle(.secondary)
                         }

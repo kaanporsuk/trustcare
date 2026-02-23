@@ -166,3 +166,13 @@
 "settings_cancel" = "Anuluj";
 "settings_delete_account_warning" = "Ta akcja nie może być cofnięta";
 "unauthorized_area" = "Nieznany obszar";
+"specialties_label" = "Specjalizacje";
+"providers_label" = "Dostawcy";
+"current_location" = "Bieżąca lokalizacja";
+"use_device_location" = "Użyj lokalizacji urządzenia";
+"show_all" = "Pokaż wszystko";
+"verified_badge" = "Zweryfikowany";
+"claim_profile" = "Zgłoś profil";
+"is_this_your_practice" = "Czy to Twoja praktyka?";
+"claim_description" = "Zgłoś ten profil, aby go zarządzać";
+"search_specialties" = "Szukaj specjalizacji";

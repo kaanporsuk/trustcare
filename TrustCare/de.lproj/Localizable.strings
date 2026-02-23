@@ -166,3 +166,13 @@
 "settings_cancel" = "Abbrechen";
 "settings_delete_account_warning" = "Diese Aktion kann nicht rükgängig gemacht werden";
 "unauthorized_area" = "Unbekanntes Gebiet";
+"specialties_label" = "Fachgebiete";
+"providers_label" = "Anbieter";
+"current_location" = "Aktueller Standort";
+"use_device_location" = "Gerätestandort verwenden";
+"show_all" = "Alle anzeigen";
+"verified_badge" = "Verifiziert";
+"claim_profile" = "Profil beanspruchen";
+"is_this_your_practice" = "Ist das Ihre Praxis?";
+"claim_description" = "Beanspruchen Sie dieses Profil, um es zu verwalten";
+"search_specialties" = "Fachgebiete durchsuchen";

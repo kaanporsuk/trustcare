@@ -167,6 +167,16 @@
 "settings_cancel" = "Annuleren";
 "settings_delete_account_warning" = "Deze actie kan niet ongedaan worden gemaakt";
 "unauthorized_area" = "Onbekend gebied";
+"specialties_label" = "Specialismen";
+"providers_label" = "Aanbieders";
+"current_location" = "Huidige locatie";
+"use_device_location" = "Apparaatlocatie gebruiken";
+"show_all" = "Alles weergeven";
+"verified_badge" = "Geverifieerd";
+"claim_profile" = "Profiel claimen";
+"is_this_your_practice" = "Is dit uw praktijk?";
+"claim_description" = "Claim dit profiel om het te beheren";
+"search_specialties" = "Specialismen zoeken";
 "sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Schildklierziekte";
 "sub_hormone_replacement" = "Hormoonvervanging";
