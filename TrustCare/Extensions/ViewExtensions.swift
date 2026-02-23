@@ -21,32 +21,6 @@ extension View {
     }
 }
 
-// MARK: - Keyboard Dismissal
-extension View {
-    func dismissKeyboardOnTap() -> some View {
-        self.onTapGesture {
-            UIApplication.shared.endEditing()
-        }
-    }
-
-    func keyboardDoneToolbar() -> some View {
-        self.toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(String(localized: "button_done")) {
-                    UIApplication.shared.endEditing()
-                }
-            }
-        }
-    }
-}
-
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
 // MARK: - Notification Names
 extension Notification.Name {
     static let trustCareSwitchTab = Notification.Name("com.trustcare.switchTab")
