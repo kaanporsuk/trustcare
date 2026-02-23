@@ -462,6 +462,7 @@ private struct SkeletonProviderCard: View {
 private struct CompactProviderCardForSheet: View {
     let provider: Provider
     @EnvironmentObject private var localizationManager: LocalizationManager
+    @ObservedObject private var specialtyService = SpecialtyService.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
@@ -485,15 +486,8 @@ private struct CompactProviderCardForSheet: View {
                     .foregroundStyle(.primary)
 
                 // Specialty
-                Text(localizationManager.resolvedSpecialtyName(
-                    canonical: provider.specialty,
-                    tr: provider.specialtyTr ?? provider.specialty,
-                    de: provider.specialtyDe ?? provider.specialty,
-                    pl: provider.specialtyPl ?? provider.specialty,
-                    nl: provider.specialtyNl ?? provider.specialty,
-                    da: provider.specialtyDa ?? provider.specialty
-                ))
-                    .font(AppFont.caption2)
+                Text(localizedProviderSpecialty)
+                    .font(AppFont.footnote)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
 
@@ -501,9 +495,9 @@ private struct CompactProviderCardForSheet: View {
                 if provider.isVerified {
                     HStack(spacing: 4) {
                         Image(systemName: "checkmark.circle.fill")
-                            .font(AppFont.caption2)
+                            .font(AppFont.footnote)
                         Text(String(localized: "verified_badge"))
-                            .font(AppFont.caption2)
+                            .font(AppFont.footnote)
                     }
                     .foregroundStyle(.green)
                 }
@@ -520,6 +514,25 @@ private struct CompactProviderCardForSheet: View {
             RoundedRectangle(cornerRadius: AppRadius.card)
                 .stroke(AppColor.border, lineWidth: 1)
         )
+    }
+
+    private var localizedProviderSpecialty: String {
+        guard let specialty = specialtyService.specialties.first(where: {
+            [
+                $0.name,
+                $0.nameTr,
+                $0.nameDe,
+                $0.namePl,
+                $0.nameNl,
+                $0.nameDa,
+            ]
+            .compactMap { $0 }
+            .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+
+        return specialty.resolvedName(using: localizationManager)
     }
 }
 
