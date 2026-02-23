@@ -181,24 +181,45 @@ final class HomeViewModel: ObservableObject {
 
     func useCurrentLocation() async {
         startLocationUpdates()
-        let name = locationName.isEmpty ? String(localized: "Tap to set location") : locationName
-        let coordinate = locationManager.userLocation
+        guard let coordinate = locationManager.userLocation else {
+            verboseLog("❌ useCurrentLocation: No user location available")
+            return
+        }
+
+        // Reverse geocode to extract city name from GPS coordinates
+        let clLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let geocoder = CLGeocoder()
+        var geocodedCityName = String(localized: "current_location")
+        
+        do {
+            if let placemark = try await geocoder.reverseGeocodeLocation(clLocation).first {
+                // Try to extract city/locality, with fallbacks
+                geocodedCityName = placemark.locality
+                    ?? placemark.subAdministrativeArea
+                    ?? placemark.administrativeArea
+                    ?? String(localized: "current_location")
+                verboseLog("✅ Geocoded current location to: \(geocodedCityName)")
+            }
+        } catch {
+            verboseLog("⚠️ Reverse geocoding failed for current location: \(error)")
+            // Keep the fallback name if geocoding fails
+        }
+
+        // Update location with geocoded city name
         let updated = SelectedLocation(
-            name: "Mevcut Konum",
-            latitude: coordinate?.latitude ?? 0,
-            longitude: coordinate?.longitude ?? 0,
+            name: geocodedCityName,
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
             isCurrentLocation: true
         )
         selectedLocation = updated
-        locationName = name
-        selectedCity = "Mevcut Konum"
-        userLatitude = updated.latitude
-        userLongitude = updated.longitude
+        locationName = geocodedCityName
+        selectedCity = geocodedCityName
+        userLatitude = coordinate.latitude
+        userLongitude = coordinate.longitude
         saveSelectedLocation(updated)
         persistCityAndCoordinates()
-        if let coordinate {
-            recenterMap(to: coordinate.latitude, longitude: coordinate.longitude, userInitiated: true)
-        }
+        recenterMap(to: coordinate.latitude, longitude: coordinate.longitude, userInitiated: true)
         await refresh()
     }
 
@@ -521,9 +542,12 @@ final class HomeViewModel: ObservableObject {
         do {
             let placemarks = try await geocoder.reverseGeocodeLocation(clLocation)
             if let place = placemarks.first {
-                let city = place.locality ?? place.administrativeArea
+                let city = place.locality
+                    ?? place.subAdministrativeArea
+                    ?? place.administrativeArea
+                    ?? String(localized: "current_location")
                 if selectedLocation.isCurrentLocation {
-                    locationName = city ?? String(localized: "Tap to set location")
+                    locationName = city
                     let updated = SelectedLocation(
                         name: locationName,
                         latitude: location.latitude,
@@ -531,12 +555,14 @@ final class HomeViewModel: ObservableObject {
                         isCurrentLocation: true
                     )
                     selectedLocation = updated
+                    selectedCity = city
                     saveSelectedLocation(updated)
                 }
             }
         } catch {
             if selectedLocation.isCurrentLocation {
-                locationName = String(localized: "Tap to set location")
+                locationName = String(localized: "current_location")
+                selectedCity = String(localized: "current_location")
             }
         }
     }
