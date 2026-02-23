@@ -11,18 +11,20 @@ struct ProviderMapView: View {
     
     @State private var showSearchAreaButton = false
     @State private var currentMapRegion: MKCoordinateRegion?
+    @State private var userIsInteracting = false
 
     var body: some View {
         ZStack {
             ProviderMapRepresentable(
                 providers: filteredProviders,
-                centerCoordinate: centerCoordinate,
+                centerCoordinate: userIsInteracting ? nil : centerCoordinate,
                 centerUpdateToken: centerUpdateToken,
                 onOpenProvider: onOpenProvider,
                 onMapCameraChange: { region in
                     currentMapRegion = region
                     showSearchAreaButton = true
-                }
+                },
+                userIsInteracting: $userIsInteracting
             )
 
             if filteredProviders.isEmpty && isLoading {
@@ -30,39 +32,60 @@ struct ProviderMapView: View {
             }
 
             VStack {
-                // Search This Area Button at top center
-                if showSearchAreaButton && currentMapRegion != nil {
-                    Button {
-                        if let region = currentMapRegion {
-                            Task {
-                                showSearchAreaButton = false
-                                await viewModel.fetchProviders(in: region)
+                HStack {
+                    // Search This Area Button at top-left center
+                    if showSearchAreaButton && currentMapRegion != nil {
+                        Button {
+                            if let region = currentMapRegion {
+                                Task {
+                                    showSearchAreaButton = false
+                                    userIsInteracting = false
+                                    await viewModel.fetchProviders(in: region)
+                                }
                             }
+                        } label: {
+                            HStack(spacing: 8) {
+                                Image(systemName: "magnifyingglass")
+                                Text(String(localized: "search_this_area"))
+                            }
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(AppColor.trustBlue)
+                            .cornerRadius(20)
                         }
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: "magnifyingglass")
-                            Text(String(localized: "search_this_area"))
-                        }
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(AppColor.trustBlue)
-                        .cornerRadius(20)
+                        .padding(.top, 12)
+                        .transition(.opacity.combined(with: .scale))
                     }
-                    .padding(.top, 12)
-                    .transition(.opacity.combined(with: .scale))
+                    
+                    Spacer()
+                    
+                    // Filter button at top-right
+                    Button {
+                        // Filter button action
+                    } label: {
+                        Label(String(localized: "Filter"), systemImage: "line.3.horizontal.decrease")
+                            .font(AppFont.callout)
+                            .foregroundStyle(.primary)
+                            .padding(.horizontal, AppSpacing.md)
+                            .padding(.vertical, AppSpacing.sm)
+                            .background(.ultraThinMaterial)
+                            .clipShape(Capsule())
+                            .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
+                    }
+                    .padding(.trailing, AppSpacing.md)
+                    .padding(.top, AppSpacing.sm)
                 }
                 
                 Spacer()
                 
-                // Map legend at top right
+                // Map legend
                 HStack {
                     Spacer()
                     MapLegendView(viewModel: viewModel)
-                        .padding(.top, 12)
                         .padding(.trailing, 12)
+                        .padding(.bottom, 12)
                 }
             }
         }
@@ -100,6 +123,7 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
     let centerUpdateToken: Int
     let onOpenProvider: (Provider) -> Void
     let onMapCameraChange: (MKCoordinateRegion) -> Void
+    @Binding var userIsInteracting: Bool
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -115,7 +139,7 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         mapView.removeAnnotations(existing)
         mapView.addAnnotations(providers.map { ProviderAnnotation(provider: $0) })
 
-        if let centerCoordinate {
+        if let centerCoordinate, !userIsInteracting {
             let currentCenter = mapView.region.center
             let latitudeDistance = abs(currentCenter.latitude - centerCoordinate.latitude)
             let longitudeDistance = abs(currentCenter.longitude - centerCoordinate.longitude)
@@ -138,6 +162,7 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         }
         
         context.coordinator.onMapCameraChange = onMapCameraChange
+        context.coordinator.userIsInteracting = $userIsInteracting
     }
 
     func makeCoordinator() -> Coordinator {
@@ -147,6 +172,7 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
     final class Coordinator: NSObject, MKMapViewDelegate {
         let onOpenProvider: (Provider) -> Void
         var onMapCameraChange: ((MKCoordinateRegion) -> Void)?
+        var userIsInteracting: Binding<Bool>?
         var isSettingRegionProgrammatically = false
         var lastCenterUpdateToken: Int = -1
 
@@ -175,6 +201,14 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             guard let annotation = view.annotation as? ProviderAnnotation else { return }
             onOpenProvider(annotation.provider)
+        }
+        
+        func mapViewWillStartUserInteraction(_ mapView: MKMapView) {
+            userIsInteracting?.wrappedValue = true
+        }
+        
+        func mapViewDidEndUserInteraction(_ mapView: MKMapView) {
+            userIsInteracting?.wrappedValue = false
         }
         
         func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

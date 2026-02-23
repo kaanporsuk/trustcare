@@ -231,13 +231,31 @@ final class HomeViewModel: ObservableObject {
     }
 
     func fetchProviders(in region: MKCoordinateRegion) async {
+        // Reverse geocode the center to update city name
+        let location = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
+        let geocoder = CLGeocoder()
+        
+        var geocodedName = locationName
+        do {
+            if let placemark = try await geocoder.reverseGeocodeLocation(location).first {
+                geocodedName = placemark.locality
+                    ?? placemark.subAdministrativeArea
+                    ?? placemark.administrativeArea
+                    ?? String(localized: "unauthorized_area")
+            }
+        } catch {
+            // Use existing location name if geocoding fails
+            print("Reverse geocoding failed: \(error)")
+        }
+        
         let updatedLocation = SelectedLocation(
-            name: locationName,
+            name: geocodedName,
             latitude: region.center.latitude,
             longitude: region.center.longitude,
             isCurrentLocation: false
         )
         selectedLocation = updatedLocation
+        locationName = geocodedName
         saveSelectedLocation(updatedLocation)
         recenterMap(to: region.center.latitude, longitude: region.center.longitude)
         currentOffset = 0

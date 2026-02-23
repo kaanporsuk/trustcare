@@ -13,6 +13,7 @@ struct HomeView: View {
     @State private var selectedSpecialty: Specialty?
     @State private var selectedProviderFromSearch: Provider?
     @State private var selectedProviderFromMap: Provider?
+    @State private var showMapBottomSheet: Bool = false
     private let verboseLogging = false
 
     private func verboseLog(_ message: @autoclosure () -> String) {
@@ -23,14 +24,158 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                headerSection
+                // Top sticky section with location, search, and smart pills
+                VStack(spacing: AppSpacing.md) {
+                    // Location Row
+                    Button {
+                        showLocationSearch = true
+                    } label: {
+                        HStack(spacing: AppSpacing.sm) {
+                            Image(systemName: "mappin.circle.fill")
+                                .font(.title3)
+                                .foregroundStyle(AppColor.trustBlue)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location")
+                                     ? "Adana"
+                                     : homeVM.locationName)
+                                    .font(AppFont.headline)
+                                    .foregroundStyle(.primary)
+                                Text("Türkiye")
+                                    .font(AppFont.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.horizontal, AppSpacing.md)
+                        .padding(.vertical, AppSpacing.sm)
+                        .background(AppColor.cardBackground)
+                        .cornerRadius(AppRadius.button)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, AppSpacing.lg)
 
-                VStack(spacing: AppSpacing.lg) {
-                    searchSection
+                    // Search Bar
+                    HStack(spacing: AppSpacing.sm) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(.secondary)
+                        TextField(String(localized: "search_placeholder"), text: $homeVM.searchText)
+                            .font(AppFont.body)
+                            .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled()
+                        if !homeVM.searchText.isEmpty {
+                            Button {
+                                homeVM.searchText = ""
+                                homeVM.clearSuggestions()
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(.horizontal, AppSpacing.md)
+                    .frame(height: 44)
+                    .background(AppColor.cardBackground)
+                    .cornerRadius(AppRadius.button)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.button)
+                            .stroke(AppColor.border, lineWidth: 1)
+                    )
+                    .padding(.horizontal, AppSpacing.lg)
+
+                    // Search suggestions (if any)
+                    if !homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                       (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty) {
+                        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                            if !homeVM.specialtySuggestions.isEmpty {
+                                Text(String(localized: "specialties_label"))
+                                    .font(AppFont.caption)
+                                    .foregroundStyle(.secondary)
+                                    .padding(.top, AppSpacing.xs)
+                                ForEach(homeVM.specialtySuggestions.prefix(4)) { specialty in
+                                    Button {
+                                        selectedSpecialty = specialty
+                                        homeVM.searchText = specialty.resolvedName(using: localizationManager)
+                                        homeVM.clearSuggestions()
+                                        Task { await homeVM.applySpecialtyFilter(specialty) }
+                                    } label: {
+                                        HStack(spacing: AppSpacing.sm) {
+                                            Image(systemName: specialty.iconName)
+                                            Text(specialty.resolvedName(using: localizationManager))
+                                                .font(AppFont.body)
+                                            Spacer()
+                                        }
+                                        .foregroundStyle(.primary)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+
+                            if !homeVM.providerSuggestions.isEmpty {
+                                Text(String(localized: "providers_label"))
+                                    .font(AppFont.caption)
+                                    .foregroundStyle(.secondary)
+                                    .padding(.top, AppSpacing.xs)
+                                ForEach(homeVM.providerSuggestions.prefix(5)) { provider in
+                                    Button {
+                                        homeVM.clearSuggestions()
+                                        selectedProviderFromSearch = provider
+                                    } label: {
+                                        HStack(spacing: AppSpacing.sm) {
+                                            Image(systemName: "cross.case")
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text(provider.name)
+                                                    .font(AppFont.body)
+                                                Text(provider.specialty)
+                                                    .font(AppFont.caption)
+                                                    .foregroundStyle(.secondary)
+                                            }
+                                            Spacer()
+                                        }
+                                        .foregroundStyle(.primary)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                        }
+                        .padding(AppSpacing.md)
+                        .background(AppColor.cardBackground)
+                        .cornerRadius(AppRadius.card)
+                        .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
                         .padding(.horizontal, AppSpacing.lg)
+                    }
 
-                    specialtyScroll
+                    // Smart Pills (All + Top 5 Popular + More)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: AppSpacing.sm) {
+                            smartPill(title: String(localized: "filter_all"), isSelected: selectedSpecialty == nil) {
+                                selectedSpecialty = nil
+                                Task { await homeVM.applySpecialtyFilter(nil) }
+                            }
 
+                            ForEach(homeVM.popularSpecialties.prefix(5)) { specialty in
+                                smartPill(title: localizationManager.resolvedSpecialtyName(
+                                    canonical: specialty.name,
+                                    tr: specialty.nameTr, de: specialty.nameDe,
+                                    pl: specialty.namePl, nl: specialty.nameNl,
+                                    da: specialty.nameDa
+                                ), isSelected: selectedSpecialty?.id == specialty.id) {
+                                    selectedSpecialty = specialty
+                                    Task { await homeVM.applySpecialtyFilter(specialty) }
+                                }
+                            }
+
+                            smartPill(title: String(localized: "filter_more"), isSelected: false) {
+                                showSpecialtyBrowser = true
+                            }
+                        }
+                        .padding(.horizontal, AppSpacing.lg)
+                    }
+
+                    // Map/List Toggle
                     Picker("", selection: $homeVM.viewMode) {
                         Text(String(localized: "map_toggle_map")).tag(HomeViewModel.ViewMode.map)
                         Text(String(localized: "map_toggle_list")).tag(HomeViewModel.ViewMode.list)
@@ -39,7 +184,10 @@ struct HomeView: View {
                     .padding(.horizontal, AppSpacing.lg)
                 }
                 .padding(.bottom, AppSpacing.md)
+                .background(Color(.systemBackground))
+                .shadow(color: .black.opacity(0.05), radius: 2, y: 1)
 
+                // Content Section
                 ZStack {
                     contentSection
                 }
@@ -84,11 +232,11 @@ struct HomeView: View {
             .navigationDestination(item: $selectedProviderFromMap) { provider in
                 ProviderDetailView(providerId: provider.id)
             }
-            .alert(String(localized: "Error"), isPresented: Binding(
+            .alert(String(localized: "error_generic"), isPresented: Binding(
                 get: { homeVM.errorMessage != nil },
                 set: { if !$0 { homeVM.errorMessage = nil } }
             )) {
-                Button(String(localized: "Done")) {
+                Button(String(localized: "button_ok")) {
                     homeVM.errorMessage = nil
                 }
             } message: {
@@ -114,149 +262,7 @@ struct HomeView: View {
         }
     }
 
-    private var headerSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "tab_discover"))
-                .font(AppFont.largeTitle)
-
-            Button {
-                showLocationSearch = true
-            } label: {
-                HStack(spacing: AppSpacing.xs) {
-                    Image(systemName: "mappin.and.ellipse")
-                        .foregroundStyle(.secondary)
-                    Text(homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location")
-                         ? "Adana, Türkiye"
-                         : homeVM.locationName)
-                        .font(AppFont.body)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.horizontal, AppSpacing.lg)
-        .padding(.top, AppSpacing.lg)
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var searchSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            HStack(spacing: AppSpacing.sm) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.secondary)
-                TextField(String(localized: "search_placeholder"), text: $homeVM.searchText)
-                    .font(AppFont.body)
-                    .textInputAutocapitalization(.words)
-                    .autocorrectionDisabled()
-                if !homeVM.searchText.isEmpty {
-                    Button {
-                        homeVM.searchText = ""
-                        homeVM.clearSuggestions()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.secondary)
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            .padding(.horizontal, AppSpacing.md)
-            .frame(height: 44)
-            .background(AppColor.cardBackground)
-            .cornerRadius(AppRadius.button)
-            .overlay(
-                RoundedRectangle(cornerRadius: AppRadius.button)
-                    .stroke(AppColor.border, lineWidth: 1)
-            )
-
-            if !homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-               (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty) {
-                VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                    if !homeVM.specialtySuggestions.isEmpty {
-                        Text(String(localized: "specialties_label"))
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                            .padding(.top, AppSpacing.xs)
-                        ForEach(homeVM.specialtySuggestions.prefix(4)) { specialty in
-                            Button {
-                                selectedSpecialty = specialty
-                                homeVM.searchText = specialty.resolvedName(using: localizationManager)
-                                homeVM.clearSuggestions()
-                                Task { await homeVM.applySpecialtyFilter(specialty) }
-                            } label: {
-                                HStack(spacing: AppSpacing.sm) {
-                                    Image(systemName: specialty.iconName)
-                                    Text(specialty.resolvedName(using: localizationManager))
-                                        .font(AppFont.body)
-                                    Spacer()
-                                }
-                                .foregroundStyle(.primary)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-
-                    if !homeVM.providerSuggestions.isEmpty {
-                        Text(String(localized: "providers_label"))
-                            .font(AppFont.caption)
-                            .foregroundStyle(.secondary)
-                            .padding(.top, AppSpacing.xs)
-                        ForEach(homeVM.providerSuggestions.prefix(5)) { provider in
-                            Button {
-                                homeVM.clearSuggestions()
-                                selectedProviderFromSearch = provider
-                            } label: {
-                                HStack(spacing: AppSpacing.sm) {
-                                    Image(systemName: "cross.case")
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(provider.name)
-                                            .font(AppFont.body)
-                                        Text(provider.specialty)
-                                            .font(AppFont.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    Spacer()
-                                }
-                                .foregroundStyle(.primary)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                }
-                .padding(AppSpacing.md)
-                .background(AppColor.cardBackground)
-                .cornerRadius(AppRadius.card)
-                .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
-            }
-        }
-    }
-
-    private var specialtyScroll: some View {
-        return ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: AppSpacing.sm) {
-                specialtyChip(title: String(localized: "filter_all"), isSelected: selectedSpecialty == nil) {
-                    selectedSpecialty = nil
-                    Task { await homeVM.applySpecialtyFilter(nil) }
-                }
-
-                ForEach(Array(specialtyService.popularSpecialties().prefix(20))) { specialty in
-                    specialtyChip(title: specialty.resolvedName(using: localizationManager), isSelected: selectedSpecialty?.id == specialty.id) {
-                        selectedSpecialty = specialty
-                        Task { await homeVM.applySpecialtyFilter(specialty) }
-                    }
-                }
-
-                specialtyChip(title: String(localized: "filter_more"), isSelected: false) {
-                    showSpecialtyBrowser = true
-                }
-            }
-            .padding(.horizontal, AppSpacing.lg)
-        }
-    }
-
-    private func specialtyChip(title: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+    private func smartPill(title: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(title)
                 .font(AppFont.caption)
@@ -287,16 +293,64 @@ struct HomeView: View {
                 .padding(.top, AppSpacing.md)
             }
         } else if homeVM.viewMode == .map {
-            ProviderMapView(
-                viewModel: homeVM,
-                providers: homeVM.providers,
-                isLoading: homeVM.isLoading,
-                centerCoordinate: homeVM.mapCenterCoordinate,
-                centerUpdateToken: homeVM.mapCenterUpdateToken,
-                onOpenProvider: { provider in
-                    selectedProviderFromMap = provider
+            ZStack {
+                ProviderMapView(
+                    viewModel: homeVM,
+                    providers: homeVM.providers,
+                    isLoading: homeVM.isLoading,
+                    centerCoordinate: homeVM.mapCenterCoordinate,
+                    centerUpdateToken: homeVM.mapCenterUpdateToken,
+                    onOpenProvider: { provider in
+                        selectedProviderFromMap = provider
+                    }
+                )
+
+                // Bottom Sheet with Provider Cards
+                VStack(spacing: 0) {
+                    Spacer()
+
+                    VStack(spacing: AppSpacing.md) {
+                        // Drag Handle
+                        RoundedRectangle(cornerRadius: 2.5)
+                            .fill(Color(.systemGray3))
+                            .frame(width: 40, height: 5)
+                            .padding(.top, AppSpacing.sm)
+
+                        if homeVM.providers.isEmpty {
+                            VStack(spacing: AppSpacing.sm) {
+                                Image(systemName: "mappin.slash")
+                                    .font(.title2)
+                                    .foregroundStyle(.secondary)
+                                Text(String(localized: "empty_search"))
+                                    .font(AppFont.body)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, AppSpacing.lg)
+                        } else {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: AppSpacing.md) {
+                                    ForEach(homeVM.providers) { provider in
+                                        Button {
+                                            selectedProviderFromMap = provider
+                                        } label: {
+                                            CompactProviderCardForSheet(provider: provider)
+                                        }
+                                        .buttonStyle(.plain)
+                                    }
+                                }
+                                .padding(.horizontal, AppSpacing.lg)
+                            }
+                            .frame(height: 160)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color(.systemBackground))
+                    .cornerRadius(16, corners: [.topLeft, .topRight])
+                    .shadow(color: .black.opacity(0.1), radius: 8, y: -2)
                 }
-            )
+                .ignoresSafeArea(edges: .bottom)
+            }
         } else if homeVM.providers.isEmpty {
             VStack(spacing: AppSpacing.sm) {
                 Image(systemName: "magnifyingglass")
@@ -404,3 +458,68 @@ private struct SkeletonProviderCard: View {
         .cornerRadius(AppRadius.card)
     }
 }
+
+private struct CompactProviderCardForSheet: View {
+    let provider: Provider
+    @EnvironmentObject private var localizationManager: LocalizationManager
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+            // Provider Avatar or Name initials
+            ZStack {
+                AppColor.trustBlue.opacity(0.1)
+                    .frame(height: 80)
+
+                Text(provider.name.prefix(2).uppercased())
+                    .font(AppFont.headline)
+                    .foregroundStyle(AppColor.trustBlue)
+                    .frame(height: 80)
+            }
+
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                // Provider Name
+                Text(provider.name)
+                    .font(AppFont.caption)
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .foregroundStyle(.primary)
+
+                // Specialty
+                Text(localizationManager.resolvedSpecialtyName(
+                    canonical: provider.specialty,
+                    tr: provider.specialtyTr ?? provider.specialty,
+                    de: provider.specialtyDe ?? provider.specialty,
+                    pl: provider.specialtyPl ?? provider.specialty,
+                    nl: provider.specialtyNl ?? provider.specialty,
+                    da: provider.specialtyDa ?? provider.specialty
+                ))
+                    .font(AppFont.caption2)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+
+                // Verification Badge
+                if provider.isVerified {
+                    HStack(spacing: 4) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(AppFont.caption2)
+                        Text(String(localized: "verified_badge"))
+                            .font(AppFont.caption2)
+                    }
+                    .foregroundStyle(.green)
+                }
+            }
+            .padding(.horizontal, AppSpacing.sm)
+            .padding(.vertical, AppSpacing.xs)
+
+            Spacer()
+        }
+        .frame(width: 140)
+        .background(AppColor.cardBackground)
+        .cornerRadius(AppRadius.card)
+        .overlay(
+            RoundedRectangle(cornerRadius: AppRadius.card)
+                .stroke(AppColor.border, lineWidth: 1)
+        )
+    }
+}
+
