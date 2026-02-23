@@ -63,6 +63,7 @@ final class HomeViewModel: ObservableObject {
     @Published var recentLocations: [SelectedLocation] = []
     @Published var mapCenterCoordinate: CLLocationCoordinate2D?
     @Published var mapCenterUpdateToken: Int = 0
+    @Published var didUserSelectNewLocation: Bool = false
 
     private(set) var hasLoadedInitially = false
     private let locationManager = LocationManager()
@@ -174,7 +175,7 @@ final class HomeViewModel: ObservableObject {
         saveSelectedLocation(location)
         persistCityAndCoordinates()
         addRecentLocation(location)
-        recenterMap(to: location.latitude, longitude: location.longitude)
+        recenterMap(to: location.latitude, longitude: location.longitude, userInitiated: true)
         await refresh()
     }
 
@@ -196,7 +197,7 @@ final class HomeViewModel: ObservableObject {
         saveSelectedLocation(updated)
         persistCityAndCoordinates()
         if let coordinate {
-            recenterMap(to: coordinate.latitude, longitude: coordinate.longitude)
+            recenterMap(to: coordinate.latitude, longitude: coordinate.longitude, userInitiated: true)
         }
         await refresh()
     }
@@ -257,14 +258,17 @@ final class HomeViewModel: ObservableObject {
         selectedLocation = updatedLocation
         locationName = geocodedName
         saveSelectedLocation(updatedLocation)
-        recenterMap(to: region.center.latitude, longitude: region.center.longitude)
+        recenterMap(to: region.center.latitude, longitude: region.center.longitude, userInitiated: true)
         currentOffset = 0
         hasMoreResults = true
         await searchProviders(reset: true)
     }
 
-    private func recenterMap(to latitude: Double, longitude: Double) {
+    private func recenterMap(to latitude: Double, longitude: Double, userInitiated: Bool = false) {
         mapCenterCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        if userInitiated {
+            didUserSelectNewLocation = true
+        }
         mapCenterUpdateToken += 1
     }
 

@@ -19,12 +19,16 @@ struct ProviderMapView: View {
                 providers: filteredProviders,
                 centerCoordinate: userIsInteracting ? nil : centerCoordinate,
                 centerUpdateToken: centerUpdateToken,
+                didUserSelectNewLocation: viewModel.didUserSelectNewLocation,
                 onOpenProvider: onOpenProvider,
                 onMapCameraChange: { region in
                     currentMapRegion = region
                     showSearchAreaButton = true
                 },
-                userIsInteracting: $userIsInteracting
+                userIsInteracting: $userIsInteracting,
+                didUserSelectNewLocationChanged: {
+                    viewModel.didUserSelectNewLocation = false
+                }
             )
 
             if filteredProviders.isEmpty && isLoading {
@@ -121,9 +125,11 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
     let providers: [Provider]
     let centerCoordinate: CLLocationCoordinate2D?
     let centerUpdateToken: Int
+    let didUserSelectNewLocation: Bool
     let onOpenProvider: (Provider) -> Void
     let onMapCameraChange: (MKCoordinateRegion) -> Void
     @Binding var userIsInteracting: Bool
+    let didUserSelectNewLocationChanged: () -> Void
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -139,19 +145,9 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
         mapView.removeAnnotations(existing)
         mapView.addAnnotations(providers.map { ProviderAnnotation(provider: $0) })
 
-        if let centerCoordinate, !userIsInteracting {
-            let currentCenter = mapView.region.center
-            let latitudeDistance = abs(currentCenter.latitude - centerCoordinate.latitude)
-            let longitudeDistance = abs(currentCenter.longitude - centerCoordinate.longitude)
-            let centerThreshold = 0.0001
-            let centerChangedSignificantly = latitudeDistance > centerThreshold || longitudeDistance > centerThreshold
-            let shouldForceUpdate = context.coordinator.lastCenterUpdateToken != centerUpdateToken
-
-            guard centerChangedSignificantly || shouldForceUpdate else {
-                context.coordinator.onMapCameraChange = onMapCameraChange
-                return
-            }
-
+        // CRITICAL FIX: Only snap the map if user explicitly selected a new location
+        // This prevents the snap-back loop that occurs on every view redraw
+        if let centerCoordinate, !userIsInteracting, didUserSelectNewLocation {
             let region = MKCoordinateRegion(
                 center: centerCoordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
@@ -159,6 +155,9 @@ private struct ProviderMapRepresentable: UIViewRepresentable {
             context.coordinator.isSettingRegionProgrammatically = true
             context.coordinator.lastCenterUpdateToken = centerUpdateToken
             mapView.setRegion(region, animated: true)
+            
+            // Immediately reset the flag to prevent re-snapping on subsequent redraws
+            didUserSelectNewLocationChanged()
         }
         
         context.coordinator.onMapCameraChange = onMapCameraChange
