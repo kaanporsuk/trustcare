@@ -15,18 +15,18 @@ struct ReportReviewSheet: View {
         NavigationStack {
             Form {
                 Section {
-                    Picker(String(localized: "report_reason"), selection: $selectedReason) {
+                    Picker("report_reason", selection: $selectedReason) {
                         ForEach(ReportReason.allCases, id: \.self) { reason in
                             Text(reason.displayName).tag(reason)
                         }
                     }
                     .pickerStyle(.inline)
                 } header: {
-                    Text(String(localized: "report_header"))
+                    Text("report_header")
                 }
                 
                 Section {
-                    TextField(String(localized: "report_optional_details"), text: $details, axis: .vertical)
+                    TextField("report_optional_details", text: $details, axis: .vertical)
                         .lineLimit(4...8)
                         .onChange(of: details) { _, newValue in
                             if newValue.count > maxDetailsLength {
@@ -38,9 +38,9 @@ struct ReportReviewSheet: View {
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 } header: {
-                    Text(String(localized: "report_additional_details"))
+                    Text("report_additional_details")
                 } footer: {
-                    Text(String(localized: "report_footer"))
+                    Text("report_footer")
                 }
                 
                 if let errorMessage {
@@ -51,18 +51,18 @@ struct ReportReviewSheet: View {
                     }
                 }
             }
-            .navigationTitle(String(localized: "report_title"))
+            .navigationTitle("report_title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "button_cancel")) {
+                    Button("button_cancel") {
                         dismiss()
                     }
                     .disabled(isSubmitting)
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "button_submit")) {
+                    Button("button_submit") {
                         submitReport()
                     }
                     .disabled(isSubmitting)

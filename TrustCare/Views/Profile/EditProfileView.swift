@@ -20,26 +20,26 @@ struct EditProfileView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(String(localized: "Profile")) {
-                    TextField(String(localized: "Full Name"), text: $fullName)
-                    TextField(String(localized: "Phone"), text: $phone)
+                Section("Profile") {
+                    TextField("Full Name", text: $fullName)
+                    TextField("Phone", text: $phone)
                         .keyboardType(.phonePad)
                     TextEditor(text: $bio)
                         .frame(minHeight: 120)
                 }
             }
-            .navigationTitle(String(localized: "Edit Profile"))
+            .navigationTitle("Edit Profile")
             .navigationBarTitleDisplayMode(.inline)
             .dismissKeyboardOnTap()
             .keyboardDoneToolbar()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "Cancel")) {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "Save")) {
+                    Button("Save") {
                         Task { await save() }
                     }
                     .disabled(isSaving || fullName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)

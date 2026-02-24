@@ -114,20 +114,20 @@ struct ProfileView: View {
                 }
             )
         }
-        .confirmationDialog(String(localized: "Change Avatar"), isPresented: $showAvatarOptions) {
+        .confirmationDialog("Change Avatar", isPresented: $showAvatarOptions) {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                Button(String(localized: "Take Photo")) {
+                Button("Take Photo") {
                     showCameraPicker = true
                 }
             }
-            Button(String(localized: "Choose from Library")) {
+            Button("Choose from Library") {
                 showPhotoPicker = true
             }
-            Button(String(localized: "Cancel"), role: .cancel) { }
+            Button("Cancel", role: .cancel) { }
         }
         .overlay(alignment: .top) {
             if showProfileSavedToast {
-                Text(String(localized: "Profile updated"))
+                Text("Profile updated")
                     .font(AppFont.caption)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 12)
@@ -136,7 +136,7 @@ struct ProfileView: View {
                     .cornerRadius(AppRadius.standard)
                     .padding(.top, AppSpacing.lg)
             } else if showAvatarUpdatedToast {
-                Text(String(localized: "Photo updated"))
+                Text("Photo updated")
                     .font(AppFont.caption)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 12)
@@ -146,22 +146,22 @@ struct ProfileView: View {
                     .padding(.top, AppSpacing.lg)
             }
         }
-        .alert(String(localized: "Error"), isPresented: $showErrorAlert) {
-            Button(String(localized: "Done")) {
+        .alert("Error", isPresented: $showErrorAlert) {
+            Button("Done") {
                 showErrorAlert = false
                 profileVM.errorMessage = nil
             }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
-        .confirmationDialog(String(localized: "Log Out"), isPresented: $showLogoutConfirm) {
-            Button(String(localized: "menu_logout"), role: .destructive) {
+        .confirmationDialog("Log Out", isPresented: $showLogoutConfirm) {
+            Button("menu_logout", role: .destructive) {
                 UINotificationFeedbackGenerator().notificationOccurred(.warning)
                 authVM.signOut()
             }
-            Button(String(localized: "button_cancel"), role: .cancel) { }
+            Button("button_cancel", role: .cancel) { }
         } message: {
-            Text(String(localized: "logout_confirm_message"))
+            Text("logout_confirm_message")
         }
     }
 
@@ -180,7 +180,7 @@ struct ProfileView: View {
                 }
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(String(localized: "Change Avatar"))
+            .accessibilityLabel("Change Avatar")
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: AppSpacing.xs) {
@@ -193,7 +193,7 @@ struct ProfileView: View {
                         Image(systemName: "pencil")
                             .foregroundStyle(AppColor.trustBlue)
                     }
-                    .accessibilityLabel(String(localized: "Edit Profile"))
+                    .accessibilityLabel("Edit Profile")
                 }
                 Text(memberSinceText)
                     .font(AppFont.caption)
@@ -266,7 +266,7 @@ struct ProfileView: View {
     }
 
     private var footerSection: some View {
-        Text(String(localized: "Version 1.0.0"))
+        Text("Version 1.0.0")
             .font(AppFont.footnote)
             .foregroundStyle(.secondary)
     }

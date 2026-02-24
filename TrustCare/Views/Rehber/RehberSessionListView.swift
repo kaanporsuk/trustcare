@@ -12,11 +12,11 @@ struct RehberSessionListView: View {
                 // Header section
                 VStack(spacing: AppSpacing.md) {
                     VStack(spacing: AppSpacing.xs) {
-                        Text(String(localized: "rehber_title"))
+                        Text("rehber_title")
                             .font(AppFont.title2)
                             .fontWeight(.bold)
                         
-                        Text(String(localized: "rehber_subtitle"))
+                        Text("rehber_subtitle")
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -28,7 +28,7 @@ struct RehberSessionListView: View {
                             .font(.system(size: 16))
                             .foregroundStyle(.blue)
                         
-                        Text(String(localized: "rehber_disclaimer"))
+                        Text("rehber_disclaimer")
                             .font(AppFont.footnote)
                             .foregroundStyle(.primary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -44,7 +44,7 @@ struct RehberSessionListView: View {
                         viewModel.startNewChat()
                         showChat = true
                     } label: {
-                        Text(String(localized: "rehber_new_conversation"))
+                        Text("rehber_new_conversation")
                             .font(AppFont.headline)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
@@ -65,11 +65,11 @@ struct RehberSessionListView: View {
                             .font(.system(size: 48))
                             .foregroundStyle(.secondary)
                         
-                        Text(String(localized: "rehber_no_conversations"))
+                        Text("rehber_no_conversations")
                             .font(AppFont.headline)
                             .foregroundStyle(.primary)
                         
-                        Text(String(localized: "rehber_start_guidance"))
+                        Text("rehber_start_guidance")
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -78,7 +78,7 @@ struct RehberSessionListView: View {
                     Spacer()
                 } else {
                     VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                        Text(String(localized: "rehber_recent_sessions"))
+                        Text("rehber_recent_sessions")
                             .font(AppFont.headline)
                             .foregroundStyle(.secondary)
                             .padding(.horizontal, AppSpacing.md)
@@ -97,7 +97,7 @@ struct RehberSessionListView: View {
                                                     sessionToDelete = session
                                                     showDeleteConfirmation = true
                                                 } label: {
-                                                    Label(String(localized: "rehber_delete"), systemImage: "trash")
+                                                    Label("rehber_delete", systemImage: "trash")
                                                 }
                                             }
                                     }
@@ -115,11 +115,11 @@ struct RehberSessionListView: View {
             .refreshable {
                 await viewModel.loadSessions()
             }
-            .alert(String(localized: "rehber_delete_conversation_title"), isPresented: $showDeleteConfirmation, presenting: sessionToDelete) { session in
-                Button(String(localized: "settings_cancel"), role: .cancel) {
+            .alert("rehber_delete_conversation_title", isPresented: $showDeleteConfirmation, presenting: sessionToDelete) { session in
+                Button("settings_cancel", role: .cancel) {
                     sessionToDelete = nil
                 }
-                Button(String(localized: "rehber_delete"), role: .destructive) {
+                Button("rehber_delete", role: .destructive) {
                     Task {
                         do {
                             try await viewModel.deleteSession(id: session.id)
@@ -130,7 +130,7 @@ struct RehberSessionListView: View {
                     }
                 }
             } message: { session in
-                Text(String(localized: "rehber_delete_conversation_message"))
+                Text("rehber_delete_conversation_message")
             }
         }
     }

@@ -17,10 +17,10 @@ struct SplashView: View {
                 Image(systemName: "cross.case.fill")
                     .font(.system(size: 80))
                     .foregroundStyle(.white)
-                Text(String(localized: "app_name"))
+                Text("app_name")
                     .font(AppFont.title1)
                     .foregroundStyle(.white)
-                Text(String(localized: "tagline"))
+                Text("tagline")
                     .font(AppFont.body)
                     .foregroundStyle(Color.white.opacity(0.9))
             }

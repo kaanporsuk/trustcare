@@ -15,7 +15,7 @@ struct SpecialtyBrowserSheet: View {
         NavigationStack {
             VStack(spacing: AppSpacing.md) {
                 HStack {
-                    Button(String(localized: "clear_filter")) {
+                    Button("clear_filter") {
                         onClear()
                     }
                     .font(AppFont.caption)
@@ -73,11 +73,11 @@ struct SpecialtyBrowserSheet: View {
                     .padding(.bottom, AppSpacing.xxl)
                 }
             }
-            .navigationTitle(String(localized: "specialties_title"))
+            .navigationTitle("specialties_title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "close_button")) {
+                    Button("close_button") {
                         dismiss()
                     }
                 }
@@ -154,7 +154,7 @@ private struct SearchField: View {
         HStack(spacing: AppSpacing.sm) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
-            TextField(String(localized: "search_specialties"), text: $text)
+            TextField("search_specialties", text: $text)
                 .font(AppFont.body)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()

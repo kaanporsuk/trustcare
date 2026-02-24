@@ -105,7 +105,7 @@ struct ProviderMapView: View {
                                 await viewModel.fetchProviders(in: region)
                             }
                         } label: {
-                            Label(String(localized: "search_this_area"), systemImage: "magnifyingglass")
+                            Label("search_this_area", systemImage: "magnifyingglass")
                                 .font(.callout.weight(.medium))
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 10)

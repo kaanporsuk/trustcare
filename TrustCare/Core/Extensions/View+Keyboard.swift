@@ -19,7 +19,7 @@ extension View {
         toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
-                Button(String(localized: "button_done")) {
+                Button("button_done") {
                     UIApplication.shared.sendAction(
                         #selector(UIResponder.resignFirstResponder),
                         to: nil,

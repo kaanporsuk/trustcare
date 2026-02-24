@@ -1,85 +1,101 @@
 import SwiftUI
 import Combine
 
+/// Central language state manager.
+/// Publishes changes that trigger instant UI updates via SwiftUI environment.
 final class LocalizationManager: ObservableObject {
+
+    // MARK: - Types
 
     struct AppLanguage: Identifiable, Hashable {
         let code: String
         let name: String
         let flag: String
         var id: String { code }
+
+        var locale: Locale { Locale(identifier: code) }
     }
+
+    // MARK: - Supported Languages
 
     static let supportedLanguages: [AppLanguage] = [
         AppLanguage(code: "en", name: "English",    flag: "🇬🇧"),
         AppLanguage(code: "tr", name: "Türkçe",     flag: "🇹🇷"),
-        AppLanguage(code: "de", name: "Deutsch",     flag: "🇩🇪"),
-        AppLanguage(code: "pl", name: "Polski",      flag: "🇵🇱"),
-        AppLanguage(code: "nl", name: "Nederlands",  flag: "🇳🇱"),
-        AppLanguage(code: "da", name: "Dansk",       flag: "🇩🇰"),
+        AppLanguage(code: "de", name: "Deutsch",    flag: "🇩🇪"),
+        AppLanguage(code: "pl", name: "Polski",     flag: "🇵🇱"),
+        AppLanguage(code: "nl", name: "Nederlands", flag: "🇳🇱"),
+        AppLanguage(code: "da", name: "Dansk",      flag: "🇩🇰"),
     ]
 
     static let supportedCodes = Set(supportedLanguages.map(\.code))
 
-    /// The actively chosen language. On first launch this is empty (""),
-    /// and the app uses whatever iOS chose from its system prefs.
-    @AppStorage("appLanguage") var currentLanguage: String = "" {
-        didSet {
-            guard !currentLanguage.isEmpty else { return }
-            applyLanguage(currentLanguage)
-            objectWillChange.send()
-        }
-    }
+    // MARK: - Published State
 
-    /// Whether the user has manually chosen a language in Settings.
-    var hasUserSelectedLanguage: Bool {
-        !currentLanguage.isEmpty
+    /// The user's chosen language code. Empty = use system default.
+    /// When this changes, SwiftUI rebuilds via .id() and .environment(\\.locale).
+    @Published var currentLanguage: String {
+        didSet {
+            UserDefaults.standard.set(currentLanguage, forKey: "app_custom_locale")
+            UserDefaults.standard.synchronize()
+            if !currentLanguage.isEmpty {
+                UserDefaults.standard.set([currentLanguage], forKey: "AppleLanguages")
+            }
+        }
     }
 
     /// The effective language code the app is running in right now.
     var effectiveLanguage: String {
-        if hasUserSelectedLanguage { return currentLanguage }
+        if !currentLanguage.isEmpty { return currentLanguage }
         return Self.detectSystemLanguage()
     }
 
-    init() {
-        // On first launch, currentLanguage is "".
-        // The app uses system language (iOS selects from project localizations).
-        // If the user has previously set a language, apply it.
-        if hasUserSelectedLanguage {
-            applyLanguage(currentLanguage)
-        }
+    /// The Locale object to inject into SwiftUI's environment.
+    var locale: Locale {
+        Locale(identifier: effectiveLanguage)
     }
 
-    /// Detect the best system language from iOS preferences.
+    /// A stable identity string. When this changes, SwiftUI destroys
+    /// and recreates the entire view tree.
+    var viewTreeId: String {
+        effectiveLanguage
+    }
+
+    // MARK: - Init
+
+    init() {
+        // Read from our custom key first, fall back to legacy key
+        let saved = UserDefaults.standard.string(forKey: "app_custom_locale")
+            ?? UserDefaults.standard.string(forKey: "appLanguage")
+            ?? ""
+        self.currentLanguage = saved
+    }
+
+    // MARK: - Public API
+
+    /// Called when the user taps a language in Settings.
+    /// NO restart needed — the @Published change triggers instant UI update.
+    func changeLanguage(to newCode: String) {
+        guard Self.supportedCodes.contains(newCode) else { return }
+        currentLanguage = newCode
+        // Belt and suspenders: also swizzle the bundle for
+        // any code that still uses String(localized:) or NSLocalizedString
+        Bundle.setLanguage(newCode)
+    }
+
+    // MARK: - System Detection
+
     static func detectSystemLanguage() -> String {
         for preferred in Locale.preferredLanguages {
-            let code = Locale(identifier: preferred).language.languageCode?.identifier ?? ""
+            let code = Locale(identifier: preferred)
+                .language.languageCode?.identifier ?? ""
             if supportedCodes.contains(code) { return code }
         }
         return "en"
     }
 
-    /// Apply language by setting AppleLanguages UserDefaults.
-    /// This takes effect on NEXT app launch for String(localized:).
-    /// For CURRENT session, we also swizzle Bundle.
-    func applyLanguage(_ code: String) {
-        // Set for next launch:
-        UserDefaults.standard.set([code], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-        // Set for current session (best-effort swizzle):
-        Bundle.setLanguage(code)
-    }
+    // MARK: - Layer B Helpers (Database Content)
 
-    /// Call this when user changes language in Settings.
-    /// Posts a notification so the root view rebuilds with the new language.
-    func changeLanguage(to code: String) {
-        currentLanguage = code
-        NotificationCenter.default.post(name: .languageDidChange, object: nil)
-    }
-
-    /// The database column suffix for the current language.
-    /// Used by ALL Supabase queries that fetch translatable content.
+    /// The DB column suffix for the current language.
     var dbColumnSuffix: String {
         switch effectiveLanguage {
         case "tr": return "_tr"
@@ -87,16 +103,14 @@ final class LocalizationManager: ObservableObject {
         case "pl": return "_pl"
         case "nl": return "_nl"
         case "da": return "_da"
-        default:   return ""  // English uses the base column (no suffix)
+        default:   return ""
         }
     }
 
     /// Returns the correct DB column name for a given base field.
-    /// Example: dbColumn("name") → "name_tr" when Turkish.
-    func dbColumn(_ baseField: String) -> String {
+    func dbColumn(_ base: String) -> String {
         let suffix = dbColumnSuffix
-        if suffix.isEmpty { return baseField }
-        return baseField + suffix
+        return suffix.isEmpty ? base : base + suffix
     }
 
     /// The specialty name column to fetch from Supabase.
@@ -104,15 +118,13 @@ final class LocalizationManager: ObservableObject {
         dbColumn("name")
     }
 
-    /// Resolves the best available specialty name for the current language.
+    /// Translate a specialty name using loaded data.
     func resolvedSpecialtyName(
         canonical: String,
         tr: String? = nil, de: String? = nil,
-        pl: String? = nil, nl: String? = nil,
-        da: String? = nil
+        pl: String? = nil, nl: String? = nil, da: String? = nil
     ) -> String {
-        let lang = effectiveLanguage
-        switch lang {
+        switch effectiveLanguage {
         case "tr": return tr ?? canonical
         case "de": return de ?? canonical
         case "pl": return pl ?? canonical
@@ -122,92 +134,34 @@ final class LocalizationManager: ObservableObject {
         }
     }
 
-    /// Category translation mapping for the 16 database categories.
-    static let categoryTranslations: [String: [String: String]] = [
-        "Primary Care": [
-            "tr": "Temel Sağlık", "de": "Hausärztliche Versorgung",
-            "pl": "Podstawowa opieka zdrowotna", "nl": "Eerstelijnszorg",
-            "da": "Almen praksis", "en": "Primary Care"
-        ],
-        "Surgical": [
-            "tr": "Cerrahi", "de": "Chirurgie",
-            "pl": "Chirurgia", "nl": "Chirurgie", "da": "Kirurgi", "en": "Surgical"
-        ],
-        "Medical Specialties": [
-            "tr": "Tıbbi Uzmanlıklar", "de": "Fachärztliche Medizin",
-            "pl": "Specjalizacje medyczne", "nl": "Medische specialismen",
-            "da": "Medicinske specialer", "en": "Medical Specialties"
-        ],
-        "Women's Health": [
-            "tr": "Kadın Sağlığı", "de": "Frauengesundheit",
-            "pl": "Zdrowie kobiet", "nl": "Vrouwengezondheid",
-            "da": "Kvinders sundhed", "en": "Women's Health"
-        ],
-        "Dental": [
-            "tr": "Diş Sağlığı", "de": "Zahnmedizin",
-            "pl": "Stomatologia", "nl": "Tandheelkunde", "da": "Tandpleje", "en": "Dental"
-        ],
-        "Eye Care": [
-            "tr": "Göz Sağlığı", "de": "Augenheilkunde",
-            "pl": "Okulistyka", "nl": "Oogzorg", "da": "Øjenpleje", "en": "Eye Care"
-        ],
-        "ENT": [
-            "tr": "Kulak Burun Boğaz", "de": "Hals-Nasen-Ohren",
-            "pl": "Laryngologia", "nl": "Keel-neus-oor", "da": "Øre-næse-hals", "en": "ENT"
-        ],
-        "Mental Health": [
-            "tr": "Ruh Sağlığı", "de": "Psychische Gesundheit",
-            "pl": "Zdrowie psychiczne", "nl": "Geestelijke gezondheid",
-            "da": "Mental sundhed", "en": "Mental Health"
-        ],
-        "Urology": [
-            "tr": "Üroloji", "de": "Urologie",
-            "pl": "Urologia", "nl": "Urologie", "da": "Urologi", "en": "Urology"
-        ],
-        "Rehabilitation": [
-            "tr": "Rehabilitasyon", "de": "Rehabilitation",
-            "pl": "Rehabilitacja", "nl": "Revalidatie", "da": "Genoptræning", "en": "Rehabilitation"
-        ],
-        "Aesthetic & Cosmetic": [
-            "tr": "Estetik ve Kozmetik", "de": "Ästhetik und Kosmetik",
-            "pl": "Medycyna estetyczna", "nl": "Esthetische geneeskunde",
-            "da": "Æstetik og kosmetik", "en": "Aesthetic & Cosmetic"
-        ],
-        "Diagnostic": [
-            "tr": "Tanı ve Teşhis", "de": "Diagnostik",
-            "pl": "Diagnostyka", "nl": "Diagnostiek", "da": "Diagnostik", "en": "Diagnostic"
-        ],
-        "Emergency": [
-            "tr": "Acil", "de": "Notfall",
-            "pl": "Ratunkowe", "nl": "Spoedeisend", "da": "Akut", "en": "Emergency"
-        ],
-        "Alternative": [
-            "tr": "Alternatif Tıp", "de": "Alternativmedizin",
-            "pl": "Medycyna alternatywna", "nl": "Alternatieve geneeskunde",
-            "da": "Alternativ behandling", "en": "Alternative"
-        ],
-        "Pharmacy": [
-            "tr": "Eczane", "de": "Apotheke",
-            "pl": "Apteka", "nl": "Apotheek", "da": "Apotek", "en": "Pharmacy"
-        ],
-        "Hospital": [
-            "tr": "Hastane", "de": "Krankenhaus",
-            "pl": "Szpital", "nl": "Ziekenhuis", "da": "Hospital", "en": "Hospital"
-        ],
-        "Other": [
-            "tr": "Diğer", "de": "Sonstiges",
-            "pl": "Inne", "nl": "Overig", "da": "Øvrige", "en": "Other"
-        ],
-    ]
-
-    /// Translate a database category to the user's language.
-    func localizedCategory(_ englishCategory: String) -> String {
+    /// Translate a category name.
+    func localizedCategory(_ english: String) -> String {
         let lang = effectiveLanguage
-        if lang == "en" { return englishCategory }
-        return Self.categoryTranslations[englishCategory]?[lang] ?? englishCategory
+        if lang == "en" { return english }
+        return Self.categoryMap[english]?[lang] ?? english
     }
 
-    var layoutDirection: LayoutDirection {
-        .leftToRight
-    }
+    var layoutDirection: LayoutDirection { .leftToRight }
+
+    // MARK: - Category Translations
+
+    private static let categoryMap: [String: [String: String]] = [
+        "Primary Care": ["tr": "Temel Sağlık", "de": "Hausärztliche Versorgung", "pl": "Podstawowa opieka zdrowotna", "nl": "Eerstelijnszorg", "da": "Almen praksis"],
+        "Surgical": ["tr": "Cerrahi", "de": "Chirurgie", "pl": "Chirurgia", "nl": "Chirurgie", "da": "Kirurgi"],
+        "Medical Specialties": ["tr": "Tıbbi Uzmanlıklar", "de": "Fachärztliche Medizin", "pl": "Specjalizacje medyczne", "nl": "Medische specialismen", "da": "Medicinske specialer"],
+        "Women's Health": ["tr": "Kadın Sağlığı", "de": "Frauengesundheit", "pl": "Zdrowie kobiet", "nl": "Vrouwengezondheid", "da": "Kvinders sundhed"],
+        "Dental": ["tr": "Diş Sağlığı", "de": "Zahnmedizin", "pl": "Stomatologia", "nl": "Tandheelkunde", "da": "Tandpleje"],
+        "Eye Care": ["tr": "Göz Sağlığı", "de": "Augenheilkunde", "pl": "Okulistyka", "nl": "Oogzorg", "da": "Øjenpleje"],
+        "ENT": ["tr": "Kulak Burun Boğaz", "de": "Hals-Nasen-Ohren", "pl": "Laryngologia", "nl": "Keel-neus-oor", "da": "Øre-næse-hals"],
+        "Mental Health": ["tr": "Ruh Sağlığı", "de": "Psychische Gesundheit", "pl": "Zdrowie psychiczne", "nl": "Geestelijke gezondheid", "da": "Mental sundhed"],
+        "Urology": ["tr": "Üroloji", "de": "Urologie", "pl": "Urologia", "nl": "Urologie", "da": "Urologi"],
+        "Rehabilitation": ["tr": "Rehabilitasyon", "de": "Rehabilitation", "pl": "Rehabilitacja", "nl": "Revalidatie", "da": "Genoptræning"],
+        "Aesthetic & Cosmetic": ["tr": "Estetik ve Kozmetik", "de": "Ästhetik und Kosmetik", "pl": "Medycyna estetyczna", "nl": "Esthetische geneeskunde", "da": "Æstetik og kosmetik"],
+        "Diagnostic": ["tr": "Tanı ve Teşhis", "de": "Diagnostik", "pl": "Diagnostyka", "nl": "Diagnostiek", "da": "Diagnostik"],
+        "Emergency": ["tr": "Acil", "de": "Notfall", "pl": "Ratunkowe", "nl": "Spoedeisend", "da": "Akut"],
+        "Alternative": ["tr": "Alternatif Tıp", "de": "Alternativmedizin", "pl": "Medycyna alternatywna", "nl": "Alternatieve geneeskunde", "da": "Alternativ behandling"],
+        "Pharmacy": ["tr": "Eczane", "de": "Apotheke", "pl": "Apteka", "nl": "Apotheek", "da": "Apotek"],
+        "Hospital": ["tr": "Hastane", "de": "Krankenhaus", "pl": "Szpital", "nl": "Ziekenhuis", "da": "Hospital"],
+        "Other": ["tr": "Diğer", "de": "Sonstiges", "pl": "Inne", "nl": "Overig", "da": "Øvrige"],
+    ]
 }

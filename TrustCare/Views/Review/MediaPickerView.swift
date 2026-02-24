@@ -15,9 +15,9 @@ struct MediaPickerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text(String(localized: "Add Photos or Video"))
+            Text("Add Photos or Video")
                 .font(AppFont.title2)
-            Text(String(localized: "Help others see what to expect"))
+            Text("Help others see what to expect")
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
 
@@ -27,7 +27,7 @@ struct MediaPickerView: View {
                     maxSelectionCount: 5,
                     matching: .images
                 ) {
-                    Label(String(localized: "Add Photos"), systemImage: "photo.on.rectangle")
+                    Label("Add Photos", systemImage: "photo.on.rectangle")
                         .font(AppFont.headline)
                 }
 
@@ -50,14 +50,14 @@ struct MediaPickerView: View {
                                         .background(Color.black.opacity(0.6))
                                         .clipShape(Circle())
                                 }
-                                .accessibilityLabel(String(localized: "Remove photo"))
+                                .accessibilityLabel("Remove photo")
                                 .offset(x: 6, y: -6)
                             }
                         }
                     }
                 }
 
-                Text(String(localized: "media_photo_count_\(selectedImages.count)"))
+                Text("media_photo_count_\(selectedImages.count)")
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }
@@ -67,7 +67,7 @@ struct MediaPickerView: View {
                     selection: $videoItem,
                     matching: .videos
                 ) {
-                    Label(String(localized: "Add Video"), systemImage: "video")
+                    Label("Add Video", systemImage: "video")
                         .font(AppFont.headline)
                 }
 
@@ -99,19 +99,19 @@ struct MediaPickerView: View {
                                 .background(Color.black.opacity(0.6))
                                 .clipShape(Circle())
                         }
-                        .accessibilityLabel(String(localized: "Remove video"))
+                        .accessibilityLabel("Remove video")
                         .offset(x: 6, y: -6)
                     }
                 }
 
                 if let duration = videoDuration, duration > 30 {
-                    Text(String(localized: "Video will be trimmed to 30 seconds"))
+                    Text("Video will be trimmed to 30 seconds")
                         .font(AppFont.caption)
                         .foregroundStyle(AppColor.warning)
                 }
             }
 
-            Button(String(localized: "Skip")) {
+            Button("Skip") {
                 selectedImages = []
                 selectedVideo = nil
                 videoItem = nil
@@ -120,7 +120,7 @@ struct MediaPickerView: View {
             }
             .font(AppFont.body)
 
-            Text(String(localized: "Photos and videos are visible to everyone."))
+            Text("Photos and videos are visible to everyone.")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -151,11 +151,11 @@ struct MediaPickerView: View {
                 }
             }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button(String(localized: "Done")) { errorMessage = nil }
+            Button("Done") { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }

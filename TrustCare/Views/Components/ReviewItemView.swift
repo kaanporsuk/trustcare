@@ -36,7 +36,7 @@ struct ReviewItemView: View {
                         if review.isVerified {
                             VerifiedBadge()
                         } else if review.status == .pendingVerification {
-                            Text(String(localized: "Pending"))
+                            Text("Pending")
                                 .font(AppFont.footnote)
                                 .foregroundStyle(AppColor.pending)
                         }
@@ -81,7 +81,7 @@ struct ReviewItemView: View {
                     HStack(spacing: 6) {
                         Image(systemName: hasVoted ? "hand.thumbsup.fill" : "hand.thumbsup")
                             .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
-                        Text(String(localized: "review_helpful_count_\(helpfulCount)"))
+                        Text("review_helpful_count_\(helpfulCount)")
                             .font(AppFont.caption)
                             .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
                     }

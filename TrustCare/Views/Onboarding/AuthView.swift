@@ -68,7 +68,7 @@ struct AuthView: View {
 
                     HStack {
                         Rectangle().frame(height: 1).foregroundStyle(AppColor.border)
-                        Text(String(localized: "OR"))
+                        Text("OR")
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                         Rectangle().frame(height: 1).foregroundStyle(AppColor.border)
@@ -118,21 +118,21 @@ struct AuthView: View {
                     .cornerRadius(AppRadius.standard)
             }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { authVM.errorMessage != nil },
             set: { if !$0 { authVM.errorMessage = nil } }
         )) {
-            Button(String(localized: "Done")) {
+            Button("Done") {
                 authVM.errorMessage = nil
             }
         } message: {
             Text(authVM.errorMessage ?? "")
         }
-        .alert(String(localized: "Success"), isPresented: Binding(
+        .alert("Success", isPresented: Binding(
             get: { authVM.successMessage != nil },
             set: { if !$0 { authVM.successMessage = nil } }
         )) {
-            Button(String(localized: "Done")) {
+            Button("Done") {
                 authVM.successMessage = nil
             }
         } message: {

@@ -6,7 +6,7 @@ struct ClaimedBadge: View {
             Image(systemName: "checkmark.circle.fill")
                 .font(.caption)
                 .foregroundStyle(AppColor.trustBlue)
-            Text(String(localized: "Claimed Business"))
+            Text("Claimed Business")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }

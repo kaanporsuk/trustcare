@@ -21,13 +21,13 @@ struct ChangePasswordView: View {
             }
 
             Section {
-                Button(String(localized: "Update Password")) {
+                Button("Update Password") {
                     Task { await updatePassword() }
                 }
                 .disabled(!canSubmit || isSubmitting)
             }
         }
-        .navigationTitle(String(localized: "Change Password"))
+        .navigationTitle("Change Password")
         .navigationBarTitleDisplayMode(.inline)
         .dismissKeyboardOnTap()
         .keyboardDoneToolbar()
@@ -40,20 +40,20 @@ struct ChangePasswordView: View {
                     .tint(.white)
             }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button(String(localized: "Done")) { errorMessage = nil }
+            Button("Done") { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }
-        .alert(String(localized: "Success"), isPresented: $showSuccess) {
-            Button(String(localized: "Done")) {
+        .alert("Success", isPresented: $showSuccess) {
+            Button("Done") {
                 dismiss()
             }
         } message: {
-            Text(String(localized: "Your password has been updated."))
+            Text("Your password has been updated.")
         }
     }
 

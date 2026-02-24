@@ -19,7 +19,7 @@ struct ReviewListView: View {
                     Image(systemName: "text.bubble")
                         .font(.title2)
                         .foregroundStyle(.secondary)
-                    Text(String(localized: "No reviews yet"))
+                    Text("No reviews yet")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -37,15 +37,15 @@ struct ReviewListView: View {
                 }
             }
         }
-        .navigationTitle(String(localized: "Reviews"))
+        .navigationTitle("Reviews")
         .task {
             await loadReviews()
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button(String(localized: "Done")) { errorMessage = nil }
+            Button("Done") { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }

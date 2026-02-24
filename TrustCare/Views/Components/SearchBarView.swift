@@ -18,7 +18,7 @@ struct SearchBarView: View {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.secondary)
                 }
-                .accessibilityLabel(String(localized: "Clear search"))
+                .accessibilityLabel("Clear search")
             }
         }
         .padding(.horizontal, AppSpacing.md)

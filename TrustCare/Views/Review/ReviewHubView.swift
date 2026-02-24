@@ -37,7 +37,7 @@ struct ReviewHubView: View {
                 .padding(.top, AppSpacing.lg)
                 .padding(.bottom, AppSpacing.xxxxl)
             }
-            .navigationTitle(String(localized: "tab_review"))
+            .navigationTitle("tab_review")
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 await specialtyService.loadSpecialties()
@@ -79,7 +79,7 @@ struct ReviewHubView: View {
 
     private var providerSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_who"))
+            Text("review_who")
                 .font(AppFont.title3)
 
             if let provider = viewModel.selectedProvider {
@@ -94,7 +94,7 @@ struct ReviewHubView: View {
                     } label: {
                         HStack {
                             Image(systemName: "arrow.clockwise")
-                            Text(String(localized: "review_change_provider"))
+                            Text("review_change_provider")
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -108,7 +108,7 @@ struct ReviewHubView: View {
                 HStack(spacing: AppSpacing.sm) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(.secondary)
-                    TextField(String(localized: "search_placeholder"), text: $providerSearchText)
+                    TextField("search_placeholder", text: $providerSearchText)
                         .font(AppFont.body)
                         .textInputAutocapitalization(.words)
                         .autocorrectionDisabled()
@@ -150,7 +150,7 @@ struct ReviewHubView: View {
                                     Text(specialty.resolvedName(using: localizationManager))
                                         .font(AppFont.body)
                                     Spacer()
-                                    Text(String(localized: "specialty_label"))
+                                    Text("specialty_label")
                                         .font(AppFont.footnote)
                                         .foregroundStyle(.secondary)
                                 }
@@ -164,7 +164,7 @@ struct ReviewHubView: View {
                     .cornerRadius(AppRadius.card)
                 }
 
-                Button(String(localized: "review_cant_find_add")) {
+                Button("review_cant_find_add") {
                     showAddProviderSheet = true
                 }
                 .font(AppFont.caption)
@@ -175,17 +175,17 @@ struct ReviewHubView: View {
 
     private var visitDetailsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_visit_details"))
+            Text("review_visit_details")
                 .font(AppFont.title3)
 
-            DatePicker(String(localized: "review_visit_date"), selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
+            DatePicker("review_visit_date", selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
                 .datePickerStyle(.compact)
 
-            Picker(String(localized: "review_visit_type"), selection: $viewModel.visitType) {
-                Text(String(localized: "visit_type_examination")).tag("examination")
-                Text(String(localized: "visit_type_procedure")).tag("procedure")
-                Text(String(localized: "visit_type_checkup")).tag("checkup")
-                Text(String(localized: "visit_type_emergency")).tag("emergency")
+            Picker("review_visit_type", selection: $viewModel.visitType) {
+                Text("visit_type_examination").tag("examination")
+                Text("visit_type_procedure").tag("procedure")
+                Text("visit_type_checkup").tag("checkup")
+                Text("visit_type_emergency").tag("emergency")
             }
             .pickerStyle(.segmented)
         }
@@ -193,9 +193,9 @@ struct ReviewHubView: View {
 
     private var overallRatingSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_overall"))
+            Text("review_overall")
                 .font(AppFont.title3)
-            Text(String(localized: "review_overall_question"))
+            Text("review_overall_question")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
@@ -205,7 +205,7 @@ struct ReviewHubView: View {
 
     private var detailedRatingsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_detailed"))
+            Text("review_detailed")
                 .font(AppFont.title3)
 
             ForEach(viewModel.surveyConfig.metrics) { metric in
@@ -235,7 +235,7 @@ struct ReviewHubView: View {
 
     private var writtenReviewSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_comment"))
+            Text("review_comment")
                 .font(AppFont.title3)
 
             ZStack(alignment: .topLeading) {
@@ -250,7 +250,7 @@ struct ReviewHubView: View {
                     )
 
                 if viewModel.comment.isEmpty {
-                    Text(String(localized: "review_comment_placeholder"))
+                    Text("review_comment_placeholder")
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                         .padding(.top, 16)
@@ -258,7 +258,7 @@ struct ReviewHubView: View {
                 }
             }
 
-            Text(String(localized: "review_char_count \(viewModel.commentCharCount)"))
+            Text("review_char_count \(viewModel.commentCharCount)")
                 .font(AppFont.caption)
                 .foregroundStyle(viewModel.commentCharCount >= 50 ? AppColor.success : AppColor.error)
         }
@@ -266,11 +266,11 @@ struct ReviewHubView: View {
 
     private var photosSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_add_photo"))
+            Text("review_add_photo")
                 .font(AppFont.title3)
 
             PhotosPicker(selection: $photoItems, maxSelectionCount: 5, matching: .images) {
-                Label(String(localized: "review_add_photo"), systemImage: "photo.on.rectangle")
+                Label("review_add_photo", systemImage: "photo.on.rectangle")
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
@@ -308,7 +308,7 @@ struct ReviewHubView: View {
                 }
             }
 
-            Text(String(localized: "review_photos_public"))
+            Text("review_photos_public")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -316,14 +316,14 @@ struct ReviewHubView: View {
 
     private var verificationSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "review_verify"))
+            Text("review_verify")
                 .font(AppFont.title3)
-            Text(String(localized: "review_verify_hint"))
+            Text("review_verify_hint")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
             PhotosPicker(selection: $proofItem, matching: .images) {
-                Label(String(localized: "review_upload_proof"), systemImage: "doc.badge.plus")
+                Label("review_upload_proof", systemImage: "doc.badge.plus")
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
@@ -343,11 +343,11 @@ struct ReviewHubView: View {
                     .clipShape(RoundedRectangle(cornerRadius: AppRadius.standard))
             }
 
-            Text(String(localized: "review_proof_private"))
+            Text("review_proof_private")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
 
-            Button(String(localized: "review_skip_verification")) {
+            Button("review_skip_verification") {
                 viewModel.proofImage = nil
             }
             .font(AppFont.caption)
@@ -372,7 +372,7 @@ struct ReviewHubView: View {
                         ProgressView()
                             .tint(.white)
                     }
-                    Text(String(localized: "review_submit"))
+                    Text("review_submit")
                         .font(AppFont.headline)
                 }
                 .frame(maxWidth: .infinity)

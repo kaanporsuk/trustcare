@@ -12,7 +12,7 @@ struct OnboardingView: View {
                 Button {
                     completeOnboarding()
                 } label: {
-                    Text(String(localized: "skip"))
+                    Text("skip")
                         .font(AppFont.caption)
                         .foregroundStyle(AppColor.trustBlue)
                 }

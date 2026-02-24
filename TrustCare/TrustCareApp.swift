@@ -11,7 +11,6 @@ extension Notification.Name {
     static let trustCareRouteToAuth = Notification.Name("trustCareRouteToAuth")
     static let trustCareSwitchTab = Notification.Name("trustCareSwitchTab")
     static let trustCareApplySpecialtyFilter = Notification.Name("trustCareApplySpecialtyFilter")
-    static let languageDidChange = Notification.Name("languageDidChange")
 }
 
 enum AppState {
@@ -32,12 +31,13 @@ struct TrustCareApp: App {
     @StateObject private var authViewModel = AuthViewModel()
     @State private var appState: AppState = .splash
     @State private var path = NavigationPath()
-    @State private var rootViewId = UUID()
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
     init() {
-        // Apply saved language BEFORE any views are created
-        let saved = UserDefaults.standard.string(forKey: "appLanguage") ?? ""
+        // Apply saved language BEFORE any views are created (belt-and-suspenders)
+        let saved = UserDefaults.standard.string(forKey: "app_custom_locale")
+            ?? UserDefaults.standard.string(forKey: "appLanguage")
+            ?? ""
         if !saved.isEmpty {
             Bundle.setLanguage(saved)
             UserDefaults.standard.set([saved], forKey: "AppleLanguages")
@@ -75,7 +75,7 @@ struct TrustCareApp: App {
             }
             .dismissKeyboardOnTap()
             .environment(\.layoutDirection, localizationManager.layoutDirection)
-            .environment(\.locale, Locale(identifier: localizationManager.effectiveLanguage))
+            .environment(\.locale, localizationManager.locale)
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
             .preferredColorScheme(preferredColorScheme)
@@ -98,10 +98,7 @@ struct TrustCareApp: App {
                 path = NavigationPath()
                 appState = .auth
             }
-            .onReceive(NotificationCenter.default.publisher(for: .languageDidChange)) { _ in
-                rootViewId = UUID()
-            }
-            .id(rootViewId)
+            .id(localizationManager.viewTreeId)
         }
     }
 

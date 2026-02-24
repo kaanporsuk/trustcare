@@ -14,7 +14,7 @@ struct ServicesCatalogView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                Text(String(localized: "Services & Prices"))
+                Text("Services & Prices")
                     .font(AppFont.title2)
 
                 if isLoading && services.isEmpty {
@@ -28,7 +28,7 @@ struct ServicesCatalogView: View {
                         Image(systemName: "stethoscope")
                             .font(.title2)
                             .foregroundStyle(.secondary)
-                        Text(String(localized: "No services yet"))
+                        Text("No services yet")
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
                     }
@@ -74,7 +74,7 @@ struct ServicesCatalogView: View {
 
                 Button {
                 } label: {
-                    Label(String(localized: "Contact for Booking"), systemImage: "phone")
+                    Label("Contact for Booking", systemImage: "phone")
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
                         .background(AppColor.trustBlue)
@@ -89,11 +89,11 @@ struct ServicesCatalogView: View {
         .onAppear {
             isLoading = false
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button(String(localized: "OK")) { errorMessage = nil }
+            Button("OK") { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }

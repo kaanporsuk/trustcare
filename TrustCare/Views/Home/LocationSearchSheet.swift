@@ -37,13 +37,13 @@ struct LocationSearchSheet: View {
                         .foregroundStyle(.secondary)
                         .padding(8)
                 }
-                .accessibilityLabel(String(localized: "Close"))
+                .accessibilityLabel("Close")
             }
             .padding(.horizontal, AppSpacing.lg)
             .padding(.top, AppSpacing.lg)
 
             VStack(alignment: .leading, spacing: AppSpacing.md) {
-                Text(String(localized: "Search Location"))
+                Text("Search Location")
                     .font(AppFont.title2)
 
                 SearchField(
@@ -85,7 +85,7 @@ struct LocationSearchSheet: View {
             HStack(spacing: AppSpacing.sm) {
                 PulsingDot()
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(String(localized: "Use My Current Location"))
+                    Text("Use My Current Location")
                         .font(AppFont.body)
                         .foregroundStyle(.primary)
                     Text(currentLocationName)
@@ -109,11 +109,11 @@ struct LocationSearchSheet: View {
     private var recentLocationsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack {
-                Text(String(localized: "Recent Locations"))
+                Text("Recent Locations")
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Button(String(localized: "Clear")) {
+                Button("Clear") {
                     onClearRecents()
                 }
                 .font(AppFont.caption)
@@ -140,7 +140,7 @@ struct LocationSearchSheet: View {
 
     private var popularCitiesSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "Popular Cities"))
+            Text("Popular Cities")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
@@ -185,7 +185,7 @@ struct LocationSearchSheet: View {
     }
 
     private var noResultsSection: some View {
-        Text(String(localized: "No locations found. Try a different search."))
+        Text("No locations found. Try a different search.")
             .font(AppFont.body)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -201,7 +201,7 @@ private struct SearchField: View {
         HStack(spacing: AppSpacing.sm) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
-            TextField(String(localized: "Search city or region..."), text: $text)
+            TextField("Search city or region...", text: $text)
                 .font(AppFont.body)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()

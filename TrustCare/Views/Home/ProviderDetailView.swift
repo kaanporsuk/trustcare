@@ -27,7 +27,7 @@ struct ProviderDetailView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.title2)
                         .foregroundStyle(.secondary)
-                    Text(String(localized: "Provider unavailable"))
+                    Text("Provider unavailable")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -63,23 +63,23 @@ struct ProviderDetailView: View {
                 ClaimProviderView(providerId: provider.id, providerName: provider.name)
             }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { detailVM.errorMessage != nil },
             set: { if !$0 { detailVM.errorMessage = nil } }
         )) {
-            Button(String(localized: "Done")) {
+            Button("Done") {
                 detailVM.errorMessage = nil
             }
         } message: {
             Text(detailVM.errorMessage ?? "")
         }
-        .alert(String(localized: "Sign In Required"), isPresented: $showAuthRequiredAlert) {
-            Button(String(localized: "Login / Sign Up")) {
+        .alert("Sign In Required", isPresented: $showAuthRequiredAlert) {
+            Button("Login / Sign Up") {
                 NotificationCenter.default.post(name: .trustCareRouteToAuth, object: nil)
             }
-            Button(String(localized: "Cancel"), role: .cancel) {}
+            Button("Cancel", role: .cancel) {}
         } message: {
-            Text(String(localized: "You must be signed in to leave a review."))
+            Text("You must be signed in to leave a review.")
         }
         .toolbar(.hidden, for: .tabBar)
         .overlay(alignment: .bottom) {
@@ -106,7 +106,7 @@ struct ProviderDetailView: View {
     }
 
     private var reviewButtonLabel: some View {
-        Label(String(localized: "button_review"), systemImage: "star.bubble")
+        Label("button_review", systemImage: "star.bubble")
             .font(AppFont.headline)
             .foregroundStyle(.white)
             .padding(.vertical, 12)
@@ -167,7 +167,7 @@ struct ProviderDetailView: View {
                         .background(Color.black.opacity(0.4))
                         .clipShape(Circle())
                 }
-                .accessibilityLabel(String(localized: "Back"))
+                .accessibilityLabel("Back")
 
                 Spacer()
 
@@ -179,7 +179,7 @@ struct ProviderDetailView: View {
                             .background(Color.black.opacity(0.4))
                             .clipShape(Circle())
                     }
-                    .accessibilityLabel(String(localized: "Share"))
+                    .accessibilityLabel("Share")
                 }
             }
             .padding([.top, .horizontal], AppSpacing.lg)
@@ -197,10 +197,10 @@ struct ProviderDetailView: View {
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(.orange)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text(String(localized: "claim_pending"))
+                                Text("claim_pending")
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
-                                Text(String(localized: "claim_pending_message"))
+                                Text("claim_pending_message")
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -216,7 +216,7 @@ struct ProviderDetailView: View {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .foregroundStyle(.red)
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text(String(localized: "claim_rejected"))
+                                    Text("claim_rejected")
                                         .font(AppFont.headline)
                                         .foregroundStyle(.primary)
                                     if let reason = claim.rejectionReason {
@@ -230,7 +230,7 @@ struct ProviderDetailView: View {
                             Button {
                                 showClaimSheet = true
                             } label: {
-                                Text(String(localized: "claim_resubmit"))
+                                Text("claim_resubmit")
                                     .font(AppFont.footnote)
                                     .foregroundStyle(AppColor.trustBlue)
                                     .padding(.vertical, 6)
@@ -254,15 +254,15 @@ struct ProviderDetailView: View {
                             Image(systemName: "building.2.fill")
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text(String(localized: "is_this_your_practice"))
+                                Text("is_this_your_practice")
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
-                                Text(String(localized: "claim_description"))
+                                Text("claim_description")
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                             }
                             Spacer()
-                            Text(String(localized: "claim_profile"))
+                            Text("claim_profile")
                                 .font(AppFont.footnote)
                                 .foregroundStyle(.white)
                                 .padding(.vertical, 8)
@@ -313,7 +313,7 @@ struct ProviderDetailView: View {
 
             HStack(spacing: AppSpacing.sm) {
                 PriceLevelView(level: detailVM.provider?.priceLevelAvg ?? 0)
-                Text(String(localized: "Price"))
+                Text("Price")
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }
@@ -385,7 +385,7 @@ struct ProviderDetailView: View {
                 VStack {
                     Image(systemName: hasPhone ? "phone.fill" : "phone.badge.plus")
                         .font(.system(size: 16))
-                    Text(String(localized: "button_call"))
+                    Text("button_call")
                         .font(.system(size: 12, weight: .medium))
                 }
                 .foregroundColor(hasPhone ? .white : Color(hex: "#0055FF"))
@@ -400,7 +400,7 @@ struct ProviderDetailView: View {
                     openMaps(address: address)
                 }
             } label: {
-                Label(String(localized: "button_directions"), systemImage: "map.fill")
+                Label("button_directions", systemImage: "map.fill")
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
                     .overlay(
@@ -413,7 +413,7 @@ struct ProviderDetailView: View {
             Button {
                 isSaved.toggle()
             } label: {
-                Label(String(localized: "button_save"), systemImage: isSaved ? "bookmark.fill" : "bookmark")
+                Label("button_save", systemImage: isSaved ? "bookmark.fill" : "bookmark")
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
                     .background(isSaved ? AppColor.trustBlue.opacity(0.12) : Color.clear)
@@ -444,7 +444,7 @@ struct ProviderDetailView: View {
 
         return AnyView(
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text(String(localized: "Ratings Breakdown"))
+                Text("Ratings Breakdown")
                     .font(AppFont.title3)
 
                 ForEach(config.metrics) { metric in
@@ -458,7 +458,7 @@ struct ProviderDetailView: View {
                             Text(String(format: "%.1f/5", value))
                                 .font(AppFont.headline)
                         } else {
-                            Text(String(localized: "N/A"))
+                            Text("N/A")
                                 .font(AppFont.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -475,13 +475,13 @@ struct ProviderDetailView: View {
             if detailVM.provider?.isClaimed == true && !detailVM.services.isEmpty {
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
                     HStack {
-                        Text(String(localized: "Services & Prices"))
+                        Text("Services & Prices")
                             .font(AppFont.title3)
                         Spacer()
                         NavigationLink {
                             ServicesCatalogView(providerName: detailVM.provider?.name ?? "", services: detailVM.services)
                         } label: {
-                            Text(String(localized: "View All"))
+                            Text("View All")
                                 .font(AppFont.caption)
                                 .foregroundStyle(AppColor.trustBlue)
                         }
@@ -499,12 +499,12 @@ struct ProviderDetailView: View {
     private var reviewsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
             HStack {
-                Text(String(localized: "Reviews"))
+                Text("Reviews")
                     .font(AppFont.title3)
                 Spacer()
-                Picker(String(localized: "Sort"), selection: .constant(0)) {
-                    Text(String(localized: "Newest")).tag(0)
-                    Text(String(localized: "Highest Rated")).tag(1)
+                Picker("Sort", selection: .constant(0)) {
+                    Text("Newest").tag(0)
+                    Text("Highest Rated").tag(1)
                 }
                 .pickerStyle(.menu)
             }
@@ -514,7 +514,7 @@ struct ProviderDetailView: View {
                     Image(systemName: "text.bubble")
                         .font(.title2)
                         .foregroundStyle(.secondary)
-                    Text(String(localized: "No reviews yet"))
+                    Text("No reviews yet")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -530,7 +530,7 @@ struct ProviderDetailView: View {
             NavigationLink {
                 ReviewListView(providerId: providerId)
             } label: {
-                Text(String(localized: "See All Reviews"))
+                Text("See All Reviews")
                     .font(AppFont.caption)
                     .foregroundStyle(AppColor.trustBlue)
             }

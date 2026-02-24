@@ -51,7 +51,7 @@ struct HomeView: View {
                                      : homeVM.locationName)
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
-                                Text(String(localized: "country_turkey"))
+                                Text("country_turkey")
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -72,7 +72,7 @@ struct HomeView: View {
                     HStack(spacing: AppSpacing.sm) {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.secondary)
-                        TextField(String(localized: "search_placeholder"), text: $homeVM.searchText)
+                        TextField("search_placeholder", text: $homeVM.searchText)
                             .font(AppFont.body)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -102,7 +102,7 @@ struct HomeView: View {
                        (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty) {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
                             if !homeVM.specialtySuggestions.isEmpty {
-                                Text(String(localized: "specialties_label"))
+                                Text("specialties_label")
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                                     .padding(.top, AppSpacing.xs)
@@ -126,7 +126,7 @@ struct HomeView: View {
                             }
 
                             if !homeVM.providerSuggestions.isEmpty {
-                                Text(String(localized: "providers_label"))
+                                Text("providers_label")
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                                     .padding(.top, AppSpacing.xs)
@@ -188,8 +188,8 @@ struct HomeView: View {
 
                     // Map/List Toggle
                     Picker("", selection: $homeVM.viewMode) {
-                        Text(String(localized: "map_toggle_map")).tag(HomeViewModel.ViewMode.map)
-                        Text(String(localized: "map_toggle_list")).tag(HomeViewModel.ViewMode.list)
+                        Text("map_toggle_map").tag(HomeViewModel.ViewMode.map)
+                        Text("map_toggle_list").tag(HomeViewModel.ViewMode.list)
                     }
                     .pickerStyle(.segmented)
                     .padding(.horizontal, AppSpacing.lg)
@@ -246,11 +246,11 @@ struct HomeView: View {
             .navigationDestination(item: $selectedProviderFromMap) { provider in
                 ProviderDetailView(providerId: provider.id)
             }
-            .alert(String(localized: "error_generic"), isPresented: Binding(
+            .alert("error_generic", isPresented: Binding(
                 get: { homeVM.errorMessage != nil },
                 set: { if !$0 { homeVM.errorMessage = nil } }
             )) {
-                Button(String(localized: "button_ok")) {
+                Button("button_ok") {
                     homeVM.errorMessage = nil
                 }
             } message: {
@@ -323,7 +323,7 @@ struct HomeView: View {
                      : String(localized: "empty_search"))
                     .font(AppFont.body)
                     .foregroundStyle(.secondary)
-                Button(String(localized: "empty_home_cta")) {
+                Button("empty_home_cta") {
                     NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
                 }
                 .font(AppFont.callout)
@@ -458,7 +458,7 @@ private struct CompactProviderCardForSheet: View {
                     HStack(spacing: 4) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(AppFont.footnote)
-                        Text(String(localized: "verified_badge"))
+                        Text("verified_badge")
                             .font(AppFont.footnote)
                     }
                     .foregroundStyle(.green)

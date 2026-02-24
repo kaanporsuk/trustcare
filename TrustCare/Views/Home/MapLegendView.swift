@@ -54,7 +54,7 @@ struct MapLegendView: View {
                             Circle()
                                 .fill(Color.primary.opacity(0.3))
                                 .frame(width: 12, height: 12)
-                            Text(String(localized: "show_all"))
+                            Text("show_all")
                                 .font(.system(size: 12, weight: viewModel.selectedSurveyType == nil ? .bold : .regular))
                         }
                         .padding(.vertical, 4)

@@ -35,7 +35,7 @@ struct HelpSupportView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                Text(String(localized: "help_faq_title"))
+                Text("help_faq_title")
                     .font(AppFont.title2)
                     .foregroundStyle(AppColor.trustBlue)
 
@@ -58,18 +58,18 @@ struct HelpSupportView: View {
                 }
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text(String(localized: "help_contact"))
+                    Text("help_contact")
                         .font(AppFont.title3)
 
                     HStack {
-                        Text(String(localized: "help_email_label"))
+                        Text("help_email_label")
                             .font(AppFont.body)
                         Text("support@trustcare.app")
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
                     }
 
-                    Button(String(localized: "help_report_issue")) {
+                    Button("help_report_issue") {
                         if let url = URL(string: "mailto:support@trustcare.app?subject=TrustCare%20Destek") {
                             openURL(url)
                         }
@@ -88,7 +88,7 @@ struct HelpSupportView: View {
             .padding(.horizontal, AppSpacing.lg)
             .padding(.vertical, AppSpacing.lg)
         }
-        .navigationTitle(String(localized: "menu_help"))
+        .navigationTitle("menu_help")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
     }

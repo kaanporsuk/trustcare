@@ -27,14 +27,14 @@ struct RatingSliderView: View {
                 }
 
             HStack {
-                Text(String(localized: "Poor"))
+                Text("Poor")
                     .font(AppFont.footnote)
                     .foregroundStyle(.secondary)
                 Spacer()
                 Text("\(Int(value))/10")
                     .font(AppFont.headline)
                 Spacer()
-                Text(String(localized: "Excellent"))
+                Text("Excellent")
                     .font(AppFont.footnote)
                     .foregroundStyle(.secondary)
             }

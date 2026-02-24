@@ -44,7 +44,7 @@ struct SavedProvidersView: View {
                 .listStyle(.plain)
             }
         }
-        .navigationTitle(String(localized: "menu_saved"))
+        .navigationTitle("menu_saved")
         .toolbar(.hidden, for: .tabBar)
         .task {
             await loadSavedProviders()
@@ -52,11 +52,11 @@ struct SavedProvidersView: View {
         .refreshable {
             await loadSavedProviders()
         }
-        .alert(String(localized: "error_generic"), isPresented: Binding(
+        .alert("error_generic", isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button(String(localized: "button_ok")) { errorMessage = nil }
+            Button("button_ok") { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }

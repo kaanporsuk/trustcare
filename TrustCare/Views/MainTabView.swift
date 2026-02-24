@@ -31,7 +31,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
-                Text(String(localized: "tab_discover"))
+                Text("tab_discover")
             }
             .tag(0)
 
@@ -40,17 +40,17 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "bubble.left.and.text.bubble.right")
-                Text(String(localized: "tab_guide"))
+                Text("tab_guide")
             }
             .tag(1)
-            .badge(String(localized: "tab_badge_plus"))
+            .badge(Text("tab_badge_plus"))
 
             NavigationStack {
                 ReviewHubView()
             }
             .tabItem {
                 Image(systemName: "plus.circle.fill")
-                Text(String(localized: "tab_review"))
+                Text("tab_review")
             }
             .tag(2)
 
@@ -60,7 +60,7 @@ struct MainTabView: View {
             .environmentObject(profileVM)
             .tabItem {
                 Image(systemName: "person.circle")
-                Text(String(localized: "tab_profile"))
+                Text("tab_profile")
             }
             .tag(3)
             .badge(profileVM.unreadNotificationCount)
@@ -79,11 +79,11 @@ struct MainTabView: View {
                 selectedTab = tab
             }
         }
-        .alert(String(localized: "Error"), isPresented: Binding(
+        .alert("Error", isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button(String(localized: "OK")) { profileVM.errorMessage = nil }
+            Button("OK") { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }

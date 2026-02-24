@@ -43,7 +43,7 @@ struct SignUpView: View {
             )
 
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                Text(String(localized: "Date of Birth"))
+                Text("Date of Birth")
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 DatePicker(
@@ -73,7 +73,7 @@ struct SignUpView: View {
             )
 
             Toggle(isOn: $agreedToTerms) {
-                Text(String(localized: "I agree to Terms & Privacy"))
+                Text("I agree to Terms & Privacy")
                     .font(AppFont.caption)
             }
         }

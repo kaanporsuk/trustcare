@@ -69,7 +69,7 @@ struct PrivacyPolicyView: View {
                         ]
                     )
 
-                    Text(String(localized: "pp_last_updated"))
+                    Text("pp_last_updated")
                         .font(AppFont.footnote)
                         .foregroundStyle(.secondary)
                         .padding(.top, AppSpacing.sm)
@@ -77,7 +77,7 @@ struct PrivacyPolicyView: View {
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.vertical, AppSpacing.lg)
             }
-            .navigationTitle(String(localized: "menu_privacy"))
+            .navigationTitle("menu_privacy")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(.hidden, for: .tabBar)
         }

@@ -24,8 +24,8 @@ struct AddProviderSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(String(localized: "add_provider_section")) {
-                    TextField(String(localized: "add_provider_name"), text: $name)
+                Section("add_provider_section") {
+                    TextField("add_provider_name", text: $name)
 
                     if !placeSuggestions.isEmpty {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
@@ -53,20 +53,20 @@ struct AddProviderSheet: View {
                         showSpecialtyPicker = true
                     } label: {
                         HStack {
-                            Text(String(localized: "specialty_label"))
+                            Text("specialty_label")
                             Spacer()
                             Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? String(localized: "add_provider_select"))
                                 .foregroundStyle(.secondary)
                         }
                     }
 
-                    TextField(String(localized: "add_provider_address"), text: $address)
-                    TextField(String(localized: "add_provider_phone"), text: $phone)
+                    TextField("add_provider_address", text: $address)
+                    TextField("add_provider_phone", text: $phone)
                         .keyboardType(.phonePad)
                 }
 
-                Section(String(localized: "add_provider_location")) {
-                    Button(String(localized: "add_provider_map_pin")) {
+                Section("add_provider_location") {
+                    Button("add_provider_map_pin") {
                         showMapPicker = true
                     }
 
@@ -77,13 +77,13 @@ struct AddProviderSheet: View {
                     }
                 }
             }
-            .navigationTitle(String(localized: "add_provider_title"))
+            .navigationTitle("add_provider_title")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "button_cancel")) { dismiss() }
+                    Button("button_cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "button_add")) {
+                    Button("button_add") {
                         Task { await submit() }
                     }
                     .disabled(!isValid || isSubmitting)
@@ -95,11 +95,11 @@ struct AddProviderSheet: View {
                     ProgressView().tint(.white)
                 }
             }
-            .alert(String(localized: "error_generic"), isPresented: Binding(
+            .alert("error_generic", isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )) {
-                Button(String(localized: "button_ok")) { errorMessage = nil }
+                Button("button_ok") { errorMessage = nil }
             } message: {
                 Text(errorMessage ?? "")
             }
@@ -298,10 +298,10 @@ private struct SpecialtyPickerSheet: View {
                 }
             }
             .searchable(text: $searchText)
-            .navigationTitle(String(localized: "add_provider_select_specialty"))
+            .navigationTitle("add_provider_select_specialty")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "close_button")) { dismiss() }
+                    Button("close_button") { dismiss() }
                 }
             }
         }
@@ -329,10 +329,10 @@ private struct MapPinSelectorSheet: View {
     var body: some View {
         NavigationStack {
             CoordinatePickerMap(selectedCoordinate: $selectedCoordinate)
-                .navigationTitle(String(localized: "add_provider_map_pin"))
+                .navigationTitle("add_provider_map_pin")
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button(String(localized: "button_ok")) { dismiss() }
+                        Button("button_ok") { dismiss() }
                     }
                 }
         }

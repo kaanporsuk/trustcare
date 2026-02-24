@@ -15,11 +15,11 @@ struct MyReviewsView: View {
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
-            Picker(String(localized: "filter_button"), selection: $profileVM.reviewFilter) {
-                Text(String(localized: "filter_all")).tag("all")
-                Text(String(localized: "status_verified")).tag("verified")
-                Text(String(localized: "status_pending")).tag("pending")
-                Text(String(localized: "status_unverified")).tag("unverified")
+            Picker("filter_button", selection: $profileVM.reviewFilter) {
+                Text("filter_all").tag("all")
+                Text("status_verified").tag("verified")
+                Text("status_pending").tag("pending")
+                Text("status_unverified").tag("unverified")
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, AppSpacing.lg)
@@ -49,14 +49,14 @@ struct MyReviewsView: View {
                                 pendingDeleteReviewId = review.id
                                 showDeleteConfirm = true
                             } label: {
-                                Label(String(localized: "button_delete"), systemImage: "trash")
+                                Label("button_delete", systemImage: "trash")
                             }
 
                             if canEdit(review) {
                                 Button {
                                     editingReview = review
                                 } label: {
-                                    Label(String(localized: "button_edit"), systemImage: "pencil")
+                                    Label("button_edit", systemImage: "pencil")
                                 }
                                 .tint(AppColor.trustBlue)
                             }
@@ -69,7 +69,7 @@ struct MyReviewsView: View {
                 }
             }
         }
-        .navigationTitle(String(localized: "menu_my_reviews"))
+        .navigationTitle("menu_my_reviews")
         .toolbar(.hidden, for: .tabBar)
         .task {
             if profileVM.myReviews.isEmpty {
@@ -79,18 +79,18 @@ struct MyReviewsView: View {
         .onChange(of: profileVM.reviewFilter) { _, newValue in
             Task { await profileVM.loadReviews(filter: newValue) }
         }
-        .confirmationDialog(String(localized: "my_reviews_delete_title"), isPresented: $showDeleteConfirm) {
-            Button(String(localized: "button_delete"), role: .destructive) {
+        .confirmationDialog("my_reviews_delete_title", isPresented: $showDeleteConfirm) {
+            Button("button_delete", role: .destructive) {
                 if let id = pendingDeleteReviewId {
                     Task { await profileVM.deleteReview(id: id) }
                 }
                 pendingDeleteReviewId = nil
             }
-            Button(String(localized: "button_cancel"), role: .cancel) {
+            Button("button_cancel", role: .cancel) {
                 pendingDeleteReviewId = nil
             }
         } message: {
-            Text(String(localized: "my_reviews_delete_message"))
+            Text("my_reviews_delete_message")
         }
         .sheet(item: $editingReview) { review in
             EditReviewSheet(review: review) { title, comment in
@@ -98,11 +98,11 @@ struct MyReviewsView: View {
                 editingReview = nil
             }
         }
-        .alert(String(localized: "error_generic"), isPresented: Binding(
+        .alert("error_generic", isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button(String(localized: "button_ok")) { profileVM.errorMessage = nil }
+            Button("button_ok") { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
@@ -134,7 +134,7 @@ struct MyReviewsView: View {
                     .cornerRadius(AppRadius.button)
 
                 if canEdit(review) {
-                    Text(String(localized: "review_editable_24h"))
+                    Text("review_editable_24h")
                         .font(AppFont.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -209,22 +209,22 @@ private struct EditReviewSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(String(localized: "edit_review_title_section")) {
-                    TextField(String(localized: "edit_review_title_placeholder"), text: $title)
+                Section("edit_review_title_section") {
+                    TextField("edit_review_title_placeholder", text: $title)
                 }
 
-                Section(String(localized: "edit_review_comment_section")) {
+                Section("edit_review_comment_section") {
                     TextEditor(text: $comment)
                         .frame(minHeight: 140)
                 }
             }
-            .navigationTitle(String(localized: "edit_review_title"))
+            .navigationTitle("edit_review_title")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "button_cancel")) { dismiss() }
+                    Button("button_cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "button_save")) {
+                    Button("button_save") {
                         Task {
                             isSaving = true
                             await onSave(title, comment)

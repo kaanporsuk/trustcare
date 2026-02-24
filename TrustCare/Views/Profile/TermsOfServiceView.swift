@@ -75,7 +75,7 @@ struct TermsOfServiceView: View {
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.vertical, AppSpacing.lg)
             }
-            .navigationTitle(String(localized: "menu_terms"))
+            .navigationTitle("menu_terms")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(.hidden, for: .tabBar)
         }

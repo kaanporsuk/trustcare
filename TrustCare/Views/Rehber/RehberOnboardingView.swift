@@ -12,10 +12,10 @@ struct RehberOnboardingView: View {
                         .font(.system(size: 48, weight: .semibold))
                         .foregroundStyle(AppColor.trustBlue)
 
-                    Text(String(localized: "rehber_title"))
+                    Text("rehber_title")
                         .font(AppFont.title2)
 
-                    Text(String(localized: "rehber_onboarding_subtitle"))
+                    Text("rehber_onboarding_subtitle")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -32,7 +32,7 @@ struct RehberOnboardingView: View {
                 .cornerRadius(AppRadius.card)
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text(String(localized: "rehber_onboarding_warning"))
+                    Text("rehber_onboarding_warning")
                         .font(AppFont.footnote)
                         .foregroundStyle(.orange)
                         .multilineTextAlignment(.leading)
@@ -51,7 +51,7 @@ struct RehberOnboardingView: View {
                     HStack(alignment: .top, spacing: AppSpacing.sm) {
                         Image(systemName: consentChecked ? "checkmark.square.fill" : "square")
                             .foregroundStyle(consentChecked ? AppColor.trustBlue : .secondary)
-                        Text(String(localized: "rehber_consent_text"))
+                        Text("rehber_consent_text")
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
                             .multilineTextAlignment(.leading)
@@ -59,7 +59,7 @@ struct RehberOnboardingView: View {
                 }
                 .buttonStyle(.plain)
 
-                Text(String(localized: "rehber_plus_trial"))
+                Text("rehber_plus_trial")
                     .font(AppFont.footnote)
                     .foregroundStyle(AppColor.premium)
                     .padding(.horizontal, AppSpacing.md)
@@ -72,7 +72,7 @@ struct RehberOnboardingView: View {
                     UserDefaults.standard.set(Date(), forKey: "rehber_consent_date")
                     onStart()
                 } label: {
-                    Text(String(localized: "rehber_start"))
+                    Text("rehber_start")
                         .font(AppFont.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -86,7 +86,7 @@ struct RehberOnboardingView: View {
             .padding(.horizontal, AppSpacing.lg)
         }
         .background(AppColor.background)
-        .navigationTitle(String(localized: "tab_guide"))
+        .navigationTitle("tab_guide")
     }
 
     private func featureRow(_ text: String) -> some View {

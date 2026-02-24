@@ -5,7 +5,7 @@ struct VerifiedBadge: View {
         HStack(spacing: 4) {
             Image(systemName: "checkmark.seal.fill")
                 .font(.caption)
-            Text(String(localized: "Verified"))
+            Text("Verified")
                 .font(AppFont.footnote)
         }
         .foregroundStyle(AppColor.success)

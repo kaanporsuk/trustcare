@@ -54,7 +54,7 @@ struct RehberChatView: View {
                     inputBar
                 }
                 .background(AppColor.background)
-                .navigationTitle(String(localized: "tab_guide"))
+                .navigationTitle("tab_guide")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -66,13 +66,13 @@ struct RehberChatView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "chevron.left")
-                                Text(String(localized: "rehber_sessions"))
+                                Text("rehber_sessions")
                             }
                         }
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button(String(localized: "rehber_new_short")) {
+                        Button("rehber_new_short") {
                             Task {
                                 await viewModel.closeCurrentSession()
                                 viewModel.startNewChat()
@@ -100,7 +100,7 @@ struct RehberChatView: View {
     private var persistentInfoBar: some View {
         HStack(spacing: AppSpacing.xs) {
             Text("🔵")
-            Text(String(localized: "rehber_info_bar"))
+            Text("rehber_info_bar")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -124,7 +124,7 @@ struct RehberChatView: View {
     private var inputBar: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
             HStack(spacing: AppSpacing.sm) {
-                TextField(String(localized: "rehber_input_placeholder"), text: $inputText)
+                TextField("rehber_input_placeholder", text: $inputText)
                     .textFieldStyle(.plain)
                     .font(AppFont.body)
                     .padding(.horizontal, AppSpacing.md)
@@ -224,7 +224,7 @@ struct RehberChatView: View {
             }
 
             if message.role == "assistant", message.isFallback {
-                Button(String(localized: "rehber_try_again")) {
+                Button("rehber_try_again") {
                     viewModel.retryLastFailedMessage()
                 }
                 .font(AppFont.footnote)
@@ -259,7 +259,7 @@ struct RehberChatView: View {
                         .foregroundStyle(.white)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(String(localized: "rehber_call_emergency"))
+                        Text("rehber_call_emergency")
                             .font(AppFont.headline)
                             .foregroundStyle(.white)
                         
@@ -273,7 +273,7 @@ struct RehberChatView: View {
                 }
                 .padding(AppSpacing.md)
                 
-                Text(String(localized: "rehber_emergency_danger"))
+                Text("rehber_emergency_danger")
                     .font(AppFont.footnote)
                     .foregroundStyle(.white.opacity(0.9))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -302,7 +302,7 @@ struct RehberChatView: View {
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
                         Spacer()
-                        Text(String(localized: "rehber_find_provider"))
+                        Text("rehber_find_provider")
                             .font(AppFont.footnote)
                             .foregroundStyle(AppColor.trustBlue)
                     }
@@ -331,10 +331,10 @@ struct RehberChatView: View {
 
     private var emptyState: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(String(localized: "rehber_empty_state"))
+            Text("rehber_empty_state")
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
-            Text(String(localized: "rehber_empty_state_sub"))
+            Text("rehber_empty_state_sub")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -413,11 +413,11 @@ struct EmergencyCardView: View {
             VStack(spacing: AppSpacing.lg) {
                 Spacer()
 
-                Text(String(localized: "rehber_emergency_title"))
+                Text("rehber_emergency_title")
                     .font(AppFont.title1)
                     .foregroundStyle(.white)
 
-                Text(String(localized: "rehber_emergency_subtitle"))
+                Text("rehber_emergency_subtitle")
                     .font(AppFont.headline)
                     .foregroundStyle(.white)
 
@@ -426,7 +426,7 @@ struct EmergencyCardView: View {
                         UIApplication.shared.open(url)
                     }
                 } label: {
-                    Text(String(localized: "rehber_call_112"))
+                    Text("rehber_call_112")
                         .font(AppFont.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -441,7 +441,7 @@ struct EmergencyCardView: View {
                         UIApplication.shared.open(url)
                     }
                 } label: {
-                    Text(String(localized: "rehber_nearest_emergency"))
+                    Text("rehber_nearest_emergency")
                         .font(AppFont.headline)
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity)
@@ -452,7 +452,7 @@ struct EmergencyCardView: View {
 
                 Spacer()
 
-                Button(String(localized: "close_button")) {
+                Button("close_button") {
                     onDismiss()
                 }
                 .font(AppFont.footnote)
