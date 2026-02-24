@@ -30,7 +30,7 @@ struct ReviewItemView: View {
                 avatarView
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(review.reviewerName ?? String(localized: "Anonymous"))
+                    Text(review.reviewerName ?? "Anonymous")
                         .font(AppFont.headline)
                     HStack(spacing: AppSpacing.sm) {
                         if review.isVerified {
@@ -63,7 +63,7 @@ struct ReviewItemView: View {
                 Button {
                     isExpanded.toggle()
                 } label: {
-                    Text(isExpanded ? String(localized: "Show less") : String(localized: "Read more"))
+                    Text(isExpanded ? "Show less" : "Read more")
                         .font(AppFont.caption)
                         .foregroundStyle(AppColor.trustBlue)
                 }
@@ -99,7 +99,7 @@ struct ReviewItemView: View {
                     } label: {
                         HStack(spacing: 4) {
                             Image(systemName: "flag")
-                            Text(hasReported ? String(localized: "report_reported") : String(localized: "report_button"))
+                            Text(hasReported ? "report_reported" : "report_button")
                         }
                         .font(AppFont.footnote)
                         .foregroundStyle(hasReported ? .secondary : .secondary)
@@ -244,7 +244,7 @@ struct ReviewItemView: View {
                         Image(systemName: metric.icon)
                             .frame(width: 16)
                             .foregroundStyle(.secondary)
-                        Text(metric.label)
+                        Text(LocalizedStringKey(metric.labelKey))
                             .font(AppFont.footnote)
                         Spacer()
                         StarRatingInput(readOnlyRating: ratingValue, starSize: 12)

@@ -174,6 +174,8 @@ struct ReviewHubView: View {
     }
 
     private var visitDetailsSection: some View {
+        let lang = localizationManager.effectiveLanguage
+
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text("review_visit_details")
                 .font(AppFont.title3)
@@ -182,10 +184,9 @@ struct ReviewHubView: View {
                 .datePickerStyle(.compact)
 
             Picker("review_visit_type", selection: $viewModel.visitType) {
-                Text("visit_type_examination").tag("examination")
-                Text("visit_type_procedure").tag("procedure")
-                Text("visit_type_checkup").tag("checkup")
-                Text("visit_type_emergency").tag("emergency")
+                ForEach(ReviewVisitType.all) { type in
+                    Text(type.label(for: lang)).tag(type.id)
+                }
             }
             .pickerStyle(.segmented)
         }
@@ -204,26 +205,28 @@ struct ReviewHubView: View {
     }
 
     private var detailedRatingsSection: some View {
+        let lang = localizationManager.effectiveLanguage
+
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text("review_detailed")
                 .font(AppFont.title3)
 
-            ForEach(viewModel.surveyConfig.metrics) { metric in
+            ForEach(RatingCriterion.all) { criterion in
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
                     HStack(spacing: AppSpacing.xs) {
-                        Image(systemName: metric.icon)
+                        Image(systemName: criterion.icon)
                             .foregroundStyle(AppColor.trustBlue)
-                        Text(metric.label)
+                        Text(criterion.label(for: lang))
                             .font(.system(size: 17, weight: .semibold))
                     }
-                    Text(metric.subtext)
+                    Text(criterion.question(for: lang))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
 
                     StarRatingInput(
                         rating: Binding(
-                            get: { viewModel.metricRatings[metric.dbColumn] ?? 0 },
-                            set: { viewModel.metricRatings[metric.dbColumn] = $0 }
+                            get: { viewModel.metricRatings[criterion.dbColumn] ?? 0 },
+                            set: { viewModel.metricRatings[criterion.dbColumn] = $0 }
                         ),
                         starSize: 28
                     )

@@ -6,7 +6,7 @@ struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @EnvironmentObject private var localizationManager: LocalizationManager
-    @State private var displayName: String = String(localized: "Anonymous")
+    @State private var displayName: String = "Anonymous"
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
     @State private var showSpecialtyBrowser: Bool = false
@@ -46,8 +46,8 @@ struct HomeView: View {
                                 .font(.title3)
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text(homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location")
-                                     ? String(localized: "default_city_name")
+                                Text(homeVM.locationName.isEmpty || homeVM.locationName == "Tap to set location"
+                                     ? "default_city_name"
                                      : homeVM.locationName)
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
@@ -162,7 +162,7 @@ struct HomeView: View {
                     // Smart Pills (All + Top 5 Popular + More)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: AppSpacing.sm) {
-                            smartPill(title: String(localized: "filter_all"), isSelected: selectedSpecialty == nil) {
+                            smartPill(title: "filter_all", isSelected: selectedSpecialty == nil) {
                                 selectedSpecialty = nil
                                 Task { await homeVM.applySpecialtyFilter(nil) }
                             }
@@ -179,7 +179,7 @@ struct HomeView: View {
                                 }
                             }
 
-                            smartPill(title: String(localized: "filter_more"), isSelected: false) {
+                            smartPill(title: "filter_more", isSelected: false) {
                                 showSpecialtyBrowser = true
                             }
                         }
@@ -319,8 +319,8 @@ struct HomeView: View {
                     .font(.title2)
                     .foregroundStyle(.secondary)
                 Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                     ? String(localized: "empty_home_title")
-                     : String(localized: "empty_search"))
+                     ? "empty_home_title"
+                     : "empty_search")
                     .font(AppFont.body)
                     .foregroundStyle(.secondary)
                 Button("empty_home_cta") {
@@ -370,7 +370,7 @@ struct HomeView: View {
                 avatarDisplayUrl = nil
             }
         } catch {
-            displayName = String(localized: "there")
+            displayName = "there"
             avatarDisplayUrl = nil
         }
     }

@@ -34,17 +34,6 @@ struct TrustCareApp: App {
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
     init() {
-        // Apply saved language BEFORE any views are created (belt-and-suspenders)
-        let saved = UserDefaults.standard.string(forKey: "app_custom_locale")
-            ?? UserDefaults.standard.string(forKey: "appLanguage")
-            ?? ""
-        if !saved.isEmpty {
-            Bundle.setLanguage(saved)
-            UserDefaults.standard.set([saved], forKey: "AppleLanguages")
-            UserDefaults.standard.synchronize()
-        } else {
-            Bundle.setLanguage(LocalizationManager.detectSystemLanguage())
-        }
         Task {
             await SpecialtyService.shared.loadSpecialties()
         }
@@ -74,7 +63,7 @@ struct TrustCareApp: App {
                 }
             }
             .dismissKeyboardOnTap()
-            .environment(\.layoutDirection, localizationManager.layoutDirection)
+            .environment(\.layoutDirection, .leftToRight)
             .environment(\.locale, localizationManager.locale)
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
@@ -98,7 +87,7 @@ struct TrustCareApp: App {
                 path = NavigationPath()
                 appState = .auth
             }
-            .id(localizationManager.viewTreeId)
+            .id(localizationManager.effectiveLanguage)
         }
     }
 

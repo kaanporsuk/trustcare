@@ -526,3 +526,7 @@
 "rehber_emergency_detected" = "🚨 Acil risk olasılığı algılandı. Lütfen hemen 112'yi arayın.";
 "date_today" = "Bugün";
 "date_yesterday" = "Dün";
+"rehber_empty_title" = "Henüz konuşma yok";
+"rehber_empty_subtitle" = "Sağlık rehberliği almak için bir konuşma başlatın.";
+"map_search_this_area" = "Bu alanda ara";
+"reviews_empty_title" = "Henüz değerlendirme yok";

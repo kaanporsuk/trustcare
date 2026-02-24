@@ -534,3 +534,7 @@
 "rehber_emergency_detected" = "🚨 A potential emergency risk was detected. Please call 112 immediately.";
 "date_today" = "Today";
 "date_yesterday" = "Yesterday";
+"rehber_empty_title" = "No conversations yet";
+"rehber_empty_subtitle" = "Start one to get health guidance.";
+"map_search_this_area" = "Search this area";
+"reviews_empty_title" = "No reviews yet";

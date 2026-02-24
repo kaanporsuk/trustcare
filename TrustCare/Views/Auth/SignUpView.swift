@@ -13,14 +13,14 @@ struct SignUpView: View {
         VStack(spacing: AppSpacing.md) {
             labeledField(
                 icon: "person",
-                placeholder: String(localized: "Full Name"),
+                placeholder: "Full Name",
                 text: $authVM.fullName,
                 isValid: !authVM.fullName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             )
 
             labeledField(
                 icon: "envelope",
-                placeholder: String(localized: "Email"),
+                placeholder: "Email",
                 text: $authVM.email,
                 isValid: authVM.isEmailValid || authVM.email.isEmpty,
                 keyboard: .emailAddress
@@ -30,14 +30,14 @@ struct SignUpView: View {
 
             labeledSecureField(
                 icon: "lock",
-                placeholder: String(localized: "Password"),
+                placeholder: "Password",
                 text: $authVM.password,
                 isValid: authVM.isPasswordValid || authVM.password.isEmpty
             )
 
             labeledSecureField(
                 icon: "lock.fill",
-                placeholder: String(localized: "Confirm Password"),
+                placeholder: "Confirm Password",
                 text: $confirmPassword,
                 isValid: isConfirmValid || confirmPassword.isEmpty
             )
@@ -67,7 +67,7 @@ struct SignUpView: View {
 
             labeledField(
                 icon: "tag",
-                placeholder: String(localized: "Referral Code"),
+                placeholder: "Referral Code",
                 text: $authVM.referralCode,
                 isValid: true
             )

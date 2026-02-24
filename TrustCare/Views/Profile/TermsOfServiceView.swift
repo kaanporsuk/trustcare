@@ -6,69 +6,69 @@ struct TermsOfServiceView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
                     termsSection(
-                        title: String(localized: "tos_service_title"),
+                        title: "tos_service_title",
                         bullets: [
-                            String(localized: "tos_service_1"),
-                            String(localized: "tos_service_2")
+                            "tos_service_1",
+                            "tos_service_2"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_user_title"),
+                        title: "tos_user_title",
                         bullets: [
-                            String(localized: "tos_user_1"),
-                            String(localized: "tos_user_2"),
-                            String(localized: "tos_user_3")
+                            "tos_user_1",
+                            "tos_user_2",
+                            "tos_user_3"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_review_title"),
+                        title: "tos_review_title",
                         bullets: [
-                            String(localized: "tos_review_1"),
-                            String(localized: "tos_review_2"),
-                            String(localized: "tos_review_3")
+                            "tos_review_1",
+                            "tos_review_2",
+                            "tos_review_3"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_rehber_title"),
+                        title: "tos_rehber_title",
                         bullets: [
-                            String(localized: "tos_rehber_1"),
-                            String(localized: "tos_rehber_2"),
-                            String(localized: "tos_rehber_3")
+                            "tos_rehber_1",
+                            "tos_rehber_2",
+                            "tos_rehber_3"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_ip_title"),
+                        title: "tos_ip_title",
                         bullets: [
-                            String(localized: "tos_ip_1"),
-                            String(localized: "tos_ip_2")
+                            "tos_ip_1",
+                            "tos_ip_2"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_account_title"),
+                        title: "tos_account_title",
                         bullets: [
-                            String(localized: "tos_account_1"),
-                            String(localized: "tos_account_2")
+                            "tos_account_1",
+                            "tos_account_2"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_dispute_title"),
+                        title: "tos_dispute_title",
                         bullets: [
-                            String(localized: "tos_dispute_1"),
-                            String(localized: "tos_dispute_2")
+                            "tos_dispute_1",
+                            "tos_dispute_2"
                         ]
                     )
 
                     termsSection(
-                        title: String(localized: "tos_contact_title"),
+                        title: "tos_contact_title",
                         bullets: [
-                            String(localized: "tos_contact_1"),
-                            String(localized: "tos_contact_2")
+                            "tos_contact_1",
+                            "tos_contact_2"
                         ]
                     )
                 }

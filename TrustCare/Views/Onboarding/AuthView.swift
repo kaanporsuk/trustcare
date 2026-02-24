@@ -33,7 +33,7 @@ struct AuthView: View {
                         .foregroundStyle(AppColor.trustBlue)
                         .padding(.top, AppSpacing.xxl)
 
-                    Text(authVM.isSignUpMode ? String(localized: "Create Account") : String(localized: "Welcome Back"))
+                    Text(authVM.isSignUpMode ? "Create Account" : "Welcome Back")
                         .font(AppFont.title1)
 
                     VStack(spacing: AppSpacing.md) {
@@ -55,7 +55,7 @@ struct AuthView: View {
                             authVM.login()
                         }
                     } label: {
-                        Text(authVM.isSignUpMode ? String(localized: "Create Account") : String(localized: "Log In"))
+                        Text(authVM.isSignUpMode ? "Create Account" : "Log In")
                             .font(AppFont.headline)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
@@ -100,7 +100,7 @@ struct AuthView: View {
                     Button {
                         withAnimation { authVM.isSignUpMode.toggle() }
                     } label: {
-                        Text(authVM.isSignUpMode ? String(localized: "Already have an account? Log In") : String(localized: "Don't have an account? Sign Up"))
+                        Text(authVM.isSignUpMode ? "Already have an account? Log In" : "Don't have an account? Sign Up")
                             .font(AppFont.caption)
                             .foregroundStyle(AppColor.trustBlue)
                     }
@@ -112,7 +112,7 @@ struct AuthView: View {
             if authVM.isLoading {
                 Color.black.opacity(0.2)
                     .ignoresSafeArea()
-                ProgressView(String(localized: "Loading..."))
+                ProgressView("Loading...")
                     .padding()
                     .background(AppColor.cardBackground)
                     .cornerRadius(AppRadius.standard)
@@ -160,7 +160,7 @@ struct AuthView: View {
         VStack(spacing: AppSpacing.md) {
             labeledField(
                 icon: "envelope",
-                placeholder: String(localized: "Email"),
+                placeholder: "Email",
                 text: $authVM.email,
                 isValid: authVM.isEmailValid || authVM.email.isEmpty,
                 keyboard: .emailAddress
@@ -170,7 +170,7 @@ struct AuthView: View {
 
             labeledSecureField(
                 icon: "lock",
-                placeholder: String(localized: "Password"),
+                placeholder: "Password",
                 text: $authVM.password,
                 isValid: authVM.isPasswordValid || authVM.password.isEmpty
             )

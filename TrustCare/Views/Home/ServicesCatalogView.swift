@@ -7,7 +7,7 @@ struct ServicesCatalogView: View {
     @State private var errorMessage: String?
 
     private var groupedServices: [(String, [ProviderServiceItem])] {
-        let grouped = Dictionary(grouping: services, by: { $0.category ?? String(localized: "Other") })
+        let grouped = Dictionary(grouping: services, by: { $0.category ?? "Other" })
         return grouped.sorted { $0.key < $1.key }
     }
 

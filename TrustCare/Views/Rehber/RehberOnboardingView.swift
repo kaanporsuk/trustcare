@@ -23,9 +23,9 @@ struct RehberOnboardingView: View {
                 .padding(.top, AppSpacing.lg)
 
                 VStack(alignment: .leading, spacing: AppSpacing.md) {
-                    featureRow(String(localized: "rehber_feature_1"))
-                    featureRow(String(localized: "rehber_feature_2"))
-                    featureRow(String(localized: "rehber_feature_3"))
+                    featureRow("rehber_feature_1")
+                    featureRow("rehber_feature_2")
+                    featureRow("rehber_feature_3")
                 }
                 .padding(AppSpacing.md)
                 .background(AppColor.cardBackground)

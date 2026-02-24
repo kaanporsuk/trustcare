@@ -6,66 +6,66 @@ struct PrivacyPolicyView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
                     policySection(
-                        title: String(localized: "pp_data_collection_title"),
+                        title: "pp_data_collection_title",
                         bullets: [
-                            String(localized: "pp_data_collection_1"),
-                            String(localized: "pp_data_collection_2"),
-                            String(localized: "pp_data_collection_3"),
-                            String(localized: "pp_data_collection_4")
+                            "pp_data_collection_1",
+                            "pp_data_collection_2",
+                            "pp_data_collection_3",
+                            "pp_data_collection_4"
                         ]
                     )
 
                     policySection(
-                        title: String(localized: "pp_data_usage_title"),
+                        title: "pp_data_usage_title",
                         bullets: [
-                            String(localized: "pp_data_usage_1"),
-                            String(localized: "pp_data_usage_2"),
-                            String(localized: "pp_data_usage_3")
+                            "pp_data_usage_1",
+                            "pp_data_usage_2",
+                            "pp_data_usage_3"
                         ]
                     )
 
                     policySection(
-                        title: String(localized: "pp_data_sharing_title"),
+                        title: "pp_data_sharing_title",
                         bullets: [
-                            String(localized: "pp_data_sharing_1"),
-                            String(localized: "pp_data_sharing_2"),
-                            String(localized: "pp_data_sharing_3")
+                            "pp_data_sharing_1",
+                            "pp_data_sharing_2",
+                            "pp_data_sharing_3"
                         ]
                     )
 
                     policySection(
-                        title: String(localized: "pp_rights_title"),
+                        title: "pp_rights_title",
                         bullets: [
-                            String(localized: "pp_rights_1"),
-                            String(localized: "pp_rights_2"),
-                            String(localized: "pp_rights_3"),
-                            String(localized: "pp_rights_4")
+                            "pp_rights_1",
+                            "pp_rights_2",
+                            "pp_rights_3",
+                            "pp_rights_4"
                         ]
                     )
 
                     policySection(
-                        title: String(localized: "pp_cookies_title"),
+                        title: "pp_cookies_title",
                         bullets: [
-                            String(localized: "pp_cookies_1"),
-                            String(localized: "pp_cookies_2"),
-                            String(localized: "pp_cookies_3")
+                            "pp_cookies_1",
+                            "pp_cookies_2",
+                            "pp_cookies_3"
                         ]
                     )
 
                     policySection(
-                        title: String(localized: "pp_security_title"),
+                        title: "pp_security_title",
                         bullets: [
-                            String(localized: "pp_security_1"),
-                            String(localized: "pp_security_2"),
-                            String(localized: "pp_security_3")
+                            "pp_security_1",
+                            "pp_security_2",
+                            "pp_security_3"
                         ]
                     )
 
                     policySection(
-                        title: String(localized: "pp_contact_title"),
+                        title: "pp_contact_title",
                         bullets: [
-                            String(localized: "pp_contact_1"),
-                            String(localized: "pp_contact_2")
+                            "pp_contact_1",
+                            "pp_contact_2"
                         ]
                     )
 

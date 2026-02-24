@@ -15,9 +15,9 @@ struct SavedProvidersView: View {
             } else if providers.isEmpty {
                 EmptyStateView(
                     icon: "bookmark",
-                    title: String(localized: "saved_empty_title"),
-                    message: String(localized: "saved_empty_message"),
-                    actionTitle: String(localized: "saved_empty_action")
+                    title: "saved_empty_title",
+                    message: "saved_empty_message",
+                    actionTitle: "saved_empty_action"
                 ) {
                     NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
                 }

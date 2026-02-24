@@ -15,9 +15,9 @@ struct ChangePasswordView: View {
     var body: some View {
         Form {
             Section {
-                SecureField(String(localized: "Current Password"), text: $currentPassword)
-                SecureField(String(localized: "New Password"), text: $newPassword)
-                SecureField(String(localized: "Confirm New Password"), text: $confirmPassword)
+                SecureField("Current Password", text: $currentPassword)
+                SecureField("New Password", text: $newPassword)
+                SecureField("Confirm New Password", text: $confirmPassword)
             }
 
             Section {
@@ -65,11 +65,11 @@ struct ChangePasswordView: View {
 
     private func updatePassword() async {
         guard newPassword.count >= 8 else {
-            errorMessage = String(localized: "Password must be at least 8 characters.")
+            errorMessage = "Password must be at least 8 characters."
             return
         }
         guard newPassword == confirmPassword else {
-            errorMessage = String(localized: "Passwords do not match.")
+            errorMessage = "Passwords do not match."
             return
         }
 

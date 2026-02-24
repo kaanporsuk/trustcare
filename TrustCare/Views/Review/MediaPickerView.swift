@@ -146,7 +146,7 @@ struct MediaPickerView: View {
                         videoDuration = duration.seconds
                         selectedVideoDuration = duration.seconds
                     } catch {
-                        errorMessage = String(localized: "Something went wrong.")
+                        errorMessage = "Something went wrong."
                     }
                 }
             }
@@ -182,14 +182,14 @@ struct MediaPickerView: View {
                         try FileManager.default.removeItem(at: tempURL)
                     }
                 } catch {
-                    errorMessage = String(localized: "Something went wrong.")
+                    errorMessage = "Something went wrong."
                     return nil
                 }
                 try FileManager.default.copyItem(at: url, to: tempURL)
                 return tempURL
             }
         } catch {
-            errorMessage = String(localized: "Something went wrong.")
+            errorMessage = "Something went wrong."
             return nil
         }
         return nil

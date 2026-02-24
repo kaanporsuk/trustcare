@@ -6,28 +6,28 @@ struct HelpSupportView: View {
     private var faqItems: [(question: String, answer: String)] {
         [
             (
-                String(localized: "help_faq_q1"),
-                String(localized: "help_faq_a1")
+                "help_faq_q1",
+                "help_faq_a1"
             ),
             (
-                String(localized: "help_faq_q2"),
-                String(localized: "help_faq_a2")
+                "help_faq_q2",
+                "help_faq_a2"
             ),
             (
-                String(localized: "help_faq_q3"),
-                String(localized: "help_faq_a3")
+                "help_faq_q3",
+                "help_faq_a3"
             ),
             (
-                String(localized: "help_faq_q4"),
-                String(localized: "help_faq_a4")
+                "help_faq_q4",
+                "help_faq_a4"
             ),
             (
-                String(localized: "help_faq_q5"),
-                String(localized: "help_faq_a5")
+                "help_faq_q5",
+                "help_faq_a5"
             ),
             (
-                String(localized: "help_faq_q6"),
-                String(localized: "help_faq_a6")
+                "help_faq_q6",
+                "help_faq_a6"
             )
         ]
     }

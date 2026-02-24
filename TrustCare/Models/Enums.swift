@@ -18,12 +18,12 @@ enum PriceLevel: Int, Codable, CaseIterable, Identifiable {
     case budget = 1, moderate = 2, aboveAverage = 3, premium = 4
     var id: Int { rawValue }
     var symbol: String { String(repeating: "$", count: rawValue) }
-    var label: String {
+    var labelKey: String {
         switch self {
-        case .budget: return String(localized: "Budget-friendly")
-        case .moderate: return String(localized: "Moderate")
-        case .aboveAverage: return String(localized: "Above average")
-        case .premium: return String(localized: "Premium")
+        case .budget: return "Budget-friendly"
+        case .moderate: return "Moderate"
+        case .aboveAverage: return "Above average"
+        case .premium: return "Premium"
         }
     }
 }
@@ -81,11 +81,11 @@ enum ClaimStatus: String, Codable {
 enum ClaimRole: String, Codable, CaseIterable, Identifiable {
     case owner, manager, representative
     var id: String { rawValue }
-    var displayName: String {
+    var displayNameKey: String {
         switch self {
-        case .owner: return String(localized: "Owner")
-        case .manager: return String(localized: "Manager")
-        case .representative: return String(localized: "Authorized Representative")
+        case .owner: return "Owner"
+        case .manager: return "Manager"
+        case .representative: return "Authorized Representative"
         }
     }
 }

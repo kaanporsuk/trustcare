@@ -35,11 +35,9 @@ final class LocalizationManager: ObservableObject {
     /// When this changes, SwiftUI rebuilds via .id() and .environment(\\.locale).
     @Published var currentLanguage: String {
         didSet {
-            UserDefaults.standard.set(currentLanguage, forKey: "app_custom_locale")
+            UserDefaults.standard.set(currentLanguage, forKey: "app_language")
+            UserDefaults.standard.set([effectiveLanguage], forKey: "AppleLanguages")
             UserDefaults.standard.synchronize()
-            if !currentLanguage.isEmpty {
-                UserDefaults.standard.set([currentLanguage], forKey: "AppleLanguages")
-            }
         }
     }
 
@@ -54,18 +52,10 @@ final class LocalizationManager: ObservableObject {
         Locale(identifier: effectiveLanguage)
     }
 
-    /// A stable identity string. When this changes, SwiftUI destroys
-    /// and recreates the entire view tree.
-    var viewTreeId: String {
-        effectiveLanguage
-    }
-
     // MARK: - Init
 
     init() {
-        // Read from our custom key first, fall back to legacy key
-        let saved = UserDefaults.standard.string(forKey: "app_custom_locale")
-            ?? UserDefaults.standard.string(forKey: "appLanguage")
+        let saved = UserDefaults.standard.string(forKey: "app_language")
             ?? ""
         self.currentLanguage = saved
     }
@@ -77,9 +67,6 @@ final class LocalizationManager: ObservableObject {
     func changeLanguage(to newCode: String) {
         guard Self.supportedCodes.contains(newCode) else { return }
         currentLanguage = newCode
-        // Belt and suspenders: also swizzle the bundle for
-        // any code that still uses String(localized:) or NSLocalizedString
-        Bundle.setLanguage(newCode)
     }
 
     // MARK: - System Detection

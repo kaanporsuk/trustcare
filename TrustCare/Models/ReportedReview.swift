@@ -26,16 +26,16 @@ enum ReportReason: String, CaseIterable {
     case inaccurate = "inaccurate"
     case other = "other"
     
-    var displayName: String {
+    var displayNameKey: String {
         switch self {
         case .spam:
-            return String(localized: "Spam or fake review")
+            return "Spam or fake review"
         case .offensive:
-            return String(localized: "Inappropriate content")
+            return "Inappropriate content"
         case .inaccurate:
-            return String(localized: "Inaccurate information")
+            return "Inaccurate information"
         case .other:
-            return String(localized: "Other")
+            return "Other"
         }
     }
 }

@@ -32,15 +32,19 @@ struct Specialty: Codable, Identifiable, Hashable {
         case isActive = "is_active"
     }
 
+    func localizedName(for lang: String) -> String {
+        switch lang {
+        case "tr": return nameTr ?? name
+        case "de": return nameDe ?? name
+        case "pl": return namePl ?? name
+        case "nl": return nameNl ?? name
+        case "da": return nameDa ?? name
+        default: return name
+        }
+    }
+
     func resolvedName(using localizationManager: LocalizationManager) -> String {
-        localizationManager.resolvedSpecialtyName(
-            canonical: name,
-            tr: nameTr,
-            de: nameDe,
-            pl: namePl,
-            nl: nameNl,
-            da: nameDa
-        )
+        localizedName(for: localizationManager.effectiveLanguage)
     }
 
     func matchesSearch(_ query: String) -> Bool {

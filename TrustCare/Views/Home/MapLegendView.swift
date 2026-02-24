@@ -77,7 +77,7 @@ struct MapLegendView: View {
                                 Circle()
                                     .fill(ProviderMapColor.color(for: cat.type))
                                     .frame(width: 12, height: 12)
-                                Text(String(localized: String.LocalizationValue(cat.labelKey)))
+                                Text(LocalizedStringKey(cat.labelKey))
                                     .font(.system(size: 12, weight: viewModel.selectedSurveyType == cat.type ? .bold : .regular))
                             }
                             .padding(.vertical, 4)
@@ -105,12 +105,11 @@ struct MapLegendView: View {
     /// Label shown on the collapsed capsule
     private var selectedLabel: String {
         guard let type = viewModel.selectedSurveyType else {
-            return String(localized: "filter_button")
+            return "filter_button"
         }
-        // Find the matching category's localized label
         if let cat = categories.first(where: { $0.type == type }) {
-            return String(localized: String.LocalizationValue(cat.labelKey))
+            return cat.labelKey
         }
-        return String(localized: "filter_button")
+        return "filter_button"
     }
 }

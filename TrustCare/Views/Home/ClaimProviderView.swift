@@ -27,7 +27,7 @@ struct ClaimProviderView: View {
                     successView
                 }
             }
-            .navigationTitle(currentStep == .success ? "" : String(localized: "claim_title"))
+            .navigationTitle(currentStep == .success ? "" : "claim_title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if currentStep != .success {
@@ -45,7 +45,7 @@ struct ClaimProviderView: View {
                             claimVM.proofImage = image
                         }
                     } catch {
-                        claimVM.errorMessage = String(localized: "Unable to load image. Please try again.")
+                        claimVM.errorMessage = "Unable to load image. Please try again."
                     }
                 }
             }
@@ -85,7 +85,7 @@ struct ClaimProviderView: View {
                     } label: {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(role.displayName)
+                                Text(LocalizedStringKey(role.displayNameKey))
                                     .font(AppFont.body)
                                     .foregroundStyle(.primary)
                             }
@@ -260,7 +260,7 @@ struct ClaimProviderView: View {
                     Text("claim_your_role")
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
-                    Text(claimVM.role.displayName)
+                    Text(LocalizedStringKey(claimVM.role.displayNameKey))
                         .font(AppFont.body)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

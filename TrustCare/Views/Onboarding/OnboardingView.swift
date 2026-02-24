@@ -23,22 +23,22 @@ struct OnboardingView: View {
                 onboardingPage(
                     icon: "stethoscope",
                     color: AppColor.trustBlue,
-                    title: String(localized: "Find Trusted Care"),
-                    description: String(localized: "Discover verified doctors based on real patient experiences"),
+                    title: "Find Trusted Care",
+                    description: "Discover verified doctors based on real patient experiences",
                     tag: 0
                 )
                 onboardingPage(
                     icon: "checkmark.shield.fill",
                     color: AppColor.success,
-                    title: String(localized: "Verified Reviews"),
-                    description: String(localized: "AI-verified recommendations you can trust"),
+                    title: "Verified Reviews",
+                    description: "AI-verified recommendations you can trust",
                     tag: 1
                 )
                 onboardingPage(
                     icon: "person.3.fill",
                     color: Color(.systemBlue),
-                    title: String(localized: "Help Others"),
-                    description: String(localized: "Your reviews guide others to better healthcare"),
+                    title: "Help Others",
+                    description: "Your reviews guide others to better healthcare",
                     tag: 2
                 )
             }
@@ -51,7 +51,7 @@ struct OnboardingView: View {
                     withAnimation { currentPage += 1 }
                 }
             } label: {
-                Text(currentPage == 2 ? String(localized: "Get Started") : String(localized: "next"))
+                Text(currentPage == 2 ? "Get Started" : "next")
                     .font(AppFont.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)

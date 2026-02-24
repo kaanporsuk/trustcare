@@ -143,7 +143,7 @@ struct RehberSessionListView: View {
                     try await viewModel.loadSessionMessages(sessionId: session.id)
                     showChat = true
                 } catch {
-                    viewModel.errorMessage = String(localized: "rehber_load_conversation_error")
+                    viewModel.errorMessage = "rehber_load_conversation_error"
                 }
             }
         } label: {

@@ -34,7 +34,7 @@ struct AddProviderSheet: View {
                                     applySuggestion(suggestion)
                                 } label: {
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("\(String(localized: "add_provider_is_this")) \(suggestion.name)")
+                                        Text("\("add_provider_is_this") \(suggestion.name)")
                                             .font(AppFont.body)
                                             .foregroundStyle(.primary)
                                         Text(suggestion.address)
@@ -55,7 +55,7 @@ struct AddProviderSheet: View {
                         HStack {
                             Text("specialty_label")
                             Spacer()
-                            Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? String(localized: "add_provider_select"))
+                            Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? "add_provider_select")
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -131,7 +131,7 @@ struct AddProviderSheet: View {
 
     private func submit() async {
         guard let selectedSpecialty else {
-            errorMessage = String(localized: "add_provider_select_specialty_error")
+            errorMessage = "add_provider_select_specialty_error"
             return
         }
 
@@ -171,7 +171,7 @@ struct AddProviderSheet: View {
         if let coordinate = placemarks.first?.location?.coordinate {
             return coordinate
         }
-        throw AppError.validationError(String(localized: "add_provider_geocode_error"))
+        throw AppError.validationError("add_provider_geocode_error")
     }
 
     private func searchMapSuggestions() async {
@@ -245,7 +245,7 @@ struct AddProviderSheet: View {
         if !chunks.isEmpty {
             return chunks.joined(separator: ", ")
         }
-        return placemark.title ?? String(localized: "add_provider_no_address")
+        return placemark.title ?? "add_provider_no_address"
     }
 }
 

@@ -526,3 +526,7 @@
 "rehber_emergency_detected" = "🚨 Ein potenzielles Notfallrisiko wurde erkannt. Bitte rufen Sie sofort 112 an.";
 "date_today" = "Heute";
 "date_yesterday" = "Gestern";
+"rehber_empty_title" = "Noch keine Unterhaltungen";
+"rehber_empty_subtitle" = "Starten Sie eine, um gesundheitliche Orientierung zu erhalten.";
+"map_search_this_area" = "In diesem Bereich suchen";
+"reviews_empty_title" = "Noch keine Bewertungen";

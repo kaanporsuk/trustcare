@@ -112,7 +112,7 @@ struct RehberChatView: View {
 
     private var usageCounter: some View {
         HStack {
-            Text(String(format: String(localized: "rehber_usage_counter"), viewModel.usageCount))
+            Text(String(format: "rehber_usage_counter", viewModel.usageCount))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -153,7 +153,7 @@ struct RehberChatView: View {
             }
 
             if viewModel.sendCooldownRemainingSeconds > 0 {
-                Text(String(format: String(localized: "rehber_cooldown"), viewModel.sendCooldownRemainingSeconds))
+                Text(String(format: "rehber_cooldown", viewModel.sendCooldownRemainingSeconds))
                     .font(AppFont.footnote)
                     .foregroundStyle(.secondary)
             }

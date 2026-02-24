@@ -17,7 +17,7 @@ struct ReportReviewSheet: View {
                 Section {
                     Picker("report_reason", selection: $selectedReason) {
                         ForEach(ReportReason.allCases, id: \.self) { reason in
-                            Text(reason.displayName).tag(reason)
+                                Text(LocalizedStringKey(reason.displayNameKey)).tag(reason)
                         }
                     }
                     .pickerStyle(.inline)
@@ -98,7 +98,7 @@ struct ReportReviewSheet: View {
                     NotificationCenter.default.post(
                         name: .showToast,
                         object: nil,
-                        userInfo: ["message": String(localized: "report_thank_you")]
+                        userInfo: ["message": "report_thank_you"]
                     )
                 }
             } catch {

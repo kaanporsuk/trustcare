@@ -6,7 +6,7 @@ struct ReviewDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.md) {
-                Text(review.providerName ?? String(localized: "Unknown Provider"))
+                Text(review.providerName ?? "Unknown Provider")
                     .font(AppFont.title2)
 
                 StarRatingInput(readOnlyRating: Int(round(review.ratingOverall)), starSize: 14)

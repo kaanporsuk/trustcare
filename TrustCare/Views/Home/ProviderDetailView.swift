@@ -303,10 +303,10 @@ struct ProviderDetailView: View {
 
             HStack(spacing: AppSpacing.sm) {
                 StarRatingInput(readOnlyRating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
-                Text(String(format: String(localized: "reviews_count"), detailVM.provider?.reviewCount ?? 0))
+                Text(String(format: "reviews_count", detailVM.provider?.reviewCount ?? 0))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
-                Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \(String(localized: "Verified"))")
+                Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \("Verified")")
                     .font(AppFont.caption)
                     .foregroundStyle(AppColor.success)
             }
@@ -451,7 +451,7 @@ struct ProviderDetailView: View {
                     HStack(spacing: AppSpacing.sm) {
                         Image(systemName: metric.icon)
                             .foregroundStyle(.secondary)
-                        Text(metric.label)
+                        Text(LocalizedStringKey(metric.labelKey))
                             .font(AppFont.body)
                         Spacer()
                         if let value = provider.aggregateRating(for: metric.dbColumn), value > 0 {

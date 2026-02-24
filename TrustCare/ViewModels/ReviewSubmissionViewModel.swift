@@ -39,8 +39,8 @@ final class ReviewSubmissionViewModel: ObservableObject {
         selectedProvider = provider
         surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
         metricRatings = [:]
-        for metric in surveyConfig.metrics {
-            metricRatings[metric.dbColumn] = 0
+        for criterion in RatingCriterion.all {
+            metricRatings[criterion.dbColumn] = 0
         }
     }
 
@@ -274,7 +274,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
         selectedProvider = provider
         if let provider {
             surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
-            metricRatings = Dictionary(uniqueKeysWithValues: surveyConfig.metrics.map { ($0.dbColumn, 0) })
+            metricRatings = Dictionary(uniqueKeysWithValues: RatingCriterion.all.map { ($0.dbColumn, 0) })
         } else {
             surveyConfig = SurveyConfigurations.generalClinic
             metricRatings = [:]

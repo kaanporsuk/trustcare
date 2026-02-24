@@ -30,9 +30,9 @@ struct MyReviewsView: View {
             } else if profileVM.myReviews.isEmpty {
                 EmptyStateView(
                     icon: "pencil.and.list.clipboard",
-                    title: String(localized: "my_reviews_empty_title"),
-                    message: String(localized: "my_reviews_empty_message"),
-                    actionTitle: String(localized: "my_reviews_empty_action")
+                    title: "my_reviews_empty_title",
+                    message: "my_reviews_empty_message",
+                    actionTitle: "my_reviews_empty_action"
                 ) {
                     selectedTab = 2
                 }
@@ -112,7 +112,7 @@ struct MyReviewsView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(review.providerName ?? String(localized: "unknown_provider"))
+                    Text(review.providerName ?? "unknown_provider")
                         .font(AppFont.headline)
                     Text(formattedDate(review.createdAt))
                         .font(AppFont.caption)
@@ -125,7 +125,7 @@ struct MyReviewsView: View {
             StarRatingInput(readOnlyRating: Int(round(review.ratingOverall)), starSize: 14)
 
             HStack(spacing: AppSpacing.xs) {
-                Text(localizedSurveyType(review.surveyType ?? "general_clinic"))
+                Text(localizedSurveyTypeKey(review.surveyType ?? "general_clinic"))
                     .font(AppFont.footnote)
                     .padding(.horizontal, AppSpacing.sm)
                     .padding(.vertical, 4)
@@ -158,24 +158,18 @@ struct MyReviewsView: View {
         Date().timeIntervalSince(review.createdAt) <= 24 * 60 * 60
     }
 
-    private func localizedSurveyType(_ slug: String) -> String {
-        let key = "survey_\(slug)"
-        let localized = String(localized: String.LocalizationValue(key))
-        // If the key resolves to itself, fall back to formatted slug
-        if localized == key {
-            return slug.replacingOccurrences(of: "_", with: " ").capitalized
-        }
-        return localized
+    private func localizedSurveyTypeKey(_ slug: String) -> LocalizedStringKey {
+        LocalizedStringKey("survey_\(slug)")
     }
 
     @ViewBuilder
     private func statusBadge(_ review: Review) -> some View {
         if review.isVerified {
-            badge(String(localized: "status_verified"), color: AppColor.success)
+            badge("status_verified", color: AppColor.success)
         } else if review.status == .pendingVerification {
-            badge(String(localized: "status_pending"), color: AppColor.pending)
+            badge("status_pending", color: AppColor.pending)
         } else {
-            badge(String(localized: "status_unverified"), color: AppColor.unverified)
+            badge("status_unverified", color: AppColor.unverified)
         }
     }
 

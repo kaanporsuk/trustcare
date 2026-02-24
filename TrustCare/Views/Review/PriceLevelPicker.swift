@@ -21,7 +21,7 @@ struct PriceLevelPicker: View {
                         VStack(spacing: 6) {
                             Text(level.symbol)
                                 .font(AppFont.title2)
-                            Text(level.label)
+                            Text(LocalizedStringKey(level.labelKey))
                                 .font(AppFont.caption)
                         }
                         .frame(maxWidth: .infinity)

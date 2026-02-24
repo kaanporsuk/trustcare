@@ -184,7 +184,7 @@ struct ProfileView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: AppSpacing.xs) {
-                    Text(profileVM.profile?.displayName ?? String(localized: "Anonymous"))
+                    Text(profileVM.profile?.displayName ?? "Anonymous")
                         .font(AppFont.title2)
                     Button {
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -211,8 +211,8 @@ struct ProfileView: View {
         let verifiedPercent = totalReviews == 0 ? 0 : Int((Double(verifiedCount) / Double(totalReviews)) * 100)
 
         return HStack(spacing: AppSpacing.md) {
-            statCard(title: String(localized: "profile_reviews_count \(totalReviews)"))
-            statCard(title: String(localized: "profile_verified_percent \(verifiedPercent)"))
+            statCard(title: "profile_reviews_count \(totalReviews)")
+            statCard(title: "profile_verified_percent \(verifiedPercent)")
         }
     }
 
@@ -222,45 +222,45 @@ struct ProfileView: View {
                 MyReviewsView(selectedTab: $selectedTab)
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: String(localized: "menu_my_reviews"))
+                menuRow(title: "menu_my_reviews")
             }
 
             NavigationLink {
                 SavedProvidersView()
             } label: {
-                menuRow(title: String(localized: "menu_saved"))
+                menuRow(title: "menu_saved")
             }
 
             NavigationLink {
                 SettingsView()
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: String(localized: "menu_settings"))
+                menuRow(title: "menu_settings")
             }
 
             NavigationLink {
                 HelpSupportView()
             } label: {
-                menuRow(title: String(localized: "menu_help"))
+                menuRow(title: "menu_help")
             }
 
             NavigationLink {
                 PrivacyPolicyView()
             } label: {
-                menuRow(title: String(localized: "menu_privacy"))
+                menuRow(title: "menu_privacy")
             }
 
             NavigationLink {
                 TermsOfServiceView()
             } label: {
-                menuRow(title: String(localized: "menu_terms"))
+                menuRow(title: "menu_terms")
             }
 
             Button {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 showLogoutConfirm = true
             } label: {
-                menuRow(title: String(localized: "menu_logout"), isDestructive: true)
+                menuRow(title: "menu_logout", isDestructive: true)
             }
         }
     }
@@ -339,8 +339,8 @@ struct ProfileView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         if let date = profileVM.profile?.createdAt {
-            return "\(String(localized: "profile_member_since")): \(formatter.string(from: date))"
+            return "\("profile_member_since"): \(formatter.string(from: date))"
         }
-        return "\(String(localized: "profile_member_since")): -"
+        return "\("profile_member_since"): -"
     }
 }

@@ -538,3 +538,7 @@
 "rehber_emergency_detected" = "🚨 En potentiel nødrisiko blev opdaget. Ring straks 112.";
 "date_today" = "I dag";
 "date_yesterday" = "I går";
+"rehber_empty_title" = "Ingen samtaler endnu";
+"rehber_empty_subtitle" = "Start en for at få sundhedsvejledning.";
+"map_search_this_area" = "Søg i dette område";
+"reviews_empty_title" = "Ingen anmeldelser endnu";

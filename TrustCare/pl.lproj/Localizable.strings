@@ -526,3 +526,7 @@
 "rehber_emergency_detected" = "🚨 Wykryto potencjalne ryzyko nagłego wypadku. Natychmiast zadzwoń pod 112.";
 "date_today" = "Dzisiaj";
 "date_yesterday" = "Wczoraj";
+"rehber_empty_title" = "Brak rozmów";
+"rehber_empty_subtitle" = "Rozpocznij rozmowę, aby uzyskać wskazówki zdrowotne.";
+"map_search_this_area" = "Szukaj w tym obszarze";
+"reviews_empty_title" = "Brak opinii";

@@ -538,3 +538,7 @@
 "rehber_emergency_detected" = "🚨 Er is een mogelijk noodrisico gedetecteerd. Bel onmiddellijk 112.";
 "date_today" = "Vandaag";
 "date_yesterday" = "Gisteren";
+"rehber_empty_title" = "Nog geen gesprekken";
+"rehber_empty_subtitle" = "Start er een om gezondheidsadvies te krijgen.";
+"map_search_this_area" = "Zoek in dit gebied";
+"reviews_empty_title" = "Nog geen beoordelingen";
