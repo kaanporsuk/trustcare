@@ -46,10 +46,12 @@ struct ProviderMapView: View {
                 MapCompass()
             }
             .onMapCameraChange(frequency: .onEnd) { context in
-                visibleRegion = context.region
-                // Only show "search this area" AFTER initial load
-                if hasSetInitialPosition {
-                    showSearchButton = true
+                let region = context.region
+                DispatchQueue.main.async {
+                    visibleRegion = region
+                    if hasSetInitialPosition {
+                        showSearchButton = true
+                    }
                 }
             }
             // Set initial position ONCE on appear
