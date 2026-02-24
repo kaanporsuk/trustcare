@@ -225,3 +225,16 @@
 
 // Filter
 "filter_button" = "Filter";
+
+// Map Legend
+"legend_clinic" = "Clinic";
+"legend_pharmacy" = "Pharmacy";
+"legend_hospital" = "Hospital";
+"legend_dental" = "Dental";
+"legend_aesthetics" = "Aesthetics";
+"legend_lab" = "Lab";
+"legend_mental_health" = "Mental Health";
+"legend_rehab" = "Rehab";
+
+// Language Alert (with language name)
+"language_changed_message_named %@" = "The app will restart in %@. Continue?";

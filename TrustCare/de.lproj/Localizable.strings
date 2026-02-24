@@ -217,3 +217,16 @@
 
 // Filter
 "filter_button" = "Filter";
+
+// Map Legend
+"legend_clinic" = "Praxis";
+"legend_pharmacy" = "Apotheke";
+"legend_hospital" = "Krankenhaus";
+"legend_dental" = "Zahnarzt";
+"legend_aesthetics" = "Ästhetik";
+"legend_lab" = "Labor";
+"legend_mental_health" = "Psychische Gesundheit";
+"legend_rehab" = "Rehabilitation";
+
+// Language Alert (with language name)
+"language_changed_message_named %@" = "Die App wird auf %@ neu gestartet. Fortfahren?";

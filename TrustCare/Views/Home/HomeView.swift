@@ -200,13 +200,16 @@ struct HomeView: View {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
             }
-            .task(id: homeVM.selectedSurveyType) {
-                guard homeVM.hasLoadedInitially else { return }
-                await homeVM.searchWithDebounce()
-            }
-            .task(id: homeVM.selectedSpecialtyName) {
-                guard homeVM.hasLoadedInitially else { return }
-                await homeVM.refresh()
+            // Sync pill selection when the map legend changes surveyType.
+            // When the legend calls applyLegendFilter(), it clears
+            // selectedSpecialtyName; detect that and reset selectedSpecialty.
+            .onChange(of: homeVM.selectedSurveyType) { _, newType in
+                if let spec = selectedSpecialty {
+                    let specSurvey = SpecialtyService.shared.surveyType(for: spec.name)
+                    if specSurvey != newType {
+                        selectedSpecialty = nil
+                    }
+                }
             }
             .task {
                 homeVM.startLocationUpdates()
@@ -297,8 +300,7 @@ struct HomeView: View {
                 viewModel: homeVM,
                 onOpenProvider: { provider in
                     selectedProviderFromMap = provider
-                },
-                showSpecialtyBrowser: $showSpecialtyBrowser
+                }
             )
         } else if homeVM.providers.isEmpty {
             VStack(spacing: AppSpacing.sm) {

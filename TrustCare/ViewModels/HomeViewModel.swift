@@ -319,6 +319,14 @@ final class HomeViewModel: ObservableObject {
         await refresh()
     }
 
+    /// Called by the map legend when a category filter is tapped.
+    /// Clears any specialty-level filter and applies the broad category.
+    func applyLegendFilter(_ surveyType: String?) async {
+        selectedSpecialtyName = nil
+        selectedSurveyType = surveyType
+        await refresh()
+    }
+
     private func observeRehberSpecialtyRouting() {
         NotificationCenter.default.publisher(for: .trustCareApplySpecialtyFilter)
             .compactMap { $0.object as? String }

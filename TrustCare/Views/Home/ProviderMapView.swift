@@ -5,7 +5,6 @@ struct ProviderMapView: View {
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     let onOpenProvider: (Provider) -> Void
-    @Binding var showSpecialtyBrowser: Bool
 
     // ═══════════════════════════════════════════════════════════════
     // SOLE source of truth for the camera.
@@ -106,7 +105,6 @@ struct ProviderMapView: View {
                             Task {
                                 await viewModel.fetchProviders(in: region)
                             }
-                            // Do NOT recenter the camera — just loads data
                         } label: {
                             HStack(spacing: 8) {
                                 Image(systemName: "magnifyingglass")
@@ -126,32 +124,13 @@ struct ProviderMapView: View {
 
                     Spacer()
 
-                    // Filter button — TOP RIGHT only (the SOLE filter button)
-                    Button {
-                        showSpecialtyBrowser = true
-                    } label: {
-                        Label(String(localized: "filter_button"), systemImage: "line.3.horizontal.decrease")
-                            .font(AppFont.callout)
-                            .foregroundStyle(.primary)
-                            .padding(.horizontal, AppSpacing.md)
-                            .padding(.vertical, AppSpacing.sm)
-                            .background(.ultraThinMaterial)
-                            .clipShape(Capsule())
-                            .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
-                    }
-                    .padding(.trailing, AppSpacing.md)
-                    .padding(.top, AppSpacing.sm)
+                    // Color-coded map legend — TOP RIGHT
+                    MapLegendView(viewModel: viewModel)
+                        .padding(.trailing, 12)
+                        .padding(.top, 12)
                 }
 
                 Spacer()
-
-                // Map legend
-                HStack {
-                    Spacer()
-                    MapLegendView(viewModel: viewModel)
-                        .padding(.trailing, 12)
-                        .padding(.bottom, 12)
-                }
             }
         }
     }

@@ -217,3 +217,16 @@
 // Filter
 "filter_button" = "Filtr";
 "search_specialties" = "Szukaj specjalizacji";
+
+// Map Legend
+"legend_clinic" = "Klinika";
+"legend_pharmacy" = "Apteka";
+"legend_hospital" = "Szpital";
+"legend_dental" = "Dentysta";
+"legend_aesthetics" = "Estetyka";
+"legend_lab" = "Laboratorium";
+"legend_mental_health" = "Zdrowie psychiczne";
+"legend_rehab" = "Rehabilitacja";
+
+// Language Alert (with language name)
+"language_changed_message_named %@" = "Aplikacja zostanie uruchomiona ponownie w języku %@. Kontynuować?";

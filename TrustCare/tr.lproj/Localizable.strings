@@ -217,3 +217,16 @@
 
 // Filter
 "filter_button" = "Filtre";
+
+// Map Legend
+"legend_clinic" = "Klinik";
+"legend_pharmacy" = "Eczane";
+"legend_hospital" = "Hastane";
+"legend_dental" = "Diş Hekimi";
+"legend_aesthetics" = "Estetik";
+"legend_lab" = "Laboratuvar";
+"legend_mental_health" = "Ruh Sağlığı";
+"legend_rehab" = "Rehabilitasyon";
+
+// Language Alert (with language name)
+"language_changed_message_named %@" = "Uygulama %@ dilinde yeniden başlayacak. Devam edilsin mi?";

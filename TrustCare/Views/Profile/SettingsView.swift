@@ -12,7 +12,8 @@ struct SettingsView: View {
     @State private var isExporting: Bool = false
     @State private var exportFileURL: URL?
     @State private var showShareSheet: Bool = false
-    @State private var showLanguageChangeAlert: Bool = false
+    @State private var pendingLanguageCode: String?
+    @State private var showLanguageConfirmation: Bool = false
 
     @AppStorage("settings_notifications_enabled") private var notificationsEnabled: Bool = true
     @AppStorage("settings_location_services_enabled") private var locationServicesEnabled: Bool = true
@@ -52,13 +53,41 @@ struct SettingsView: View {
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
-        .alert(String(localized: "language_changed_alert"), isPresented: $showLanguageChangeAlert) {
-            Button(String(localized: "language_restart_now")) {
-                exit(0)
+        .alert(String(localized: "language_changed_alert"), isPresented: $showLanguageConfirmation) {
+            Button(String(localized: "language_restart_now"), role: .destructive) {
+                if let code = pendingLanguageCode {
+                    // 1. Apply the language change
+                    localizationManager.changeLanguage(to: code)
+
+                    // 2. Update Supabase profile (fire and forget)
+                    Task {
+                        guard let session = try? await SupabaseManager.shared.client.auth.session else {
+                            return
+                        }
+                        let userId = session.user.id.uuidString
+                        _ = try? await SupabaseManager.shared.client
+                            .from("profiles")
+                            .update(["preferred_language": code])
+                            .eq("id", value: userId)
+                            .execute()
+                    }
+
+                    // 3. Force quit — iOS will relaunch with new language
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        exit(0)
+                    }
+                }
             }
-            Button(String(localized: "language_later"), role: .cancel) { }
+            Button(String(localized: "language_later"), role: .cancel) {
+                pendingLanguageCode = nil
+            }
         } message: {
-            Text(String(localized: "language_changed_message"))
+            if let code = pendingLanguageCode,
+               let langName = LocalizationManager.supportedLanguages.first(where: { $0.code == code })?.name {
+                Text(String(localized: "language_changed_message_named \(langName)"))
+            } else {
+                Text(String(localized: "language_changed_message"))
+            }
         }
         .sheet(isPresented: $showShareSheet) {
             if let exportFileURL {
@@ -140,23 +169,11 @@ struct SettingsView: View {
     private func languageRow(_ language: LocalizationManager.AppLanguage) -> some View {
         Button {
             if localizationManager.effectiveLanguage != language.code {
-                localizationManager.changeLanguage(to: language.code)
-                Task {
-                    guard let session = try? await SupabaseManager.shared.client.auth.session else {
-                        return
-                    }
-
-                    let userId = session.user.id.uuidString
-                    _ = try? await SupabaseManager.shared.client
-                        .from("profiles")
-                        .update(["preferred_language": language.code])
-                        .eq("id", value: userId)
-                        .execute()
-                }
-                showLanguageChangeAlert = true
+                pendingLanguageCode = language.code
+                showLanguageConfirmation = true
             }
         } label: {
-            HStack {
+            HStack(spacing: 12) {
                 Text(language.flag)
                     .font(.title3)
                 Text(language.name)
@@ -168,7 +185,9 @@ struct SettingsView: View {
                         .fontWeight(.semibold)
                 }
             }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
     }
 
     private var preferencesSection: some View {

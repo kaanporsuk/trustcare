@@ -73,13 +73,10 @@ struct TrustCareApp: App {
             }
             .dismissKeyboardOnTap()
             .environment(\.layoutDirection, localizationManager.layoutDirection)
-            .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
+            .environment(\.locale, Locale(identifier: localizationManager.effectiveLanguage))
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
             .preferredColorScheme(preferredColorScheme)
-            .onAppear {
-                Bundle.setLanguage(localizationManager.currentLanguage)
-            }
             .onOpenURL { url in
                 handleDeepLink(url)
             }

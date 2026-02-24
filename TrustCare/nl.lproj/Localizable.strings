@@ -218,6 +218,19 @@
 
 // Filter
 "filter_button" = "Filter";
+
+// Map Legend
+"legend_clinic" = "Kliniek";
+"legend_pharmacy" = "Apotheek";
+"legend_hospital" = "Ziekenhuis";
+"legend_dental" = "Tandarts";
+"legend_aesthetics" = "Esthetiek";
+"legend_lab" = "Laboratorium";
+"legend_mental_health" = "Geestelijke gezondheid";
+"legend_rehab" = "Revalidatie";
+
+// Language Alert (with language name)
+"language_changed_message_named %@" = "De app wordt herstart in het %@. Doorgaan?";
 "sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Schildklierziekte";
 "sub_hormone_replacement" = "Hormoonvervanging";

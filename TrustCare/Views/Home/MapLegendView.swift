@@ -3,21 +3,22 @@ import SwiftUI
 struct MapLegendView: View {
     @ObservedObject var viewModel: HomeViewModel
 
-    let categories: [(type: String, label: String)] = [
-        ("general_clinic", "Clinic"),
-        ("pharmacy", "Pharmacy"),
-        ("hospital", "Hospital"),
-        ("dental", "Dental"),
-        ("aesthetics", "Aesthetics"),
-        ("diagnostic", "Lab"),
-        ("mental_health", "Mental Health"),
-        ("rehabilitation", "Rehab")
+    private let categories: [(type: String, labelKey: String)] = [
+        ("general_clinic", "legend_clinic"),
+        ("pharmacy",       "legend_pharmacy"),
+        ("hospital",       "legend_hospital"),
+        ("dental",         "legend_dental"),
+        ("aesthetics",     "legend_aesthetics"),
+        ("diagnostic",     "legend_lab"),
+        ("mental_health",  "legend_mental_health"),
+        ("rehabilitation", "legend_rehab"),
     ]
 
     @State private var isExpanded = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .trailing, spacing: 0) {
+            // Toggle button (always visible)
             Button {
                 withAnimation(.spring(response: 0.3)) { isExpanded.toggle() }
             } label: {
@@ -29,24 +30,25 @@ struct MapLegendView: View {
                             ?? Color.primary
                         )
                     if !isExpanded {
-                        Text(
-                            viewModel.selectedSurveyType.map { ProviderMapColor.label(for: $0) }
-                            ?? "Filter"
-                        )
-                        .font(.system(size: 13, weight: .semibold))
+                        Text(selectedLabel)
+                            .font(.system(size: 13, weight: .semibold))
                     }
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 8)
                 .background(.ultraThinMaterial)
-                .cornerRadius(10)
+                .clipShape(Capsule())
+                .shadow(color: .black.opacity(0.12), radius: 4, y: 2)
             }
             .buttonStyle(.plain)
 
+            // Expandable legend items
             if isExpanded {
                 VStack(alignment: .leading, spacing: 2) {
+                    // "Show All" option
                     Button {
-                        viewModel.selectedSurveyType = nil
+                        Task { await viewModel.applyLegendFilter(nil) }
+                        withAnimation(.spring(response: 0.3)) { isExpanded = false }
                     } label: {
                         HStack(spacing: 8) {
                             Circle()
@@ -62,19 +64,20 @@ struct MapLegendView: View {
                     }
                     .buttonStyle(.plain)
 
+                    // Category items
                     ForEach(categories, id: \.type) { cat in
                         Button {
-                            if viewModel.selectedSurveyType == cat.type {
-                                viewModel.selectedSurveyType = nil
-                            } else {
-                                viewModel.selectedSurveyType = cat.type
+                            let newType = viewModel.selectedSurveyType == cat.type ? nil : cat.type
+                            Task { await viewModel.applyLegendFilter(newType) }
+                            if newType != nil {
+                                withAnimation(.spring(response: 0.3)) { isExpanded = false }
                             }
                         } label: {
                             HStack(spacing: 8) {
                                 Circle()
                                     .fill(ProviderMapColor.color(for: cat.type))
                                     .frame(width: 12, height: 12)
-                                Text(cat.label)
+                                Text(String(localized: String.LocalizationValue(cat.labelKey)))
                                     .font(.system(size: 12, weight: viewModel.selectedSurveyType == cat.type ? .bold : .regular))
                             }
                             .padding(.vertical, 4)
@@ -91,9 +94,23 @@ struct MapLegendView: View {
                 }
                 .padding(8)
                 .background(.ultraThinMaterial)
-                .cornerRadius(10)
-                .transition(.opacity.combined(with: .scale(scale: 0.8, anchor: .topLeading)))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(color: .black.opacity(0.12), radius: 6, y: 3)
+                .padding(.top, 4)
+                .transition(.opacity.combined(with: .scale(scale: 0.9, anchor: .topTrailing)))
             }
         }
+    }
+
+    /// Label shown on the collapsed capsule
+    private var selectedLabel: String {
+        guard let type = viewModel.selectedSurveyType else {
+            return String(localized: "filter_button")
+        }
+        // Find the matching category's localized label
+        if let cat = categories.first(where: { $0.type == type }) {
+            return String(localized: String.LocalizationValue(cat.labelKey))
+        }
+        return String(localized: "filter_button")
     }
 }

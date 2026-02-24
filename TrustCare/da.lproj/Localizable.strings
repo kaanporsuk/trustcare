@@ -218,6 +218,19 @@
 
 // Filter
 "filter_button" = "Filter";
+
+// Map Legend
+"legend_clinic" = "Klinik";
+"legend_pharmacy" = "Apotek";
+"legend_hospital" = "Hospital";
+"legend_dental" = "Tandlæge";
+"legend_aesthetics" = "Æstetik";
+"legend_lab" = "Laboratorium";
+"legend_mental_health" = "Mental sundhed";
+"legend_rehab" = "Genoptræning";
+
+// Language Alert (with language name)
+"language_changed_message_named %@" = "Appen genstarter på %@. Fortsæt?";
 "sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Skjoldbruskkirtelsygdom";
 "sub_hormone_replacement" = "Hormonerstatning";
