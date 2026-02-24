@@ -59,15 +59,19 @@ struct ProviderMapView: View {
                 if !hasSetInitialPosition {
                     let loc = viewModel.selectedLocation
                     if loc.latitude != 0, loc.longitude != 0 {
-                        cameraPosition = .region(MKCoordinateRegion(
-                            center: CLLocationCoordinate2D(
-                                latitude: loc.latitude,
-                                longitude: loc.longitude
-                            ),
-                            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                        ))
+                        DispatchQueue.main.async {
+                            cameraPosition = .region(MKCoordinateRegion(
+                                center: CLLocationCoordinate2D(
+                                    latitude: loc.latitude,
+                                    longitude: loc.longitude
+                                ),
+                                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                            ))
+                        }
                     }
-                    hasSetInitialPosition = true
+                    DispatchQueue.main.async {
+                        hasSetInitialPosition = true
+                    }
                 }
             }
             // ═══════════════════════════════════════════════════════════
@@ -78,16 +82,18 @@ struct ProviderMapView: View {
             .onChange(of: viewModel.flyToToken) { _, _ in
                 let loc = viewModel.selectedLocation
                 guard loc.latitude != 0, loc.longitude != 0 else { return }
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    cameraPosition = .region(MKCoordinateRegion(
-                        center: CLLocationCoordinate2D(
-                            latitude: loc.latitude,
-                            longitude: loc.longitude
-                        ),
-                        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                    ))
+                DispatchQueue.main.async {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        cameraPosition = .region(MKCoordinateRegion(
+                            center: CLLocationCoordinate2D(
+                                latitude: loc.latitude,
+                                longitude: loc.longitude
+                            ),
+                            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        ))
+                    }
+                    showSearchButton = false
                 }
-                showSearchButton = false
             }
 
             // Overlay buttons
