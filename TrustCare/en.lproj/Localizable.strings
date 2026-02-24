@@ -184,3 +184,44 @@
 "is_this_your_practice" = "Is this your practice?";
 "claim_description" = "Claim this profile to manage it";
 "search_specialties" = "Search specialties";
+
+// Rehber / Guide
+"rehber_subtitle" = "Your AI health guide";
+"rehber_disclaimer" = "This is not medical advice. Always consult a healthcare professional.";
+"rehber_new_conversation" = "New Conversation";
+"rehber_no_conversations" = "No conversations yet";
+"rehber_start_guidance" = "Start one to get health guidance.";
+"rehber_recent_sessions" = "Recent Sessions";
+"rehber_delete" = "Delete";
+"rehber_delete_conversation_title" = "Delete Conversation?";
+"rehber_delete_conversation_message" = "This will permanently delete this conversation and all its messages.";
+"rehber_sessions" = "Sessions";
+"rehber_new_short" = "New";
+"rehber_info_bar" = "TrustCare Rehber — Health Information Service";
+"rehber_usage_counter" = "Free trial: %d/5";
+"rehber_input_placeholder" = "Describe your symptoms...";
+"rehber_cooldown" = "Please wait %d seconds to send again.";
+"rehber_try_again" = "Try Again";
+"rehber_call_emergency" = "Call Emergency Services";
+"rehber_emergency_danger" = "If you or someone else is in danger, call immediately.";
+"rehber_find_provider" = "Find Provider →";
+"rehber_empty_state" = "Share your symptoms, I'll guide you to the right specialty.";
+"rehber_empty_state_sub" = "No diagnosis or treatment is provided; guidance only.";
+"rehber_emergency_title" = "🚨 EMERGENCY";
+"rehber_emergency_subtitle" = "Please call 112 immediately";
+"rehber_call_112" = "Call 112";
+"rehber_nearest_emergency" = "Nearest Emergency Room";
+"rehber_onboarding_subtitle" = "Health Information Service";
+"rehber_feature_1" = "Recommends the right specialty based on your symptoms";
+"rehber_feature_2" = "Finds healthcare providers near you";
+"rehber_feature_3" = "Directs you to 112 in emergencies";
+"rehber_onboarding_warning" = "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.";
+"rehber_consent_text" = "I understand: These suggestions are for guidance only, not diagnosis";
+"rehber_plus_trial" = "TrustCare Plus feature — Free trial: 5 questions per day";
+"rehber_start" = "Start";
+
+// Location
+"location_select_title" = "Select Location";
+
+// Filter
+"filter_button" = "Filter";

@@ -1,5 +1,5 @@
-"tab_discover" = "Zorg zoeken";
-"tab_guide" = "Rehber";
+"tab_discover" = "Zoek";
+"tab_guide" = "Adviseur";
 "tab_review" = "Beoordelen";
 "tab_profile" = "Profiel";
 "search_placeholder" = "Zoek artsen, klinieken of specialismen...";
@@ -176,7 +176,48 @@
 "claim_profile" = "Profiel claimen";
 "is_this_your_practice" = "Is dit uw praktijk?";
 "claim_description" = "Claim dit profiel om het te beheren";
-"search_specialties" = "Specialismen zoeken";
+"search_specialties" = "Specialisme zoeken";
+
+// Rehber / Adviseur
+"rehber_subtitle" = "Uw AI-gezondheidsadviseur";
+"rehber_disclaimer" = "Dit is geen medisch advies. Raadpleeg altijd een zorgprofessional.";
+"rehber_new_conversation" = "Nieuw gesprek";
+"rehber_no_conversations" = "Nog geen gesprekken";
+"rehber_start_guidance" = "Start een gesprek voor gezondheidsbegeleiding.";
+"rehber_recent_sessions" = "Recente gesprekken";
+"rehber_delete" = "Verwijderen";
+"rehber_delete_conversation_title" = "Gesprek verwijderen?";
+"rehber_delete_conversation_message" = "Dit gesprek en alle berichten worden permanent verwijderd.";
+"rehber_sessions" = "Gesprekken";
+"rehber_new_short" = "Nieuw";
+"rehber_info_bar" = "TrustCare Adviseur — Gezondheidsinformatiedienst";
+"rehber_usage_counter" = "Gratis proef: %d/5";
+"rehber_input_placeholder" = "Beschrijf uw symptomen...";
+"rehber_cooldown" = "Wacht %d seconden.";
+"rehber_try_again" = "Opnieuw proberen";
+"rehber_call_emergency" = "Bel de hulpdiensten";
+"rehber_emergency_danger" = "Als u of iemand anders in gevaar is, bel onmiddellijk.";
+"rehber_find_provider" = "Zorgverlener zoeken →";
+"rehber_empty_state" = "Deel uw symptomen, ik verwijs u naar het juiste specialisme.";
+"rehber_empty_state_sub" = "Geen diagnose of behandeling; alleen begeleiding.";
+"rehber_emergency_title" = "🚨 NOODGEVAL";
+"rehber_emergency_subtitle" = "Bel onmiddellijk 112";
+"rehber_call_112" = "Bel 112";
+"rehber_nearest_emergency" = "Dichtstbijzijnde spoedeisende hulp";
+"rehber_onboarding_subtitle" = "Gezondheidsinformatiedienst";
+"rehber_feature_1" = "Adviseert het juiste specialisme op basis van uw symptomen";
+"rehber_feature_2" = "Vindt zorgverleners bij u in de buurt";
+"rehber_feature_3" = "Verwijst u naar 112 bij noodgevallen";
+"rehber_onboarding_warning" = "⚠️ Deze dienst is geen medische diagnose of behandeladvies. Raadpleeg altijd een zorgprofessional.";
+"rehber_consent_text" = "Ik begrijp het: Deze suggesties zijn alleen ter oriëntatie, geen diagnose";
+"rehber_plus_trial" = "TrustCare Plus — Gratis proef: 5 vragen per dag";
+"rehber_start" = "Starten";
+
+// Location
+"location_select_title" = "Locatie kiezen";
+
+// Filter
+"filter_button" = "Filter";
 "sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Schildklierziekte";
 "sub_hormone_replacement" = "Hormoonvervanging";

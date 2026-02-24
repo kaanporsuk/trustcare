@@ -25,6 +25,10 @@ class LocationManager: NSObject, ObservableObject {
     func startUpdating() {
         manager.startUpdatingLocation()
     }
+
+    func stopUpdating() {
+        manager.stopUpdatingLocation()
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -35,6 +39,9 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         Task { @MainActor in
             self.userLocation = location.coordinate
+            // STOP immediately after first fix to prevent continuous
+            // location updates that cause map snap-back
+            manager.stopUpdatingLocation()
         }
     }
 

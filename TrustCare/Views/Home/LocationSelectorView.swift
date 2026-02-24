@@ -88,11 +88,11 @@ struct LocationSelectorView: View {
                 .listStyle(.plain)
             }
             .background(AppColor.background)
-            .navigationTitle("Konum Seç")
+            .navigationTitle(String(localized: "location_select_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Kapat") { dismiss() }
+                    Button(String(localized: "close_button")) { dismiss() }
                 }
             }
         }

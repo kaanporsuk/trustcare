@@ -14,14 +14,37 @@ final class BundleExtension: Bundle, @unchecked Sendable {
 extension Bundle {
     static func setLanguage(_ language: String) {
         defer { object_setClass(Bundle.main, BundleExtension.self) }
-        let path = Bundle.main.path(forResource: language, ofType: "lproj")
-            ?? Bundle.main.path(forResource: "en", ofType: "lproj")
-        guard let path else { return }
-        objc_setAssociatedObject(
-            Bundle.main,
-            &bundleKey,
-            Bundle(path: path),
-            .OBJC_ASSOCIATION_RETAIN_NONATOMIC
-        )
+        // Try the specific language .lproj
+        if let path = Bundle.main.path(forResource: language, ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            objc_setAssociatedObject(
+                Bundle.main,
+                &bundleKey,
+                bundle,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+            return
+        }
+        // Try Base fallback
+        if let path = Bundle.main.path(forResource: "Base", ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            objc_setAssociatedObject(
+                Bundle.main,
+                &bundleKey,
+                bundle,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+            return
+        }
+        // Try English fallback
+        if let path = Bundle.main.path(forResource: "en", ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            objc_setAssociatedObject(
+                Bundle.main,
+                &bundleKey,
+                bundle,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+        }
     }
 }

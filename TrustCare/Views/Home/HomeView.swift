@@ -293,64 +293,13 @@ struct HomeView: View {
                 .padding(.top, AppSpacing.md)
             }
         } else if homeVM.viewMode == .map {
-            ZStack {
-                ProviderMapView(
-                    viewModel: homeVM,
-                    providers: homeVM.providers,
-                    isLoading: homeVM.isLoading,
-                    centerCoordinate: homeVM.mapCenterCoordinate,
-                    centerUpdateToken: homeVM.mapCenterUpdateToken,
-                    onOpenProvider: { provider in
-                        selectedProviderFromMap = provider
-                    }
-                )
-
-                // Bottom Sheet with Provider Cards
-                VStack(spacing: 0) {
-                    Spacer()
-
-                    VStack(spacing: AppSpacing.md) {
-                        // Drag Handle
-                        RoundedRectangle(cornerRadius: 2.5)
-                            .fill(Color(.systemGray3))
-                            .frame(width: 40, height: 5)
-                            .padding(.top, AppSpacing.sm)
-
-                        if homeVM.providers.isEmpty {
-                            VStack(spacing: AppSpacing.sm) {
-                                Image(systemName: "mappin.slash")
-                                    .font(.title2)
-                                    .foregroundStyle(.secondary)
-                                Text(String(localized: "empty_search"))
-                                    .font(AppFont.body)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, AppSpacing.lg)
-                        } else {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: AppSpacing.md) {
-                                    ForEach(homeVM.providers) { provider in
-                                        Button {
-                                            selectedProviderFromMap = provider
-                                        } label: {
-                                            CompactProviderCardForSheet(provider: provider)
-                                        }
-                                        .buttonStyle(.plain)
-                                    }
-                                }
-                                .padding(.horizontal, AppSpacing.lg)
-                            }
-                            .frame(height: 160)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color(.systemBackground))
-                    .cornerRadius(16, corners: [.topLeft, .topRight])
-                    .shadow(color: .black.opacity(0.1), radius: 8, y: -2)
-                }
-                .ignoresSafeArea(edges: .bottom)
-            }
+            ProviderMapView(
+                viewModel: homeVM,
+                onOpenProvider: { provider in
+                    selectedProviderFromMap = provider
+                },
+                showSpecialtyBrowser: $showSpecialtyBrowser
+            )
         } else if homeVM.providers.isEmpty {
             VStack(spacing: AppSpacing.sm) {
                 Image(systemName: "magnifyingglass")

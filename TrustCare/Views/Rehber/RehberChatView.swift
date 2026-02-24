@@ -54,7 +54,7 @@ struct RehberChatView: View {
                     inputBar
                 }
                 .background(AppColor.background)
-                .navigationTitle("Rehber")
+                .navigationTitle(String(localized: "tab_guide"))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -66,13 +66,13 @@ struct RehberChatView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "chevron.left")
-                                Text("Sessions")
+                                Text(String(localized: "rehber_sessions"))
                             }
                         }
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("New") {
+                        Button(String(localized: "rehber_new_short")) {
                             Task {
                                 await viewModel.closeCurrentSession()
                                 viewModel.startNewChat()
@@ -100,7 +100,7 @@ struct RehberChatView: View {
     private var persistentInfoBar: some View {
         HStack(spacing: AppSpacing.xs) {
             Text("🔵")
-            Text("TrustCare Rehber — Bilgilendirme Hizmetidir")
+            Text(String(localized: "rehber_info_bar"))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -112,7 +112,7 @@ struct RehberChatView: View {
 
     private var usageCounter: some View {
         HStack {
-            Text("Ücretsiz deneme: \(viewModel.usageCount)/5")
+            Text(String(format: String(localized: "rehber_usage_counter"), viewModel.usageCount))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -124,7 +124,7 @@ struct RehberChatView: View {
     private var inputBar: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
             HStack(spacing: AppSpacing.sm) {
-                TextField("Belirtinizi yazın...", text: $inputText)
+                TextField(String(localized: "rehber_input_placeholder"), text: $inputText)
                     .textFieldStyle(.plain)
                     .font(AppFont.body)
                     .padding(.horizontal, AppSpacing.md)
@@ -153,7 +153,7 @@ struct RehberChatView: View {
             }
 
             if viewModel.sendCooldownRemainingSeconds > 0 {
-                Text("Tekrar göndermek için \(viewModel.sendCooldownRemainingSeconds) sn bekleyin.")
+                Text(String(format: String(localized: "rehber_cooldown"), viewModel.sendCooldownRemainingSeconds))
                     .font(AppFont.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -224,7 +224,7 @@ struct RehberChatView: View {
             }
 
             if message.role == "assistant", message.isFallback {
-                Button("Try Again") {
+                Button(String(localized: "rehber_try_again")) {
                     viewModel.retryLastFailedMessage()
                 }
                 .font(AppFont.footnote)
@@ -259,7 +259,7 @@ struct RehberChatView: View {
                         .foregroundStyle(.white)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Call Emergency Services")
+                        Text(String(localized: "rehber_call_emergency"))
                             .font(AppFont.headline)
                             .foregroundStyle(.white)
                         
@@ -273,7 +273,7 @@ struct RehberChatView: View {
                 }
                 .padding(AppSpacing.md)
                 
-                Text("If you or someone else is in danger, call immediately.")
+                Text(String(localized: "rehber_emergency_danger"))
                     .font(AppFont.footnote)
                     .foregroundStyle(.white.opacity(0.9))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -302,7 +302,7 @@ struct RehberChatView: View {
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
                         Spacer()
-                        Text("Sağlayıcı Bul →")
+                        Text(String(localized: "rehber_find_provider"))
                             .font(AppFont.footnote)
                             .foregroundStyle(AppColor.trustBlue)
                     }
@@ -331,10 +331,10 @@ struct RehberChatView: View {
 
     private var emptyState: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Belirtinizi paylaşın, sizi uygun uzmanlığa yönlendireyim.")
+            Text(String(localized: "rehber_empty_state"))
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
-            Text("Tanı veya tedavi sunulmaz; yalnızca yönlendirme yapılır.")
+            Text(String(localized: "rehber_empty_state_sub"))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -413,11 +413,11 @@ struct EmergencyCardView: View {
             VStack(spacing: AppSpacing.lg) {
                 Spacer()
 
-                Text("🚨 ACİL DURUM")
+                Text(String(localized: "rehber_emergency_title"))
                     .font(AppFont.title1)
                     .foregroundStyle(.white)
 
-                Text("Lütfen hemen 112'yi arayın")
+                Text(String(localized: "rehber_emergency_subtitle"))
                     .font(AppFont.headline)
                     .foregroundStyle(.white)
 
@@ -426,7 +426,7 @@ struct EmergencyCardView: View {
                         UIApplication.shared.open(url)
                     }
                 } label: {
-                    Text("112'yi Ara")
+                    Text(String(localized: "rehber_call_112"))
                         .font(AppFont.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -441,7 +441,7 @@ struct EmergencyCardView: View {
                         UIApplication.shared.open(url)
                     }
                 } label: {
-                    Text("En yakın Acil Servis")
+                    Text(String(localized: "rehber_nearest_emergency"))
                         .font(AppFont.headline)
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity)
@@ -452,7 +452,7 @@ struct EmergencyCardView: View {
 
                 Spacer()
 
-                Button("Kapat") {
+                Button(String(localized: "close_button")) {
                     onDismiss()
                 }
                 .font(AppFont.footnote)

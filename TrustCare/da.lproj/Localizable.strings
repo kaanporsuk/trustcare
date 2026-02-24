@@ -1,5 +1,5 @@
-"tab_discover" = "Find behandling";
-"tab_guide" = "Rehber";
+"tab_discover" = "Søg";
+"tab_guide" = "Rådgiver";
 "tab_review" = "Bedøm";
 "tab_profile" = "Profil";
 "search_placeholder" = "Søg efter læger, klinikker eller specialer...";
@@ -176,7 +176,48 @@
 "claim_profile" = "Kræv profil";
 "is_this_your_practice" = "Er det din praksis?";
 "claim_description" = "Kræv denne profil for at styre den";
-"search_specialties" = "Søg i specialiteter";
+"search_specialties" = "Søg speciale";
+
+// Rehber / Rådgiver
+"rehber_subtitle" = "Din AI-sundhedsguide";
+"rehber_disclaimer" = "Dette er ikke medicinsk rådgivning. Konsulter altid en sundhedsprofessionel.";
+"rehber_new_conversation" = "Ny samtale";
+"rehber_no_conversations" = "Ingen samtaler endnu";
+"rehber_start_guidance" = "Start en samtale for at få sundhedsvejledning.";
+"rehber_recent_sessions" = "Seneste samtaler";
+"rehber_delete" = "Slet";
+"rehber_delete_conversation_title" = "Slet samtale?";
+"rehber_delete_conversation_message" = "Denne samtale og alle beskeder slettes permanent.";
+"rehber_sessions" = "Samtaler";
+"rehber_new_short" = "Ny";
+"rehber_info_bar" = "TrustCare Rådgiver — Sundhedsinformationstjeneste";
+"rehber_usage_counter" = "Gratis prøve: %d/5";
+"rehber_input_placeholder" = "Beskriv dine symptomer...";
+"rehber_cooldown" = "Vent venligst %d sekunder.";
+"rehber_try_again" = "Prøv igen";
+"rehber_call_emergency" = "Ring til alarmcentralen";
+"rehber_emergency_danger" = "Hvis du eller en anden er i fare, ring straks.";
+"rehber_find_provider" = "Find behandler →";
+"rehber_empty_state" = "Del dine symptomer, så guider jeg dig til det rette speciale.";
+"rehber_empty_state_sub" = "Ingen diagnose eller behandling; kun vejledning.";
+"rehber_emergency_title" = "🚨 NØDSITUATION";
+"rehber_emergency_subtitle" = "Ring venligst 112 straks";
+"rehber_call_112" = "Ring 112";
+"rehber_nearest_emergency" = "Nærmeste skadestue";
+"rehber_onboarding_subtitle" = "Sundhedsinformationstjeneste";
+"rehber_feature_1" = "Anbefaler det rette speciale baseret på dine symptomer";
+"rehber_feature_2" = "Finder sundhedsudbydere i nærheden";
+"rehber_feature_3" = "Henviser dig til 112 i nødsituationer";
+"rehber_onboarding_warning" = "⚠️ Denne tjeneste er ikke en medicinsk diagnose eller behandlingsanbefaling. Konsulter altid en sundhedsprofessionel.";
+"rehber_consent_text" = "Jeg forstår: Disse forslag er kun til vejledning, ikke diagnose";
+"rehber_plus_trial" = "TrustCare Plus — Gratis prøve: 5 spørgsmål dagligt";
+"rehber_start" = "Start";
+
+// Location
+"location_select_title" = "Vælg placering";
+
+// Filter
+"filter_button" = "Filter";
 "sub_diabetes" = "Diabetes";
 "sub_thyroid_disease" = "Skjoldbruskkirtelsygdom";
 "sub_hormone_replacement" = "Hormonerstatning";

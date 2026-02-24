@@ -1,5 +1,5 @@
-"tab_discover" = "Znajdź opiekę";
-"tab_guide" = "Rehber";
+"tab_discover" = "Szukaj";
+"tab_guide" = "Doradca";
 "tab_review" = "Oceń";
 "tab_profile" = "Profil";
 "search_placeholder" = "Szukaj lekarzy, klinik lub specjalizacji...";
@@ -175,4 +175,45 @@
 "claim_profile" = "Zgłoś profil";
 "is_this_your_practice" = "Czy to Twoja praktyka?";
 "claim_description" = "Zgłoś ten profil, aby go zarządzać";
+
+// Rehber / Doradca
+"rehber_subtitle" = "Twój przewodnik zdrowotny AI";
+"rehber_disclaimer" = "To nie jest porada medyczna. Należy zawsze skonsultować się z lekarzem.";
+"rehber_new_conversation" = "Nowa rozmowa";
+"rehber_no_conversations" = "Brak rozmów";
+"rehber_start_guidance" = "Rozpocznij rozmowę, aby uzyskać poradę zdrowotną.";
+"rehber_recent_sessions" = "Ostatnie rozmowy";
+"rehber_delete" = "Usuń";
+"rehber_delete_conversation_title" = "Usunąć rozmowę?";
+"rehber_delete_conversation_message" = "Ta rozmowa i wszystkie wiadomości zostaną trwale usunięte.";
+"rehber_sessions" = "Rozmowy";
+"rehber_new_short" = "Nowa";
+"rehber_info_bar" = "TrustCare Doradca — Usługa informacji zdrowotnej";
+"rehber_usage_counter" = "Bezpłatna próba: %d/5";
+"rehber_input_placeholder" = "Opisz swoje objawy...";
+"rehber_cooldown" = "Proszę czekać %d sekund.";
+"rehber_try_again" = "Spróbuj ponownie";
+"rehber_call_emergency" = "Zadzwoń na pogotowie";
+"rehber_emergency_danger" = "Jeśli Ty lub ktoś inny jest w niebezpieczeństwie, zadzwoń natychmiast.";
+"rehber_find_provider" = "Znajdź lekarza →";
+"rehber_empty_state" = "Podziel się objawami, pokażę Ci odpowiednią specjalizację.";
+"rehber_empty_state_sub" = "Brak diagnozy lub leczenia; tylko poradnictwo.";
+"rehber_emergency_title" = "🚨 NAGŁY WYPADEK";
+"rehber_emergency_subtitle" = "Proszę natychmiast zadzwonić pod 112";
+"rehber_call_112" = "Zadzwoń 112";
+"rehber_nearest_emergency" = "Najbliższy oddział ratunkowy";
+"rehber_onboarding_subtitle" = "Usługa informacji zdrowotnej";
+"rehber_feature_1" = "Rekomenduje odpowiednią specjalizację na podstawie objawów";
+"rehber_feature_2" = "Znajduje lekarzy w Twojej okolicy";
+"rehber_feature_3" = "Kieruje Cię pod 112 w nagłych wypadkach";
+"rehber_onboarding_warning" = "⚠️ Ta usługa nie jest diagnozą medyczną ani zaleceniem leczenia. Zawsze konsultuj się z lekarzem.";
+"rehber_consent_text" = "Rozumiem: Te sugestie służą tylko orientacji, nie diagnozie";
+"rehber_plus_trial" = "TrustCare Plus — Bezpłatna próba: 5 pytań dziennie";
+"rehber_start" = "Rozpocznij";
+
+// Location
+"location_select_title" = "Wybierz lokalizację";
+
+// Filter
+"filter_button" = "Filtr";
 "search_specialties" = "Szukaj specjalizacji";

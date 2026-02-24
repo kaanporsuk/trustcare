@@ -111,7 +111,7 @@ final class LocalizationManager: ObservableObject {
     /// Category translation mapping for the 16 database categories.
     static let categoryTranslations: [String: [String: String]] = [
         "Primary Care": [
-            "tr": "Birinci Basamak", "de": "Hausärztliche Versorgung",
+            "tr": "Temel Sağlık", "de": "Hausärztliche Versorgung",
             "pl": "Podstawowa opieka zdrowotna", "nl": "Eerstelijnszorg",
             "da": "Almen praksis", "en": "Primary Care"
         ],

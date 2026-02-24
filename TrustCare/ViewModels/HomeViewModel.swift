@@ -61,12 +61,14 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedRadiusKm: Int = 50
     @Published var selectedLocation: SelectedLocation
     @Published var recentLocations: [SelectedLocation] = []
-    @Published var mapCenterCoordinate: CLLocationCoordinate2D?
-    @Published var mapCenterUpdateToken: Int = 0
-    @Published var didUserSelectNewLocation: Bool = false
+    /// Incremented ONLY when the user explicitly picks a new location
+    /// (city picker or "Use Current Location"). ProviderMapView watches
+    /// this single token to fly the camera.
+    @Published var flyToToken: Int = 0
 
     private(set) var hasLoadedInitially = false
     private let locationManager = LocationManager()
+    private let specialtyTracker = SpecialtyTracker.shared
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
@@ -124,10 +126,6 @@ final class HomeViewModel: ObservableObject {
             userLongitude = defaultLongitude
             persistCityAndCoordinates()
         }
-        mapCenterCoordinate = CLLocationCoordinate2D(
-            latitude: selectedLocation.latitude,
-            longitude: selectedLocation.longitude
-        )
         recentLocations = Self.loadRecentLocations()
         observeLocation()
         observeRehberSpecialtyRouting()
@@ -175,52 +173,60 @@ final class HomeViewModel: ObservableObject {
         saveSelectedLocation(location)
         persistCityAndCoordinates()
         addRecentLocation(location)
-        recenterMap(to: location.latitude, longitude: location.longitude, userInitiated: true)
+        // Trigger map fly-to for explicit user action
+        flyToToken += 1
         await refresh()
     }
 
     func useCurrentLocation() async {
-        startLocationUpdates()
+        locationManager.requestPermission()
+        locationManager.startUpdating()
+
+        // Wait briefly for GPS fix
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+
         guard let coordinate = locationManager.userLocation else {
             verboseLog("❌ useCurrentLocation: No user location available")
             return
         }
 
-        // Reverse geocode to extract city name from GPS coordinates
+        // CRITICAL: Reverse geocode to get city name
         let clLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        let geocoder = CLGeocoder()
-        var geocodedCityName = String(localized: "current_location")
-        
-        do {
-            if let placemark = try await geocoder.reverseGeocodeLocation(clLocation).first {
-                // Try to extract city/locality, with fallbacks
-                geocodedCityName = placemark.locality
-                    ?? placemark.subAdministrativeArea
-                    ?? placemark.administrativeArea
-                    ?? String(localized: "current_location")
-                verboseLog("✅ Geocoded current location to: \(geocodedCityName)")
-            }
-        } catch {
-            verboseLog("⚠️ Reverse geocoding failed for current location: \(error)")
-            // Keep the fallback name if geocoding fails
+        let cityName: String
+        if let placemark = try? await CLGeocoder().reverseGeocodeLocation(clLocation).first {
+            cityName = placemark.locality
+                ?? placemark.subAdministrativeArea
+                ?? placemark.administrativeArea
+                ?? String(localized: "current_location")
+        } else {
+            cityName = String(localized: "current_location")
         }
 
-        // Update location with geocoded city name
+        // Update all location state
         let updated = SelectedLocation(
-            name: geocodedCityName,
+            name: cityName,
             latitude: coordinate.latitude,
             longitude: coordinate.longitude,
             isCurrentLocation: true
         )
         selectedLocation = updated
-        locationName = geocodedCityName
-        selectedCity = geocodedCityName
+        locationName = cityName
+        selectedCity = cityName
         userLatitude = coordinate.latitude
         userLongitude = coordinate.longitude
         saveSelectedLocation(updated)
         persistCityAndCoordinates()
-        recenterMap(to: coordinate.latitude, longitude: coordinate.longitude, userInitiated: true)
-        await refresh()
+
+        // Stop continuous updates (prevent map snap-back)
+        locationManager.stopUpdating()
+
+        // Trigger map fly-to for explicit user action
+        flyToToken += 1
+
+        // Refresh providers for new location
+        currentOffset = 0
+        hasMoreResults = true
+        await searchProviders(reset: true)
     }
 
     func selectRadius(_ radiusKm: Int) async {
@@ -253,45 +259,36 @@ final class HomeViewModel: ObservableObject {
     }
 
     func fetchProviders(in region: MKCoordinateRegion) async {
-        // Reverse geocode the center to update city name
-        let location = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
-        let geocoder = CLGeocoder()
-        
-        var geocodedName = locationName
-        do {
-            if let placemark = try await geocoder.reverseGeocodeLocation(location).first {
-                geocodedName = placemark.locality
-                    ?? placemark.subAdministrativeArea
-                    ?? placemark.administrativeArea
-                    ?? String(localized: "unauthorized_area")
-            }
-        } catch {
-            // Use existing location name if geocoding fails
-            print("Reverse geocoding failed: \(error)")
+        // 1. Reverse geocode to update the label
+        let location = CLLocation(
+            latitude: region.center.latitude,
+            longitude: region.center.longitude
+        )
+        if let placemark = try? await CLGeocoder().reverseGeocodeLocation(location).first {
+            locationName = placemark.locality
+                ?? placemark.subAdministrativeArea
+                ?? placemark.administrativeArea
+                ?? locationName
         }
-        
-        let updatedLocation = SelectedLocation(
-            name: geocodedName,
+
+        // 2. Update internal state WITHOUT triggering map recenter
+        //    (no flyToToken increment — camera stays where user left it)
+        selectedLocation = SelectedLocation(
+            name: locationName,
             latitude: region.center.latitude,
             longitude: region.center.longitude,
             isCurrentLocation: false
         )
-        selectedLocation = updatedLocation
-        locationName = geocodedName
-        saveSelectedLocation(updatedLocation)
-        recenterMap(to: region.center.latitude, longitude: region.center.longitude, userInitiated: true)
+        saveSelectedLocation(selectedLocation)
+
+        // 3. Search using the region's center
         currentOffset = 0
         hasMoreResults = true
         await searchProviders(reset: true)
     }
 
-    private func recenterMap(to latitude: Double, longitude: Double, userInitiated: Bool = false) {
-        mapCenterCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        if userInitiated {
-            didUserSelectNewLocation = true
-        }
-        mapCenterUpdateToken += 1
-    }
+    // recenterMap removed — camera is now solely owned by ProviderMapView's
+    // @State cameraPosition. The only way to fly the map is flyToToken += 1.
 
     func searchWithDebounce() async {
         verboseLog("🔵 HomeViewModel.searchWithDebounce called (searchText: '\(searchText)', surveyType: '\(selectedSurveyType ?? "all")')")
@@ -314,6 +311,8 @@ final class HomeViewModel: ObservableObject {
         selectedSpecialtyName = specialty?.name
         if let specialty {
             selectedSurveyType = specialty.surveyType
+            // Record tap for personalization
+            specialtyTracker.recordTap(specialtyName: specialty.name)
         } else {
             selectedSurveyType = nil
         }
@@ -363,9 +362,22 @@ final class HomeViewModel: ObservableObject {
         do {
             let results = try await ProviderService.fetchSpecialtiesCached(forceRefresh: forceRefresh)
             specialties = results
-            popularSpecialties = results
-                .filter { $0.isPopular }
-                .sorted { $0.displayOrder < $1.displayOrder }
+            // Compute personalized top-5 pills
+            let userTop = specialtyTracker.userTopSpecialties(count: 5)
+            if userTop.isEmpty {
+                // Default: use global popular
+                popularSpecialties = results
+                    .filter { $0.isPopular }
+                    .sorted { $0.displayOrder < $1.displayOrder }
+            } else {
+                // Personalized: match user's top specialties
+                let personalized = userTop.compactMap { name in
+                    results.first { $0.name == name }
+                }
+                popularSpecialties = personalized.isEmpty
+                    ? results.filter { $0.isPopular }.sorted { $0.displayOrder < $1.displayOrder }
+                    : personalized
+            }
             verboseLog("✅ Loaded \(results.count) specialties")
         } catch {
             let errorMsg = localizedErrorMessage(error)
@@ -484,27 +496,23 @@ final class HomeViewModel: ObservableObject {
 
     private func observeLocation() {
         locationManager.requestPermission()
+        // We only observe location for the INITIAL geocode on app launch.
+        // After that, LocationManager stops itself (first fix only).
+        // This does NOT trigger any map recentering.
         locationManager.$userLocation
             .compactMap { $0 }
+            .first() // Only take the first emission
             .sink { [weak self] location in
                 Task { @MainActor in
                     guard let self else { return }
                     let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-
-                    if self.shouldReverseGeocode(for: currentLocation) {
+                    // Only reverse geocode if using current location, to update the label
+                    if self.selectedLocation.isCurrentLocation {
                         await self.reverseGeocode(location: location)
                         self.lastGeocodedLocation = currentLocation
                         self.lastGeocodedAt = Date()
                     }
-
-                    if self.selectedLocation.isCurrentLocation,
-                       self.hasLoadedInitially,
-                       self.shouldRefreshProviders(for: currentLocation),
-                       !self.isLoading {
-                        await self.refresh()
-                        self.lastSearchLocation = currentLocation
-                        self.lastSearchAt = Date()
-                    }
+                    // Do NOT refresh providers or recenter map here
                 }
             }
             .store(in: &cancellables)

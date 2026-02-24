@@ -15,7 +15,7 @@ struct SpecialtyBrowserSheet: View {
         NavigationStack {
             VStack(spacing: AppSpacing.md) {
                 HStack {
-                    Button(String(localized: "Clear Filter")) {
+                    Button(String(localized: "clear_filter")) {
                         onClear()
                     }
                     .font(AppFont.caption)
@@ -110,7 +110,7 @@ struct SpecialtyBrowserSheet: View {
         return sortedCategories.compactMap { category in
             guard let items = grouped[category] else { return nil }
             let sorted = items.sorted { $0.displayOrder < $1.displayOrder }
-            let icon = sorted.first?.iconName ?? "stethoscope"
+            let icon = safeIconName(sorted.first?.iconName)
             return (category: category, iconName: icon, specialties: sorted)
         }
     }
@@ -125,7 +125,7 @@ private struct SpecialtyRow: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: AppSpacing.sm) {
-                Image(systemName: specialty.iconName)
+                Image(systemName: safeIconName(specialty.iconName))
                     .foregroundStyle(.secondary)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(specialty.resolvedName(using: localizationManager))
@@ -154,7 +154,7 @@ private struct SearchField: View {
         HStack(spacing: AppSpacing.sm) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
-            TextField(String(localized: "Search specialties"), text: $text)
+            TextField(String(localized: "search_specialties"), text: $text)
                 .font(AppFont.body)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()

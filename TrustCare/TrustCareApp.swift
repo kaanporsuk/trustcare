@@ -34,7 +34,15 @@ struct TrustCareApp: App {
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
     init() {
-        Bundle.setLanguage(LocalizationManager.detectSystemLanguage())
+        // Apply saved language BEFORE any views are created
+        let saved = UserDefaults.standard.string(forKey: "appLanguage") ?? ""
+        if !saved.isEmpty {
+            Bundle.setLanguage(saved)
+            UserDefaults.standard.set([saved], forKey: "AppleLanguages")
+            UserDefaults.standard.synchronize()
+        } else {
+            Bundle.setLanguage(LocalizationManager.detectSystemLanguage())
+        }
         Task {
             await SpecialtyService.shared.loadSpecialties()
         }

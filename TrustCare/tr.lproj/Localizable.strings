@@ -1,4 +1,4 @@
-"tab_discover" = "Bakım Bul";
+"tab_discover" = "Bul";
 "tab_guide" = "Rehber";
 "tab_review" = "Değerlendir";
 "tab_profile" = "Profil";
@@ -126,7 +126,7 @@
 "language_danish" = "Dansk";
 
 // Database Category Translations
-"category_primary_care" = "Birinci Basamak";
+"category_primary_care" = "Temel Sağlık";
 "category_surgical" = "Cerrahi";
 "category_medical_specialties" = "Tıbbi Uzmanlıklar";
 "category_womens_health" = "Kadın Sağlığı";
@@ -176,3 +176,44 @@
 "is_this_your_practice" = "Bu senin pratiğin mi?";
 "claim_description" = "Bu profili yönetmek için talep edin";
 "search_specialties" = "Uzmanlık ara";
+
+// Rehber
+"rehber_subtitle" = "Yapay zeka sağlık rehberiniz";
+"rehber_disclaimer" = "Bu tıbbi tavsiye değildir. Lütfen her zaman bir sağlık uzmanına danışın.";
+"rehber_new_conversation" = "Yeni Görüşme";
+"rehber_no_conversations" = "Henüz görüşme yok";
+"rehber_start_guidance" = "Sağlık rehberliği almak için bir görüşme başlatın.";
+"rehber_recent_sessions" = "Son Görüşmeler";
+"rehber_delete" = "Sil";
+"rehber_delete_conversation_title" = "Görüşme Silinsin mi?";
+"rehber_delete_conversation_message" = "Bu görüşme ve tüm mesajları kalıcı olarak silinecek.";
+"rehber_sessions" = "Görüşmeler";
+"rehber_new_short" = "Yeni";
+"rehber_info_bar" = "TrustCare Rehber — Bilgilendirme Hizmetidir";
+"rehber_usage_counter" = "Ücretsiz deneme: %d/5";
+"rehber_input_placeholder" = "Belirtinizi yazın...";
+"rehber_cooldown" = "Tekrar göndermek için %d sn bekleyin.";
+"rehber_try_again" = "Tekrar Dene";
+"rehber_call_emergency" = "Acil Servisi Ara";
+"rehber_emergency_danger" = "Siz veya birisi tehlike altındaysa hemen arayın.";
+"rehber_find_provider" = "Sağlayıcı Bul →";
+"rehber_empty_state" = "Belirtinizi paylaşın, sizi uygun uzmanlığa yönlendireyim.";
+"rehber_empty_state_sub" = "Tanı veya tedavi sunulmaz; yalnızca yönlendirme yapılır.";
+"rehber_emergency_title" = "🚨 ACİL DURUM";
+"rehber_emergency_subtitle" = "Lütfen hemen 112'yi arayın";
+"rehber_call_112" = "112'yi Ara";
+"rehber_nearest_emergency" = "En Yakın Acil Servis";
+"rehber_onboarding_subtitle" = "Sağlık Bilgilendirme Hizmeti";
+"rehber_feature_1" = "Belirtilerinize göre doğru uzmanlık alanını önerir";
+"rehber_feature_2" = "Yakınınızdaki sağlık hizmeti sağlayıcılarını bulur";
+"rehber_feature_3" = "Acil durumlarda sizi 112'ye yönlendirir";
+"rehber_onboarding_warning" = "⚠️ Bu hizmet tıbbi teşhis veya tedavi önerisi değildir. Her zaman bir sağlık uzmanına danışın.";
+"rehber_consent_text" = "Anladım: Bu öneriler sadece yönlendirme amaçlıdır, teşhis değildir";
+"rehber_plus_trial" = "TrustCare Plus özelliği — Ücretsiz deneme: günde 5 soru";
+"rehber_start" = "Başla";
+
+// Location
+"location_select_title" = "Konum Seç";
+
+// Filter
+"filter_button" = "Filtre";
