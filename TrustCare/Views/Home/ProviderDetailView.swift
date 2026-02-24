@@ -106,7 +106,7 @@ struct ProviderDetailView: View {
     }
 
     private var reviewButtonLabel: some View {
-        Label("Değerlendir", systemImage: "star.bubble")
+        Label(String(localized: "button_review"), systemImage: "star.bubble")
             .font(AppFont.headline)
             .foregroundStyle(.white)
             .padding(.vertical, 12)
@@ -197,10 +197,10 @@ struct ProviderDetailView: View {
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(.orange)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Claim Pending")
+                                Text(String(localized: "claim_pending"))
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
-                                Text("Under review — we'll notify you within 1-3 business days")
+                                Text(String(localized: "claim_pending_message"))
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -216,7 +216,7 @@ struct ProviderDetailView: View {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .foregroundStyle(.red)
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("Claim Rejected")
+                                    Text(String(localized: "claim_rejected"))
                                         .font(AppFont.headline)
                                         .foregroundStyle(.primary)
                                     if let reason = claim.rejectionReason {
@@ -230,7 +230,7 @@ struct ProviderDetailView: View {
                             Button {
                                 showClaimSheet = true
                             } label: {
-                                Text("Resubmit Claim")
+                                Text(String(localized: "claim_resubmit"))
                                     .font(AppFont.footnote)
                                     .foregroundStyle(AppColor.trustBlue)
                                     .padding(.vertical, 6)
@@ -254,15 +254,15 @@ struct ProviderDetailView: View {
                             Image(systemName: "building.2.fill")
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Is this your practice?")
+                                Text(String(localized: "is_this_your_practice"))
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
-                                Text("Claim this profile to manage it")
+                                Text(String(localized: "claim_description"))
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                             }
                             Spacer()
-                            Text("Claim Profile")
+                            Text(String(localized: "claim_profile"))
                                 .font(AppFont.footnote)
                                 .foregroundStyle(.white)
                                 .padding(.vertical, 8)
@@ -385,7 +385,7 @@ struct ProviderDetailView: View {
                 VStack {
                     Image(systemName: hasPhone ? "phone.fill" : "phone.badge.plus")
                         .font(.system(size: 16))
-                    Text("Ara")
+                    Text(String(localized: "button_call"))
                         .font(.system(size: 12, weight: .medium))
                 }
                 .foregroundColor(hasPhone ? .white : Color(hex: "#0055FF"))
@@ -400,7 +400,7 @@ struct ProviderDetailView: View {
                     openMaps(address: address)
                 }
             } label: {
-                Label("Yol Tarifi", systemImage: "map.fill")
+                Label(String(localized: "button_directions"), systemImage: "map.fill")
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
                     .overlay(
@@ -413,7 +413,7 @@ struct ProviderDetailView: View {
             Button {
                 isSaved.toggle()
             } label: {
-                Label("Kaydet", systemImage: isSaved ? "bookmark.fill" : "bookmark")
+                Label(String(localized: "button_save"), systemImage: isSaved ? "bookmark.fill" : "bookmark")
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
                     .background(isSaved ? AppColor.trustBlue.opacity(0.12) : Color.clear)

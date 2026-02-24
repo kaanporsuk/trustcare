@@ -36,11 +36,11 @@ struct HomeView: View {
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location")
-                                     ? "Adana"
+                                     ? String(localized: "default_city_name")
                                      : homeVM.locationName)
                                     .font(AppFont.headline)
                                     .foregroundStyle(.primary)
-                                Text("Türkiye")
+                                Text(String(localized: "country_turkey"))
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
                             }

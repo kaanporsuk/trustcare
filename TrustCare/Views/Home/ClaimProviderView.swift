@@ -27,12 +27,12 @@ struct ClaimProviderView: View {
                     successView
                 }
             }
-            .navigationTitle(currentStep == .success ? "" : "Claim Profile")
+            .navigationTitle(currentStep == .success ? "" : String(localized: "claim_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if currentStep != .success {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancel") { dismiss() }
+                        Button(String(localized: "button_cancel")) { dismiss() }
                     }
                 }
             }
@@ -63,11 +63,11 @@ struct ClaimProviderView: View {
     private var roleStepView: some View {
         VStack(spacing: AppSpacing.lg) {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Step 1 of 3")
+                Text(String(localized: "claim_step_1_of_3"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 
-                Text("What is your role at this practice?")
+                Text(String(localized: "claim_role_question"))
                     .font(AppFont.title2)
                     .fontWeight(.bold)
                 
@@ -116,7 +116,7 @@ struct ClaimProviderView: View {
             Button {
                 currentStep = .document
             } label: {
-                Text("Continue")
+                Text(String(localized: "button_continue"))
                     .font(AppFont.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
@@ -132,15 +132,15 @@ struct ClaimProviderView: View {
     private var documentStepView: some View {
         VStack(spacing: AppSpacing.lg) {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Step 2 of 3")
+                Text(String(localized: "claim_step_2_of_3"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 
-                Text("Upload verification document")
+                Text(String(localized: "claim_upload_doc"))
                     .font(AppFont.title2)
                     .fontWeight(.bold)
                 
-                Text("Accepted: Medical license, business registration, employment letter, or official ID with practice name")
+                Text(String(localized: "claim_accepted_docs"))
                     .font(AppFont.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -161,7 +161,7 @@ struct ClaimProviderView: View {
                     } label: {
                         HStack {
                             Image(systemName: "xmark.circle.fill")
-                            Text("Remove")
+                            Text(String(localized: "button_remove"))
                         }
                         .font(AppFont.footnote)
                         .foregroundStyle(.red)
@@ -175,11 +175,11 @@ struct ClaimProviderView: View {
                             .font(.system(size: 48))
                             .foregroundStyle(AppColor.trustBlue)
                         
-                        Text("Tap to upload document")
+                        Text(String(localized: "claim_tap_upload"))
                             .font(AppFont.body)
                             .foregroundStyle(AppColor.trustBlue)
                         
-                        Text("JPG or PNG, max 1MB")
+                        Text(String(localized: "claim_file_format"))
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -202,7 +202,7 @@ struct ClaimProviderView: View {
                 Button {
                     currentStep = .role
                 } label: {
-                    Text("Back")
+                    Text(String(localized: "button_back"))
                         .font(AppFont.headline)
                         .foregroundStyle(AppColor.trustBlue)
                         .frame(maxWidth: .infinity)
@@ -214,7 +214,7 @@ struct ClaimProviderView: View {
                 Button {
                     currentStep = .confirmation
                 } label: {
-                    Text("Continue")
+                    Text(String(localized: "button_continue"))
                         .font(AppFont.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -232,11 +232,11 @@ struct ClaimProviderView: View {
     private var confirmationStepView: some View {
         VStack(spacing: AppSpacing.lg) {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Step 3 of 3")
+                Text(String(localized: "claim_step_3_of_3"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 
-                Text("Review & Submit")
+                Text(String(localized: "claim_review_submit"))
                     .font(AppFont.title2)
                     .fontWeight(.bold)
             }
@@ -245,7 +245,7 @@ struct ClaimProviderView: View {
             
             VStack(spacing: AppSpacing.md) {
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("Provider")
+                    Text(String(localized: "claim_provider_label"))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                     Text(providerName)
@@ -257,7 +257,7 @@ struct ClaimProviderView: View {
                 .cornerRadius(AppRadius.card)
                 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("Your Role")
+                    Text(String(localized: "claim_your_role"))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                     Text(claimVM.role.displayName)
@@ -270,7 +270,7 @@ struct ClaimProviderView: View {
                 
                 if let image = claimVM.proofImage {
                     VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                        Text("Verification Document")
+                        Text(String(localized: "claim_verification_doc"))
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                         Image(uiImage: image)
@@ -288,13 +288,13 @@ struct ClaimProviderView: View {
             .padding(.horizontal, AppSpacing.lg)
             
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                Text("By submitting, you confirm that:")
+                Text(String(localized: "claim_confirm_text"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
-                Text("• You are authorized to manage this profile")
+                Text(String(localized: "claim_confirm_1"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
-                Text("• All information provided is accurate")
+                Text(String(localized: "claim_confirm_2"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }
@@ -307,7 +307,7 @@ struct ClaimProviderView: View {
                 Button {
                     currentStep = .document
                 } label: {
-                    Text("Back")
+                    Text(String(localized: "button_back"))
                         .font(AppFont.headline)
                         .foregroundStyle(AppColor.trustBlue)
                         .frame(maxWidth: .infinity)
@@ -329,7 +329,7 @@ struct ClaimProviderView: View {
                         ProgressView()
                             .tint(.white)
                     } else {
-                        Text("Submit Claim")
+                        Text(String(localized: "claim_submit"))
                             .font(AppFont.headline)
                             .foregroundStyle(.white)
                     }
@@ -353,11 +353,11 @@ struct ClaimProviderView: View {
                 .font(.system(size: 80))
                 .foregroundStyle(.green)
             
-            Text("Claim Submitted!")
+            Text(String(localized: "claim_submitted"))
                 .font(AppFont.title1)
                 .fontWeight(.bold)
             
-            Text("We'll review your claim within 1-3 business days. You'll be notified when it's approved.")
+            Text(String(localized: "claim_submitted_message"))
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -368,7 +368,7 @@ struct ClaimProviderView: View {
             Button {
                 dismiss()
             } label: {
-                Text("Back to Provider")
+                Text(String(localized: "claim_back_to_provider"))
                     .font(AppFont.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)

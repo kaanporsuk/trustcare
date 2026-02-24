@@ -140,7 +140,7 @@ final class HomeViewModel: ObservableObject {
         if let userLocation = locationManager.userLocation {
             let gpsLocation = SelectedLocation(
                 name: locationName.isEmpty || locationName == String(localized: "Tap to set location") 
-                    ? "Mevcut Konum" 
+                    ? String(localized: "current_location") 
                     : locationName,
                 latitude: userLocation.latitude,
                 longitude: userLocation.longitude,

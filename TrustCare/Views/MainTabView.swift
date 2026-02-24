@@ -43,7 +43,7 @@ struct MainTabView: View {
                 Text(String(localized: "tab_guide"))
             }
             .tag(1)
-            .badge("Plus")
+            .badge(String(localized: "tab_badge_plus"))
 
             NavigationStack {
                 ReviewHubView()

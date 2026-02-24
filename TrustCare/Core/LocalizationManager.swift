@@ -72,9 +72,10 @@ final class LocalizationManager: ObservableObject {
     }
 
     /// Call this when user changes language in Settings.
-    /// Shows an alert that the app needs to restart.
+    /// Posts a notification so the root view rebuilds with the new language.
     func changeLanguage(to code: String) {
         currentLanguage = code
+        NotificationCenter.default.post(name: .languageDidChange, object: nil)
     }
 
     /// The specialty name column to fetch from Supabase.

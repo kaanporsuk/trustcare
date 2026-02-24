@@ -15,18 +15,18 @@ struct ReportReviewSheet: View {
         NavigationStack {
             Form {
                 Section {
-                    Picker("Reason", selection: $selectedReason) {
+                    Picker(String(localized: "report_reason"), selection: $selectedReason) {
                         ForEach(ReportReason.allCases, id: \.self) { reason in
                             Text(reason.displayName).tag(reason)
                         }
                     }
                     .pickerStyle(.inline)
                 } header: {
-                    Text("Why are you reporting this review?")
+                    Text(String(localized: "report_header"))
                 }
                 
                 Section {
-                    TextField("Optional details", text: $details, axis: .vertical)
+                    TextField(String(localized: "report_optional_details"), text: $details, axis: .vertical)
                         .lineLimit(4...8)
                         .onChange(of: details) { _, newValue in
                             if newValue.count > maxDetailsLength {
@@ -38,9 +38,9 @@ struct ReportReviewSheet: View {
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 } header: {
-                    Text("Additional details (optional)")
+                    Text(String(localized: "report_additional_details"))
                 } footer: {
-                    Text("Please provide any additional context that might help us review this report.")
+                    Text(String(localized: "report_footer"))
                 }
                 
                 if let errorMessage {
@@ -51,18 +51,18 @@ struct ReportReviewSheet: View {
                     }
                 }
             }
-            .navigationTitle("Report Review")
+            .navigationTitle(String(localized: "report_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(String(localized: "button_cancel")) {
                         dismiss()
                     }
                     .disabled(isSubmitting)
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Submit") {
+                    Button(String(localized: "button_submit")) {
                         submitReport()
                     }
                     .disabled(isSubmitting)
@@ -98,7 +98,7 @@ struct ReportReviewSheet: View {
                     NotificationCenter.default.post(
                         name: .showToast,
                         object: nil,
-                        userInfo: ["message": String(localized: "Thank you. We'll review this report.")]
+                        userInfo: ["message": String(localized: "report_thank_you")]
                     )
                 }
             } catch {

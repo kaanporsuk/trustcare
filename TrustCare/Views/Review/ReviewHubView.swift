@@ -150,7 +150,7 @@ struct ReviewHubView: View {
                                     Text(specialty.resolvedName(using: localizationManager))
                                         .font(AppFont.body)
                                     Spacer()
-                                    Text("Uzmanlık")
+                                    Text(String(localized: "specialty_label"))
                                         .font(AppFont.footnote)
                                         .foregroundStyle(.secondary)
                                 }
@@ -164,7 +164,7 @@ struct ReviewHubView: View {
                     .cornerRadius(AppRadius.card)
                 }
 
-                Button("Bulamadınız mı? Yeni ekle") {
+                Button(String(localized: "review_cant_find_add")) {
                     showAddProviderSheet = true
                 }
                 .font(AppFont.caption)
@@ -175,17 +175,17 @@ struct ReviewHubView: View {
 
     private var visitDetailsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Ziyaret Detayları")
+            Text(String(localized: "review_visit_details"))
                 .font(AppFont.title3)
 
             DatePicker(String(localized: "review_visit_date"), selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
                 .datePickerStyle(.compact)
 
-            Picker("Ziyaret Türü", selection: $viewModel.visitType) {
-                Text("Muayene").tag("Muayene")
-                Text("İşlem").tag("İşlem")
-                Text("Kontrol").tag("Kontrol")
-                Text("Acil").tag("Acil")
+            Picker(String(localized: "review_visit_type"), selection: $viewModel.visitType) {
+                Text(String(localized: "visit_type_examination")).tag("Muayene")
+                Text(String(localized: "visit_type_procedure")).tag("İşlem")
+                Text(String(localized: "visit_type_checkup")).tag("Kontrol")
+                Text(String(localized: "visit_type_emergency")).tag("Acil")
             }
             .pickerStyle(.segmented)
         }
@@ -195,7 +195,7 @@ struct ReviewHubView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text(String(localized: "review_overall"))
                 .font(AppFont.title3)
-            Text("Genel deneyiminiz nasıldı?")
+            Text(String(localized: "review_overall_question"))
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
@@ -250,7 +250,7 @@ struct ReviewHubView: View {
                     )
 
                 if viewModel.comment.isEmpty {
-                    Text("Deneyiminizi paylaşın... (en az 50 karakter)")
+                    Text(String(localized: "review_comment_placeholder"))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                         .padding(.top, 16)
@@ -258,7 +258,7 @@ struct ReviewHubView: View {
                 }
             }
 
-            Text("\(viewModel.commentCharCount)/50 minimum")
+            Text(String(localized: "review_char_count \(viewModel.commentCharCount)"))
                 .font(AppFont.caption)
                 .foregroundStyle(viewModel.commentCharCount >= 50 ? AppColor.success : AppColor.error)
         }
@@ -308,7 +308,7 @@ struct ReviewHubView: View {
                 }
             }
 
-            Text("Fotoğraflar herkes tarafından görülebilir")
+            Text(String(localized: "review_photos_public"))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -318,12 +318,12 @@ struct ReviewHubView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text(String(localized: "review_verify"))
                 .font(AppFont.title3)
-            Text("Fatura, reçete veya randevu onayı yükleyin")
+            Text(String(localized: "review_verify_hint"))
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
             PhotosPicker(selection: $proofItem, matching: .images) {
-                Label("Doğrulama Belgesi Yükle", systemImage: "doc.badge.plus")
+                Label(String(localized: "review_upload_proof"), systemImage: "doc.badge.plus")
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
@@ -343,11 +343,11 @@ struct ReviewHubView: View {
                     .clipShape(RoundedRectangle(cornerRadius: AppRadius.standard))
             }
 
-            Text("Sadece doğrulama sistemimiz tarafından görülür")
+            Text(String(localized: "review_proof_private"))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
 
-            Button("Doğrulamayı Atla") {
+            Button(String(localized: "review_skip_verification")) {
                 viewModel.proofImage = nil
             }
             .font(AppFont.caption)

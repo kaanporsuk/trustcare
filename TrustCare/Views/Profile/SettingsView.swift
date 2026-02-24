@@ -72,10 +72,7 @@ struct SettingsView: View {
                             .execute()
                     }
 
-                    // 3. Force quit — iOS will relaunch with new language
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        exit(0)
-                    }
+                    // 3. Root view will rebuild via .languageDidChange notification
                 }
             }
             Button(String(localized: "language_later"), role: .cancel) {

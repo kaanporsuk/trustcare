@@ -155,13 +155,13 @@ struct ProfileView: View {
             Text(profileVM.errorMessage ?? "")
         }
         .confirmationDialog(String(localized: "Log Out"), isPresented: $showLogoutConfirm) {
-            Button("Çıkış Yap", role: .destructive) {
+            Button(String(localized: "menu_logout"), role: .destructive) {
                 UINotificationFeedbackGenerator().notificationOccurred(.warning)
                 authVM.signOut()
             }
-            Button("Vazgeç", role: .cancel) { }
+            Button(String(localized: "button_cancel"), role: .cancel) { }
         } message: {
-            Text("Hesabınızdan çıkış yapmak istediğinize emin misiniz?")
+            Text(String(localized: "logout_confirm_message"))
         }
     }
 
@@ -198,7 +198,7 @@ struct ProfileView: View {
                 Text(memberSinceText)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
-                Text("Referral: \(profileVM.profile?.referralCode ?? "-")")
+                Text("\(String(localized: "profile_referral")): \(profileVM.profile?.referralCode ?? "-")")
                     .font(.system(.caption, design: .monospaced))
                     .foregroundStyle(.secondary)
             }
@@ -213,8 +213,8 @@ struct ProfileView: View {
         let verifiedPercent = totalReviews == 0 ? 0 : Int((Double(verifiedCount) / Double(totalReviews)) * 100)
 
         return HStack(spacing: AppSpacing.md) {
-            statCard(title: "\(totalReviews) Değerlendirme")
-            statCard(title: "\(verifiedPercent)% Doğrulanmış")
+            statCard(title: String(localized: "profile_reviews_count \(totalReviews)"))
+            statCard(title: String(localized: "profile_verified_percent \(verifiedPercent)"))
         }
     }
 
@@ -341,8 +341,8 @@ struct ProfileView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         if let date = profileVM.profile?.createdAt {
-            return "Üyelik: \(formatter.string(from: date))"
+            return "\(String(localized: "profile_member_since")): \(formatter.string(from: date))"
         }
-        return "Üyelik: -"
+        return "\(String(localized: "profile_member_since")): -"
     }
 }

@@ -238,3 +238,216 @@
 
 // Language Alert (with language name)
 "language_changed_message_named %@" = "The app will restart in %@. Continue?";
+// --- Buttons ---
+"button_add" = "Add";
+"button_back" = "Back";
+"button_call" = "Call";
+"button_cancel" = "Cancel";
+"button_continue" = "Continue";
+"button_delete" = "Delete";
+"button_directions" = "Directions";
+"button_edit" = "Edit";
+"button_remove" = "Remove";
+"button_review" = "Review";
+"button_save" = "Save";
+"button_submit" = "Submit";
+
+// --- Add Provider ---
+"add_provider_address" = "Address";
+"add_provider_geocode_error" = "Could not find coordinates for this address.";
+"add_provider_is_this" = "Is this provider a...";
+"add_provider_location" = "Location";
+"add_provider_map_pin" = "Set map pin";
+"add_provider_name" = "Provider Name";
+"add_provider_no_address" = "Please enter an address.";
+"add_provider_phone" = "Phone (optional)";
+"add_provider_section" = "Provider Information";
+"add_provider_select" = "Select";
+"add_provider_select_specialty" = "Select Specialty";
+"add_provider_select_specialty_error" = "Please select a specialty.";
+"add_provider_title" = "Add Provider";
+
+// --- Claim Provider ---
+"claim_accepted_docs" = "Accepted: Medical license, registration certificate, or official ID";
+"claim_back_to_provider" = "Back to Provider";
+"claim_confirm_1" = "You are authorized to manage this profile";
+"claim_confirm_2" = "All information provided is accurate";
+"claim_confirm_text" = "By submitting, you confirm that:";
+"claim_file_format" = "JPG or PNG, max 10 MB";
+"claim_pending" = "Claim Pending";
+"claim_pending_message" = "Your claim is being reviewed.";
+"claim_provider_label" = "Provider";
+"claim_rejected" = "Claim Rejected";
+"claim_resubmit" = "Resubmit";
+"claim_review_submit" = "Review & Submit";
+"claim_role_question" = "What is your role at this practice?";
+"claim_step_1_of_3" = "Step 1 of 3";
+"claim_step_2_of_3" = "Step 2 of 3";
+"claim_step_3_of_3" = "Step 3 of 3";
+"claim_submit" = "Submit Claim";
+"claim_submitted" = "Claim Submitted!";
+"claim_submitted_message" = "We'll review your claim within 1-3 business days. You'll be notified when it's approved.";
+"claim_tap_upload" = "Tap to upload document";
+"claim_title" = "Claim Profile";
+"claim_upload_doc" = "Upload verification document";
+"claim_verification_doc" = "Verification Document";
+"claim_your_role" = "Your Role";
+
+// --- Review Flow ---
+"review_another" = "Review Another Provider";
+"review_cant_find_add" = "Can't find it? Add new";
+"review_char_count %lld" = "%lld/500 characters";
+"review_comment_placeholder" = "Share your experience...";
+"review_editable_24h" = "Editable within 24h";
+"review_go_home" = "Go to Home";
+"review_helpful_count_%lld" = "%lld helpful";
+"review_overall_question" = "How was your overall experience?";
+"review_photos_public" = "Photos will be visible to everyone.";
+"review_proof_private" = "This will not be shown publicly.";
+"review_skip_verification" = "Skip verification";
+"review_submitted_message" = "Your review has been submitted and will appear once processed.";
+"review_submitted_title" = "Thank You!";
+"review_upload_proof" = "Upload proof of visit";
+"review_verification_pending" = "Verification Pending";
+"review_verify_hint" = "Help us maintain trust by verifying your visit.";
+"review_visit_details" = "Visit Details";
+"review_visit_type" = "Visit Type";
+"visit_type_checkup" = "Checkup";
+"visit_type_emergency" = "Emergency";
+"visit_type_examination" = "Examination";
+"visit_type_procedure" = "Procedure";
+"reviews_count" = "reviews";
+"specialty_label" = "Specialty";
+
+// --- My Reviews ---
+"edit_review_comment_section" = "Review";
+"edit_review_title" = "Edit Review";
+"edit_review_title_placeholder" = "Review title";
+"edit_review_title_section" = "Title";
+"my_reviews_delete_message" = "This action cannot be undone.";
+"my_reviews_delete_title" = "Delete Review?";
+"my_reviews_empty_action" = "Write Your First Review";
+"my_reviews_empty_message" = "Your reviews will appear here.";
+"my_reviews_empty_title" = "No reviews yet";
+"status_pending" = "Pending";
+"status_unverified" = "Unverified";
+"status_verified" = "Verified";
+"unknown_provider" = "Unknown Provider";
+
+// --- Saved Providers ---
+"saved_empty_action" = "Discover Providers";
+"saved_empty_message" = "Providers you save will appear here.";
+"saved_empty_title" = "No saved providers";
+
+// --- Profile ---
+"logout_confirm_message" = "Are you sure you want to log out?";
+"profile_member_since" = "Member since";
+"profile_referral" = "Invite a friend — earn points";
+"profile_reviews_count %lld" = "%lld Reviews";
+"profile_verified_percent %lld" = "%lld%% Verified";
+
+// --- Report Review ---
+"report_additional_details" = "Additional details (optional)";
+"report_button" = "Report";
+"report_footer" = "Please provide any additional context that might help us review this report.";
+"report_header" = "Why are you reporting this review?";
+"report_optional_details" = "Optional details";
+"report_reason" = "Reason";
+"report_reported" = "Reported";
+"report_thank_you" = "Thank you. We'll review this report.";
+"report_title" = "Report Review";
+
+// --- Help ---
+"help_contact" = "Contact Us";
+"help_email_label" = "Email";
+"help_faq_a1" = "Go to the Review tab, search for a provider, and follow the steps.";
+"help_faq_a2" = "Upload a photo of your receipt or appointment confirmation.";
+"help_faq_a3" = "Go to My Reviews, swipe left, and tap Edit. Editable within 24 hours.";
+"help_faq_a4" = "We use end-to-end encryption and never share your data with third parties.";
+"help_faq_a5" = "Yes! Go to Settings > Download My Data.";
+"help_faq_a6" = "Contact us at support@trustcare.app.";
+"help_faq_q1" = "How do I leave a review?";
+"help_faq_q2" = "How do I verify my visit?";
+"help_faq_q3" = "Can I edit my review?";
+"help_faq_q4" = "Is my data safe?";
+"help_faq_q5" = "Can I export my data?";
+"help_faq_q6" = "How do I report a problem?";
+"help_faq_title" = "Frequently Asked Questions";
+"help_report_issue" = "Report an Issue";
+
+// --- Terms of Service ---
+"tos_service_title" = "1. Service Description";
+"tos_service_1" = "TrustCare is a healthcare provider review platform.";
+"tos_service_2" = "Our AI-powered Rehber feature provides health guidance but does not replace professional medical advice.";
+"tos_user_title" = "2. User Responsibilities";
+"tos_user_1" = "You must be at least 18 years old to use TrustCare.";
+"tos_user_2" = "You agree to provide accurate information in your reviews and profile.";
+"tos_user_3" = "You must not submit fake reviews, harass providers, or misuse the platform.";
+"tos_review_title" = "3. Review Guidelines";
+"tos_review_1" = "Reviews must be based on genuine experiences with healthcare providers.";
+"tos_review_2" = "Verified reviews receive a badge to help other patients identify trustworthy feedback.";
+"tos_review_3" = "We reserve the right to remove reviews that violate our guidelines.";
+"tos_rehber_title" = "4. Rehber (AI Health Guide)";
+"tos_rehber_1" = "Rehber provides general health information and helps you find the right specialty.";
+"tos_rehber_2" = "Rehber is NOT a substitute for professional medical diagnosis or treatment.";
+"tos_rehber_3" = "In emergencies, always call 112 or your local emergency number.";
+"tos_ip_title" = "5. Intellectual Property";
+"tos_ip_1" = "All content, design, and technology in TrustCare are owned by TrustCare.";
+"tos_ip_2" = "User-submitted reviews remain the property of their authors but are licensed to TrustCare for display.";
+"tos_account_title" = "6. Account Termination";
+"tos_account_1" = "We may suspend or terminate accounts that violate these terms.";
+"tos_account_2" = "You can delete your account at any time from Settings.";
+"tos_dispute_title" = "7. Dispute Resolution";
+"tos_dispute_1" = "Disputes will be resolved through mediation first, then binding arbitration if necessary.";
+"tos_dispute_2" = "These terms are governed by the laws of the Republic of Turkey.";
+"tos_contact_title" = "8. Contact";
+"tos_contact_1" = "For questions about these terms, contact us at:";
+"tos_contact_2" = "legal@trustcare.app";
+
+// --- Privacy Policy ---
+"pp_data_collection_title" = "1. Data We Collect";
+"pp_data_collection_1" = "Account information: name, email, phone number.";
+"pp_data_collection_2" = "Review content: ratings, comments, photos, verification documents.";
+"pp_data_collection_3" = "Location data: used to find nearby providers (only when you allow it).";
+"pp_data_collection_4" = "Usage data: app interactions to improve our service.";
+"pp_data_usage_title" = "2. How We Use Your Data";
+"pp_data_usage_1" = "To display your reviews and help others find trusted care.";
+"pp_data_usage_2" = "To verify your identity and review authenticity.";
+"pp_data_usage_3" = "To improve our services and provide personalized recommendations.";
+"pp_data_sharing_title" = "3. Data Sharing";
+"pp_data_sharing_1" = "We do NOT sell your personal data to third parties.";
+"pp_data_sharing_2" = "Reviews are public. Verification documents are private and only seen by staff.";
+"pp_data_sharing_3" = "We may share data with law enforcement if legally required.";
+"pp_rights_title" = "4. Your Rights";
+"pp_rights_1" = "Access: You can view all data we hold about you.";
+"pp_rights_2" = "Download: Export your data from Settings > Download My Data.";
+"pp_rights_3" = "Delete: Request complete data deletion from Settings > Delete Account.";
+"pp_rights_4" = "Correct: Update your profile information at any time.";
+"pp_cookies_title" = "5. Cookies & Tracking";
+"pp_cookies_1" = "We use minimal analytics to understand app usage.";
+"pp_cookies_2" = "No third-party advertising trackers are used.";
+"pp_cookies_3" = "You can opt out of analytics in your device settings.";
+"pp_security_title" = "6. Security";
+"pp_security_1" = "All data is encrypted in transit and at rest.";
+"pp_security_2" = "We use Supabase for secure data storage with row-level security.";
+"pp_security_3" = "Regular security audits are conducted.";
+"pp_contact_title" = "7. Contact";
+"pp_contact_1" = "For privacy inquiries, contact us at:";
+"pp_contact_2" = "privacy@trustcare.app";
+"pp_last_updated" = "Last updated: February 2026";
+
+// --- Rehber (new) ---
+"rehber_title" = "TrustCare Rehber";
+"rehber_daily_limit_reached" = "Daily free limit reached (5/5). Try again tomorrow.";
+"rehber_load_conversation_error" = "Unable to load conversation.";
+"rehber_login_required" = "Please sign in to use Rehber.";
+"rehber_no_response" = "Rehber could not respond. Please try again.";
+"rehber_response_failed" = "Response could not be generated. Please try again.";
+"rehber_response_unavailable" = "Response unavailable.";
+
+// --- Misc ---
+"accessibility_rating_hint" = "Swipe up or down to adjust rating";
+"tab_badge_plus" = "Plus";
+"country_turkey" = "Türkiye";
+"default_city_name" = "Adana";
+"media_photo_count_%lld" = "%lld of 5 photos";

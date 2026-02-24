@@ -241,3 +241,217 @@
 "sub_pain_management" = "Pijnbeheersing";
 "sub_pre_operative_assessment" = "Preíupératieve beoordeling";
 "sub_post_operative_care" = "Postoperatieve zorg";
+
+// --- Knoppen ---
+"button_add" = "Toevoegen";
+"button_back" = "Terug";
+"button_call" = "Bellen";
+"button_cancel" = "Annuleren";
+"button_continue" = "Doorgaan";
+"button_delete" = "Verwijderen";
+"button_directions" = "Route";
+"button_edit" = "Bewerken";
+"button_remove" = "Verwijderen";
+"button_review" = "Beoordelen";
+"button_save" = "Opslaan";
+"button_submit" = "Verzenden";
+
+// --- Zorgverlener toevoegen ---
+"add_provider_address" = "Adres";
+"add_provider_geocode_error" = "Kan coördinaten voor dit adres niet vinden.";
+"add_provider_is_this" = "Is dit een...";
+"add_provider_location" = "Locatie";
+"add_provider_map_pin" = "Kaartpin plaatsen";
+"add_provider_name" = "Naam zorgverlener";
+"add_provider_no_address" = "Voer een adres in.";
+"add_provider_phone" = "Telefoon (optioneel)";
+"add_provider_section" = "Zorgverlenergegevens";
+"add_provider_select" = "Selecteren";
+"add_provider_select_specialty" = "Selecteer specialisme";
+"add_provider_select_specialty_error" = "Selecteer een specialisme.";
+"add_provider_title" = "Zorgverlener toevoegen";
+
+// --- Profiel claimen ---
+"claim_accepted_docs" = "Geaccepteerd: artsdiploma, registratiebewijs of identiteitsbewijs";
+"claim_back_to_provider" = "Terug naar zorgverlener";
+"claim_confirm_1" = "Ik ben bevoegd om dit profiel te beheren";
+"claim_confirm_2" = "Alle informatie is correct";
+"claim_confirm_text" = "Door in te dienen bevestigt u:";
+"claim_file_format" = "JPG of PNG, max. 10 MB";
+"claim_pending" = "Aanvraag in behandeling";
+"claim_pending_message" = "Uw aanvraag wordt beoordeeld.";
+"claim_provider_label" = "Zorgverlener";
+"claim_rejected" = "Aanvraag afgewezen";
+"claim_resubmit" = "Opnieuw indienen";
+"claim_review_submit" = "Controleren & verzenden";
+"claim_role_question" = "Wat is uw rol bij deze praktijk?";
+"claim_step_1_of_3" = "Stap 1 van 3";
+"claim_step_2_of_3" = "Stap 2 van 3";
+"claim_step_3_of_3" = "Stap 3 van 3";
+"claim_submit" = "Aanvraag indienen";
+"claim_submitted" = "Aanvraag ingediend!";
+"claim_submitted_message" = "We beoordelen uw aanvraag binnen 1-3 werkdagen. U ontvangt een melding.";
+"claim_tap_upload" = "Tik om een document te uploaden";
+"claim_title" = "Profiel claimen";
+"claim_upload_doc" = "Upload verificatiedocument";
+"claim_verification_doc" = "Verificatiedocument";
+"claim_your_role" = "Uw rol";
+
+// --- Beoordeling ---
+"review_another" = "Nog een zorgverlener beoordelen";
+"review_cant_find_add" = "Niet gevonden? Voeg toe";
+"review_char_count %lld" = "%lld/500 tekens";
+"review_comment_placeholder" = "Deel uw ervaring...";
+"review_editable_24h" = "24 uur bewerkbaar";
+"review_go_home" = "Naar startpagina";
+"review_helpful_count_%lld" = "%lld nuttig";
+"review_overall_question" = "Hoe was uw algehele ervaring?";
+"review_photos_public" = "Foto's zijn openbaar zichtbaar.";
+"review_proof_private" = "Dit wordt niet openbaar getoond.";
+"review_skip_verification" = "Verificatie overslaan";
+"review_submitted_message" = "Uw beoordeling is ingediend en verschijnt na verwerking.";
+"review_submitted_title" = "Dank u!";
+"review_upload_proof" = "Upload bezoekbewijs";
+"review_verification_pending" = "Verificatie in behandeling";
+"review_verify_hint" = "Verifieer uw bezoek voor meer vertrouwen.";
+"review_visit_details" = "Bezoekdetails";
+"review_visit_type" = "Type bezoek";
+"visit_type_checkup" = "Controle";
+"visit_type_emergency" = "Spoed";
+"visit_type_examination" = "Onderzoek";
+"visit_type_procedure" = "Ingreep";
+"reviews_count" = "Beoordelingen";
+"specialty_label" = "Specialisme";
+
+// --- Mijn beoordelingen ---
+"edit_review_comment_section" = "Beoordeling";
+"edit_review_title" = "Beoordeling bewerken";
+"edit_review_title_placeholder" = "Beoordelingstitel";
+"edit_review_title_section" = "Titel";
+"my_reviews_delete_message" = "Dit kan niet ongedaan worden gemaakt.";
+"my_reviews_delete_title" = "Beoordeling verwijderen?";
+"my_reviews_empty_action" = "Schrijf uw eerste beoordeling";
+"my_reviews_empty_message" = "Uw beoordelingen verschijnen hier.";
+"my_reviews_empty_title" = "Nog geen beoordelingen";
+"status_pending" = "In behandeling";
+"status_unverified" = "Niet geverifieerd";
+"status_verified" = "Geverifieerd";
+"unknown_provider" = "Onbekende zorgverlener";
+
+// --- Opgeslagen zorgverleners ---
+"saved_empty_action" = "Ontdek zorgverleners";
+"saved_empty_message" = "Opgeslagen zorgverleners verschijnen hier.";
+"saved_empty_title" = "Geen opgeslagen zorgverleners";
+
+// --- Profiel ---
+"logout_confirm_message" = "Weet u zeker dat u wilt uitloggen?";
+"profile_member_since" = "Lid sinds";
+"profile_referral" = "Nodig een vriend uit — verdien punten";
+"profile_reviews_count %lld" = "%lld Beoordelingen";
+"profile_verified_percent %lld" = "%lld%% Geverifieerd";
+
+// --- Beoordeling melden ---
+"report_additional_details" = "Aanvullende details (optioneel)";
+"report_button" = "Melden";
+"report_footer" = "Geef aanvullende context.";
+"report_header" = "Waarom meldt u deze beoordeling?";
+"report_optional_details" = "Optionele details";
+"report_reason" = "Reden";
+"report_reported" = "Gemeld";
+"report_thank_you" = "Bedankt. We zullen uw melding beoordelen.";
+"report_title" = "Beoordeling melden";
+
+// --- Hulp ---
+"help_contact" = "Contact";
+"help_email_label" = "E-mail";
+"help_faq_a1" = "Ga naar het tabblad Beoordelingen, zoek een zorgverlener en volg de stappen.";
+"help_faq_a2" = "Upload een foto van uw bon of afspraakbevestiging.";
+"help_faq_a3" = "Ga naar Mijn beoordelingen, veeg naar links en tik op Bewerken.";
+"help_faq_a4" = "We gebruiken end-to-end-encryptie en delen uw gegevens niet met derden.";
+"help_faq_a5" = "Ja! Ga naar Instellingen > Mijn gegevens downloaden.";
+"help_faq_a6" = "Neem contact met ons op via support@trustcare.app.";
+"help_faq_q1" = "Hoe schrijf ik een beoordeling?";
+"help_faq_q2" = "Hoe verifieer ik mijn bezoek?";
+"help_faq_q3" = "Kan ik mijn beoordeling bewerken?";
+"help_faq_q4" = "Zijn mijn gegevens veilig?";
+"help_faq_q5" = "Kan ik mijn gegevens exporteren?";
+"help_faq_q6" = "Hoe meld ik een probleem?";
+"help_faq_title" = "Veelgestelde vragen";
+"help_report_issue" = "Probleem melden";
+
+// --- Algemene voorwaarden ---
+"tos_service_title" = "1. Beschrijving van de dienst";
+"tos_service_1" = "TrustCare is een beoordelingsplatform voor zorgverleners.";
+"tos_service_2" = "Onze AI Rehber-functie biedt gezondheidsbegeleiding, maar vervangt geen professioneel advies.";
+"tos_user_title" = "2. Verplichtingen van de gebruiker";
+"tos_user_1" = "U moet minimaal 18 jaar oud zijn.";
+"tos_user_2" = "U stemt ermee in nauwkeurige informatie te verstrekken.";
+"tos_user_3" = "Geen valse beoordelingen, intimidatie of misbruik.";
+"tos_review_title" = "3. Beoordelingsrichtlijnen";
+"tos_review_1" = "Beoordelingen moeten gebaseerd zijn op echte ervaringen.";
+"tos_review_2" = "Geverifieerde beoordelingen ontvangen een badge.";
+"tos_review_3" = "Wij behouden ons het recht voor beoordelingen te verwijderen.";
+"tos_rehber_title" = "4. Rehber (AI-gezondheidsgids)";
+"tos_rehber_1" = "Rehber biedt algemene gezondheidsinformatie.";
+"tos_rehber_2" = "Rehber is GEEN vervanging voor professionele medische diagnose.";
+"tos_rehber_3" = "Bel bij noodgevallen altijd 112.";
+"tos_ip_title" = "5. Intellectueel eigendom";
+"tos_ip_1" = "Alle inhoud is eigendom van TrustCare.";
+"tos_ip_2" = "Beoordelingen blijven eigendom van hun auteurs maar worden gelicentieerd aan TrustCare.";
+"tos_account_title" = "6. Accountbeëindiging";
+"tos_account_1" = "Wij kunnen accounts opschorten of beëindigen.";
+"tos_account_2" = "U kunt uw account op elk moment verwijderen.";
+"tos_dispute_title" = "7. Geschillenbeslechting";
+"tos_dispute_1" = "Geschillen worden opgelost via bemiddeling.";
+"tos_dispute_2" = "Deze voorwaarden vallen onder het recht van de Republiek Turkije.";
+"tos_contact_title" = "8. Contact";
+"tos_contact_1" = "Neem contact met ons op:";
+"tos_contact_2" = "legal@trustcare.app";
+
+// --- Privacy ---
+"pp_data_collection_title" = "1. Gegevensverzameling";
+"pp_data_collection_1" = "Accountgegevens: naam, e-mail, telefoonnummer.";
+"pp_data_collection_2" = "Beoordelingsinhoud: beoordelingen, opmerkingen, foto's, documenten.";
+"pp_data_collection_3" = "Locatiegegevens: voor het zoeken naar nabije zorgverleners.";
+"pp_data_collection_4" = "Gebruiksgegevens: app-interacties ter verbetering.";
+"pp_data_usage_title" = "2. Gebruik van gegevens";
+"pp_data_usage_1" = "Om beoordelingen weer te geven en anderen te helpen.";
+"pp_data_usage_2" = "Om uw identiteit te verifiëren.";
+"pp_data_usage_3" = "Om diensten te verbeteren en aanbevelingen te doen.";
+"pp_data_sharing_title" = "3. Gegevens delen";
+"pp_data_sharing_1" = "Wij verkopen uw gegevens NIET aan derden.";
+"pp_data_sharing_2" = "Beoordelingen zijn openbaar. Documenten zijn privé.";
+"pp_data_sharing_3" = "Wij kunnen gegevens delen bij wettelijke verplichting.";
+"pp_rights_title" = "4. Uw rechten";
+"pp_rights_1" = "Toegang: u kunt al uw gegevens bekijken.";
+"pp_rights_2" = "Downloaden: exporteer uw gegevens via instellingen.";
+"pp_rights_3" = "Verwijdering: vraag gegevensverwijdering aan.";
+"pp_rights_4" = "Correctie: werk uw profielgegevens bij.";
+"pp_cookies_title" = "5. Cookies & tracking";
+"pp_cookies_1" = "We gebruiken minimale analytics.";
+"pp_cookies_2" = "Geen advertentietrackers van derden.";
+"pp_cookies_3" = "U kunt analytics uitschakelen in apparaatinstellingen.";
+"pp_security_title" = "6. Beveiliging";
+"pp_security_1" = "Alle gegevens zijn versleuteld.";
+"pp_security_2" = "We gebruiken Supabase voor veilige gegevensopslag.";
+"pp_security_3" = "Regelmatige beveiligingsaudits worden uitgevoerd.";
+"pp_contact_title" = "7. Contact";
+"pp_contact_1" = "Voor privacyvragen:";
+"pp_contact_2" = "privacy@trustcare.app";
+"pp_last_updated" = "Laatst bijgewerkt: februari 2026";
+
+// --- Rehber (nieuw) ---
+"rehber_title" = "TrustCare Rehber";
+"rehber_daily_limit_reached" = "Dagelijkse gratis limiet bereikt (5/5). Probeer het morgen opnieuw.";
+"rehber_load_conversation_error" = "Kan gesprek niet laden.";
+"rehber_login_required" = "Log in om Rehber te gebruiken.";
+"rehber_no_response" = "Rehber kon niet antwoorden. Probeer het opnieuw.";
+"rehber_response_failed" = "Kan geen antwoord genereren. Probeer het opnieuw.";
+"rehber_response_unavailable" = "Antwoord niet beschikbaar.";
+
+// --- Overig ---
+"accessibility_rating_hint" = "Veeg omhoog of omlaag om de beoordeling aan te passen";
+"tab_badge_plus" = "Plus";
+"country_turkey" = "Türkiye";
+"default_city_name" = "Adana";
+"media_photo_count_%lld" = "%lld van 5 foto's";

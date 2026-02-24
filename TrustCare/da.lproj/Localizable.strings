@@ -241,3 +241,217 @@
 "sub_pain_management" = "Smertebehandling";
 "sub_pre_operative_assessment" = "Præoperativ vurdering";
 "sub_post_operative_care" = "Postoperativ behandling";
+
+// --- Knapper ---
+"button_add" = "Tilføj";
+"button_back" = "Tilbage";
+"button_call" = "Ring";
+"button_cancel" = "Annuller";
+"button_continue" = "Fortsæt";
+"button_delete" = "Slet";
+"button_directions" = "Rutevejledning";
+"button_edit" = "Rediger";
+"button_remove" = "Fjern";
+"button_review" = "Anmeld";
+"button_save" = "Gem";
+"button_submit" = "Indsend";
+
+// --- Tilføj udbyder ---
+"add_provider_address" = "Adresse";
+"add_provider_geocode_error" = "Kan ikke finde koordinater for denne adresse.";
+"add_provider_is_this" = "Er dette en...";
+"add_provider_location" = "Placering";
+"add_provider_map_pin" = "Sæt kortnål";
+"add_provider_name" = "Udbydernavn";
+"add_provider_no_address" = "Indtast venligst en adresse.";
+"add_provider_phone" = "Telefon (valgfrit)";
+"add_provider_section" = "Udbyderinformation";
+"add_provider_select" = "Vælg";
+"add_provider_select_specialty" = "Vælg speciale";
+"add_provider_select_specialty_error" = "Vælg venligst et speciale.";
+"add_provider_title" = "Tilføj udbyder";
+
+// --- Gør krav på profil ---
+"claim_accepted_docs" = "Accepteret: lægebevis, registreringsbevis eller officielt ID";
+"claim_back_to_provider" = "Tilbage til udbyder";
+"claim_confirm_1" = "Jeg er autoriseret til at administrere denne profil";
+"claim_confirm_2" = "Alle oplysninger er korrekte";
+"claim_confirm_text" = "Ved indsendelse bekræfter du:";
+"claim_file_format" = "JPG eller PNG, maks. 10 MB";
+"claim_pending" = "Ansøgning afventer";
+"claim_pending_message" = "Din ansøgning er under behandling.";
+"claim_provider_label" = "Udbyder";
+"claim_rejected" = "Ansøgning afvist";
+"claim_resubmit" = "Indsend igen";
+"claim_review_submit" = "Gennemse & indsend";
+"claim_role_question" = "Hvad er din rolle i denne praksis?";
+"claim_step_1_of_3" = "Trin 1 af 3";
+"claim_step_2_of_3" = "Trin 2 af 3";
+"claim_step_3_of_3" = "Trin 3 af 3";
+"claim_submit" = "Indsend ansøgning";
+"claim_submitted" = "Ansøgning indsendt!";
+"claim_submitted_message" = "Vi gennemgår din ansøgning inden for 1-3 hverdage. Du får besked.";
+"claim_tap_upload" = "Tryk for at uploade et dokument";
+"claim_title" = "Gør krav på profil";
+"claim_upload_doc" = "Upload verifikationsdokument";
+"claim_verification_doc" = "Verifikationsdokument";
+"claim_your_role" = "Din rolle";
+
+// --- Anmeldelse ---
+"review_another" = "Anmeld en anden udbyder";
+"review_cant_find_add" = "Kan ikke finde? Tilføj ny";
+"review_char_count %lld" = "%lld/500 tegn";
+"review_comment_placeholder" = "Del din oplevelse...";
+"review_editable_24h" = "Redigerbar i 24 timer";
+"review_go_home" = "Til startsiden";
+"review_helpful_count_%lld" = "%lld nyttigt";
+"review_overall_question" = "Hvordan var din samlede oplevelse?";
+"review_photos_public" = "Fotos er offentligt synlige.";
+"review_proof_private" = "Dette vises ikke offentligt.";
+"review_skip_verification" = "Spring verifikation over";
+"review_submitted_message" = "Din anmeldelse er indsendt og vises efter behandling.";
+"review_submitted_title" = "Tak!";
+"review_upload_proof" = "Upload besøgsbevis";
+"review_verification_pending" = "Verifikation afventer";
+"review_verify_hint" = "Verificer dit besøg for mere tillid.";
+"review_visit_details" = "Besøgsdetaljer";
+"review_visit_type" = "Besøgstype";
+"visit_type_checkup" = "Kontrol";
+"visit_type_emergency" = "Nødstilfælde";
+"visit_type_examination" = "Undersøgelse";
+"visit_type_procedure" = "Indgreb";
+"reviews_count" = "Anmeldelser";
+"specialty_label" = "Speciale";
+
+// --- Mine anmeldelser ---
+"edit_review_comment_section" = "Anmeldelse";
+"edit_review_title" = "Rediger anmeldelse";
+"edit_review_title_placeholder" = "Anmeldelsestitel";
+"edit_review_title_section" = "Titel";
+"my_reviews_delete_message" = "Denne handling kan ikke fortrydes.";
+"my_reviews_delete_title" = "Slet anmeldelse?";
+"my_reviews_empty_action" = "Skriv din første anmeldelse";
+"my_reviews_empty_message" = "Dine anmeldelser vises her.";
+"my_reviews_empty_title" = "Ingen anmeldelser endnu";
+"status_pending" = "Afventer";
+"status_unverified" = "Ikke verificeret";
+"status_verified" = "Verificeret";
+"unknown_provider" = "Ukendt udbyder";
+
+// --- Gemte udbydere ---
+"saved_empty_action" = "Opdag udbydere";
+"saved_empty_message" = "Gemte udbydere vises her.";
+"saved_empty_title" = "Ingen gemte udbydere";
+
+// --- Profil ---
+"logout_confirm_message" = "Er du sikker på, at du vil logge ud?";
+"profile_member_since" = "Medlem siden";
+"profile_referral" = "Inviter en ven — optjen point";
+"profile_reviews_count %lld" = "%lld Anmeldelser";
+"profile_verified_percent %lld" = "%lld%% Verificeret";
+
+// --- Rapporter anmeldelse ---
+"report_additional_details" = "Yderligere detaljer (valgfrit)";
+"report_button" = "Rapporter";
+"report_footer" = "Angiv venligst yderligere kontekst.";
+"report_header" = "Hvorfor rapporterer du denne anmeldelse?";
+"report_optional_details" = "Valgfrie detaljer";
+"report_reason" = "Årsag";
+"report_reported" = "Rapporteret";
+"report_thank_you" = "Tak. Vi gennemgår din rapport.";
+"report_title" = "Rapporter anmeldelse";
+
+// --- Hjælp ---
+"help_contact" = "Kontakt";
+"help_email_label" = "E-mail";
+"help_faq_a1" = "Gå til fanen Anmeldelser, søg efter en udbyder og følg trinnene.";
+"help_faq_a2" = "Upload et foto af din kvittering eller aftalebekræftelse.";
+"help_faq_a3" = "Gå til Mine anmeldelser, stryg til venstre og tryk på Rediger.";
+"help_faq_a4" = "Vi bruger end-to-end-kryptering og deler ikke dine data med tredjeparter.";
+"help_faq_a5" = "Ja! Gå til Indstillinger > Download mine data.";
+"help_faq_a6" = "Kontakt os på support@trustcare.app.";
+"help_faq_q1" = "Hvordan skriver jeg en anmeldelse?";
+"help_faq_q2" = "Hvordan verificerer jeg mit besøg?";
+"help_faq_q3" = "Kan jeg redigere min anmeldelse?";
+"help_faq_q4" = "Er mine data sikre?";
+"help_faq_q5" = "Kan jeg eksportere mine data?";
+"help_faq_q6" = "Hvordan rapporterer jeg et problem?";
+"help_faq_title" = "Ofte stillede spørgsmål";
+"help_report_issue" = "Rapporter problem";
+
+// --- Vilkår ---
+"tos_service_title" = "1. Tjenestebeskrivelse";
+"tos_service_1" = "TrustCare er en anmeldelsesplatform for sundhedsudbydere.";
+"tos_service_2" = "Vores AI Rehber-funktion tilbyder sundhedsvejledning, men erstatter ikke professionel rådgivning.";
+"tos_user_title" = "2. Brugerforpligtelser";
+"tos_user_1" = "Du skal være mindst 18 år gammel.";
+"tos_user_2" = "Du accepterer at give nøjagtige oplysninger.";
+"tos_user_3" = "Ingen falske anmeldelser, chikane eller misbrug.";
+"tos_review_title" = "3. Anmeldelsesretningslinjer";
+"tos_review_1" = "Anmeldelser skal baseres på ægte oplevelser.";
+"tos_review_2" = "Verificerede anmeldelser får et badge.";
+"tos_review_3" = "Vi forbeholder os retten til at fjerne anmeldelser.";
+"tos_rehber_title" = "4. Rehber (AI-sundhedsguide)";
+"tos_rehber_1" = "Rehber giver generel sundhedsinformation.";
+"tos_rehber_2" = "Rehber er IKKE en erstatning for professionel medicinsk diagnose.";
+"tos_rehber_3" = "Ring altid 112 i nødstilfælde.";
+"tos_ip_title" = "5. Intellektuel ejendom";
+"tos_ip_1" = "Alt indhold tilhører TrustCare.";
+"tos_ip_2" = "Anmeldelser forbliver forfatternes ejendom men licenseres til TrustCare.";
+"tos_account_title" = "6. Kontolukning";
+"tos_account_1" = "Vi kan suspendere eller lukke konti.";
+"tos_account_2" = "Du kan slette din konto når som helst.";
+"tos_dispute_title" = "7. Tvistløsning";
+"tos_dispute_1" = "Tvister løses via mægling.";
+"tos_dispute_2" = "Disse vilkår er underlagt lovgivningen i Republikken Tyrkiet.";
+"tos_contact_title" = "8. Kontakt";
+"tos_contact_1" = "Kontakt os:";
+"tos_contact_2" = "legal@trustcare.app";
+
+// --- Privatlivspolitik ---
+"pp_data_collection_title" = "1. Dataindsamling";
+"pp_data_collection_1" = "Kontooplysninger: navn, e-mail, telefonnummer.";
+"pp_data_collection_2" = "Anmeldelsesindhold: bedømmelser, kommentarer, fotos, dokumenter.";
+"pp_data_collection_3" = "Placeringsdata: til at finde nærliggende udbydere.";
+"pp_data_collection_4" = "Brugsdata: app-interaktioner til forbedring.";
+"pp_data_usage_title" = "2. Databrug";
+"pp_data_usage_1" = "Til at vise anmeldelser og hjælpe andre.";
+"pp_data_usage_2" = "Til at verificere din identitet.";
+"pp_data_usage_3" = "Til at forbedre tjenester og anbefalinger.";
+"pp_data_sharing_title" = "3. Datadeling";
+"pp_data_sharing_1" = "Vi sælger IKKE dine data til tredjeparter.";
+"pp_data_sharing_2" = "Anmeldelser er offentlige. Dokumenter er private.";
+"pp_data_sharing_3" = "Vi kan dele data ved lovkrav.";
+"pp_rights_title" = "4. Dine rettigheder";
+"pp_rights_1" = "Adgang: du kan se alle dine data.";
+"pp_rights_2" = "Download: eksporter dine data fra Indstillinger.";
+"pp_rights_3" = "Sletning: anmod om datasletning.";
+"pp_rights_4" = "Rettelse: opdater dine profiloplysninger.";
+"pp_cookies_title" = "5. Cookies & sporing";
+"pp_cookies_1" = "Vi bruger minimal analyse.";
+"pp_cookies_2" = "Ingen tredjeparts reklamesporing.";
+"pp_cookies_3" = "Du kan deaktivere analyse i enhedsindstillinger.";
+"pp_security_title" = "6. Sikkerhed";
+"pp_security_1" = "Alle data er krypteret.";
+"pp_security_2" = "Vi bruger Supabase til sikker datalagring.";
+"pp_security_3" = "Regelmæssige sikkerhedsaudits udføres.";
+"pp_contact_title" = "7. Kontakt";
+"pp_contact_1" = "For privatlivsspørgsmål:";
+"pp_contact_2" = "privacy@trustcare.app";
+"pp_last_updated" = "Sidst opdateret: februar 2026";
+
+// --- Rehber (ny) ---
+"rehber_title" = "TrustCare Rehber";
+"rehber_daily_limit_reached" = "Daglig gratis grænse nået (5/5). Prøv igen i morgen.";
+"rehber_load_conversation_error" = "Kan ikke indlæse samtale.";
+"rehber_login_required" = "Log venligst ind for at bruge Rehber.";
+"rehber_no_response" = "Rehber kunne ikke svare. Prøv igen.";
+"rehber_response_failed" = "Kunne ikke generere svar. Prøv igen.";
+"rehber_response_unavailable" = "Svar ikke tilgængeligt.";
+
+// --- Diverse ---
+"accessibility_rating_hint" = "Stryg op eller ned for at justere bedømmelsen";
+"tab_badge_plus" = "Plus";
+"country_turkey" = "Türkiye";
+"default_city_name" = "Adana";
+"media_photo_count_%lld" = "%lld af 5 fotos";

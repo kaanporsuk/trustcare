@@ -12,7 +12,7 @@ struct RehberOnboardingView: View {
                         .font(.system(size: 48, weight: .semibold))
                         .foregroundStyle(AppColor.trustBlue)
 
-                    Text("TrustCare Rehber")
+                    Text(String(localized: "rehber_title"))
                         .font(AppFont.title2)
 
                     Text(String(localized: "rehber_onboarding_subtitle"))

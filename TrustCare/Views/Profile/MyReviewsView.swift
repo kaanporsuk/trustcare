@@ -14,11 +14,11 @@ struct MyReviewsView: View {
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
-            Picker("Filtre", selection: $profileVM.reviewFilter) {
-                Text("Tümü").tag("all")
-                Text("Doğrulanmış").tag("verified")
-                Text("Beklemede").tag("pending")
-                Text("Doğrulanmamış").tag("unverified")
+            Picker(String(localized: "filter_button"), selection: $profileVM.reviewFilter) {
+                Text(String(localized: "filter_all")).tag("all")
+                Text(String(localized: "status_verified")).tag("verified")
+                Text(String(localized: "status_pending")).tag("pending")
+                Text(String(localized: "status_unverified")).tag("unverified")
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, AppSpacing.lg)
@@ -29,9 +29,9 @@ struct MyReviewsView: View {
             } else if profileVM.myReviews.isEmpty {
                 EmptyStateView(
                     icon: "pencil.and.list.clipboard",
-                    title: "Henüz değerlendirme yapmadınız",
-                    message: "Deneyiminizi paylaşarak diğer kullanıcılara yardımcı olun.",
-                    actionTitle: "Değerlendir"
+                    title: String(localized: "my_reviews_empty_title"),
+                    message: String(localized: "my_reviews_empty_message"),
+                    actionTitle: String(localized: "my_reviews_empty_action")
                 ) {
                     selectedTab = 2
                 }
@@ -48,14 +48,14 @@ struct MyReviewsView: View {
                                 pendingDeleteReviewId = review.id
                                 showDeleteConfirm = true
                             } label: {
-                                Label("Sil", systemImage: "trash")
+                                Label(String(localized: "button_delete"), systemImage: "trash")
                             }
 
                             if canEdit(review) {
                                 Button {
                                     editingReview = review
                                 } label: {
-                                    Label("Düzenle", systemImage: "pencil")
+                                    Label(String(localized: "button_edit"), systemImage: "pencil")
                                 }
                                 .tint(AppColor.trustBlue)
                             }
@@ -68,7 +68,7 @@ struct MyReviewsView: View {
                 }
             }
         }
-        .navigationTitle("Değerlendirmelerim")
+        .navigationTitle(String(localized: "menu_my_reviews"))
         .toolbar(.hidden, for: .tabBar)
         .task {
             if profileVM.myReviews.isEmpty {
@@ -78,18 +78,18 @@ struct MyReviewsView: View {
         .onChange(of: profileVM.reviewFilter) { _, newValue in
             Task { await profileVM.loadReviews(filter: newValue) }
         }
-        .confirmationDialog("Değerlendirmeyi Sil", isPresented: $showDeleteConfirm) {
-            Button("Sil", role: .destructive) {
+        .confirmationDialog(String(localized: "my_reviews_delete_title"), isPresented: $showDeleteConfirm) {
+            Button(String(localized: "button_delete"), role: .destructive) {
                 if let id = pendingDeleteReviewId {
                     Task { await profileVM.deleteReview(id: id) }
                 }
                 pendingDeleteReviewId = nil
             }
-            Button("Vazgeç", role: .cancel) {
+            Button(String(localized: "button_cancel"), role: .cancel) {
                 pendingDeleteReviewId = nil
             }
         } message: {
-            Text("Bu değerlendirmeyi silmek istediğinize emin misiniz?")
+            Text(String(localized: "my_reviews_delete_message"))
         }
         .sheet(item: $editingReview) { review in
             EditReviewSheet(review: review) { title, comment in
@@ -97,11 +97,11 @@ struct MyReviewsView: View {
                 editingReview = nil
             }
         }
-        .alert("Hata", isPresented: Binding(
+        .alert(String(localized: "error_generic"), isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button("Tamam") { profileVM.errorMessage = nil }
+            Button(String(localized: "button_ok")) { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
@@ -111,7 +111,7 @@ struct MyReviewsView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(review.providerName ?? "Bilinmeyen Sağlayıcı")
+                    Text(review.providerName ?? String(localized: "unknown_provider"))
                         .font(AppFont.headline)
                     Text(formattedDate(review.createdAt))
                         .font(AppFont.caption)
@@ -133,7 +133,7 @@ struct MyReviewsView: View {
                     .cornerRadius(AppRadius.button)
 
                 if canEdit(review) {
-                    Text("24 saat içinde düzenlenebilir")
+                    Text(String(localized: "review_editable_24h"))
                         .font(AppFont.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -160,11 +160,11 @@ struct MyReviewsView: View {
     @ViewBuilder
     private func statusBadge(_ review: Review) -> some View {
         if review.isVerified {
-            badge("Doğrulanmış", color: AppColor.success)
+            badge(String(localized: "status_verified"), color: AppColor.success)
         } else if review.status == .pendingVerification {
-            badge("Beklemede", color: AppColor.pending)
+            badge(String(localized: "status_pending"), color: AppColor.pending)
         } else {
-            badge("Doğrulanmamış", color: AppColor.unverified)
+            badge(String(localized: "status_unverified"), color: AppColor.unverified)
         }
     }
 
@@ -198,22 +198,22 @@ private struct EditReviewSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Başlık") {
-                    TextField("Başlık (opsiyonel)", text: $title)
+                Section(String(localized: "edit_review_title_section")) {
+                    TextField(String(localized: "edit_review_title_placeholder"), text: $title)
                 }
 
-                Section("Yorum") {
+                Section(String(localized: "edit_review_comment_section")) {
                     TextEditor(text: $comment)
                         .frame(minHeight: 140)
                 }
             }
-            .navigationTitle("Değerlendirmeyi Düzenle")
+            .navigationTitle(String(localized: "edit_review_title"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Vazgeç") { dismiss() }
+                    Button(String(localized: "button_cancel")) { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Kaydet") {
+                    Button(String(localized: "button_save")) {
                         Task {
                             isSaving = true
                             await onSave(title, comment)

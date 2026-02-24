@@ -98,7 +98,7 @@ struct StarRatingInput: View {
                 break
             }
         }
-        .accessibilityHint("Swipe up or down to adjust rating")
+                .accessibilityHint(String(localized: "accessibility_rating_hint"))
     }
 
     private func updateRating(from xPosition: CGFloat) {

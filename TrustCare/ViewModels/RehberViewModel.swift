@@ -86,12 +86,12 @@ final class RehberViewModel: ObservableObject {
 
         loadUsageCount()
         guard canSendMoreToday else {
-            errorMessage = "Günlük ücretsiz limit doldu (5/5). Yarın tekrar deneyin."
+            errorMessage = String(localized: "rehber_daily_limit_reached")
             return
         }
 
         guard let authSession = await AuthService.currentSession() else {
-            errorMessage = "Rehber'i kullanmak için giriş yapın."
+            errorMessage = String(localized: "rehber_login_required")
             return
         }
 
@@ -155,7 +155,7 @@ final class RehberViewModel: ObservableObject {
             let assistantMessage = RehberMessage(
                 id: UUID(),
                 role: "assistant",
-                content: assistantText?.isEmpty == false ? assistantText! : "Yanıt oluşturulamadı. Lütfen tekrar deneyin.",
+                content: assistantText?.isEmpty == false ? assistantText! : String(localized: "rehber_response_failed"),
                 recommendedSpecialties: aiResponse.recommendedSpecialties,
                 wasEmergency: emergencyFromAI,
                 isFallback: aiResponse.isFallback,
@@ -463,7 +463,7 @@ final class RehberViewModel: ObservableObject {
         }
 
         if let decodedError = try? JSONDecoder().decode(EdgeErrorResponse.self, from: data) {
-            let message = decodedError.message ?? decodedError.error ?? "Rehber yanıt veremedi. Lütfen tekrar deneyin."
+            let message = decodedError.message ?? decodedError.error ?? String(localized: "rehber_no_response")
             let fallback = RehberEdgeResponse(
                 message: message,
                 recommendedSpecialties: nil,
@@ -490,7 +490,7 @@ final class RehberViewModel: ObservableObject {
         return RehberEdgeCallResult(
             statusCode: http.statusCode,
             response: RehberEdgeResponse(
-                message: "Yanıt alınamadı.",
+                message: String(localized: "rehber_response_unavailable"),
                 recommendedSpecialties: nil,
                 isEmergency: false,
                 isFallback: http.statusCode == 503,

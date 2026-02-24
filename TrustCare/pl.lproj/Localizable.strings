@@ -230,3 +230,216 @@
 
 // Language Alert (with language name)
 "language_changed_message_named %@" = "Aplikacja zostanie uruchomiona ponownie w języku %@. Kontynuować?";
+// --- Przyciski ---
+"button_add" = "Dodaj";
+"button_back" = "Wstecz";
+"button_call" = "Zadzwoń";
+"button_cancel" = "Anuluj";
+"button_continue" = "Kontynuuj";
+"button_delete" = "Usuń";
+"button_directions" = "Nawiguj";
+"button_edit" = "Edytuj";
+"button_remove" = "Usuń";
+"button_review" = "Oceń";
+"button_save" = "Zapisz";
+"button_submit" = "Wyślij";
+
+// --- Dodaj dostawcę ---
+"add_provider_address" = "Adres";
+"add_provider_geocode_error" = "Nie można znaleźć współrzędnych dla tego adresu.";
+"add_provider_is_this" = "Czy to jest...";
+"add_provider_location" = "Lokalizacja";
+"add_provider_map_pin" = "Ustaw pin na mapie";
+"add_provider_name" = "Nazwa dostawcy";
+"add_provider_no_address" = "Proszę wprowadzić adres.";
+"add_provider_phone" = "Telefon (opcjonalnie)";
+"add_provider_section" = "Informacje o dostawcy";
+"add_provider_select" = "Wybierz";
+"add_provider_select_specialty" = "Wybierz specjalizację";
+"add_provider_select_specialty_error" = "Proszę wybrać specjalizację.";
+"add_provider_title" = "Dodaj dostawcę";
+
+// --- Zgłoś roszczenie ---
+"claim_accepted_docs" = "Akceptowane: dyplom lekarski, zaświadczenie lub dowód tożsamości";
+"claim_back_to_provider" = "Powrót do dostawcy";
+"claim_confirm_1" = "Mam uprawnienia do zarządzania tym profilem";
+"claim_confirm_2" = "Wszystkie informacje są prawidłowe";
+"claim_confirm_text" = "Przesyłając, potwierdzasz:";
+"claim_file_format" = "JPG lub PNG, maks. 10 MB";
+"claim_pending" = "Wniosek oczekuje";
+"claim_pending_message" = "Twój wniosek jest rozpatrywany.";
+"claim_provider_label" = "Dostawca";
+"claim_rejected" = "Wniosek odrzucony";
+"claim_resubmit" = "Złóż ponownie";
+"claim_review_submit" = "Sprawdź i wyślij";
+"claim_role_question" = "Jaka jest Twoja rola w tej placówce?";
+"claim_step_1_of_3" = "Krok 1 z 3";
+"claim_step_2_of_3" = "Krok 2 z 3";
+"claim_step_3_of_3" = "Krok 3 z 3";
+"claim_submit" = "Złóż wniosek";
+"claim_submitted" = "Wniosek złożony!";
+"claim_submitted_message" = "Rozpatrzymy Twój wniosek w ciągu 1-3 dni roboczych. Otrzymasz powiadomienie.";
+"claim_tap_upload" = "Stuknij, aby przesłać dokument";
+"claim_title" = "Zgłoś profil";
+"claim_upload_doc" = "Prześlij dokument weryfikacyjny";
+"claim_verification_doc" = "Dokument weryfikacyjny";
+"claim_your_role" = "Twoja rola";
+
+// --- Recenzja ---
+"review_another" = "Oceń innego dostawcę";
+"review_cant_find_add" = "Nie możesz znaleźć? Dodaj nowego";
+"review_char_count %lld" = "%lld/500 znaków";
+"review_comment_placeholder" = "Podziel się swoim doświadczeniem...";
+"review_editable_24h" = "Możliwość edycji przez 24 godziny";
+"review_go_home" = "Strona główna";
+"review_helpful_count_%lld" = "%lld pomocne";
+"review_overall_question" = "Jak oceniasz ogólne doświadczenie?";
+"review_photos_public" = "Zdjęcia będą widoczne publicznie.";
+"review_proof_private" = "To nie będzie wyświetlane publicznie.";
+"review_skip_verification" = "Pomiń weryfikację";
+"review_submitted_message" = "Twoja recenzja została przesłana i pojawi się po przetworzeniu.";
+"review_submitted_title" = "Dziękujemy!";
+"review_upload_proof" = "Prześlij dowód wizyty";
+"review_verification_pending" = "Weryfikacja w toku";
+"review_verify_hint" = "Zweryfikuj swoją wizytę, aby zyskać większe zaufanie.";
+"review_visit_details" = "Szczegóły wizyty";
+"review_visit_type" = "Typ wizyty";
+"visit_type_checkup" = "Kontrola";
+"visit_type_emergency" = "Nagły wypadek";
+"visit_type_examination" = "Badanie";
+"visit_type_procedure" = "Zabieg";
+"reviews_count" = "Recenzje";
+"specialty_label" = "Specjalizacja";
+
+// --- Moje recenzje ---
+"edit_review_comment_section" = "Recenzja";
+"edit_review_title" = "Edytuj recenzję";
+"edit_review_title_placeholder" = "Tytuł recenzji";
+"edit_review_title_section" = "Tytuł";
+"my_reviews_delete_message" = "Tej operacji nie można cofnąć.";
+"my_reviews_delete_title" = "Usunąć recenzję?";
+"my_reviews_empty_action" = "Napisz pierwszą recenzję";
+"my_reviews_empty_message" = "Twoje recenzje pojawią się tutaj.";
+"my_reviews_empty_title" = "Brak recenzji";
+"status_pending" = "Oczekuje";
+"status_unverified" = "Niezweryfikowana";
+"status_verified" = "Zweryfikowana";
+"unknown_provider" = "Nieznany dostawca";
+
+// --- Zapisani dostawcy ---
+"saved_empty_action" = "Odkryj dostawców";
+"saved_empty_message" = "Zapisani dostawcy pojawią się tutaj.";
+"saved_empty_title" = "Brak zapisanych dostawców";
+
+// --- Profil ---
+"logout_confirm_message" = "Czy na pewno chcesz się wylogować?";
+"profile_member_since" = "Członek od";
+"profile_referral" = "Zaproś znajomego — zdobądź punkty";
+"profile_reviews_count %lld" = "%lld Recenzji";
+"profile_verified_percent %lld" = "%lld%% Zweryfikowane";
+
+// --- Zgłoś recenzję ---
+"report_additional_details" = "Dodatkowe szczegóły (opcjonalnie)";
+"report_button" = "Zgłoś";
+"report_footer" = "Proszę podać dodatkowy kontekst.";
+"report_header" = "Dlaczego zgłaszasz tę recenzję?";
+"report_optional_details" = "Opcjonalne szczegóły";
+"report_reason" = "Powód";
+"report_reported" = "Zgłoszone";
+"report_thank_you" = "Dziękujemy. Rozpatrzymy Twoje zgłoszenie.";
+"report_title" = "Zgłoś recenzję";
+
+// --- Pomoc ---
+"help_contact" = "Kontakt";
+"help_email_label" = "E-mail";
+"help_faq_a1" = "Przejdź do zakładki Recenzje, wyszukaj dostawcę i postępuj zgodnie z instrukcjami.";
+"help_faq_a2" = "Prześlij zdjęcie paragonu lub potwierdzenia wizyty.";
+"help_faq_a3" = "Przejdź do Moje recenzje, przesuń w lewo i stuknij Edytuj.";
+"help_faq_a4" = "Używamy szyfrowania end-to-end i nie udostępniamy danych stronom trzecim.";
+"help_faq_a5" = "Tak! Przejdź do Ustawienia > Pobierz moje dane.";
+"help_faq_a6" = "Skontaktuj się z nami pod adresem support@trustcare.app.";
+"help_faq_q1" = "Jak napisać recenzję?";
+"help_faq_q2" = "Jak zweryfikować wizytę?";
+"help_faq_q3" = "Czy mogę edytować recenzję?";
+"help_faq_q4" = "Czy moje dane są bezpieczne?";
+"help_faq_q5" = "Czy mogę wyeksportować dane?";
+"help_faq_q6" = "Jak zgłosić problem?";
+"help_faq_title" = "Często zadawane pytania";
+"help_report_issue" = "Zgłoś problem";
+
+// --- Regulamin ---
+"tos_service_title" = "1. Opis usługi";
+"tos_service_1" = "TrustCare to platforma recenzji dla świadczeniodawców zdrowotnych.";
+"tos_service_2" = "Nasza funkcja AI Rehber oferuje wskazówki zdrowotne, ale nie zastępuje profesjonalnej porady medycznej.";
+"tos_user_title" = "2. Obowiązki użytkownika";
+"tos_user_1" = "Musisz mieć co najmniej 18 lat.";
+"tos_user_2" = "Zobowiązujesz się podawać dokładne informacje.";
+"tos_user_3" = "Zabronione są fałszywe recenzje, nękanie i nadużycia.";
+"tos_review_title" = "3. Zasady recenzji";
+"tos_review_1" = "Recenzje muszą opierać się na prawdziwych doświadczeniach.";
+"tos_review_2" = "Zweryfikowane recenzje otrzymują odznakę.";
+"tos_review_3" = "Zastrzegamy sobie prawo do usunięcia recenzji.";
+"tos_rehber_title" = "4. Rehber (Przewodnik zdrowotny AI)";
+"tos_rehber_1" = "Rehber dostarcza ogólne informacje zdrowotne.";
+"tos_rehber_2" = "Rehber NIE zastępuje profesjonalnej diagnozy medycznej.";
+"tos_rehber_3" = "W nagłych wypadkach zawsze dzwoń pod 112.";
+"tos_ip_title" = "5. Własność intelektualna";
+"tos_ip_1" = "Wszystkie treści należą do TrustCare.";
+"tos_ip_2" = "Recenzje pozostają własnością autorów, ale są licencjonowane dla TrustCare.";
+"tos_account_title" = "6. Zamknięcie konta";
+"tos_account_1" = "Możemy zawiesić lub zamknąć konta.";
+"tos_account_2" = "Możesz usunąć swoje konto w dowolnym momencie.";
+"tos_dispute_title" = "7. Rozwiązywanie sporów";
+"tos_dispute_1" = "Spory rozstrzygane są drogą mediacji.";
+"tos_dispute_2" = "Regulamin podlega prawu Republiki Turcji.";
+"tos_contact_title" = "8. Kontakt";
+"tos_contact_1" = "Skontaktuj się z nami:";
+"tos_contact_2" = "legal@trustcare.app";
+
+// --- Prywatność ---
+"pp_data_collection_title" = "1. Zbieranie danych";
+"pp_data_collection_1" = "Dane konta: imię, e-mail, numer telefonu.";
+"pp_data_collection_2" = "Treści recenzji: oceny, komentarze, zdjęcia, dokumenty.";
+"pp_data_collection_3" = "Dane lokalizacji: do wyszukiwania pobliskich dostawców.";
+"pp_data_collection_4" = "Dane użytkowania: interakcje z aplikacją w celu ulepszenia.";
+"pp_data_usage_title" = "2. Wykorzystanie danych";
+"pp_data_usage_1" = "Do wyświetlania recenzji i pomocy innym.";
+"pp_data_usage_2" = "Do weryfikacji Twojej tożsamości.";
+"pp_data_usage_3" = "Do ulepszania usług i rekomendacji.";
+"pp_data_sharing_title" = "3. Udostępnianie danych";
+"pp_data_sharing_1" = "NIE sprzedajemy Twoich danych stronom trzecim.";
+"pp_data_sharing_2" = "Recenzje są publiczne. Dokumenty są prywatne.";
+"pp_data_sharing_3" = "Możemy udostępnić dane na żądanie prawne.";
+"pp_rights_title" = "4. Twoje prawa";
+"pp_rights_1" = "Dostęp: możesz przeglądać wszystkie swoje dane.";
+"pp_rights_2" = "Pobieranie: eksportuj dane z ustawień.";
+"pp_rights_3" = "Usunięcie: złóż wniosek o usunięcie danych.";
+"pp_rights_4" = "Korekta: zaktualizuj informacje profilowe.";
+"pp_cookies_title" = "5. Pliki cookie i śledzenie";
+"pp_cookies_1" = "Używamy minimalnej analityki.";
+"pp_cookies_2" = "Brak trackerów reklamowych stron trzecich.";
+"pp_cookies_3" = "Możesz wyłączyć analitykę w ustawieniach urządzenia.";
+"pp_security_title" = "6. Bezpieczeństwo";
+"pp_security_1" = "Wszystkie dane są szyfrowane.";
+"pp_security_2" = "Używamy Supabase do bezpiecznego przechowywania danych.";
+"pp_security_3" = "Regularne audyty bezpieczeństwa.";
+"pp_contact_title" = "7. Kontakt";
+"pp_contact_1" = "W sprawach dotyczących prywatności:";
+"pp_contact_2" = "privacy@trustcare.app";
+"pp_last_updated" = "Ostatnia aktualizacja: luty 2026";
+
+// --- Rehber (nowe) ---
+"rehber_title" = "TrustCare Rehber";
+"rehber_daily_limit_reached" = "Dzienny limit bezpłatny osiągnięty (5/5). Spróbuj ponownie jutro.";
+"rehber_load_conversation_error" = "Nie można załadować rozmowy.";
+"rehber_login_required" = "Zaloguj się, aby korzystać z Rehber.";
+"rehber_no_response" = "Rehber nie mógł odpowiedzieć. Spróbuj ponownie.";
+"rehber_response_failed" = "Nie udało się wygenerować odpowiedzi. Spróbuj ponownie.";
+"rehber_response_unavailable" = "Odpowiedź niedostępna.";
+
+// --- Różne ---
+"accessibility_rating_hint" = "Przesuń w górę lub w dół, aby dostosować ocenę";
+"tab_badge_plus" = "Plus";
+"country_turkey" = "Türkiye";
+"default_city_name" = "Adana";
+"media_photo_count_%lld" = "%lld z 5 zdjęć";

@@ -3,37 +3,39 @@ import SwiftUI
 struct HelpSupportView: View {
     @Environment(\.openURL) private var openURL
 
-    private let faqItems: [(question: String, answer: String)] = [
-        (
-            "TrustCare nedir?",
-            "TrustCare, doğrulanmış hasta deneyimlerine dayalı sağlık hizmeti sağlayıcı değerlendirme platformudur."
-        ),
-        (
-            "Değerlendirmeler nasıl doğrulanır?",
-            "Ziyaret kanıtı (fatura, reçete, randevu onayı) yükleyerek değerlendirmenizi doğrulayabilirsiniz."
-        ),
-        (
-            "TrustCare Rehber nedir?",
-            "Belirtilerinize göre doğru uzmanlık alanını öneren bir bilgilendirme hizmetidir. Tıbbi teşhis değildir."
-        ),
-        (
-            "Verilerim güvende mi?",
-            "Evet. KVKK uyumlu altyapımız ile kişisel verileriniz şifrelenerek saklanır."
-        ),
-        (
-            "Bir sağlık sağlayıcıyı nasıl eklerim?",
-            "Değerlendirme sekmesinde \"Bulamadınız mı? Yeni ekle\" seçeneğini kullanabilirsiniz."
-        ),
-        (
-            "Değerlendirmemi düzenleyebilir miyim?",
-            "İlk 24 saat içinde değerlendirmelerinizi düzenleyebilirsiniz."
-        )
-    ]
+    private var faqItems: [(question: String, answer: String)] {
+        [
+            (
+                String(localized: "help_faq_q1"),
+                String(localized: "help_faq_a1")
+            ),
+            (
+                String(localized: "help_faq_q2"),
+                String(localized: "help_faq_a2")
+            ),
+            (
+                String(localized: "help_faq_q3"),
+                String(localized: "help_faq_a3")
+            ),
+            (
+                String(localized: "help_faq_q4"),
+                String(localized: "help_faq_a4")
+            ),
+            (
+                String(localized: "help_faq_q5"),
+                String(localized: "help_faq_a5")
+            ),
+            (
+                String(localized: "help_faq_q6"),
+                String(localized: "help_faq_a6")
+            )
+        ]
+    }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                Text("Sık Sorulan Sorular")
+                Text(String(localized: "help_faq_title"))
                     .font(AppFont.title2)
                     .foregroundStyle(AppColor.trustBlue)
 
@@ -56,18 +58,18 @@ struct HelpSupportView: View {
                 }
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("İletişim")
+                    Text(String(localized: "help_contact"))
                         .font(AppFont.title3)
 
                     HStack {
-                        Text("Email:")
+                        Text(String(localized: "help_email_label"))
                             .font(AppFont.body)
                         Text("support@trustcare.app")
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
                     }
 
-                    Button("Sorun Bildir") {
+                    Button(String(localized: "help_report_issue")) {
                         if let url = URL(string: "mailto:support@trustcare.app?subject=TrustCare%20Destek") {
                             openURL(url)
                         }
@@ -86,7 +88,7 @@ struct HelpSupportView: View {
             .padding(.horizontal, AppSpacing.lg)
             .padding(.vertical, AppSpacing.lg)
         }
-        .navigationTitle("Yardım ve Destek")
+        .navigationTitle(String(localized: "menu_help"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
     }

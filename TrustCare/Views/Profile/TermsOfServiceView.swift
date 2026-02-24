@@ -6,76 +6,76 @@ struct TermsOfServiceView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
                     termsSection(
-                        title: "Hizmet Tanımı",
+                        title: String(localized: "tos_service_title"),
                         bullets: [
-                            "TrustCare, sağlık hizmeti sağlayıcı deneyimlerini paylaşma ve keşfetme platformudur.",
-                            "Sunulan bilgiler bilgilendirme amaçlıdır."
+                            String(localized: "tos_service_1"),
+                            String(localized: "tos_service_2")
                         ]
                     )
 
                     termsSection(
-                        title: "Kullanıcı Yükümlülükleri",
+                        title: String(localized: "tos_user_title"),
                         bullets: [
-                            "Doğru ve güncel hesap bilgisi sağlamak.",
-                            "Hesap güvenliğini korumak.",
-                            "Platformu hukuka ve etik kurallara uygun kullanmak."
+                            String(localized: "tos_user_1"),
+                            String(localized: "tos_user_2"),
+                            String(localized: "tos_user_3")
                         ]
                     )
 
                     termsSection(
-                        title: "Değerlendirme Kuralları",
+                        title: String(localized: "tos_review_title"),
                         bullets: [
-                            "Yorumlar gerçek deneyime dayanmalıdır.",
-                            "Hakaret, yanıltıcı ve manipülatif içerik yasaktır.",
-                            "Doğrulama belgelerinde sahtecilik hesap kapatma sebebidir."
+                            String(localized: "tos_review_1"),
+                            String(localized: "tos_review_2"),
+                            String(localized: "tos_review_3")
                         ]
                     )
 
                     termsSection(
-                        title: "TrustCare Rehber Sorumluluk Reddi",
+                        title: String(localized: "tos_rehber_title"),
                         bullets: [
-                            "TrustCare Rehber bir teşhis, reçete veya tedavi hizmeti değildir.",
-                            "Sadece uygun uzmanlık alanına yönlendirme yapar.",
-                            "Acil durumlarda kullanıcı 112'ye yönlendirilir."
+                            String(localized: "tos_rehber_1"),
+                            String(localized: "tos_rehber_2"),
+                            String(localized: "tos_rehber_3")
                         ]
                     )
 
                     termsSection(
-                        title: "Fikri Mülkiyet",
+                        title: String(localized: "tos_ip_title"),
                         bullets: [
-                            "Uygulama içeriği, marka ve yazılım hakları TrustCare'e aittir.",
-                            "İzinsiz çoğaltma ve ticari kullanım yasaktır."
+                            String(localized: "tos_ip_1"),
+                            String(localized: "tos_ip_2")
                         ]
                     )
 
                     termsSection(
-                        title: "Hesap Sonlandırma",
+                        title: String(localized: "tos_account_title"),
                         bullets: [
-                            "Kullanıcı hesabını ayarlardan silme talebi oluşturabilir.",
-                            "Kural ihlali durumunda TrustCare hesabı askıya alabilir veya sonlandırabilir."
+                            String(localized: "tos_account_1"),
+                            String(localized: "tos_account_2")
                         ]
                     )
 
                     termsSection(
-                        title: "Uyuşmazlık Çözümü",
+                        title: String(localized: "tos_dispute_title"),
                         bullets: [
-                            "Uyuşmazlıklarda öncelikle dostane çözüm hedeflenir.",
-                            "Çözüm sağlanamazsa Türkiye Cumhuriyeti mevzuatı uygulanır."
+                            String(localized: "tos_dispute_1"),
+                            String(localized: "tos_dispute_2")
                         ]
                     )
 
                     termsSection(
-                        title: "İletişim Bilgileri",
+                        title: String(localized: "tos_contact_title"),
                         bullets: [
-                            "E-posta: legal@trustcare.app",
-                            "Destek: support@trustcare.app"
+                            String(localized: "tos_contact_1"),
+                            String(localized: "tos_contact_2")
                         ]
                     )
                 }
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.vertical, AppSpacing.lg)
             }
-            .navigationTitle("Kullanım Koşulları")
+            .navigationTitle(String(localized: "menu_terms"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(.hidden, for: .tabBar)
         }

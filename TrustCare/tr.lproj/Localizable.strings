@@ -230,3 +230,216 @@
 
 // Language Alert (with language name)
 "language_changed_message_named %@" = "Uygulama %@ dilinde yeniden başlayacak. Devam edilsin mi?";
+// --- Butonlar ---
+"button_add" = "Ekle";
+"button_back" = "Geri";
+"button_call" = "Ara";
+"button_cancel" = "İptal";
+"button_continue" = "Devam";
+"button_delete" = "Sil";
+"button_directions" = "Yol Tarifi";
+"button_edit" = "Düzenle";
+"button_remove" = "Kaldır";
+"button_review" = "Değerlendir";
+"button_save" = "Kaydet";
+"button_submit" = "Gönder";
+
+// --- Sağlayıcı Ekle ---
+"add_provider_address" = "Adres";
+"add_provider_geocode_error" = "Bu adres için konum bulunamadı.";
+"add_provider_is_this" = "Bu bir...";
+"add_provider_location" = "Konum";
+"add_provider_map_pin" = "Haritada işaretle";
+"add_provider_name" = "Sağlayıcı Adı";
+"add_provider_no_address" = "Lütfen bir adres girin.";
+"add_provider_phone" = "Telefon (isteğe bağlı)";
+"add_provider_section" = "Sağlayıcı Bilgileri";
+"add_provider_select" = "Seçin";
+"add_provider_select_specialty" = "Uzmanlık Seçin";
+"add_provider_select_specialty_error" = "Lütfen bir uzmanlık seçin.";
+"add_provider_title" = "Sağlayıcı Ekle";
+
+// --- Profil Talep Et ---
+"claim_accepted_docs" = "Kabul edilen: Tıp diploması, tescil belgesi veya resmi kimlik";
+"claim_back_to_provider" = "Sağlayıcıya Dön";
+"claim_confirm_1" = "Bu profili yönetmeye yetkiliyim";
+"claim_confirm_2" = "Sağlanan tüm bilgiler doğrudur";
+"claim_confirm_text" = "Göndererek şunları onaylıyorsunuz:";
+"claim_file_format" = "JPG veya PNG, maks. 10 MB";
+"claim_pending" = "Talep Beklemede";
+"claim_pending_message" = "Talebiniz inceleniyor.";
+"claim_provider_label" = "Sağlayıcı";
+"claim_rejected" = "Talep Reddedildi";
+"claim_resubmit" = "Yeniden Gönder";
+"claim_review_submit" = "İncele ve Gönder";
+"claim_role_question" = "Bu kurumdaki rolünüz nedir?";
+"claim_step_1_of_3" = "Adım 1/3";
+"claim_step_2_of_3" = "Adım 2/3";
+"claim_step_3_of_3" = "Adım 3/3";
+"claim_submit" = "Talebi Gönder";
+"claim_submitted" = "Talep Gönderildi!";
+"claim_submitted_message" = "Talebinizi 1-3 iş günü içinde inceleyeceğiz. Onaylandığında bilgilendirileceksiniz.";
+"claim_tap_upload" = "Belge yüklemek için dokunun";
+"claim_title" = "Profil Talep Et";
+"claim_upload_doc" = "Doğrulama belgesi yükleyin";
+"claim_verification_doc" = "Doğrulama Belgesi";
+"claim_your_role" = "Rolünüz";
+
+// --- Değerlendirme ---
+"review_another" = "Başka Bir Sağlayıcıyı Değerlendirin";
+"review_cant_find_add" = "Bulamadınız mı? Yeni ekle";
+"review_char_count %lld" = "%lld/500 karakter";
+"review_comment_placeholder" = "Deneyiminizi paylaşın...";
+"review_editable_24h" = "24 saat içinde düzenlenebilir";
+"review_go_home" = "Ana Sayfaya Git";
+"review_helpful_count_%lld" = "%lld faydalı";
+"review_overall_question" = "Genel deneyiminiz nasıldı?";
+"review_photos_public" = "Fotoğraflar herkese açık olacaktır.";
+"review_proof_private" = "Bu belge herkese gösterilmeyecektir.";
+"review_skip_verification" = "Doğrulamayı atla";
+"review_submitted_message" = "Değerlendirmeniz gönderildi ve işlendikten sonra görünecektir.";
+"review_submitted_title" = "Teşekkürler!";
+"review_upload_proof" = "Ziyaret belgesi yükleyin";
+"review_verification_pending" = "Doğrulama Beklemede";
+"review_verify_hint" = "Ziyaretinizi doğrulayarak güveni artırın.";
+"review_visit_details" = "Ziyaret Detayları";
+"review_visit_type" = "Ziyaret Türü";
+"visit_type_checkup" = "Kontrol";
+"visit_type_emergency" = "Acil";
+"visit_type_examination" = "Muayene";
+"visit_type_procedure" = "İşlem";
+"reviews_count" = "değerlendirme";
+"specialty_label" = "Uzmanlık";
+
+// --- Değerlendirmelerim ---
+"edit_review_comment_section" = "Değerlendirme";
+"edit_review_title" = "Değerlendirmeyi Düzenle";
+"edit_review_title_placeholder" = "Değerlendirme başlığı";
+"edit_review_title_section" = "Başlık";
+"my_reviews_delete_message" = "Bu işlem geri alınamaz.";
+"my_reviews_delete_title" = "Değerlendirme Silinsin mi?";
+"my_reviews_empty_action" = "İlk Değerlendirmenizi Yazın";
+"my_reviews_empty_message" = "Değerlendirmeleriniz burada görünecek.";
+"my_reviews_empty_title" = "Henüz değerlendirme yok";
+"status_pending" = "Beklemede";
+"status_unverified" = "Doğrulanmamış";
+"status_verified" = "Doğrulanmış";
+"unknown_provider" = "Bilinmeyen Sağlayıcı";
+
+// --- Kayıtlı Sağlayıcılar ---
+"saved_empty_action" = "Sağlayıcıları Keşfet";
+"saved_empty_message" = "Kaydettiğiniz sağlayıcılar burada görünecek.";
+"saved_empty_title" = "Kayıtlı sağlayıcı yok";
+
+// --- Profil ---
+"logout_confirm_message" = "Çıkış yapmak istediğinize emin misiniz?";
+"profile_member_since" = "Üyelik tarihi";
+"profile_referral" = "Arkadaşını davet et — puan kazan";
+"profile_reviews_count %lld" = "%lld Değerlendirme";
+"profile_verified_percent %lld" = "%%%lld Doğrulanmış";
+
+// --- Değerlendirme Bildir ---
+"report_additional_details" = "Ek bilgiler (isteğe bağlı)";
+"report_button" = "Bildir";
+"report_footer" = "Lütfen raporumuzu incelememize yardımcı olacak ek bilgi sağlayın.";
+"report_header" = "Bu değerlendirmeyi neden bildiriyorsunuz?";
+"report_optional_details" = "İsteğe bağlı açıklama";
+"report_reason" = "Sebep";
+"report_reported" = "Bildirildi";
+"report_thank_you" = "Teşekkürler. Raporunuzu inceleyeceğiz.";
+"report_title" = "Değerlendirme Bildir";
+
+// --- Yardım ---
+"help_contact" = "Bize Ulaşın";
+"help_email_label" = "E-posta";
+"help_faq_a1" = "Değerlendirme sekmesine gidin, bir sağlayıcı arayın ve adımları izleyin.";
+"help_faq_a2" = "Fişinizin veya randevu onayınızın fotoğrafını yükleyin.";
+"help_faq_a3" = "Değerlendirmelerim'e gidin, sola kaydırın ve Düzenle'ye dokunun. 24 saat içinde düzenlenebilir.";
+"help_faq_a4" = "Uçtan uca şifreleme kullanıyoruz ve verilerinizi üçüncü taraflarla paylaşmıyoruz.";
+"help_faq_a5" = "Evet! Ayarlar > Verilerimi İndir'e gidin.";
+"help_faq_a6" = "support@trustcare.app adresinden bize ulaşın.";
+"help_faq_q1" = "Nasıl değerlendirme yaparım?";
+"help_faq_q2" = "Ziyaretimi nasıl doğrularım?";
+"help_faq_q3" = "Değerlendirmemi düzenleyebilir miyim?";
+"help_faq_q4" = "Verilerim güvende mi?";
+"help_faq_q5" = "Verilerimi dışa aktarabilir miyim?";
+"help_faq_q6" = "Bir sorunu nasıl bildiririm?";
+"help_faq_title" = "Sıkça Sorulan Sorular";
+"help_report_issue" = "Sorun Bildir";
+
+// --- Kullanım Koşulları ---
+"tos_service_title" = "1. Hizmet Açıklaması";
+"tos_service_1" = "TrustCare, sağlık hizmeti sağlayıcılarını değerlendirme platformudur.";
+"tos_service_2" = "Yapay zeka destekli Rehber özelliğimiz sağlık rehberliği sağlar ancak profesyonel tıbbi tavsiyenin yerini almaz.";
+"tos_user_title" = "2. Kullanıcı Sorumlulukları";
+"tos_user_1" = "TrustCare'i kullanmak için en az 18 yaşında olmalısınız.";
+"tos_user_2" = "Değerlendirmelerinizde ve profilinizde doğru bilgi sağlamayı kabul ediyorsunuz.";
+"tos_user_3" = "Sahte değerlendirme göndermemeli, sağlayıcıları taciz etmemeli veya platformu kötüye kullanmamalısınız.";
+"tos_review_title" = "3. Değerlendirme Kuralları";
+"tos_review_1" = "Değerlendirmeler, sağlık hizmeti sağlayıcılarıyla gerçek deneyimlere dayanmalıdır.";
+"tos_review_2" = "Doğrulanmış değerlendirmeler güvenilir geri bildirimleri tanımaya yardımcı olan bir rozet alır.";
+"tos_review_3" = "Kurallarımızı ihlal eden değerlendirmeleri kaldırma hakkımızı saklı tutuyoruz.";
+"tos_rehber_title" = "4. Rehber (Yapay Zeka Sağlık Rehberi)";
+"tos_rehber_1" = "Rehber genel sağlık bilgisi sağlar ve doğru uzmanlığı bulmanıza yardımcı olur.";
+"tos_rehber_2" = "Rehber profesyonel tıbbi teşhis veya tedavinin yerini ALMAZ.";
+"tos_rehber_3" = "Acil durumlarda her zaman 112'yi veya yerel acil numaranızı arayın.";
+"tos_ip_title" = "5. Fikri Mülkiyet";
+"tos_ip_1" = "TrustCare'deki tüm içerik, tasarım ve teknoloji TrustCare'e aittir.";
+"tos_ip_2" = "Kullanıcı tarafından gönderilen değerlendirmeler yazarlarına ait olmaya devam eder ancak görüntüleme için TrustCare'e lisanslanır.";
+"tos_account_title" = "6. Hesap Sonlandırma";
+"tos_account_1" = "Bu koşulları ihlal eden hesapları askıya alabilir veya sonlandırabiliriz.";
+"tos_account_2" = "Hesabınızı istediğiniz zaman Ayarlar > Hesabı Sil'den silebilirsiniz.";
+"tos_dispute_title" = "7. Uyuşmazlık Çözümü";
+"tos_dispute_1" = "Uyuşmazlıklar önce arabuluculuk, gerekirse bağlayıcı tahkim yoluyla çözülecektir.";
+"tos_dispute_2" = "Bu koşullar Türkiye Cumhuriyeti yasalarına tabidir.";
+"tos_contact_title" = "8. İletişim";
+"tos_contact_1" = "Bu koşullarla ilgili sorularınız için bize ulaşın:";
+"tos_contact_2" = "legal@trustcare.app";
+
+// --- Gizlilik Politikası ---
+"pp_data_collection_title" = "1. Topladığımız Veriler";
+"pp_data_collection_1" = "Hesap bilgileri: ad, e-posta, telefon numarası.";
+"pp_data_collection_2" = "Değerlendirme içeriği: puanlar, yorumlar, fotoğraflar, doğrulama belgeleri.";
+"pp_data_collection_3" = "Konum verileri: yakındaki sağlayıcıları bulmak için kullanılır (yalnızca izin verdiğinizde).";
+"pp_data_collection_4" = "Kullanım verileri: hizmetimizi iyileştirmek için uygulama etkileşimleri.";
+"pp_data_usage_title" = "2. Verilerinizi Nasıl Kullanıyoruz";
+"pp_data_usage_1" = "Değerlendirmelerinizi görüntülemek ve başkalarının güvenilir bakım bulmasına yardımcı olmak için.";
+"pp_data_usage_2" = "Kimliğinizi ve değerlendirme doğruluğunu doğrulamak için.";
+"pp_data_usage_3" = "Hizmetlerimizi iyileştirmek ve kişiselleştirilmiş öneriler sunmak için.";
+"pp_data_sharing_title" = "3. Veri Paylaşımı";
+"pp_data_sharing_1" = "Kişisel verilerinizi üçüncü taraflara SATMIYORUZ.";
+"pp_data_sharing_2" = "Değerlendirmeler herkese açıktır. Doğrulama belgeleri gizlidir ve yalnızca personel tarafından görülür.";
+"pp_data_sharing_3" = "Yasal olarak gerekli olması halinde verileri kolluk kuvvetleriyle paylaşabiliriz.";
+"pp_rights_title" = "4. Haklarınız";
+"pp_rights_1" = "Erişim: Hakkınızda tuttuğumuz tüm verileri görüntüleyebilirsiniz.";
+"pp_rights_2" = "İndirme: Ayarlar > Verilerimi İndir'den verilerinizi dışa aktarabilirsiniz.";
+"pp_rights_3" = "Silme: Ayarlar > Hesabı Sil'den tam veri silme talep edebilirsiniz.";
+"pp_rights_4" = "Düzeltme: Profil bilgilerinizi istediğiniz zaman güncelleyebilirsiniz.";
+"pp_cookies_title" = "5. Çerezler ve İzleme";
+"pp_cookies_1" = "Uygulama kullanımını anlamak için minimal analitik kullanıyoruz.";
+"pp_cookies_2" = "Üçüncü taraf reklam takipçileri kullanılmamaktadır.";
+"pp_cookies_3" = "Cihaz ayarlarınızdan analitiği devre dışı bırakabilirsiniz.";
+"pp_security_title" = "6. Güvenlik";
+"pp_security_1" = "Tüm veriler aktarım sırasında ve beklemede şifrelenir.";
+"pp_security_2" = "Satır düzeyinde güvenlik ile güvenli veri depolama için Supabase kullanıyoruz.";
+"pp_security_3" = "Düzenli güvenlik denetimleri yapılmaktadır.";
+"pp_contact_title" = "7. İletişim";
+"pp_contact_1" = "Gizlilik soruları için bize ulaşın:";
+"pp_contact_2" = "privacy@trustcare.app";
+"pp_last_updated" = "Son güncelleme: Şubat 2026";
+
+// --- Rehber (yeni) ---
+"rehber_title" = "TrustCare Rehber";
+"rehber_daily_limit_reached" = "Günlük ücretsiz limit doldu (5/5). Yarın tekrar deneyin.";
+"rehber_load_conversation_error" = "Konuşma yüklenemedi.";
+"rehber_login_required" = "Rehber'i kullanmak için giriş yapın.";
+"rehber_no_response" = "Rehber yanıt veremedi. Lütfen tekrar deneyin.";
+"rehber_response_failed" = "Yanıt oluşturulamadı. Lütfen tekrar deneyin.";
+"rehber_response_unavailable" = "Yanıt alınamadı.";
+
+// --- Diğer ---
+"accessibility_rating_hint" = "Puanı ayarlamak için yukarı veya aşağı kaydırın";
+"tab_badge_plus" = "Plus";
+"country_turkey" = "Türkiye";
+"default_city_name" = "Adana";
+"media_photo_count_%lld" = "5 fotoğraftan %lld";

@@ -81,7 +81,7 @@ struct ReviewItemView: View {
                     HStack(spacing: 6) {
                         Image(systemName: hasVoted ? "hand.thumbsup.fill" : "hand.thumbsup")
                             .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
-                        Text("\(helpfulCount) helpful")
+                        Text(String(localized: "review_helpful_count_\(helpfulCount)"))
                             .font(AppFont.caption)
                             .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
                     }
@@ -99,7 +99,7 @@ struct ReviewItemView: View {
                     } label: {
                         HStack(spacing: 4) {
                             Image(systemName: "flag")
-                            Text(hasReported ? "Reported" : "Report")
+                            Text(hasReported ? String(localized: "report_reported") : String(localized: "report_button"))
                         }
                         .font(AppFont.footnote)
                         .foregroundStyle(hasReported ? .secondary : .secondary)

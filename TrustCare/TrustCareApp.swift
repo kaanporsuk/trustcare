@@ -11,6 +11,7 @@ extension Notification.Name {
     static let trustCareRouteToAuth = Notification.Name("trustCareRouteToAuth")
     static let trustCareSwitchTab = Notification.Name("trustCareSwitchTab")
     static let trustCareApplySpecialtyFilter = Notification.Name("trustCareApplySpecialtyFilter")
+    static let languageDidChange = Notification.Name("languageDidChange")
 }
 
 enum AppState {
@@ -31,6 +32,7 @@ struct TrustCareApp: App {
     @StateObject private var authViewModel = AuthViewModel()
     @State private var appState: AppState = .splash
     @State private var path = NavigationPath()
+    @State private var rootViewId = UUID()
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
 
     init() {
@@ -96,6 +98,10 @@ struct TrustCareApp: App {
                 path = NavigationPath()
                 appState = .auth
             }
+            .onReceive(NotificationCenter.default.publisher(for: .languageDidChange)) { _ in
+                rootViewId = UUID()
+            }
+            .id(rootViewId)
         }
     }
 

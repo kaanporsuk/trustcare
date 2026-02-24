@@ -25,7 +25,7 @@ struct ReviewConfirmationView: View {
             .animation(.spring(response: 0.6, dampingFraction: 0.6), value: animateCheck)
 
             VStack(spacing: AppSpacing.sm) {
-                Text("Değerlendirmeniz gönderildi!")
+                Text(String(localized: "review_submitted_title"))
                     .font(AppFont.title2)
                     .foregroundStyle(AppColor.trustBlue)
 
@@ -33,12 +33,12 @@ struct ReviewConfirmationView: View {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: "clock.badge.exclamationmark")
                             .foregroundStyle(AppColor.pending)
-                        Text("Doğrulama beklemede")
+                        Text(String(localized: "review_verification_pending"))
                             .font(AppFont.body)
                             .foregroundStyle(AppColor.pending)
                     }
                 } else {
-                    Text("Teşekkürler! Yorumunuz yayın kuyruğuna alındı.")
+                    Text(String(localized: "review_submitted_message"))
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -51,7 +51,7 @@ struct ReviewConfirmationView: View {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     onAnotherReview()
                 } label: {
-                    Text("Başka Değerlendir")
+                    Text(String(localized: "review_another"))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(.white)
@@ -63,7 +63,7 @@ struct ReviewConfirmationView: View {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     onGoHome()
                 } label: {
-                    Text("Ana Sayfaya Dön")
+                    Text(String(localized: "review_go_home"))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(AppColor.trustBlue)

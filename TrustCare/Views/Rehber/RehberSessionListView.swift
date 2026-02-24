@@ -12,7 +12,7 @@ struct RehberSessionListView: View {
                 // Header section
                 VStack(spacing: AppSpacing.md) {
                     VStack(spacing: AppSpacing.xs) {
-                        Text("TrustCare Rehber")
+                        Text(String(localized: "rehber_title"))
                             .font(AppFont.title2)
                             .fontWeight(.bold)
                         
@@ -143,7 +143,7 @@ struct RehberSessionListView: View {
                     try await viewModel.loadSessionMessages(sessionId: session.id)
                     showChat = true
                 } catch {
-                    viewModel.errorMessage = "Unable to load conversation."
+                    viewModel.errorMessage = String(localized: "rehber_load_conversation_error")
                 }
             }
         } label: {

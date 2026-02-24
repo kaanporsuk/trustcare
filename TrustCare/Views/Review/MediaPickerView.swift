@@ -57,7 +57,7 @@ struct MediaPickerView: View {
                     }
                 }
 
-                Text("\(selectedImages.count) of 5 photos")
+                Text(String(localized: "media_photo_count_\(selectedImages.count)"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }

@@ -6,70 +6,70 @@ struct PrivacyPolicyView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
                     policySection(
-                        title: "Veri Toplama",
+                        title: String(localized: "pp_data_collection_title"),
                         bullets: [
-                            "Hesap verileri: ad, e-posta, telefon.",
-                            "Kullanım verileri: uygulama etkileşimleri ve temel cihaz bilgileri.",
-                            "İçerik verileri: değerlendirmeler, puanlar, yüklenen görseller.",
-                            "Konum verisi: yalnızca izin verdiğinizde yakın sağlayıcı göstermek için."
+                            String(localized: "pp_data_collection_1"),
+                            String(localized: "pp_data_collection_2"),
+                            String(localized: "pp_data_collection_3"),
+                            String(localized: "pp_data_collection_4")
                         ]
                     )
 
                     policySection(
-                        title: "Veri Kullanımı",
+                        title: String(localized: "pp_data_usage_title"),
                         bullets: [
-                            "Hizmetin sunulması ve iyileştirilmesi.",
-                            "Değerlendirme doğrulama süreçlerinin işletilmesi.",
-                            "Güvenlik, kötüye kullanım önleme ve kullanıcı desteği."
+                            String(localized: "pp_data_usage_1"),
+                            String(localized: "pp_data_usage_2"),
+                            String(localized: "pp_data_usage_3")
                         ]
                     )
 
                     policySection(
-                        title: "Veri Paylaşımı (3. Taraflar)",
+                        title: String(localized: "pp_data_sharing_title"),
                         bullets: [
-                            "Yasal yükümlülükler kapsamında yetkili kurumlarla.",
-                            "Altyapı hizmet sağlayıcılarıyla (barındırma, güvenlik, analiz) yalnızca gerekli kapsamda.",
-                            "Açık rızanız olmadan kişisel veriler ticari amaçla satılmaz."
+                            String(localized: "pp_data_sharing_1"),
+                            String(localized: "pp_data_sharing_2"),
+                            String(localized: "pp_data_sharing_3")
                         ]
                     )
 
                     policySection(
-                        title: "KVKK Hakları",
+                        title: String(localized: "pp_rights_title"),
                         bullets: [
-                            "Erişim hakkı",
-                            "Düzeltme hakkı",
-                            "Silme hakkı",
-                            "İtiraz hakkı"
+                            String(localized: "pp_rights_1"),
+                            String(localized: "pp_rights_2"),
+                            String(localized: "pp_rights_3"),
+                            String(localized: "pp_rights_4")
                         ]
                     )
 
                     policySection(
-                        title: "Çerezler ve İzleme",
+                        title: String(localized: "pp_cookies_title"),
                         bullets: [
-                            "Uygulama performansı ve güvenliği için sınırlı teknik izleme kullanılabilir.",
-                            "Tercih ayarları cihazınızda saklanır.",
-                            "Analitik izleme tercihleriniz ayarlardan yönetilebilir."
+                            String(localized: "pp_cookies_1"),
+                            String(localized: "pp_cookies_2"),
+                            String(localized: "pp_cookies_3")
                         ]
                     )
 
                     policySection(
-                        title: "Veri Güvenliği",
+                        title: String(localized: "pp_security_title"),
                         bullets: [
-                            "Veriler aktarım ve depolama sırasında şifrelenir.",
-                            "Erişim kontrolleri ve kayıt mekanizmaları uygulanır.",
-                            "Düzenli güvenlik iyileştirmeleri yapılır."
+                            String(localized: "pp_security_1"),
+                            String(localized: "pp_security_2"),
+                            String(localized: "pp_security_3")
                         ]
                     )
 
                     policySection(
-                        title: "İletişim Bilgileri",
+                        title: String(localized: "pp_contact_title"),
                         bullets: [
-                            "E-posta: privacy@trustcare.app",
-                            "Destek: support@trustcare.app"
+                            String(localized: "pp_contact_1"),
+                            String(localized: "pp_contact_2")
                         ]
                     )
 
-                    Text("Son güncelleme: 22 Şubat 2026")
+                    Text(String(localized: "pp_last_updated"))
                         .font(AppFont.footnote)
                         .foregroundStyle(.secondary)
                         .padding(.top, AppSpacing.sm)
@@ -77,7 +77,7 @@ struct PrivacyPolicyView: View {
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.vertical, AppSpacing.lg)
             }
-            .navigationTitle("Gizlilik Politikası")
+            .navigationTitle(String(localized: "menu_privacy"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(.hidden, for: .tabBar)
         }

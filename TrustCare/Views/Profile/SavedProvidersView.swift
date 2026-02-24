@@ -14,9 +14,9 @@ struct SavedProvidersView: View {
             } else if providers.isEmpty {
                 EmptyStateView(
                     icon: "bookmark",
-                    title: "Henüz sağlayıcı kaydetmediniz",
-                    message: "Keşfet sekmesinde sağlayıcıları kaydedip burada görüntüleyebilirsiniz.",
-                    actionTitle: "Keşfet"
+                    title: String(localized: "saved_empty_title"),
+                    message: String(localized: "saved_empty_message"),
+                    actionTitle: String(localized: "saved_empty_action")
                 ) {
                     NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
                 }
@@ -43,7 +43,7 @@ struct SavedProvidersView: View {
                 .listStyle(.plain)
             }
         }
-        .navigationTitle("Kaydedilenler")
+        .navigationTitle(String(localized: "menu_saved"))
         .toolbar(.hidden, for: .tabBar)
         .task {
             await loadSavedProviders()
@@ -51,11 +51,11 @@ struct SavedProvidersView: View {
         .refreshable {
             await loadSavedProviders()
         }
-        .alert("Hata", isPresented: Binding(
+        .alert(String(localized: "error_generic"), isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button("Tamam") { errorMessage = nil }
+            Button(String(localized: "button_ok")) { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }

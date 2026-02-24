@@ -24,8 +24,8 @@ struct AddProviderSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Sağlayıcı") {
-                    TextField("Ad", text: $name)
+                Section(String(localized: "add_provider_section")) {
+                    TextField(String(localized: "add_provider_name"), text: $name)
 
                     if !placeSuggestions.isEmpty {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
@@ -34,7 +34,7 @@ struct AddProviderSheet: View {
                                     applySuggestion(suggestion)
                                 } label: {
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("Bu mu? \(suggestion.name)")
+                                        Text("\(String(localized: "add_provider_is_this")) \(suggestion.name)")
                                             .font(AppFont.body)
                                             .foregroundStyle(.primary)
                                         Text(suggestion.address)
@@ -53,20 +53,20 @@ struct AddProviderSheet: View {
                         showSpecialtyPicker = true
                     } label: {
                         HStack {
-                            Text("Uzmanlık")
+                            Text(String(localized: "specialty_label"))
                             Spacer()
-                            Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? "Seç")
+                            Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? String(localized: "add_provider_select"))
                                 .foregroundStyle(.secondary)
                         }
                     }
 
-                    TextField("Adres", text: $address)
-                    TextField("Telefon (opsiyonel)", text: $phone)
+                    TextField(String(localized: "add_provider_address"), text: $address)
+                    TextField(String(localized: "add_provider_phone"), text: $phone)
                         .keyboardType(.phonePad)
                 }
 
-                Section("Konum") {
-                    Button("Haritada İşaretle") {
+                Section(String(localized: "add_provider_location")) {
+                    Button(String(localized: "add_provider_map_pin")) {
                         showMapPicker = true
                     }
 
@@ -77,13 +77,13 @@ struct AddProviderSheet: View {
                     }
                 }
             }
-            .navigationTitle("Yeni Sağlayıcı")
+            .navigationTitle(String(localized: "add_provider_title"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Vazgeç") { dismiss() }
+                    Button(String(localized: "button_cancel")) { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Ekle") {
+                    Button(String(localized: "button_add")) {
                         Task { await submit() }
                     }
                     .disabled(!isValid || isSubmitting)
@@ -95,11 +95,11 @@ struct AddProviderSheet: View {
                     ProgressView().tint(.white)
                 }
             }
-            .alert("Hata", isPresented: Binding(
+            .alert(String(localized: "error_generic"), isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )) {
-                Button("Tamam") { errorMessage = nil }
+                Button(String(localized: "button_ok")) { errorMessage = nil }
             } message: {
                 Text(errorMessage ?? "")
             }
@@ -131,7 +131,7 @@ struct AddProviderSheet: View {
 
     private func submit() async {
         guard let selectedSpecialty else {
-            errorMessage = "Uzmanlık seçiniz."
+            errorMessage = String(localized: "add_provider_select_specialty_error")
             return
         }
 
@@ -171,7 +171,7 @@ struct AddProviderSheet: View {
         if let coordinate = placemarks.first?.location?.coordinate {
             return coordinate
         }
-        throw AppError.validationError("Adres konumu bulunamadı.")
+        throw AppError.validationError(String(localized: "add_provider_geocode_error"))
     }
 
     private func searchMapSuggestions() async {
@@ -245,7 +245,7 @@ struct AddProviderSheet: View {
         if !chunks.isEmpty {
             return chunks.joined(separator: ", ")
         }
-        return placemark.title ?? "Adres bilgisi yok"
+        return placemark.title ?? String(localized: "add_provider_no_address")
     }
 }
 
@@ -298,10 +298,10 @@ private struct SpecialtyPickerSheet: View {
                 }
             }
             .searchable(text: $searchText)
-            .navigationTitle("Uzmanlık Seç")
+            .navigationTitle(String(localized: "add_provider_select_specialty"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Kapat") { dismiss() }
+                    Button(String(localized: "close_button")) { dismiss() }
                 }
             }
         }
@@ -329,10 +329,10 @@ private struct MapPinSelectorSheet: View {
     var body: some View {
         NavigationStack {
             CoordinatePickerMap(selectedCoordinate: $selectedCoordinate)
-                .navigationTitle("Haritada İşaretle")
+                .navigationTitle(String(localized: "add_provider_map_pin"))
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Tamam") { dismiss() }
+                        Button(String(localized: "button_ok")) { dismiss() }
                     }
                 }
         }

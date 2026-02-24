@@ -95,41 +95,41 @@ struct ProviderMapView: View {
                 }
             }
 
-            // Overlay buttons
+            // Search this area button — independent of legend
+            VStack {
+                if showSearchButton, let region = visibleRegion {
+                    Button {
+                        showSearchButton = false
+                        Task {
+                            await viewModel.fetchProviders(in: region)
+                        }
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "magnifyingglass")
+                            Text(String(localized: "search_this_area"))
+                        }
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(AppColor.trustBlue)
+                        .cornerRadius(20)
+                        .shadow(radius: 4)
+                    }
+                    .padding(.top, 12)
+                    .transition(.opacity.combined(with: .scale))
+                }
+                Spacer()
+            }
+
+            // Color-coded map legend — TOP RIGHT, independent container
             VStack {
                 HStack {
-                    // Search this area button
-                    if showSearchButton, let region = visibleRegion {
-                        Button {
-                            showSearchButton = false
-                            Task {
-                                await viewModel.fetchProviders(in: region)
-                            }
-                        } label: {
-                            HStack(spacing: 8) {
-                                Image(systemName: "magnifyingglass")
-                                Text(String(localized: "search_this_area"))
-                            }
-                            .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(AppColor.trustBlue)
-                            .cornerRadius(20)
-                            .shadow(radius: 4)
-                        }
-                        .padding(.top, 12)
-                        .transition(.opacity.combined(with: .scale))
-                    }
-
                     Spacer()
-
-                    // Color-coded map legend — TOP RIGHT
                     MapLegendView(viewModel: viewModel)
                         .padding(.trailing, 12)
                         .padding(.top, 12)
                 }
-
                 Spacer()
             }
         }
