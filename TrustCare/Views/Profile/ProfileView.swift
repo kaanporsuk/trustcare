@@ -198,9 +198,7 @@ struct ProfileView: View {
                 Text(memberSinceText)
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
-                Text("\(String(localized: "profile_referral")): \(profileVM.profile?.referralCode ?? "-")")
-                    .font(.system(.caption, design: .monospaced))
-                    .foregroundStyle(.secondary)
+
             }
             Spacer()
         }

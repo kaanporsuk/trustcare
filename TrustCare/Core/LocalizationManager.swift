@@ -78,17 +78,30 @@ final class LocalizationManager: ObservableObject {
         NotificationCenter.default.post(name: .languageDidChange, object: nil)
     }
 
+    /// The database column suffix for the current language.
+    /// Used by ALL Supabase queries that fetch translatable content.
+    var dbColumnSuffix: String {
+        switch effectiveLanguage {
+        case "tr": return "_tr"
+        case "de": return "_de"
+        case "pl": return "_pl"
+        case "nl": return "_nl"
+        case "da": return "_da"
+        default:   return ""  // English uses the base column (no suffix)
+        }
+    }
+
+    /// Returns the correct DB column name for a given base field.
+    /// Example: dbColumn("name") → "name_tr" when Turkish.
+    func dbColumn(_ baseField: String) -> String {
+        let suffix = dbColumnSuffix
+        if suffix.isEmpty { return baseField }
+        return baseField + suffix
+    }
+
     /// The specialty name column to fetch from Supabase.
     var specialtyNameColumn: String {
-        let lang = effectiveLanguage
-        switch lang {
-        case "tr": return "name_tr"
-        case "de": return "name_de"
-        case "pl": return "name_pl"
-        case "nl": return "name_nl"
-        case "da": return "name_da"
-        default:   return "name"
-        }
+        dbColumn("name")
     }
 
     /// Resolves the best available specialty name for the current language.

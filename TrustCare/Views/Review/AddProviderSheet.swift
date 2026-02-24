@@ -271,7 +271,7 @@ private struct SpecialtyPickerSheet: View {
         NavigationStack {
             List {
                 ForEach(filteredGroups, id: \.category) { group in
-                    Section(group.category) {
+                    Section(localizationManager.localizedCategory(group.category)) {
                         ForEach(group.items) { specialty in
                             Button {
                                 onSelect(specialty)

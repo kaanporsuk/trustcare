@@ -8,7 +8,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published var selectedProvider: Provider?
     @Published var surveyConfig: SurveyConfig = SurveyConfigurations.generalClinic
     @Published var visitDate: Date = Date()
-    @Published var visitType: String = "Muayene"
+    @Published var visitType: String = "examination"
     @Published var overallRating: Int = 0
     @Published var metricRatings: [String: Int] = [:]
     @Published var comment: String = ""
@@ -280,7 +280,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
             metricRatings = [:]
         }
         visitDate = Date()
-        visitType = "Muayene"
+        visitType = "examination"
         overallRating = 0
         comment = ""
         photos = []
@@ -293,13 +293,13 @@ final class ReviewSubmissionViewModel: ObservableObject {
     }
 
     private func mappedVisitType(for uiValue: String) -> String {
+        // Tags are now canonical English keys that map directly to DB values
         let mapping: [String: String] = [
-            "Muayene": "consultation",
-            "İşlem": "procedure",
-            "Kontrol": "checkup",
-            "Acil": "emergency"
+            "examination": "consultation",
+            "procedure": "procedure",
+            "checkup": "checkup",
+            "emergency": "emergency"
         ]
-
         return mapping[uiValue] ?? "consultation"
     }
 
@@ -311,10 +311,10 @@ final class ReviewSubmissionViewModel: ObservableObject {
         if !localized.isEmpty {
             let lower = localized.lowercased()
             if lower.contains("network") || lower.contains("offline") || lower.contains("internet") {
-                return "Ağ bağlantısı sorunu oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin."
+                return String(localized: "error_network")
             }
             if lower.contains("duplicate") || lower.contains("unique") {
-                return "Aynı sağlayıcı için aynı tarihte yalnızca bir değerlendirme gönderebilirsiniz."
+                return String(localized: "error_duplicate_review")
             }
             return localized
         }

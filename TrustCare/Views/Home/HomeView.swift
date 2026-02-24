@@ -21,6 +21,17 @@ struct HomeView: View {
         print(message())
     }
 
+    private func localizedProviderSpecialty(_ provider: Provider) -> String {
+        guard let specialty = specialtyService.specialties.first(where: {
+            [$0.name, $0.nameTr, $0.nameDe, $0.namePl, $0.nameNl, $0.nameDa]
+                .compactMap { $0 }
+                .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+        return specialty.resolvedName(using: localizationManager)
+    }
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -129,7 +140,7 @@ struct HomeView: View {
                                             VStack(alignment: .leading, spacing: 2) {
                                                 Text(provider.name)
                                                     .font(AppFont.body)
-                                                Text(provider.specialty)
+                                                Text(localizedProviderSpecialty(provider))
                                                     .font(AppFont.caption)
                                                     .foregroundStyle(.secondary)
                                             }

@@ -443,3 +443,86 @@
 "country_turkey" = "Türkiye";
 "default_city_name" = "Adana";
 "media_photo_count_%lld" = "%lld z 5 zdjęć";
+
+// ── Metryki ankiety ────────────────────────────────────────────
+"survey_general_clinic" = "Klinika ogólna";
+"survey_dental" = "Stomatologia";
+"survey_pharmacy" = "Apteka";
+"survey_hospital" = "Szpital";
+"survey_diagnostic" = "Centrum diagnostyczne";
+"survey_mental_health" = "Zdrowie psychiczne";
+"survey_rehabilitation" = "Rehabilitacja";
+"survey_aesthetics" = "Klinika estetyczna";
+
+"survey_waiting_time" = "Czas oczekiwania";
+"survey_waiting_time_sub" = "Jak długo czekał/a Pan/Pani po umówionej godzinie?";
+"survey_bedside_manner" = "Podejście lekarza";
+"survey_bedside_manner_sub" = "Czy lekarz słuchał i jasno wyjaśniał?";
+"survey_treatment_effectiveness" = "Skuteczność leczenia";
+"survey_treatment_effectiveness_sub" = "Czy leczenie rozwiązało problem?";
+"survey_clinic_hygiene" = "Higiena kliniki";
+"survey_clinic_hygiene_sub" = "Czy klinika była czysta i higieniczna?";
+
+"survey_dental_wait_sub" = "Jak szybko został/a Pan/Pani przyjęty/a?";
+"survey_pain_management" = "Zarządzanie bólem";
+"survey_pain_management_sub" = "Jak dobrze kontrolowali ból?";
+"survey_dental_bedside_sub" = "Czy dentysta komunikował się jasno?";
+"survey_dental_hygiene_sub" = "Czy gabinety i sprzęt były czyste?";
+
+"survey_speed" = "Szybkość";
+"survey_speed_sub" = "Jak szybko został/a Pan/Pani obsłużony/a?";
+"survey_accuracy" = "Dokładność i staranność";
+"survey_accuracy_sub" = "Czy recepta została prawidłowo przygotowana?";
+"survey_pharmacist_knowledge" = "Wiedza farmaceuty";
+"survey_pharmacist_knowledge_sub" = "Czy farmaceuta dobrze odpowiedział na pytania?";
+"survey_staff_courtesy" = "Uprzejmość personelu";
+"survey_staff_courtesy_sub" = "Czy personel był uprzejmy?";
+
+"survey_hospital_wait_sub" = "Jak szybko został/a Pan/Pani przyjęty/a przez lekarza?";
+"survey_care_quality" = "Jakość opieki";
+"survey_care_quality_sub" = "Jak ocenia Pan/Pani opiekę medyczną?";
+"survey_admin_efficiency" = "Sprawność administracji";
+"survey_admin_efficiency_sub" = "Czy przyjęcie i wypisanie przebiegło sprawnie?";
+"survey_room_hygiene" = "Higiena sal";
+"survey_room_hygiene_sub" = "Czy sale i pomieszczenia były czyste?";
+
+"survey_diagnostic_wait_sub" = "Jak szybko wezwano Pana/Panią na badanie?";
+"survey_procedure_comfort" = "Komfort zabiegu";
+"survey_procedure_comfort_sub" = "Czy personel zapewnił komfort podczas zabiegu?";
+"survey_result_speed" = "Szybkość wyników";
+"survey_result_speed_sub" = "Czy wyniki zostały dostarczone na czas?";
+"survey_facility_hygiene" = "Higiena placówki";
+"survey_facility_hygiene_sub" = "Czy placówka była czysta i higieniczna?";
+
+"survey_punctuality" = "Punktualność";
+"survey_punctuality_sub" = "Czy sesja rozpoczęła się punktualnie?";
+"survey_empathy" = "Empatia i słuchanie";
+"survey_empathy_sub" = "Czy poczuł/a się Pan/Pani naprawdę wysłuchany/a?";
+"survey_environment_comfort" = "Komfort otoczenia";
+"survey_environment_comfort_sub" = "Czy gabinet był spokojny i zapewniał prywatność?";
+"survey_communication_clarity" = "Jasność komunikacji";
+"survey_communication_clarity_sub" = "Czy plany leczenia zostały jasno wyjaśnione?";
+
+"survey_rehab_wait_sub" = "Jak szybko rozpoczęła się sesja?";
+"survey_rehab_effectiveness_sub" = "Czy sesje poprawiły sprawność lub zmniejszyły ból?";
+"survey_therapist_attentiveness" = "Uważność terapeuty";
+"survey_therapist_attentiveness_sub" = "Czy terapeuta obserwował i dostosowywał ćwiczenia?";
+"survey_facility_equipment" = "Wyposażenie placówki";
+"survey_facility_equipment_sub" = "Czy placówka była dobrze wyposażona?";
+
+"survey_consultation_quality" = "Jakość konsultacji";
+"survey_consultation_quality_sub" = "Czy wyjaśniono ryzyko i wyniki zabiegu?";
+"survey_result_satisfaction" = "Zadowolenie z wyników";
+"survey_result_satisfaction_sub" = "Czy jest Pan/Pani zadowolony/a z wyników?";
+"survey_aftercare" = "Opieka pozabiegowa";
+"survey_aftercare_sub" = "Czy instrukcje po zabiegu i kontrola zostały jasno wyjaśnione?";
+
+// ── Komunikaty o błędach ───────────────────────────────────────
+"error_network" = "Wystąpił problem z siecią. Sprawdź połączenie i spróbuj ponownie.";
+"error_duplicate_review" = "Możesz przesłać tylko jedną opinię na dostawcę na daną datę.";
+"error_unknown" = "Wystąpił nieznany błąd.";
+
+// ── Rehber / Data ─────────────────────────────────────────
+"rehber_emergency_detected" = "🚨 Wykryto potencjalne ryzyko nagłego wypadku. Natychmiast zadzwoń pod 112.";
+"date_today" = "Dzisiaj";
+"date_yesterday" = "Wczoraj";

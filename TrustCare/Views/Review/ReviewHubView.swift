@@ -182,10 +182,10 @@ struct ReviewHubView: View {
                 .datePickerStyle(.compact)
 
             Picker(String(localized: "review_visit_type"), selection: $viewModel.visitType) {
-                Text(String(localized: "visit_type_examination")).tag("Muayene")
-                Text(String(localized: "visit_type_procedure")).tag("İşlem")
-                Text(String(localized: "visit_type_checkup")).tag("Kontrol")
-                Text(String(localized: "visit_type_emergency")).tag("Acil")
+                Text(String(localized: "visit_type_examination")).tag("examination")
+                Text(String(localized: "visit_type_procedure")).tag("procedure")
+                Text(String(localized: "visit_type_checkup")).tag("checkup")
+                Text(String(localized: "visit_type_emergency")).tag("emergency")
             }
             .pickerStyle(.segmented)
         }

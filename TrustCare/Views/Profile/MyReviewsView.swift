@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MyReviewsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @Binding var selectedTab: Int
 
     @State private var pendingDeleteReviewId: UUID?
@@ -124,7 +125,7 @@ struct MyReviewsView: View {
             StarRatingInput(readOnlyRating: Int(round(review.ratingOverall)), starSize: 14)
 
             HStack(spacing: AppSpacing.xs) {
-                Text((review.surveyType ?? "general_clinic").replacingOccurrences(of: "_", with: " ").capitalized)
+                Text(localizedSurveyType(review.surveyType ?? "general_clinic"))
                     .font(AppFont.footnote)
                     .padding(.horizontal, AppSpacing.sm)
                     .padding(.vertical, 4)
@@ -155,6 +156,16 @@ struct MyReviewsView: View {
 
     private func canEdit(_ review: Review) -> Bool {
         Date().timeIntervalSince(review.createdAt) <= 24 * 60 * 60
+    }
+
+    private func localizedSurveyType(_ slug: String) -> String {
+        let key = "survey_\(slug)"
+        let localized = String(localized: String.LocalizationValue(key))
+        // If the key resolves to itself, fall back to formatted slug
+        if localized == key {
+            return slug.replacingOccurrences(of: "_", with: " ").capitalized
+        }
+        return localized
     }
 
     @ViewBuilder

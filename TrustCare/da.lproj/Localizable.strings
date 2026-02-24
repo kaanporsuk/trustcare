@@ -455,3 +455,86 @@
 "country_turkey" = "Türkiye";
 "default_city_name" = "Adana";
 "media_photo_count_%lld" = "%lld af 5 fotos";
+
+// ── Undersøgelsesmetrikker ─────────────────────────────────────
+"survey_general_clinic" = "Almen praksis";
+"survey_dental" = "Tandpleje";
+"survey_pharmacy" = "Apotek";
+"survey_hospital" = "Hospital";
+"survey_diagnostic" = "Diagnostisk center";
+"survey_mental_health" = "Mental sundhed";
+"survey_rehabilitation" = "Genoptræning";
+"survey_aesthetics" = "Æstetisk klinik";
+
+"survey_waiting_time" = "Ventetid";
+"survey_waiting_time_sub" = "Hvor længe ventede du efter din aftalte tid?";
+"survey_bedside_manner" = "Patientkontakt";
+"survey_bedside_manner_sub" = "Lyttede lægen og forklarede tydeligt?";
+"survey_treatment_effectiveness" = "Behandlingseffektivitet";
+"survey_treatment_effectiveness_sub" = "Løste behandlingen dit problem?";
+"survey_clinic_hygiene" = "Klinikkens renlighed";
+"survey_clinic_hygiene_sub" = "Var klinikken ren og hygiejnisk?";
+
+"survey_dental_wait_sub" = "Hvor hurtigt blev du sat ned?";
+"survey_pain_management" = "Smertebehandling";
+"survey_pain_management_sub" = "Hvor godt kontrollerede de smerten?";
+"survey_dental_bedside_sub" = "Kommunikerede tandlægen klart?";
+"survey_dental_hygiene_sub" = "Var behandlingsrum og udstyr rent?";
+
+"survey_speed" = "Hastighed";
+"survey_speed_sub" = "Hvor hurtigt blev du betjent?";
+"survey_accuracy" = "Nøjagtighed og omhu";
+"survey_accuracy_sub" = "Blev din recept forberedt korrekt?";
+"survey_pharmacist_knowledge" = "Farmaceutens viden";
+"survey_pharmacist_knowledge_sub" = "Besvarede farmaceuten dine spørgsmål godt?";
+"survey_staff_courtesy" = "Personalets høflighed";
+"survey_staff_courtesy_sub" = "Var personalet høfligt?";
+
+"survey_hospital_wait_sub" = "Hvor hurtigt blev du set af en læge?";
+"survey_care_quality" = "Plejekvalitet";
+"survey_care_quality_sub" = "Hvordan vurderer du den medicinske pleje?";
+"survey_admin_efficiency" = "Administrativ effektivitet";
+"survey_admin_efficiency_sub" = "Gik indlæggelse og udskrivning glat?";
+"survey_room_hygiene" = "Rummets renlighed";
+"survey_room_hygiene_sub" = "Var rummene og områderne rene?";
+
+"survey_diagnostic_wait_sub" = "Hvor hurtigt blev du kaldt til din test?";
+"survey_procedure_comfort" = "Procedurekomfort";
+"survey_procedure_comfort_sub" = "Gjorde personalet proceduren behagelig?";
+"survey_result_speed" = "Resultathastighed";
+"survey_result_speed_sub" = "Blev resultaterne leveret til tiden?";
+"survey_facility_hygiene" = "Facilitetshygiejne";
+"survey_facility_hygiene_sub" = "Var faciliteten ren og hygiejnisk?";
+
+"survey_punctuality" = "Punktlighed";
+"survey_punctuality_sub" = "Startede din session til tiden?";
+"survey_empathy" = "Empati og lytning";
+"survey_empathy_sub" = "Følte du dig virkelig hørt?";
+"survey_environment_comfort" = "Miljøkomfort";
+"survey_environment_comfort_sub" = "Var kontoret fredeligt og privat?";
+"survey_communication_clarity" = "Kommunikationsklarhed";
+"survey_communication_clarity_sub" = "Blev behandlingsplaner forklaret tydeligt?";
+
+"survey_rehab_wait_sub" = "Hvor hurtigt startede din session?";
+"survey_rehab_effectiveness_sub" = "Forbedrede sessionerne bevægeligheden eller reducerede smerten?";
+"survey_therapist_attentiveness" = "Terapeutens opmærksomhed";
+"survey_therapist_attentiveness_sub" = "Overvågede terapeuten og tilpassede?";
+"survey_facility_equipment" = "Facilitetens udstyr";
+"survey_facility_equipment_sub" = "Var faciliteten veludstyret?";
+
+"survey_consultation_quality" = "Konsultationskvalitet";
+"survey_consultation_quality_sub" = "Blev procedurens risici og resultater forklaret?";
+"survey_result_satisfaction" = "Resultattilfredshed";
+"survey_result_satisfaction_sub" = "Er du tilfreds med resultaterne?";
+"survey_aftercare" = "Efterpleje";
+"survey_aftercare_sub" = "Blev efterplejeinstruktioner og opfølgning tydeligt forklaret?";
+
+// ── Fejlmeddelelser ────────────────────────────────────────────
+"error_network" = "Der opstod et netværksproblem. Tjek din forbindelse og prøv igen.";
+"error_duplicate_review" = "Du kan kun indsende én anmeldelse pr. udbyder pr. dato.";
+"error_unknown" = "Der opstod en ukendt fejl.";
+
+// ── Rehber / Dato ─────────────────────────────────────────
+"rehber_emergency_detected" = "🚨 En potentiel nødrisiko blev opdaget. Ring straks 112.";
+"date_today" = "I dag";
+"date_yesterday" = "I går";

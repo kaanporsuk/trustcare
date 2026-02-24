@@ -451,3 +451,86 @@
 "country_turkey" = "Türkiye";
 "default_city_name" = "Adana";
 "media_photo_count_%lld" = "%lld of 5 photos";
+
+// ── Survey Metric Labels ───────────────────────────────────────
+"survey_general_clinic" = "General Clinic";
+"survey_dental" = "Dental";
+"survey_pharmacy" = "Pharmacy";
+"survey_hospital" = "Hospital";
+"survey_diagnostic" = "Diagnostic Center";
+"survey_mental_health" = "Mental Health";
+"survey_rehabilitation" = "Rehabilitation";
+"survey_aesthetics" = "Aesthetic Clinic";
+
+"survey_waiting_time" = "Waiting Time";
+"survey_waiting_time_sub" = "How long did you wait after your appointment time?";
+"survey_bedside_manner" = "Bedside Manner";
+"survey_bedside_manner_sub" = "Did the doctor listen and explain clearly?";
+"survey_treatment_effectiveness" = "Treatment Effectiveness";
+"survey_treatment_effectiveness_sub" = "Did the treatment resolve your issue?";
+"survey_clinic_hygiene" = "Clinic Hygiene";
+"survey_clinic_hygiene_sub" = "Was the clinic clean and hygienic?";
+
+"survey_dental_wait_sub" = "How quickly were you seated?";
+"survey_pain_management" = "Pain Management";
+"survey_pain_management_sub" = "How well did they manage pain?";
+"survey_dental_bedside_sub" = "Did the dentist communicate clearly?";
+"survey_dental_hygiene_sub" = "Were treatment rooms and equipment clean?";
+
+"survey_speed" = "Speed";
+"survey_speed_sub" = "How quickly were you served?";
+"survey_accuracy" = "Accuracy & Care";
+"survey_accuracy_sub" = "Was your prescription prepared correctly?";
+"survey_pharmacist_knowledge" = "Pharmacist Knowledge";
+"survey_pharmacist_knowledge_sub" = "Did the pharmacist answer your questions well?";
+"survey_staff_courtesy" = "Staff Courtesy";
+"survey_staff_courtesy_sub" = "Was the staff polite?";
+
+"survey_hospital_wait_sub" = "How quickly were you seen by a doctor?";
+"survey_care_quality" = "Care Quality";
+"survey_care_quality_sub" = "How would you rate the medical care?";
+"survey_admin_efficiency" = "Administrative Efficiency";
+"survey_admin_efficiency_sub" = "Were admission and discharge smooth?";
+"survey_room_hygiene" = "Room Hygiene";
+"survey_room_hygiene_sub" = "Were rooms and areas clean?";
+
+"survey_diagnostic_wait_sub" = "How quickly were you called for your test?";
+"survey_procedure_comfort" = "Procedure Comfort";
+"survey_procedure_comfort_sub" = "Did staff make the procedure comfortable?";
+"survey_result_speed" = "Result Speed";
+"survey_result_speed_sub" = "Were results delivered on time?";
+"survey_facility_hygiene" = "Facility Hygiene";
+"survey_facility_hygiene_sub" = "Was the facility clean and hygienic?";
+
+"survey_punctuality" = "Punctuality";
+"survey_punctuality_sub" = "Did your session start on time?";
+"survey_empathy" = "Empathy & Listening";
+"survey_empathy_sub" = "Did you feel truly heard?";
+"survey_environment_comfort" = "Environment Comfort";
+"survey_environment_comfort_sub" = "Was the office peaceful and private?";
+"survey_communication_clarity" = "Communication Clarity";
+"survey_communication_clarity_sub" = "Were treatment plans explained clearly?";
+
+"survey_rehab_wait_sub" = "How quickly did your session start?";
+"survey_rehab_effectiveness_sub" = "Did sessions improve mobility or reduce pain?";
+"survey_therapist_attentiveness" = "Therapist Attentiveness";
+"survey_therapist_attentiveness_sub" = "Did the therapist monitor and adapt?";
+"survey_facility_equipment" = "Facility Equipment";
+"survey_facility_equipment_sub" = "Was the facility well-equipped?";
+
+"survey_consultation_quality" = "Consultation Quality";
+"survey_consultation_quality_sub" = "Were procedure risks and outcomes explained?";
+"survey_result_satisfaction" = "Result Satisfaction";
+"survey_result_satisfaction_sub" = "Are you satisfied with the results?";
+"survey_aftercare" = "Aftercare";
+"survey_aftercare_sub" = "Were aftercare instructions and follow-up clearly explained?";
+
+// ── Error Messages ─────────────────────────────────────────────
+"error_network" = "A network issue occurred. Please check your connection and try again.";
+"error_duplicate_review" = "You can only submit one review per provider per date.";
+"error_unknown" = "An unknown error occurred.";
+
+// ── Rehber / Date ──────────────────────────────────────────
+"rehber_emergency_detected" = "🚨 A potential emergency risk was detected. Please call 112 immediately.";
+"date_today" = "Today";
+"date_yesterday" = "Yesterday";

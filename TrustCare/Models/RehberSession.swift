@@ -21,16 +21,16 @@ struct RehberSession: Identifiable, Codable, Equatable {
         if let title = title, !title.isEmpty {
             return title
         }
-        return "New Conversation"
+        return String(localized: "rehber_new_conversation")
     }
     
     var formattedDate: String {
         let calendar = Calendar.current
         
         if calendar.isDateInToday(updatedAt) {
-            return "Today"
+            return String(localized: "date_today")
         } else if calendar.isDateInYesterday(updatedAt) {
-            return "Yesterday"
+            return String(localized: "date_yesterday")
         } else {
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM d"

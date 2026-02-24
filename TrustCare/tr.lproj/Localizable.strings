@@ -443,3 +443,86 @@
 "country_turkey" = "Türkiye";
 "default_city_name" = "Adana";
 "media_photo_count_%lld" = "5 fotoğraftan %lld";
+
+// ── Anket Metrikleri ───────────────────────────────────────────
+"survey_general_clinic" = "Genel Klinik";
+"survey_dental" = "Diş Hekimliği";
+"survey_pharmacy" = "Eczane";
+"survey_hospital" = "Hastane";
+"survey_diagnostic" = "Tanı Merkezi";
+"survey_mental_health" = "Ruh Sağlığı";
+"survey_rehabilitation" = "Rehabilitasyon";
+"survey_aesthetics" = "Estetik Kliniği";
+
+"survey_waiting_time" = "Bekleme Süresi";
+"survey_waiting_time_sub" = "Randevu saatinizden sonra ne kadar beklediniz?";
+"survey_bedside_manner" = "Doktor Tutumu";
+"survey_bedside_manner_sub" = "Doktor sizi dinledi ve açıklamalar yaptı mı?";
+"survey_treatment_effectiveness" = "Tedavi Etkinliği";
+"survey_treatment_effectiveness_sub" = "Tedavi sorununuzu çözdü mü?";
+"survey_clinic_hygiene" = "Klinik Hijyeni";
+"survey_clinic_hygiene_sub" = "Klinik temiz ve hijyenik miydi?";
+
+"survey_dental_wait_sub" = "Ne kadar hızlı oturtuldunuz?";
+"survey_pain_management" = "Ağrı Yönetimi";
+"survey_pain_management_sub" = "Ağrıyı ne kadar iyi kontrol ettiler?";
+"survey_dental_bedside_sub" = "Diş hekimi açık bir şekilde iletişim kurdu mu?";
+"survey_dental_hygiene_sub" = "Tedavi odaları ve ekipman temiz miydi?";
+
+"survey_speed" = "Hız";
+"survey_speed_sub" = "Ne kadar hızlı hizmet aldınız?";
+"survey_accuracy" = "Doğruluk ve Özen";
+"survey_accuracy_sub" = "Reçeteniz doğru hazırlandı mı?";
+"survey_pharmacist_knowledge" = "Eczacı Bilgisi";
+"survey_pharmacist_knowledge_sub" = "Eczacı sorularınızı iyi yanıtladı mı?";
+"survey_staff_courtesy" = "Personel Nezaketi";
+"survey_staff_courtesy_sub" = "Personel kibar mıydı?";
+
+"survey_hospital_wait_sub" = "Doktor tarafından ne kadar hızlı görüldünüz?";
+"survey_care_quality" = "Bakım Kalitesi";
+"survey_care_quality_sub" = "Tıbbi bakımı nasıl değerlendirirsiniz?";
+"survey_admin_efficiency" = "İdari Verimlilik";
+"survey_admin_efficiency_sub" = "Yatış ve taburcu işlemleri sorunsuz geçti mi?";
+"survey_room_hygiene" = "Odaların Hijyeni";
+"survey_room_hygiene_sub" = "Odalar ve alanlar temiz miydi?";
+
+"survey_diagnostic_wait_sub" = "Testiniz için ne kadar hızlı çağrıldınız?";
+"survey_procedure_comfort" = "İşlem Konforu";
+"survey_procedure_comfort_sub" = "Personel işlemi rahat yaptı mı?";
+"survey_result_speed" = "Sonuç Hızı";
+"survey_result_speed_sub" = "Sonuçlar zamanında verildi mi?";
+"survey_facility_hygiene" = "Tesis Hijyeni";
+"survey_facility_hygiene_sub" = "Tesis temiz ve hijyenik miydi?";
+
+"survey_punctuality" = "Zamanında Başlama";
+"survey_punctuality_sub" = "Seansınız zamanında başladı mı?";
+"survey_empathy" = "Empati ve Dinleme";
+"survey_empathy_sub" = "Sizi gerçekten duydunuz mu?";
+"survey_environment_comfort" = "Ortam Konforu";
+"survey_environment_comfort_sub" = "Ofis huzurlu ve özel miydi?";
+"survey_communication_clarity" = "İletişim Açıklığı";
+"survey_communication_clarity_sub" = "Tedavi planları açıkça anlatıldı mı?";
+
+"survey_rehab_wait_sub" = "Seansınız ne kadar hızlı başladı?";
+"survey_rehab_effectiveness_sub" = "Seanslar hareket kabiliyetini iyileştirdi mi veya ağrıyı azalttı mı?";
+"survey_therapist_attentiveness" = "Terapist Dikkati";
+"survey_therapist_attentiveness_sub" = "Terapist sizi izledi ve uyarlamalar yaptı mı?";
+"survey_facility_equipment" = "Tesis Ekipmanı";
+"survey_facility_equipment_sub" = "Alan iyi donanımlı mıydı?";
+
+"survey_consultation_quality" = "Danışmanlık Kalitesi";
+"survey_consultation_quality_sub" = "İşlem riskleri ve sonuçları açıklandı mı?";
+"survey_result_satisfaction" = "Sonuç Memnuniyeti";
+"survey_result_satisfaction_sub" = "Sonuçlardan memnun musunuz?";
+"survey_aftercare" = "Sonrası Bakım";
+"survey_aftercare_sub" = "Sonrası talimatları ve takip açıkça anlatıldı mı?";
+
+// ── Hata Mesajları ─────────────────────────────────────────────
+"error_network" = "Ağ bağlantısı sorunu oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin.";
+"error_duplicate_review" = "Aynı sağlayıcı için aynı tarihte yalnızca bir değerlendirme gönderebilirsiniz.";
+"error_unknown" = "Bilinmeyen bir hata oluştu.";
+
+// ── Rehber / Tarih ────────────────────────────────────────
+"rehber_emergency_detected" = "🚨 Acil risk olasılığı algılandı. Lütfen hemen 112'yi arayın.";
+"date_today" = "Bugün";
+"date_yesterday" = "Dün";

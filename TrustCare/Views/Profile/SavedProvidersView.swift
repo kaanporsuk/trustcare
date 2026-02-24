@@ -2,6 +2,7 @@ import SwiftUI
 import Supabase
 
 struct SavedProvidersView: View {
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @State private var providers: [Provider] = []
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
@@ -28,7 +29,7 @@ struct SavedProvidersView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(provider.name)
                                 .font(AppFont.headline)
-                            Text(provider.specialty)
+                            Text(localizedSpecialty(for: provider))
                                 .font(AppFont.caption)
                                 .foregroundStyle(.secondary)
                             if let distance = provider.distanceKm {
@@ -99,5 +100,16 @@ struct SavedProvidersView: View {
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    private func localizedSpecialty(for provider: Provider) -> String {
+        guard let specialty = SpecialtyService.shared.specialties.first(where: {
+            [$0.name, $0.nameTr, $0.nameDe, $0.namePl, $0.nameNl, $0.nameDa]
+                .compactMap { $0 }
+                .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+        }) else {
+            return provider.specialty
+        }
+        return specialty.resolvedName(using: localizationManager)
     }
 }

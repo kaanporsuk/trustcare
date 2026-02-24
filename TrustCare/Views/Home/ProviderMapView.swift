@@ -95,30 +95,31 @@ struct ProviderMapView: View {
                 }
             }
 
-            // Search this area button — independent of legend
+            // Search this area button — Pinned top-left, independent of legend
             VStack {
-                if showSearchButton, let region = visibleRegion {
-                    Button {
-                        showSearchButton = false
-                        Task {
-                            await viewModel.fetchProviders(in: region)
+                HStack {
+                    if showSearchButton, let region = visibleRegion {
+                        Button {
+                            showSearchButton = false
+                            Task {
+                                await viewModel.fetchProviders(in: region)
+                            }
+                        } label: {
+                            Label(String(localized: "search_this_area"), systemImage: "magnifyingglass")
+                                .font(.callout.weight(.medium))
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 10)
+                                .background(AppColor.trustBlue)
+                                .foregroundStyle(.white)
+                                .clipShape(Capsule())
+                                .shadow(radius: 4)
                         }
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: "magnifyingglass")
-                            Text(String(localized: "search_this_area"))
-                        }
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(AppColor.trustBlue)
-                        .cornerRadius(20)
-                        .shadow(radius: 4)
+                        .padding(.leading, 12)
+                        .transition(.opacity.combined(with: .scale))
                     }
-                    .padding(.top, 12)
-                    .transition(.opacity.combined(with: .scale))
+                    Spacer()
                 }
+                .padding(.top, 12)
                 Spacer()
             }
 

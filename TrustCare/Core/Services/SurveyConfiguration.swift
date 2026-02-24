@@ -2,304 +2,135 @@ import Foundation
 
 struct SurveyMetric: Identifiable {
     let id = UUID()
-    let label: String
-    let subtext: String
+    let labelKey: String   // Localizable.strings key for label
+    let subtextKey: String // Localizable.strings key for subtext
     let dbColumn: String
     let icon: String
+
+    /// Resolved label for current language (via Bundle swizzle)
+    var label: String { String(localized: String.LocalizationValue(labelKey)) }
+    /// Resolved subtext for current language (via Bundle swizzle)
+    var subtext: String { String(localized: String.LocalizationValue(subtextKey)) }
 }
 
 struct SurveyConfig {
     let type: String
-    let displayName: String
+    let displayNameKey: String
     let metrics: [SurveyMetric]
+
+    /// Resolved display name for current language
+    var displayName: String { String(localized: String.LocalizationValue(displayNameKey)) }
 }
 
 enum SurveyConfigurations {
 
     static func config(for surveyType: String) -> SurveyConfig {
-        let baseConfig: SurveyConfig
         switch surveyType {
-        case "general_clinic": baseConfig = generalClinic
-        case "dental": baseConfig = dental
-        case "pharmacy": baseConfig = pharmacy
-        case "hospital": baseConfig = hospital
-        case "diagnostic": baseConfig = diagnostic
-        case "mental_health": baseConfig = mentalHealth
-        case "rehabilitation": baseConfig = rehabilitation
-        case "aesthetics": baseConfig = aesthetics
-        default: baseConfig = generalClinic
+        case "general_clinic": return generalClinic
+        case "dental": return dental
+        case "pharmacy": return pharmacy
+        case "hospital": return hospital
+        case "diagnostic": return diagnostic
+        case "mental_health": return mentalHealth
+        case "rehabilitation": return rehabilitation
+        case "aesthetics": return aesthetics
+        default: return generalClinic
         }
-
-        return SurveyConfig(
-            type: baseConfig.type,
-            displayName: localized("survey.\(baseConfig.type).display_name", fallback: baseConfig.displayName),
-            metrics: baseConfig.metrics.map { metric in
-                SurveyMetric(
-                    label: localized("survey.\(baseConfig.type).\(metric.dbColumn).label", fallback: metric.label),
-                    subtext: localized("survey.\(baseConfig.type).\(metric.dbColumn).subtext", fallback: metric.subtext),
-                    dbColumn: metric.dbColumn,
-                    icon: metric.icon
-                )
-            }
-        )
     }
 
-    private static func localized(_ key: String, fallback: String) -> String {
-        let languageCode = UserDefaults.standard.string(forKey: "appLanguage") ?? LocalizationManager.detectSystemLanguage()
-        guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
-              let bundle = Bundle(path: path) else {
-            return fallback
-        }
-
-        let localizedValue = NSLocalizedString(key, tableName: "Localizable", bundle: bundle, value: fallback, comment: "")
-        return localizedValue.isEmpty ? fallback : localizedValue
-    }
-
+    // ── General Clinic ──────────────────────────────────────────────
     static let generalClinic = SurveyConfig(
         type: "general_clinic",
-        displayName: "General Clinic",
+        displayNameKey: "survey_general_clinic",
         metrics: [
-            SurveyMetric(
-                label: "Bekleme Süresi",
-                subtext: "Randevu saatinizden sonra ne kadar beklediniz?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Doktor Tutumu",
-                subtext: "Doktor sizi dinledi ve açıklamalar yaptı mı?",
-                dbColumn: "rating_bedside",
-                icon: "heart"
-            ),
-            SurveyMetric(
-                label: "Tedavi Etkinliği",
-                subtext: "Tedavi sorununuzu çözdü mü?",
-                dbColumn: "rating_efficacy",
-                icon: "cross.case"
-            ),
-            SurveyMetric(
-                label: "Klinik Hijyeni",
-                subtext: "Klinik temiz ve hijyenik miydi?",
-                dbColumn: "rating_cleanliness",
-                icon: "sparkles"
-            )
+            SurveyMetric(labelKey: "survey_waiting_time", subtextKey: "survey_waiting_time_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_bedside_manner", subtextKey: "survey_bedside_manner_sub", dbColumn: "rating_bedside", icon: "heart"),
+            SurveyMetric(labelKey: "survey_treatment_effectiveness", subtextKey: "survey_treatment_effectiveness_sub", dbColumn: "rating_efficacy", icon: "cross.case"),
+            SurveyMetric(labelKey: "survey_clinic_hygiene", subtextKey: "survey_clinic_hygiene_sub", dbColumn: "rating_cleanliness", icon: "sparkles"),
         ]
     )
 
+    // ── Dental ──────────────────────────────────────────────────────
     static let dental = SurveyConfig(
         type: "dental",
-        displayName: "Dental",
+        displayNameKey: "survey_dental",
         metrics: [
-            SurveyMetric(
-                label: "Bekleme Süresi",
-                subtext: "Ne kadar hızlı oturtulan dindiniz?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Ağrı Yönetimi",
-                subtext: "Ağrıyı ne kadar iyi kontrol ettiler?",
-                dbColumn: "rating_pain_mgmt",
-                icon: "bolt.heart"
-            ),
-            SurveyMetric(
-                label: "Doktor Tutumu",
-                subtext: "Diş hekimi açık bir şekilde iletişim kurdu mu?",
-                dbColumn: "rating_bedside",
-                icon: "heart"
-            ),
-            SurveyMetric(
-                label: "Klinik Hijyeni",
-                subtext: "Tedavi odaları ve ekipman temiz miydi?",
-                dbColumn: "rating_cleanliness",
-                icon: "sparkles"
-            )
+            SurveyMetric(labelKey: "survey_waiting_time", subtextKey: "survey_dental_wait_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_pain_management", subtextKey: "survey_pain_management_sub", dbColumn: "rating_pain_mgmt", icon: "bolt.heart"),
+            SurveyMetric(labelKey: "survey_bedside_manner", subtextKey: "survey_dental_bedside_sub", dbColumn: "rating_bedside", icon: "heart"),
+            SurveyMetric(labelKey: "survey_clinic_hygiene", subtextKey: "survey_dental_hygiene_sub", dbColumn: "rating_cleanliness", icon: "sparkles"),
         ]
     )
 
+    // ── Pharmacy ────────────────────────────────────────────────────
     static let pharmacy = SurveyConfig(
         type: "pharmacy",
-        displayName: "Pharmacy",
+        displayNameKey: "survey_pharmacy",
         metrics: [
-            SurveyMetric(
-                label: "Hız",
-                subtext: "Ne kadar hızlı hizmet aldınız?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Doğruluk ve Özen",
-                subtext: "Reçeteniz doğru hazırlandı mı?",
-                dbColumn: "rating_accuracy",
-                icon: "checkmark.shield"
-            ),
-            SurveyMetric(
-                label: "Eczacı Bilgisi",
-                subtext: "Eczacı sorularınızı iyi yanıtladı mı?",
-                dbColumn: "rating_knowledge",
-                icon: "brain"
-            ),
-            SurveyMetric(
-                label: "Personel Nezaketi",
-                subtext: "Personel kibar mıydı?",
-                dbColumn: "rating_courtesy",
-                icon: "face.smiling"
-            )
+            SurveyMetric(labelKey: "survey_speed", subtextKey: "survey_speed_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_accuracy", subtextKey: "survey_accuracy_sub", dbColumn: "rating_accuracy", icon: "checkmark.shield"),
+            SurveyMetric(labelKey: "survey_pharmacist_knowledge", subtextKey: "survey_pharmacist_knowledge_sub", dbColumn: "rating_knowledge", icon: "brain"),
+            SurveyMetric(labelKey: "survey_staff_courtesy", subtextKey: "survey_staff_courtesy_sub", dbColumn: "rating_courtesy", icon: "face.smiling"),
         ]
     )
 
+    // ── Hospital ────────────────────────────────────────────────────
     static let hospital = SurveyConfig(
         type: "hospital",
-        displayName: "Hospital",
+        displayNameKey: "survey_hospital",
         metrics: [
-            SurveyMetric(
-                label: "Bekleme Süresi",
-                subtext: "Doktor tarafından ne kadar hızlı görüldünüz?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Bakım Kalitesi",
-                subtext: "Tıbbi bakımı nasıl değerlendirirsiniz?",
-                dbColumn: "rating_care_quality",
-                icon: "heart.text.square"
-            ),
-            SurveyMetric(
-                label: "İdari Verimlilik",
-                subtext: "Yatış ve taburcu işlemleri sorunsuz geçti mi?",
-                dbColumn: "rating_admin",
-                icon: "doc.text"
-            ),
-            SurveyMetric(
-                label: "Odaların Hijyeni",
-                subtext: "Odalar ve alanlar temiz miydi?",
-                dbColumn: "rating_cleanliness",
-                icon: "sparkles"
-            )
+            SurveyMetric(labelKey: "survey_waiting_time", subtextKey: "survey_hospital_wait_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_care_quality", subtextKey: "survey_care_quality_sub", dbColumn: "rating_care_quality", icon: "heart.text.square"),
+            SurveyMetric(labelKey: "survey_admin_efficiency", subtextKey: "survey_admin_efficiency_sub", dbColumn: "rating_admin", icon: "doc.text"),
+            SurveyMetric(labelKey: "survey_room_hygiene", subtextKey: "survey_room_hygiene_sub", dbColumn: "rating_cleanliness", icon: "sparkles"),
         ]
     )
 
+    // ── Diagnostic ──────────────────────────────────────────────────
     static let diagnostic = SurveyConfig(
         type: "diagnostic",
-        displayName: "Diagnostic Center",
+        displayNameKey: "survey_diagnostic",
         metrics: [
-            SurveyMetric(
-                label: "Bekleme Süresi",
-                subtext: "Testiniz için ne kadar hızlı çağrıldınız?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Işlem Konforu",
-                subtext: "Personel işlemi rahat yaptı mı?",
-                dbColumn: "rating_comfort",
-                icon: "hand.raised"
-            ),
-            SurveyMetric(
-                label: "Sonuç Hızı",
-                subtext: "Sonuçlar zamanında verildi mi?",
-                dbColumn: "rating_turnaround",
-                icon: "timer"
-            ),
-            SurveyMetric(
-                label: "Tessis Hijyeni",
-                subtext: "Tesis temiz ve hijyenik miydi?",
-                dbColumn: "rating_cleanliness",
-                icon: "sparkles"
-            )
+            SurveyMetric(labelKey: "survey_waiting_time", subtextKey: "survey_diagnostic_wait_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_procedure_comfort", subtextKey: "survey_procedure_comfort_sub", dbColumn: "rating_comfort", icon: "hand.raised"),
+            SurveyMetric(labelKey: "survey_result_speed", subtextKey: "survey_result_speed_sub", dbColumn: "rating_turnaround", icon: "timer"),
+            SurveyMetric(labelKey: "survey_facility_hygiene", subtextKey: "survey_facility_hygiene_sub", dbColumn: "rating_cleanliness", icon: "sparkles"),
         ]
     )
 
+    // ── Mental Health ───────────────────────────────────────────────
     static let mentalHealth = SurveyConfig(
         type: "mental_health",
-        displayName: "Mental Health",
+        displayNameKey: "survey_mental_health",
         metrics: [
-            SurveyMetric(
-                label: "Zamanında Başlama",
-                subtext: "Seansınız zamanında başladı mı?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Empati & Dinleme",
-                subtext: "Sizi gerçekten duydunuz mu?",
-                dbColumn: "rating_empathy",
-                icon: "heart.circle"
-            ),
-            SurveyMetric(
-                label: "Ortam Konforu",
-                subtext: "Ofis huzlu ve özel miydi?",
-                dbColumn: "rating_environment",
-                icon: "leaf"
-            ),
-            SurveyMetric(
-                label: "İletişim Açıklığı",
-                subtext: "Tedavi planları açıkça anlatıldı mı?",
-                dbColumn: "rating_communication",
-                icon: "text.bubble"
-            )
+            SurveyMetric(labelKey: "survey_punctuality", subtextKey: "survey_punctuality_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_empathy", subtextKey: "survey_empathy_sub", dbColumn: "rating_empathy", icon: "heart.circle"),
+            SurveyMetric(labelKey: "survey_environment_comfort", subtextKey: "survey_environment_comfort_sub", dbColumn: "rating_environment", icon: "leaf"),
+            SurveyMetric(labelKey: "survey_communication_clarity", subtextKey: "survey_communication_clarity_sub", dbColumn: "rating_communication", icon: "text.bubble"),
         ]
     )
 
+    // ── Rehabilitation ──────────────────────────────────────────────
     static let rehabilitation = SurveyConfig(
         type: "rehabilitation",
-        displayName: "Rehabilitation",
+        displayNameKey: "survey_rehabilitation",
         metrics: [
-            SurveyMetric(
-                label: "Bekleme Süresi",
-                subtext: "Seansınız ne kadar hızlı başladı?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Tedavi Etkinliği",
-                subtext: "Seanslar hareket kabiliyetini iyileştirdi mi veya ağrı azalttı mı?",
-                dbColumn: "rating_effectiveness",
-                icon: "figure.walk"
-            ),
-            SurveyMetric(
-                label: "Terapist Dikkatililiği",
-                subtext: "Terapist sizi izledi ve uyarlamalar yaptı mı?",
-                dbColumn: "rating_attentiveness",
-                icon: "eye"
-            ),
-            SurveyMetric(
-                label: "Tessis Ekipmanı",
-                subtext: "Alan iyi donanımlı mıydı?",
-                dbColumn: "rating_equipment",
-                icon: "dumbbell"
-            )
+            SurveyMetric(labelKey: "survey_waiting_time", subtextKey: "survey_rehab_wait_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_treatment_effectiveness", subtextKey: "survey_rehab_effectiveness_sub", dbColumn: "rating_effectiveness", icon: "figure.walk"),
+            SurveyMetric(labelKey: "survey_therapist_attentiveness", subtextKey: "survey_therapist_attentiveness_sub", dbColumn: "rating_attentiveness", icon: "eye"),
+            SurveyMetric(labelKey: "survey_facility_equipment", subtextKey: "survey_facility_equipment_sub", dbColumn: "rating_equipment", icon: "dumbbell"),
         ]
     )
 
+    // ── Aesthetics ──────────────────────────────────────────────────
     static let aesthetics = SurveyConfig(
         type: "aesthetics",
-        displayName: "Aesthetic Clinic",
+        displayNameKey: "survey_aesthetics",
         metrics: [
-            SurveyMetric(
-                label: "Bekleme Süresi",
-                subtext: "Randevu saatinizden sonra ne kadar beklediniz?",
-                dbColumn: "rating_wait_time",
-                icon: "clock"
-            ),
-            SurveyMetric(
-                label: "Danışmanlık Kalitesi",
-                subtext: "İşlem riskleri ve sonuçları açıklandı mı?",
-                dbColumn: "rating_consultation",
-                icon: "text.bubble"
-            ),
-            SurveyMetric(
-                label: "Sonuç Memnuniyeti",
-                subtext: "Sonuçlardan memnun musunuz?",
-                dbColumn: "rating_results",
-                icon: "star.circle"
-            ),
-            SurveyMetric(
-                label: "Sonrası Bakım",
-                subtext: "Sonrası talimatları ve takip açıkça anlatıldı mı?",
-                dbColumn: "rating_aftercare",
-                icon: "bandage"
-            )
+            SurveyMetric(labelKey: "survey_waiting_time", subtextKey: "survey_waiting_time_sub", dbColumn: "rating_wait_time", icon: "clock"),
+            SurveyMetric(labelKey: "survey_consultation_quality", subtextKey: "survey_consultation_quality_sub", dbColumn: "rating_consultation", icon: "text.bubble"),
+            SurveyMetric(labelKey: "survey_result_satisfaction", subtextKey: "survey_result_satisfaction_sub", dbColumn: "rating_results", icon: "star.circle"),
+            SurveyMetric(labelKey: "survey_aftercare", subtextKey: "survey_aftercare_sub", dbColumn: "rating_aftercare", icon: "bandage"),
         ]
     )
 }

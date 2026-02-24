@@ -124,7 +124,7 @@ final class RehberViewModel: ObservableObject {
                 let emergencyResponse = RehberMessage(
                     id: UUID(),
                     role: "assistant",
-                    content: "🚨 Acil risk olasılığı algılandı. Lütfen hemen 112'yi arayın.",
+                    content: String(localized: "rehber_emergency_detected"),
                     recommendedSpecialties: nil,
                     wasEmergency: true,
                     createdAt: Date()
@@ -570,7 +570,7 @@ final class RehberViewModel: ObservableObject {
         if !localized.isEmpty {
             return localized
         }
-        return "Bilinmeyen bir hata oluştu."
+        return String(localized: "error_unknown")
     }
 }
 

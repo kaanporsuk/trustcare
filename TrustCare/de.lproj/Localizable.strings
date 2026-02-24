@@ -443,3 +443,86 @@
 "country_turkey" = "Türkiye";
 "default_city_name" = "Adana";
 "media_photo_count_%lld" = "%lld von 5 Fotos";
+
+// ── Umfrage-Metriken ────────────────────────────────────────────
+"survey_general_clinic" = "Allgemeine Praxis";
+"survey_dental" = "Zahnmedizin";
+"survey_pharmacy" = "Apotheke";
+"survey_hospital" = "Krankenhaus";
+"survey_diagnostic" = "Diagnosezentrum";
+"survey_mental_health" = "Psychische Gesundheit";
+"survey_rehabilitation" = "Rehabilitation";
+"survey_aesthetics" = "Ästhetische Klinik";
+
+"survey_waiting_time" = "Wartezeit";
+"survey_waiting_time_sub" = "Wie lange haben Sie nach Ihrem Termin gewartet?";
+"survey_bedside_manner" = "Patientenbetreuung";
+"survey_bedside_manner_sub" = "Hat der Arzt zugehört und verständlich erklärt?";
+"survey_treatment_effectiveness" = "Behandlungserfolg";
+"survey_treatment_effectiveness_sub" = "Hat die Behandlung Ihr Problem gelöst?";
+"survey_clinic_hygiene" = "Praxishygiene";
+"survey_clinic_hygiene_sub" = "War die Praxis sauber und hygienisch?";
+
+"survey_dental_wait_sub" = "Wie schnell wurden Sie platziert?";
+"survey_pain_management" = "Schmerzmanagement";
+"survey_pain_management_sub" = "Wie gut wurde der Schmerz kontrolliert?";
+"survey_dental_bedside_sub" = "Hat der Zahnarzt klar kommuniziert?";
+"survey_dental_hygiene_sub" = "Waren Behandlungsräume und Geräte sauber?";
+
+"survey_speed" = "Geschwindigkeit";
+"survey_speed_sub" = "Wie schnell wurden Sie bedient?";
+"survey_accuracy" = "Genauigkeit und Sorgfalt";
+"survey_accuracy_sub" = "Wurde Ihr Rezept korrekt zubereitet?";
+"survey_pharmacist_knowledge" = "Apothekerwissen";
+"survey_pharmacist_knowledge_sub" = "Hat der Apotheker Ihre Fragen gut beantwortet?";
+"survey_staff_courtesy" = "Freundlichkeit des Personals";
+"survey_staff_courtesy_sub" = "War das Personal höflich?";
+
+"survey_hospital_wait_sub" = "Wie schnell wurden Sie von einem Arzt gesehen?";
+"survey_care_quality" = "Versorgungsqualität";
+"survey_care_quality_sub" = "Wie bewerten Sie die medizinische Versorgung?";
+"survey_admin_efficiency" = "Verwaltungseffizienz";
+"survey_admin_efficiency_sub" = "Liefen Aufnahme und Entlassung reibungslos?";
+"survey_room_hygiene" = "Zimmerhygiene";
+"survey_room_hygiene_sub" = "Waren Zimmer und Bereiche sauber?";
+
+"survey_diagnostic_wait_sub" = "Wie schnell wurden Sie für Ihren Test aufgerufen?";
+"survey_procedure_comfort" = "Untersuchungskomfort";
+"survey_procedure_comfort_sub" = "Hat das Personal den Eingriff angenehm gestaltet?";
+"survey_result_speed" = "Ergebnisgeschwindigkeit";
+"survey_result_speed_sub" = "Wurden die Ergebnisse rechtzeitig geliefert?";
+"survey_facility_hygiene" = "Einrichtungshygiene";
+"survey_facility_hygiene_sub" = "War die Einrichtung sauber und hygienisch?";
+
+"survey_punctuality" = "Pünktlichkeit";
+"survey_punctuality_sub" = "Hat Ihre Sitzung pünktlich begonnen?";
+"survey_empathy" = "Empathie und Zuhören";
+"survey_empathy_sub" = "Haben Sie sich wirklich gehört gefühlt?";
+"survey_environment_comfort" = "Umgebungskomfort";
+"survey_environment_comfort_sub" = "War das Büro ruhig und privat?";
+"survey_communication_clarity" = "Kommunikationsklarheit";
+"survey_communication_clarity_sub" = "Wurden Behandlungspläne klar erklärt?";
+
+"survey_rehab_wait_sub" = "Wie schnell begann Ihre Sitzung?";
+"survey_rehab_effectiveness_sub" = "Haben die Sitzungen die Mobilität verbessert oder Schmerzen reduziert?";
+"survey_therapist_attentiveness" = "Aufmerksamkeit des Therapeuten";
+"survey_therapist_attentiveness_sub" = "Hat der Therapeut Sie beobachtet und angepasst?";
+"survey_facility_equipment" = "Ausstattung der Einrichtung";
+"survey_facility_equipment_sub" = "War die Einrichtung gut ausgestattet?";
+
+"survey_consultation_quality" = "Beratungsqualität";
+"survey_consultation_quality_sub" = "Wurden Risiken und Ergebnisse des Eingriffs erklärt?";
+"survey_result_satisfaction" = "Ergebniszufriedenheit";
+"survey_result_satisfaction_sub" = "Sind Sie mit den Ergebnissen zufrieden?";
+"survey_aftercare" = "Nachsorge";
+"survey_aftercare_sub" = "Wurden Nachsorgeanweisungen und Nachsorge klar erklärt?";
+
+// ── Fehlermeldungen ────────────────────────────────────────────
+"error_network" = "Es ist ein Netzwerkfehler aufgetreten. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.";
+"error_duplicate_review" = "Sie können pro Anbieter und Datum nur eine Bewertung abgeben.";
+"error_unknown" = "Ein unbekannter Fehler ist aufgetreten.";
+
+// ── Rehber / Datum ────────────────────────────────────────
+"rehber_emergency_detected" = "🚨 Ein potenzielles Notfallrisiko wurde erkannt. Bitte rufen Sie sofort 112 an.";
+"date_today" = "Heute";
+"date_yesterday" = "Gestern";

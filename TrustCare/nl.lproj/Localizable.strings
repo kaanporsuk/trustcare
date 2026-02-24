@@ -455,3 +455,86 @@
 "country_turkey" = "Türkiye";
 "default_city_name" = "Adana";
 "media_photo_count_%lld" = "%lld van 5 foto's";
+
+// ── Enquête-metrieken ──────────────────────────────────────────
+"survey_general_clinic" = "Huisartsenpraktijk";
+"survey_dental" = "Tandheelkunde";
+"survey_pharmacy" = "Apotheek";
+"survey_hospital" = "Ziekenhuis";
+"survey_diagnostic" = "Diagnostisch centrum";
+"survey_mental_health" = "Geestelijke gezondheid";
+"survey_rehabilitation" = "Revalidatie";
+"survey_aesthetics" = "Esthetische kliniek";
+
+"survey_waiting_time" = "Wachttijd";
+"survey_waiting_time_sub" = "Hoe lang heeft u gewacht na uw afspraaktijd?";
+"survey_bedside_manner" = "Bejegening";
+"survey_bedside_manner_sub" = "Heeft de arts geluisterd en duidelijk uitgelegd?";
+"survey_treatment_effectiveness" = "Behandeleffectiviteit";
+"survey_treatment_effectiveness_sub" = "Heeft de behandeling uw probleem opgelost?";
+"survey_clinic_hygiene" = "Praktijkhygiëne";
+"survey_clinic_hygiene_sub" = "Was de praktijk schoon en hygiënisch?";
+
+"survey_dental_wait_sub" = "Hoe snel werd u geplaatst?";
+"survey_pain_management" = "Pijnbestrijding";
+"survey_pain_management_sub" = "Hoe goed werd de pijn beheerst?";
+"survey_dental_bedside_sub" = "Communiceerde de tandarts duidelijk?";
+"survey_dental_hygiene_sub" = "Waren behandelkamers en apparatuur schoon?";
+
+"survey_speed" = "Snelheid";
+"survey_speed_sub" = "Hoe snel werd u geholpen?";
+"survey_accuracy" = "Nauwkeurigheid en zorg";
+"survey_accuracy_sub" = "Werd uw recept correct bereid?";
+"survey_pharmacist_knowledge" = "Kennis van de apotheker";
+"survey_pharmacist_knowledge_sub" = "Beantwoordde de apotheker uw vragen goed?";
+"survey_staff_courtesy" = "Beleefdheid personeel";
+"survey_staff_courtesy_sub" = "Was het personeel beleefd?";
+
+"survey_hospital_wait_sub" = "Hoe snel werd u door een arts gezien?";
+"survey_care_quality" = "Kwaliteit van zorg";
+"survey_care_quality_sub" = "Hoe beoordeelt u de medische zorg?";
+"survey_admin_efficiency" = "Administratieve efficiëntie";
+"survey_admin_efficiency_sub" = "Verliep opname en ontslag soepel?";
+"survey_room_hygiene" = "Kamerhygiëne";
+"survey_room_hygiene_sub" = "Waren kamers en ruimtes schoon?";
+
+"survey_diagnostic_wait_sub" = "Hoe snel werd u opgeroepen voor uw test?";
+"survey_procedure_comfort" = "Procedurecomfort";
+"survey_procedure_comfort_sub" = "Maakte het personeel de procedure comfortabel?";
+"survey_result_speed" = "Snelheid resultaten";
+"survey_result_speed_sub" = "Werden resultaten op tijd geleverd?";
+"survey_facility_hygiene" = "Faciliteitshygiëne";
+"survey_facility_hygiene_sub" = "Was de faciliteit schoon en hygiënisch?";
+
+"survey_punctuality" = "Stiptheid";
+"survey_punctuality_sub" = "Begon uw sessie op tijd?";
+"survey_empathy" = "Empathie en luisteren";
+"survey_empathy_sub" = "Voelde u zich echt gehoord?";
+"survey_environment_comfort" = "Omgevingscomfort";
+"survey_environment_comfort_sub" = "Was het kantoor rustig en privé?";
+"survey_communication_clarity" = "Duidelijkheid communicatie";
+"survey_communication_clarity_sub" = "Werden behandelplannen duidelijk uitgelegd?";
+
+"survey_rehab_wait_sub" = "Hoe snel begon uw sessie?";
+"survey_rehab_effectiveness_sub" = "Hebben de sessies de mobiliteit verbeterd of pijn verminderd?";
+"survey_therapist_attentiveness" = "Aandacht van de therapeut";
+"survey_therapist_attentiveness_sub" = "Heeft de therapeut u gemonitord en aangepast?";
+"survey_facility_equipment" = "Apparatuur faciliteit";
+"survey_facility_equipment_sub" = "Was de faciliteit goed uitgerust?";
+
+"survey_consultation_quality" = "Kwaliteit consult";
+"survey_consultation_quality_sub" = "Werden de risico's en resultaten van de procedure uitgelegd?";
+"survey_result_satisfaction" = "Tevredenheid resultaat";
+"survey_result_satisfaction_sub" = "Bent u tevreden met de resultaten?";
+"survey_aftercare" = "Nazorg";
+"survey_aftercare_sub" = "Werden nazorginstructies en follow-up duidelijk uitgelegd?";
+
+// ── Foutmeldingen ──────────────────────────────────────────────
+"error_network" = "Er is een netwerkprobleem opgetreden. Controleer uw verbinding en probeer het opnieuw.";
+"error_duplicate_review" = "U kunt slechts één beoordeling per aanbieder per datum indienen.";
+"error_unknown" = "Er is een onbekende fout opgetreden.";
+
+// ── Rehber / Datum ────────────────────────────────────────
+"rehber_emergency_detected" = "🚨 Er is een mogelijk noodrisico gedetecteerd. Bel onmiddellijk 112.";
+"date_today" = "Vandaag";
+"date_yesterday" = "Gisteren";
