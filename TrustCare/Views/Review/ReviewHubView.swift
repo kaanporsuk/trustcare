@@ -175,8 +175,7 @@ struct ReviewHubView: View {
 
     private var visitDetailsSection: some View {
         let lang = localizationManager.effectiveLanguage
-
-        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+        return VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text("review_visit_details")
                 .font(AppFont.title3)
 
@@ -206,8 +205,7 @@ struct ReviewHubView: View {
 
     private var detailedRatingsSection: some View {
         let lang = localizationManager.effectiveLanguage
-
-        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+        return VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text("review_detailed")
                 .font(AppFont.title3)
 

@@ -11,6 +11,7 @@ struct ProviderMapView: View {
     // This is a LOCAL @State — NOT derived from ViewModel.
     // It is ONLY mutated by:
     //   1. .task on initial load
+    
     //   2. .onChange(of: viewModel.flyToToken) when user picks a location
     //   3. The built-in MapUserLocationButton (MapKit internal)
     //   4. User gestures (MapKit internal)
