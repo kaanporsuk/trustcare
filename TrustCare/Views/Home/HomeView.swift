@@ -80,6 +80,7 @@ struct HomeView: View {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.secondary)
                         TextField("search_placeholder", text: $homeVM.searchText)
+                            .textFieldStyle(.plain)
                             .font(AppFont.body)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
