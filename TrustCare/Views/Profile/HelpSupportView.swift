@@ -42,12 +42,12 @@ struct HelpSupportView: View {
                 VStack(spacing: AppSpacing.sm) {
                     ForEach(Array(faqItems.enumerated()), id: \.offset) { _, item in
                         DisclosureGroup {
-                            Text(item.answer)
+                            Text(LocalizedStringKey(item.answer))
                                 .font(AppFont.body)
                                 .foregroundStyle(.secondary)
                                 .padding(.top, AppSpacing.xs)
                         } label: {
-                            Text(item.question)
+                            Text(LocalizedStringKey(item.question))
                                 .font(AppFont.headline)
                                 .foregroundStyle(.primary)
                         }

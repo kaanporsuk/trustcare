@@ -85,7 +85,7 @@ struct PrivacyPolicyView: View {
 
     private func policySection(title: String, bullets: [String]) -> some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(AppFont.title3)
 
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
@@ -93,7 +93,7 @@ struct PrivacyPolicyView: View {
                     HStack(alignment: .top, spacing: AppSpacing.xs) {
                         Text("•")
                             .foregroundStyle(AppColor.trustBlue)
-                        Text(line)
+                        Text(LocalizedStringKey(line))
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
                     }
