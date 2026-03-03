@@ -103,13 +103,13 @@ struct MapLegendView: View {
     }
 
     /// Label shown on the collapsed capsule
-    private var selectedLabel: String {
+    private var selectedLabel: LocalizedStringKey {
         guard let type = viewModel.selectedSurveyType else {
-            return "filter_button"
+            return LocalizedStringKey("filter_button")
         }
         if let cat = categories.first(where: { $0.type == type }) {
-            return cat.labelKey
+            return LocalizedStringKey(cat.labelKey)
         }
-        return "filter_button"
+        return LocalizedStringKey("filter_button")
     }
 }

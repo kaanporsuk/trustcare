@@ -14,7 +14,11 @@ struct HomeView: View {
     @State private var selectedProviderFromSearch: Provider?
     @State private var selectedProviderFromMap: Provider?
     @State private var showMapBottomSheet: Bool = false
+    @State private var mapSheetHeight: CGFloat = 188
+    @State private var mapSheetDragOffset: CGFloat = 0
     private let verboseLogging = false
+    private let mapSheetMinHeight: CGFloat = 132
+    private let mapSheetMaxHeight: CGFloat = 300
 
     private func verboseLog(_ message: @autoclosure () -> String) {
         guard verboseLogging else { return }
@@ -46,11 +50,15 @@ struct HomeView: View {
                                 .font(.title3)
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text(homeVM.locationName.isEmpty || homeVM.locationName == "Tap to set location"
-                                     ? "default_city_name"
-                                     : homeVM.locationName)
-                                    .font(AppFont.headline)
-                                    .foregroundStyle(.primary)
+                                if homeVM.locationName.isEmpty || homeVM.locationName == "Tap to set location" {
+                                    Text("default_city_name")
+                                        .font(AppFont.headline)
+                                        .foregroundStyle(.primary)
+                                } else {
+                                    Text(homeVM.locationName)
+                                        .font(AppFont.headline)
+                                        .foregroundStyle(.primary)
+                                }
                                 Text("country_turkey")
                                     .font(AppFont.caption)
                                     .foregroundStyle(.secondary)
@@ -89,12 +97,8 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, AppSpacing.md)
                     .frame(height: 44)
-                    .background(AppColor.cardBackground)
-                    .cornerRadius(AppRadius.button)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.border, lineWidth: 1)
-                    )
+                    .background(Color(.systemGray6))
+                    .clipShape(Capsule())
                     .padding(.horizontal, AppSpacing.lg)
 
                     // Search suggestions (if any)
@@ -162,7 +166,7 @@ struct HomeView: View {
                     // Smart Pills (All + Top 5 Popular + More)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: AppSpacing.sm) {
-                            smartPill(title: "filter_all", isSelected: selectedSpecialty == nil) {
+                            smartPill(titleKey: "filter_all", isSelected: selectedSpecialty == nil) {
                                 selectedSpecialty = nil
                                 Task { await homeVM.applySpecialtyFilter(nil) }
                             }
@@ -179,7 +183,7 @@ struct HomeView: View {
                                 }
                             }
 
-                            smartPill(title: "filter_more", isSelected: false) {
+                            smartPill(titleKey: "filter_more", isSelected: false) {
                                 showSpecialtyBrowser = true
                             }
                         }
@@ -195,8 +199,8 @@ struct HomeView: View {
                     .padding(.horizontal, AppSpacing.lg)
                 }
                 .padding(.bottom, AppSpacing.md)
-                .background(Color(.systemBackground))
-                .shadow(color: .black.opacity(0.05), radius: 2, y: 1)
+                .background(.ultraThinMaterial)
+                .shadow(color: .black.opacity(0.08), radius: 8, y: 2)
 
                 // Content Section
                 ZStack {
@@ -293,6 +297,23 @@ struct HomeView: View {
         .buttonStyle(.plain)
     }
 
+    private func smartPill(titleKey: LocalizedStringKey, isSelected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(titleKey)
+                .font(AppFont.caption)
+                .foregroundStyle(isSelected ? Color.white : Color.primary)
+                .padding(.horizontal, AppSpacing.md)
+                .padding(.vertical, AppSpacing.sm)
+                .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button)
+                        .stroke(isSelected ? Color.clear : AppColor.border, lineWidth: 1)
+                )
+                .cornerRadius(AppRadius.button)
+        }
+        .buttonStyle(.plain)
+    }
+
     @ViewBuilder
     private var contentSection: some View {
         if homeVM.isLoading && homeVM.providers.isEmpty {
@@ -307,29 +328,24 @@ struct HomeView: View {
                 .padding(.top, AppSpacing.md)
             }
         } else if homeVM.viewMode == .map {
-            ProviderMapView(
-                viewModel: homeVM,
-                onOpenProvider: { provider in
-                    selectedProviderFromMap = provider
+            ZStack(alignment: .bottom) {
+                ProviderMapView(
+                    viewModel: homeVM,
+                    onOpenProvider: { provider in
+                        selectedProviderFromMap = provider
+                    }
+                )
+
+                if homeVM.providers.isEmpty {
+                    premiumEmptyState
+                        .padding(.bottom, AppSpacing.xxl)
+                } else {
+                    mapBottomSheet
                 }
-            )
-        } else if homeVM.providers.isEmpty {
-            VStack(spacing: AppSpacing.sm) {
-                Image(systemName: "magnifyingglass")
-                    .font(.title2)
-                    .foregroundStyle(.secondary)
-                Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                     ? "empty_home_title"
-                     : "empty_search")
-                    .font(AppFont.body)
-                    .foregroundStyle(.secondary)
-                Button("empty_home_cta") {
-                    NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
-                }
-                .font(AppFont.callout)
-                .foregroundStyle(AppColor.trustBlue)
             }
-            .padding(.top, AppSpacing.xxl)
+        } else if homeVM.providers.isEmpty {
+            premiumEmptyState
+                .padding(.top, AppSpacing.xxl)
         } else {
             ScrollView {
                 LazyVStack(spacing: 12) {
@@ -352,6 +368,103 @@ struct HomeView: View {
                 await homeVM.refresh(forceSpecialtiesRefresh: true)
             }
         }
+    }
+
+    private var premiumEmptyState: some View {
+        VStack(spacing: AppSpacing.md) {
+            ZStack {
+                Circle()
+                    .fill(AppColor.trustBlue.opacity(0.12))
+                    .frame(width: 120, height: 120)
+                Image(systemName: "cross.case.circle.fill")
+                    .font(.system(size: 54))
+                    .foregroundStyle(AppColor.trustBlue.opacity(0.85))
+            }
+
+            Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                 ? LocalizedStringKey("empty_home_title")
+                 : LocalizedStringKey("empty_search"))
+                .font(AppFont.headline)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.primary)
+
+            Button {
+                NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
+            } label: {
+                Text("empty_home_cta")
+                    .font(AppFont.callout)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, AppSpacing.lg)
+                    .padding(.vertical, AppSpacing.sm)
+                    .background(AppColor.trustBlue)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.horizontal, AppSpacing.lg)
+    }
+
+    private var mapBottomSheet: some View {
+        let dynamicHeight = min(
+            max(mapSheetHeight - mapSheetDragOffset, mapSheetMinHeight),
+            mapSheetMaxHeight
+        )
+
+        return VStack(spacing: AppSpacing.sm) {
+            Capsule()
+                .fill(.secondary.opacity(0.35))
+                .frame(width: 40, height: 5)
+                .padding(.top, AppSpacing.sm)
+
+            HStack {
+                Text("providers_label")
+                    .font(AppFont.caption)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text("\(homeVM.providers.count)")
+                    .font(AppFont.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, AppSpacing.md)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: AppSpacing.sm) {
+                    ForEach(homeVM.providers) { provider in
+                        Button {
+                            selectedProviderFromMap = provider
+                        } label: {
+                            CompactProviderCardForSheet(provider: provider)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, AppSpacing.md)
+            }
+            .padding(.bottom, AppSpacing.md)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: dynamicHeight, alignment: .top)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .shadow(color: .black.opacity(0.14), radius: 12, y: 3)
+        .padding(.horizontal, AppSpacing.md)
+        .padding(.bottom, AppSpacing.md)
+        .gesture(
+            DragGesture(minimumDistance: 8)
+                .onChanged { value in
+                    mapSheetDragOffset = value.translation.height
+                }
+                .onEnded { value in
+                    let proposed = mapSheetHeight - value.translation.height
+                    let clamped = min(max(proposed, mapSheetMinHeight), mapSheetMaxHeight)
+                    let midpoint = (mapSheetMinHeight + mapSheetMaxHeight) / 2
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.85)) {
+                        mapSheetHeight = clamped > midpoint ? mapSheetMaxHeight : mapSheetMinHeight
+                        mapSheetDragOffset = 0
+                    }
+                }
+        )
     }
 
     private func loadDisplayName() async {

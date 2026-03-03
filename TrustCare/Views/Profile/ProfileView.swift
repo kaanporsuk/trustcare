@@ -211,8 +211,8 @@ struct ProfileView: View {
         let verifiedPercent = totalReviews == 0 ? 0 : Int((Double(verifiedCount) / Double(totalReviews)) * 100)
 
         return HStack(spacing: AppSpacing.md) {
-            statCard(title: "profile_reviews_count \(totalReviews)")
-            statCard(title: "profile_verified_percent \(verifiedPercent)")
+            statCard(titleKey: "profile_reviews_count", value: "\(totalReviews)")
+            statCard(titleKey: "profile_verified_percent", value: "\(verifiedPercent)%")
         }
     }
 
@@ -314,7 +314,7 @@ struct ProfileView: View {
 
     private func menuRow(title: String, isDestructive: Bool = false) -> some View {
         HStack {
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(AppFont.body)
                 .foregroundStyle(isDestructive ? AppColor.error : .primary)
             Spacer()
@@ -326,9 +326,13 @@ struct ProfileView: View {
         .cornerRadius(AppRadius.card)
     }
 
-    private func statCard(title: String) -> some View {
-        Text(title)
-            .font(AppFont.headline)
+    private func statCard(titleKey: String, value: String) -> some View {
+        HStack(spacing: AppSpacing.xs) {
+            Text(LocalizedStringKey(titleKey))
+                .font(AppFont.headline)
+            Text(value)
+                .font(AppFont.headline)
+        }
             .frame(maxWidth: .infinity)
             .padding(AppSpacing.md)
             .background(AppColor.cardBackground)

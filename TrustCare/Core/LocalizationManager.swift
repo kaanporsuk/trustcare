@@ -74,7 +74,8 @@ final class LocalizationManager: ObservableObject {
     static func detectSystemLanguage() -> String {
         for preferred in Locale.preferredLanguages {
             let code = Locale(identifier: preferred)
-                .language.languageCode?.identifier ?? ""
+                .identifier.components(separatedBy: "-").first?
+                .components(separatedBy: "_").first ?? ""
             if supportedCodes.contains(code) { return code }
         }
         return "en"
