@@ -13,7 +13,6 @@ struct HomeView: View {
     @State private var selectedSpecialty: Specialty?
     @State private var selectedProviderFromSearch: Provider?
     @State private var selectedProviderFromMap: Provider?
-    @State private var showMapBottomSheet: Bool = false
     @State private var mapSheetHeight: CGFloat = 188
     @State private var mapSheetDragOffset: CGFloat = 0
     private let verboseLogging = false
@@ -97,7 +96,11 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, AppSpacing.md)
                     .frame(height: 44)
-                    .background(Color(.systemGray6))
+                    .background(Color(.systemGray6).opacity(0.95))
+                    .overlay(
+                        Capsule()
+                            .stroke(Color.black.opacity(0.04), lineWidth: 1)
+                    )
                     .clipShape(Capsule())
                     .padding(.horizontal, AppSpacing.lg)
 
@@ -201,12 +204,14 @@ struct HomeView: View {
                 .padding(.bottom, AppSpacing.md)
                 .background(.ultraThinMaterial)
                 .shadow(color: .black.opacity(0.08), radius: 8, y: 2)
+                .zIndex(2)
 
                 // Content Section
                 ZStack {
                     contentSection
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .zIndex(1)
             }
             .navigationBarHidden(true)
             .dismissKeyboardOnTap()

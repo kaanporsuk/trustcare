@@ -129,6 +129,10 @@ struct ProviderMapView: View {
                 HStack {
                     Spacer()
                     MapLegendView(viewModel: viewModel)
+                        .padding(4)
+                        .background(.ultraThinMaterial)
+                        .clipShape(Capsule())
+                        .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
                         .padding(.trailing, 12)
                         .padding(.top, 12)
                 }
