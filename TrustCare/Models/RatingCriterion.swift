@@ -1,17 +1,16 @@
 import Foundation
-import SwiftUI
 
 struct RatingCriterion: Identifiable {
     let id: String
     let icon: String
     let dbColumn: String
 
-    var labelKey: LocalizedStringKey {
-        LocalizedStringKey("review_criterion_\(id)")
+    var labelKey: String {
+        "review_criterion_\(id)"
     }
 
-    var questionKey: LocalizedStringKey {
-        LocalizedStringKey("review_criterion_\(id)_question")
+    var questionKey: String {
+        "review_criterion_\(id)_question"
     }
 
     static let all: [RatingCriterion] = [

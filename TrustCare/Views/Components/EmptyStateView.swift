@@ -29,11 +29,11 @@ struct EmptyStateView: View {
                 .font(.system(size: 60))
                 .foregroundStyle(AppColor.trustBlue.opacity(0.5))
             
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(.title3)
                 .fontWeight(.semibold)
             
-            Text(message)
+            Text(LocalizedStringKey(message))
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -43,7 +43,7 @@ struct EmptyStateView: View {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     action()
                 }) {
-                    Text(actionTitle)
+                    Text(LocalizedStringKey(actionTitle))
                         .font(.body)
                         .fontWeight(.semibold)
                         .foregroundStyle(.white)

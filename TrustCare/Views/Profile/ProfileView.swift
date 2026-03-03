@@ -5,6 +5,8 @@ import UIKit
 struct ProfileView: View {
     @EnvironmentObject private var authVM: AuthViewModel
     @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
+    @Environment(\.locale) private var locale
 
     @Binding var selectedTab: Int
 
@@ -195,7 +197,7 @@ struct ProfileView: View {
                     }
                     .accessibilityLabel("Edit Profile")
                 }
-                Text(memberSinceText)
+                (Text("profile_member_since") + Text(": \(formattedMemberDate)"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
 
@@ -212,10 +214,10 @@ struct ProfileView: View {
 
         return HStack(spacing: AppSpacing.md) {
             statCard(
-                label: Text(String(localized: "profile_reviews_count")) + Text(" \(totalReviews)")
+                label: Text("profile_reviews_count") + Text(" \(totalReviews)")
             )
             statCard(
-                label: Text(String(localized: "profile_verified_percent")) + Text(" \(verifiedPercent)%")
+                label: Text("profile_verified_percent") + Text(" \(verifiedPercent)%")
             )
         }
     }
@@ -341,12 +343,16 @@ struct ProfileView: View {
             .cornerRadius(AppRadius.card)
     }
 
-    private var memberSinceText: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+    private var formattedMemberDate: String {
         if let date = profileVM.profile?.createdAt {
-            return "\("profile_member_since"): \(formatter.string(from: date))"
+            return date.formatted(
+                .dateTime
+                    .year()
+                    .month(.abbreviated)
+                    .day()
+                    .locale(locale)
+            )
         }
-        return "\("profile_member_since"): -"
+        return "-"
     }
 }

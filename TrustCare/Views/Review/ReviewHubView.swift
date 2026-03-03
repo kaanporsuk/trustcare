@@ -213,10 +213,10 @@ struct ReviewHubView: View {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: criterion.icon)
                             .foregroundStyle(AppColor.trustBlue)
-                        Text(criterion.labelKey)
+                        Text(LocalizedStringKey(criterion.labelKey))
                             .font(.system(size: 17, weight: .semibold))
                     }
-                    Text(criterion.questionKey)
+                    Text(LocalizedStringKey(criterion.questionKey))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
 
