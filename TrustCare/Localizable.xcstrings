@@ -1,6 +1,7 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "112": {},
     "": {},
     "(%lld)": {},
     "%@ %@": {
@@ -61,7 +62,6 @@
     "•": {},
     "🔵": {},
     "$": {},
-    "112": {},
     "A claim already exists for this provider.": {},
     "accessibility_rating_hint": {
       "localizations": {
@@ -4358,7 +4358,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alle"
+            "value": "Alles"
           }
         },
         "pl": {
@@ -6245,7 +6245,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hulp en ondersteuning"
+            "value": "Help en ondersteuning"
           }
         },
         "pl": {
@@ -6291,7 +6291,7 @@
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wyloguj się"
+            "value": "Wyloguj"
           }
         },
         "tr": {
@@ -6353,7 +6353,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Datenschutzrichtlinie"
+            "value": "Datenschutzerklärung"
           }
         },
         "en": {
@@ -6387,37 +6387,37 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gemte behandlere"
+            "value": "Gemte"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gespeicherte Anbieter"
+            "value": "Gespeichert"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saved Providers"
+            "value": "Saved"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Opgeslagen zorgverleners"
+            "value": "Opgeslagen"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zapisani świadczeniodawcy"
+            "value": "Zapisane"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kayıtlı Sağlık Hizmetleri"
+            "value": "Kaydedilenler"
           }
         }
       }
@@ -6485,7 +6485,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gebruiksvoorwaarden"
+            "value": "Servicevoorwaarden"
           }
         },
         "pl": {
@@ -6497,7 +6497,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kullanım Koşulları"
+            "value": "Hizmet Koşulları"
           }
         }
       }
@@ -6588,37 +6588,37 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Skriv din første anmeldelse"
+            "value": "Skriv en anmeldelse"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erste Bewertung schreiben"
+            "value": "Bewertung schreiben"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Write Your First Review"
+            "value": "Write a Review"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schrijf uw eerste beoordeling"
+            "value": "Schrijf een beoordeling"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Napisz pierwszą recenzję"
+            "value": "Napisz opinię"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İlk Değerlendirmenizi Yazın"
+            "value": "Değerlendirme Yaz"
           }
         }
       }
@@ -6629,37 +6629,37 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dine anmeldelser vises her."
+            "value": "Del din oplevelse ved at oprette din første anmeldelse."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ihre Bewertungen erscheinen hier."
+            "value": "Teile deine Erfahrung mit deiner ersten Bewertung."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your reviews will appear here."
+            "value": "Share your experience by posting your first review."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uw beoordelingen verschijnen hier."
+            "value": "Deel je ervaring door je eerste beoordeling te plaatsen."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Twoje recenzje pojawią się tutaj."
+            "value": "Podziel się doświadczeniem, dodając pierwszą opinię."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Değerlendirmeleriniz burada görünecek."
+            "value": "İlk değerlendirmenizi paylaşarak deneyiminizi anlatın."
           }
         }
       }
@@ -6694,7 +6694,7 @@
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Brak recenzji"
+            "value": "Brak opinii"
           }
         },
         "tr": {
@@ -9951,37 +9951,37 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gratis prøve: %d/5"
+            "value": "Antal brug:"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kostenlose Testversion: %d/5"
+            "value": "Nutzungsanzahl:"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free trial: %d/5"
+            "value": "Usage count:"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gratis proef: %d/5"
+            "value": "Aantal keer gebruikt:"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bezpłatna próba: %d/5"
+            "value": "Liczba użyć:"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ücretsiz deneme: %d/5"
+            "value": "Kullanım sayısı:"
           }
         }
       }
@@ -11522,7 +11522,7 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Opdag udbydere"
+            "value": "Udforsk udbydere"
           }
         },
         "de": {
@@ -11546,13 +11546,13 @@
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Odkryj dostawców"
+            "value": "Odkrywaj świadczeniodawców"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sağlayıcıları Keşfet"
+            "value": "Sağlayıcı Keşfet"
           }
         }
       }
@@ -11563,37 +11563,37 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gemte udbydere vises her."
+            "value": "Gem udbydere for hurtig adgang senere."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gespeicherte Anbieter erscheinen hier."
+            "value": "Speichere Anbieter, um später schnell darauf zuzugreifen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Providers you save will appear here."
+            "value": "Save providers to access them quickly later."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Opgeslagen zorgverleners verschijnen hier."
+            "value": "Sla zorgverleners op om ze later snel terug te vinden."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zapisani dostawcy pojawią się tutaj."
+            "value": "Zapisz świadczeniodawców, aby szybko wrócić do nich później."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kaydettiğiniz sağlayıcılar burada görünecek."
+            "value": "Sağlayıcıları kaydederek daha sonra hızlıca erişebilirsiniz."
           }
         }
       }
@@ -11604,37 +11604,37 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ingen gemte udbydere"
+            "value": "Ingen gemte udbydere endnu"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keine gespeicherten Anbieter"
+            "value": "Noch keine gespeicherten Anbieter"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No saved providers"
+            "value": "No saved providers yet"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geen opgeslagen zorgverleners"
+            "value": "Nog geen opgeslagen zorgverleners"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Brak zapisanych dostawców"
+            "value": "Brak zapisanych świadczeniodawców"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kayıtlı sağlayıcı yok"
+            "value": "Henüz kaydedilen sağlayıcı yok"
           }
         }
       }
@@ -19296,7 +19296,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cihaz GPS konumunu kullan"
+            "value": "Cihaz konumunu kullan"
           }
         }
       }
@@ -19515,7 +19515,327 @@
     "You can upload up to 5 photos.": {},
     "You must be signed in to leave a review.": {},
     "Your password has been updated.": {},
-    "Your review must be at least 50 characters.": {}
+    "Your review must be at least 50 characters.": {},
+    "review_criterion_waiting_time": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting Time"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekleme Süresi"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wartezeit"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czas oczekiwania"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wachttijd"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ventetid"
+          }
+        }
+      }
+    },
+    "review_criterion_bedside_manner": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedside Manner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doktor Tutumu"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Patientenbetreuung"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podejście lekarza"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bejegening"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Patientkontakt"
+          }
+        }
+      }
+    },
+    "review_criterion_treatment_effectiveness": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Treatment Effectiveness"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tedavi Etkinliği"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behandlungserfolg"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skuteczność leczenia"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behandeleffectiviteit"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behandlingseffektivitet"
+          }
+        }
+      }
+    },
+    "review_criterion_clinic_hygiene": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clinic Hygiene"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klinik Hijyeni"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sauberkeit der Praxis"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czystość placówki"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hygiëne van de praktijk"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klinikkens renlighed"
+          }
+        }
+      }
+    },
+    "review_criterion_waiting_time_question": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How long did you wait after your appointment time?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Randevu saatinizden sonra ne kadar beklediniz?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie lange haben Sie nach Ihrem Termin gewartet?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jak długo czekał/a Pan/Pani po umówionej godzinie?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoe lang heeft u gewacht na uw afspraaktijd?"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvor længe ventede du efter din aftalte tid?"
+          }
+        }
+      }
+    },
+    "review_criterion_bedside_manner_question": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did the doctor listen and explain clearly?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doktor sizi dinledi ve açıklamalar yaptı mı?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hat der Arzt zugehört und verständlich erklärt?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czy lekarz słuchał i jasno wyjaśniał?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heeft de arts geluisterd en duidelijk uitgelegd?"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lyttede lægen og forklarede tydeligt?"
+          }
+        }
+      }
+    },
+    "review_criterion_treatment_effectiveness_question": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did the treatment resolve your issue?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tedavi sorununuzu çözdü mü?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hat die Behandlung Ihr Problem gelöst?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czy leczenie rozwiązało problem?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heeft de behandeling uw probleem opgelost?"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Løste behandlingen dit problem?"
+          }
+        }
+      }
+    },
+    "review_criterion_clinic_hygiene_question": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was the clinic clean and hygienic?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klinik temiz ve hijyenik miydi?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "War die Praxis sauber und hygienisch?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czy placówka była czysta i higieniczna?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was de praktijk schoon en hygiënisch?"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Var klinikken ren og hygiejnisk?"
+          }
+        }
+      }
+    }
   },
   "version": "1.0"
 }

@@ -204,7 +204,6 @@ struct ReviewHubView: View {
     }
 
     private var detailedRatingsSection: some View {
-        let lang = localizationManager.effectiveLanguage
         return VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text("review_detailed")
                 .font(AppFont.title3)
@@ -214,10 +213,10 @@ struct ReviewHubView: View {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: criterion.icon)
                             .foregroundStyle(AppColor.trustBlue)
-                        Text(criterion.label(for: lang))
+                        Text(criterion.labelKey)
                             .font(.system(size: 17, weight: .semibold))
                     }
-                    Text(criterion.question(for: lang))
+                    Text(criterion.questionKey)
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
 

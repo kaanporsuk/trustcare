@@ -211,8 +211,12 @@ struct ProfileView: View {
         let verifiedPercent = totalReviews == 0 ? 0 : Int((Double(verifiedCount) / Double(totalReviews)) * 100)
 
         return HStack(spacing: AppSpacing.md) {
-            statCard(titleKey: "profile_reviews_count", value: "\(totalReviews)")
-            statCard(titleKey: "profile_verified_percent", value: "\(verifiedPercent)%")
+            statCard(
+                label: Text(String(localized: "profile_reviews_count")) + Text(" \(totalReviews)")
+            )
+            statCard(
+                label: Text(String(localized: "profile_verified_percent")) + Text(" \(verifiedPercent)%")
+            )
         }
     }
 
@@ -326,11 +330,9 @@ struct ProfileView: View {
         .cornerRadius(AppRadius.card)
     }
 
-    private func statCard(titleKey: String, value: String) -> some View {
+    private func statCard(label: Text) -> some View {
         HStack(spacing: AppSpacing.xs) {
-            Text(LocalizedStringKey(titleKey))
-                .font(AppFont.headline)
-            Text(value)
+            label
                 .font(AppFont.headline)
         }
             .frame(maxWidth: .infinity)

@@ -112,7 +112,7 @@ struct RehberChatView: View {
 
     private var usageCounter: some View {
         HStack {
-            Text(String(format: "rehber_usage_counter", viewModel.usageCount))
+            Text(String(localized: "rehber_usage_counter")) + Text(" \(viewModel.usageCount)")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
             Spacer()
