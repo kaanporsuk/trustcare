@@ -43,7 +43,34 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DEST="$(python3 -c 'import json,subprocess; data=json.loads(subprocess.check_output(["xcrun","simctl","list","devices","--json"], text=True)); sims=[d for devices in data.get("devices",{}).values() for d in devices if d.get("isAvailable") and d.get("name") and d.get("udid")]; pref=("iPhone 15","iPhone 16","iPhone 14"); chosen=next((d for p in pref for d in sims if d.get("name")==p), None); print(f"id={chosen[\"udid\"]}" if chosen else "generic/platform=iOS Simulator")')"
+          DEST="$(python3 - <<'PY'
+          import json
+          import subprocess
+
+          raw = subprocess.check_output(["xcrun", "simctl", "list", "devices", "--json"], text=True)
+          data = json.loads(raw)
+          sims = [
+            d
+            for devices in data.get("devices", {}).values()
+            for d in devices
+            if d.get("isAvailable") and d.get("name") and d.get("udid")
+          ]
+
+          chosen = None
+          for preferred in ("iPhone 15", "iPhone 16", "iPhone 14"):
+            for sim in sims:
+              if sim.get("name") == preferred:
+                chosen = sim
+                break
+            if chosen is not None:
+              break
+
+          if chosen is not None:
+            print("id=" + chosen["udid"])
+          else:
+            print("generic/platform=iOS Simulator")
+          PY
+          )"
           echo "destination=$DEST" >> "$GITHUB_OUTPUT"
           echo "Using destination: $DEST"
 
