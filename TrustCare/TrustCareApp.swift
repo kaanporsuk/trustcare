@@ -30,6 +30,7 @@ struct TrustCareApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var localizationManager = LocalizationManager()
     @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var appRouter = AppRouter()
     @State private var appState: AppState = .splash
     @State private var path = NavigationPath()
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
@@ -54,6 +55,7 @@ struct TrustCareApp: App {
                     case .main:
                         MainTabView()
                             .environmentObject(localizationManager)
+                            .environmentObject(appRouter)
                     }
                 }
                 .navigationDestination(for: AppRoute.self) { route in
@@ -68,6 +70,7 @@ struct TrustCareApp: App {
             .environment(\.locale, localizationManager.locale)
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
+            .environmentObject(appRouter)
             .preferredColorScheme(preferredColorScheme)
             .onOpenURL { url in
                 handleDeepLink(url)

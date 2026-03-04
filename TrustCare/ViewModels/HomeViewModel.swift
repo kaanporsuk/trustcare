@@ -309,6 +309,12 @@ final class HomeViewModel: ObservableObject {
         viewMode = .list
     }
 
+    func applyCanonicalRouteEntityID(_ entityID: String) async {
+        let normalized = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !normalized.isEmpty else { return }
+        await applyCanonicalSpecialtyIDs([normalized])
+    }
+
     func startLocationUpdates() {
         locationManager.requestPermission()
         locationManager.startUpdating()

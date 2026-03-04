@@ -149,6 +149,34 @@ enum TaxonomyService {
         return response.value
     }
 
+    static func validateEntityIDs(_ entityIDs: [String]) async throws -> [String] {
+        let normalized = entityIDs
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        guard !normalized.isEmpty else { return [] }
+
+        let uniqueInput = Array(Set(normalized))
+        let response: PostgrestResponse<[TaxonomyEntityRow]> = try await client
+            .from("taxonomy_entities")
+            .select("id")
+            .in("id", values: uniqueInput)
+            .execute()
+
+        let validSet = Set(response.value.map(\.id))
+        var seen = Set<String>()
+        var orderedValid: [String] = []
+
+        for entityID in normalized where validSet.contains(entityID) {
+            if !seen.contains(entityID) {
+                seen.insert(entityID)
+                orderedValid.append(entityID)
+            }
+        }
+
+        return orderedValid
+    }
+
     static func labelsByEntityID(entityIDs: [String], locale: String) async throws -> [String: String] {
         let normalizedIDs = Array(Set(entityIDs.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }))
             .filter { !$0.isEmpty }

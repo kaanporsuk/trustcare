@@ -3,8 +3,8 @@ import UIKit
 
 struct MainTabView: View {
     @EnvironmentObject private var authVM: AuthViewModel
+    @EnvironmentObject private var appRouter: AppRouter
     @StateObject private var profileVM = ProfileViewModel()
-    @State private var selectedTab: Int = 0
 
     init() {
         let appearance = UITabBarAppearance()
@@ -25,7 +25,7 @@ struct MainTabView: View {
     }
 
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $appRouter.selectedTab) {
             NavigationStack {
                 HomeView()
             }
@@ -55,7 +55,7 @@ struct MainTabView: View {
             .tag(2)
 
             NavigationStack {
-                ProfileView(selectedTab: $selectedTab)
+                ProfileView(selectedTab: $appRouter.selectedTab)
             }
             .environmentObject(profileVM)
             .tabItem {
@@ -68,7 +68,7 @@ struct MainTabView: View {
         .tint(AppColor.trustBlue)
         .toolbarBackground(AppColor.cardBackground, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
-        .onChange(of: selectedTab) { _, _ in
+        .onChange(of: appRouter.selectedTab) { _, _ in
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
         .task {
@@ -76,7 +76,7 @@ struct MainTabView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: .trustCareSwitchTab)) { note in
             if let tab = note.object as? Int {
-                selectedTab = tab
+                appRouter.setSelectedTab(tab)
             }
         }
         .alert("Error", isPresented: Binding(

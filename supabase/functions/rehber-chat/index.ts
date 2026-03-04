@@ -75,20 +75,23 @@ YANIT FORMATI ZORUNLU KURALI:
 2) Hemen ardından AYRI bir fenced JSON bloğu ver. JSON bloğu aşağıdaki şemaya birebir uymalı:
 \`\`\`json
 {
+  "v": 1,
   "recommended_entity_ids": ["SPEC_ENT_OTOLARYNGOLOGY"],
-  "urgency": "low",
+  "urgency": "low|medium|high|emergency",
   "follow_up_questions": ["Semptomlar ne zamandır var?"]
 }
 \`\`\`
 
 JSON KURALLARI:
+- JSON RFC 8259 uyumlu olmalı (yorum yok, trailing comma yok).
+- v alanı zorunlu ve daima 1 olmalı.
 - recommended_entity_ids: yalnızca canonical ID döndür (SPEC_ ile başlamalı), en fazla 3 adet.
-- urgency: sadece şu değerlerden biri olmalı: low, medium, high, emergency.
+- Yeterli öneri yoksa recommended_entity_ids mutlaka [] olmalı.
+- urgency zorunlu; sadece şu değerlerden biri olmalı: low, medium, high, emergency.
 - follow_up_questions: 0-2 kısa soru.
-- JSON bloğu mutlaka cevap SONUNDA yer almalı (final çıktı olmalı).
-- Önce doğal dil metni, sonra JSON bloğu gelmeli.
 - JSON fenced bloğu \`\`\`json ile başlamalı.
-- Eğer yeterli bilgi yoksa recommended_entity_ids boş dizi olabilir.
+- JSON bloğu mutlaka cevabın EN SON içeriği olmalı; JSON bloğundan sonra hiçbir metin yazma.
+- Önce doğal dil metni, sonra JSON bloğu gelmeli.
 
 Kullanıcı İngilizce yazarsa İngilizce yanıt ver, Türkçe yazarsa Türkçe yanıt ver.
 Önerdiğin canonical specialty ID'leri TrustCare taxonomy yapısına uygun üret.`;

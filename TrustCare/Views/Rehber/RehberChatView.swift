@@ -2,9 +2,31 @@ import SwiftUI
 import MapKit
 
 private struct RehberPayload: Decodable {
+    let v: Int
     let recommended_entity_ids: [String]
     let urgency: String
     let follow_up_questions: [String]?
+
+    private enum CodingKeys: String, CodingKey {
+        case v
+        case recommended_entity_ids
+        case urgency
+        case follow_up_questions
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try? decoder.container(keyedBy: CodingKeys.self)
+
+        v = (try? container?.decodeIfPresent(Int.self, forKey: .v)) ?? 1
+        recommended_entity_ids = (try? container?.decodeIfPresent([String].self, forKey: .recommended_entity_ids)) ?? []
+        follow_up_questions = try? container?.decodeIfPresent([String].self, forKey: .follow_up_questions)
+
+        let rawUrgency = ((try? container?.decodeIfPresent(String.self, forKey: .urgency)) ?? "low")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+        let allowedUrgencies = Set(["low", "medium", "high", "emergency"])
+        urgency = allowedUrgencies.contains(rawUrgency) ? rawUrgency : "low"
+    }
 }
 
 private struct ParsedAssistantMessage {
@@ -16,9 +38,12 @@ struct RehberChatView: View {
     @ObservedObject var viewModel: RehberViewModel
     @Binding var showChat: Bool
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var appRouter: AppRouter
     @Environment(\.locale) private var locale
     @State private var inputText: String = ""
+    @FocusState private var isInputFocused: Bool
     @State private var taxonomyLabelsByEntityID: [String: String] = [:]
+    @State private var validatedCanonicalIDsByMessageID: [UUID: [String]] = [:]
 
     var body: some View {
         NavigationStack {
@@ -111,13 +136,17 @@ struct RehberChatView: View {
                     await specialtyService.loadSpecialties()
                 }
                 await preloadTaxonomyLabelsForAssistantPayloads()
+                await validateCanonicalPayloadsForAssistantMessages()
             }
             .task(id: viewModel.messages.count) {
                 await preloadTaxonomyLabelsForAssistantPayloads()
+                await validateCanonicalPayloadsForAssistantMessages()
             }
             .task(id: locale.identifier) {
                 taxonomyLabelsByEntityID = [:]
+                validatedCanonicalIDsByMessageID = [:]
                 await preloadTaxonomyLabelsForAssistantPayloads()
+                await validateCanonicalPayloadsForAssistantMessages()
             }
         }
     }
@@ -152,6 +181,7 @@ struct RehberChatView: View {
                 TextField("rehber_input_placeholder", text: $inputText)
                     .textFieldStyle(.plain)
                     .font(AppFont.body)
+                    .focused($isInputFocused)
                     .padding(.horizontal, AppSpacing.md)
                     .padding(.vertical, AppSpacing.sm)
                     .background(AppColor.cardBackground)
@@ -176,7 +206,6 @@ struct RehberChatView: View {
                 }
                 .disabled(!canSubmitMessage)
             }
-
             if viewModel.sendCooldownRemainingSeconds > 0 {
                 Text(String(format: "rehber_cooldown", viewModel.sendCooldownRemainingSeconds))
                     .font(AppFont.footnote)
@@ -208,10 +237,7 @@ struct RehberChatView: View {
     private func messageRow(_ message: RehberMessage) -> some View {
         let parsedAssistantMessage = message.role == "assistant" ? parseAssistantMessage(message.content) : nil
         let renderedText = parsedAssistantMessage?.displayText ?? message.content
-        let canonicalEntityIDs = parsedAssistantMessage?.payload?.recommended_entity_ids
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty }
-            ?? []
+        let canonicalEntityIDs = validatedCanonicalIDsByMessageID[message.id] ?? []
         let emergencyFromUrgency = parsedAssistantMessage?.payload?.urgency.lowercased() == "emergency"
         let isEmergencyMessage = message.wasEmergency || emergencyFromUrgency
         let infoStyleMessage = message.isFallback || message.isRateLimited
@@ -364,13 +390,8 @@ struct RehberChatView: View {
             HStack(spacing: AppSpacing.xs) {
                 ForEach(specialtyIDs, id: \.self) { specialtyID in
                     Button {
-                        NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            NotificationCenter.default.post(
-                                name: .trustCareApplyCanonicalSpecialtyFilter,
-                                object: [specialtyID]
-                            )
-                        }
+                        isInputFocused = false
+                        appRouter.routeToDiscover(entityID: specialtyID)
                     } label: {
                         HStack(spacing: AppSpacing.xs) {
                             Image(systemName: "sparkles")
@@ -399,54 +420,69 @@ struct RehberChatView: View {
     }
 
     private func parseAssistantMessage(_ content: String) -> ParsedAssistantMessage {
-        let nsContent = content as NSString
-        let openRange = nsContent.range(of: "```json", options: [.caseInsensitive, .backwards])
-        guard openRange.location != NSNotFound else {
+        let pattern = "(?is)```json\\s*([\\s\\S]*?)\\s*```"
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
             return ParsedAssistantMessage(displayText: content, payload: nil)
         }
 
-        let contentEnd = nsContent.length
-        let afterOpenLocation = openRange.location + openRange.length
-        guard afterOpenLocation < contentEnd else {
+        let fullRange = NSRange(content.startIndex..<content.endIndex, in: content)
+        let matches = regex.matches(in: content, options: [], range: fullRange)
+        guard let lastMatch = matches.last else {
             return ParsedAssistantMessage(displayText: content, payload: nil)
         }
 
-        let searchRange = NSRange(location: afterOpenLocation, length: contentEnd - afterOpenLocation)
-        let closeRange = nsContent.range(of: "```", options: [], range: searchRange)
-        guard closeRange.location != NSNotFound, closeRange.location > afterOpenLocation else {
+        guard let jsonRange = Range(lastMatch.range(at: 1), in: content) else {
             return ParsedAssistantMessage(displayText: content, payload: nil)
         }
 
-        let jsonRange = NSRange(location: afterOpenLocation, length: closeRange.location - afterOpenLocation)
-        let jsonText = nsContent.substring(with: jsonRange).trimmingCharacters(in: .whitespacesAndNewlines)
+        let jsonText = String(content[jsonRange]).trimmingCharacters(in: .whitespacesAndNewlines)
         guard let jsonData = jsonText.data(using: .utf8) else {
             return ParsedAssistantMessage(displayText: content, payload: nil)
         }
 
-        do {
-            let payload = try JSONDecoder().decode(RehberPayload.self, from: jsonData)
-            let fencedRange = NSRange(
-                location: openRange.location,
-                length: (closeRange.location + closeRange.length) - openRange.location
-            )
-            if let blockRange = Range(fencedRange, in: content) {
-                var cleaned = content
-                cleaned.removeSubrange(blockRange)
-                let trimmed = cleaned.trimmingCharacters(in: .whitespacesAndNewlines)
-                return ParsedAssistantMessage(
-                    displayText: trimmed.isEmpty ? content : trimmed,
-                    payload: payload
-                )
+        guard let payload = try? JSONDecoder().decode(RehberPayload.self, from: jsonData) else {
+            return ParsedAssistantMessage(displayText: content, payload: nil)
+        }
+
+        var displayText = content
+        if let blockRange = Range(lastMatch.range, in: content) {
+            displayText.removeSubrange(blockRange)
+            displayText = displayText.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
+        return ParsedAssistantMessage(
+            displayText: displayText.isEmpty ? content : displayText,
+            payload: payload
+        )
+    }
+
+    private func validateCanonicalPayloadsForAssistantMessages() async {
+        for message in viewModel.messages where message.role == "assistant" {
+            if validatedCanonicalIDsByMessageID[message.id] != nil {
+                continue
             }
 
-            return ParsedAssistantMessage(displayText: content, payload: payload)
-        } catch {
-            return ParsedAssistantMessage(displayText: content, payload: nil)
+            let parsed = parseAssistantMessage(message.content)
+            let rawIDs = parsed.payload?.recommended_entity_ids
+                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty } ?? []
+
+            guard !rawIDs.isEmpty else {
+                validatedCanonicalIDsByMessageID[message.id] = []
+                continue
+            }
+
+            do {
+                let validIDs = try await TaxonomyService.validateEntityIDs(rawIDs)
+                validatedCanonicalIDsByMessageID[message.id] = validIDs
+            } catch {
+                validatedCanonicalIDsByMessageID[message.id] = []
+            }
         }
     }
 
     private func preloadTaxonomyLabelsForAssistantPayloads() async {
-        let entityIDs = allCanonicalEntityIDsInMessages()
+        let entityIDs = allValidatedCanonicalEntityIDsInMessages()
         guard !entityIDs.isEmpty else { return }
 
         let unresolved = entityIDs.filter { taxonomyLabelsByEntityID[$0] == nil }
@@ -463,16 +499,13 @@ struct RehberChatView: View {
         }
     }
 
-    private func allCanonicalEntityIDsInMessages() -> [String] {
+    private func allValidatedCanonicalEntityIDsInMessages() -> [String] {
         var unique = Set<String>()
 
         for message in viewModel.messages where message.role == "assistant" {
-            let parsed = parseAssistantMessage(message.content)
-            let ids = parsed.payload?.recommended_entity_ids ?? []
-            for entityID in ids {
-                let normalized = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
-                if !normalized.isEmpty {
-                    unique.insert(normalized)
+            for entityID in validatedCanonicalIDsByMessageID[message.id] ?? [] {
+                if !entityID.isEmpty {
+                    unique.insert(entityID)
                 }
             }
         }

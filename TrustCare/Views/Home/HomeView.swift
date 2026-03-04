@@ -6,6 +6,7 @@ import UIKit
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var appRouter: AppRouter
     @EnvironmentObject private var localizationManager: LocalizationManager
     @Environment(\.locale) private var locale
     @State private var displayName: String = String(localized: "Anonymous")
@@ -204,9 +205,13 @@ struct HomeView: View {
                 }
             }
             .task {
+                appRouter.registerHomeViewModel(homeVM)
                 homeVM.startLocationUpdates()
                 await homeVM.onAppear()
                 await loadDisplayName()
+            }
+            .onDisappear {
+                appRouter.unregisterHomeViewModel(homeVM)
             }
             .sheet(isPresented: $showSpecialtyBrowser) {
                 SpecialtyBrowserSheet(
