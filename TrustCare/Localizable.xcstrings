@@ -96,6 +96,49 @@
     "A claim already exists for this provider." : {
 
     },
+    "accessibility_rating_hint" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stryg op eller ned for at justere bedømmelsen"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach oben oder unten wischen, um die Bewertung anzupassen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swipe up or down to adjust rating"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veeg omhoog of omlaag om de beoordeling aan te passen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przesuń w górę lub w dół, aby dostosować ocenę"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puanı ayarlamak için yukarı veya aşağı kaydırın"
+          }
+        }
+      }
+    },
+    "Account created! Please check your email to confirm your account." : {
+
+    },
     "action_dismiss" : {
       "localizations" : {
         "cs" : {
@@ -295,49 +338,6 @@
           }
         }
       }
-    },
-    "accessibility_rating_hint" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stryg op eller ned for at justere bedømmelsen"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nach oben oder unten wischen, um die Bewertung anzupassen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe up or down to adjust rating"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veeg omhoog of omlaag om de beoordeling aan te passen"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Przesuń w górę lub w dół, aby dostosować ocenę"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Puanı ayarlamak için yukarı veya aşağı kaydırın"
-          }
-        }
-      }
-    },
-    "Account created! Please check your email to confirm your account." : {
-
     },
     "Active" : {
 
@@ -875,7 +875,7 @@
         }
       }
     },
-    "all_results" : {
+    "all" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -975,7 +975,8 @@
         }
       }
     },
-    "all" : {
+    "all_results" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6300,6 +6301,7 @@
       }
     },
     "error_load_providers_body" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6400,6 +6402,7 @@
       }
     },
     "error_load_providers_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6499,7 +6502,48 @@
         }
       }
     },
+    "error_network" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der opstod et netværksproblem. Tjek din forbindelse og prøv igen."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es ist ein Netzwerkfehler aufgetreten. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A network issue occurred. Please check your connection and try again."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Er is een netwerkprobleem opgetreden. Controleer uw verbinding en probeer het opnieuw."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wystąpił problem z siecią. Sprawdź połączenie i spróbuj ponownie."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağ bağlantısı sorunu oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin."
+          }
+        }
+      }
+    },
     "error_network_generic_body" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6600,6 +6644,7 @@
       }
     },
     "error_network_generic_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6695,46 +6740,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merezheva pomylka"
-          }
-        }
-      }
-    },
-    "error_network" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der opstod et netværksproblem. Tjek din forbindelse og prøv igen."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Es ist ein Netzwerkfehler aufgetreten. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A network issue occurred. Please check your connection and try again."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Er is een netwerkprobleem opgetreden. Controleer uw verbinding en probeer het opnieuw."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wystąpił problem z siecią. Sprawdź połączenie i spróbuj ponownie."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ağ bağlantısı sorunu oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin."
           }
         }
       }
@@ -29864,9 +29869,6 @@
 
     },
     "Unable to submit claim. Please try again." : {
-
-    },
-    "Unable to use your location right now." : {
 
     },
     "unauthorized_area" : {
