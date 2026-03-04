@@ -34,6 +34,12 @@ enum AuditError: Error, CustomStringConvertible {
 
 struct OntologyAudit {
     static func run() async {
+        let env = ProcessInfo.processInfo.environment
+        if env["ONTOLOGY_AUDIT_OFFLINE"] == "1" {
+            print("SKIP ontology audit: OFFLINE mode enabled (no Supabase credentials required).")
+            exit(0)
+        }
+
         do {
             let config = try Config.fromEnvironment()
             let client = SupabaseRESTClient(config: config)

@@ -1,0 +1,96 @@
+name: Verify
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  verify:
+    runs-on: macos-14
+    timeout-minutes: 35
+    env:
+      PROJECT: TrustCare.xcodeproj
+      SCHEME: TrustCare
+      CONFIGURATION: Debug
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select stable Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Cache SwiftPM
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.swiftpm
+            ~/Library/Caches/org.swift.swiftpm
+            ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Localization check
+        run: swift tools/localization_check.swift
+
+      - name: Resolve simulator destination
+        id: sim
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST=""
+          if xcrun simctl list devices available | grep -q "iPhone 15"; then
+            DEST="platform=iOS Simulator,name=iPhone 15"
+          elif xcrun simctl list devices available | grep -q "iPhone 14"; then
+            DEST="platform=iOS Simulator,name=iPhone 14"
+          else
+            DEST="generic/platform=iOS Simulator"
+          fi
+          echo "destination=$DEST" >> "$GITHUB_OUTPUT"
+          echo "Using destination: $DEST"
+
+      - name: Xcode build
+        run: |
+          xcodebuild \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration "$CONFIGURATION" \
+            -destination "${{ steps.sim.outputs.destination }}" \
+            build
+
+      - name: Ontology audit (PR offline mode)
+        if: github.event_name == 'pull_request'
+        env:
+          ONTOLOGY_AUDIT_OFFLINE: "1"
+        run: swift tools/ontology_audit.swift
+
+      - name: Validate Supabase secrets for main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${SUPABASE_URL:-}" ]]; then
+            echo "Missing required secret: SUPABASE_URL"
+            exit 1
+          fi
+          if [[ -z "${SUPABASE_ANON_KEY:-}" && -z "${SUPABASE_SERVICE_ROLE_KEY:-}" ]]; then
+            echo "Missing required secret: SUPABASE_ANON_KEY or SUPABASE_SERVICE_ROLE_KEY"
+            exit 1
+          fi
+
+      - name: Ontology audit (main against Supabase)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: swift tools/ontology_audit.swift
