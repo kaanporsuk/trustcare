@@ -50,6 +50,7 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedSurveyType: String? = nil
     @Published var providerSuggestions: [Provider] = []
     @Published var specialtySuggestions: [Specialty] = []
+    @Published var taxonomySuggestions: [TaxonomySuggestion] = []
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = true
     @Published var errorMessage: String?
@@ -72,6 +73,8 @@ final class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
+    private var selectedCanonicalSpecialtyIDs: [String] = []
+    private var selectedCanonicalSuggestionLabel: String?
     private var lastSearchLocation: CLLocation?
     private var lastSearchAt: Date?
     private var lastGeocodedLocation: CLLocation?
@@ -298,6 +301,15 @@ final class HomeViewModel: ObservableObject {
             verboseLog("⚠️ searchWithDebounce cancelled")
             return
         }
+
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let selectedLabel = selectedCanonicalSuggestionLabel,
+           !trimmed.isEmpty,
+           trimmed.caseInsensitiveCompare(selectedLabel) != .orderedSame {
+            selectedCanonicalSpecialtyIDs = []
+            selectedCanonicalSuggestionLabel = nil
+        }
+
         await loadSuggestions()
         await refresh()
     }
@@ -305,9 +317,22 @@ final class HomeViewModel: ObservableObject {
     func clearSuggestions() {
         providerSuggestions = []
         specialtySuggestions = []
+        taxonomySuggestions = []
+    }
+
+    func applyTaxonomySuggestion(_ suggestion: TaxonomySuggestion) async {
+        selectedCanonicalSpecialtyIDs = [suggestion.targetId]
+        selectedCanonicalSuggestionLabel = suggestion.label
+        selectedSpecialtyName = nil
+        selectedSurveyType = nil
+        searchText = suggestion.label
+        clearSuggestions()
+        await refresh()
     }
 
     func applySpecialtyFilter(_ specialty: Specialty?) async {
+        selectedCanonicalSpecialtyIDs = []
+        selectedCanonicalSuggestionLabel = nil
         selectedSpecialtyName = specialty?.name
         if let specialty {
             selectedSurveyType = specialty.surveyType
@@ -322,6 +347,8 @@ final class HomeViewModel: ObservableObject {
     /// Called by the map legend when a category filter is tapped.
     /// Clears any specialty-level filter and applies the broad category.
     func applyLegendFilter(_ surveyType: String?) async {
+        selectedCanonicalSpecialtyIDs = []
+        selectedCanonicalSuggestionLabel = nil
         selectedSpecialtyName = nil
         selectedSurveyType = surveyType
         await refresh()
@@ -361,6 +388,8 @@ final class HomeViewModel: ObservableObject {
         }
 
         selectedSpecialtyName = match?.name ?? specialtyName
+        selectedCanonicalSpecialtyIDs = []
+        selectedCanonicalSuggestionLabel = nil
         selectedSurveyType = match?.surveyType
         await refresh()
     }
@@ -419,6 +448,7 @@ final class HomeViewModel: ObservableObject {
             let results = try await ProviderService.searchProviders(
                 text: searchText,
                 specialty: selectedSpecialtyName,
+                specialtyIDs: selectedCanonicalSpecialtyIDs.isEmpty ? nil : selectedCanonicalSpecialtyIDs,
                 country: nil,
                 priceLevel: nil,
                 minRating: nil,
@@ -486,6 +516,16 @@ final class HomeViewModel: ObservableObject {
         guard !trimmed.isEmpty else {
             clearSuggestions()
             return
+        }
+
+        do {
+            taxonomySuggestions = try await TaxonomyService.searchTaxonomy(
+                query: trimmed,
+                locale: currentLanguageCode(),
+                limit: 8
+            )
+        } catch {
+            taxonomySuggestions = []
         }
 
         do {
@@ -642,5 +682,13 @@ final class HomeViewModel: ObservableObject {
             return String(localized: "Unable to use your location right now.")
         }
         return String(localized: "Unable to load providers. Please try again.")
+    }
+
+    private func currentLanguageCode() -> String {
+        let selected = UserDefaults.standard.string(forKey: "app_language") ?? ""
+        if !selected.isEmpty {
+            return selected
+        }
+        return LocalizationManager.detectSystemLanguage()
     }
 }

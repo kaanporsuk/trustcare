@@ -107,8 +107,30 @@ struct HomeView: View {
 
                     // Search suggestions (if any)
                     if !homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-                       (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty) {
+                       (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty || !homeVM.taxonomySuggestions.isEmpty) {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                            if !homeVM.taxonomySuggestions.isEmpty {
+                                Text("specialties_label")
+                                    .font(AppFont.caption)
+                                    .foregroundStyle(.secondary)
+                                    .padding(.top, AppSpacing.xs)
+                                ForEach(homeVM.taxonomySuggestions.prefix(4)) { suggestion in
+                                    Button {
+                                        selectedSpecialty = nil
+                                        Task { await homeVM.applyTaxonomySuggestion(suggestion) }
+                                    } label: {
+                                        HStack(spacing: AppSpacing.sm) {
+                                            Image(systemName: "cross.case")
+                                            Text(suggestion.label)
+                                                .font(AppFont.body)
+                                            Spacer()
+                                        }
+                                        .foregroundStyle(.primary)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+
                             if !homeVM.specialtySuggestions.isEmpty {
                                 Text("specialties_label")
                                     .font(AppFont.caption)

@@ -40,6 +40,7 @@ enum ProviderService {
     static func searchProviders(
         text: String?,
         specialty: String?,
+        specialtyIDs: [String]? = nil,
         country: String? = nil,
         priceLevel: Int? = nil,
         minRating: Double? = nil,
@@ -71,6 +72,9 @@ enum ProviderService {
         }
         if let specialty {
             params["specialty_filter"] = .string(specialty)
+        }
+        if let specialtyIDs, !specialtyIDs.isEmpty {
+            params["specialty_ids"] = .array(specialtyIDs.map { .string($0) })
         }
         if let country {
             params["country_filter"] = .string(country)
