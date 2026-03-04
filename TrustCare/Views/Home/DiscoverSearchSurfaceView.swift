@@ -16,6 +16,38 @@ struct DiscoverSearchSurfaceView: View {
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
+            HStack(spacing: AppSpacing.sm) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.primary.opacity(0.72))
+
+                TextField(
+                    "",
+                    text: $searchText,
+                    prompt: Text("search_placeholder")
+                        .foregroundStyle(.primary.opacity(0.66))
+                )
+                .textFieldStyle(.plain)
+                .font(AppFont.body)
+                .textInputAutocapitalization(.words)
+                .autocorrectionDisabled()
+
+                if !searchText.isEmpty {
+                    Button(action: onClearSearch) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal, AppSpacing.md)
+            .frame(height: 50)
+            .background(Color(.systemGray6).opacity(0.98))
+            .overlay(
+                Capsule()
+                    .stroke(Color.black.opacity(0.1), lineWidth: 1)
+            )
+            .clipShape(Capsule())
+
             Button(action: onTapLocation) {
                 HStack(spacing: AppSpacing.sm) {
                     Image(systemName: "mappin.and.ellipse")
@@ -38,7 +70,7 @@ struct DiscoverSearchSurfaceView: View {
                                 .foregroundStyle(.primary)
                         }
                         Text("country_turkey")
-                            .font(AppFont.caption)
+                            .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
 
@@ -49,7 +81,7 @@ struct DiscoverSearchSurfaceView: View {
                         .foregroundStyle(.secondary)
                 }
                 .padding(.horizontal, AppSpacing.md)
-                .padding(.vertical, AppSpacing.sm)
+                .padding(.vertical, 6)
                 .background(AppColor.cardBackground.opacity(0.78))
                 .overlay(
                     RoundedRectangle(cornerRadius: AppRadius.button, style: .continuous)
@@ -58,33 +90,6 @@ struct DiscoverSearchSurfaceView: View {
                 .clipShape(RoundedRectangle(cornerRadius: AppRadius.button, style: .continuous))
             }
             .buttonStyle(.plain)
-
-            HStack(spacing: AppSpacing.sm) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.secondary)
-
-                TextField("search_placeholder", text: $searchText)
-                    .textFieldStyle(.plain)
-                    .font(AppFont.body)
-                    .textInputAutocapitalization(.words)
-                    .autocorrectionDisabled()
-
-                if !searchText.isEmpty {
-                    Button(action: onClearSearch) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.secondary)
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            .padding(.horizontal, AppSpacing.md)
-            .frame(height: 46)
-            .background(Color(.systemGray6).opacity(0.92))
-            .overlay(
-                Capsule()
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
-            )
-            .clipShape(Capsule())
 
             if !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                !taxonomySuggestions.isEmpty {
@@ -139,6 +144,11 @@ struct DiscoverSearchSurfaceView: View {
                 Text("map_toggle_list").tag(HomeViewModel.ViewMode.list)
             }
             .pickerStyle(.segmented)
+            .frame(height: 30)
+            .padding(2)
+            .background(Color.white.opacity(0.18))
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .opacity(0.92)
         }
         .padding(AppSpacing.md)
         .background(

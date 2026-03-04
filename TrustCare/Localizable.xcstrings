@@ -5794,6 +5794,54 @@
         }
       }
     },
+    "discover_error_providers_unavailable_body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There may be a connection issue. Please try again."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlantı sorunu olabilir. Lütfen tekrar deneyin."
+          }
+        }
+      }
+    },
+    "discover_error_providers_unavailable_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Providers could not be loaded"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sağlayıcılar yüklenemedi"
+          }
+        }
+      }
+    },
+    "discover_error_switch_to_list" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to list view"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste görünümüne geç"
+          }
+        }
+      }
+    },
     "Deleted User" : {
 
     },
@@ -19026,7 +19074,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Doktor, klinik veya uzmanlık arayın..."
+            "value" : "Doktor, klinik veya uzmanlık arayın"
           }
         },
         "uk" : {

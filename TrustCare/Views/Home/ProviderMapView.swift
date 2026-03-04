@@ -173,7 +173,8 @@ private struct DiscoverMapOverlaysView: View {
         GeometryReader { proxy in
             let isCompactHeight = proxy.size.height < 760
             let edgePadding: CGFloat = isCompactHeight ? 10 : 12
-            let topPadding: CGFloat = isCompactHeight ? 8 : 12
+            let topPadding: CGFloat = proxy.safeAreaInsets.top + 20
+            let mapPillHeight: CGFloat = 38
 
             VStack {
                 HStack(alignment: .top) {
@@ -185,8 +186,8 @@ private struct DiscoverMapOverlaysView: View {
                                 .font(.callout.weight(.medium))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.92)
-                                .padding(.horizontal, isCompactHeight ? 14 : 16)
-                                .padding(.vertical, isCompactHeight ? 9 : 10)
+                                .padding(.horizontal, isCompactHeight ? 12 : 14)
+                                .frame(height: mapPillHeight)
                                 .background(AppColor.trustBlue)
                                 .foregroundStyle(.white)
                                 .clipShape(Capsule())
@@ -199,7 +200,7 @@ private struct DiscoverMapOverlaysView: View {
                     Spacer(minLength: AppSpacing.md)
 
                     // Single legend instance; no external material wrapper to avoid ghost layers.
-                    MapLegendView(viewModel: viewModel)
+                    MapLegendView(viewModel: viewModel, collapsedPillHeight: mapPillHeight)
                         .offset(y: isCompactHeight ? 2 : 0)
                 }
                 .padding(.horizontal, edgePadding)

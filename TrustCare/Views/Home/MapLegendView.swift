@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MapLegendView: View {
     @ObservedObject var viewModel: HomeViewModel
+    let collapsedPillHeight: CGFloat
 
     private let categories: [(type: String, labelKey: String)] = [
         ("general_clinic", "legend_clinic"),
@@ -36,11 +37,11 @@ struct MapLegendView: View {
                             .minimumScaleFactor(0.86)
                     }
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 8)
+                .padding(.horizontal, 12)
+                .frame(height: collapsedPillHeight)
                 .background(.ultraThinMaterial)
                 .clipShape(Capsule())
-                .shadow(color: .black.opacity(0.12), radius: 4, y: 2)
+                .shadow(color: .black.opacity(0.11), radius: 4, y: 2)
             }
             .buttonStyle(.plain)
 

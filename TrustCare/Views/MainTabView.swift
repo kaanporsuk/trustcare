@@ -8,8 +8,9 @@ struct MainTabView: View {
 
     init() {
         let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.white
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        appearance.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.2)
         appearance.shadowColor = UIColor(AppColor.border)
 
         let normalColor = UIColor.secondaryLabel
@@ -66,7 +67,18 @@ struct MainTabView: View {
             .badge(profileVM.unreadNotificationCount)
         }
         .tint(AppColor.trustBlue)
-        .toolbarBackground(AppColor.cardBackground, for: .tabBar)
+        .background(alignment: .bottom) {
+            GeometryReader { proxy in
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+                    .frame(height: 49 + proxy.safeAreaInsets.bottom)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+                    .clipped()
+                    .ignoresSafeArea(edges: .bottom)
+                    .allowsHitTesting(false)
+            }
+        }
+        .toolbarBackground(.ultraThinMaterial, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
         .onChange(of: appRouter.selectedTab) { _, _ in
             UIImpactFeedbackGenerator(style: .light).impactOccurred()

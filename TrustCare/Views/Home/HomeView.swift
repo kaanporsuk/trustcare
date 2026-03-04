@@ -76,7 +76,7 @@ struct HomeView: View {
                 )
                 .padding(.horizontal, AppSpacing.md)
                 .padding(.top, AppSpacing.xs)
-                .padding(.bottom, AppSpacing.md)
+                .padding(.bottom, 16)
                 .zIndex(2)
 
                 // Content Section
@@ -321,20 +321,46 @@ struct HomeView: View {
         }
     }
 
-    private func providerLoadErrorCard(_ loadError: HomeViewModel.LoadErrorState) -> some View {
-        PremiumEmptyStateCard(
-            iconName: "wifi.exclamationmark",
-            title: localizedText(for: loadError.errorKey),
-            bulletKeys: [LocalizedStringKey(errorBodyKey(for: loadError.errorKey))],
-            primaryActionTitleKey: "action_retry",
-            primaryAction: {
-                Task { await homeVM.retryLoadProviders() }
-            },
-            secondaryActionTitleKey: "switch_to_list",
-            secondaryAction: {
-                homeVM.switchToListView()
+    private func providerLoadErrorCard(_: HomeViewModel.LoadErrorState) -> some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            HStack(spacing: AppSpacing.sm) {
+                Image(systemName: "wifi.exclamationmark")
+                    .font(.title3)
+                    .foregroundStyle(AppColor.trustBlue)
+                Text("discover_error_providers_unavailable_title")
+                    .font(AppFont.callout.weight(.semibold))
+                    .foregroundStyle(.primary)
             }
-        )
+
+            Text("discover_error_providers_unavailable_body")
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: AppSpacing.md) {
+                Button("action_retry") {
+                    Task { await homeVM.retryLoadProviders() }
+                }
+                .buttonStyle(.plain)
+                .font(AppFont.callout.weight(.semibold))
+                .foregroundStyle(AppColor.trustBlue)
+                .padding(.horizontal, AppSpacing.md)
+                .padding(.vertical, AppSpacing.xs)
+                .background(AppColor.trustBlue.opacity(0.14))
+                .clipShape(Capsule())
+
+                Button("discover_error_switch_to_list") {
+                    homeVM.switchToListView()
+                }
+                .buttonStyle(.plain)
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+            }
+        }
+        .padding(AppSpacing.md)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: AppRadius.card, style: .continuous))
+        .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
     }
 
     private func refreshErrorBanner(_ loadError: HomeViewModel.LoadErrorState) -> some View {
