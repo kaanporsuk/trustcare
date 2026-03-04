@@ -44,14 +44,23 @@ enum TaxonomyService {
 
     private static let labelCache = LabelCache()
 
-    static func searchTaxonomy(query: String, locale: String, limit: Int = 8) async throws -> [TaxonomySuggestion] {
+    static func searchTaxonomy(
+        query: String,
+        locale: String,
+        entityTypeFilter: TaxonomyEntityType? = nil,
+        limit: Int = 8
+    ) async throws -> [TaxonomySuggestion] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return [] }
 
-        let params: [String: AnyJSON] = [
+        var params: [String: AnyJSON] = [
             "search_query": .string(trimmed),
             "current_locale": .string(locale)
         ]
+
+        if let entityTypeFilter {
+            params["entity_type_filter"] = .string(entityTypeFilter.rawValue)
+        }
 
         let response: PostgrestResponse<[TaxonomySuggestion]> = try await client
             .rpc("search_taxonomy", params: params)

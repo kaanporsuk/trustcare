@@ -4,7 +4,7 @@ import SwiftUI
 
 struct AddProviderSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var specialtyService = SpecialtyService.shared
+    @Environment(\.locale) private var locale
     @EnvironmentObject private var localizationManager: LocalizationManager
 
     let onComplete: (Provider) -> Void
@@ -12,7 +12,7 @@ struct AddProviderSheet: View {
     @State private var name: String = ""
     @State private var address: String = ""
     @State private var phone: String = ""
-    @State private var selectedSpecialty: Specialty?
+    @State private var selectedTaxonomy: TaxonomySuggestion?
     @State private var selectedCoordinate: CLLocationCoordinate2D?
     @State private var placeSuggestions: [PlaceSuggestion] = []
 
@@ -55,7 +55,7 @@ struct AddProviderSheet: View {
                         HStack {
                             Text("specialty_label")
                             Spacer()
-                            Text(selectedSpecialty?.resolvedName(using: localizationManager) ?? "add_provider_select")
+                            Text(selectedTaxonomy?.label ?? String(localized: "add_provider_select"))
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -104,18 +104,13 @@ struct AddProviderSheet: View {
                 Text(errorMessage ?? "")
             }
             .sheet(isPresented: $showSpecialtyPicker) {
-                SpecialtyPickerSheet(selected: selectedSpecialty) { specialty in
-                    selectedSpecialty = specialty
+                TaxonomyPickerSheet(selected: selectedTaxonomy) { selected in
+                    selectedTaxonomy = selected
                     showSpecialtyPicker = false
                 }
             }
             .sheet(isPresented: $showMapPicker) {
                 MapPinSelectorSheet(selectedCoordinate: $selectedCoordinate)
-            }
-            .task {
-                if specialtyService.specialties.isEmpty {
-                    await specialtyService.loadSpecialties()
-                }
             }
             .task(id: name) {
                 await searchMapSuggestions()
@@ -126,11 +121,11 @@ struct AddProviderSheet: View {
     private var isValid: Bool {
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             && !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            && selectedSpecialty != nil
+            && selectedTaxonomy != nil
     }
 
     private func submit() async {
-        guard let selectedSpecialty else {
+        guard let selectedTaxonomy else {
             errorMessage = "add_provider_select_specialty_error"
             return
         }
@@ -148,7 +143,7 @@ struct AddProviderSheet: View {
 
             let provider = try await ProviderService.addProvider(
                 name: name.trimmingCharacters(in: .whitespacesAndNewlines),
-                specialty: selectedSpecialty.name,
+                specialty: selectedTaxonomy.label,
                 clinicName: nil,
                 address: address.trimmingCharacters(in: .whitespacesAndNewlines),
                 city: nil,
@@ -257,38 +252,44 @@ private struct PlaceSuggestion: Identifiable {
     let longitude: Double
 }
 
-private struct SpecialtyPickerSheet: View {
-    @ObservedObject private var specialtyService = SpecialtyService.shared
+private struct TaxonomyPickerSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var localizationManager: LocalizationManager
+    @Environment(\.locale) private var locale
 
-    let selected: Specialty?
-    let onSelect: (Specialty) -> Void
+    let selected: TaxonomySuggestion?
+    let onSelect: (TaxonomySuggestion) -> Void
 
     @State private var searchText: String = ""
+    @State private var selectedEntityType: TaxonomyEntityType = .specialty
+    @State private var suggestions: [TaxonomySuggestion] = []
+    @State private var isLoading: Bool = false
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(filteredGroups, id: \.category) { group in
-                    Section(localizationManager.localizedCategory(group.category)) {
-                        ForEach(group.items) { specialty in
+            VStack(spacing: AppSpacing.md) {
+                Picker("", selection: $selectedEntityType) {
+                    ForEach(TaxonomyEntityType.allCases) { entityType in
+                        Text(LocalizedStringKey(entityType.segmentTitleKey))
+                            .tag(entityType)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, AppSpacing.lg)
+
+                List {
+                    if isLoading {
+                        ProgressView()
+                    } else {
+                        ForEach(suggestions) { suggestion in
                             Button {
-                                onSelect(specialty)
+                                onSelect(suggestion)
                                 dismiss()
                             } label: {
                                 HStack {
-                                    Image(systemName: specialty.iconName)
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(specialty.resolvedName(using: localizationManager))
-                                        if specialty.name != specialty.resolvedName(using: localizationManager) {
-                                            Text(specialty.name)
-                                                .font(AppFont.footnote)
-                                                .foregroundStyle(.secondary)
-                                        }
-                                    }
+                                    Image(systemName: "cross.case")
+                                    Text(suggestion.label)
                                     Spacer()
-                                    if specialty.id == selected?.id {
+                                    if suggestion.id == selected?.id {
                                         Image(systemName: "checkmark")
                                     }
                                 }
@@ -296,29 +297,63 @@ private struct SpecialtyPickerSheet: View {
                         }
                     }
                 }
+                .listStyle(.plain)
             }
-            .searchable(text: $searchText)
+            .searchable(
+                text: $searchText,
+                prompt: Text(LocalizedStringKey(selectedEntityType.searchPlaceholderKey))
+            )
             .navigationTitle("add_provider_select_specialty")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("close_button") { dismiss() }
                 }
             }
+            .task(id: selectedEntityType) {
+                await runSearch()
+            }
+            .task(id: searchText) {
+                await runSearch()
+            }
         }
     }
 
-    private var filteredGroups: [(category: String, items: [Specialty])] {
-        let groups = specialtyService.specialtiesByCategory()
-        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !query.isEmpty else { return groups }
-
-        let normalized = query.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-        return groups.compactMap { group in
-            let filtered = group.items.filter { item in
-                item.matchesSearch(normalized)
-            }
-            return filtered.isEmpty ? nil : (category: group.category, items: filtered)
+    private func runSearch() async {
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            suggestions = []
+            return
         }
+
+        do {
+            try await Task.sleep(nanoseconds: 250_000_000)
+        } catch {
+            return
+        }
+
+        isLoading = true
+        defer { isLoading = false }
+
+        do {
+            suggestions = try await TaxonomyService.searchTaxonomy(
+                query: trimmed,
+                locale: currentLocaleCode(),
+                entityTypeFilter: selectedEntityType,
+                limit: 50
+            )
+        } catch {
+            suggestions = []
+        }
+    }
+
+    private func currentLocaleCode() -> String {
+        if let languageCode = locale.language.languageCode?.identifier, !languageCode.isEmpty {
+            return languageCode
+        }
+        return locale.identifier
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? "en"
     }
 }
 

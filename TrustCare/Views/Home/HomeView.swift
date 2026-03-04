@@ -210,14 +210,13 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showSpecialtyBrowser) {
                 SpecialtyBrowserSheet(
-                    selectedSpecialty: selectedSpecialty,
-                    onSelect: { specialty in
-                        selectedSpecialty = specialty
-                        Task { await homeVM.applySpecialtyFilter(specialty) }
+                    onSelect: { suggestion in
+                        selectedSpecialty = nil
+                        Task { await homeVM.applyTaxonomySuggestion(suggestion) }
                     },
                     onClear: {
                         selectedSpecialty = nil
-                        Task { await homeVM.applySpecialtyFilter(nil) }
+                        Task { await homeVM.applySmartPill(entityID: nil) }
                     }
                 )
             }

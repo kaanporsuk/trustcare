@@ -592,6 +592,7 @@ final class HomeViewModel: ObservableObject {
             taxonomySuggestions = try await TaxonomyService.searchTaxonomy(
                 query: trimmed,
                 locale: currentLanguageCode(),
+                entityTypeFilter: .specialty,
                 limit: 8
             )
         } catch {

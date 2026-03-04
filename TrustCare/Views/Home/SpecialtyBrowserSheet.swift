@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct SpecialtyBrowserSheet: View {
-    @ObservedObject private var specialtyService = SpecialtyService.shared
-    @EnvironmentObject private var localizationManager: LocalizationManager
-    let selectedSpecialty: Specialty?
-    let onSelect: (Specialty) -> Void
+    @Environment(\.locale) private var locale
+    let onSelect: (TaxonomySuggestion) -> Void
     let onClear: () -> Void
 
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
-    @State private var expandedCategories: Set<String> = []
+    @State private var selectedEntityType: TaxonomyEntityType = .specialty
+    @State private var suggestions: [TaxonomySuggestion] = []
+    @State private var isLoading: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -25,48 +25,40 @@ struct SpecialtyBrowserSheet: View {
                 }
                 .padding(.horizontal, AppSpacing.lg)
 
-                SearchField(text: $searchText)
+                Picker("", selection: $selectedEntityType) {
+                    ForEach(TaxonomyEntityType.allCases) { entityType in
+                        Text(LocalizedStringKey(entityType.segmentTitleKey))
+                            .tag(entityType)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, AppSpacing.lg)
+
+                SearchField(
+                    text: $searchText,
+                    placeholderKey: selectedEntityType.searchPlaceholderKey
+                )
                     .padding(.horizontal, AppSpacing.lg)
 
                 ScrollView {
-                    VStack(spacing: AppSpacing.lg) {
-                        ForEach(groupedCategories, id: \.category) { group in
-                            DisclosureGroup(
-                                isExpanded: Binding(
-                                    get: { expandedCategories.contains(group.category) },
-                                    set: { isExpanded in
-                                        if isExpanded {
-                                            expandedCategories.insert(group.category)
-                                        } else {
-                                            expandedCategories.remove(group.category)
-                                        }
-                                    }
-                                )
-                            ) {
-                                VStack(spacing: AppSpacing.sm) {
-                                    ForEach(group.specialties) { specialty in
-                                        SpecialtyRow(
-                                            specialty: specialty,
-                                            isSelected: specialty == selectedSpecialty
-                                        ) {
-                                            onSelect(specialty)
-                                            dismiss()
-                                        }
-                                    }
-                                }
-                                .padding(.top, AppSpacing.sm)
-                            } label: {
-                                HStack(spacing: AppSpacing.sm) {
-                                    Image(systemName: group.iconName)
-                                        .foregroundStyle(.secondary)
-                                    Text(localizationManager.localizedCategory(group.category))
-                                        .font(AppFont.headline)
-                                    Spacer()
+                    VStack(spacing: AppSpacing.sm) {
+                        if isLoading {
+                            ProgressView()
+                                .padding(.top, AppSpacing.md)
+                        } else if suggestions.isEmpty,
+                                  !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            Text("empty_search")
+                                .font(AppFont.body)
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, AppSpacing.md)
+                        } else {
+                            ForEach(suggestions) { suggestion in
+                                TaxonomySuggestionRow(label: suggestion.label) {
+                                    onSelect(suggestion)
+                                    dismiss()
                                 }
                             }
-                            .padding(AppSpacing.md)
-                            .background(AppColor.cardBackground)
-                            .cornerRadius(AppRadius.card)
                         }
                     }
                     .padding(.horizontal, AppSpacing.lg)
@@ -82,41 +74,97 @@ struct SpecialtyBrowserSheet: View {
                     }
                 }
             }
-            .onAppear {
-                expandedCategories = Set(groupedCategories.map { $0.category })
+            .task(id: selectedEntityType) {
+                await runSearch()
+            }
+            .task(id: searchText) {
+                await runSearch()
             }
         }
     }
 
-    private var groupedCategories: [(category: String, iconName: String, specialties: [Specialty])] {
-        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-
-        let filtered = specialtyService.specialties.filter { specialty in
-            guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return true }
-            return specialty.matchesSearch(query)
+    private func runSearch() async {
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            suggestions = []
+            return
         }
 
-        let grouped = Dictionary(grouping: filtered, by: { $0.category })
-        let sortedCategories = grouped.keys.sorted {
-            let left = grouped[$0]?.map { $0.displayOrder }.min() ?? 0
-            let right = grouped[$1]?.map { $0.displayOrder }.min() ?? 0
-            if left == right {
-                return $0 < $1
-            }
-            return left < right
+        do {
+            try await Task.sleep(nanoseconds: 250_000_000)
+        } catch {
+            return
         }
 
-        return sortedCategories.compactMap { category in
-            guard let items = grouped[category] else { return nil }
-            let sorted = items.sorted { $0.displayOrder < $1.displayOrder }
-            let icon = safeIconName(sorted.first?.iconName)
-            return (category: category, iconName: icon, specialties: sorted)
+        isLoading = true
+        defer { isLoading = false }
+
+        do {
+            let localeCode = currentLocaleCode()
+            suggestions = try await TaxonomyService.searchTaxonomy(
+                query: trimmed,
+                locale: localeCode,
+                entityTypeFilter: selectedEntityType,
+                limit: 50
+            )
+        } catch {
+            suggestions = []
         }
+    }
+
+    private func currentLocaleCode() -> String {
+        if let languageCode = locale.language.languageCode?.identifier, !languageCode.isEmpty {
+            return languageCode
+        }
+        return locale.identifier
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? "en"
     }
 }
 
-private struct SpecialtyRow: View {
+private struct TaxonomySuggestionRow: View {
+    let label: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: AppSpacing.sm) {
+                Image(systemName: "cross.case")
+                    .foregroundStyle(.secondary)
+                Text(label)
+                    .font(AppFont.body)
+                    .foregroundStyle(.primary)
+                Spacer()
+            }
+            .padding(AppSpacing.md)
+            .background(AppColor.cardBackground)
+            .cornerRadius(AppRadius.card)
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+private struct SearchField: View {
+    @Binding var text: String
+    let placeholderKey: String
+
+    var body: some View {
+        HStack(spacing: AppSpacing.sm) {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(.secondary)
+            TextField(LocalizedStringKey(placeholderKey), text: $text)
+                .font(AppFont.body)
+                .textInputAutocapitalization(.words)
+                .autocorrectionDisabled()
+        }
+        .padding(AppSpacing.md)
+        .background(AppColor.cardBackground)
+        .cornerRadius(AppRadius.card)
+    }
+}
+
+private struct LegacySpecialtyRow: View {
     let specialty: Specialty
     let isSelected: Bool
     let action: () -> Void
@@ -144,23 +192,5 @@ private struct SpecialtyRow: View {
             .cornerRadius(AppRadius.standard)
         }
         .buttonStyle(.plain)
-    }
-}
-
-private struct SearchField: View {
-    @Binding var text: String
-
-    var body: some View {
-        HStack(spacing: AppSpacing.sm) {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
-            TextField("search_specialties", text: $text)
-                .font(AppFont.body)
-                .textInputAutocapitalization(.words)
-                .autocorrectionDisabled()
-        }
-        .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
-        .cornerRadius(AppRadius.card)
     }
 }
