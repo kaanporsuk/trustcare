@@ -7299,6 +7299,26 @@
         }
       }
     },
+    "app_language" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Jazyk aplikace" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Appsprog" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "App-Sprache" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "App Language" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Idioma de la app" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Langue de l’app" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Alkalmazás nyelve" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Lingua dell'app" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Apptaal" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Język aplikacji" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Idioma do app" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Limba aplicației" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Язык приложения" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Appspråk" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Uygulama Dili" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Мова застосунку" } }
+      }
+    },
     "language_section_title" : {
       "localizations" : {
         "cs" : {
@@ -17729,6 +17749,26 @@
             "value" : "Шукати лікаря, клініку..."
           }
         }
+      }
+    },
+    "search_languages" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hledat jazyky" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Søg sprog" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sprachen suchen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search languages" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buscar idiomas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rechercher des langues" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Nyelvek keresése" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Cerca lingue" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Talen zoeken" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Szukaj języków" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Pesquisar idiomas" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Caută limbi" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Искать языки" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Sök språk" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Dilleri ara" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Шукати мови" } }
       }
     },
     "search_specialties" : {

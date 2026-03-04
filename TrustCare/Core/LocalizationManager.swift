@@ -9,33 +9,55 @@ final class LocalizationManager: ObservableObject {
 
     struct AppLanguage: Identifiable, Hashable {
         let code: String
-        let name: String
+        let nativeName: String
+        let englishName: String
         let flag: String
         var id: String { code }
 
         var locale: Locale { Locale(identifier: code) }
+
+        var name: String { nativeName }
+
+        var hasEnglishSubtitle: Bool {
+            nativeName.caseInsensitiveCompare(englishName) != .orderedSame
+        }
     }
 
     // MARK: - Supported Languages
 
     static let supportedLanguages: [AppLanguage] = [
-        AppLanguage(code: "en", name: "English",    flag: "🇬🇧"),
-        AppLanguage(code: "tr", name: "Türkçe",     flag: "🇹🇷"),
-        AppLanguage(code: "es", name: "Español",    flag: "🇪🇸"),
-        AppLanguage(code: "fr", name: "Français",   flag: "🇫🇷"),
-        AppLanguage(code: "it", name: "Italiano",   flag: "🇮🇹"),
-        AppLanguage(code: "ro", name: "Română",     flag: "🇷🇴"),
-        AppLanguage(code: "pt", name: "Português",  flag: "🇵🇹"),
-        AppLanguage(code: "uk", name: "Українська", flag: "🇺🇦"),
-        AppLanguage(code: "ru", name: "Русский",    flag: "🇷🇺"),
-        AppLanguage(code: "sv", name: "Svenska",    flag: "🇸🇪"),
-        AppLanguage(code: "cs", name: "Čeština",    flag: "🇨🇿"),
-        AppLanguage(code: "hu", name: "Magyar",     flag: "🇭🇺"),
-        AppLanguage(code: "de", name: "Deutsch",    flag: "🇩🇪"),
-        AppLanguage(code: "pl", name: "Polski",     flag: "🇵🇱"),
-        AppLanguage(code: "nl", name: "Nederlands", flag: "🇳🇱"),
-        AppLanguage(code: "da", name: "Dansk",      flag: "🇩🇰"),
+        AppLanguage(code: "en", nativeName: "English", englishName: "English", flag: "🇬🇧"),
+        AppLanguage(code: "tr", nativeName: "Türkçe", englishName: "Turkish", flag: "🇹🇷"),
+        AppLanguage(code: "de", nativeName: "Deutsch", englishName: "German", flag: "🇩🇪"),
+        AppLanguage(code: "pl", nativeName: "Polski", englishName: "Polish", flag: "🇵🇱"),
+        AppLanguage(code: "nl", nativeName: "Nederlands", englishName: "Dutch", flag: "🇳🇱"),
+        AppLanguage(code: "da", nativeName: "Dansk", englishName: "Danish", flag: "🇩🇰"),
+        AppLanguage(code: "es", nativeName: "Español", englishName: "Spanish", flag: "🇪🇸"),
+        AppLanguage(code: "fr", nativeName: "Français", englishName: "French", flag: "🇫🇷"),
+        AppLanguage(code: "it", nativeName: "Italiano", englishName: "Italian", flag: "🇮🇹"),
+        AppLanguage(code: "ro", nativeName: "Română", englishName: "Romanian", flag: "🇷🇴"),
+        AppLanguage(code: "pt", nativeName: "Português", englishName: "Portuguese", flag: "🇵🇹"),
+        AppLanguage(code: "uk", nativeName: "Українська", englishName: "Ukrainian", flag: "🇺🇦"),
+        AppLanguage(code: "ru", nativeName: "Русский", englishName: "Russian", flag: "🇷🇺"),
+        AppLanguage(code: "sv", nativeName: "Svenska", englishName: "Swedish", flag: "🇸🇪"),
+        AppLanguage(code: "cs", nativeName: "Čeština", englishName: "Czech", flag: "🇨🇿"),
+        AppLanguage(code: "hu", nativeName: "Magyar", englishName: "Hungarian", flag: "🇭🇺"),
     ]
+
+    static let orderedLanguages: [AppLanguage] = {
+        guard let english = supportedLanguages.first(where: { $0.code == "en" }),
+              let turkish = supportedLanguages.first(where: { $0.code == "tr" }) else {
+            return supportedLanguages
+        }
+
+        let remainder = supportedLanguages
+            .filter { $0.code != "en" && $0.code != "tr" }
+            .sorted {
+                $0.nativeName.localizedCaseInsensitiveCompare($1.nativeName) == .orderedAscending
+            }
+
+        return [english, turkish] + remainder
+    }()
 
     static let supportedCodes = Set(supportedLanguages.map(\.code))
 

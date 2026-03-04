@@ -122,44 +122,37 @@ struct SettingsView: View {
 
     private var languageSection: some View {
         Section("language_section_title") {
-            ForEach(LocalizationManager.supportedLanguages) { language in
-                languageRow(language)
+            NavigationLink {
+                LanguageSettingsView { language in
+                    Task {
+                        await syncLanguagePreference(language.code)
+                    }
+                }
+            } label: {
+                HStack {
+                    Text("app_language")
+                    Spacer()
+                    Text(currentLanguageDisplayName)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }
 
-    private func languageRow(_ language: LocalizationManager.AppLanguage) -> some View {
-        Button {
-            if localizationManager.effectiveLanguage != language.code {
-                // Instant switch — no alert, no restart
-                localizationManager.changeLanguage(to: language.code)
-
-                // Sync to Supabase (fire and forget)
-                Task {
-                    guard let session = try? await SupabaseManager.shared.client.auth.session else { return }
-                    _ = try? await SupabaseManager.shared.client
-                        .from("profiles")
-                        .update(["preferred_language": language.code])
-                        .eq("id", value: session.user.id.uuidString)
-                        .execute()
-                }
-            }
-        } label: {
-            HStack(spacing: 12) {
-                Text(language.flag)
-                    .font(.title3)
-                Text(language.name)
-                    .foregroundStyle(.primary)
-                Spacer()
-                if localizationManager.effectiveLanguage == language.code {
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(AppColor.trustBlue)
-                        .fontWeight(.semibold)
-                }
-            }
-            .contentShape(Rectangle())
+    private var currentLanguageDisplayName: String {
+        if let current = LocalizationManager.orderedLanguages.first(where: { $0.code == localizationManager.effectiveLanguage }) {
+            return current.nativeName
         }
-        .buttonStyle(.plain)
+        return localizationManager.effectiveLanguage.uppercased()
+    }
+
+    private func syncLanguagePreference(_ code: String) async {
+        guard let session = try? await SupabaseManager.shared.client.auth.session else { return }
+        _ = try? await SupabaseManager.shared.client
+            .from("profiles")
+            .update(["preferred_language": code])
+            .eq("id", value: session.user.id.uuidString)
+            .execute()
     }
 
     private var preferencesSection: some View {
