@@ -28,12 +28,12 @@ struct DiscoverSearchSurfaceView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         if isLocationUnset {
                             Text("default_city_name")
-                                .font(AppFont.headline)
+                                .font(AppFont.headline.weight(.semibold))
                                 .lineLimit(1)
                                 .foregroundStyle(.primary)
                         } else {
                             Text(locationName)
-                                .font(AppFont.headline)
+                                .font(AppFont.headline.weight(.semibold))
                                 .lineLimit(1)
                                 .foregroundStyle(.primary)
                         }
@@ -50,7 +50,11 @@ struct DiscoverSearchSurfaceView: View {
                 }
                 .padding(.horizontal, AppSpacing.md)
                 .padding(.vertical, AppSpacing.sm)
-                .background(AppColor.cardBackground.opacity(0.74))
+                .background(AppColor.cardBackground.opacity(0.78))
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button, style: .continuous)
+                        .stroke(Color.white.opacity(0.52), lineWidth: 1)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: AppRadius.button, style: .continuous))
             }
             .buttonStyle(.plain)
@@ -75,7 +79,7 @@ struct DiscoverSearchSurfaceView: View {
             }
             .padding(.horizontal, AppSpacing.md)
             .frame(height: 46)
-            .background(Color(.systemGray6).opacity(0.9))
+            .background(Color(.systemGray6).opacity(0.92))
             .overlay(
                 Capsule()
                     .stroke(Color.black.opacity(0.05), lineWidth: 1)
@@ -127,6 +131,7 @@ struct DiscoverSearchSurfaceView: View {
                         onTapMore()
                     }
                 }
+                .padding(.horizontal, 2)
             }
 
             Picker("", selection: $viewMode) {
@@ -138,13 +143,24 @@ struct DiscoverSearchSurfaceView: View {
         .padding(AppSpacing.md)
         .background(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .fill(.ultraThinMaterial)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.22),
+                            Color.white.opacity(0.08),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(Color.white.opacity(0.55), lineWidth: 1)
+                .stroke(Color.white.opacity(0.62), lineWidth: 1)
         )
-        .shadow(color: .black.opacity(0.1), radius: 10, y: 3)
+        .shadow(color: .black.opacity(0.11), radius: 14, y: 5)
     }
 
     private func discoverPill(
@@ -165,7 +181,7 @@ struct DiscoverSearchSurfaceView: View {
             .font(AppFont.caption)
             .foregroundStyle(isSelected ? Color.white : Color.primary)
             .padding(.horizontal, AppSpacing.md)
-            .frame(height: 34)
+            .frame(height: 36)
             .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground.opacity(0.95))
             .clipShape(Capsule())
             .overlay(
@@ -194,7 +210,7 @@ struct DiscoverSearchSurfaceView: View {
             .font(AppFont.caption)
             .foregroundStyle(isSelected ? Color.white : Color.primary)
             .padding(.horizontal, AppSpacing.md)
-            .frame(height: 34)
+            .frame(height: 36)
             .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground.opacity(0.95))
             .clipShape(Capsule())
             .overlay(
