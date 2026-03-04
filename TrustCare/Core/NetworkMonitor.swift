@@ -9,18 +9,13 @@ final class NetworkMonitor: ObservableObject {
     @Published private(set) var isOnline: Bool = true
 
     private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue(label: "trustcare.network.monitor")
-    private var hasStarted = false
+    private let queue = DispatchQueue(label: "NetworkMonitor")
 
-    private init() {}
-
-    func start() {
-        guard !hasStarted else { return }
-        hasStarted = true
-
+    private init() {
         monitor.pathUpdateHandler = { [weak self] path in
+            let online = path.status == .satisfied
             Task { @MainActor in
-                self?.isOnline = path.status == .satisfied
+                self?.isOnline = online
             }
         }
 

@@ -90,8 +90,8 @@ struct HomeView: View {
                        !homeVM.providers.isEmpty,
                        showRefreshErrorBanner {
                         refreshErrorBanner(loadError)
-                            .padding(.horizontal, AppSpacing.lg)
-                            .padding(.bottom, 12)
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 8)
                             .transition(.move(edge: .bottom).combined(with: .opacity))
                     }
                 }
@@ -348,8 +348,8 @@ struct HomeView: View {
                 .background(AppColor.trustBlue.opacity(0.14))
                 .clipShape(Capsule())
 
-                Button(homeVM.viewMode == .map ? "action_switch_to_list" : "action_switch_to_map") {
-                    homeVM.viewMode = homeVM.viewMode == .map ? .list : .map
+                Button(secondaryModeActionTitleKey) {
+                    homeVM.viewMode = secondaryModeActionTarget
                 }
                 .buttonStyle(.plain)
                 .font(AppFont.footnote)
@@ -359,7 +359,7 @@ struct HomeView: View {
         .padding(AppSpacing.md)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: AppRadius.card, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
     }
 
@@ -381,8 +381,8 @@ struct HomeView: View {
                 .font(AppFont.callout)
                 .foregroundStyle(AppColor.trustBlue)
 
-                Button(homeVM.viewMode == .map ? "action_switch_to_list" : "action_switch_to_map") {
-                    homeVM.viewMode = homeVM.viewMode == .map ? .list : .map
+                Button(secondaryModeActionTitleKey) {
+                    homeVM.viewMode = secondaryModeActionTarget
                 }
                 .buttonStyle(.plain)
                 .font(AppFont.callout)
@@ -392,9 +392,21 @@ struct HomeView: View {
         .padding(AppSpacing.md)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: AppRadius.card, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
         .allowsHitTesting(true)
+    }
+
+    private var discoverMode: HomeViewModel.DiscoverMode {
+        homeVM.viewMode
+    }
+
+    private var secondaryModeActionTitleKey: LocalizedStringKey {
+        discoverMode == .map ? "action_switch_to_list" : "action_switch_to_map"
+    }
+
+    private var secondaryModeActionTarget: HomeViewModel.DiscoverMode {
+        discoverMode == .map ? .list : .map
     }
 
     private func localizedText(for key: String) -> String {

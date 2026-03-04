@@ -62,11 +62,13 @@ final class HomeViewModel: ObservableObject {
         let isCurrentLocation: Bool
     }
 
-    enum ViewMode: String, CaseIterable, Identifiable {
+    enum DiscoverMode: String, CaseIterable, Identifiable {
         case list = "List"
         case map = "Map"
         var id: String { rawValue }
     }
+
+    typealias ViewMode = DiscoverMode
 
     @Published var providers: [Provider] = []
     @Published var specialties: [Specialty] = []

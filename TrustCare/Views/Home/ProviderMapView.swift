@@ -23,45 +23,67 @@ struct ProviderMapView: View {
     @State private var showSearchButton = false
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Map(position: $cameraPosition) {
-                UserAnnotation()
-                ForEach(filteredProviders) { provider in
-                    Annotation(
-                        provider.name,
-                        coordinate: CLLocationCoordinate2D(
-                            latitude: provider.latitude,
-                            longitude: provider.longitude
-                        )
-                    ) {
-                        Button {
-                            highlightedProviderID = provider.id
-                            onOpenProvider(provider)
-                        } label: {
-                            mapPin(for: provider)
+        GeometryReader { proxy in
+            let safeAreaTop = proxy.safeAreaInsets.top
+
+            ZStack(alignment: .top) {
+                Map(position: $cameraPosition) {
+                    UserAnnotation()
+                    ForEach(filteredProviders) { provider in
+                        Annotation(
+                            provider.name,
+                            coordinate: CLLocationCoordinate2D(
+                                latitude: provider.latitude,
+                                longitude: provider.longitude
+                            )
+                        ) {
+                            Button {
+                                highlightedProviderID = provider.id
+                                onOpenProvider(provider)
+                            } label: {
+                                mapPin(for: provider)
+                            }
                         }
                     }
                 }
-            }
-            .mapControls {
-                MapUserLocationButton()
-                MapCompass()
-            }
-            .onMapCameraChange(frequency: .onEnd) { context in
-                let region = context.region
-                DispatchQueue.main.async {
-                    visibleRegion = region
-                    if hasSetInitialPosition {
-                        showSearchButton = true
+                .mapControls {
+                    MapUserLocationButton()
+                    MapCompass()
+                }
+                .onMapCameraChange(frequency: .onEnd) { context in
+                    let region = context.region
+                    DispatchQueue.main.async {
+                        visibleRegion = region
+                        if hasSetInitialPosition {
+                            showSearchButton = true
+                        }
                     }
                 }
-            }
-            // Set initial position ONCE on appear
-            .task {
-                if !hasSetInitialPosition {
-                    let loc = viewModel.selectedLocation
-                    if loc.latitude != 0, loc.longitude != 0 {
+                // Set initial position ONCE on appear
+                .task {
+                    if !hasSetInitialPosition {
+                        let loc = viewModel.selectedLocation
+                        if loc.latitude != 0, loc.longitude != 0 {
+                            DispatchQueue.main.async {
+                                cameraPosition = .region(MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(
+                                        latitude: loc.latitude,
+                                        longitude: loc.longitude
+                                    ),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                                ))
+                            }
+                        }
                         DispatchQueue.main.async {
+                            hasSetInitialPosition = true
+                        }
+                    }
+                }
+                .onChange(of: viewModel.flyToToken) { _, _ in
+                    let loc = viewModel.selectedLocation
+                    guard loc.latitude != 0, loc.longitude != 0 else { return }
+                    DispatchQueue.main.async {
+                        withAnimation(.easeInOut(duration: 0.5)) {
                             cameraPosition = .region(MKCoordinateRegion(
                                 center: CLLocationCoordinate2D(
                                     latitude: loc.latitude,
@@ -70,68 +92,62 @@ struct ProviderMapView: View {
                                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
                             ))
                         }
-                    }
-                    DispatchQueue.main.async {
-                        hasSetInitialPosition = true
+                        showSearchButton = false
                     }
                 }
-            }
-            // ═══════════════════════════════════════════════════════════
-            // THE ONLY .onChange that touches cameraPosition.
-            // Fires ONLY when user explicitly picks a new location
-            // (city picker or "Use Current Location").
-            // ═══════════════════════════════════════════════════════════
-            .onChange(of: viewModel.flyToToken) { _, _ in
-                let loc = viewModel.selectedLocation
-                guard loc.latitude != 0, loc.longitude != 0 else { return }
-                DispatchQueue.main.async {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        cameraPosition = .region(MKCoordinateRegion(
-                            center: CLLocationCoordinate2D(
-                                latitude: loc.latitude,
-                                longitude: loc.longitude
-                            ),
-                            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                        ))
+                .onChange(of: highlightedProviderID) { _, newValue in
+                    guard let highlightedID = newValue,
+                          let provider = filteredProviders.first(where: { $0.id == highlightedID }) else {
+                        return
                     }
-                    showSearchButton = false
-                }
-            }
-            .onChange(of: highlightedProviderID) { _, newValue in
-                guard let highlightedID = newValue,
-                      let provider = filteredProviders.first(where: { $0.id == highlightedID }) else {
-                    return
-                }
 
-                withAnimation(.easeInOut(duration: 0.35)) {
-                    cameraPosition = .region(
-                        MKCoordinateRegion(
-                            center: CLLocationCoordinate2D(
-                                latitude: provider.latitude,
-                                longitude: provider.longitude
-                            ),
-                            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                    withAnimation(.easeInOut(duration: 0.35)) {
+                        cameraPosition = .region(
+                            MKCoordinateRegion(
+                                center: CLLocationCoordinate2D(
+                                    latitude: provider.latitude,
+                                    longitude: provider.longitude
+                                ),
+                                span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                            )
                         )
-                    )
-                }
-            }
-
-            DiscoverMapOverlaysView(
-                viewModel: viewModel,
-                showSearchButton: showSearchButton,
-                visibleRegion: visibleRegion,
-                onSearchThisArea: { region in
-                    showSearchButton = false
-                    Task {
-                        await viewModel.fetchProviders(in: region)
                     }
                 }
-            )
-            .zIndex(2)
 
-            if viewModel.isLoading && filteredProviders.isEmpty {
-                ProgressView()
-                    .padding(.top, 24)
+                if viewModel.isLoading && filteredProviders.isEmpty {
+                    ProgressView()
+                        .padding(.top, 24)
+                }
+            }
+            .overlay(alignment: .topLeading) {
+                if showSearchButton, let region = visibleRegion {
+                    Button {
+                        showSearchButton = false
+                        Task {
+                            await viewModel.fetchProviders(in: region)
+                        }
+                    } label: {
+                        Label("search_this_area", systemImage: "magnifyingglass")
+                            .font(.callout.weight(.medium))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.92)
+                            .padding(.horizontal, 14)
+                            .frame(height: 38)
+                            .background(AppColor.trustBlue, in: Capsule())
+                            .foregroundStyle(.white)
+                            .shadow(radius: 4)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, safeAreaTop + 16)
+                    .padding(.leading, 16)
+                    .zIndex(3)
+                }
+            }
+            .overlay(alignment: .topTrailing) {
+                MapLegendView(viewModel: viewModel)
+                    .padding(.top, safeAreaTop + 16)
+                    .padding(.trailing, 16)
+                    .zIndex(3)
             }
         }
     }
@@ -160,54 +176,5 @@ struct ProviderMapView: View {
             )
             .scaleEffect(isHighlighted ? 1.12 : 1.0)
             .shadow(radius: isHighlighted ? 4 : 2)
-    }
-}
-
-private struct DiscoverMapOverlaysView: View {
-    @ObservedObject var viewModel: HomeViewModel
-    let showSearchButton: Bool
-    let visibleRegion: MKCoordinateRegion?
-    let onSearchThisArea: (MKCoordinateRegion) -> Void
-
-    var body: some View {
-        GeometryReader { proxy in
-            let isCompactHeight = proxy.size.height < 760
-            let edgePadding: CGFloat = isCompactHeight ? 10 : 12
-            let topPadding: CGFloat = proxy.safeAreaInsets.top + 20
-            let mapPillHeight: CGFloat = 38
-
-            VStack {
-                HStack(alignment: .top) {
-                    if showSearchButton, let region = visibleRegion {
-                        Button {
-                            onSearchThisArea(region)
-                        } label: {
-                            Label("search_this_area", systemImage: "magnifyingglass")
-                                .font(.callout.weight(.medium))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.92)
-                                .padding(.horizontal, isCompactHeight ? 12 : 14)
-                                .frame(height: mapPillHeight)
-                                .background(AppColor.trustBlue)
-                                .foregroundStyle(.white)
-                                .clipShape(Capsule())
-                                .shadow(radius: 4)
-                        }
-                        .buttonStyle(.plain)
-                        .transition(.opacity.combined(with: .scale))
-                    }
-
-                    Spacer(minLength: AppSpacing.md)
-
-                    // Single legend instance; no external material wrapper to avoid ghost layers.
-                    MapLegendView(viewModel: viewModel, collapsedPillHeight: mapPillHeight)
-                        .offset(y: isCompactHeight ? 2 : 0)
-                }
-                .padding(.horizontal, edgePadding)
-                .padding(.top, topPadding)
-
-                Spacer()
-            }
-        }
     }
 }

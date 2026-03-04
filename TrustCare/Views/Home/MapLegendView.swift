@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MapLegendView: View {
     @ObservedObject var viewModel: HomeViewModel
-    let collapsedPillHeight: CGFloat
 
     private let categories: [(type: String, labelKey: String)] = [
         ("general_clinic", "legend_clinic"),
@@ -23,24 +22,14 @@ struct MapLegendView: View {
             Button {
                 withAnimation(.spring(response: 0.3)) { isExpanded.toggle() }
             } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                        .font(.system(size: 18))
-                        .foregroundStyle(
-                            viewModel.selectedSurveyType.map { ProviderMapColor.color(for: $0) }
-                            ?? Color.primary
-                        )
-                    if !isExpanded {
-                        Text(selectedLabel)
-                            .font(.system(size: 13, weight: .semibold))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.86)
-                    }
-                }
-                .padding(.horizontal, 12)
-                .frame(height: collapsedPillHeight)
+                Label("filter_button", systemImage: "line.3.horizontal.decrease.circle.fill")
+                    .font(.system(size: 14, weight: .semibold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.9)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
                 .background(.ultraThinMaterial, in: Capsule())
-                .shadow(color: .black.opacity(0.11), radius: 4, y: 2)
+                .shadow(color: .black.opacity(0.12), radius: 4, y: 2)
 #if DEBUG
                 .overlay(Capsule().stroke(Color.red.opacity(0.25), lineWidth: 1))
 #endif
@@ -105,16 +94,5 @@ struct MapLegendView: View {
                 .transition(.opacity.combined(with: .scale(scale: 0.9, anchor: .topTrailing)))
             }
         }
-    }
-
-    /// Label shown on the collapsed capsule
-    private var selectedLabel: LocalizedStringKey {
-        guard let type = viewModel.selectedSurveyType else {
-            return LocalizedStringKey("filter_button")
-        }
-        if let cat = categories.first(where: { $0.type == type }) {
-            return LocalizedStringKey(cat.labelKey)
-        }
-        return LocalizedStringKey("filter_button")
     }
 }

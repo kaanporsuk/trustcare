@@ -40,10 +40,6 @@ struct TrustCareApp: App {
         Task {
             await SpecialtyService.shared.loadSpecialties()
         }
-
-        Task { @MainActor in
-            NetworkMonitor.shared.start()
-        }
     }
 
     var body: some Scene {

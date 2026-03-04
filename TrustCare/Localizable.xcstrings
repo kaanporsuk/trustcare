@@ -140,6 +140,7 @@
 
     },
     "action_dismiss" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -341,42 +342,202 @@
     },
     "action_switch_to_list" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Přepnout do zobrazení seznamu" } },
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Skift til listevisning" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Zur Listenansicht wechseln" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Switch to list view" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cambiar a vista de lista" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Passer en vue liste" } },
-        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Váltás listanézetre" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Passa alla vista elenco" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Schakel naar lijstweergave" } },
-        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Przełącz na widok listy" } },
-        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Mudar para visualização em lista" } },
-        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Comută la vizualizarea listă" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Переключиться на вид списка" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Växla till listvy" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Liste görünümüne geç" } },
-        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Перейти до режиму списку" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přepnout do zobrazení seznamu"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skift til listevisning"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zur Listenansicht wechseln"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to list view"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar a vista de lista"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer en vue liste"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Váltás listanézetre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passa alla vista elenco"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schakel naar lijstweergave"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przełącz na widok listy"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mudar para visualização em lista"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comută la vizualizarea listă"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключиться на вид списка"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Växla till listvy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste görünümüne geç"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейти до режиму списку"
+          }
+        }
       }
     },
     "action_switch_to_map" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Přepnout do zobrazení mapy" } },
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Skift til kortvisning" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Zur Kartenansicht wechseln" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Switch to map view" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cambiar a vista de mapa" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Passer en vue carte" } },
-        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Váltás térképnézetre" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Passa alla vista mappa" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Schakel naar kaartweergave" } },
-        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Przełącz na widok mapy" } },
-        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Mudar para visualização em mapa" } },
-        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Comută la vizualizarea hartă" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Переключиться на вид карты" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Växla till kartvy" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Harita görünümüne geç" } },
-        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Перейти до режиму мапи" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přepnout do zobrazení mapy"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skift til kortvisning"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zur Kartenansicht wechseln"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to map view"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar a vista de mapa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer en vue carte"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Váltás térképnézetre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passa alla vista mappa"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schakel naar kaartweergave"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przełącz na widok mapy"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mudar para visualização em mapa"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comută la vizualizarea hartă"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключиться на вид карты"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Växla till kartvy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harita görünümüne geç"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейти до режиму мапи"
+          }
+        }
       }
     },
     "Active" : {
@@ -5834,7 +5995,11 @@
         }
       }
     },
+    "Deleted User" : {
+
+    },
     "discover_error_providers_unavailable_body" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5851,6 +6016,7 @@
       }
     },
     "discover_error_providers_unavailable_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5867,6 +6033,7 @@
       }
     },
     "discover_error_switch_to_list" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5881,9 +6048,6 @@
           }
         }
       }
-    },
-    "Deleted User" : {
-
     },
     "Don't have an account? Sign Up" : {
 
@@ -6388,26 +6552,6 @@
         }
       }
     },
-    "error_load_providers_body_generic" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Poskytovatele se teď nepodařilo načíst. Zkuste to prosím znovu." } },
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Kunne ikke indlæse udbydere lige nu. Prøv igen." } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Anbieter konnten derzeit nicht geladen werden. Bitte versuchen Sie es erneut." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Couldn’t load providers. Please try again." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudieron cargar los proveedores en este momento. Inténtalo de nuevo." } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible de charger les prestataires pour le moment. Veuillez réessayer." } },
-        "hu" : { "stringUnit" : { "state" : "translated", "value" : "A szolgáltatók most nem tölthetők be. Kérjük, próbáld újra." } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Impossibile caricare i fornitori al momento. Riprova." } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Kon aanbieders nu niet laden. Probeer het opnieuw." } },
-        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Nie udało się teraz załadować usługodawców. Spróbuj ponownie." } },
-        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Não foi possível carregar os provedores agora. Tente novamente." } },
-        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Furnizorii nu au putut fi încărcați acum. Te rugăm să încerci din nou." } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Не удалось загрузить поставщиков. Пожалуйста, попробуйте снова." } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Kunde inte ladda leverantörer just nu. Försök igen." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Şu anda veriler alınamıyor. Lütfen tekrar deneyin." } },
-        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Не вдалося завантажити постачальників. Спробуйте ще раз." } }
-      }
-    },
     "error_load_providers_body" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -6505,6 +6649,107 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaraz ziednannia mozhe buty nestabilnym. Sprobuite shche raz, shchob zavantazhyty spysok."
+          }
+        }
+      }
+    },
+    "error_load_providers_body_generic" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poskytovatele se teď nepodařilo načíst. Zkuste to prosím znovu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunne ikke indlæse udbydere lige nu. Prøv igen."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anbieter konnten derzeit nicht geladen werden. Bitte versuchen Sie es erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t load providers. Please try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron cargar los proveedores en este momento. Inténtalo de nuevo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de charger les prestataires pour le moment. Veuillez réessayer."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A szolgáltatók most nem tölthetők be. Kérjük, próbáld újra."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile caricare i fornitori al momento. Riprova."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kon aanbieders nu niet laden. Probeer het opnieuw."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się teraz załadować usługodawców. Spróbuj ponownie."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível carregar os provedores agora. Tente novamente."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Furnizorii nu au putut fi încărcați acum. Te rugăm să încerci din nou."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить поставщиков. Пожалуйста, попробуйте снова."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunde inte ladda leverantörer just nu. Försök igen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu anda sağlayıcı verileri alınamıyor. Lütfen tekrar deneyin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося завантажити постачальників. Спробуйте ще раз."
           }
         }
       }
@@ -6853,43 +7098,205 @@
       }
     },
     "error_offline_body" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vypadá to, že není připojení k internetu. Zkontrolujte připojení a zkuste to znovu." } },
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Det ser ud til, at der ikke er internetforbindelse. Tjek din forbindelse og prøv igen." } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Es scheint keine Internetverbindung zu geben. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "It looks like you’re offline. Check your connection and try again." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Parece que no hay conexión a internet. Revisa tu conexión e inténtalo de nuevo." } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Il semble que vous n’ayez pas de connexion internet. Vérifiez votre connexion et réessayez." } },
-        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Úgy tűnik, nincs internetkapcsolat. Ellenőrizd a kapcsolatot, majd próbáld újra." } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Sembra che non ci sia connessione internet. Controlla la connessione e riprova." } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Het lijkt erop dat er geen internetverbinding is. Controleer je verbinding en probeer opnieuw." } },
-        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Wygląda na to, że nie ma połączenia z internetem. Sprawdź połączenie i spróbuj ponownie." } },
-        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Parece que você está sem internet. Verifique sua conexão e tente novamente." } },
-        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Se pare că nu există conexiune la internet. Verifică conexiunea și încearcă din nou." } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Похоже, нет подключения к интернету. Проверьте подключение и попробуйте снова." } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Det verkar som att du saknar internetanslutning. Kontrollera anslutningen och försök igen." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İnternet bağlantısı yok gibi görünüyor. Bağlantınızı kontrol edip tekrar deneyin." } },
-        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Схоже, немає підключення до інтернету. Перевірте з’єднання та спробуйте ще раз." } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vypadá to, že není připojení k internetu. Zkontrolujte připojení a zkuste to znovu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det ser ud til, at der ikke er internetforbindelse. Tjek din forbindelse og prøv igen."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es scheint keine Internetverbindung zu geben. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It looks like you’re offline. Check your connection and try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parece que no hay conexión a internet. Revisa tu conexión e inténtalo de nuevo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il semble que vous n’ayez pas de connexion internet. Vérifiez votre connexion et réessayez."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Úgy tűnik, nincs internetkapcsolat. Ellenőrizd a kapcsolatot, majd próbáld újra."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sembra che non ci sia connessione internet. Controlla la connessione e riprova."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het lijkt erop dat er geen internetverbinding is. Controleer je verbinding en probeer opnieuw."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląda na to, że nie ma połączenia z internetem. Sprawdź połączenie i spróbuj ponownie."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parece que você está sem internet. Verifique sua conexão e tente novamente."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se pare că nu există conexiune la internet. Verifică conexiunea și încearcă din nou."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Похоже, нет подключения к интернету. Проверьте подключение и попробуйте снова."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det verkar som att du saknar internetanslutning. Kontrollera anslutningen och försök igen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnternet bağlantısı yok gibi görünüyor. Bağlantınızı kontrol edip tekrar deneyin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Схоже, немає підключення до інтернету. Перевірте з’єднання та спробуйте ще раз."
+          }
+        }
       }
     },
     "error_offline_title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nepodařilo se načíst poskytovatele" } },
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Kunne ikke indlæse udbydere" } },
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Anbieter konnten nicht geladen werden" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Couldn’t load providers" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudieron cargar los proveedores" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible de charger les prestataires" } },
-        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Nem sikerült betölteni a szolgáltatókat" } },
-        "it" : { "stringUnit" : { "state" : "translated", "value" : "Impossibile caricare i fornitori" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Kon aanbieders niet laden" } },
-        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Nie udało się załadować usługodawców" } },
-        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Não foi possível carregar os provedores" } },
-        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Furnizorii nu au putut fi încărcați" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Не удалось загрузить поставщиков" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Kunde inte ladda leverantörer" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sağlayıcılar yüklenemedi" } },
-        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Не вдалося завантажити постачальників" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nepodařilo se načíst poskytovatele"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunne ikke indlæse udbydere"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anbieter konnten nicht geladen werden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t load providers"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron cargar los proveedores"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de charger les prestataires"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nem sikerült betölteni a szolgáltatókat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile caricare i fornitori"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kon aanbieders niet laden"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się załadować usługodawców"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível carregar os provedores"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Furnizorii nu au putut fi încărcați"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить поставщиков"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunde inte ladda leverantörer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sağlayıcılar yüklenemedi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося завантажити постачальників"
+          }
+        }
       }
     },
     "error_unknown" : {

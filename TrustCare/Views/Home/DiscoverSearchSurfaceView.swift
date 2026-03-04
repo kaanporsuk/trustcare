@@ -24,7 +24,7 @@ struct DiscoverSearchSurfaceView: View {
                     "",
                     text: $searchText,
                     prompt: Text("search_placeholder")
-                        .foregroundStyle(.primary.opacity(0.66))
+                        .foregroundStyle(.secondary)
                 )
                 .textFieldStyle(.plain)
                 .font(AppFont.body)
@@ -43,10 +43,10 @@ struct DiscoverSearchSurfaceView: View {
             .frame(height: 50)
             .background(Color(.systemGray6).opacity(0.98))
             .overlay(
-                Capsule()
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .stroke(Color.black.opacity(0.1), lineWidth: 1)
             )
-            .clipShape(Capsule())
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
             Button(action: onTapLocation) {
                 HStack(spacing: AppSpacing.sm) {
