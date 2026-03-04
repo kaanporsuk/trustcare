@@ -42,139 +42,36 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                // Top sticky section with location, search, and smart pills
-                VStack(spacing: AppSpacing.md) {
-                    // Location Row
-                    Button {
+                DiscoverSearchSurfaceView(
+                    locationName: homeVM.locationName,
+                    isLocationUnset: homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location"),
+                    searchText: $homeVM.searchText,
+                    taxonomySuggestions: homeVM.taxonomySuggestions,
+                    smartPills: homeVM.smartPills,
+                    selectedSmartPillEntityID: homeVM.selectedSmartPillEntityID,
+                    viewMode: $homeVM.viewMode,
+                    onTapLocation: {
                         showLocationSearch = true
-                    } label: {
-                        HStack(spacing: AppSpacing.sm) {
-                            Image(systemName: "mappin.circle.fill")
-                                .font(.title3)
-                                .foregroundStyle(AppColor.trustBlue)
-                            VStack(alignment: .leading, spacing: 2) {
-                                if homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location") {
-                                    Text("default_city_name")
-                                        .font(AppFont.headline)
-                                        .foregroundStyle(.primary)
-                                } else {
-                                    Text(homeVM.locationName)
-                                        .font(AppFont.headline)
-                                        .foregroundStyle(.primary)
-                                }
-                                Text("country_turkey")
-                                    .font(AppFont.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding(.horizontal, AppSpacing.md)
-                        .padding(.vertical, AppSpacing.sm)
-                        .background(AppColor.cardBackground)
-                        .cornerRadius(AppRadius.button)
+                    },
+                    onClearSearch: {
+                        homeVM.searchText = ""
+                        homeVM.clearSuggestions()
+                    },
+                    onSelectSuggestion: { suggestion in
+                        selectedSpecialty = nil
+                        Task { await homeVM.applyTaxonomySuggestion(suggestion) }
+                    },
+                    onSelectSmartPill: { entityID in
+                        selectedSpecialty = nil
+                        Task { await homeVM.applySmartPill(entityID: entityID) }
+                    },
+                    onTapMore: {
+                        showSpecialtyBrowser = true
                     }
-                    .buttonStyle(.plain)
-                    .padding(.horizontal, AppSpacing.lg)
-
-                    // Search Bar
-                    HStack(spacing: AppSpacing.sm) {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundStyle(.secondary)
-                        TextField("search_placeholder", text: $homeVM.searchText)
-                            .textFieldStyle(.plain)
-                            .font(AppFont.body)
-                            .textInputAutocapitalization(.words)
-                            .autocorrectionDisabled()
-                        if !homeVM.searchText.isEmpty {
-                            Button {
-                                homeVM.searchText = ""
-                                homeVM.clearSuggestions()
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundStyle(.secondary)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .padding(.horizontal, AppSpacing.md)
-                    .frame(height: 44)
-                    .background(Color(.systemGray6).opacity(0.95))
-                    .overlay(
-                        Capsule()
-                            .stroke(Color.black.opacity(0.04), lineWidth: 1)
-                    )
-                    .clipShape(Capsule())
-                    .padding(.horizontal, AppSpacing.lg)
-
-                    // Search suggestions (if any)
-                    if !homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-                       !homeVM.taxonomySuggestions.isEmpty {
-                        VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                            if !homeVM.taxonomySuggestions.isEmpty {
-                                Text("specialties_label")
-                                    .font(AppFont.caption)
-                                    .foregroundStyle(.secondary)
-                                    .padding(.top, AppSpacing.xs)
-                                ForEach(homeVM.taxonomySuggestions.prefix(4)) { suggestion in
-                                    Button {
-                                        selectedSpecialty = nil
-                                        Task { await homeVM.applyTaxonomySuggestion(suggestion) }
-                                    } label: {
-                                        HStack(spacing: AppSpacing.sm) {
-                                            Image(systemName: "cross.case")
-                                            Text(suggestion.label)
-                                                .font(AppFont.body)
-                                            Spacer()
-                                        }
-                                        .foregroundStyle(.primary)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
-                        }
-                        .padding(AppSpacing.md)
-                        .background(AppColor.cardBackground)
-                        .cornerRadius(AppRadius.card)
-                        .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
-                        .padding(.horizontal, AppSpacing.lg)
-                    }
-
-                    // Smart Pills (All + Top 5 Popular + More)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: AppSpacing.sm) {
-                            smartPill(titleKey: "filter_all", isSelected: homeVM.selectedSmartPillEntityID == nil) {
-                                selectedSpecialty = nil
-                                Task { await homeVM.applySmartPill(entityID: nil) }
-                            }
-
-                            ForEach(homeVM.smartPills) { pill in
-                                smartPill(title: pill.label, isSelected: homeVM.selectedSmartPillEntityID == pill.entityID) {
-                                    selectedSpecialty = nil
-                                    Task { await homeVM.applySmartPill(entityID: pill.entityID) }
-                                }
-                            }
-
-                            smartPill(titleKey: "filter_more", isSelected: false) {
-                                showSpecialtyBrowser = true
-                            }
-                        }
-                        .padding(.horizontal, AppSpacing.lg)
-                    }
-
-                    // Map/List Toggle
-                    Picker("", selection: $homeVM.viewMode) {
-                        Text("map_toggle_map").tag(HomeViewModel.ViewMode.map)
-                        Text("map_toggle_list").tag(HomeViewModel.ViewMode.list)
-                    }
-                    .pickerStyle(.segmented)
-                    .padding(.horizontal, AppSpacing.lg)
-                }
+                )
+                .padding(.horizontal, AppSpacing.md)
+                .padding(.top, AppSpacing.xs)
                 .padding(.bottom, AppSpacing.md)
-                .background(.ultraThinMaterial)
-                .shadow(color: .black.opacity(0.08), radius: 8, y: 2)
                 .zIndex(2)
 
                 // Content Section
@@ -265,40 +162,6 @@ struct HomeView: View {
                 )
             }
         }
-    }
-
-    private func smartPill(title: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Text(title)
-                .font(AppFont.caption)
-                .foregroundStyle(isSelected ? Color.white : Color.primary)
-                .padding(.horizontal, AppSpacing.md)
-                .padding(.vertical, AppSpacing.sm)
-                .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground)
-                .overlay(
-                    RoundedRectangle(cornerRadius: AppRadius.button)
-                        .stroke(isSelected ? Color.clear : AppColor.border, lineWidth: 1)
-                )
-                .cornerRadius(AppRadius.button)
-        }
-        .buttonStyle(.plain)
-    }
-
-    private func smartPill(titleKey: LocalizedStringKey, isSelected: Bool, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Text(titleKey)
-                .font(AppFont.caption)
-                .foregroundStyle(isSelected ? Color.white : Color.primary)
-                .padding(.horizontal, AppSpacing.md)
-                .padding(.vertical, AppSpacing.sm)
-                .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground)
-                .overlay(
-                    RoundedRectangle(cornerRadius: AppRadius.button)
-                        .stroke(isSelected ? Color.clear : AppColor.border, lineWidth: 1)
-                )
-                .cornerRadius(AppRadius.button)
-        }
-        .buttonStyle(.plain)
     }
 
     @ViewBuilder

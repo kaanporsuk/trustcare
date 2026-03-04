@@ -116,48 +116,18 @@ struct ProviderMapView: View {
                 }
             }
 
-            // Search this area button — Pinned top-left, independent of legend
-            VStack {
-                HStack {
-                    if showSearchButton, let region = visibleRegion {
-                        Button {
-                            showSearchButton = false
-                            Task {
-                                await viewModel.fetchProviders(in: region)
-                            }
-                        } label: {
-                            Label("search_this_area", systemImage: "magnifyingglass")
-                                .font(.callout.weight(.medium))
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 10)
-                                .background(AppColor.trustBlue)
-                                .foregroundStyle(.white)
-                                .clipShape(Capsule())
-                                .shadow(radius: 4)
-                        }
-                        .padding(.leading, 12)
-                        .transition(.opacity.combined(with: .scale))
+            DiscoverMapOverlaysView(
+                viewModel: viewModel,
+                showSearchButton: showSearchButton,
+                visibleRegion: visibleRegion,
+                onSearchThisArea: { region in
+                    showSearchButton = false
+                    Task {
+                        await viewModel.fetchProviders(in: region)
                     }
-                    Spacer()
                 }
-                .padding(.top, 12)
-                Spacer()
-            }
-
-            // Color-coded map legend — TOP RIGHT, independent container
-            VStack {
-                HStack {
-                    Spacer()
-                    MapLegendView(viewModel: viewModel)
-                        .padding(4)
-                        .background(.ultraThinMaterial)
-                        .clipShape(Capsule())
-                        .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
-                        .padding(.trailing, 12)
-                        .padding(.top, 12)
-                }
-                Spacer()
-            }
+            )
+            .zIndex(2)
 
             if viewModel.isLoading && filteredProviders.isEmpty {
                 ProgressView()
@@ -190,5 +160,44 @@ struct ProviderMapView: View {
             )
             .scaleEffect(isHighlighted ? 1.12 : 1.0)
             .shadow(radius: isHighlighted ? 4 : 2)
+    }
+}
+
+private struct DiscoverMapOverlaysView: View {
+    @ObservedObject var viewModel: HomeViewModel
+    let showSearchButton: Bool
+    let visibleRegion: MKCoordinateRegion?
+    let onSearchThisArea: (MKCoordinateRegion) -> Void
+
+    var body: some View {
+        VStack {
+            HStack(alignment: .top) {
+                if showSearchButton, let region = visibleRegion {
+                    Button {
+                        onSearchThisArea(region)
+                    } label: {
+                        Label("search_this_area", systemImage: "magnifyingglass")
+                            .font(.callout.weight(.medium))
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(AppColor.trustBlue)
+                            .foregroundStyle(.white)
+                            .clipShape(Capsule())
+                            .shadow(radius: 4)
+                    }
+                    .buttonStyle(.plain)
+                    .transition(.opacity.combined(with: .scale))
+                }
+
+                Spacer(minLength: AppSpacing.md)
+
+                // Single legend instance; no external material wrapper to avoid ghost layers.
+                MapLegendView(viewModel: viewModel)
+            }
+            .padding(.horizontal, 12)
+            .padding(.top, 12)
+
+            Spacer()
+        }
     }
 }
