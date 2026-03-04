@@ -9,6 +9,14 @@ Run this checklist for release candidates after CI passes.
 3. Ensure network is available.
 4. Confirm backend is pointing to production-ready Supabase project.
 
+## CI Secrets (main-only ontology audit)
+
+- `verify.yml` always runs localization and Xcode build on PRs and pushes.
+- Ontology audit on `main` runs only when secrets exist.
+- Configure repository secrets for `main` ontology auditing:
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY` (preferred) **or** `SUPABASE_SERVICE_ROLE_KEY`
+
 ## A) Language Switcher
 
 1. Open app language selector.
