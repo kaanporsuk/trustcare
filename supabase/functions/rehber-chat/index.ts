@@ -75,44 +75,23 @@ YANIT FORMATI ZORUNLU KURALI:
 2) Hemen ardından AYRI bir fenced JSON bloğu ver. JSON bloğu aşağıdaki şemaya birebir uymalı:
 \`\`\`json
 {
-  "recommended_specialty_ids": ["SPEC_ENT_OTOLARYNGOLOGY"],
+  "recommended_entity_ids": ["SPEC_ENT_OTOLARYNGOLOGY"],
   "urgency": "low",
   "follow_up_questions": ["Semptomlar ne zamandır var?"]
 }
 \`\`\`
 
 JSON KURALLARI:
-- recommended_specialty_ids: yalnızca canonical ID döndür (SPEC_ ile başlamalı), en fazla 3 adet.
+- recommended_entity_ids: yalnızca canonical ID döndür (SPEC_ ile başlamalı), en fazla 3 adet.
 - urgency: sadece şu değerlerden biri olmalı: low, medium, high, emergency.
 - follow_up_questions: 0-2 kısa soru.
-- JSON dışında doğal metin olabilir; ama JSON bloğu mutlaka tek ve geçerli olmalı.
-- Eğer yeterli bilgi yoksa recommended_specialty_ids boş dizi olabilir.
+- JSON bloğu mutlaka cevap SONUNDA yer almalı (final çıktı olmalı).
+- Önce doğal dil metni, sonra JSON bloğu gelmeli.
+- JSON fenced bloğu \`\`\`json ile başlamalı.
+- Eğer yeterli bilgi yoksa recommended_entity_ids boş dizi olabilir.
 
 Kullanıcı İngilizce yazarsa İngilizce yanıt ver, Türkçe yazarsa Türkçe yanıt ver.
 Önerdiğin canonical specialty ID'leri TrustCare taxonomy yapısına uygun üret.`;
-
-const ALLOWED_SPECIALTIES = new Set([
-  "General Practice",
-  "Family Medicine",
-  "Internal Medicine",
-  "Pediatrics",
-  "Cardiology",
-  "Dermatology",
-  "Neurology",
-  "Oncology",
-  "Obstetrics & Gynecology",
-  "General Dentistry",
-  "Orthodontics",
-  "Ophthalmology",
-  "ENT / Otolaryngology",
-  "Psychiatry",
-  "Psychology / Therapy",
-  "Urology",
-  "Physical Therapy / Physiotherapy",
-  "Aesthetic Medicine",
-  "Emergency Medicine",
-  "Pharmacy",
-]);
 
 function extractTextFromAnthropic(data: any): string {
   if (!data?.content || !Array.isArray(data.content)) {
@@ -126,60 +105,6 @@ function extractTextFromAnthropic(data: any): string {
     .trim();
 }
 
-function tryParseStructuredJson(raw: string): RehberResponse | null {
-  const text = raw.trim();
-  if (!text) return null;
-
-  try {
-    const parsed = JSON.parse(text);
-    return normalizeResponse(parsed);
-  } catch {
-    const firstBrace = text.indexOf("{");
-    const lastBrace = text.lastIndexOf("}");
-
-    if (firstBrace >= 0 && lastBrace > firstBrace) {
-      const jsonCandidate = text.slice(firstBrace, lastBrace + 1);
-      try {
-        const parsed = JSON.parse(jsonCandidate);
-        return normalizeResponse(parsed);
-      } catch {
-        return null;
-      }
-    }
-    return null;
-  }
-}
-
-function normalizeResponse(parsed: any): RehberResponse {
-  const isEmergency = Boolean(parsed?.is_emergency);
-  const message = typeof parsed?.message === "string"
-    ? parsed.message.trim()
-    : "Yanıt oluşturulamadı. Lütfen tekrar deneyin.";
-
-  let specialties: string[] | null = null;
-  if (Array.isArray(parsed?.recommended_specialties)) {
-    const normalizedSpecialties = parsed.recommended_specialties
-      .filter((item: unknown): item is string => typeof item === "string")
-      .map((item: string) => item.trim())
-      .filter((item: string) => item.length > 0)
-      .filter((item: string) => ALLOWED_SPECIALTIES.has(item))
-      .slice(0, 2);
-
-    if (normalizedSpecialties.length === 0) {
-      specialties = null;
-    } else {
-      specialties = normalizedSpecialties;
-    }
-  }
-
-  return {
-    message,
-    recommended_specialties: specialties,
-    is_emergency: isEmergency,
-    is_rate_limited: Boolean(parsed?.is_rate_limited),
-    is_fallback: Boolean(parsed?.is_fallback),
-  };
-}
 
 function base64UrlDecode(input: string): string {
   const normalized = input.replace(/-/g, "+").replace(/_/g, "/");
@@ -366,21 +291,13 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    const structured = tryParseStructuredJson(rawText);
-    if (structured) {
-      return new Response(JSON.stringify(structured), {
-        status: 200,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
-    const fallback: RehberResponse = {
+    const passthrough: RehberResponse = {
       message: rawText || "Yanıt oluşturulamadı. Lütfen tekrar deneyin.",
       recommended_specialties: null,
       is_emergency: false,
     };
 
-    return new Response(JSON.stringify(fallback), {
+    return new Response(JSON.stringify(passthrough), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
