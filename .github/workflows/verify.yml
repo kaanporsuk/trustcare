@@ -43,7 +43,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DEST="$(python3 -c 'import json,subprocess; data=json.loads(subprocess.check_output(["xcrun","simctl","list","devices","--json"], text=True)); names={d.get("name") for devices in data.get("devices",{}).values() for d in devices if d.get("isAvailable") and d.get("name")}; print(next((f"platform=iOS Simulator,name={p}" for p in ("iPhone 15","iPhone 16","iPhone 14") if p in names), "generic/platform=iOS Simulator"))')"
+          DEST="$(python3 -c 'import json,subprocess; data=json.loads(subprocess.check_output(["xcrun","simctl","list","devices","--json"], text=True)); sims=[d for devices in data.get("devices",{}).values() for d in devices if d.get("isAvailable") and d.get("name") and d.get("udid")]; pref=("iPhone 15","iPhone 16","iPhone 14"); chosen=next((d for p in pref for d in sims if d.get("name")==p), None); print(f"id={chosen[\"udid\"]}" if chosen else "generic/platform=iOS Simulator")')"
           echo "destination=$DEST" >> "$GITHUB_OUTPUT"
           echo "Using destination: $DEST"
 
