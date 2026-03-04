@@ -53,6 +53,12 @@ struct LanguageSettingsView: View {
         }
         .navigationTitle("app_language")
         .navigationBarTitleDisplayMode(.inline)
+        .accessibilityIdentifier("settings.languageScreen")
+        .onAppear {
+            #if DEBUG
+            print("[LanguageSettingsView] Appeared")
+            #endif
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("button_done") {

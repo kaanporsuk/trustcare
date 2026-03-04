@@ -3,6 +3,10 @@ import UIKit
 import Supabase
 
 struct SettingsView: View {
+    private enum SettingsRoute: Hashable {
+        case language
+    }
+
     @EnvironmentObject private var profileVM: ProfileViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
 
@@ -12,6 +16,7 @@ struct SettingsView: View {
     @State private var isExporting: Bool = false
     @State private var exportFileURL: URL?
     @State private var showShareSheet: Bool = false
+    @State private var activeRoute: SettingsRoute?
 
     @AppStorage("settings_notifications_enabled") private var notificationsEnabled: Bool = true
     @AppStorage("settings_location_services_enabled") private var locationServicesEnabled: Bool = true
@@ -54,6 +59,19 @@ struct SettingsView: View {
         .sheet(isPresented: $showShareSheet) {
             if let exportFileURL {
                 ShareSheet(items: [exportFileURL])
+            }
+        }
+        .navigationDestination(item: $activeRoute) { route in
+            switch route {
+            case .language:
+                LanguageSettingsView { language in
+                    Task {
+                        await syncLanguagePreference(language.code)
+                    }
+                }
+                .onAppear {
+                    debugLog("Opened LanguageSettingsView")
+                }
             }
         }
     }
@@ -122,12 +140,9 @@ struct SettingsView: View {
 
     private var languageSection: some View {
         Section("language_section_title") {
-            NavigationLink {
-                LanguageSettingsView { language in
-                    Task {
-                        await syncLanguagePreference(language.code)
-                    }
-                }
+            Button {
+                debugLog("Language row tapped")
+                activeRoute = .language
             } label: {
                 HStack {
                     Text("app_language")
@@ -135,7 +150,10 @@ struct SettingsView: View {
                     Text(currentLanguageDisplayName)
                         .foregroundStyle(.secondary)
                 }
+                .contentShape(Rectangle())
             }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("settings.languageRow")
         }
     }
 
@@ -153,6 +171,12 @@ struct SettingsView: View {
             .update(["preferred_language": code])
             .eq("id", value: session.user.id.uuidString)
             .execute()
+    }
+
+    private func debugLog(_ message: String) {
+        #if DEBUG
+        print("[SettingsView] \(message)")
+        #endif
     }
 
     private var preferencesSection: some View {
