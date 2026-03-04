@@ -4,8 +4,6 @@ import SwiftUI
 
 struct AddProviderSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.locale) private var locale
-    @EnvironmentObject private var localizationManager: LocalizationManager
 
     let onComplete: (Provider) -> Void
 
@@ -104,10 +102,14 @@ struct AddProviderSheet: View {
                 Text(errorMessage ?? "")
             }
             .sheet(isPresented: $showSpecialtyPicker) {
-                TaxonomyPickerSheet(selected: selectedTaxonomy) { selected in
-                    selectedTaxonomy = selected
-                    showSpecialtyPicker = false
-                }
+                TaxonomyPickerView(
+                    titleKey: "add_provider_select_specialty",
+                    initialEntityType: .specialty,
+                    onSelect: { selected in
+                        selectedTaxonomy = selected
+                        showSpecialtyPicker = false
+                    }
+                )
             }
             .sheet(isPresented: $showMapPicker) {
                 MapPinSelectorSheet(selectedCoordinate: $selectedCoordinate)
@@ -250,111 +252,6 @@ private struct PlaceSuggestion: Identifiable {
     let address: String
     let latitude: Double
     let longitude: Double
-}
-
-private struct TaxonomyPickerSheet: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.locale) private var locale
-
-    let selected: TaxonomySuggestion?
-    let onSelect: (TaxonomySuggestion) -> Void
-
-    @State private var searchText: String = ""
-    @State private var selectedEntityType: TaxonomyEntityType = .specialty
-    @State private var suggestions: [TaxonomySuggestion] = []
-    @State private var isLoading: Bool = false
-
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: AppSpacing.md) {
-                Picker("", selection: $selectedEntityType) {
-                    ForEach(TaxonomyEntityType.allCases) { entityType in
-                        Text(LocalizedStringKey(entityType.segmentTitleKey))
-                            .tag(entityType)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal, AppSpacing.lg)
-
-                List {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        ForEach(suggestions) { suggestion in
-                            Button {
-                                onSelect(suggestion)
-                                dismiss()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "cross.case")
-                                    Text(suggestion.label)
-                                    Spacer()
-                                    if suggestion.id == selected?.id {
-                                        Image(systemName: "checkmark")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                .listStyle(.plain)
-            }
-            .searchable(
-                text: $searchText,
-                prompt: Text(LocalizedStringKey(selectedEntityType.searchPlaceholderKey))
-            )
-            .navigationTitle("add_provider_select_specialty")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("close_button") { dismiss() }
-                }
-            }
-            .task(id: selectedEntityType) {
-                await runSearch()
-            }
-            .task(id: searchText) {
-                await runSearch()
-            }
-        }
-    }
-
-    private func runSearch() async {
-        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
-            suggestions = []
-            return
-        }
-
-        do {
-            try await Task.sleep(nanoseconds: 250_000_000)
-        } catch {
-            return
-        }
-
-        isLoading = true
-        defer { isLoading = false }
-
-        do {
-            suggestions = try await TaxonomyService.searchTaxonomy(
-                query: trimmed,
-                locale: currentLocaleCode(),
-                entityTypeFilter: selectedEntityType,
-                limit: 50
-            )
-        } catch {
-            suggestions = []
-        }
-    }
-
-    private func currentLocaleCode() -> String {
-        if let languageCode = locale.language.languageCode?.identifier, !languageCode.isEmpty {
-            return languageCode
-        }
-        return locale.identifier
-            .components(separatedBy: ["-", "_"])
-            .first?
-            .lowercased() ?? "en"
-    }
 }
 
 private struct MapPinSelectorSheet: View {

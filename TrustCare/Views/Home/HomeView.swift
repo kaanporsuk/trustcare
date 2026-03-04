@@ -372,6 +372,8 @@ struct HomeView: View {
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.primary)
 
+            emptyResultsGuidance
+
             Button {
                 NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
             } label: {
@@ -401,6 +403,8 @@ struct HomeView: View {
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.primary)
+
+            emptyResultsGuidance
 
             Button {
                 NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
@@ -460,6 +464,16 @@ struct HomeView: View {
             .first?
             .lowercased() ?? ""
         return normalizedCode == "tr" || normalizedCode == "ar"
+    }
+
+    private var emptyResultsGuidance: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("widen_map_area")
+            Text("switch_to_list")
+            Text("try_nearby_city")
+        }
+        .font(AppFont.footnote)
+        .foregroundStyle(.secondary)
     }
 
     private var mapBottomSheet: some View {

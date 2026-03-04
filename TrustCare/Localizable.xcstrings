@@ -17771,6 +17771,206 @@
         "uk" : { "stringUnit" : { "state" : "translated", "value" : "Шукати мови" } }
       }
     },
+    "recents" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nedávné" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Seneste" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Zuletzt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recents" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recientes" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Récents" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Legutóbbi" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Recenti" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Recent" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Ostatnie" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Recentes" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Recente" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Недавние" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Senaste" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Son Kullanılanlar" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Нещодавні" } }
+      }
+    },
+    "top_picks" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Öne çıkanlar" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Topvalg" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Top-Auswahl" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Top Picks" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recomendados" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sélections" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Kiemeltek" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "In evidenza" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Topkeuzes" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Najlepsze wybory" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Destaques" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Recomandate" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Топ-подборка" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Toppval" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Öne Çıkanlar" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Рекомендовані" } }
+      }
+    },
+    "all_results" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vše" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Alle" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Alle" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Todo" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tous" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Összes" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Tutti" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Alles" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Wszystko" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Todos" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Toate" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Все" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Alla" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tümü" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Усі" } }
+      }
+    },
+    "no_results" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Výsledek nenalezen" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Ingen resultater" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Keine Ergebnisse" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No results" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin resultados" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucun résultat" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Nincs találat" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Nessun risultato" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Geen resultaten" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Brak wyników" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Sem resultados" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Fără rezultate" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Нет результатов" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Inga resultat" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sonuç bulunamadı" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Немає результатів" } }
+      }
+    },
+    "try_english_keywords" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zkuste anglická klíčová slova nebo zkontrolujte pravopis." } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Prøv engelske søgeord eller tjek stavningen." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Versuchen Sie englische Begriffe oder prüfen Sie die Schreibweise." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try English keywords or check spelling." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Prueba palabras clave en inglés o revisa la ortografía." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Essayez des mots-clés en anglais ou vérifiez l’orthographe." } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Próbálj angol kulcsszavakat, vagy ellenőrizd a helyesírást." } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Prova parole chiave in inglese o controlla l'ortografia." } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Probeer Engelse zoekwoorden of controleer de spelling." } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Spróbuj angielskich słów kluczowych lub sprawdź pisownię." } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Tente palavras-chave em inglês ou verifique a ortografia." } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Încearcă termeni în engleză sau verifică ortografia." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Попробуйте английские ключевые слова или проверьте написание." } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Prova engelska sökord eller kontrollera stavningen." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İngilizce anahtar kelime deneyin veya yazımı kontrol edin." } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Спробуйте англійські ключові слова або перевірте правопис." } }
+      }
+    },
+    "switch_category_hint" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zkuste přepnout kategorii." } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Prøv at skifte kategori." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Versuchen Sie, die Kategorie zu wechseln." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try switching category." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Prueba cambiar de categoría." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Essayez de changer de catégorie." } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Próbálj kategóriát váltani." } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Prova a cambiare categoria." } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Probeer van categorie te wisselen." } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Spróbuj zmienić kategorię." } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Tente mudar de categoria." } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Încearcă să schimbi categoria." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Попробуйте сменить категорию." } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Försök byta kategori." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kategori değiştirerek tekrar deneyin." } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Спробуйте змінити категорію." } }
+      }
+    },
+    "showing_english_results" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zobrazují se anglické výsledky" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Viser engelske resultater" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Englische Ergebnisse werden angezeigt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Showing English results" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mostrando resultados en inglés" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Affichage des résultats en anglais" } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Angol találatok jelennek meg" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Mostrando risultati in inglese" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Engelse resultaten worden getoond" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Wyświetlane są wyniki po angielsku" } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Mostrando resultados em inglês" } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Se afișează rezultate în engleză" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Показаны результаты на английском" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Visar engelska resultat" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İngilizce sonuçlar gösteriliyor" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Показано результати англійською" } }
+      }
+    },
+    "widen_map_area" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Haritayı genişletin ve tekrar arayın." } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Udvid kortområdet og søg igen." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erweitern Sie den Kartenbereich und suchen Sie erneut." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Widen the map area and search again." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Amplía el área del mapa y vuelve a buscar." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Élargissez la zone de carte et recherchez à nouveau." } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Növeld a térképi területet, majd keress újra." } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Allarga l'area della mappa e riprova." } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Vergroot het kaartgebied en zoek opnieuw." } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Rozszerz obszar mapy i wyszukaj ponownie." } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Amplie a área do mapa e pesquise novamente." } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Lărgește zona hărții și caută din nou." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Расширьте область карты и повторите поиск." } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Utöka kartområdet och sök igen." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Harita alanını genişletip tekrar arayın." } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Розширте область карти та спробуйте знову." } }
+      }
+    },
+    "try_nearby_city" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zkuste blízké město." } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Prøv en nærliggende by." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Versuchen Sie eine nahegelegene Stadt." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try a nearby city." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Prueba con una ciudad cercana." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Essayez une ville proche." } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "Próbálj meg egy közeli várost." } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Prova una città vicina." } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Probeer een nabijgelegen stad." } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Spróbuj pobliskiego miasta." } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Tente uma cidade próxima." } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Încearcă un oraș apropiat." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Попробуйте соседний город." } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Prova en närliggande stad." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yakındaki şehirleri deneyin." } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Спробуйте сусіднє місто." } }
+      }
+    },
+    "switch_to_list" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Daha fazla sonuç için liste görünümüne geçin." } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Skift til listevisning for flere resultater." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wechseln Sie zur Listenansicht für mehr Ergebnisse." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Switch to list view for more results." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cambia a vista de lista para ver más resultados." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Passez à la vue liste pour plus de résultats." } },
+        "hu" : { "stringUnit" : { "state" : "translated", "value" : "További találatokért válts listanézetre." } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Passa alla vista elenco per più risultati." } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Schakel naar lijstweergave voor meer resultaten." } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Przełącz na widok listy, aby zobaczyć więcej wyników." } },
+        "pt" : { "stringUnit" : { "state" : "translated", "value" : "Mude para a visualização em lista para mais resultados." } },
+        "ro" : { "stringUnit" : { "state" : "translated", "value" : "Comută la vizualizare listă pentru mai multe rezultate." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Переключитесь на режим списка для большего числа результатов." } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Växla till listvy för fler resultat." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Daha fazla sonuç için liste görünümüne geçin." } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "Перейдіть до режиму списку, щоб побачити більше результатів." } }
+      }
+    },
     "search_specialties" : {
       "localizations" : {
         "cs" : {

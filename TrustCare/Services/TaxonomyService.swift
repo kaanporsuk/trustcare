@@ -2,6 +2,11 @@ import Foundation
 import Supabase
 
 enum TaxonomyService {
+    struct TaxonomySearchResult {
+        let suggestions: [TaxonomySuggestion]
+        let usedEnglishFallback: Bool
+    }
+
     private actor LabelCache {
         private var storage: [String: [String: String]] = [:]
 
@@ -30,11 +35,15 @@ enum TaxonomyService {
 
     private struct TaxonomyEntityRow: Decodable {
         let id: String
+        let entityType: String?
         let defaultName: String
+        let sortPriority: Int?
 
         enum CodingKeys: String, CodingKey {
             case id
+            case entityType = "entity_type"
             case defaultName = "default_name"
+            case sortPriority = "sort_priority"
         }
     }
 
@@ -48,6 +57,7 @@ enum TaxonomyService {
         query: String,
         locale: String,
         entityTypeFilter: TaxonomyEntityType? = nil,
+        fallbackLocale: String = "en",
         limit: Int = 8
     ) async throws -> [TaxonomySuggestion] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -55,7 +65,8 @@ enum TaxonomyService {
 
         var params: [String: AnyJSON] = [
             "search_query": .string(trimmed),
-            "current_locale": .string(locale)
+            "current_locale": .string(locale),
+            "fallback_locale": .string(fallbackLocale)
         ]
 
         if let entityTypeFilter {
@@ -67,6 +78,58 @@ enum TaxonomyService {
             .execute()
 
         return Array(response.value.prefix(limit))
+    }
+
+    static func searchTaxonomyWithLocaleFallback(
+        query: String,
+        locale: String,
+        entityTypeFilter: TaxonomyEntityType? = nil,
+        limit: Int = 50
+    ) async throws -> TaxonomySearchResult {
+        let localizedResults = try await searchTaxonomy(
+            query: query,
+            locale: locale,
+            entityTypeFilter: entityTypeFilter,
+            fallbackLocale: "",
+            limit: limit
+        )
+
+        if !localizedResults.isEmpty || locale.lowercased() == "en" {
+            return TaxonomySearchResult(suggestions: localizedResults, usedEnglishFallback: false)
+        }
+
+        let englishResults = try await searchTaxonomy(
+            query: query,
+            locale: "en",
+            entityTypeFilter: entityTypeFilter,
+            fallbackLocale: "en",
+            limit: limit
+        )
+
+        return TaxonomySearchResult(suggestions: englishResults, usedEnglishFallback: !englishResults.isEmpty)
+    }
+
+    static func browseTaxonomy(entityType: TaxonomyEntityType, locale: String, limit: Int = 120) async throws -> [TaxonomySuggestion] {
+        let response: PostgrestResponse<[TaxonomyEntityRow]> = try await client
+            .from("taxonomy_entities")
+            .select("id,entity_type,default_name,sort_priority")
+            .eq("entity_type", value: entityType.rawValue)
+            .order("sort_priority", ascending: true)
+            .order("default_name", ascending: true)
+            .limit(limit)
+            .execute()
+
+        let entityIDs = response.value.map { $0.id }
+        let labels = try await labelsByEntityID(entityIDs: entityIDs, locale: locale)
+
+        return response.value.map { row in
+            TaxonomySuggestion(
+                entityId: row.id,
+                entityType: row.entityType ?? entityType.rawValue,
+                label: labels[row.id] ?? row.defaultName,
+                score: nil
+            )
+        }
     }
 
     static func searchProvidersByTaxonomy(entityIDs: [String]) async throws -> [Provider] {
