@@ -77,12 +77,12 @@ final class TaxonomyPickerViewModel: ObservableObject {
                 entityTypeFilter: selectedEntityType,
                 limit: 50
             )
-            suggestions = result.suggestions
+            suggestions = dedupeByEntityID(result.suggestions)
             showEnglishFallbackHint = result.usedEnglishFallback
             await Self.searchCache.set(
                 key: cacheKey,
                 value: CachedSearchResult(
-                    suggestions: result.suggestions,
+                    suggestions: dedupeByEntityID(result.suggestions),
                     usedEnglishFallback: result.usedEnglishFallback
                 ),
                 maxEntries: Self.maxCacheEntries
@@ -98,9 +98,33 @@ final class TaxonomyPickerViewModel: ObservableObject {
         async let topPicks = resolveTopPicks(localeCode: localeCode)
         async let all = resolveAll(localeCode: localeCode)
 
-        recentItems = await recents
-        topPickItems = await topPicks
-        allItems = await all
+        let recentsValue = dedupeByEntityID(await recents)
+        var seen = Set(recentsValue.map(\.entityId))
+
+        let topPicksValue = dedupeByEntityID(await topPicks).filter { suggestion in
+            seen.insert(suggestion.entityId).inserted
+        }
+
+        let allValue = dedupeByEntityID(await all).filter { suggestion in
+            seen.insert(suggestion.entityId).inserted
+        }
+
+        recentItems = recentsValue
+        topPickItems = topPicksValue
+        allItems = allValue
+    }
+
+    private func dedupeByEntityID(_ items: [TaxonomySuggestion]) -> [TaxonomySuggestion] {
+        var seen = Set<String>()
+        var ordered: [TaxonomySuggestion] = []
+
+        for item in items {
+            if seen.insert(item.entityId).inserted {
+                ordered.append(item)
+            }
+        }
+
+        return ordered
     }
 
     private func resolveRecents(localeCode: String) async -> [TaxonomySuggestion] {
@@ -308,7 +332,7 @@ struct TaxonomyPickerView: View {
                                 section(titleKey: "top_picks", items: viewModel.topPickItems)
                             }
 
-                            section(titleKey: "all_results", items: viewModel.allItems)
+                            section(titleKey: "all", items: viewModel.allItems)
                         } else if viewModel.suggestions.isEmpty {
                             emptySearchGuidance
                         } else {

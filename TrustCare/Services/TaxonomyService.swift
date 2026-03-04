@@ -53,6 +53,14 @@ enum TaxonomyService {
 
     private static let labelCache = LabelCache()
 
+    static func displayLabel(for entityID: String, locale: String) async throws -> String {
+        let normalizedID = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !normalizedID.isEmpty else { return entityID }
+
+        let labels = try await labelsByEntityID(entityIDs: [normalizedID], locale: locale)
+        return labels[normalizedID] ?? normalizedID
+    }
+
     static func searchTaxonomy(
         query: String,
         locale: String,
@@ -180,6 +188,10 @@ enum TaxonomyService {
     static func labelsByEntityID(entityIDs: [String], locale: String) async throws -> [String: String] {
         let normalizedIDs = Array(Set(entityIDs.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }))
             .filter { !$0.isEmpty }
+        let normalizedLocale = locale
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? "en"
 
         guard !normalizedIDs.isEmpty else { return [:] }
 
@@ -187,7 +199,7 @@ enum TaxonomyService {
         var missing: [String] = []
 
         for entityID in normalizedIDs {
-            if let cached = await labelCache.value(locale: locale, entityId: entityID) {
+            if let cached = await labelCache.value(locale: normalizedLocale, entityId: entityID) {
                 result[entityID] = cached
             } else {
                 missing.append(entityID)
@@ -199,26 +211,41 @@ enum TaxonomyService {
         let localizedResponse: PostgrestResponse<[TaxonomyLabelRow]> = try await client
             .from("taxonomy_labels")
             .select("entity_id,label")
-            .eq("locale", value: locale)
+            .eq("locale", value: normalizedLocale)
             .in("entity_id", values: missing)
             .execute()
 
         let localized = Dictionary(uniqueKeysWithValues: localizedResponse.value.map { ($0.entityId, $0.label) })
 
-        let unresolved = missing.filter { localized[$0] == nil }
-        var fallback: [String: String] = [:]
+        let unresolvedAfterLocalized = missing.filter { localized[$0] == nil }
+        var englishFallback: [String: String] = [:]
 
-        if !unresolved.isEmpty {
+        if !unresolvedAfterLocalized.isEmpty {
+            let englishResponse: PostgrestResponse<[TaxonomyLabelRow]> = try await client
+                .from("taxonomy_labels")
+                .select("entity_id,label")
+                .eq("locale", value: "en")
+                .in("entity_id", values: unresolvedAfterLocalized)
+                .execute()
+            englishFallback = Dictionary(uniqueKeysWithValues: englishResponse.value.map { ($0.entityId, $0.label) })
+        }
+
+        let unresolvedAfterEnglish = unresolvedAfterLocalized.filter { englishFallback[$0] == nil }
+        var defaultFallback: [String: String] = [:]
+
+        if !unresolvedAfterEnglish.isEmpty {
             let fallbackResponse: PostgrestResponse<[TaxonomyEntityRow]> = try await client
                 .from("taxonomy_entities")
                 .select("id,default_name")
-                .in("id", values: unresolved)
+                .in("id", values: unresolvedAfterEnglish)
                 .execute()
-            fallback = Dictionary(uniqueKeysWithValues: fallbackResponse.value.map { ($0.id, $0.defaultName) })
+            defaultFallback = Dictionary(uniqueKeysWithValues: fallbackResponse.value.map { ($0.id, $0.defaultName) })
         }
 
-        let merged = localized.merging(fallback) { current, _ in current }
-        await labelCache.set(locale: locale, mapping: merged)
+        let merged = localized
+            .merging(englishFallback) { current, _ in current }
+            .merging(defaultFallback) { current, _ in current }
+        await labelCache.set(locale: normalizedLocale, mapping: merged)
 
         for entityID in missing {
             if let value = merged[entityID] {
