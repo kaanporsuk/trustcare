@@ -5,6 +5,13 @@ import MapKit
 
 @MainActor
 final class HomeViewModel: ObservableObject {
+    struct SmartPillItem: Identifiable, Hashable {
+        let entityID: String
+        let label: String
+
+        var id: String { entityID }
+    }
+
     struct CityOption: Identifiable, Hashable {
         let id = UUID()
         let name: String
@@ -51,6 +58,8 @@ final class HomeViewModel: ObservableObject {
     @Published var providerSuggestions: [Provider] = []
     @Published var specialtySuggestions: [Specialty] = []
     @Published var taxonomySuggestions: [TaxonomySuggestion] = []
+    @Published var smartPills: [SmartPillItem] = []
+    @Published var selectedSmartPillEntityID: String? = nil
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = true
     @Published var errorMessage: String?
@@ -311,7 +320,6 @@ final class HomeViewModel: ObservableObject {
         }
 
         await loadSuggestions()
-        await refresh()
     }
 
     func clearSuggestions() {
@@ -321,17 +329,19 @@ final class HomeViewModel: ObservableObject {
     }
 
     func applyTaxonomySuggestion(_ suggestion: TaxonomySuggestion) async {
-        selectedCanonicalSpecialtyIDs = [suggestion.targetId]
+        selectedCanonicalSpecialtyIDs = [suggestion.entityId]
+        selectedSmartPillEntityID = suggestion.entityId
         selectedCanonicalSuggestionLabel = suggestion.label
         selectedSpecialtyName = nil
         selectedSurveyType = nil
         searchText = suggestion.label
         clearSuggestions()
-        await refresh()
+        await resolveProvidersByCanonicalEntityIDs(reset: true)
     }
 
     func applySpecialtyFilter(_ specialty: Specialty?) async {
         selectedCanonicalSpecialtyIDs = []
+        selectedSmartPillEntityID = specialty?.canonicalEntityId ?? specialty?.canonicalId
         selectedCanonicalSuggestionLabel = nil
         selectedSpecialtyName = specialty?.name
         if let specialty {
@@ -348,10 +358,28 @@ final class HomeViewModel: ObservableObject {
     /// Clears any specialty-level filter and applies the broad category.
     func applyLegendFilter(_ surveyType: String?) async {
         selectedCanonicalSpecialtyIDs = []
+        selectedSmartPillEntityID = nil
         selectedCanonicalSuggestionLabel = nil
         selectedSpecialtyName = nil
         selectedSurveyType = surveyType
         await refresh()
+    }
+
+    func applySmartPill(entityID: String?) async {
+        selectedCanonicalSuggestionLabel = nil
+        selectedSpecialtyName = nil
+        selectedSurveyType = nil
+        selectedSmartPillEntityID = entityID
+        selectedCanonicalSpecialtyIDs = entityID.map { [$0] } ?? []
+        searchText = ""
+        clearSuggestions()
+
+        if selectedCanonicalSpecialtyIDs.isEmpty {
+            await refresh()
+            return
+        }
+
+        await resolveProvidersByCanonicalEntityIDs(reset: true)
     }
 
     private func observeRehberSpecialtyRouting() {
@@ -399,6 +427,7 @@ final class HomeViewModel: ObservableObject {
 
         selectedSpecialtyName = match?.name ?? specialtyName
         selectedCanonicalSpecialtyIDs = []
+        selectedSmartPillEntityID = match?.canonicalEntityId ?? match?.canonicalId
         selectedCanonicalSuggestionLabel = nil
         selectedSurveyType = match?.surveyType
         await refresh()
@@ -421,9 +450,10 @@ final class HomeViewModel: ObservableObject {
         selectedSurveyType = nil
         selectedCanonicalSuggestionLabel = nil
         selectedCanonicalSpecialtyIDs = normalized
+        selectedSmartPillEntityID = normalized.count == 1 ? normalized[0] : nil
         searchText = ""
         clearSuggestions()
-        await refresh()
+        await resolveProvidersByCanonicalEntityIDs(reset: true)
     }
 
     private func loadSpecialties(forceRefresh: Bool) async {
@@ -447,6 +477,7 @@ final class HomeViewModel: ObservableObject {
                     ? results.filter { $0.isPopular }.sorted { $0.displayOrder < $1.displayOrder }
                     : personalized
             }
+            await refreshSmartPills()
             verboseLog("✅ Loaded \(results.count) specialties")
         } catch {
             let errorMsg = localizedErrorMessage(error)
@@ -475,6 +506,13 @@ final class HomeViewModel: ObservableObject {
             )
         let lat = activeCoordinate?.latitude
         let lng = activeCoordinate?.longitude
+
+        if !selectedCanonicalSpecialtyIDs.isEmpty,
+           selectedSpecialtyName == nil,
+           selectedSurveyType == nil {
+            await resolveProvidersByCanonicalEntityIDs(reset: reset)
+            return
+        }
 
         do {
             let results = try await ProviderService.searchProviders(
@@ -560,20 +598,60 @@ final class HomeViewModel: ObservableObject {
             taxonomySuggestions = []
         }
 
-        do {
-            providerSuggestions = try await ProviderService.searchProvidersTable(query: trimmed, limit: 8)
-        } catch {
-            providerSuggestions = []
+        providerSuggestions = []
+        specialtySuggestions = []
+    }
+
+    private func resolveProvidersByCanonicalEntityIDs(reset: Bool) async {
+        guard !selectedCanonicalSpecialtyIDs.isEmpty else {
+            if reset {
+                providers = []
+            }
+            hasMoreResults = false
+            return
         }
 
-        let query = trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-        specialtySuggestions = specialties
-            .filter { specialty in
-                specialty.matchesSearch(query)
+        isLoading = true
+        defer { isLoading = false }
+
+        do {
+            let resolved = try await TaxonomyService.searchProvidersByTaxonomy(entityIDs: selectedCanonicalSpecialtyIDs)
+            providers = resolved
+            hasMoreResults = false
+            currentOffset = 0
+        } catch {
+            errorMessage = localizedErrorMessage(error)
+        }
+    }
+
+    private func refreshSmartPills() async {
+        let canonicalIDs = Array(Set(
+            popularSpecialties.compactMap { specialty in
+                specialty.canonicalEntityId ?? specialty.canonicalId
             }
-            .sorted { $0.displayOrder < $1.displayOrder }
-            .prefix(8)
-            .map { $0 }
+        )).sorted()
+
+        guard !canonicalIDs.isEmpty else {
+            smartPills = []
+            return
+        }
+
+        do {
+            let labels = try await TaxonomyService.labelsByEntityID(
+                entityIDs: canonicalIDs,
+                locale: currentLanguageCode()
+            )
+            smartPills = canonicalIDs.compactMap { entityID in
+                guard let label = labels[entityID] else { return nil }
+                return SmartPillItem(entityID: entityID, label: label)
+            }
+        } catch {
+            smartPills = canonicalIDs.map { SmartPillItem(entityID: $0, label: $0) }
+        }
+    }
+
+    func reloadSmartPillsForCurrentLocale() async {
+        await refreshSmartPills()
     }
 
     private func observeLocation() {

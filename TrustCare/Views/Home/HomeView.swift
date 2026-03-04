@@ -108,7 +108,7 @@ struct HomeView: View {
 
                     // Search suggestions (if any)
                     if !homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-                       (!homeVM.providerSuggestions.isEmpty || !homeVM.specialtySuggestions.isEmpty || !homeVM.taxonomySuggestions.isEmpty) {
+                       !homeVM.taxonomySuggestions.isEmpty {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
                             if !homeVM.taxonomySuggestions.isEmpty {
                                 Text("specialties_label")
@@ -131,57 +131,6 @@ struct HomeView: View {
                                     .buttonStyle(.plain)
                                 }
                             }
-
-                            if !homeVM.specialtySuggestions.isEmpty {
-                                Text("specialties_label")
-                                    .font(AppFont.caption)
-                                    .foregroundStyle(.secondary)
-                                    .padding(.top, AppSpacing.xs)
-                                ForEach(homeVM.specialtySuggestions.prefix(4)) { specialty in
-                                    Button {
-                                        selectedSpecialty = specialty
-                                        homeVM.searchText = specialty.resolvedName(using: localizationManager)
-                                        homeVM.clearSuggestions()
-                                        Task { await homeVM.applySpecialtyFilter(specialty) }
-                                    } label: {
-                                        HStack(spacing: AppSpacing.sm) {
-                                            Image(systemName: specialty.iconName)
-                                            Text(specialty.resolvedName(using: localizationManager))
-                                                .font(AppFont.body)
-                                            Spacer()
-                                        }
-                                        .foregroundStyle(.primary)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
-
-                            if !homeVM.providerSuggestions.isEmpty {
-                                Text("providers_label")
-                                    .font(AppFont.caption)
-                                    .foregroundStyle(.secondary)
-                                    .padding(.top, AppSpacing.xs)
-                                ForEach(homeVM.providerSuggestions.prefix(5)) { provider in
-                                    Button {
-                                        homeVM.clearSuggestions()
-                                        selectedProviderFromSearch = provider
-                                    } label: {
-                                        HStack(spacing: AppSpacing.sm) {
-                                            Image(systemName: "cross.case")
-                                            VStack(alignment: .leading, spacing: 2) {
-                                                Text(provider.name)
-                                                    .font(AppFont.body)
-                                                Text(localizedProviderSpecialty(provider))
-                                                    .font(AppFont.caption)
-                                                    .foregroundStyle(.secondary)
-                                            }
-                                            Spacer()
-                                        }
-                                        .foregroundStyle(.primary)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
                         }
                         .padding(AppSpacing.md)
                         .background(AppColor.cardBackground)
@@ -193,20 +142,15 @@ struct HomeView: View {
                     // Smart Pills (All + Top 5 Popular + More)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: AppSpacing.sm) {
-                            smartPill(titleKey: "filter_all", isSelected: selectedSpecialty == nil) {
+                            smartPill(titleKey: "filter_all", isSelected: homeVM.selectedSmartPillEntityID == nil) {
                                 selectedSpecialty = nil
-                                Task { await homeVM.applySpecialtyFilter(nil) }
+                                Task { await homeVM.applySmartPill(entityID: nil) }
                             }
 
-                            ForEach(homeVM.popularSpecialties.prefix(5)) { specialty in
-                                smartPill(title: localizationManager.resolvedSpecialtyName(
-                                    canonical: specialty.name,
-                                    tr: specialty.nameTr, de: specialty.nameDe,
-                                    pl: specialty.namePl, nl: specialty.nameNl,
-                                    da: specialty.nameDa
-                                ), isSelected: selectedSpecialty?.id == specialty.id) {
-                                    selectedSpecialty = specialty
-                                    Task { await homeVM.applySpecialtyFilter(specialty) }
+                            ForEach(homeVM.smartPills) { pill in
+                                smartPill(title: pill.label, isSelected: homeVM.selectedSmartPillEntityID == pill.entityID) {
+                                    selectedSpecialty = nil
+                                    Task { await homeVM.applySmartPill(entityID: pill.entityID) }
                                 }
                             }
 
@@ -243,6 +187,9 @@ struct HomeView: View {
             .task(id: homeVM.searchText) {
                 guard homeVM.hasLoadedInitially else { return }
                 await homeVM.searchWithDebounce()
+            }
+            .task(id: localizationManager.effectiveLanguage) {
+                await homeVM.reloadSmartPillsForCurrentLocale()
             }
             // Sync pill selection when the map legend changes surveyType.
             // When the legend calls applyLegendFilter(), it clears

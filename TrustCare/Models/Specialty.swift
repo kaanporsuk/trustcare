@@ -16,6 +16,9 @@ struct Specialty: Codable, Identifiable, Hashable {
     let displayOrder: Int
     let isPopular: Bool
     let isActive: Bool
+    let canonicalId: String?
+    let canonicalEntityId: String?
+    let canonicalEntityType: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name, category, subcategory
@@ -30,6 +33,9 @@ struct Specialty: Codable, Identifiable, Hashable {
         case displayOrder = "display_order"
         case isPopular = "is_popular"
         case isActive = "is_active"
+        case canonicalId = "canonical_id"
+        case canonicalEntityId = "canonical_entity_id"
+        case canonicalEntityType = "canonical_entity_type"
     }
 
     func localizedName(for lang: String) -> String {

@@ -1,19 +1,19 @@
 import Foundation
 
 struct TaxonomySuggestion: Identifiable, Decodable, Hashable {
-    let targetType: String
-    let targetId: String
+    let entityId: String
+    let entityType: String
     let label: String
-    let weight: Double?
+    let score: Double?
 
     enum CodingKeys: String, CodingKey {
-        case targetType = "target_type"
-        case targetId = "target_id"
+        case entityId = "entity_id"
+        case entityType = "entity_type"
         case label
-        case weight
+        case score
     }
 
     var id: String {
-        "\(targetType):\(targetId):\(label)"
+        "\(entityType):\(entityId):\(label)"
     }
 }
