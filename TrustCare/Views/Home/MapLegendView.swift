@@ -39,9 +39,11 @@ struct MapLegendView: View {
                 }
                 .padding(.horizontal, 12)
                 .frame(height: collapsedPillHeight)
-                .background(.ultraThinMaterial)
-                .clipShape(Capsule())
+                .background(.ultraThinMaterial, in: Capsule())
                 .shadow(color: .black.opacity(0.11), radius: 4, y: 2)
+#if DEBUG
+                .overlay(Capsule().stroke(Color.red.opacity(0.25), lineWidth: 1))
+#endif
             }
             .buttonStyle(.plain)
 

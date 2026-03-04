@@ -85,14 +85,14 @@ struct HomeView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .zIndex(1)
-                .overlay(alignment: .top) {
+                .safeAreaInset(edge: .bottom) {
                     if let loadError = homeVM.providerLoadError,
                        !homeVM.providers.isEmpty,
                        showRefreshErrorBanner {
                         refreshErrorBanner(loadError)
                             .padding(.horizontal, AppSpacing.lg)
-                            .padding(.top, AppSpacing.md)
-                            .transition(.move(edge: .top).combined(with: .opacity))
+                            .padding(.bottom, 12)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
                     }
                 }
             }
@@ -321,18 +321,18 @@ struct HomeView: View {
         }
     }
 
-    private func providerLoadErrorCard(_: HomeViewModel.LoadErrorState) -> some View {
+    private func providerLoadErrorCard(_ loadError: HomeViewModel.LoadErrorState) -> some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack(spacing: AppSpacing.sm) {
                 Image(systemName: "wifi.exclamationmark")
                     .font(.title3)
                     .foregroundStyle(AppColor.trustBlue)
-                Text("discover_error_providers_unavailable_title")
+                Text(LocalizedStringKey(loadError.errorKey))
                     .font(AppFont.callout.weight(.semibold))
                     .foregroundStyle(.primary)
             }
 
-            Text("discover_error_providers_unavailable_body")
+            Text(LocalizedStringKey(loadError.bodyKey))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
 
@@ -348,8 +348,8 @@ struct HomeView: View {
                 .background(AppColor.trustBlue.opacity(0.14))
                 .clipShape(Capsule())
 
-                Button("discover_error_switch_to_list") {
-                    homeVM.switchToListView()
+                Button(homeVM.viewMode == .map ? "action_switch_to_list" : "action_switch_to_map") {
+                    homeVM.viewMode = homeVM.viewMode == .map ? .list : .map
                 }
                 .buttonStyle(.plain)
                 .font(AppFont.footnote)
@@ -369,7 +369,7 @@ struct HomeView: View {
                 .font(AppFont.callout)
                 .fontWeight(.semibold)
 
-            Text(LocalizedStringKey(errorBodyKey(for: loadError.errorKey)))
+            Text(LocalizedStringKey(loadError.bodyKey))
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
 
@@ -381,11 +381,8 @@ struct HomeView: View {
                 .font(AppFont.callout)
                 .foregroundStyle(AppColor.trustBlue)
 
-                Button("action_dismiss") {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        showRefreshErrorBanner = false
-                    }
-                    homeVM.dismissProviderLoadError()
+                Button(homeVM.viewMode == .map ? "action_switch_to_list" : "action_switch_to_map") {
+                    homeVM.viewMode = homeVM.viewMode == .map ? .list : .map
                 }
                 .buttonStyle(.plain)
                 .font(AppFont.callout)
@@ -397,15 +394,7 @@ struct HomeView: View {
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: AppRadius.card, style: .continuous))
         .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
-    }
-
-    private func errorBodyKey(for titleKey: String) -> String {
-        switch titleKey {
-        case "error_network_generic_title":
-            return "error_network_generic_body"
-        default:
-            return "error_load_providers_body"
-        }
+        .allowsHitTesting(true)
     }
 
     private func localizedText(for key: String) -> String {

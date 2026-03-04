@@ -7,11 +7,18 @@ import MapKit
 final class HomeViewModel: ObservableObject {
     struct LoadErrorState: Equatable {
         let errorKey: String
+        let bodyKey: String
         let errorArgs: [String]
         let isBlocking: Bool
 
-        init(errorKey: String, errorArgs: [String] = [], isBlocking: Bool = false) {
+        init(
+            errorKey: String,
+            bodyKey: String? = nil,
+            errorArgs: [String] = [],
+            isBlocking: Bool = false
+        ) {
             self.errorKey = errorKey
+            self.bodyKey = bodyKey ?? "error_load_providers_body_generic"
             self.errorArgs = errorArgs
             self.isBlocking = isBlocking
         }
@@ -673,7 +680,9 @@ final class HomeViewModel: ObservableObject {
             if providerSearchTaskID != taskID {
                 return
             }
-            let errorKey = loadErrorKey(for: error)
+            let offline = !NetworkMonitor.shared.isOnline
+            let errorKey = offline ? "error_offline_title" : "error_load_providers_title"
+            let bodyKey = offline ? "error_offline_body" : "error_load_providers_body_generic"
             print("❌ searchProviders failed: \(errorKey)")
             print("  Full error: \(error)")
             print("  Error type: \(type(of: error))")
@@ -692,7 +701,11 @@ final class HomeViewModel: ObservableObject {
                     print("    Unknown decoding error")
                 }
             }
-            providerLoadError = LoadErrorState(errorKey: errorKey, isBlocking: false)
+            providerLoadError = LoadErrorState(
+                errorKey: errorKey,
+                bodyKey: bodyKey,
+                isBlocking: false
+            )
         }
     }
 
@@ -759,7 +772,12 @@ final class HomeViewModel: ObservableObject {
             hasMoreResults = false
             currentOffset = 0
         } catch {
-            providerLoadError = LoadErrorState(errorKey: loadErrorKey(for: error), isBlocking: false)
+            let offline = !NetworkMonitor.shared.isOnline
+            providerLoadError = LoadErrorState(
+                errorKey: offline ? "error_offline_title" : "error_load_providers_title",
+                bodyKey: offline ? "error_offline_body" : "error_load_providers_body_generic",
+                isBlocking: false
+            )
         }
     }
 
@@ -916,14 +934,6 @@ final class HomeViewModel: ObservableObject {
             return []
         }
         return (try? JSONDecoder().decode([SelectedLocation].self, from: data)) ?? []
-    }
-
-    private func loadErrorKey(for error: Error) -> String {
-        let message = error.localizedDescription.lowercased()
-        if message.contains("network") || message.contains("offline") {
-            return "error_network_generic_title"
-        }
-        return "error_load_providers_title"
     }
 
     private func currentLanguageCode() -> String {

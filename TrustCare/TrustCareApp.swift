@@ -31,6 +31,7 @@ struct TrustCareApp: App {
     @StateObject private var localizationManager = LocalizationManager()
     @StateObject private var authViewModel = AuthViewModel()
     @StateObject private var appRouter = AppRouter()
+    @StateObject private var networkMonitor = NetworkMonitor.shared
     @State private var appState: AppState = .splash
     @State private var path = NavigationPath()
     @AppStorage("colorScheme") private var colorSchemePreference: String = "system"
@@ -38,6 +39,10 @@ struct TrustCareApp: App {
     init() {
         Task {
             await SpecialtyService.shared.loadSpecialties()
+        }
+
+        Task { @MainActor in
+            NetworkMonitor.shared.start()
         }
     }
 
@@ -71,6 +76,7 @@ struct TrustCareApp: App {
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
             .environmentObject(appRouter)
+            .environmentObject(networkMonitor)
             .preferredColorScheme(preferredColorScheme)
             .onOpenURL { url in
                 handleDeepLink(url)
