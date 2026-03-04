@@ -343,15 +343,23 @@ struct HomeView: View {
                 )
 
                 if homeVM.providers.isEmpty {
-                    premiumEmptyState
-                        .padding(.bottom, AppSpacing.xxl)
+                    if !homeVM.isLoading {
+                        mapEmptyStateCard
+                            .padding(.horizontal, AppSpacing.lg)
+                            .padding(.bottom, AppSpacing.xl)
+                    } else {
+                        ProgressView()
+                            .padding(.bottom, AppSpacing.xxl)
+                    }
                 } else {
                     mapBottomSheet
                 }
             }
-        } else if homeVM.providers.isEmpty {
+        } else if !homeVM.isLoading && homeVM.providers.isEmpty {
             premiumEmptyState
                 .padding(.top, AppSpacing.xxl)
+        } else if homeVM.providers.isEmpty {
+            ProgressView()
         } else {
             ScrollView {
                 LazyVStack(spacing: 12) {
@@ -382,7 +390,7 @@ struct HomeView: View {
                 Circle()
                     .fill(AppColor.trustBlue.opacity(0.12))
                     .frame(width: 120, height: 120)
-                Image(systemName: "cross.case.circle.fill")
+                localizedMedicalIcon
                     .font(.system(size: 54))
                     .foregroundStyle(AppColor.trustBlue.opacity(0.85))
             }
@@ -409,6 +417,62 @@ struct HomeView: View {
             .buttonStyle(.plain)
         }
         .padding(.horizontal, AppSpacing.lg)
+    }
+
+    private var mapEmptyStateCard: some View {
+        VStack(spacing: AppSpacing.sm) {
+            localizedMedicalIcon
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(AppColor.trustBlue)
+
+            Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                 ? LocalizedStringKey("empty_home_title")
+                 : LocalizedStringKey("empty_search"))
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.primary)
+
+            Button {
+                NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
+            } label: {
+                Text("empty_home_cta")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.vertical, AppSpacing.xs)
+                    .background(AppColor.trustBlue)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.horizontal, AppSpacing.md)
+        .padding(.vertical, AppSpacing.md)
+        .frame(maxWidth: 340)
+        .background(.ultraThinMaterial)
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+    }
+
+    @ViewBuilder
+    private var localizedMedicalIcon: some View {
+        if usesCrescentHealthIcon {
+            Image(systemName: "moon.fill")
+                .rotationEffect(.degrees(-25))
+        } else {
+            Image(systemName: "cross.case.fill")
+        }
+    }
+
+    private var usesCrescentHealthIcon: Bool {
+        let languageCode = !localizationManager.currentLanguage.isEmpty
+            ? localizationManager.currentLanguage
+            : localizationManager.effectiveLanguage
+        let normalizedCode = languageCode
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? ""
+        return normalizedCode == "tr" || normalizedCode == "ar"
     }
 
     private var mapBottomSheet: some View {

@@ -138,6 +138,11 @@ struct ProviderMapView: View {
                 }
                 Spacer()
             }
+
+            if viewModel.isLoading && filteredProviders.isEmpty {
+                ProgressView()
+                    .padding(.top, 24)
+            }
         }
     }
 

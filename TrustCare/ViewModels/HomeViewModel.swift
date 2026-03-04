@@ -51,7 +51,7 @@ final class HomeViewModel: ObservableObject {
     @Published var providerSuggestions: [Provider] = []
     @Published var specialtySuggestions: [Specialty] = []
     @Published var viewMode: ViewMode = .list
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var errorMessage: String?
     @Published var hasMoreResults: Bool = true
     @Published var locationName: String = String(localized: "Tap to set location")
@@ -395,12 +395,16 @@ final class HomeViewModel: ObservableObject {
     }
 
     private func searchProviders(reset: Bool) async {
-        guard !isLoading else {
+        guard !isLoading || reset else {
             verboseLog("⚠️ searchProviders skipped - already loading")
             return
         }
         verboseLog("🔵 HomeViewModel.searchProviders started (reset: \(reset))")
         isLoading = true
+        defer {
+            isLoading = false
+            verboseLog("🔵 HomeViewModel.searchProviders completed")
+        }
         errorMessage = nil
         let activeCoordinate = selectedLocation.isCurrentLocation
             ? locationManager.userLocation
@@ -465,8 +469,6 @@ final class HomeViewModel: ObservableObject {
             }
             errorMessage = errorMsg
         }
-        isLoading = false
-        verboseLog("🔵 HomeViewModel.searchProviders completed")
     }
 
     private func filterProvidersBySurveyType(_ providers: [Provider], _ surveyType: String?) -> [Provider] {

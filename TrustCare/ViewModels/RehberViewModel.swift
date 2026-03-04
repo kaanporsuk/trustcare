@@ -5,7 +5,7 @@ import Supabase
 @MainActor
 final class RehberViewModel: ObservableObject {
     @Published var messages: [RehberMessage] = []
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var currentSessionId: UUID?
     @Published var usageCount: Int = 0
     @Published var errorMessage: String?
@@ -96,6 +96,7 @@ final class RehberViewModel: ObservableObject {
         }
 
         isLoading = true
+        defer { isLoading = false }
         errorMessage = nil
 
         do {
@@ -133,7 +134,6 @@ final class RehberViewModel: ObservableObject {
                 try await saveMessage(userId: authSession.user.id, sessionId: sessionId, message: emergencyResponse)
                 await markSessionEmergency(userId: authSession.user.id, sessionId: sessionId)
                 incrementUsageCount()
-                isLoading = false
                 return
             }
 
@@ -168,12 +168,10 @@ final class RehberViewModel: ObservableObject {
 
             if edgeResult.statusCode == 429 || aiResponse.isRateLimited {
                 startSendCooldown(seconds: 60)
-                isLoading = false
                 return
             }
 
             if edgeResult.statusCode == 503 || aiResponse.isFallback {
-                isLoading = false
                 return
             }
 
@@ -185,8 +183,6 @@ final class RehberViewModel: ObservableObject {
         } catch {
             errorMessage = localizedErrorMessage(error)
         }
-
-        isLoading = false
     }
 
     func retryLastFailedMessage() {
@@ -254,6 +250,7 @@ final class RehberViewModel: ObservableObject {
         }
         
         isLoading = true
+        defer { isLoading = false }
         
         do {
             let response: PostgrestResponse<[RehberMessage]> = try await SupabaseManager.shared.client
@@ -269,8 +266,6 @@ final class RehberViewModel: ObservableObject {
         } catch {
             throw error
         }
-        
-        isLoading = false
     }
     
     func updateSessionTitle(sessionId: UUID, title: String) async {

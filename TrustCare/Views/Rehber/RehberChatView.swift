@@ -16,8 +16,12 @@ struct RehberChatView: View {
                     ScrollViewReader { proxy in
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: AppSpacing.sm) {
-                                if viewModel.messages.isEmpty {
+                                if !viewModel.isLoading && viewModel.messages.isEmpty {
                                     emptyState
+                                } else if viewModel.isLoading && viewModel.messages.isEmpty {
+                                    ProgressView()
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .padding(.top, AppSpacing.md)
                                 }
 
                                 ForEach(viewModel.messages) { message in
@@ -25,7 +29,7 @@ struct RehberChatView: View {
                                         .id(message.id)
                                 }
 
-                                if viewModel.isLoading {
+                                if viewModel.isLoading && !viewModel.messages.isEmpty {
                                     typingIndicator
                                         .id("typing")
                                 }
