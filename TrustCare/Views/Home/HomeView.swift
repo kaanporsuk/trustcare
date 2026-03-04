@@ -6,6 +6,7 @@ struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @EnvironmentObject private var localizationManager: LocalizationManager
+    @Environment(\.locale) private var locale
     @State private var displayName: String = "Anonymous"
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
@@ -487,9 +488,10 @@ struct HomeView: View {
     }
 
     private var usesCrescentHealthIcon: Bool {
-        let languageCode = !localizationManager.currentLanguage.isEmpty
-            ? localizationManager.currentLanguage
-            : localizationManager.effectiveLanguage
+        let languageCode = locale.language.languageCode?.identifier
+            ?? (!localizationManager.currentLanguage.isEmpty
+                ? localizationManager.currentLanguage
+                : localizationManager.effectiveLanguage)
         let normalizedCode = languageCode
             .components(separatedBy: ["-", "_"])
             .first?
