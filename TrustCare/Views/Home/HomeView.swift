@@ -20,8 +20,13 @@ struct HomeView: View {
     @State private var mapSheetHeight: CGFloat = 188
     @State private var mapSheetDragOffset: CGFloat = 0
     private let verboseLogging = false
-    private let mapSheetMinHeight: CGFloat = 132
-    private let mapSheetMaxHeight: CGFloat = 300
+    private var mapSheetMinHeight: CGFloat {
+        UIScreen.main.bounds.height < 760 ? 116 : 132
+    }
+
+    private var mapSheetMaxHeight: CGFloat {
+        UIScreen.main.bounds.height < 760 ? 248 : 300
+    }
 
     private func verboseLog(_ message: @autoclosure () -> String) {
         guard verboseLogging else { return }
@@ -115,6 +120,13 @@ struct HomeView: View {
             .onChange(of: homeVM.providerLoadError) { _, newError in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     showRefreshErrorBanner = newError != nil && !homeVM.providers.isEmpty
+                }
+            }
+            .onChange(of: homeVM.viewMode) { _, newMode in
+                guard newMode == .map else { return }
+                let clamped = min(max(mapSheetHeight, mapSheetMinHeight), mapSheetMaxHeight)
+                if clamped != mapSheetHeight {
+                    mapSheetHeight = clamped
                 }
             }
             .task {

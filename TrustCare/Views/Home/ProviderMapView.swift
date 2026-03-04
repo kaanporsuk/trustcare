@@ -170,34 +170,43 @@ private struct DiscoverMapOverlaysView: View {
     let onSearchThisArea: (MKCoordinateRegion) -> Void
 
     var body: some View {
-        VStack {
-            HStack(alignment: .top) {
-                if showSearchButton, let region = visibleRegion {
-                    Button {
-                        onSearchThisArea(region)
-                    } label: {
-                        Label("search_this_area", systemImage: "magnifyingglass")
-                            .font(.callout.weight(.medium))
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(AppColor.trustBlue)
-                            .foregroundStyle(.white)
-                            .clipShape(Capsule())
-                            .shadow(radius: 4)
+        GeometryReader { proxy in
+            let isCompactHeight = proxy.size.height < 760
+            let edgePadding: CGFloat = isCompactHeight ? 10 : 12
+            let topPadding: CGFloat = isCompactHeight ? 8 : 12
+
+            VStack {
+                HStack(alignment: .top) {
+                    if showSearchButton, let region = visibleRegion {
+                        Button {
+                            onSearchThisArea(region)
+                        } label: {
+                            Label("search_this_area", systemImage: "magnifyingglass")
+                                .font(.callout.weight(.medium))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.92)
+                                .padding(.horizontal, isCompactHeight ? 14 : 16)
+                                .padding(.vertical, isCompactHeight ? 9 : 10)
+                                .background(AppColor.trustBlue)
+                                .foregroundStyle(.white)
+                                .clipShape(Capsule())
+                                .shadow(radius: 4)
+                        }
+                        .buttonStyle(.plain)
+                        .transition(.opacity.combined(with: .scale))
                     }
-                    .buttonStyle(.plain)
-                    .transition(.opacity.combined(with: .scale))
+
+                    Spacer(minLength: AppSpacing.md)
+
+                    // Single legend instance; no external material wrapper to avoid ghost layers.
+                    MapLegendView(viewModel: viewModel)
+                        .offset(y: isCompactHeight ? 2 : 0)
                 }
+                .padding(.horizontal, edgePadding)
+                .padding(.top, topPadding)
 
-                Spacer(minLength: AppSpacing.md)
-
-                // Single legend instance; no external material wrapper to avoid ghost layers.
-                MapLegendView(viewModel: viewModel)
+                Spacer()
             }
-            .padding(.horizontal, 12)
-            .padding(.top, 12)
-
-            Spacer()
         }
     }
 }

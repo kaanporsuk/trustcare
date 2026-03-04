@@ -32,6 +32,8 @@ struct MapLegendView: View {
                     if !isExpanded {
                         Text(selectedLabel)
                             .font(.system(size: 13, weight: .semibold))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.86)
                     }
                 }
                 .padding(.horizontal, 10)
