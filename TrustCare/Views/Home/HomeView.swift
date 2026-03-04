@@ -16,6 +16,7 @@ struct HomeView: View {
     @State private var selectedSpecialty: Specialty?
     @State private var selectedProviderFromSearch: Provider?
     @State private var selectedProviderFromMap: Provider?
+    @State private var showRefreshErrorBanner: Bool = false
     @State private var mapSheetHeight: CGFloat = 188
     @State private var mapSheetDragOffset: CGFloat = 0
     private let verboseLogging = false
@@ -182,6 +183,16 @@ struct HomeView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .zIndex(1)
+                .overlay(alignment: .top) {
+                    if let loadError = homeVM.providerLoadError,
+                       !homeVM.providers.isEmpty,
+                       showRefreshErrorBanner {
+                        refreshErrorBanner(loadError)
+                            .padding(.horizontal, AppSpacing.lg)
+                            .padding(.top, AppSpacing.md)
+                            .transition(.move(edge: .top).combined(with: .opacity))
+                    }
+                }
             }
             .navigationBarHidden(true)
             .dismissKeyboardOnTap()
@@ -202,6 +213,11 @@ struct HomeView: View {
                     if specSurvey != newType {
                         selectedSpecialty = nil
                     }
+                }
+            }
+            .onChange(of: homeVM.providerLoadError) { _, newError in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    showRefreshErrorBanner = newError != nil && !homeVM.providers.isEmpty
                 }
             }
             .task {
@@ -230,16 +246,6 @@ struct HomeView: View {
             }
             .navigationDestination(item: $selectedProviderFromMap) { provider in
                 ProviderDetailView(providerId: provider.id)
-            }
-            .alert("error_generic", isPresented: Binding(
-                get: { homeVM.errorMessage != nil },
-                set: { if !$0 { homeVM.errorMessage = nil } }
-            )) {
-                Button("button_ok") {
-                    homeVM.errorMessage = nil
-                }
-            } message: {
-                Text(homeVM.errorMessage ?? "")
             }
             .sheet(isPresented: $showLocationSearch) {
                 LocationSelectorView(
@@ -431,11 +437,92 @@ struct HomeView: View {
 
     @ViewBuilder
     private var activeEmptyStateCard: some View {
-        if homeVM.hasActiveCanonicalFilter {
+        if let loadError = homeVM.providerLoadError {
+            providerLoadErrorCard(loadError)
+        } else if homeVM.hasActiveCanonicalFilter {
             filteredEmptyStateCard
         } else {
             mapEmptyStateCard
         }
+    }
+
+    private func providerLoadErrorCard(_ loadError: HomeViewModel.LoadErrorState) -> some View {
+        PremiumEmptyStateCard(
+            iconName: "wifi.exclamationmark",
+            title: localizedText(for: loadError.errorKey),
+            bulletKeys: [LocalizedStringKey(errorBodyKey(for: loadError.errorKey))],
+            primaryActionTitleKey: "action_retry",
+            primaryAction: {
+                Task { await homeVM.retryLoadProviders() }
+            },
+            secondaryActionTitleKey: "switch_to_list",
+            secondaryAction: {
+                homeVM.switchToListView()
+            }
+        )
+    }
+
+    private func refreshErrorBanner(_ loadError: HomeViewModel.LoadErrorState) -> some View {
+        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+            Text(LocalizedStringKey(loadError.errorKey))
+                .font(AppFont.callout)
+                .fontWeight(.semibold)
+
+            Text(LocalizedStringKey(errorBodyKey(for: loadError.errorKey)))
+                .font(AppFont.footnote)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: AppSpacing.md) {
+                Button("action_retry") {
+                    Task { await homeVM.retryLoadProviders() }
+                }
+                .buttonStyle(.plain)
+                .font(AppFont.callout)
+                .foregroundStyle(AppColor.trustBlue)
+
+                Button("action_dismiss") {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        showRefreshErrorBanner = false
+                    }
+                    homeVM.dismissProviderLoadError()
+                }
+                .buttonStyle(.plain)
+                .font(AppFont.callout)
+                .foregroundStyle(.secondary)
+            }
+        }
+        .padding(AppSpacing.md)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: AppRadius.card, style: .continuous))
+        .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
+    }
+
+    private func errorBodyKey(for titleKey: String) -> String {
+        switch titleKey {
+        case "error_network_generic_title":
+            return "error_network_generic_body"
+        default:
+            return "error_load_providers_body"
+        }
+    }
+
+    private func localizedText(for key: String) -> String {
+        let languageCode = locale.language.languageCode?.identifier
+        let localeCode = locale.identifier
+        let candidates = [localeCode, languageCode].compactMap { $0 }
+
+        for candidate in candidates {
+            if let path = Bundle.main.path(forResource: candidate, ofType: "lproj"),
+               let bundle = Bundle(path: path) {
+                let value = NSLocalizedString(key, tableName: nil, bundle: bundle, value: key, comment: "")
+                if value != key {
+                    return value
+                }
+            }
+        }
+
+        return NSLocalizedString(key, comment: "")
     }
 
     private var filteredEmptyStateCard: some View {

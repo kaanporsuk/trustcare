@@ -5,6 +5,18 @@ import MapKit
 
 @MainActor
 final class HomeViewModel: ObservableObject {
+    struct LoadErrorState: Equatable {
+        let errorKey: String
+        let errorArgs: [String]
+        let isBlocking: Bool
+
+        init(errorKey: String, errorArgs: [String] = [], isBlocking: Bool = false) {
+            self.errorKey = errorKey
+            self.errorArgs = errorArgs
+            self.isBlocking = isBlocking
+        }
+    }
+
     struct SmartPillItem: Identifiable, Hashable {
         let entityID: String
         let label: String
@@ -62,7 +74,7 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedSmartPillEntityID: String? = nil
     @Published var viewMode: ViewMode = .list
     @Published var isLoading: Bool = true
-    @Published var errorMessage: String?
+    @Published var providerLoadError: LoadErrorState?
     @Published var hasMoreResults: Bool = true
     @Published var locationName: String = String(localized: "Tap to set location")
     @Published var selectedCity: String = "Adana"
@@ -83,6 +95,8 @@ final class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var currentOffset: Int = 0
     private let pageSize: Int = 20
+    private var providerSearchTask: Task<Void, Never>?
+    private var providerSearchTaskID: UUID?
     private var selectedCanonicalSpecialtyIDs: [String] = []
     private var selectedCanonicalSuggestionLabel: String?
     private var lastSearchLocation: CLLocation?
@@ -183,7 +197,7 @@ final class HomeViewModel: ObservableObject {
             saveSelectedLocation(gpsLocation)
         }
         
-        await searchProviders(reset: true)  // Load initial providers
+        await runProviderSearch(reset: true)  // Load initial providers
     }
 
     func refresh(forceSpecialtiesRefresh: Bool = false) async {
@@ -192,7 +206,7 @@ final class HomeViewModel: ObservableObject {
         }
         currentOffset = 0
         hasMoreResults = true
-        await searchProviders(reset: true)
+        await runProviderSearch(reset: true)
     }
 
     func selectLocation(_ location: SelectedLocation) async {
@@ -257,7 +271,7 @@ final class HomeViewModel: ObservableObject {
         // Refresh providers for new location
         currentOffset = 0
         hasMoreResults = true
-        await searchProviders(reset: true)
+        await runProviderSearch(reset: true)
     }
 
     func selectRadius(_ radiusKm: Int) async {
@@ -270,7 +284,21 @@ final class HomeViewModel: ObservableObject {
     func fetchProviders() async {
         currentOffset = 0
         hasMoreResults = true
-        await searchProviders(reset: true)
+        await runProviderSearch(reset: true)
+    }
+
+    func retryLoadProviders() async {
+        providerSearchTask?.cancel()
+        providerSearchTask = nil
+        providerSearchTaskID = nil
+        providerLoadError = nil
+        currentOffset = 0
+        hasMoreResults = true
+        await runProviderSearch(reset: true)
+    }
+
+    func dismissProviderLoadError() {
+        providerLoadError = nil
     }
 
     func clearRecentLocations() {
@@ -323,7 +351,7 @@ final class HomeViewModel: ObservableObject {
     func loadMore() async {
         guard !isLoading, hasMoreResults else { return }
         currentOffset += pageSize
-        await searchProviders(reset: false)
+        await runProviderSearch(reset: false)
     }
 
     func fetchProviders(in region: MKCoordinateRegion) async {
@@ -352,7 +380,7 @@ final class HomeViewModel: ObservableObject {
         // 3. Search using the region's center
         currentOffset = 0
         hasMoreResults = true
-        await searchProviders(reset: true)
+        await runProviderSearch(reset: true)
     }
 
     // recenterMap removed — camera is now solely owned by ProviderMapView's
@@ -544,13 +572,30 @@ final class HomeViewModel: ObservableObject {
             await refreshSmartPills()
             verboseLog("✅ Loaded \(results.count) specialties")
         } catch {
-            let errorMsg = localizedErrorMessage(error)
-            print("❌ loadSpecialties failed: \(errorMsg)")
-            errorMessage = errorMsg
+            print("❌ loadSpecialties failed: \(error.localizedDescription)")
         }
     }
 
-    private func searchProviders(reset: Bool) async {
+    private func runProviderSearch(reset: Bool) async {
+        providerSearchTask?.cancel()
+        let taskID = UUID()
+        providerSearchTaskID = taskID
+
+        let task = Task { @MainActor [weak self] in
+            guard let self else { return }
+            await self.searchProviders(reset: reset, taskID: taskID)
+        }
+
+        providerSearchTask = task
+        await task.value
+
+        if providerSearchTaskID == taskID {
+            providerSearchTask = nil
+            providerSearchTaskID = nil
+        }
+    }
+
+    private func searchProviders(reset: Bool, taskID: UUID) async {
         guard !isLoading || reset else {
             verboseLog("⚠️ searchProviders skipped - already loading")
             return
@@ -558,10 +603,14 @@ final class HomeViewModel: ObservableObject {
         verboseLog("🔵 HomeViewModel.searchProviders started (reset: \(reset))")
         isLoading = true
         defer {
-            isLoading = false
+            if providerSearchTaskID == taskID {
+                isLoading = false
+            }
             verboseLog("🔵 HomeViewModel.searchProviders completed")
         }
-        errorMessage = nil
+        if reset, providerSearchTaskID == taskID {
+            providerLoadError = nil
+        }
         let activeCoordinate = selectedLocation.isCurrentLocation
             ? locationManager.userLocation
             : CLLocationCoordinate2D(
@@ -574,7 +623,7 @@ final class HomeViewModel: ObservableObject {
         if !selectedCanonicalSpecialtyIDs.isEmpty,
            selectedSpecialtyName == nil,
            selectedSurveyType == nil {
-            await resolveProvidersByCanonicalEntityIDs(reset: reset)
+            await resolveProvidersByCanonicalEntityIDs(reset: reset, taskID: taskID)
             return
         }
 
@@ -593,6 +642,10 @@ final class HomeViewModel: ObservableObject {
                 limit: pageSize,
                 offset: currentOffset
             )
+
+            guard providerSearchTaskID == taskID else {
+                return
+            }
 
             // Apply client-side category filtering
             let filteredResults = filterProvidersBySurveyType(results, selectedSurveyType)
@@ -615,9 +668,13 @@ final class HomeViewModel: ObservableObject {
                 self.highlightedProviderID = nil
             }
             hasMoreResults = results.count == pageSize
+            providerLoadError = nil
         } catch {
-            let errorMsg = localizedErrorMessage(error)
-            print("❌ searchProviders failed: \(errorMsg)")
+            if providerSearchTaskID != taskID {
+                return
+            }
+            let errorKey = loadErrorKey(for: error)
+            print("❌ searchProviders failed: \(errorKey)")
             print("  Full error: \(error)")
             print("  Error type: \(type(of: error))")
             if let decodingError = error as? DecodingError {
@@ -635,7 +692,7 @@ final class HomeViewModel: ObservableObject {
                     print("    Unknown decoding error")
                 }
             }
-            errorMessage = errorMsg
+            providerLoadError = LoadErrorState(errorKey: errorKey, isBlocking: false)
         }
     }
 
@@ -671,7 +728,7 @@ final class HomeViewModel: ObservableObject {
         specialtySuggestions = []
     }
 
-    private func resolveProvidersByCanonicalEntityIDs(reset: Bool) async {
+    private func resolveProvidersByCanonicalEntityIDs(reset: Bool, taskID: UUID? = nil) async {
         guard !selectedCanonicalSpecialtyIDs.isEmpty else {
             if reset {
                 providers = []
@@ -680,11 +737,20 @@ final class HomeViewModel: ObservableObject {
             return
         }
 
-        isLoading = true
-        defer { isLoading = false }
+        if taskID == nil {
+            isLoading = true
+        }
+        defer {
+            if taskID == nil {
+                isLoading = false
+            }
+        }
 
         do {
             let resolved = try await TaxonomyService.searchProvidersByTaxonomy(entityIDs: selectedCanonicalSpecialtyIDs)
+            if let taskID, providerSearchTaskID != taskID {
+                return
+            }
             providers = resolved
             if let highlightedProviderID,
                !providers.contains(where: { $0.id == highlightedProviderID }) {
@@ -693,7 +759,7 @@ final class HomeViewModel: ObservableObject {
             hasMoreResults = false
             currentOffset = 0
         } catch {
-            errorMessage = localizedErrorMessage(error)
+            providerLoadError = LoadErrorState(errorKey: loadErrorKey(for: error), isBlocking: false)
         }
     }
 
@@ -852,19 +918,12 @@ final class HomeViewModel: ObservableObject {
         return (try? JSONDecoder().decode([SelectedLocation].self, from: data)) ?? []
     }
 
-    private func localizedErrorMessage(_ error: Error) -> String {
-        if let appError = error as? AppError {
-            return appError.localizedDescription
-        }
-
+    private func loadErrorKey(for error: Error) -> String {
         let message = error.localizedDescription.lowercased()
         if message.contains("network") || message.contains("offline") {
-            return String(localized: "Network error. Please check your connection.")
+            return "error_network_generic_title"
         }
-        if message.contains("location") || message.contains("geocode") {
-            return String(localized: "Unable to use your location right now.")
-        }
-        return String(localized: "Unable to load providers. Please try again.")
+        return "error_load_providers_title"
     }
 
     private func currentLanguageCode() -> String {
