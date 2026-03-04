@@ -43,29 +43,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DEST="$(python3 - <<'PY'
-import json
-import subprocess
-
-raw = subprocess.check_output(["xcrun", "simctl", "list", "devices", "--json"], text=True)
-data = json.loads(raw)
-
-available_names = set()
-for devices in data.get("devices", {}).values():
-    for device in devices:
-        if device.get("isAvailable"):
-            name = device.get("name")
-            if isinstance(name, str) and name:
-                available_names.add(name)
-
-for preferred in ("iPhone 15", "iPhone 16", "iPhone 14"):
-    if preferred in available_names:
-        print(f"platform=iOS Simulator,name={preferred}")
-        break
-else:
-    print("generic/platform=iOS Simulator")
-PY
-          )"
+          DEST="$(python3 -c 'import json,subprocess; data=json.loads(subprocess.check_output(["xcrun","simctl","list","devices","--json"], text=True)); names={d.get("name") for devices in data.get("devices",{}).values() for d in devices if d.get("isAvailable") and d.get("name")}; print(next((f"platform=iOS Simulator,name={p}" for p in ("iPhone 15","iPhone 16","iPhone 14") if p in names), "generic/platform=iOS Simulator"))')"
           echo "destination=$DEST" >> "$GITHUB_OUTPUT"
           echo "Using destination: $DEST"
 
