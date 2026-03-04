@@ -1,6 +1,7 @@
 import SwiftUI
 import Supabase
 import CoreLocation
+import UIKit
 
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
@@ -427,18 +428,34 @@ struct HomeView: View {
     @ViewBuilder
     private var localizedMedicalIcon: some View {
         if usesCrescentHealthIcon {
-            Image(systemName: "moon.fill")
-                .rotationEffect(.degrees(-25))
+            crescentMedicalIcon
         } else {
             Image(systemName: "cross.case.fill")
         }
     }
 
+    @ViewBuilder
+    private var crescentMedicalIcon: some View {
+        if UIImage(named: "medical_bag_crescent") != nil {
+            Image("medical_bag_crescent")
+                .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 28, height: 28)
+        } else {
+            ZStack {
+                Image(systemName: "bag.fill")
+                    .font(.system(size: 22, weight: .semibold))
+                Image(systemName: "moon.fill")
+                    .font(.system(size: 10, weight: .bold))
+                    .offset(x: 7, y: -7)
+            }
+        }
+    }
+
     private var usesCrescentHealthIcon: Bool {
         let languageCode = locale.language.languageCode?.identifier
-            ?? (!localizationManager.currentLanguage.isEmpty
-                ? localizationManager.currentLanguage
-                : localizationManager.effectiveLanguage)
+            ?? locale.identifier
         let normalizedCode = languageCode
             .components(separatedBy: ["-", "_"])
             .first?
