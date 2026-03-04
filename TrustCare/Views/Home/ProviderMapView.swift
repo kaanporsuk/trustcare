@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ProviderMapView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @Binding var highlightedProviderID: UUID?
     @EnvironmentObject var localizationManager: LocalizationManager
     let onOpenProvider: (Provider) -> Void
 
@@ -34,6 +35,7 @@ struct ProviderMapView: View {
                         )
                     ) {
                         Button {
+                            highlightedProviderID = provider.id
                             onOpenProvider(provider)
                         } label: {
                             mapPin(for: provider)
@@ -93,6 +95,24 @@ struct ProviderMapView: View {
                         ))
                     }
                     showSearchButton = false
+                }
+            }
+            .onChange(of: highlightedProviderID) { _, newValue in
+                guard let highlightedID = newValue,
+                      let provider = filteredProviders.first(where: { $0.id == highlightedID }) else {
+                    return
+                }
+
+                withAnimation(.easeInOut(duration: 0.35)) {
+                    cameraPosition = .region(
+                        MKCoordinateRegion(
+                            center: CLLocationCoordinate2D(
+                                latitude: provider.latitude,
+                                longitude: provider.longitude
+                            ),
+                            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                        )
+                    )
                 }
             }
 
@@ -158,13 +178,17 @@ struct ProviderMapView: View {
     @ViewBuilder
     private func mapPin(for provider: Provider) -> some View {
         let surveyType = SpecialtyService.shared.surveyType(for: provider.specialty)
+        let isHighlighted = highlightedProviderID == provider.id
         Image(systemName: ProviderMapColor.markerIcon(for: surveyType))
             .font(.system(size: 12, weight: .bold))
             .foregroundStyle(.white)
             .frame(width: 30, height: 30)
             .background(ProviderMapColor.color(for: surveyType))
             .clipShape(Circle())
-            .overlay(Circle().stroke(.white, lineWidth: 2))
-            .shadow(radius: 2)
+            .overlay(
+                Circle().stroke(isHighlighted ? AppColor.trustBlue : .white, lineWidth: isHighlighted ? 3 : 2)
+            )
+            .scaleEffect(isHighlighted ? 1.12 : 1.0)
+            .shadow(radius: isHighlighted ? 4 : 2)
     }
 }

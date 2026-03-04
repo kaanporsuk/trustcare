@@ -71,6 +71,7 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedRadiusKm: Int = 50
     @Published var selectedLocation: SelectedLocation
     @Published var recentLocations: [SelectedLocation] = []
+    @Published var highlightedProviderID: UUID?
     /// Incremented ONLY when the user explicitly picks a new location
     /// (city picker or "Use Current Location"). ProviderMapView watches
     /// this single token to fly the camera.
@@ -107,6 +108,24 @@ final class HomeViewModel: ObservableObject {
 
     var locationManagerCoordinate: CLLocationCoordinate2D? {
         locationManager.userLocation
+    }
+
+    var hasActiveCanonicalFilter: Bool {
+        !selectedCanonicalSpecialtyIDs.isEmpty
+    }
+
+    var activeCanonicalFilterLabel: String? {
+        if let selectedCanonicalSuggestionLabel, !selectedCanonicalSuggestionLabel.isEmpty {
+            return selectedCanonicalSuggestionLabel
+        }
+
+        if selectedCanonicalSpecialtyIDs.count == 1,
+           let id = selectedCanonicalSpecialtyIDs.first,
+           let smartPillLabel = smartPills.first(where: { $0.entityID == id })?.label {
+            return smartPillLabel
+        }
+
+        return selectedCanonicalSpecialtyIDs.first
     }
 
     init() {
@@ -259,6 +278,37 @@ final class HomeViewModel: ObservableObject {
         saveRecentLocations([])
     }
 
+    func clearCanonicalFilter() async {
+        await applySmartPill(entityID: nil)
+    }
+
+    func widenSearchAreaOrShowNearby() async {
+        let allowedRadii = [5, 10, 25, 50]
+        if let currentIndex = allowedRadii.firstIndex(of: selectedRadiusKm), currentIndex < allowedRadii.count - 1 {
+            selectedRadiusKm = allowedRadii[currentIndex + 1]
+            UserDefaults.standard.set(selectedRadiusKm, forKey: Self.selectedRadiusKmKey)
+            await refresh()
+            return
+        }
+
+        if let nextCity = Self.majorTurkishCities.first(where: { city in
+            city.name.caseInsensitiveCompare(selectedCity) != .orderedSame
+        }) {
+            await selectLocation(
+                SelectedLocation(
+                    name: nextCity.name,
+                    latitude: nextCity.latitude,
+                    longitude: nextCity.longitude,
+                    isCurrentLocation: false
+                )
+            )
+        }
+    }
+
+    func switchToListView() {
+        viewMode = .list
+    }
+
     func startLocationUpdates() {
         locationManager.requestPermission()
         locationManager.startUpdating()
@@ -332,6 +382,7 @@ final class HomeViewModel: ObservableObject {
         selectedCanonicalSpecialtyIDs = [suggestion.entityId]
         selectedSmartPillEntityID = suggestion.entityId
         selectedCanonicalSuggestionLabel = suggestion.label
+        highlightedProviderID = nil
         selectedSpecialtyName = nil
         selectedSurveyType = nil
         searchText = suggestion.label
@@ -366,11 +417,14 @@ final class HomeViewModel: ObservableObject {
     }
 
     func applySmartPill(entityID: String?) async {
-        selectedCanonicalSuggestionLabel = nil
+        selectedCanonicalSuggestionLabel = entityID.flatMap { id in
+            smartPills.first(where: { $0.entityID == id })?.label
+        }
         selectedSpecialtyName = nil
         selectedSurveyType = nil
         selectedSmartPillEntityID = entityID
         selectedCanonicalSpecialtyIDs = entityID.map { [$0] } ?? []
+        highlightedProviderID = nil
         searchText = ""
         clearSuggestions()
 
@@ -451,6 +505,10 @@ final class HomeViewModel: ObservableObject {
         selectedCanonicalSuggestionLabel = nil
         selectedCanonicalSpecialtyIDs = normalized
         selectedSmartPillEntityID = normalized.count == 1 ? normalized[0] : nil
+        if normalized.count == 1, let singleID = normalized.first {
+            selectedCanonicalSuggestionLabel = smartPills.first(where: { $0.entityID == singleID })?.label
+        }
+        highlightedProviderID = nil
         searchText = ""
         clearSuggestions()
         await resolveProvidersByCanonicalEntityIDs(reset: true)
@@ -546,6 +604,10 @@ final class HomeViewModel: ObservableObject {
             } else {
                 providers.append(contentsOf: filteredResults)
             }
+            if let highlightedProviderID,
+               !providers.contains(where: { $0.id == highlightedProviderID }) {
+                self.highlightedProviderID = nil
+            }
             hasMoreResults = results.count == pageSize
         } catch {
             let errorMsg = localizedErrorMessage(error)
@@ -618,6 +680,10 @@ final class HomeViewModel: ObservableObject {
         do {
             let resolved = try await TaxonomyService.searchProvidersByTaxonomy(entityIDs: selectedCanonicalSpecialtyIDs)
             providers = resolved
+            if let highlightedProviderID,
+               !providers.contains(where: { $0.id == highlightedProviderID }) {
+                self.highlightedProviderID = nil
+            }
             hasMoreResults = false
             currentOffset = 0
         } catch {

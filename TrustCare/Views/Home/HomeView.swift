@@ -8,7 +8,7 @@ struct HomeView: View {
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @EnvironmentObject private var localizationManager: LocalizationManager
     @Environment(\.locale) private var locale
-    @State private var displayName: String = "Anonymous"
+    @State private var displayName: String = String(localized: "Anonymous")
     @State private var avatarDisplayUrl: String?
     @State private var showLocationSearch: Bool = false
     @State private var showSpecialtyBrowser: Bool = false
@@ -51,7 +51,7 @@ struct HomeView: View {
                                 .font(.title3)
                                 .foregroundStyle(AppColor.trustBlue)
                             VStack(alignment: .leading, spacing: 2) {
-                                if homeVM.locationName.isEmpty || homeVM.locationName == "Tap to set location" {
+                                if homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location") {
                                     Text("default_city_name")
                                         .font(AppFont.headline)
                                         .foregroundStyle(.primary)
@@ -307,14 +307,15 @@ struct HomeView: View {
             ZStack(alignment: .bottom) {
                 ProviderMapView(
                     viewModel: homeVM,
+                    highlightedProviderID: $homeVM.highlightedProviderID,
                     onOpenProvider: { provider in
-                        selectedProviderFromMap = provider
+                        homeVM.highlightedProviderID = provider.id
                     }
                 )
 
                 if homeVM.providers.isEmpty {
                     if !homeVM.isLoading {
-                        mapEmptyStateCard
+                        activeEmptyStateCard
                             .padding(.horizontal, AppSpacing.lg)
                             .padding(.bottom, AppSpacing.xl)
                     } else {
@@ -326,7 +327,7 @@ struct HomeView: View {
                 }
             }
         } else if !homeVM.isLoading && homeVM.providers.isEmpty {
-            premiumEmptyState
+            activeEmptyStateCard
                 .padding(.top, AppSpacing.xxl)
         } else if homeVM.providers.isEmpty {
             ProgressView()
@@ -335,6 +336,16 @@ struct HomeView: View {
                 LazyVStack(spacing: 12) {
                     ForEach(homeVM.providers) { provider in
                         ProviderCardView(provider: provider)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: AppRadius.card)
+                                    .stroke(
+                                        homeVM.highlightedProviderID == provider.id ? AppColor.trustBlue : Color.clear,
+                                        lineWidth: 2
+                                    )
+                            )
+                            .onTapGesture {
+                                homeVM.highlightedProviderID = provider.id
+                            }
                     }
 
                     if homeVM.hasMoreResults {
@@ -355,77 +366,24 @@ struct HomeView: View {
     }
 
     private var premiumEmptyState: some View {
-        VStack(spacing: AppSpacing.md) {
-            ZStack {
-                Circle()
-                    .fill(AppColor.trustBlue.opacity(0.12))
-                    .frame(width: 120, height: 120)
-                localizedMedicalIcon
-                    .font(.system(size: 54))
-                    .foregroundStyle(AppColor.trustBlue.opacity(0.85))
+        PremiumEmptyStateCard(
+            iconName: usesCrescentHealthIcon ? "moon.fill" : "cross.case.fill",
+            title: String(localized: "empty_home_title"),
+            bulletKeys: ["widen_map_area", "try_nearby_city", "switch_to_list"],
+            primaryActionTitleKey: "switch_to_list",
+            primaryAction: {
+                homeVM.switchToListView()
+            },
+            secondaryActionTitleKey: "try_nearby_city",
+            secondaryAction: {
+                Task { await homeVM.widenSearchAreaOrShowNearby() }
             }
-
-            Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                 ? LocalizedStringKey("empty_home_title")
-                 : LocalizedStringKey("empty_search"))
-                .font(AppFont.headline)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.primary)
-
-            emptyResultsGuidance
-
-            Button {
-                NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
-            } label: {
-                Text("empty_home_cta")
-                    .font(AppFont.callout)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, AppSpacing.lg)
-                    .padding(.vertical, AppSpacing.sm)
-                    .background(AppColor.trustBlue)
-                    .clipShape(Capsule())
-            }
-            .buttonStyle(.plain)
-        }
+        )
         .padding(.horizontal, AppSpacing.lg)
     }
 
     private var mapEmptyStateCard: some View {
-        VStack(spacing: AppSpacing.sm) {
-            localizedMedicalIcon
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundStyle(AppColor.trustBlue)
-
-            Text(homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                 ? LocalizedStringKey("empty_home_title")
-                 : LocalizedStringKey("empty_search"))
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.primary)
-
-            emptyResultsGuidance
-
-            Button {
-                NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
-            } label: {
-                Text("empty_home_cta")
-                    .font(.callout)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, AppSpacing.md)
-                    .padding(.vertical, AppSpacing.xs)
-                    .background(AppColor.trustBlue)
-                    .clipShape(Capsule())
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.horizontal, AppSpacing.md)
-        .padding(.vertical, AppSpacing.md)
-        .frame(maxWidth: 340)
-        .background(.ultraThinMaterial)
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+        premiumEmptyState
     }
 
     @ViewBuilder
@@ -466,14 +424,36 @@ struct HomeView: View {
         return normalizedCode == "tr" || normalizedCode == "ar"
     }
 
-    private var emptyResultsGuidance: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("widen_map_area")
-            Text("switch_to_list")
-            Text("try_nearby_city")
+    @ViewBuilder
+    private var activeEmptyStateCard: some View {
+        if homeVM.hasActiveCanonicalFilter {
+            filteredEmptyStateCard
+        } else {
+            mapEmptyStateCard
         }
-        .font(AppFont.footnote)
-        .foregroundStyle(.secondary)
+    }
+
+    private var filteredEmptyStateCard: some View {
+        let selectedLabel = homeVM.activeCanonicalFilterLabel ?? String(localized: "specialties_label")
+        let title = "\(selectedLabel): \(String(localized: "empty_search"))"
+
+        return PremiumEmptyStateCard(
+            iconName: "line.3.horizontal.decrease.circle",
+            title: title,
+            bulletKeys: ["widen_map_area", "try_nearby_city", "switch_to_list"],
+            primaryActionTitleKey: "filter_all",
+            primaryAction: {
+                Task { await homeVM.clearCanonicalFilter() }
+            },
+            secondaryActionTitleKey: "try_nearby_city",
+            secondaryAction: {
+                Task { await homeVM.widenSearchAreaOrShowNearby() }
+            },
+            tertiaryActionTitleKey: "switch_to_list",
+            tertiaryAction: {
+                homeVM.switchToListView()
+            }
+        )
     }
 
     private var mapBottomSheet: some View {
@@ -503,9 +483,13 @@ struct HomeView: View {
                 HStack(spacing: AppSpacing.sm) {
                     ForEach(homeVM.providers) { provider in
                         Button {
+                            homeVM.highlightedProviderID = provider.id
                             selectedProviderFromMap = provider
                         } label: {
-                            CompactProviderCardForSheet(provider: provider)
+                            CompactProviderCardForSheet(
+                                provider: provider,
+                                isHighlighted: homeVM.highlightedProviderID == provider.id
+                            )
                         }
                         .buttonStyle(.plain)
                     }
@@ -554,7 +538,7 @@ struct HomeView: View {
                 avatarDisplayUrl = nil
             }
         } catch {
-            displayName = "there"
+            displayName = String(localized: "Anonymous")
             avatarDisplayUrl = nil
         }
     }
@@ -607,6 +591,7 @@ private struct SkeletonProviderCard: View {
 
 private struct CompactProviderCardForSheet: View {
     let provider: Provider
+    let isHighlighted: Bool
     @EnvironmentObject private var localizationManager: LocalizationManager
     @ObservedObject private var specialtyService = SpecialtyService.shared
 
@@ -658,7 +643,7 @@ private struct CompactProviderCardForSheet: View {
         .cornerRadius(AppRadius.card)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.card)
-                .stroke(AppColor.border, lineWidth: 1)
+                .stroke(isHighlighted ? AppColor.trustBlue : AppColor.border, lineWidth: isHighlighted ? 2 : 1)
         )
     }
 
