@@ -1,6 +1,30 @@
 import SwiftUI
 import MapKit
 
+private struct RehberAssistantPayload: Decodable {
+    let recommendedSpecialtyIDs: [String]
+    let urgency: String?
+    let followUpQuestions: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case recommendedSpecialtyIDs = "recommended_specialty_ids"
+        case urgency
+        case followUpQuestions = "follow_up_questions"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        recommendedSpecialtyIDs = try container.decodeIfPresent([String].self, forKey: .recommendedSpecialtyIDs) ?? []
+        urgency = try container.decodeIfPresent(String.self, forKey: .urgency)
+        followUpQuestions = try container.decodeIfPresent([String].self, forKey: .followUpQuestions) ?? []
+    }
+}
+
+private struct ParsedAssistantMessage {
+    let displayText: String
+    let payload: RehberAssistantPayload?
+}
+
 struct RehberChatView: View {
     @ObservedObject var viewModel: RehberViewModel
     @Binding var showChat: Bool
@@ -185,6 +209,12 @@ struct RehberChatView: View {
 
     @ViewBuilder
     private func messageRow(_ message: RehberMessage) -> some View {
+        let parsedAssistantMessage = message.role == "assistant" ? parseAssistantMessage(message.content) : nil
+        let renderedText = parsedAssistantMessage?.displayText ?? message.content
+        let canonicalSpecialtyIDs = parsedAssistantMessage?.payload?.recommendedSpecialtyIDs
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+            ?? []
         let infoStyleMessage = message.isFallback || message.isRateLimited
 
         VStack(alignment: message.role == "user" ? .trailing : .leading, spacing: AppSpacing.xs) {
@@ -197,7 +227,7 @@ struct RehberChatView: View {
                             .font(.system(size: 14))
                             .foregroundStyle(.secondary)
 
-                        Text(message.content)
+                        Text(renderedText)
                             .font(AppFont.body)
                             .foregroundStyle(Color.primary)
                     }
@@ -206,7 +236,7 @@ struct RehberChatView: View {
                     .background(Color(.systemGray5))
                     .cornerRadius(AppRadius.card)
                 } else {
-                    Text(message.content)
+                    Text(renderedText)
                         .font(AppFont.body)
                         .foregroundStyle(message.role == "user" ? Color.white : Color.primary)
                         .padding(.horizontal, AppSpacing.md)
@@ -236,7 +266,9 @@ struct RehberChatView: View {
                 .padding(.leading, AppSpacing.xs)
             }
 
-            if message.role == "assistant", let specialties = message.recommendedSpecialties, !specialties.isEmpty {
+            if message.role == "assistant", !canonicalSpecialtyIDs.isEmpty {
+                canonicalSpecialtyPills(canonicalSpecialtyIDs)
+            } else if message.role == "assistant", let specialties = message.recommendedSpecialties, !specialties.isEmpty {
                 specialtyCards(specialties)
             }
         }
@@ -323,6 +355,80 @@ struct RehberChatView: View {
             }
         }
         .padding(.leading, AppSpacing.xs)
+    }
+
+    private func canonicalSpecialtyPills(_ specialtyIDs: [String]) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: AppSpacing.xs) {
+                ForEach(specialtyIDs, id: \.self) { specialtyID in
+                    Button {
+                        NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            NotificationCenter.default.post(
+                                name: .trustCareApplyCanonicalSpecialtyFilter,
+                                object: [specialtyID]
+                            )
+                        }
+                    } label: {
+                        HStack(spacing: AppSpacing.xs) {
+                            Image(systemName: "sparkles")
+                                .font(.system(size: 12))
+                            Text(specialtyID)
+                                .font(AppFont.footnote)
+                                .lineLimit(1)
+                            Image(systemName: "arrow.right")
+                                .font(.system(size: 11, weight: .semibold))
+                        }
+                        .foregroundStyle(AppColor.trustBlue)
+                        .padding(.horizontal, AppSpacing.md)
+                        .padding(.vertical, AppSpacing.xs)
+                        .background(AppColor.cardBackground)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: AppRadius.button)
+                                .stroke(AppColor.border, lineWidth: 1)
+                        )
+                        .cornerRadius(AppRadius.button)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.leading, AppSpacing.xs)
+        }
+    }
+
+    private func parseAssistantMessage(_ content: String) -> ParsedAssistantMessage {
+        let pattern = "```json\\s*([\\s\\S]*?)\\s*```"
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
+            return ParsedAssistantMessage(displayText: content, payload: nil)
+        }
+
+        let fullRange = NSRange(location: 0, length: content.utf16.count)
+        guard let match = regex.firstMatch(in: content, options: [], range: fullRange),
+              let jsonRange = Range(match.range(at: 1), in: content) else {
+            return ParsedAssistantMessage(displayText: content, payload: nil)
+        }
+
+        let jsonText = String(content[jsonRange]).trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let jsonData = jsonText.data(using: .utf8) else {
+            return ParsedAssistantMessage(displayText: content, payload: nil)
+        }
+
+        do {
+            let payload = try JSONDecoder().decode(RehberAssistantPayload.self, from: jsonData)
+            if let blockRange = Range(match.range(at: 0), in: content) {
+                var cleaned = content
+                cleaned.removeSubrange(blockRange)
+                let trimmed = cleaned.trimmingCharacters(in: .whitespacesAndNewlines)
+                return ParsedAssistantMessage(
+                    displayText: trimmed.isEmpty ? content : trimmed,
+                    payload: payload
+                )
+            }
+
+            return ParsedAssistantMessage(displayText: content, payload: payload)
+        } catch {
+            return ParsedAssistantMessage(displayText: content, payload: nil)
+        }
     }
 
     private var typingIndicator: some View {

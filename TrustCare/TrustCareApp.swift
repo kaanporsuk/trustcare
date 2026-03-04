@@ -11,6 +11,7 @@ extension Notification.Name {
     static let trustCareRouteToAuth = Notification.Name("trustCareRouteToAuth")
     static let trustCareSwitchTab = Notification.Name("trustCareSwitchTab")
     static let trustCareApplySpecialtyFilter = Notification.Name("trustCareApplySpecialtyFilter")
+    static let trustCareApplyCanonicalSpecialtyFilter = Notification.Name("trustCareApplyCanonicalSpecialtyFilter")
 }
 
 enum AppState {

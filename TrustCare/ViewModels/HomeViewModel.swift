@@ -364,6 +364,16 @@ final class HomeViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+
+        NotificationCenter.default.publisher(for: .trustCareApplyCanonicalSpecialtyFilter)
+            .compactMap { $0.object as? [String] }
+            .sink { [weak self] specialtyIDs in
+                guard let self else { return }
+                Task { @MainActor in
+                    await self.applyCanonicalSpecialtyIDs(specialtyIDs)
+                }
+            }
+            .store(in: &cancellables)
     }
 
     private func applySpecialtyFilterByName(_ specialtyName: String) async {
@@ -391,6 +401,28 @@ final class HomeViewModel: ObservableObject {
         selectedCanonicalSpecialtyIDs = []
         selectedCanonicalSuggestionLabel = nil
         selectedSurveyType = match?.surveyType
+        await refresh()
+    }
+
+    private func applyCanonicalSpecialtyIDs(_ specialtyIDs: [String]) async {
+        let normalized = Array(Set(
+            specialtyIDs
+                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty }
+        )).sorted()
+
+        guard !normalized.isEmpty else { return }
+
+        if specialties.isEmpty {
+            await loadSpecialties(forceRefresh: false)
+        }
+
+        selectedSpecialtyName = nil
+        selectedSurveyType = nil
+        selectedCanonicalSuggestionLabel = nil
+        selectedCanonicalSpecialtyIDs = normalized
+        searchText = ""
+        clearSuggestions()
         await refresh()
     }
 

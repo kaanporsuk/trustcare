@@ -70,15 +70,26 @@ Belirsiz durumlarda MUTLAKA açıklayıcı soru sor.
 KULLANILMAMASI GEREKEN KELİMELER: Tanı, teşhis, hastalık, tedavi planı.
 KULLANILMASI GEREKEN KELİMELER: Değerlendirme, inceleme, konsültasyon, yönlendirme.
 
-YANIT FORMATI: Her zaman JSON olarak yanıt ver:
+YANIT FORMATI ZORUNLU KURALI:
+1) İlk bölümde kullanıcıya doğal ve lokalize (kullanıcının dilinde) metin ver.
+2) Hemen ardından AYRI bir fenced JSON bloğu ver. JSON bloğu aşağıdaki şemaya birebir uymalı:
+\`\`\`json
 {
-    "message": "Kullanıcıya gösterilecek Türkçe metin",
-    "recommended_specialties": ["Uzmanlık Adı 1", "Uzmanlık Adı 2"] veya null,
-    "is_emergency": false
+  "recommended_specialty_ids": ["SPEC_ENT_OTOLARYNGOLOGY"],
+  "urgency": "low",
+  "follow_up_questions": ["Semptomlar ne zamandır var?"]
 }
+\`\`\`
+
+JSON KURALLARI:
+- recommended_specialty_ids: yalnızca canonical ID döndür (SPEC_ ile başlamalı), en fazla 3 adet.
+- urgency: sadece şu değerlerden biri olmalı: low, medium, high, emergency.
+- follow_up_questions: 0-2 kısa soru.
+- JSON dışında doğal metin olabilir; ama JSON bloğu mutlaka tek ve geçerli olmalı.
+- Eğer yeterli bilgi yoksa recommended_specialty_ids boş dizi olabilir.
 
 Kullanıcı İngilizce yazarsa İngilizce yanıt ver, Türkçe yazarsa Türkçe yanıt ver.
-Önerdiğin uzmanlık adları şu listeden olmalı: General Practice, Family Medicine, Internal Medicine, Pediatrics, Cardiology, Dermatology, Neurology, Oncology, Obstetrics & Gynecology, General Dentistry, Orthodontics, Ophthalmology, ENT / Otolaryngology, Psychiatry, Psychology / Therapy, Urology, Physical Therapy / Physiotherapy, Aesthetic Medicine, Emergency Medicine, Pharmacy.`;
+Önerdiğin canonical specialty ID'leri TrustCare taxonomy yapısına uygun üret.`;
 
 const ALLOWED_SPECIALTIES = new Set([
   "General Practice",
