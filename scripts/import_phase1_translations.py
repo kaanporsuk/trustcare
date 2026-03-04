@@ -1,14 +1,39 @@
 #!/usr/bin/env python3
+import argparse
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MARKDOWN_PATH = Path("/Users/kaanporsuk/Documents/TrustCare/Prompts/TrustCare_Translations_11_Languages_FIXED.md")
 XCSTRINGS_PATH = ROOT / "TrustCare" / "Localizable.xcstrings"
 OUTPUT_DIR = ROOT / "scripts" / "generated_l10n_phase1"
 
+MARKDOWN_CANDIDATES = [
+    ROOT / "TrustCare_Translations_11_Languages_FIXED.md",
+    ROOT / "docs" / "TrustCare_Translations_11_Languages_FIXED.md",
+    Path("/Users/kaanporsuk/Documents/TrustCare/Prompts/TrustCare_Translations_11_Languages_FIXED.md"),
+]
+
 TARGET_LANGS = ["es", "fr", "it", "ro", "pt", "uk", "ru", "sv", "cs", "hu"]
+
+
+def resolve_markdown_path(cli_markdown: str | None) -> Path:
+    if cli_markdown:
+        candidate = Path(cli_markdown).expanduser().resolve()
+        if candidate.exists():
+            return candidate
+        raise FileNotFoundError(f"Provided markdown path not found: {candidate}")
+
+    for candidate in MARKDOWN_CANDIDATES:
+        if candidate.exists():
+            return candidate
+
+    searched = "\n".join(f"- {path}" for path in MARKDOWN_CANDIDATES)
+    raise FileNotFoundError(
+        "Missing markdown file. Searched:\n"
+        f"{searched}\n"
+        "Pass --markdown /absolute/or/relative/path/to/TrustCare_Translations_11_Languages_FIXED.md"
+    )
 
 
 def normalize_placeholders(text: str) -> str:
@@ -165,17 +190,65 @@ def write_strings_exports(translations_by_lang: dict[str, dict[str, str]]) -> No
         (OUTPUT_DIR / f"{lang}.strings").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def snapshot_key_locales(xcstrings: dict) -> tuple[set[str], dict[str, set[str]]]:
+    strings = xcstrings.get("strings", {})
+    keys = set(strings.keys())
+    key_locales: dict[str, set[str]] = {}
+    for key, entry in strings.items():
+        if not isinstance(entry, dict):
+            key_locales[key] = set()
+            continue
+        localizations = entry.get("localizations", {})
+        key_locales[key] = set(localizations.keys()) if isinstance(localizations, dict) else set()
+    return keys, key_locales
+
+
+def validate_preservation(before: dict, after: dict) -> None:
+    before_keys, before_key_locales = snapshot_key_locales(before)
+    after_keys, after_key_locales = snapshot_key_locales(after)
+
+    missing_keys = before_keys - after_keys
+    if missing_keys:
+        sample = ", ".join(sorted(list(missing_keys))[:10])
+        raise RuntimeError(f"Validation failed: keys removed from xcstrings (sample): {sample}")
+
+    locale_losses: list[str] = []
+    for key in sorted(before_keys):
+        lost_locales = before_key_locales[key] - after_key_locales.get(key, set())
+        if lost_locales:
+            locale_losses.append(f"{key}: {', '.join(sorted(lost_locales))}")
+
+    if locale_losses:
+        sample = " | ".join(locale_losses[:10])
+        raise RuntimeError(f"Validation failed: locale removals detected (sample): {sample}")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Safely merge Phase 1 markdown translations into Localizable.xcstrings"
+    )
+    parser.add_argument(
+        "--markdown",
+        help="Path to TrustCare_Translations_11_Languages_FIXED.md",
+        default=None,
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
-    if not MARKDOWN_PATH.exists():
-        raise FileNotFoundError(f"Missing markdown file: {MARKDOWN_PATH}")
+    args = parse_args()
+    markdown_path = resolve_markdown_path(args.markdown)
+
     if not XCSTRINGS_PATH.exists():
         raise FileNotFoundError(f"Missing xcstrings file: {XCSTRINGS_PATH}")
 
-    translations_by_lang = parse_markdown_translations(MARKDOWN_PATH)
+    translations_by_lang = parse_markdown_translations(markdown_path)
 
     xcstrings = json.loads(XCSTRINGS_PATH.read_text(encoding="utf-8"))
+    before_snapshot = json.loads(json.dumps(xcstrings))
     updated_count = merge_translations(xcstrings, translations_by_lang)
     apply_profile_reviews_pluralization(xcstrings)
+    validate_preservation(before_snapshot, xcstrings)
 
     XCSTRINGS_PATH.write_text(
         json.dumps(xcstrings, ensure_ascii=False, indent=2) + "\n",
@@ -184,6 +257,7 @@ def main() -> None:
 
     write_strings_exports(translations_by_lang)
 
+    print(f"Markdown source: {markdown_path}")
     print(f"Updated localization entries: {updated_count}")
     print(f"Wrote strings exports to: {OUTPUT_DIR}")
 
