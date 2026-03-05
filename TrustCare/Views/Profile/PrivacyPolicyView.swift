@@ -64,25 +64,23 @@ struct PrivacyPolicyView: View {
     ]
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                    ForEach(Array(sections.enumerated()), id: \.offset) { _, section in
-                        policySection(title: section.title, bullets: section.bullets)
-                    }
-
-                    Text(tcKey: "pp_last_updated", fallback: "Last updated")
-                        .font(AppFont.footnote)
-                        .foregroundStyle(.secondary)
-                        .padding(.top, AppSpacing.sm)
+        ScrollView {
+            VStack(alignment: .leading, spacing: AppSpacing.lg) {
+                ForEach(Array(sections.enumerated()), id: \.offset) { _, section in
+                    policySection(title: section.title, bullets: section.bullets)
                 }
-                .padding(.horizontal, AppSpacing.lg)
-                .padding(.vertical, AppSpacing.lg)
+
+                Text(tcKey: "pp_last_updated", fallback: "Last updated")
+                    .font(AppFont.footnote)
+                    .foregroundStyle(.secondary)
+                    .padding(.top, AppSpacing.sm)
             }
-            .navigationTitle(Text(tcKey: "menu_privacy", fallback: "Privacy Policy"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(.hidden, for: .tabBar)
+            .padding(.horizontal, AppSpacing.lg)
+            .padding(.vertical, AppSpacing.lg)
         }
+        .navigationTitle(Text(tcKey: "menu_privacy", fallback: "Privacy Policy"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
     }
 
     private func policySection(title: LocalizedLine, bullets: [LocalizedLine]) -> some View {

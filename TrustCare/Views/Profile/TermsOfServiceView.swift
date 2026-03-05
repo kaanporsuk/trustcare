@@ -66,20 +66,18 @@ struct TermsOfServiceView: View {
     ]
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                    ForEach(Array(sections.enumerated()), id: \.offset) { _, section in
-                        termsSection(title: section.title, bullets: section.bullets)
-                    }
+        ScrollView {
+            VStack(alignment: .leading, spacing: AppSpacing.lg) {
+                ForEach(Array(sections.enumerated()), id: \.offset) { _, section in
+                    termsSection(title: section.title, bullets: section.bullets)
                 }
-                .padding(.horizontal, AppSpacing.lg)
-                .padding(.vertical, AppSpacing.lg)
             }
-            .navigationTitle(Text(tcKey: "menu_terms", fallback: "Terms of Service"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(.hidden, for: .tabBar)
+            .padding(.horizontal, AppSpacing.lg)
+            .padding(.vertical, AppSpacing.lg)
         }
+        .navigationTitle(Text(tcKey: "menu_terms", fallback: "Terms of Service"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
     }
 
     private func termsSection(title: LocalizedLine, bullets: [LocalizedLine]) -> some View {

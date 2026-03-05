@@ -59,7 +59,7 @@ struct SettingsView: View {
             }
         }
         .sheet(isPresented: Binding(
-            get: { showLanguagePicker && horizontalSizeClass != .regular },
+            get: { showLanguagePicker && !shouldUsePopoverLanguagePicker },
             set: { showLanguagePicker = $0 }
         )) {
             NavigationStack {
@@ -74,7 +74,7 @@ struct SettingsView: View {
             }
         }
         .popover(isPresented: Binding(
-            get: { showLanguagePicker && horizontalSizeClass == .regular },
+            get: { showLanguagePicker && shouldUsePopoverLanguagePicker },
             set: { showLanguagePicker = $0 }
         )) {
             NavigationStack {
@@ -85,7 +85,12 @@ struct SettingsView: View {
                 }
             }
             .frame(minWidth: 420, minHeight: 520)
+            .presentationCompactAdaptation(.sheet)
         }
+    }
+
+    private var shouldUsePopoverLanguagePicker: Bool {
+        horizontalSizeClass == .regular && UIDevice.current.userInterfaceIdiom == .pad
     }
 
     private func exportMyData() async {
