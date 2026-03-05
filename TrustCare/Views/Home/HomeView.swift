@@ -1,99 +1,137 @@
 import SwiftUI
-import Supabase
 import CoreLocation
-import UIKit
 
 struct HomeView: View {
     @StateObject private var homeVM = HomeViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @EnvironmentObject private var appRouter: AppRouter
     @EnvironmentObject private var localizationManager: LocalizationManager
-    @Environment(\.locale) private var locale
-    @State private var displayName: String = String(localized: "Anonymous")
-    @State private var avatarDisplayUrl: String?
-    @State private var showLocationSearch: Bool = false
-    @State private var showSpecialtyBrowser: Bool = false
-    @State private var selectedSpecialty: Specialty?
-    @State private var selectedProviderFromSearch: Provider?
-    @State private var selectedProviderFromMap: Provider?
-    @State private var showRefreshErrorBanner: Bool = false
-    @State private var mapSheetHeight: CGFloat = 188
-    @State private var mapSheetDragOffset: CGFloat = 0
-    private let verboseLogging = false
-    private var mapSheetMinHeight: CGFloat {
-        UIScreen.main.bounds.height < 760 ? 116 : 132
+
+    @State private var showLocationSearch = false
+    @State private var showResultsSheet = true
+    @State private var showSearchOverlay = false
+    @State private var selectedProviderID: UUID?
+
+    @State private var activeFilterSheet: ActiveFilterSheet?
+    @State private var selectedSpecialtyIDs = Set<String>()
+    @State private var selectedServiceIDs = Set<String>()
+    @State private var selectedFacilityIDs = Set<String>()
+    @State private var selectedDistanceKm = 50
+    @State private var selectedLanguages = Set<String>()
+    @State private var verifiedOnly = false
+
+    @State private var recentSearches = [String]()
+
+    private let recentSearchesKey = "discover_recent_searches_v1"
+
+    private enum ActiveFilterSheet: String, Identifiable {
+        case specialty
+        case treatment
+        case facility
+        case distance
+        case language
+        case verified
+
+        var id: String { rawValue }
     }
 
-    private var mapSheetMaxHeight: CGFloat {
-        UIScreen.main.bounds.height < 760 ? 248 : 300
-    }
+    private var displayedProviders: [Provider] {
+        homeVM.providers.filter { provider in
+            if selectedDistanceKm < 50, let distance = provider.distanceKm, distance > Double(selectedDistanceKm) {
+                return false
+            }
 
-    private func verboseLog(_ message: @autoclosure () -> String) {
-        guard verboseLogging else { return }
-        print(message())
-    }
+            if verifiedOnly && provider.verifiedReviewCount == 0 {
+                return false
+            }
 
-    private func localizedProviderSpecialty(_ provider: Provider) -> String {
-        guard let specialty = specialtyService.specialties.first(where: {
-            [$0.name, $0.nameTr, $0.nameDe, $0.namePl, $0.nameNl, $0.nameDa]
-                .compactMap { $0 }
-                .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
-        }) else {
-            return provider.specialty
+            if !selectedLanguages.isEmpty {
+                let spoken = Set((provider.languagesSpoken ?? []).map { $0.lowercased() })
+                if spoken.isDisjoint(with: Set(selectedLanguages.map { $0.lowercased() })) {
+                    return false
+                }
+            }
+
+            return true
         }
-        return specialty.resolvedName(using: localizationManager)
+    }
+
+    private var hasAnyActiveFilter: Bool {
+        !selectedSpecialtyIDs.isEmpty
+            || !selectedServiceIDs.isEmpty
+            || !selectedFacilityIDs.isEmpty
+            || selectedDistanceKm != 50
+            || !selectedLanguages.isEmpty
+            || verifiedOnly
+            || homeVM.hasActiveCanonicalFilter
+    }
+
+    private var selectedCityName: String {
+        homeVM.selectedLocation.name.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var isRegionLikelyNew: Bool {
+        let majorCityNames = Set(HomeViewModel.majorTurkishCities.map { $0.name.lowercased() })
+        return !selectedCityName.isEmpty && !majorCityNames.contains(selectedCityName.lowercased())
+    }
+
+    private var cityCoverage: [(name: String, count: Int)] {
+        let grouped = Dictionary(grouping: homeVM.providers) { provider in
+            provider.city?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false
+                ? provider.city!.trimmingCharacters(in: .whitespacesAndNewlines)
+                : "Unknown"
+        }
+        return grouped
+            .map { ($0.key, $0.value.count) }
+            .sorted { lhs, rhs in
+                if lhs.count == rhs.count {
+                    return lhs.name < rhs.name
+                }
+                return lhs.count > rhs.count
+            }
+    }
+
+    private var languageOptions: [String] {
+        let langs = homeVM.providers.flatMap { $0.languagesSpoken ?? [] }
+        return Array(Set(langs.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }))
+            .filter { !$0.isEmpty }
+            .sorted()
+    }
+
+    private var currentSelectionCountForActiveTaxonomyFilter: Int {
+        selectedSpecialtyIDs.count + selectedServiceIDs.count + selectedFacilityIDs.count
     }
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                DiscoverSearchSurfaceView(
-                    locationName: homeVM.locationName,
-                    isLocationUnset: homeVM.locationName.isEmpty || homeVM.locationName == String(localized: "Tap to set location"),
-                    searchText: $homeVM.searchText,
-                    taxonomySuggestions: homeVM.taxonomySuggestions,
-                    smartPills: homeVM.smartPills,
-                    selectedSmartPillEntityID: homeVM.selectedSmartPillEntityID,
-                    viewMode: $homeVM.viewMode,
-                    onTapLocation: {
-                        showLocationSearch = true
-                    },
-                    onClearSearch: {
-                        homeVM.searchText = ""
-                        homeVM.clearSuggestions()
-                    },
-                    onSelectSuggestion: { suggestion in
-                        selectedSpecialty = nil
-                        Task { await homeVM.applyTaxonomySuggestion(suggestion) }
-                    },
-                    onSelectSmartPill: { entityID in
-                        selectedSpecialty = nil
-                        Task { await homeVM.applySmartPill(entityID: entityID) }
-                    },
-                    onTapMore: {
-                        showSpecialtyBrowser = true
+            ZStack(alignment: .top) {
+                ProviderMapView(
+                    viewModel: homeVM,
+                    providers: displayedProviders,
+                    selectedProviderID: $selectedProviderID,
+                    onOpenProvider: { provider in
+                        selectedProviderID = provider.id
                     }
                 )
-                .padding(.horizontal, AppSpacing.md)
-                .padding(.top, AppSpacing.xs)
-                .padding(.bottom, 16)
-                .zIndex(2)
 
-                // Content Section
-                ZStack {
-                    contentSection
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .zIndex(1)
-                .safeAreaInset(edge: .bottom) {
-                    if let loadError = homeVM.providerLoadError,
-                       !homeVM.providers.isEmpty,
-                       showRefreshErrorBanner {
-                        refreshErrorBanner(loadError)
-                            .padding(.horizontal, 16)
-                            .padding(.bottom, 8)
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                VStack(spacing: AppSpacing.sm) {
+                    headerBar
+                        .padding(.horizontal, AppSpacing.md)
+                        .padding(.top, AppSpacing.sm)
+
+                    if homeVM.providers.isEmpty && !homeVM.isLoading {
+                        mapEmptyStateCard
+                            .padding(.horizontal, AppSpacing.lg)
                     }
+                }
+                .zIndex(3)
+
+                if showSearchOverlay {
+                    searchOverlay
+                        .padding(.top, 84)
+                        .padding(.horizontal, AppSpacing.md)
+                        .transition(.opacity.combined(with: .move(edge: .top)))
+                        .zIndex(4)
                 }
             }
             .navigationBarHidden(true)
@@ -106,55 +144,31 @@ struct HomeView: View {
             .task(id: localizationManager.effectiveLanguage) {
                 await homeVM.reloadSmartPillsForCurrentLocale()
             }
-            // Sync pill selection when the map legend changes surveyType.
-            // When the legend calls applyLegendFilter(), it clears
-            // selectedSpecialtyName; detect that and reset selectedSpecialty.
-            .onChange(of: homeVM.selectedSurveyType) { _, newType in
-                if let spec = selectedSpecialty {
-                    let specSurvey = SpecialtyService.shared.surveyType(for: spec.name)
-                    if specSurvey != newType {
-                        selectedSpecialty = nil
-                    }
-                }
-            }
-            .onChange(of: homeVM.providerLoadError) { _, newError in
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    showRefreshErrorBanner = newError != nil && !homeVM.providers.isEmpty
-                }
-            }
-            .onChange(of: homeVM.viewMode) { _, newMode in
-                guard newMode == .map else { return }
-                let clamped = min(max(mapSheetHeight, mapSheetMinHeight), mapSheetMaxHeight)
-                if clamped != mapSheetHeight {
-                    mapSheetHeight = clamped
-                }
-            }
             .task {
                 appRouter.registerHomeViewModel(homeVM)
                 homeVM.startLocationUpdates()
                 await homeVM.onAppear()
-                await loadDisplayName()
+                loadRecentSearches()
+                selectedDistanceKm = homeVM.selectedRadiusKm
+                if showResultsSheet == false {
+                    showResultsSheet = true
+                }
             }
             .onDisappear {
                 appRouter.unregisterHomeViewModel(homeVM)
             }
-            .sheet(isPresented: $showSpecialtyBrowser) {
-                SpecialtyBrowserSheet(
-                    onSelect: { suggestion in
-                        selectedSpecialty = nil
-                        Task { await homeVM.applyTaxonomySuggestion(suggestion) }
-                    },
-                    onClear: {
-                        selectedSpecialty = nil
-                        Task { await homeVM.applySmartPill(entityID: nil) }
-                    }
-                )
+            .onChange(of: homeVM.providers) { _, newProviders in
+                if let selectedProviderID,
+                   !newProviders.contains(where: { $0.id == selectedProviderID }) {
+                    self.selectedProviderID = nil
+                }
             }
-            .navigationDestination(item: $selectedProviderFromSearch) { provider in
-                ProviderDetailView(providerId: provider.id)
-            }
-            .navigationDestination(item: $selectedProviderFromMap) { provider in
-                ProviderDetailView(providerId: provider.id)
+            .sheet(isPresented: $showResultsSheet) {
+                mapResultsSheet
+                    .presentationDetents([.fraction(0.15), .medium, .large])
+                    .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                    .interactiveDismissDisabled()
+                    .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $showLocationSearch) {
                 LocationSelectorView(
@@ -173,491 +187,737 @@ struct HomeView: View {
                     }
                 )
             }
-        }
-    }
-
-    @ViewBuilder
-    private var contentSection: some View {
-        if homeVM.isLoading && homeVM.providers.isEmpty {
-            ScrollView {
-                LazyVStack(spacing: AppSpacing.md) {
-                    ForEach(0..<6, id: \.self) { _ in
-                        SkeletonProviderCard()
-                            .redacted(reason: .placeholder)
-                    }
-                }
-                .padding(.horizontal, AppSpacing.lg)
-                .padding(.top, AppSpacing.md)
-            }
-        } else if homeVM.viewMode == .map {
-            ZStack(alignment: .bottom) {
-                ProviderMapView(
-                    viewModel: homeVM,
-                    highlightedProviderID: $homeVM.highlightedProviderID,
-                    onOpenProvider: { provider in
-                        homeVM.highlightedProviderID = provider.id
-                    }
-                )
-
-                if homeVM.providers.isEmpty {
-                    if !homeVM.isLoading {
-                        activeEmptyStateCard
-                            .padding(.horizontal, AppSpacing.lg)
-                            .padding(.bottom, AppSpacing.xl)
-                    } else {
-                        ProgressView()
-                            .padding(.bottom, AppSpacing.xxl)
-                    }
-                } else {
-                    mapBottomSheet
+            .sheet(item: $activeFilterSheet) { sheet in
+                switch sheet {
+                case .specialty:
+                    taxonomyFilterSheet(title: "Specialty", entityType: .specialty, selectedIDs: $selectedSpecialtyIDs)
+                case .treatment:
+                    taxonomyFilterSheet(title: "Treatment", entityType: .service, selectedIDs: $selectedServiceIDs)
+                case .facility:
+                    taxonomyFilterSheet(title: "Facility", entityType: .facility, selectedIDs: $selectedFacilityIDs)
+                case .distance:
+                    distanceFilterSheet
+                case .language:
+                    languageFilterSheet
+                case .verified:
+                    verifiedFilterSheet
                 }
             }
-        } else if !homeVM.isLoading && homeVM.providers.isEmpty {
-            activeEmptyStateCard
-                .padding(.top, AppSpacing.xxl)
-        } else if homeVM.providers.isEmpty {
-            ProgressView()
-        } else {
-            ScrollView {
-                LazyVStack(spacing: 12) {
-                    ForEach(homeVM.providers) { provider in
-                        ProviderCardView(provider: provider)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: AppRadius.card)
-                                    .stroke(
-                                        homeVM.highlightedProviderID == provider.id ? Color.tcOcean : Color.clear,
-                                        lineWidth: 2
-                                    )
-                            )
-                            .onTapGesture {
-                                homeVM.highlightedProviderID = provider.id
-                            }
-                    }
+        }
+    }
 
-                    if homeVM.hasMoreResults {
-                        ProgressView()
-                            .onAppear {
-                                Task { await homeVM.loadMore() }
-                            }
-                    }
+    private var headerBar: some View {
+        VStack(spacing: AppSpacing.sm) {
+            TCSearchBar(
+                text: $homeVM.searchText,
+                placeholderKey: "search_placeholder",
+                placeholderFallback: "Search specialties, treatments, clinics"
+            )
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: 0.18)) {
+                    showSearchOverlay = true
                 }
-                .padding(.horizontal, AppSpacing.lg)
-                .padding(.bottom, AppSpacing.xxl)
-            }
-            .scrollDismissesKeyboard(.interactively)
-            .refreshable {
-                await homeVM.refresh(forceSpecialtiesRefresh: true)
-            }
-        }
-    }
-
-    private var premiumEmptyState: some View {
-        PremiumEmptyStateCard(
-            iconName: usesCrescentHealthIcon ? "moon.fill" : "cross.case.fill",
-            title: String(localized: "empty_home_title"),
-            bulletKeys: ["widen_map_area", "try_nearby_city", "switch_to_list"],
-            primaryActionTitleKey: "switch_to_list",
-            primaryAction: {
-                homeVM.switchToListView()
-            },
-            secondaryActionTitleKey: "try_nearby_city",
-            secondaryAction: {
-                Task { await homeVM.widenSearchAreaOrShowNearby() }
-            }
-        )
-        .padding(.horizontal, AppSpacing.lg)
-    }
-
-    private var mapEmptyStateCard: some View {
-        premiumEmptyState
-    }
-
-    @ViewBuilder
-    private var localizedMedicalIcon: some View {
-        if usesCrescentHealthIcon {
-            crescentMedicalIcon
-        } else {
-            Image(systemName: "cross.case.fill")
-        }
-    }
-
-    @ViewBuilder
-    private var crescentMedicalIcon: some View {
-        if UIImage(named: "medical_bag_crescent") != nil {
-            Image("medical_bag_crescent")
-                .renderingMode(.template)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 28, height: 28)
-        } else {
-            ZStack {
-                Image(systemName: "bag.fill")
-                    .font(.system(size: 22, weight: .semibold))
-                Image(systemName: "moon.fill")
-                    .font(.system(size: 10, weight: .bold))
-                    .offset(x: 7, y: -7)
-            }
-        }
-    }
-
-    private var usesCrescentHealthIcon: Bool {
-        let languageCode = locale.language.languageCode?.identifier
-            ?? locale.identifier
-        let normalizedCode = languageCode
-            .components(separatedBy: ["-", "_"])
-            .first?
-            .lowercased() ?? ""
-        return normalizedCode == "tr" || normalizedCode == "ar"
-    }
-
-    @ViewBuilder
-    private var activeEmptyStateCard: some View {
-        if let loadError = homeVM.providerLoadError {
-            providerLoadErrorCard(loadError)
-        } else if homeVM.hasActiveCanonicalFilter {
-            filteredEmptyStateCard
-        } else {
-            mapEmptyStateCard
-        }
-    }
-
-    private func providerLoadErrorCard(_ loadError: HomeViewModel.LoadErrorState) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            HStack(spacing: AppSpacing.sm) {
-                Image(systemName: "wifi.exclamationmark")
-                    .font(.title3)
-                    .foregroundStyle(Color.tcOcean)
-                Text(LocalizedStringKey(loadError.errorKey))
-                    .font(AppFont.callout.weight(.semibold))
-                    .foregroundStyle(.primary)
             }
 
-            Text(LocalizedStringKey(loadError.bodyKey))
-                .font(AppFont.footnote)
-                .foregroundStyle(.secondary)
-
-            HStack(spacing: AppSpacing.md) {
-                Button("action_retry") {
-                    Task { await homeVM.retryLoadProviders() }
+            HStack(spacing: AppSpacing.xs) {
+                Button {
+                    showSearchOverlay = false
+                    showLocationSearch = true
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "mappin.and.ellipse")
+                        Text(selectedCityName.isEmpty ? "Set location" : selectedCityName)
+                            .lineLimit(1)
+                    }
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.tcTextPrimary)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color.tcSurface.opacity(0.92))
+                    .clipShape(Capsule())
+                    .overlay {
+                        Capsule().stroke(Color.tcBorder, lineWidth: 1)
+                    }
                 }
                 .buttonStyle(.plain)
-                .font(AppFont.callout.weight(.semibold))
-                .foregroundStyle(Color.tcOcean)
-                .padding(.horizontal, AppSpacing.md)
-                .padding(.vertical, AppSpacing.xs)
-                .background(Color.tcOcean.opacity(0.14))
-                .clipShape(Capsule())
 
-                Button(secondaryModeActionTitleKey) {
-                    homeVM.viewMode = secondaryModeActionTarget
-                }
-                .buttonStyle(.plain)
-                .font(AppFont.footnote)
-                .foregroundStyle(.secondary)
-            }
-        }
-        .padding(AppSpacing.md)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
-    }
-
-    private func refreshErrorBanner(_ loadError: HomeViewModel.LoadErrorState) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            Text(LocalizedStringKey(loadError.errorKey))
-                .font(AppFont.callout)
-                .fontWeight(.semibold)
-
-            Text(LocalizedStringKey(loadError.bodyKey))
-                .font(AppFont.footnote)
-                .foregroundStyle(.secondary)
-
-            HStack(spacing: AppSpacing.md) {
-                Button("action_retry") {
-                    Task { await homeVM.retryLoadProviders() }
-                }
-                .buttonStyle(.plain)
-                .font(AppFont.callout)
-                .foregroundStyle(Color.tcOcean)
-
-                Button(secondaryModeActionTitleKey) {
-                    homeVM.viewMode = secondaryModeActionTarget
-                }
-                .buttonStyle(.plain)
-                .font(AppFont.callout)
-                .foregroundStyle(.secondary)
-            }
-        }
-        .padding(AppSpacing.md)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
-        .allowsHitTesting(true)
-    }
-
-    private var discoverMode: HomeViewModel.DiscoverMode {
-        homeVM.viewMode
-    }
-
-    private var secondaryModeActionTitleKey: LocalizedStringKey {
-        discoverMode == .map ? "action_switch_to_list" : "action_switch_to_map"
-    }
-
-    private var secondaryModeActionTarget: HomeViewModel.DiscoverMode {
-        discoverMode == .map ? .list : .map
-    }
-
-    private func localizedText(for key: String) -> String {
-        let languageCode = locale.language.languageCode?.identifier
-        let localeCode = locale.identifier
-        let candidates = [localeCode, languageCode].compactMap { $0 }
-
-        for candidate in candidates {
-            if let path = Bundle.main.path(forResource: candidate, ofType: "lproj"),
-               let bundle = Bundle(path: path) {
-                let value = NSLocalizedString(key, tableName: nil, bundle: bundle, value: key, comment: "")
-                if value != key {
-                    return value
-                }
-            }
-        }
-
-        return NSLocalizedString(key, comment: "")
-    }
-
-    private var filteredEmptyStateCard: some View {
-        let selectedLabel = homeVM.activeCanonicalFilterLabel ?? String(localized: "specialties_label")
-        let title = "\(selectedLabel): \(String(localized: "empty_search"))"
-
-        return PremiumEmptyStateCard(
-            iconName: "line.3.horizontal.decrease.circle",
-            title: title,
-            bulletKeys: ["widen_map_area", "try_nearby_city", "switch_to_list"],
-            primaryActionTitleKey: "filter_all",
-            primaryAction: {
-                Task { await homeVM.clearCanonicalFilter() }
-            },
-            secondaryActionTitleKey: "try_nearby_city",
-            secondaryAction: {
-                Task { await homeVM.widenSearchAreaOrShowNearby() }
-            },
-            tertiaryActionTitleKey: "switch_to_list",
-            tertiaryAction: {
-                homeVM.switchToListView()
-            }
-        )
-    }
-
-    private var mapBottomSheet: some View {
-        let dynamicHeight = min(
-            max(mapSheetHeight - mapSheetDragOffset, mapSheetMinHeight),
-            mapSheetMaxHeight
-        )
-
-        return VStack(spacing: AppSpacing.sm) {
-            Capsule()
-                .fill(.secondary.opacity(0.35))
-                .frame(width: 40, height: 5)
-                .padding(.top, AppSpacing.sm)
-
-            HStack {
-                Text("providers_label")
-                    .font(AppFont.caption)
-                    .foregroundStyle(.secondary)
                 Spacer()
-                Text("\(homeVM.providers.count)")
-                    .font(AppFont.caption)
-                    .foregroundStyle(.secondary)
+
+                if currentSelectionCountForActiveTaxonomyFilter > 0 {
+                    Text("\(currentSelectionCountForActiveTaxonomyFilter) filters")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color.tcOcean)
+                }
+            }
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: AppSpacing.xs) {
+                    TCFilterChip(title: "Specialty", isSelected: !selectedSpecialtyIDs.isEmpty) {
+                        showSearchOverlay = false
+                        activeFilterSheet = .specialty
+                    }
+                    TCFilterChip(title: "Treatment", isSelected: !selectedServiceIDs.isEmpty) {
+                        showSearchOverlay = false
+                        activeFilterSheet = .treatment
+                    }
+                    TCFilterChip(title: "Facility", isSelected: !selectedFacilityIDs.isEmpty) {
+                        showSearchOverlay = false
+                        activeFilterSheet = .facility
+                    }
+                    TCFilterChip(title: "Distance", isSelected: selectedDistanceKm != 50) {
+                        showSearchOverlay = false
+                        activeFilterSheet = .distance
+                    }
+                    TCFilterChip(title: "Language", isSelected: !selectedLanguages.isEmpty) {
+                        showSearchOverlay = false
+                        activeFilterSheet = .language
+                    }
+                    TCFilterChip(title: "Verified", isSelected: verifiedOnly) {
+                        showSearchOverlay = false
+                        activeFilterSheet = .verified
+                    }
+                }
+            }
+        }
+        .padding(AppSpacing.md)
+        .tcGlassBackground()
+    }
+
+    private var mapResultsSheet: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            HStack {
+                Text("Providers")
+                    .font(.headline)
+                Spacer()
+                Text("\(displayedProviders.count)")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.tcTextSecondary)
             }
             .padding(.horizontal, AppSpacing.md)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: AppSpacing.sm) {
-                    ForEach(homeVM.providers) { provider in
-                        Button {
-                            homeVM.highlightedProviderID = provider.id
-                            selectedProviderFromMap = provider
-                        } label: {
-                            CompactProviderCardForSheet(
+            if displayedProviders.isEmpty {
+                sheetEmptyState
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.top, AppSpacing.sm)
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: AppSpacing.sm) {
+                        ForEach(displayedProviders, id: \.id) { provider in
+                            TCProviderCard(
                                 provider: provider,
-                                isHighlighted: homeVM.highlightedProviderID == provider.id
+                                localizedSpecialty: localizedProviderSpecialty(provider)
+                            ) {
+                                ProviderDetailView(providerId: provider.id)
+                            }
+                            .overlay {
+                                RoundedRectangle(cornerRadius: AppRadius.card)
+                                    .stroke(
+                                        selectedProviderID == provider.id ? Color.tcOcean : Color.clear,
+                                        lineWidth: 2
+                                    )
+                            }
+                            .simultaneousGesture(
+                                TapGesture().onEnded {
+                                    selectedProviderID = provider.id
+                                }
                             )
+                        }
+                    }
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.bottom, AppSpacing.xl)
+                }
+            }
+        }
+        .padding(.top, AppSpacing.sm)
+        .background(Color.tcBackground)
+    }
+
+    @ViewBuilder
+    private var sheetEmptyState: some View {
+        if hasAnyActiveFilter {
+            TCEmptyState(
+                variant: .noResults,
+                primaryTitle: "Clear filters",
+                secondaryTitle: "Search another area",
+                onPrimary: {
+                    Task { await clearAllFilters() }
+                },
+                onSecondary: {
+                    showLocationSearch = true
+                }
+            )
+        } else if isRegionLikelyNew {
+            TCEmptyState(
+                variant: .noProviders,
+                primaryTitle: "Change city",
+                secondaryTitle: "Suggest a provider",
+                onPrimary: {
+                    showLocationSearch = true
+                },
+                onSecondary: {}
+            )
+            .overlay(alignment: .topLeading) {
+                Text("TrustCare is growing here")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.tcSage)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.tcSage.opacity(0.14))
+                    .clipShape(Capsule())
+                    .offset(y: -10)
+            }
+        } else {
+            TCEmptyState(
+                variant: .noProviders,
+                primaryTitle: "Search another area / Change city",
+                secondaryTitle: "Suggest a provider",
+                onPrimary: {
+                    showLocationSearch = true
+                },
+                onSecondary: {}
+            )
+        }
+    }
+
+    private var mapEmptyStateCard: some View {
+        Group {
+            if hasAnyActiveFilter {
+                stateBCard
+            } else if isRegionLikelyNew {
+                stateCCard
+            } else {
+                stateACard
+            }
+        }
+    }
+
+    private var stateACard: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("No providers visible in this map area")
+                .font(.headline)
+            Text("Try another area or pick a different city to continue.")
+                .font(.subheadline)
+                .foregroundStyle(Color.tcTextSecondary)
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Search another area / Change city", fullWidth: false) {
+                    showLocationSearch = true
+                }
+                Button("Suggest a provider") {}
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.tcOcean)
+            }
+        }
+        .padding(AppSpacing.md)
+        .background(Color.tcSurface)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var stateBCard: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("No results match these filters")
+                .font(.headline)
+            Text("Clear one or more filters, or move the map to expand results.")
+                .font(.subheadline)
+                .foregroundStyle(Color.tcTextSecondary)
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Clear filters", fullWidth: false) {
+                    Task { await clearAllFilters() }
+                }
+                Button("Search another area") {
+                    showLocationSearch = true
+                }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.tcOcean)
+            }
+        }
+        .padding(AppSpacing.md)
+        .background(Color.tcSurface)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var stateCCard: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("TrustCare is growing here")
+                .font(.headline)
+                .foregroundStyle(Color.tcSage)
+            Text("We are onboarding providers in this region. Try a nearby city in the meantime.")
+                .font(.subheadline)
+                .foregroundStyle(Color.tcTextSecondary)
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Change city", fullWidth: false) {
+                    showLocationSearch = true
+                }
+                Button("Suggest a provider") {}
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.tcOcean)
+            }
+        }
+        .padding(AppSpacing.md)
+        .background(Color.tcSurface)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var searchOverlay: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            if homeVM.searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                popularNearYouSection
+
+                if !recentSearches.isEmpty {
+                    VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                        Text("Recent searches")
+                            .font(.caption)
+                            .foregroundStyle(Color.tcTextSecondary)
+                        ForEach(recentSearches, id: \.self) { query in
+                            Button {
+                                homeVM.searchText = query
+                            } label: {
+                                HStack {
+                                    Image(systemName: "clock.arrow.circlepath")
+                                    Text(query)
+                                        .lineLimit(1)
+                                    Spacer()
+                                }
+                                .foregroundStyle(Color.tcTextPrimary)
+                                .font(.subheadline)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    Text("Browse by city")
+                        .font(.caption)
+                        .foregroundStyle(Color.tcTextSecondary)
+
+                    ForEach(cityCoverage.prefix(6), id: \.name) { item in
+                        Button {
+                            if let city = HomeViewModel.majorTurkishCities.first(where: { $0.name == item.name }) {
+                                Task {
+                                    await homeVM.selectLocation(
+                                        HomeViewModel.SelectedLocation(
+                                            name: city.name,
+                                            latitude: city.latitude,
+                                            longitude: city.longitude,
+                                            isCurrentLocation: false
+                                        )
+                                    )
+                                    showSearchOverlay = false
+                                }
+                            } else {
+                                showLocationSearch = true
+                            }
+                        } label: {
+                            HStack {
+                                Text(item.name)
+                                Spacer()
+                                Text("\(item.count)")
+                                    .foregroundStyle(Color.tcTextSecondary)
+                            }
+                            .font(.subheadline)
+                            .foregroundStyle(Color.tcTextPrimary)
                         }
                         .buttonStyle(.plain)
                     }
                 }
-                .padding(.horizontal, AppSpacing.md)
-            }
-            .padding(.bottom, AppSpacing.md)
-        }
-        .frame(maxWidth: .infinity)
-        .frame(height: dynamicHeight, alignment: .top)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .shadow(color: .black.opacity(0.14), radius: 12, y: 3)
-        .padding(.horizontal, AppSpacing.md)
-        .padding(.bottom, AppSpacing.md)
-        .gesture(
-            DragGesture(minimumDistance: 8)
-                .onChanged { value in
-                    mapSheetDragOffset = value.translation.height
-                }
-                .onEnded { value in
-                    let proposed = mapSheetHeight - value.translation.height
-                    let clamped = min(max(proposed, mapSheetMinHeight), mapSheetMaxHeight)
-                    let midpoint = (mapSheetMinHeight + mapSheetMaxHeight) / 2
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.85)) {
-                        mapSheetHeight = clamped > midpoint ? mapSheetMaxHeight : mapSheetMinHeight
-                        mapSheetDragOffset = 0
+            } else {
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    ForEach(homeVM.taxonomySuggestions, id: \.id) { suggestion in
+                        Button {
+                            Task {
+                                await homeVM.applyTaxonomySuggestion(suggestion)
+                                saveRecentSearch(homeVM.searchText)
+                                showSearchOverlay = false
+                            }
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(suggestion.label)
+                                        .font(.subheadline.weight(.semibold))
+                                        .foregroundStyle(Color.tcTextPrimary)
+                                    Text(typeLabel(for: suggestion.entityType))
+                                        .font(.caption)
+                                        .foregroundStyle(Color.tcTextSecondary)
+                                }
+                                Spacer()
+                            }
+                            .padding(.vertical, 6)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
+            }
+        }
+        .padding(AppSpacing.md)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.tcSurface)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.tcBorder, lineWidth: 1)
+        }
+    }
+
+    private var popularNearYouSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+            Text("Popular near you")
+                .font(.caption)
+                .foregroundStyle(Color.tcTextSecondary)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: AppSpacing.xs) {
+                    ForEach(homeVM.smartPills.prefix(8)) { pill in
+                        Button {
+                            Task {
+                                await homeVM.applySmartPill(entityID: pill.entityID)
+                                saveRecentSearch(pill.label)
+                                showSearchOverlay = false
+                            }
+                        } label: {
+                            HStack(spacing: 6) {
+                                Image(systemName: iconName(for: pill.entityID))
+                                Text(pill.label)
+                            }
+                            .font(.subheadline)
+                            .foregroundStyle(Color.tcTextPrimary)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 8)
+                            .background(Color.tcBackground)
+                            .clipShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+        }
+    }
+
+    private func taxonomyFilterSheet(
+        title: String,
+        entityType: TaxonomyEntityType,
+        selectedIDs: Binding<Set<String>>
+    ) -> some View {
+        TaxonomyMultiSelectFilterSheet(
+            title: title,
+            entityType: entityType,
+            selectedIDs: selectedIDs,
+            onApply: {
+                Task { await applyCombinedTaxonomyFilters() }
+            },
+            onReset: {
+                selectedIDs.wrappedValue = []
+                Task { await applyCombinedTaxonomyFilters() }
+            }
         )
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
     }
 
-    private func loadDisplayName() async {
-        do {
-            let profile = try await AuthService.fetchProfile()
-            displayName = profile.displayName
-            if let avatarUrl = profile.avatarUrl, let path = storagePath(from: avatarUrl) {
-                let signed = try await SupabaseManager.shared.client
-                    .storage
-                    .from("user-avatars")
-                    .createSignedURL(path: path, expiresIn: 3600)
-                avatarDisplayUrl = cacheBustedUrl(signed.absoluteString)
-            } else if let avatarUrl = profile.avatarUrl {
-                avatarDisplayUrl = cacheBustedUrl(avatarUrl)
-            } else {
-                avatarDisplayUrl = nil
+    private var distanceFilterSheet: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            Text("Distance")
+                .font(.headline)
+
+            Picker("Distance", selection: $selectedDistanceKm) {
+                Text("5 km").tag(5)
+                Text("10 km").tag(10)
+                Text("25 km").tag(25)
+                Text("50 km").tag(50)
             }
-        } catch {
-            displayName = String(localized: "Anonymous")
-            avatarDisplayUrl = nil
-        }
-    }
+            .pickerStyle(.segmented)
 
-    private func storagePath(from urlString: String) -> String? {
-        guard let range = urlString.range(of: "/user-avatars/") else {
-            return nil
-        }
-        return String(urlString[range.upperBound...])
-    }
-
-    private func cacheBustedUrl(_ url: String) -> String? {
-        let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty,
-              let parsed = URL(string: trimmed),
-              let scheme = parsed.scheme,
-              scheme == "http" || scheme == "https" else {
-            return nil
-        }
-
-        let separator = trimmed.contains("?") ? "&" : "?"
-        return "\(trimmed)\(separator)v=\(Int(Date().timeIntervalSince1970))"
-    }
-}
-
-private struct SkeletonProviderCard: View {
-    var body: some View {
-        HStack(spacing: AppSpacing.md) {
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color(.systemGray5))
-                .frame(width: 60, height: 60)
-            VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                RoundedRectangle(cornerRadius: 4)
-                    .fill(Color(.systemGray5))
-                    .frame(height: 14)
-                RoundedRectangle(cornerRadius: 4)
-                    .fill(Color(.systemGray5))
-                    .frame(width: 180, height: 12)
-                RoundedRectangle(cornerRadius: 4)
-                    .fill(Color(.systemGray5))
-                    .frame(width: 120, height: 12)
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                    Task { await homeVM.selectRadius(selectedDistanceKm) }
+                    activeFilterSheet = nil
+                }
+                Button("Reset") {
+                    selectedDistanceKm = 50
+                    Task { await homeVM.selectRadius(50) }
+                    activeFilterSheet = nil
+                }
+                .foregroundStyle(Color.tcOcean)
             }
+
             Spacer()
         }
         .padding(AppSpacing.lg)
-        .background(Color.tcSurface)
-        .cornerRadius(AppRadius.card)
+        .presentationDetents([.medium])
     }
-}
 
-private struct CompactProviderCardForSheet: View {
-    let provider: Provider
-    let isHighlighted: Bool
-    @EnvironmentObject private var localizationManager: LocalizationManager
-    @ObservedObject private var specialtyService = SpecialtyService.shared
+    private var languageFilterSheet: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            Text("Language")
+                .font(.headline)
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            // Provider Avatar or Name initials
-            ZStack {
-                Color.tcOcean.opacity(0.1)
-                    .frame(height: 80)
-
-                Text(provider.name.prefix(2).uppercased())
-                    .font(AppFont.headline)
-                    .foregroundStyle(Color.tcOcean)
-                    .frame(height: 80)
-            }
-
-            VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                // Provider Name
-                Text(provider.name)
-                    .font(AppFont.caption)
-                    .fontWeight(.semibold)
-                    .lineLimit(2)
-                    .foregroundStyle(.primary)
-
-                // Specialty
-                Text(localizedProviderSpecialty)
-                    .font(AppFont.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-
-                // Verification Badge
-                if provider.verifiedReviewCount > 0 {
-                    HStack(spacing: 4) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(AppFont.footnote)
-                        Text("verified_badge")
-                            .font(AppFont.footnote)
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    ForEach(languageOptions, id: \.self) { language in
+                        Button {
+                            if selectedLanguages.contains(language) {
+                                selectedLanguages.remove(language)
+                            } else {
+                                selectedLanguages.insert(language)
+                            }
+                        } label: {
+                            HStack {
+                                Text(language)
+                                Spacer()
+                                if selectedLanguages.contains(language) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(Color.tcOcean)
+                                }
+                            }
+                            .padding(.vertical, 6)
+                            .foregroundStyle(Color.tcTextPrimary)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .foregroundStyle(.green)
                 }
             }
-            .padding(.horizontal, AppSpacing.sm)
-            .padding(.vertical, AppSpacing.xs)
+
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                    activeFilterSheet = nil
+                }
+                Button("Reset") {
+                    selectedLanguages = []
+                    activeFilterSheet = nil
+                }
+                .foregroundStyle(Color.tcOcean)
+            }
+        }
+        .padding(AppSpacing.lg)
+        .presentationDetents([.medium, .large])
+    }
+
+    private var verifiedFilterSheet: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            Text("Verified")
+                .font(.headline)
+
+            Toggle(isOn: $verifiedOnly) {
+                Text("Show only providers with verified reviews")
+            }
+            .toggleStyle(.switch)
+
+            if verifiedOnly && displayedProviders.isEmpty {
+                Text("No verified providers match this area yet.")
+                    .font(.caption)
+                    .foregroundStyle(Color.tcCoral)
+                    .padding(.top, 6)
+            }
+
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                    activeFilterSheet = nil
+                }
+                Button("Reset") {
+                    verifiedOnly = false
+                    activeFilterSheet = nil
+                }
+                .foregroundStyle(Color.tcOcean)
+            }
+
+            Text("Rating filter is disabled at launch.")
+                .font(.caption)
+                .foregroundStyle(Color.tcTextSecondary)
 
             Spacer()
         }
-        .frame(width: 140)
-        .background(Color.tcSurface)
-        .cornerRadius(AppRadius.card)
-        .overlay(
-            RoundedRectangle(cornerRadius: AppRadius.card)
-                .stroke(isHighlighted ? Color.tcOcean : Color.tcBorder, lineWidth: isHighlighted ? 2 : 1)
-        )
+        .padding(AppSpacing.lg)
+        .presentationDetents([.medium])
     }
 
-    private var localizedProviderSpecialty: String {
+    private func applyCombinedTaxonomyFilters() async {
+        let merged = Array(selectedSpecialtyIDs.union(selectedServiceIDs).union(selectedFacilityIDs))
+        if merged.isEmpty {
+            await homeVM.clearCanonicalFilter()
+        } else {
+            await homeVM.applyTaxonomyEntityIDs(merged)
+        }
+    }
+
+    private func clearAllFilters() async {
+        selectedSpecialtyIDs = []
+        selectedServiceIDs = []
+        selectedFacilityIDs = []
+        selectedLanguages = []
+        verifiedOnly = false
+        selectedDistanceKm = 50
+        await homeVM.selectRadius(50)
+        await homeVM.clearCanonicalFilter()
+    }
+
+    private func localizedProviderSpecialty(_ provider: Provider) -> String {
         guard let specialty = specialtyService.specialties.first(where: {
-            [
-                $0.name,
-                $0.nameTr,
-                $0.nameDe,
-                $0.namePl,
-                $0.nameNl,
-                $0.nameDa,
-            ]
-            .compactMap { $0 }
-            .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
+            [$0.name, $0.nameTr, $0.nameDe, $0.namePl, $0.nameNl, $0.nameDa]
+                .compactMap { $0 }
+                .contains { $0.caseInsensitiveCompare(provider.specialty) == .orderedSame }
         }) else {
             return provider.specialty
         }
-
         return specialty.resolvedName(using: localizationManager)
+    }
+
+    private func iconName(for entityID: String) -> String {
+        if let specialty = specialtyService.specialties.first(where: {
+            ($0.canonicalEntityId ?? $0.canonicalId) == entityID
+        }) {
+            return specialty.iconName
+        }
+        return "cross.case"
+    }
+
+    private func typeLabel(for entityType: String) -> String {
+        switch entityType.lowercased() {
+        case "specialty":
+            return "Specialty"
+        case "service":
+            return "Treatment"
+        case "facility":
+            return "Clinic"
+        default:
+            return "Specialty"
+        }
+    }
+
+    private func loadRecentSearches() {
+        recentSearches = UserDefaults.standard.stringArray(forKey: recentSearchesKey) ?? []
+    }
+
+    private func saveRecentSearch(_ value: String) {
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        var updated = recentSearches.filter { $0.caseInsensitiveCompare(trimmed) != .orderedSame }
+        updated.insert(trimmed, at: 0)
+        if updated.count > 8 {
+            updated = Array(updated.prefix(8))
+        }
+        recentSearches = updated
+        UserDefaults.standard.set(updated, forKey: recentSearchesKey)
     }
 }
 
+private struct TaxonomyMultiSelectFilterSheet: View {
+    let title: String
+    let entityType: TaxonomyEntityType
+    @Binding var selectedIDs: Set<String>
+    let onApply: () -> Void
+    let onReset: () -> Void
+
+    @Environment(\.locale) private var locale
+    @Environment(\.dismiss) private var dismiss
+    @State private var searchText = ""
+    @State private var items: [TaxonomySuggestion] = []
+    @State private var loading = false
+
+    private var filteredItems: [TaxonomySuggestion] {
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return items }
+        return items.filter {
+            $0.label.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
+                .contains(trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR")))
+        }
+    }
+
+    private var groupedItems: [(String, [TaxonomySuggestion])] {
+        let grouped = Dictionary(grouping: filteredItems) { suggestion in
+            String(suggestion.label.prefix(1)).uppercased()
+        }
+        return grouped
+            .map { ($0.key, $0.value.sorted { $0.label < $1.label }) }
+            .sorted { $0.0 < $1.0 }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            Text(title)
+                .font(.headline)
+
+            TCSearchBar(
+                text: $searchText,
+                placeholderKey: "search_placeholder",
+                placeholderFallback: "Search \(title.lowercased())"
+            )
+
+            if loading {
+                ProgressView()
+            }
+
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: AppSpacing.sm) {
+                    ForEach(groupedItems, id: \.0) { groupTitle, suggestions in
+                        Text(groupTitle)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(Color.tcTextSecondary)
+                            .padding(.top, AppSpacing.xs)
+
+                        ForEach(suggestions, id: \.id) { suggestion in
+                            Button {
+                                if selectedIDs.contains(suggestion.entityId) {
+                                    selectedIDs.remove(suggestion.entityId)
+                                } else {
+                                    selectedIDs.insert(suggestion.entityId)
+                                }
+                            } label: {
+                                HStack {
+                                    Image(systemName: iconName(for: suggestion))
+                                        .foregroundStyle(Color.tcTextSecondary)
+                                    Text(suggestion.label)
+                                        .foregroundStyle(Color.tcTextPrimary)
+                                    Spacer()
+                                    if selectedIDs.contains(suggestion.entityId) {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundStyle(Color.tcOcean)
+                                    }
+                                }
+                                .padding(.vertical, 6)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+            }
+
+            HStack(spacing: AppSpacing.sm) {
+                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                    onApply()
+                    dismiss()
+                }
+
+                Button("Reset") {
+                    onReset()
+                }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.tcOcean)
+            }
+        }
+        .padding(AppSpacing.lg)
+        .task {
+            await loadItems()
+        }
+    }
+
+    private func loadItems() async {
+        loading = true
+        defer { loading = false }
+        do {
+            let localeCode = locale.language.languageCode?.identifier ?? "en"
+            items = try await TaxonomyService.browseTaxonomy(entityType: entityType, locale: localeCode, limit: 200)
+        } catch {
+            items = []
+        }
+    }
+
+    private func iconName(for suggestion: TaxonomySuggestion) -> String {
+        switch suggestion.entityType.lowercased() {
+        case "service":
+            return "wand.and.stars"
+        case "facility":
+            return "building.2"
+        default:
+            return "cross.case"
+        }
+    }
+}

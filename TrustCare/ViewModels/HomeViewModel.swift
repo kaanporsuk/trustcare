@@ -137,6 +137,10 @@ final class HomeViewModel: ObservableObject {
         !selectedCanonicalSpecialtyIDs.isEmpty
     }
 
+    var activeTaxonomyEntityIDs: [String] {
+        selectedCanonicalSpecialtyIDs
+    }
+
     var activeCanonicalFilterLabel: String? {
         if let selectedCanonicalSuggestionLabel, !selectedCanonicalSuggestionLabel.isEmpty {
             return selectedCanonicalSuggestionLabel
@@ -317,6 +321,10 @@ final class HomeViewModel: ObservableObject {
 
     func clearCanonicalFilter() async {
         await applySmartPill(entityID: nil)
+    }
+
+    func applyTaxonomyEntityIDs(_ entityIDs: [String]) async {
+        await applyCanonicalSpecialtyIDs(entityIDs)
     }
 
     func widenSearchAreaOrShowNearby() async {
@@ -732,7 +740,7 @@ final class HomeViewModel: ObservableObject {
             taxonomySuggestions = try await TaxonomyService.searchTaxonomy(
                 query: trimmed,
                 locale: currentLanguageCode(),
-                entityTypeFilter: .specialty,
+                entityTypeFilter: nil,
                 limit: 8
             )
         } catch {

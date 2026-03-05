@@ -3,7 +3,8 @@ import SwiftUI
 
 struct ProviderMapView: View {
     @ObservedObject var viewModel: HomeViewModel
-    @Binding var highlightedProviderID: UUID?
+    let providers: [Provider]
+    @Binding var selectedProviderID: UUID?
     @EnvironmentObject var localizationManager: LocalizationManager
     let onOpenProvider: (Provider) -> Void
 
@@ -21,6 +22,7 @@ struct ProviderMapView: View {
     @State private var hasSetInitialPosition = false
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var showSearchButton = false
+    @State private var searchAreaRevealTask: Task<Void, Never>?
 
     var body: some View {
         GeometryReader { proxy in
@@ -29,7 +31,7 @@ struct ProviderMapView: View {
             ZStack(alignment: .top) {
                 Map(position: $cameraPosition) {
                     UserAnnotation()
-                    ForEach(filteredProviders) { provider in
+                    ForEach(providers) { provider in
                         Annotation(
                             provider.name,
                             coordinate: CLLocationCoordinate2D(
@@ -38,7 +40,7 @@ struct ProviderMapView: View {
                             )
                         ) {
                             Button {
-                                highlightedProviderID = provider.id
+                                selectedProviderID = provider.id
                                 onOpenProvider(provider)
                             } label: {
                                 mapPin(for: provider)
@@ -52,11 +54,15 @@ struct ProviderMapView: View {
                 }
                 .onMapCameraChange(frequency: .onEnd) { context in
                     let region = context.region
+                    searchAreaRevealTask?.cancel()
                     DispatchQueue.main.async {
                         visibleRegion = region
-                        if hasSetInitialPosition {
-                            showSearchButton = true
-                        }
+                    }
+                    guard hasSetInitialPosition else { return }
+                    searchAreaRevealTask = Task { @MainActor in
+                        try? await Task.sleep(nanoseconds: 450_000_000)
+                        guard !Task.isCancelled else { return }
+                        showSearchButton = true
                     }
                 }
                 // Set initial position ONCE on appear
@@ -95,9 +101,9 @@ struct ProviderMapView: View {
                         showSearchButton = false
                     }
                 }
-                .onChange(of: highlightedProviderID) { _, newValue in
+                                .onChange(of: selectedProviderID) { _, newValue in
                     guard let highlightedID = newValue,
-                          let provider = filteredProviders.first(where: { $0.id == highlightedID }) else {
+                                                    let provider = providers.first(where: { $0.id == highlightedID }) else {
                         return
                     }
 
@@ -114,7 +120,7 @@ struct ProviderMapView: View {
                     }
                 }
 
-                if viewModel.isLoading && filteredProviders.isEmpty {
+                if viewModel.isLoading && providers.isEmpty {
                     ProgressView()
                         .padding(.top, 24)
                 }
@@ -152,19 +158,10 @@ struct ProviderMapView: View {
         }
     }
 
-    private var filteredProviders: [Provider] {
-        guard let filterType = viewModel.selectedSurveyType else {
-            return viewModel.providers
-        }
-        return viewModel.providers.filter { provider in
-            SpecialtyService.shared.surveyType(for: provider.specialty) == filterType
-        }
-    }
-
     @ViewBuilder
     private func mapPin(for provider: Provider) -> some View {
         let surveyType = SpecialtyService.shared.surveyType(for: provider.specialty)
-        let isHighlighted = highlightedProviderID == provider.id
+        let isHighlighted = selectedProviderID == provider.id
         Image(systemName: ProviderMapColor.markerIcon(for: surveyType))
             .font(.system(size: 12, weight: .bold))
             .foregroundStyle(.white)
