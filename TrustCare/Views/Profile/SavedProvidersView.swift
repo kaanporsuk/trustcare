@@ -44,7 +44,7 @@ struct SavedProvidersView: View {
                 .listStyle(.plain)
             }
         }
-        .navigationTitle("menu_saved")
+        .navigationTitle(Text(tcKey: "menu_saved", fallback: "Saved"))
         .toolbar(.hidden, for: .tabBar)
         .task {
             await loadSavedProviders()

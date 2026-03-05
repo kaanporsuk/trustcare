@@ -195,9 +195,9 @@ struct ProfileView: View {
                         Image(systemName: "pencil")
                             .foregroundStyle(Color.tcOcean)
                     }
-                    .accessibilityLabel("Edit Profile")
+                    .accessibilityLabel(tcString("profile_edit", fallback: "Edit profile"))
                 }
-                (Text("profile_member_since") + Text(": \(formattedMemberDate)"))
+                (Text(tcKey: "profile_member_since", fallback: "Member since") + Text(": \(formattedMemberDate)"))
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
 
@@ -228,45 +228,45 @@ struct ProfileView: View {
                 MyReviewsView(selectedTab: $selectedTab)
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: "menu_my_reviews")
+                menuRow(titleKey: "menu_my_reviews", fallback: "My reviews")
             }
 
             NavigationLink {
                 SavedProvidersView()
             } label: {
-                menuRow(title: "menu_saved")
+                menuRow(titleKey: "menu_saved", fallback: "Saved")
             }
 
             NavigationLink {
                 SettingsView()
                     .environmentObject(profileVM)
             } label: {
-                menuRow(title: "menu_settings")
+                menuRow(titleKey: "menu_settings", fallback: "Settings")
             }
 
             NavigationLink {
                 HelpSupportView()
             } label: {
-                menuRow(title: "menu_help")
+                menuRow(titleKey: "menu_help", fallback: "Help & support")
             }
 
             NavigationLink {
                 PrivacyPolicyView()
             } label: {
-                menuRow(title: "menu_privacy")
+                menuRow(titleKey: "menu_privacy", fallback: "Privacy policy")
             }
 
             NavigationLink {
                 TermsOfServiceView()
             } label: {
-                menuRow(title: "menu_terms")
+                menuRow(titleKey: "menu_terms", fallback: "Terms of service")
             }
 
             Button {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 showLogoutConfirm = true
             } label: {
-                menuRow(title: "menu_logout", isDestructive: true)
+                menuRow(titleKey: "menu_logout", fallback: "Log out", isDestructive: true)
             }
         }
     }
@@ -318,9 +318,9 @@ struct ProfileView: View {
         .clipShape(Circle())
     }
 
-    private func menuRow(title: String, isDestructive: Bool = false) -> some View {
+    private func menuRow(titleKey: String, fallback: String, isDestructive: Bool = false) -> some View {
         HStack {
-            Text(LocalizedStringKey(title))
+            Text(tcKey: titleKey, fallback: fallback)
                 .font(AppFont.body)
                 .foregroundStyle(isDestructive ? Color.tcCoral : .primary)
             Spacer()

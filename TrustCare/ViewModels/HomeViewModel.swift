@@ -197,8 +197,8 @@ final class HomeViewModel: ObservableObject {
         // Prioritize user's current GPS location on initialization
         if let userLocation = locationManager.userLocation {
             let gpsLocation = SelectedLocation(
-                name: locationName.isEmpty || locationName == String(localized: "Tap to set location") 
-                    ? String(localized: "current_location") 
+                name: locationName.isEmpty || locationName == tcString("set_location", fallback: "Set location")
+                    ? tcString("current_location", fallback: "Current location")
                     : locationName,
                 latitude: userLocation.latitude,
                 longitude: userLocation.longitude,
@@ -255,9 +255,9 @@ final class HomeViewModel: ObservableObject {
             cityName = placemark.locality
                 ?? placemark.subAdministrativeArea
                 ?? placemark.administrativeArea
-                ?? String(localized: "current_location")
+                ?? tcString("current_location", fallback: "Current location")
         } else {
-            cityName = String(localized: "current_location")
+            cityName = tcString("current_location", fallback: "Current location")
         }
 
         // Update all location state
@@ -880,7 +880,7 @@ final class HomeViewModel: ObservableObject {
                 let city = place.locality
                     ?? place.subAdministrativeArea
                     ?? place.administrativeArea
-                    ?? String(localized: "current_location")
+                    ?? tcString("current_location", fallback: "Current location")
                 if selectedLocation.isCurrentLocation {
                     locationName = city
                     let updated = SelectedLocation(
@@ -896,8 +896,8 @@ final class HomeViewModel: ObservableObject {
             }
         } catch {
             if selectedLocation.isCurrentLocation {
-                locationName = String(localized: "current_location")
-                selectedCity = String(localized: "current_location")
+                locationName = tcString("current_location", fallback: "Current location")
+                selectedCity = tcString("current_location", fallback: "Current location")
             }
         }
     }

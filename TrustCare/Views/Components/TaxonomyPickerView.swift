@@ -353,7 +353,7 @@ struct TaxonomyPickerView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("close_button") { dismiss() }
+                    Button(tcString("close_button", fallback: "Close")) { dismiss() }
                 }
             }
             .task {

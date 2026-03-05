@@ -85,7 +85,7 @@ struct LocationSearchSheet: View {
             HStack(spacing: AppSpacing.sm) {
                 PulsingDot()
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("use_device_location")
+                    Text(tcKey: "use_device_location", fallback: "Use device location")
                         .font(AppFont.body)
                         .foregroundStyle(.primary)
                     Text(currentLocationName)

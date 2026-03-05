@@ -120,11 +120,6 @@ struct HomeView: View {
                         headerBar
                             .padding(.horizontal, AppSpacing.md)
                             .padding(.top, AppSpacing.sm)
-
-                        if homeVM.providers.isEmpty && !homeVM.isLoading {
-                            mapEmptyStateCard
-                                .padding(.horizontal, AppSpacing.lg)
-                        }
                     }
                     .zIndex(3)
 
@@ -191,11 +186,11 @@ struct HomeView: View {
             .sheet(item: $activeFilterSheet) { sheet in
                 switch sheet {
                 case .specialty:
-                    taxonomyFilterSheet(title: "Specialty", entityType: .specialty, selectedIDs: $selectedSpecialtyIDs)
+                    taxonomyFilterSheet(title: tcString("filter_specialty", fallback: "Specialty"), entityType: .specialty, selectedIDs: $selectedSpecialtyIDs)
                 case .treatment:
-                    taxonomyFilterSheet(title: "Treatment", entityType: .service, selectedIDs: $selectedServiceIDs)
+                    taxonomyFilterSheet(title: tcString("filter_treatment", fallback: "Treatment"), entityType: .service, selectedIDs: $selectedServiceIDs)
                 case .facility:
-                    taxonomyFilterSheet(title: "Facility", entityType: .facility, selectedIDs: $selectedFacilityIDs)
+                    taxonomyFilterSheet(title: tcString("filter_facility", fallback: "Facility"), entityType: .facility, selectedIDs: $selectedFacilityIDs)
                 case .distance:
                     distanceFilterSheet
                 case .language:
@@ -245,7 +240,7 @@ struct HomeView: View {
                 Spacer()
 
                 if currentSelectionCountForActiveTaxonomyFilter > 0 {
-                    Text("\(currentSelectionCountForActiveTaxonomyFilter) filters")
+                    Text(String(format: tcString("filters_count_format", fallback: "%lld filters"), currentSelectionCountForActiveTaxonomyFilter))
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Color.tcOcean)
                 }
@@ -253,27 +248,27 @@ struct HomeView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: AppSpacing.xs) {
-                    TCFilterChip(title: "Specialty", isSelected: !selectedSpecialtyIDs.isEmpty) {
+                    TCFilterChip(title: tcString("filter_specialty", fallback: "Specialty"), isSelected: !selectedSpecialtyIDs.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .specialty
                     }
-                    TCFilterChip(title: "Treatment", isSelected: !selectedServiceIDs.isEmpty) {
+                    TCFilterChip(title: tcString("filter_treatment", fallback: "Treatment"), isSelected: !selectedServiceIDs.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .treatment
                     }
-                    TCFilterChip(title: "Facility", isSelected: !selectedFacilityIDs.isEmpty) {
+                    TCFilterChip(title: tcString("filter_facility", fallback: "Facility"), isSelected: !selectedFacilityIDs.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .facility
                     }
-                    TCFilterChip(title: "Distance", isSelected: selectedDistanceKm != 50) {
+                    TCFilterChip(title: tcString("filter_distance", fallback: "Distance"), isSelected: selectedDistanceKm != 50) {
                         showSearchOverlay = false
                         activeFilterSheet = .distance
                     }
-                    TCFilterChip(title: "Language", isSelected: !selectedLanguages.isEmpty) {
+                    TCFilterChip(title: tcString("filter_language", fallback: "Language"), isSelected: !selectedLanguages.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .language
                     }
-                    TCFilterChip(title: "Verified", isSelected: verifiedOnly) {
+                    TCFilterChip(title: tcString("filter_verified", fallback: "Verified"), isSelected: verifiedOnly) {
                         showSearchOverlay = false
                         activeFilterSheet = .verified
                     }
@@ -773,13 +768,13 @@ struct HomeView: View {
     private func typeLabel(for entityType: String) -> String {
         switch entityType.lowercased() {
         case "specialty":
-            return "Specialty"
+            return tcString("filter_specialty", fallback: "Specialty")
         case "service":
-            return "Treatment"
+            return tcString("filter_treatment", fallback: "Treatment")
         case "facility":
-            return "Clinic"
+            return tcString("filter_facility", fallback: "Facility")
         default:
-            return "Specialty"
+            return tcString("filter_specialty", fallback: "Specialty")
         }
     }
 

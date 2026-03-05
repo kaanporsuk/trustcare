@@ -47,11 +47,11 @@ struct LanguageSettingsView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .searchable(text: $searchText, prompt: Text("search_languages"))
+        .searchable(text: $searchText, prompt: Text(tcKey: "search_languages", fallback: "Search languages"))
         .safeAreaInset(edge: .bottom) {
             Color.clear.frame(height: 16)
         }
-        .navigationTitle("app_language")
+        .navigationTitle(Text(tcKey: "app_language", fallback: "App Language"))
         .navigationBarTitleDisplayMode(.inline)
         .accessibilityIdentifier("settings.languageScreen")
         .onAppear {
@@ -61,7 +61,7 @@ struct LanguageSettingsView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("button_done") {
+                Button(tcString("button_done", fallback: "Done")) {
                     dismiss()
                 }
             }

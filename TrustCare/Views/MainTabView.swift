@@ -47,7 +47,7 @@ struct MainTabView: View {
                 Text("tab_guide")
             }
             .tag(1)
-            .badge(Text("tab_badge_plus"))
+            .badge(tcString("tab_badge_plus", fallback: "PLUS"))
 
             NavigationStack {
                 ReviewHubView()

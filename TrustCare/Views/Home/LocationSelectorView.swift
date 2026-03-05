@@ -39,10 +39,10 @@ struct LocationSelectorView: View {
                             Image(systemName: "location.fill")
                                 .foregroundStyle(Color.tcOcean)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("current_location")
+                                Text(tcKey: "current_location", fallback: "Current location")
                                     .font(AppFont.body)
                                     .foregroundStyle(.primary)
-                                Text("use_device_location")
+                                Text(tcKey: "use_device_location", fallback: "Use device location")
                                     .font(AppFont.footnote)
                                     .foregroundStyle(.secondary)
                             }
@@ -88,11 +88,11 @@ struct LocationSelectorView: View {
                 .listStyle(.plain)
             }
             .background(Color.tcBackground)
-            .navigationTitle("location_select_title")
+            .navigationTitle(Text(tcKey: "location_select_title", fallback: "Select location"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("close_button") { dismiss() }
+                    Button(tcString("close_button", fallback: "Close")) { dismiss() }
                 }
             }
         }

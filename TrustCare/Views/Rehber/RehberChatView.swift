@@ -715,7 +715,7 @@ struct EmergencyCardView: View {
 
                 Spacer()
 
-                Button("close_button") {
+                Button(tcString("close_button", fallback: "Close")) {
                     onDismiss()
                 }
                 .font(AppFont.footnote)

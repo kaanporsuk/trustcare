@@ -3,12 +3,9 @@ import UIKit
 import Supabase
 
 struct SettingsView: View {
-    private enum SettingsRoute: Hashable {
-        case language
-    }
-
     @EnvironmentObject private var profileVM: ProfileViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @State private var email: String = ""
     @State private var phone: String = ""
@@ -16,7 +13,7 @@ struct SettingsView: View {
     @State private var isExporting: Bool = false
     @State private var exportFileURL: URL?
     @State private var showShareSheet: Bool = false
-    @State private var activeRoute: SettingsRoute?
+    @State private var showLanguagePicker: Bool = false
 
     @AppStorage("settings_notifications_enabled") private var notificationsEnabled: Bool = true
     @AppStorage("settings_location_services_enabled") private var locationServicesEnabled: Bool = true
@@ -28,7 +25,7 @@ struct SettingsView: View {
             preferencesSection
             dataPrivacySection
         }
-        .navigationTitle("menu_settings")
+        .navigationTitle(Text(tcKey: "menu_settings", fallback: "Settings"))
         .toolbar(.hidden, for: .tabBar)
         .task {
             if profileVM.profile == nil {
@@ -40,19 +37,19 @@ struct SettingsView: View {
             email = await AuthService.currentUserEmail() ?? ""
             phone = profileVM.profile?.phone ?? ""
         }
-        .confirmationDialog("settings_delete_account", isPresented: $showDeleteConfirm) {
-            Button("settings_delete_account_confirm", role: .destructive) {
+        .confirmationDialog(tcString("settings_delete_account", fallback: "Delete account"), isPresented: $showDeleteConfirm) {
+            Button(tcString("settings_delete_account_confirm", fallback: "Delete account"), role: .destructive) {
                 Task { await profileVM.deleteAccount() }
             }
-            Button("settings_cancel", role: .cancel) { }
+            Button(tcString("settings_cancel", fallback: "Cancel"), role: .cancel) { }
         } message: {
-            Text("settings_delete_account_warning")
+            Text(tcKey: "settings_delete_account_warning", fallback: "This action cannot be undone.")
         }
-        .alert("error_generic", isPresented: Binding(
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button("button_ok") { profileVM.errorMessage = nil }
+            Button(tcString("button_ok", fallback: "OK")) { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
@@ -61,9 +58,11 @@ struct SettingsView: View {
                 ShareSheet(items: [exportFileURL])
             }
         }
-        .navigationDestination(item: $activeRoute) { route in
-            switch route {
-            case .language:
+        .sheet(isPresented: Binding(
+            get: { showLanguagePicker && horizontalSizeClass != .regular },
+            set: { showLanguagePicker = $0 }
+        )) {
+            NavigationStack {
                 LanguageSettingsView { language in
                     Task {
                         await syncLanguagePreference(language.code)
@@ -73,6 +72,19 @@ struct SettingsView: View {
                     debugLog("Opened LanguageSettingsView")
                 }
             }
+        }
+        .popover(isPresented: Binding(
+            get: { showLanguagePicker && horizontalSizeClass == .regular },
+            set: { showLanguagePicker = $0 }
+        )) {
+            NavigationStack {
+                LanguageSettingsView { language in
+                    Task {
+                        await syncLanguagePreference(language.code)
+                    }
+                }
+            }
+            .frame(minWidth: 420, minHeight: 520)
         }
     }
 
@@ -117,35 +129,35 @@ struct SettingsView: View {
     }
 
     private var accountSection: some View {
-        Section("settings_account") {
+        Section(tcString("settings_account", fallback: "Account")) {
             HStack {
-                Text("settings_email")
+                Text(tcKey: "settings_email", fallback: "Email")
                 Spacer()
                 Text(email.isEmpty ? "-" : email)
                     .foregroundStyle(.secondary)
             }
 
             HStack {
-                Text("settings_phone")
+                Text(tcKey: "settings_phone", fallback: "Phone")
                 Spacer()
                 Text(phone.isEmpty ? "-" : phone)
                     .foregroundStyle(.secondary)
             }
 
-            NavigationLink("settings_change_password") {
+            NavigationLink(tcString("settings_change_password", fallback: "Change password")) {
                 ChangePasswordView(email: email)
             }
         }
     }
 
     private var languageSection: some View {
-        Section("language_section_title") {
+        Section(tcString("language_section_title", fallback: "Language")) {
             Button {
                 debugLog("Language row tapped")
-                activeRoute = .language
+                showLanguagePicker = true
             } label: {
                 HStack {
-                    Text("app_language")
+                    Text(tcKey: "app_language", fallback: "App Language")
                     Spacer()
                     Text(currentLanguageDisplayName)
                         .foregroundStyle(.secondary)
@@ -180,29 +192,29 @@ struct SettingsView: View {
     }
 
     private var preferencesSection: some View {
-        Section("settings_preferences") {
-            Toggle("settings_notifications", isOn: $notificationsEnabled)
-            Toggle("settings_location_services", isOn: $locationServicesEnabled)
+        Section(tcString("settings_preferences", fallback: "Preferences")) {
+            Toggle(tcString("settings_notifications", fallback: "Notifications"), isOn: $notificationsEnabled)
+            Toggle(tcString("settings_location_services", fallback: "Location services"), isOn: $locationServicesEnabled)
         }
     }
 
     private var dataPrivacySection: some View {
-        Section("settings_data_privacy") {
+        Section(tcString("settings_data_privacy", fallback: "Data & Privacy")) {
             Button {
                 Task { await exportMyData() }
             } label: {
                 if isExporting {
                     HStack(spacing: AppSpacing.sm) {
                         ProgressView()
-                        Text("settings_downloading_data")
+                        Text(tcKey: "settings_downloading_data", fallback: "Preparing your data...")
                     }
                 } else {
-                    Text("settings_download_data")
+                    Text(tcKey: "settings_download_data", fallback: "Download my data")
                 }
             }
             .disabled(isExporting)
 
-            Button("settings_delete_account", role: .destructive) {
+            Button(tcString("settings_delete_account", fallback: "Delete account"), role: .destructive) {
                 showDeleteConfirm = true
             }
         }

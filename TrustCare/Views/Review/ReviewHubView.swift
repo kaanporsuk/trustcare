@@ -243,8 +243,10 @@ struct ReviewHubView: View {
                     .cornerRadius(AppRadius.card)
                 }
 
-                Button("review_cant_find_add") {
+                Button {
                     showAddProviderSheet = true
+                } label: {
+                    Text(tcKey: "review_cant_find_add", fallback: "Can't find your provider? Add it")
                 }
                 .font(AppFont.caption)
                 .foregroundStyle(Color.tcOcean)
