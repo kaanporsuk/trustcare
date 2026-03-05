@@ -37,13 +37,13 @@ struct LocationSearchSheet: View {
                         .foregroundStyle(.secondary)
                         .padding(8)
                 }
-                .accessibilityLabel("Close")
+                .accessibilityLabel(tcString("close_button", fallback: "Close"))
             }
             .padding(.horizontal, AppSpacing.lg)
             .padding(.top, AppSpacing.lg)
 
             VStack(alignment: .leading, spacing: AppSpacing.md) {
-                Text("Search Location")
+                Text(tcKey: "location_select_title", fallback: "Select location")
                     .font(AppFont.title2)
 
                 SearchField(
@@ -109,11 +109,11 @@ struct LocationSearchSheet: View {
     private var recentLocationsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack {
-                Text("Recent Locations")
+                Text(tcKey: "recent_locations", fallback: "Recent locations")
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Button("Clear") {
+                Button(tcString("filter_clear", fallback: "Clear")) {
                     onClearRecents()
                 }
                 .font(AppFont.caption)
@@ -140,7 +140,7 @@ struct LocationSearchSheet: View {
 
     private var popularCitiesSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Popular Cities")
+            Text(tcKey: "popular_cities", fallback: "Popular cities")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
@@ -185,7 +185,7 @@ struct LocationSearchSheet: View {
     }
 
     private var noResultsSection: some View {
-        Text("No locations found. Try a different search.")
+        Text(tcKey: "location_search_no_results", fallback: "No locations found. Try a different search.")
             .font(AppFont.body)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -201,7 +201,7 @@ private struct SearchField: View {
         HStack(spacing: AppSpacing.sm) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
-            TextField("Search city or region...", text: $text)
+            TextField("", text: $text, prompt: Text(tcKey: "location_search_placeholder", fallback: "Search city or region..."))
                 .font(AppFont.body)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()

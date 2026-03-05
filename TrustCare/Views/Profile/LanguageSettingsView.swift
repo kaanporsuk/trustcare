@@ -61,7 +61,7 @@ struct LanguageSettingsView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(tcString("button_done", fallback: "Done")) {
+                Button(tcString("language_done", fallback: "Done")) {
                     dismiss()
                 }
             }

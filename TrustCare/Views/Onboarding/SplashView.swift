@@ -25,10 +25,10 @@ struct SplashView: View {
                         RoundedRectangle(cornerRadius: 24, style: .continuous)
                             .stroke(Color.tcOcean.opacity(0.2), lineWidth: 1)
                     )
-                Text("app_name")
+                Text(tcKey: "app_name", fallback: "TrustCare")
                     .font(AppFont.title1)
                     .foregroundStyle(Color.tcTextPrimary)
-                Text(tcKey: "tagline", fallback: "Healthcare, Verified.")
+                Text(tcKey: "splash_tagline", fallback: "Healthcare, Verified.")
                     .font(AppFont.body)
                     .foregroundStyle(Color.tcTextSecondary)
             }

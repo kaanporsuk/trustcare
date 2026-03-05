@@ -282,7 +282,7 @@ struct HomeView: View {
     private var mapResultsSheet: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack {
-                Text(tcKey: "find_sheet_providers_title", fallback: "Providers")
+                Text(tcKey: "providers_title", fallback: "Providers")
                     .font(.headline)
                 Spacer()
                 Text("\(displayedProviders.count)")
@@ -345,8 +345,10 @@ struct HomeView: View {
         } else if isRegionLikelyNew {
             TCEmptyState(
                 variant: .noProviders,
-                primaryTitle: tcString("find_empty_change_city", fallback: "Change city"),
-                secondaryTitle: tcString("find_empty_suggest_provider", fallback: "Suggest a provider"),
+                customTitle: tcString("empty_no_providers_title", fallback: "No providers available"),
+                customBody: tcString("empty_no_providers_body", fallback: "Try searching another area or changing city."),
+                primaryTitle: tcString("cta_change_city", fallback: "Change city"),
+                secondaryTitle: tcString("cta_suggest_provider", fallback: "Suggest a provider"),
                 onPrimary: {
                     showLocationSearch = true
                 },
@@ -365,8 +367,10 @@ struct HomeView: View {
         } else {
             TCEmptyState(
                 variant: .noProviders,
-                primaryTitle: tcString("find_empty_search_change_city", fallback: "Search another area / Change city"),
-                secondaryTitle: tcString("find_empty_suggest_provider", fallback: "Suggest a provider"),
+                customTitle: tcString("empty_no_providers_title", fallback: "No providers available"),
+                customBody: tcString("empty_no_providers_body", fallback: "Try searching another area or changing city."),
+                primaryTitle: tcString("cta_change_city", fallback: "Change city"),
+                secondaryTitle: tcString("cta_suggest_provider", fallback: "Suggest a provider"),
                 onPrimary: {
                     showLocationSearch = true
                 },
@@ -391,14 +395,14 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text(tcKey: "find_state_no_providers_visible", fallback: "No providers visible in this map area")
                 .font(.headline)
-            Text(tcKey: "find_state_try_another_area", fallback: "Try another area or pick a different city to continue.")
+            Text(tcKey: "empty_no_providers_body", fallback: "Try searching another area or changing city.")
                 .font(.subheadline)
                 .foregroundStyle(Color.tcTextSecondary)
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: tcString("find_empty_search_change_city", fallback: "Search another area / Change city"), fullWidth: false) {
+                TCPrimaryButton(title: tcString("cta_change_city", fallback: "Change city"), fullWidth: false) {
                     showLocationSearch = true
                 }
-                Button(tcString("find_empty_suggest_provider", fallback: "Suggest a provider")) {}
+                Button(tcString("cta_suggest_provider", fallback: "Suggest a provider")) {}
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.tcOcean)
             }
@@ -436,14 +440,14 @@ struct HomeView: View {
             Text(tcKey: "find_state_growing_title", fallback: "TrustCare is growing here")
                 .font(.headline)
                 .foregroundStyle(Color.tcSage)
-            Text(tcKey: "find_state_growing_body", fallback: "We are onboarding providers in this region. Try a nearby city in the meantime.")
+            Text(tcKey: "empty_no_providers_body", fallback: "Try searching another area or changing city.")
                 .font(.subheadline)
                 .foregroundStyle(Color.tcTextSecondary)
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: tcString("find_state_change_city", fallback: "Change city"), fullWidth: false) {
+                TCPrimaryButton(title: tcString("cta_change_city", fallback: "Change city"), fullWidth: false) {
                     showLocationSearch = true
                 }
-                Button(tcString("find_empty_suggest_provider", fallback: "Suggest a provider")) {}
+                Button(tcString("cta_suggest_provider", fallback: "Suggest a provider")) {}
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.tcOcean)
             }
