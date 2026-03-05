@@ -1,4 +1,3 @@
-import SDWebImageSwiftUI
 import SwiftUI
 
 struct ProviderCardView: View {
@@ -6,60 +5,9 @@ struct ProviderCardView: View {
     @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
-        NavigationLink {
+        TCProviderCard(provider: provider, localizedSpecialty: localizedProviderSpecialty) {
             ProviderDetailView(providerId: provider.id)
-        } label: {
-            HStack(spacing: AppSpacing.md) {
-                DynamicProviderAvatarView(provider: provider)
-                    .frame(width: 48, height: 48)
-                    .clipShape(Circle())
-
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: AppSpacing.sm) {
-                        Text(provider.name)
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                        Spacer()
-                    }
-
-                    Text(localizedProviderSpecialty)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-
-                    HStack(spacing: AppSpacing.xs) {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(Color.tcCoral)
-                        Text(String(format: "%.1f", provider.ratingOverall))
-                            .font(.subheadline)
-                        Text("(\(provider.reviewCount))")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    if provider.verifiedReviewCount > 0 {
-                        HStack(spacing: AppSpacing.xs) {
-                            Image(systemName: "checkmark.seal.fill")
-                                .foregroundStyle(Color.tcSage)
-                            Text("verified_badge")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-
-                    if let distance = provider.distanceKm {
-                        Text(String(format: "%.1f km", distance))
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(12)
-            .background(Color.tcSurface)
-            .cornerRadius(AppRadius.card)
-            .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
         }
-        .buttonStyle(.plain)
     }
 
     private var localizedProviderSpecialty: String {

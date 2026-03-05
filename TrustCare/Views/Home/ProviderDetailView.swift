@@ -13,6 +13,31 @@ struct ProviderDetailView: View {
     @EnvironmentObject private var authVM: AuthViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
 
+    private var hasReviews: Bool {
+        (detailVM.provider?.reviewCount ?? 0) > 0
+    }
+
+    private var hasValidCoordinates: Bool {
+        guard let provider = detailVM.provider else { return false }
+        let coordinate = CLLocationCoordinate2D(latitude: provider.latitude, longitude: provider.longitude)
+        return CLLocationCoordinate2DIsValid(coordinate) && !(provider.latitude == 0 && provider.longitude == 0)
+    }
+
+    private var addressText: String {
+        detailVM.provider?.address.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+
+    private var hasAddress: Bool {
+        !addressText.isEmpty
+    }
+
+    private var hasSufficientAddressForDirections: Bool {
+        guard hasAddress else { return false }
+        let commaParts = addressText.split(separator: ",").count
+        let hasDigits = addressText.range(of: "\\d", options: .regularExpression) != nil
+        return commaParts >= 2 || hasDigits
+    }
+
     var body: some View {
         ScrollView {
             if detailVM.isLoading && detailVM.provider == nil {
@@ -190,94 +215,10 @@ struct ProviderDetailView: View {
     private var claimBanner: some View {
         Group {
             if detailVM.provider?.isClaimed == false {
-                if let claim = detailVM.myClaimStatus {
-                    // User has already submitted a claim
-                    if claim.status == .pending {
-                        HStack(spacing: AppSpacing.sm) {
-                            Image(systemName: "clock.fill")
-                                .foregroundStyle(.orange)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("claim_pending")
-                                    .font(AppFont.headline)
-                                    .foregroundStyle(.primary)
-                                Text("claim_pending_message")
-                                    .font(AppFont.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                        .padding(AppSpacing.md)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.orange.opacity(0.1))
-                        .cornerRadius(AppRadius.card)
-                        .padding(.horizontal, AppSpacing.lg)
-                    } else if claim.status == .rejected {
-                        VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                            HStack(spacing: AppSpacing.sm) {
-                                Image(systemName: "exclamationmark.triangle.fill")
-                                    .foregroundStyle(.red)
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("claim_rejected")
-                                        .font(AppFont.headline)
-                                        .foregroundStyle(.primary)
-                                    if let reason = claim.rejectionReason {
-                                        Text(reason)
-                                            .font(AppFont.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                }
-                                Spacer()
-                            }
-                            Button {
-                                showClaimSheet = true
-                            } label: {
-                                Text("claim_resubmit")
-                                    .font(AppFont.footnote)
-                                    .foregroundStyle(Color.tcOcean)
-                                    .padding(.vertical, 6)
-                                    .padding(.horizontal, AppSpacing.md)
-                                    .background(Color.tcOcean.opacity(0.1))
-                                    .cornerRadius(AppRadius.button)
-                            }
-                        }
-                        .padding(AppSpacing.md)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.red.opacity(0.1))
-                        .cornerRadius(AppRadius.card)
-                        .padding(.horizontal, AppSpacing.lg)
-                    }
-                } else {
-                    // No claim yet - show claim button
-                    Button {
-                        showClaimSheet = true
-                    } label: {
-                        HStack(spacing: AppSpacing.sm) {
-                            Image(systemName: "building.2.fill")
-                                .foregroundStyle(Color.tcOcean)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("is_this_your_practice")
-                                    .font(AppFont.headline)
-                                    .foregroundStyle(.primary)
-                                Text("claim_description")
-                                    .font(AppFont.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            Text("claim_profile")
-                                .font(AppFont.footnote)
-                                .foregroundStyle(.white)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, AppSpacing.md)
-                                .background(Color.tcOcean)
-                                .cornerRadius(AppRadius.button)
-                        }
-                        .padding(AppSpacing.md)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.tcOcean.opacity(0.1))
-                        .cornerRadius(AppRadius.card)
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.horizontal, AppSpacing.lg)
+                TCClaimBanner {
+                    showClaimSheet = true
                 }
+                .padding(.horizontal, AppSpacing.lg)
             }
         }
     }
@@ -302,13 +243,21 @@ struct ProviderDetailView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                StarRatingInput(readOnlyRating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
-                Text(String(format: "reviews_count", detailVM.provider?.reviewCount ?? 0))
-                    .font(AppFont.caption)
-                    .foregroundStyle(.secondary)
-                Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \("Verified")")
-                    .font(AppFont.caption)
-                    .foregroundStyle(Color.tcSage)
+                if hasReviews {
+                    StarRatingInput(readOnlyRating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
+                    Text(String(format: "reviews_count", detailVM.provider?.reviewCount ?? 0))
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
+                    if (detailVM.provider?.verifiedReviewCount ?? 0) > 0 {
+                        Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \("Verified")")
+                            .font(AppFont.caption)
+                            .foregroundStyle(Color.tcSage)
+                    }
+                } else {
+                    Text("No reviews yet")
+                        .font(AppFont.caption)
+                        .foregroundStyle(Color.tcTextSecondary)
+                }
             }
 
             HStack(spacing: AppSpacing.sm) {
@@ -318,11 +267,38 @@ struct ProviderDetailView: View {
                     .foregroundStyle(.secondary)
             }
 
-            if let address = detailVM.provider?.address {
+            if !hasValidCoordinates {
+                if hasAddress {
+                    Text(addressText)
+                        .font(AppFont.body)
+                        .foregroundStyle(Color.tcTextPrimary)
+
+                    if let provider = detailVM.provider {
+                        Button {
+                            openMaps(provider: provider)
+                        } label: {
+                            Text("Open in Maps")
+                                .font(AppFont.body)
+                                .foregroundStyle(Color.tcOcean)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                } else if let city = detailVM.provider?.city, !city.isEmpty {
+                    Text("Location: \(city)")
+                        .font(AppFont.body)
+                        .foregroundStyle(Color.tcTextSecondary)
+                } else {
+                    Text("Approximate location")
+                        .font(AppFont.body)
+                        .foregroundStyle(Color.tcTextSecondary)
+                }
+            } else if hasAddress {
                 Button {
-                    openMaps(address: address)
+                    if let provider = detailVM.provider {
+                        openMaps(provider: provider)
+                    }
                 } label: {
-                    Text(address)
+                    Text(addressText)
                         .font(AppFont.body)
                         .foregroundStyle(Color.tcOcean)
                 }
@@ -373,6 +349,7 @@ struct ProviderDetailView: View {
     private var quickActions: some View {
         let provider = detailVM.provider
         let hasPhone = provider?.phone != nil && !(provider?.phone?.isEmpty ?? true)
+        let canShowDirections = hasValidCoordinates || hasSufficientAddressForDirections
 
         return HStack(spacing: AppSpacing.sm) {
             Button {
@@ -395,19 +372,19 @@ struct ProviderDetailView: View {
                 .cornerRadius(12)
             }
 
-            Button {
-                if let address = detailVM.provider?.address {
-                    openMaps(address: address)
+            if canShowDirections, let provider {
+                Button {
+                    openMaps(provider: provider)
+                } label: {
+                    Label("button_directions", systemImage: "map.fill")
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: AppRadius.button)
+                                .stroke(Color.tcOcean, lineWidth: 1)
+                        )
+                        .foregroundStyle(Color.tcOcean)
                 }
-            } label: {
-                Label("button_directions", systemImage: "map.fill")
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 44)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(Color.tcOcean, lineWidth: 1)
-                    )
-                    .foregroundStyle(Color.tcOcean)
             }
 
             Button {
@@ -436,7 +413,7 @@ struct ProviderDetailView: View {
     }
 
     private var statsGrid: some View {
-        guard let provider = detailVM.provider else {
+        guard let provider = detailVM.provider, provider.reviewCount > 0 else {
             return AnyView(EmptyView())
         }
 
@@ -502,23 +479,62 @@ struct ProviderDetailView: View {
                 Text("Reviews")
                     .font(AppFont.title3)
                 Spacer()
-                Picker("Sort", selection: .constant(0)) {
-                    Text("Newest").tag(0)
-                    Text("Highest Rated").tag(1)
+                if !detailVM.reviews.isEmpty {
+                    Picker("Sort", selection: .constant(0)) {
+                        Text("Newest").tag(0)
+                        Text("Highest Rated").tag(1)
+                    }
+                    .pickerStyle(.menu)
                 }
-                .pickerStyle(.menu)
             }
 
             if detailVM.reviews.isEmpty {
-                VStack(spacing: AppSpacing.sm) {
-                    Image(systemName: "text.bubble")
-                        .font(.title2)
-                        .foregroundStyle(.secondary)
+                VStack(alignment: .leading, spacing: AppSpacing.sm) {
                     Text("No reviews yet")
+                        .font(AppFont.headline)
+                        .foregroundStyle(Color.tcTextPrimary)
+
+                    Text("Help other patients by sharing the first trusted experience for this provider.")
                         .font(AppFont.body)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.tcTextSecondary)
+
+                    if let provider = detailVM.provider {
+                        if authVM.isAuthenticated {
+                            NavigationLink {
+                                ReviewHubView(initialProvider: provider)
+                            } label: {
+                                Text("Write the first review")
+                                    .font(AppFont.headline)
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 50)
+                                    .background(Color.tcCoral)
+                                    .cornerRadius(AppRadius.button)
+                            }
+                            .buttonStyle(.plain)
+                        } else {
+                            Button {
+                                showAuthRequiredAlert = true
+                            } label: {
+                                Text("Write the first review")
+                                    .font(AppFont.headline)
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 50)
+                                    .background(Color.tcCoral)
+                                    .cornerRadius(AppRadius.button)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
                 }
-                .padding(.vertical, AppSpacing.md)
+                .padding(AppSpacing.md)
+                .background(Color.tcCoral.opacity(0.08))
+                .overlay {
+                    RoundedRectangle(cornerRadius: AppRadius.card)
+                        .stroke(Color.tcCoral.opacity(0.35), lineWidth: 1)
+                }
+                .cornerRadius(AppRadius.card)
             } else {
                 ForEach(detailVM.reviews.prefix(5)) { review in
                     ReviewItemView(review: review) { isHelpful in
@@ -527,20 +543,32 @@ struct ProviderDetailView: View {
                 }
             }
 
-            NavigationLink {
-                ReviewListView(providerId: providerId)
-            } label: {
-                Text("See All Reviews")
-                    .font(AppFont.caption)
-                    .foregroundStyle(Color.tcOcean)
+            if !detailVM.reviews.isEmpty {
+                NavigationLink {
+                    ReviewListView(providerId: providerId)
+                } label: {
+                    Text("See All Reviews")
+                        .font(AppFont.caption)
+                        .foregroundStyle(Color.tcOcean)
+                }
             }
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.bottom, AppSpacing.xxl)
     }
 
-    private func openMaps(address: String) {
-        let query = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    private func openMaps(provider: Provider) {
+        if hasValidCoordinates {
+            let lat = provider.latitude
+            let lon = provider.longitude
+            let encodedName = provider.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            if let url = URL(string: "http://maps.apple.com/?ll=\(lat),\(lon)&q=\(encodedName)") {
+                UIApplication.shared.open(url)
+                return
+            }
+        }
+
+        let query = provider.address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         if let url = URL(string: "http://maps.apple.com/?q=\(query)") {
             UIApplication.shared.open(url)
         }
