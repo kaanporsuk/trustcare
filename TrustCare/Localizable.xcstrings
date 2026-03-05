@@ -8076,7 +8076,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contact Us"
+            "value" : "Contact"
           }
         },
         "nl" : {
@@ -8094,7 +8094,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bize Ulaşın"
+            "value" : "Iletisim"
           }
         }
       }
@@ -8175,7 +8175,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Go to the Review tab, search for the healthcare provider you visited, and follow the guided form. Reviews are published after processing and may require verification."
+            "value" : "Open Review, choose a provider, and complete the guided form."
           }
         },
         "nl" : {
@@ -8193,7 +8193,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Değerlendirme sekmesine gidin, ziyaret ettiğiniz sağlayıcıyı arayın ve yönlendirmeli formu tamamlayın. Değerlendirmeler işlendikten sonra yayınlanır ve doğrulama gerekebilir."
+            "value" : "Degerlendirme ekranini acin, saglayiciyi secin ve yonlendirmeli formu tamamlayin."
           }
         }
       }
@@ -8216,7 +8216,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yes. Open My Reviews, swipe left on a review, and tap Edit. For integrity reasons, edits may be limited after publication and moderation events."
+            "value" : "Yes. Open My Reviews and tap Edit on your review."
           }
         },
         "nl" : {
@@ -8234,7 +8234,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Evet. Değerlendirmelerim ekranında ilgili kaydı sola kaydırıp Düzenle seçeneğine dokunun. Güvenilirlik nedeniyle bazı düzenlemeler yayın sonrası sınırlandırılabilir."
+            "value" : "Evet. Degerlendirmelerim ekranindan yorumunuzu acip Duzenle'ye dokunabilirsiniz."
           }
         }
       }
@@ -8257,7 +8257,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The Verified badge indicates that the review includes supporting evidence or passed verification checks. It does not guarantee any medical outcome."
+            "value" : "Verified means the review passed our checks or includes supporting proof."
           }
         },
         "nl" : {
@@ -8275,7 +8275,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Doğrulandı rozeti, değerlendirmenin destekleyici kanıt içerdiğini veya doğrulama kontrollerini geçtiğini gösterir. Tıbbi sonuç garantisi vermez."
+            "value" : "Dogrulandi etiketi, yorumun kontrol edildigini veya destekleyici kanit icerdigini gosterir."
           }
         }
       }
@@ -8298,7 +8298,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open the review detail and use the Report option. Our moderation team reviews reported content and may remove material that violates platform rules."
+            "value" : "Open the review and tap Report. Our team will review it."
           }
         },
         "nl" : {
@@ -8316,7 +8316,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Değerlendirme detay ekranındaki Bildir seçeneğini kullanın. Moderasyon ekibimiz bildirilen içerikleri inceler ve kuralları ihlal eden içerikleri kaldırabilir."
+            "value" : "Yorumu acin ve Bildir'e dokunun. Ekibimiz bildirimi inceler."
           }
         }
       }
@@ -8339,7 +8339,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can request deletion from Settings. We will process deletion according to legal retention requirements and confirm when the request is complete."
+            "value" : "Go to Settings and request deletion. We will confirm when completed."
           }
         },
         "nl" : {
@@ -8357,7 +8357,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ayarlar bölümünden silme talebi oluşturabilirsiniz. Talebinizi yasal saklama yükümlülüklerine göre işler ve tamamlandığında size bildiririz."
+            "value" : "Ayarlara gidip hesap veya veri silme talebi olusturabilirsiniz. Tamamlandiginda bilgilendiririz."
           }
         }
       }
@@ -8380,7 +8380,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "For account, privacy, or technical support, contact support@trustcare.app. Please include your app version and a short problem description."
+            "value" : "Email support@trustcare.app with your app version and issue details."
           }
         },
         "nl" : {
@@ -8398,7 +8398,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hesap, gizlilik veya teknik destek için support@trustcare.app adresine yazın. Lütfen uygulama sürümünüzü ve sorunun kısa açıklamasını ekleyin."
+            "value" : "Uygulama surumunuz ve sorun detayi ile support@trustcare.app adresine e-posta gonderin."
           }
         }
       }
@@ -8421,7 +8421,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "How do I submit a review?"
+            "value" : "How do I add a review?"
           }
         },
         "nl" : {
@@ -8439,7 +8439,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nasıl değerlendirme gönderirim?"
+            "value" : "Nasil degerlendirme eklerim?"
           }
         }
       }
@@ -8504,7 +8504,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Değerlendirmemi düzenleyebilir miyim?"
+            "value" : "Degerlendirmemi duzenleyebilir miyim?"
           }
         }
       }
@@ -8527,7 +8527,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What does the Verified badge mean?"
+            "value" : "What does Verified mean?"
           }
         },
         "nl" : {
@@ -8545,7 +8545,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Doğrulandı rozeti ne anlama gelir?"
+            "value" : "Dogrulandi ne anlama gelir?"
           }
         }
       }
@@ -8568,7 +8568,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "How do I report abusive content?"
+            "value" : "How do I report content?"
           }
         },
         "nl" : {
@@ -8586,7 +8586,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uygunsuz içeriği nasıl bildirebilirim?"
+            "value" : "Icerigi nasil bildiririm?"
           }
         }
       }
@@ -8609,7 +8609,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "How can I request account or data deletion?"
+            "value" : "How do I delete my account or data?"
           }
         },
         "nl" : {
@@ -8627,7 +8627,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hesap veya veri silme talebini nasıl iletirim?"
+            "value" : "Hesabimi veya verilerimi nasil silebilirim?"
           }
         }
       }
@@ -8650,7 +8650,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Who can I contact for support?"
+            "value" : "How can I contact support?"
           }
         },
         "nl" : {
@@ -8668,7 +8668,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Destek için kiminle iletişime geçebilirim?"
+            "value" : "Destek icin nasil iletisime gecerim?"
           }
         }
       }
@@ -8690,7 +8690,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frequently Asked Questions"
+            "value" : "Help & Support"
           }
         },
         "nl" : {
@@ -8708,7 +8708,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıkça Sorulan Sorular"
+            "value" : "Yardim ve Destek"
           }
         }
       }
@@ -8730,7 +8730,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Report an Issue"
+            "value" : "Report an issue"
           }
         },
         "nl" : {
@@ -8748,7 +8748,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sorun Bildir"
+            "value" : "Sorun bildir"
           }
         }
       }
