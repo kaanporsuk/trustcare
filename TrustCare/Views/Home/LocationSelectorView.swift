@@ -69,9 +69,6 @@ struct LocationSelectorView: View {
                                     Text(city.name)
                                         .font(AppFont.body)
                                         .foregroundStyle(.primary)
-                                    Text(String(format: "%.2f, %.2f", city.latitude, city.longitude))
-                                        .font(AppFont.footnote)
-                                        .foregroundStyle(.secondary)
                                 }
                                 Spacer()
                                 if !selectedLocation.isCurrentLocation,

@@ -32,10 +32,9 @@ struct LocationSearchSheet: View {
                 Button {
                     dismiss()
                 } label: {
-                    Image(systemName: "xmark")
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
-                        .padding(8)
+                    Text(tcKey: "close_button", fallback: "Close")
+                        .font(AppFont.body)
+                        .foregroundStyle(Color.tcOcean)
                 }
                 .accessibilityLabel(tcString("close_button", fallback: "Close"))
             }
