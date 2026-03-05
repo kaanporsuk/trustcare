@@ -1,0 +1,4349 @@
+{
+  "meta": {
+    "app": "TrustCare",
+    "generated_at": "2026-03-05T22:57:37.799813Z",
+    "languages": [
+      "en",
+      "tr",
+      "de",
+      "pl",
+      "nl",
+      "da",
+      "es",
+      "fr",
+      "it",
+      "ro",
+      "pt",
+      "uk",
+      "ru",
+      "sv",
+      "cs",
+      "hu"
+    ]
+  },
+  "entries": [
+    {
+      "key": "%@ %@",
+      "en": "%1$@ %2$@",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "%@%@",
+      "en": "%1$@%2$@",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "%@%@ - %@%@",
+      "en": "%1$@%2$@ - %3$@%4$@",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "%lld%% %@",
+      "en": "%1$lld%% %2$@",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "%lld/%lld",
+      "en": "%1$lld/%2$lld",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "accessibility_rating_hint",
+      "en": "Swipe up or down to adjust rating",
+      "context": [
+        "TrustCare/Views/Components/StarRatingInput.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "action_dismiss",
+      "en": "Dismiss",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "action_retry",
+      "en": "Retry",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "action_switch_to_list",
+      "en": "Switch to list view",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "action_switch_to_map",
+      "en": "Switch to map view",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "add_provider_add",
+      "en": "Add",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_address",
+      "en": "Address",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_cancel",
+      "en": "Cancel",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_geocode_error",
+      "en": "Could not find coordinates for this address.",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_is_this",
+      "en": "Is this provider a...",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_location",
+      "en": "Location",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_map_pin",
+      "en": "Set map pin",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "add_provider_name",
+      "en": "Provider Name",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_no_address",
+      "en": "Please enter an address.",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_phone",
+      "en": "Phone (optional)",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_phone_optional",
+      "en": "Phone (optional)",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_provider_information",
+      "en": "Provider information",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_section",
+      "en": "Provider Information",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "add_provider_select",
+      "en": "Select",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_select_specialty",
+      "en": "Select Specialty",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_select_specialty_error",
+      "en": "Please select a specialty.",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_set_map_pin",
+      "en": "Set map pin",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_specialty",
+      "en": "Specialty",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "add_provider_title",
+      "en": "Add Provider",
+      "context": [
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "all",
+      "en": "All",
+      "context": [
+        "TrustCare/Core/LocalizationManager.swift",
+        "TrustCare/Core/LocationManager.swift",
+        "TrustCare/Core/Theme.swift",
+        "TrustCare/Core/Utilities/IconFallback.swift",
+        "TrustCare/Extensions/ViewExtensions.swift",
+        "TrustCare/Localization/L10n.swift",
+        "TrustCare/Models/Provider.swift",
+        "TrustCare/Models/RatingCriterion.swift",
+        "TrustCare/Models/RehberMessage.swift",
+        "TrustCare/Models/Review.swift",
+        "TrustCare/Models/VisitType.swift",
+        "TrustCare/Services/AppleMapsService.swift",
+        "TrustCare/Services/AuthService.swift",
+        "TrustCare/Services/ProviderService.swift",
+        "TrustCare/Services/ReviewService.swift",
+        "TrustCare/Services/TaxonomyService.swift",
+        "TrustCare/UI/Components/TCEmptyState.swift",
+        "TrustCare/UI/Components/TCProviderCard.swift",
+        "TrustCare/UI/Components/TCSearchBar.swift",
+        "TrustCare/ViewModels/HomeViewModel.swift",
+        "TrustCare/ViewModels/ProfileViewModel.swift",
+        "TrustCare/ViewModels/ProviderDetailViewModel.swift",
+        "TrustCare/ViewModels/RehberViewModel.swift",
+        "TrustCare/ViewModels/ReviewSubmissionViewModel.swift",
+        "TrustCare/Views/Components/PremiumEmptyStateCard.swift",
+        "TrustCare/Views/Components/ReviewItemView.swift",
+        "TrustCare/Views/Components/TaxonomyPickerView.swift",
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift",
+        "TrustCare/Views/Home/HomeView.swift",
+        "TrustCare/Views/Home/LocationSearchSheet.swift",
+        "TrustCare/Views/Home/LocationSelectorView.swift",
+        "TrustCare/Views/Home/MapLegendView.swift",
+        "TrustCare/Views/Home/ProviderDetailView.swift",
+        "TrustCare/Views/Home/ProviderMapView.swift",
+        "TrustCare/Views/MainTabView.swift",
+        "TrustCare/Views/Onboarding/SplashView.swift",
+        "TrustCare/Views/Profile/HelpSupportView.swift",
+        "TrustCare/Views/Profile/LanguageSettingsView.swift",
+        "TrustCare/Views/Profile/LegalMarkdownContentView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift",
+        "TrustCare/Views/Profile/PrivacyPolicyView.swift",
+        "TrustCare/Views/Profile/ProfileView.swift",
+        "TrustCare/Views/Profile/ReviewDetailView.swift",
+        "TrustCare/Views/Profile/SavedProvidersView.swift",
+        "TrustCare/Views/Profile/SettingsView.swift",
+        "TrustCare/Views/Profile/TermsOfServiceView.swift",
+        "TrustCare/Views/Rehber/RehberChatView.swift",
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift",
+        "TrustCare/Views/Rehber/RehberPlusBannerCard.swift",
+        "TrustCare/Views/Rehber/RehberSessionListView.swift",
+        "TrustCare/Views/Review/AddProviderSheet.swift",
+        "TrustCare/Views/Review/PriceLevelPicker.swift",
+        "TrustCare/Views/Review/ReportReviewSheet.swift",
+        "TrustCare/Views/Review/ReviewConfirmationView.swift",
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "all_results",
+      "en": "All",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "app_language",
+      "en": "App Language",
+      "context": [
+        "TrustCare/Core/LocalizationManager.swift",
+        "TrustCare/Localization/L10n.swift",
+        "TrustCare/ViewModels/HomeViewModel.swift",
+        "TrustCare/Views/Profile/LanguageSettingsView.swift",
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "app_name",
+      "en": "TrustCare",
+      "context": [
+        "TrustCare/Views/Onboarding/SplashView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "bul_growing_here_label",
+      "en": "TrustCare is growing here",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_add",
+      "en": "Add",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "button_back",
+      "en": "Back",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift",
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_call",
+      "en": "Call",
+      "context": [
+        "TrustCare/Views/Home/ProviderDetailView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_cancel",
+      "en": "Cancel",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift",
+        "TrustCare/Views/Profile/ProfileView.swift",
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_continue",
+      "en": "Continue",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_delete",
+      "en": "Delete",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_directions",
+      "en": "Directions",
+      "context": [
+        "TrustCare/Views/Home/ProviderDetailView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_done",
+      "en": "Done",
+      "context": [
+        "TrustCare/Core/Extensions/View+Keyboard.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_edit",
+      "en": "Edit",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_ok",
+      "en": "OK",
+      "context": [
+        "TrustCare/Views/MainTabView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift",
+        "TrustCare/Views/Profile/SavedProvidersView.swift",
+        "TrustCare/Views/Profile/SettingsView.swift",
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_remove",
+      "en": "Remove",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_review",
+      "en": "Review",
+      "context": [
+        "TrustCare/Views/Home/ProviderDetailView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_save",
+      "en": "Save",
+      "context": [
+        "TrustCare/Views/Home/ProviderDetailView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "button_submit",
+      "en": "Submit",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "category_aesthetic_cosmetic",
+      "en": "Aesthetic & Cosmetic",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_alternative",
+      "en": "Alternative",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_anesthesiology",
+      "en": "Anesthesiology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_cardiology",
+      "en": "Cardiology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_dental",
+      "en": "Dental",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_dermatology",
+      "en": "Dermatology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_diagnostic",
+      "en": "Diagnostic",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_emergency",
+      "en": "Emergency",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_endocrinology",
+      "en": "Endocrinology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_ent",
+      "en": "Ear, Nose & Throat",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_eye_care",
+      "en": "Eye Care",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_gastroenterology",
+      "en": "Gastroenterology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_general_practice",
+      "en": "General Practice",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_hospital",
+      "en": "Hospital",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_medical_specialties",
+      "en": "Medical Specialties",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_mental_health",
+      "en": "Mental Health",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_nephrology",
+      "en": "Nephrology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_neurology",
+      "en": "Neurology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_oncology",
+      "en": "Oncology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_ophthalmology",
+      "en": "Ophthalmology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_orthopedics",
+      "en": "Orthopedics",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_other",
+      "en": "Other",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_pediatrics",
+      "en": "Pediatrics",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_pharmacy",
+      "en": "Pharmacy",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_primary_care",
+      "en": "Primary Care",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_psychiatry",
+      "en": "Psychiatry",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_pulmonology",
+      "en": "Pulmonology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_rehabilitation",
+      "en": "Rehabilitation",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_rheumatology",
+      "en": "Rheumatology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_surgical",
+      "en": "Surgical",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_urology",
+      "en": "Urology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "category_womens_health",
+      "en": "Women's Health",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "chip_distance",
+      "en": "Distance",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "chip_facility",
+      "en": "Facility",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "chip_language",
+      "en": "Language",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "chip_specialty",
+      "en": "Specialty",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "chip_treatment",
+      "en": "Treatment",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_accepted_docs",
+      "en": "Accepted: Medical license, registration certificate, or official ID",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_back_to_provider",
+      "en": "Back to Provider",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_confirm_1",
+      "en": "You are authorized to manage this profile",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_confirm_2",
+      "en": "All information provided is accurate",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_confirm_text",
+      "en": "By submitting, you confirm that:",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_description",
+      "en": "Claim this profile to manage it",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "claim_file_format",
+      "en": "JPG or PNG, max 10 MB",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_pending",
+      "en": "Claim Pending",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "claim_pending_message",
+      "en": "Your claim is being reviewed.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "claim_profile",
+      "en": "Claim Profile",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "claim_provider_label",
+      "en": "Provider",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_rejected",
+      "en": "Claim Rejected",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "claim_resubmit",
+      "en": "Resubmit",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "claim_review_submit",
+      "en": "Review & Submit",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_role_question",
+      "en": "What is your role at this practice?",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_step_1_of_3",
+      "en": "Step 1 of 3",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_step_2_of_3",
+      "en": "Step 2 of 3",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_step_3_of_3",
+      "en": "Step 3 of 3",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_submit",
+      "en": "Submit Claim",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_submitted",
+      "en": "Claim Submitted!",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_submitted_message",
+      "en": "We'll review your claim within 1-3 business days. You'll be notified when it's approved.",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_tap_upload",
+      "en": "Tap to upload document",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_title",
+      "en": "Claim Profile",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_upload_doc",
+      "en": "Upload verification document",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_verification_doc",
+      "en": "Verification Document",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "claim_your_role",
+      "en": "Your Role",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "clear_filter",
+      "en": "Clear Filter",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift",
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "close_button",
+      "en": "Close",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift",
+        "TrustCare/Views/Home/LocationSearchSheet.swift",
+        "TrustCare/Views/Home/LocationSelectorView.swift",
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "country_turkey",
+      "en": "Türkiye",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "cta_change_city",
+      "en": "Change city",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "cta_suggest_provider",
+      "en": "Suggest a provider",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "current_location",
+      "en": "Current Location",
+      "context": [
+        "TrustCare/ViewModels/HomeViewModel.swift",
+        "TrustCare/Views/Home/LocationSelectorView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "date_today",
+      "en": "Today",
+      "context": [
+        "TrustCare/Models/RehberSession.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "date_yesterday",
+      "en": "Yesterday",
+      "context": [
+        "TrustCare/Models/RehberSession.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "default_city_name",
+      "en": "Adana",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "discover_error_providers_unavailable_body",
+      "en": "There may be a connection issue. Please try again.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "discover_error_providers_unavailable_title",
+      "en": "Providers could not be loaded",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "discover_error_switch_to_list",
+      "en": "Switch to list view",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "edit_review_comment_section",
+      "en": "Review",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "edit_review_title",
+      "en": "Edit Review",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "edit_review_title_placeholder",
+      "en": "Review title",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "edit_review_title_section",
+      "en": "Title",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "empty_home_cta",
+      "en": "Be the first to add one!",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "empty_home_title",
+      "en": "No providers in this area",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "empty_no_providers_body",
+      "en": "Try searching another area or changing city.",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "empty_no_providers_title",
+      "en": "No providers available",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "empty_search",
+      "en": "No results found",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_duplicate_review",
+      "en": "You can only submit one review per provider per date.",
+      "context": [
+        "TrustCare/ViewModels/ReviewSubmissionViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_generic",
+      "en": "Error",
+      "context": [
+        "TrustCare/Views/MainTabView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift",
+        "TrustCare/Views/Profile/SavedProvidersView.swift",
+        "TrustCare/Views/Profile/SettingsView.swift",
+        "TrustCare/Views/Review/AddProviderSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_load_providers_body",
+      "en": "Your connection may be unstable right now. Try again to load the list.",
+      "context": [
+        "TrustCare/ViewModels/HomeViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_load_providers_body_generic",
+      "en": "Couldn’t load providers. Please try again.",
+      "context": [
+        "TrustCare/ViewModels/HomeViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_load_providers_title",
+      "en": "Couldn't load providers",
+      "context": [
+        "TrustCare/ViewModels/HomeViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_network",
+      "en": "A network issue occurred. Please check your connection and try again.",
+      "context": [
+        "TrustCare/ViewModels/ReviewSubmissionViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_network_generic_body",
+      "en": "Please check your connection and try again.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "error_network_generic_title",
+      "en": "Network error",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "error_offline_body",
+      "en": "It looks like you’re offline. Check your connection and try again.",
+      "context": [
+        "TrustCare/ViewModels/HomeViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_offline_title",
+      "en": "Couldn’t load providers",
+      "context": [
+        "TrustCare/ViewModels/HomeViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "error_unknown",
+      "en": "An unknown error occurred.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_all",
+      "en": "All",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_apply",
+      "en": "Apply",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_button",
+      "en": "Filter",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift",
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_distance",
+      "en": "Distance",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_facility",
+      "en": "Facility",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_facility_title",
+      "en": "Facility",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_language",
+      "en": "Language",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_language_title",
+      "en": "Language",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_more",
+      "en": "More ▾",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_reset",
+      "en": "Reset",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_specialty",
+      "en": "Specialty",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_specialty_title",
+      "en": "Specialty",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_treatment",
+      "en": "Treatment",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_treatment_title",
+      "en": "Treatment",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_verified",
+      "en": "Verified",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_verified_only_label",
+      "en": "Show only providers with verified reviews",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "filter_verified_title",
+      "en": "Verified",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_empty_change_city",
+      "en": "Change city",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_empty_clear_filters",
+      "en": "Clear filters",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_empty_growing_here",
+      "en": "TrustCare is growing here",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_empty_search_another_area",
+      "en": "Search another area",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_empty_search_change_city",
+      "en": "Search another area / Change city",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_empty_suggest_provider",
+      "en": "Suggest a provider",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_set_location",
+      "en": "Set location",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_sheet_providers_title",
+      "en": "Providers",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_state_change_city",
+      "en": "Change city",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_state_clear_filters_body",
+      "en": "Clear one or more filters, or move the map to expand results.",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_state_clear_filters_title",
+      "en": "No results match these filters",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_state_growing_body",
+      "en": "We are onboarding providers in this region. Try a nearby city in the meantime.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "find_state_growing_title",
+      "en": "TrustCare is growing here",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_state_no_providers_visible",
+      "en": "No providers visible in this map area",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_state_search_another_area",
+      "en": "Search another area",
+      "context": [
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "find_state_try_another_area",
+      "en": "Try another area or pick a different city to continue.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "help_contact",
+      "en": "Contact",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_email_label",
+      "en": "Email",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_a1",
+      "en": "Open Review, choose a provider, and complete the guided form.",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_a2",
+      "en": "Yes. Open My Reviews and tap Edit on your review.",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_a3",
+      "en": "Verified means the review passed our checks or includes supporting proof.",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_a4",
+      "en": "Open the review and tap Report. Our team will review it.",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_a5",
+      "en": "Go to Settings and request deletion. We will confirm when completed.",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_a6",
+      "en": "Email support@trustcare.app with your app version and issue details.",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_q1",
+      "en": "How do I add a review?",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_q2",
+      "en": "Can I edit my review?",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_q3",
+      "en": "What does Verified mean?",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_q4",
+      "en": "How do I report content?",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_q5",
+      "en": "How do I delete my account or data?",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_q6",
+      "en": "How can I contact support?",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_faq_title",
+      "en": "Help & Support",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "help_report_issue",
+      "en": "Report an issue",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "is_this_your_practice",
+      "en": "Is this your practice?",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_changed_alert",
+      "en": "Language Changed",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_changed_message",
+      "en": "The app needs to restart to apply the new language.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_changed_message_named %@",
+      "en": "The app will restart in %@. Continue?",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_danish",
+      "en": "Dansk",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_done",
+      "en": "Done",
+      "context": [
+        "TrustCare/Views/Profile/LanguageSettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "language_dutch",
+      "en": "Nederlands",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_english",
+      "en": "English",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_german",
+      "en": "Deutsch",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_later",
+      "en": "Later",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_polish",
+      "en": "Polski",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_restart_now",
+      "en": "Restart Now",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "language_section_title",
+      "en": "Language",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "language_turkish",
+      "en": "Türkçe",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "legal_translation_disclaimer",
+      "en": "Translation is provided for convenience; the English version prevails.",
+      "context": [
+        "TrustCare/Views/Profile/LegalMarkdownContentView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_aesthetics",
+      "en": "Aesthetics",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_clinic",
+      "en": "Clinic",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_dental",
+      "en": "Dental",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_hospital",
+      "en": "Hospital",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_lab",
+      "en": "Lab",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_mental_health",
+      "en": "Mental Health",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_pharmacy",
+      "en": "Pharmacy",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "legend_rehab",
+      "en": "Rehab",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "location_select_title",
+      "en": "Select Location",
+      "context": [
+        "TrustCare/Views/Home/LocationSearchSheet.swift",
+        "TrustCare/Views/Home/LocationSelectorView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "logout_confirm_message",
+      "en": "Are you sure you want to log out?",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "map_search_this_area",
+      "en": "Search this area",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "map_toggle_list",
+      "en": "List",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "map_toggle_map",
+      "en": "Map",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "media_photo_count_%lld",
+      "en": "%lld of 5 photos",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "menu_help",
+      "en": "Help & Support",
+      "context": [
+        "TrustCare/Views/Profile/HelpSupportView.swift",
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "menu_logout",
+      "en": "Log Out",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "menu_my_reviews",
+      "en": "My Reviews",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift",
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "menu_privacy",
+      "en": "Privacy Policy",
+      "context": [
+        "TrustCare/Views/Profile/PrivacyPolicyView.swift",
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "menu_saved",
+      "en": "Saved",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift",
+        "TrustCare/Views/Profile/SavedProvidersView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "menu_settings",
+      "en": "Settings",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift",
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "menu_terms",
+      "en": "Terms of Service",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift",
+        "TrustCare/Views/Profile/TermsOfServiceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "my_reviews_delete_message",
+      "en": "This action cannot be undone.",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "my_reviews_delete_title",
+      "en": "Delete Review?",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "my_reviews_empty_action",
+      "en": "Write a Review",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "my_reviews_empty_message",
+      "en": "Share your experience by posting your first review.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "my_reviews_empty_title",
+      "en": "No reviews yet",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "no_results",
+      "en": "No results",
+      "context": [
+        "TrustCare/UI/Components/TCEmptyState.swift",
+        "TrustCare/Views/Components/TaxonomyPickerView.swift",
+        "TrustCare/Views/Home/LocationSearchSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "pp_contact_1",
+      "en": "If you have questions about this Privacy Policy or your personal data, contact us at support@trustcare.app.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_contact_2",
+      "en": "If you are in the EEA/UK, you may also contact your local data protection authority.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_contact_title",
+      "en": "Contact",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_cookies_1",
+      "en": "Our web surfaces may use cookies and local storage to keep sessions secure and improve performance.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_cookies_2",
+      "en": "You can control cookie preferences in your browser settings, though disabling them may affect functionality.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_cookies_3",
+      "en": "Analytics cookies are used in aggregate form to understand usage trends and improve the service.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_cookies_title",
+      "en": "Cookies and Similar Technologies",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_collection_1",
+      "en": "We collect account data such as email, name, profile preferences, and authentication metadata.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_collection_2",
+      "en": "When you submit reviews, we collect ratings, comments, optional media, and optional verification artifacts.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_collection_3",
+      "en": "We may process device and usage data including app events, approximate location, and diagnostics.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_collection_4",
+      "en": "We do not intentionally collect sensitive health records beyond the information you choose to submit.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_collection_title",
+      "en": "Data We Collect",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_sharing_1",
+      "en": "We share data with service providers that operate hosting, analytics, moderation, and communication systems.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_sharing_2",
+      "en": "We may disclose information when required by law, regulation, legal process, or to protect users and platform integrity.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_sharing_3",
+      "en": "We do not sell personal data to third parties.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_sharing_title",
+      "en": "How We Share Data",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_usage_1",
+      "en": "We use personal data to provide core app functionality, personalize content, and maintain account security.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_usage_2",
+      "en": "We use submitted reviews and metadata for trust, safety, moderation, fraud prevention, and quality assurance.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_usage_3",
+      "en": "We may use aggregated and de-identified analytics to improve product experience and reliability.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_data_usage_title",
+      "en": "How We Use Data",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_last_updated",
+      "en": "Last updated: March 2026",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_rights_1",
+      "en": "Depending on your region, you may have rights to access, correct, export, restrict, or delete your personal data.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_rights_2",
+      "en": "You can update profile information directly in the app or request support for account-level actions.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_rights_3",
+      "en": "You may object to certain processing where applicable under local law.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_rights_4",
+      "en": "To exercise your rights, contact support@trustcare.app and we will respond within the legally required timeframe.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_rights_title",
+      "en": "Your Rights",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_security_1",
+      "en": "We apply technical and organizational safeguards designed to protect data against unauthorized access and misuse.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_security_2",
+      "en": "No online system is completely secure; we continuously monitor and improve our controls.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_security_3",
+      "en": "If a security incident affects your data, we will notify you and regulators when legally required.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "pp_security_title",
+      "en": "Security",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "profile_member_since",
+      "en": "Member since",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "profile_referral",
+      "en": "Invite a friend — earn points",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "profile_reviews_count",
+      "en": "Reviews",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "profile_reviews_count %lld",
+      "en": "%#@count@",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "profile_verified_percent",
+      "en": "Verified",
+      "context": [
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "profile_verified_percent %lld",
+      "en": "%lld%% Verified",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "providers_label",
+      "en": "Providers",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "providers_title",
+      "en": "Providers",
+      "context": [
+        "TrustCare/UI/Components/TCEmptyState.swift",
+        "TrustCare/ViewModels/HomeViewModel.swift",
+        "TrustCare/Views/Home/HomeView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "recents",
+      "en": "Recents",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_call_112",
+      "en": "Call 112",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_call_emergency",
+      "en": "Call Emergency Services",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_consent_text",
+      "en": "I understand: These suggestions are for guidance only, not diagnosis",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_cooldown",
+      "en": "Please wait %d seconds to send again.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_daily_limit_reached",
+      "en": "Daily free limit reached (5/5). Try again tomorrow.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_delete",
+      "en": "Delete",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_delete_conversation_message",
+      "en": "This will permanently delete this conversation and all its messages.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_delete_conversation_title",
+      "en": "Delete Conversation?",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_disclaimer",
+      "en": "This is not medical advice. Always consult a healthcare professional.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_emergency_danger",
+      "en": "If you or someone else is in danger, call immediately.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_emergency_detected",
+      "en": "🚨 A potential emergency risk was detected. Please call 112 immediately.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_emergency_subtitle",
+      "en": "Please call 112 immediately",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_emergency_title",
+      "en": "🚨 EMERGENCY",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_empty_state",
+      "en": "Share your symptoms, I'll guide you to the right specialty.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_empty_state_sub",
+      "en": "No diagnosis or treatment is provided; guidance only.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_empty_subtitle",
+      "en": "Start one to get health guidance.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "rehber_empty_title",
+      "en": "No conversations yet",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "rehber_feature_1",
+      "en": "Recommends the right specialty based on your symptoms",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_feature_2",
+      "en": "Finds healthcare providers near you",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_feature_3",
+      "en": "Directs you to 112 in emergencies",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_find_provider",
+      "en": "Find Provider →",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_info_bar",
+      "en": "TrustCare Rehber — Health Information Service",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_input_placeholder",
+      "en": "Describe your symptoms...",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_load_conversation_error",
+      "en": "Unable to load conversation.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_login_required",
+      "en": "Please sign in to use Rehber.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_nearest_emergency",
+      "en": "Nearest Emergency Room",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_new_conversation",
+      "en": "New Conversation",
+      "context": [
+        "TrustCare/Models/RehberSession.swift",
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_new_short",
+      "en": "New",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_no_conversations",
+      "en": "No conversations yet",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_no_response",
+      "en": "Rehber could not respond. Please try again.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_onboarding_subtitle",
+      "en": "Health Information Service",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_onboarding_warning",
+      "en": "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_plus_banner_body",
+      "en": "This feature will become a subscription. It’s currently available to everyone for testing.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberPlusBannerCard.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_plus_banner_title",
+      "en": "Plus — free during launch",
+      "context": [
+        "TrustCare/Views/Rehber/RehberPlusBannerCard.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_plus_trial",
+      "en": "TrustCare Plus feature — Free trial: 5 questions per day",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_recent_sessions",
+      "en": "Recent Sessions",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_response_failed",
+      "en": "Response could not be generated. Please try again.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_response_unavailable",
+      "en": "Response unavailable.",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_sessions",
+      "en": "Sessions",
+      "context": [
+        "TrustCare/ViewModels/RehberViewModel.swift",
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_start",
+      "en": "Start",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift",
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift",
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_start_guidance",
+      "en": "Start one to get health guidance.",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift",
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_subtitle",
+      "en": "Your AI health guide",
+      "context": [
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_title",
+      "en": "TrustCare Rehber",
+      "context": [
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift",
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_try_again",
+      "en": "Try Again",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "rehber_usage_counter",
+      "en": "Usage count:",
+      "context": [
+        "TrustCare/Views/Rehber/RehberChatView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_additional_details",
+      "en": "Additional details (optional)",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_button",
+      "en": "Report",
+      "context": [
+        "TrustCare/Views/Components/ReviewItemView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_footer",
+      "en": "Please provide any additional context that might help us review this report.",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_header",
+      "en": "Why are you reporting this review?",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_optional_details",
+      "en": "Optional details",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_reason",
+      "en": "Reason",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_reported",
+      "en": "Reported",
+      "context": [
+        "TrustCare/Views/Components/ReviewItemView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_thank_you",
+      "en": "Thank you. We'll review this report.",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "report_title",
+      "en": "Report Review",
+      "context": [
+        "TrustCare/Views/Review/ReportReviewSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_add_photo",
+      "en": "Add Photo",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_another",
+      "en": "Review Another Provider",
+      "context": [
+        "TrustCare/Views/Review/ReviewConfirmationView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_button_back",
+      "en": "Back",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_button_next",
+      "en": "Next",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_cant_find_add",
+      "en": "Can't find it? Add new",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_change_provider",
+      "en": "Change",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_char_count %lld",
+      "en": "%lld/500 characters",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_comment",
+      "en": "Your Review",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift",
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_comment_placeholder",
+      "en": "Share your experience...",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_bedside_manner",
+      "en": "Bedside Manner",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_bedside_manner_question",
+      "en": "Did the doctor listen and explain clearly?",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_clinic_hygiene_question",
+      "en": "Was the clinic clean and hygienic?",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness_question",
+      "en": "Did the treatment resolve your issue?",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_waiting_time",
+      "en": "Waiting Time",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_criterion_waiting_time_question",
+      "en": "How long did you wait after your appointment time?",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_detailed",
+      "en": "Detailed Rating",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_editable_24h",
+      "en": "Editable within 24h",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_go_home",
+      "en": "Go to Home",
+      "context": [
+        "TrustCare/Views/Review/ReviewConfirmationView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_helpful_count_%lld",
+      "en": "%lld helpful",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "review_overall",
+      "en": "Overall Rating",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_overall_question",
+      "en": "How was your overall experience?",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_photos_public",
+      "en": "Photos will be visible to everyone.",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_proof_private",
+      "en": "This will not be shown publicly.",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_select_provider_to_continue",
+      "en": "Select a provider to continue",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_skip_verification",
+      "en": "Skip verification",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_choose_provider",
+      "en": "Choose provider",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_detailed_ratings",
+      "en": "Detailed ratings",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_format",
+      "en": "Step %1$lld of %2$lld",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_media_submit",
+      "en": "Media and submit",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_overall_rating",
+      "en": "Overall rating",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_visit_details",
+      "en": "Visit details",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_step_write_review",
+      "en": "Write review",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_submit",
+      "en": "Submit Review",
+      "context": [
+        "TrustCare/Views/Home/ClaimProviderView.swift",
+        "TrustCare/Views/Review/ReviewConfirmationView.swift",
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_submitted_message",
+      "en": "Your review has been submitted and will appear once processed.",
+      "context": [
+        "TrustCare/Views/Review/ReviewConfirmationView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_submitted_title",
+      "en": "Thank You!",
+      "context": [
+        "TrustCare/Views/Review/ReviewConfirmationView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_upload_proof",
+      "en": "Upload proof of visit",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_verification_pending",
+      "en": "Verification Pending",
+      "context": [
+        "TrustCare/Views/Review/ReviewConfirmationView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_verify",
+      "en": "Verify Your Visit",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_verify_hint",
+      "en": "Help us maintain trust by verifying your visit.",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_view_provider",
+      "en": "View provider",
+      "context": [
+        "TrustCare/Views/Review/ReviewConfirmationView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_visit_date",
+      "en": "Visit Date",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_visit_details",
+      "en": "Visit Details",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_visit_type",
+      "en": "Visit Type",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "review_who",
+      "en": "Who are you reviewing?",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "reviews_count",
+      "en": "reviews",
+      "context": [
+        "TrustCare/Views/Home/ProviderDetailView.swift",
+        "TrustCare/Views/Profile/ProfileView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "reviews_empty_title",
+      "en": "No reviews yet",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "saved_empty_action",
+      "en": "Discover Providers",
+      "context": [
+        "TrustCare/Views/Profile/SavedProvidersView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "saved_empty_message",
+      "en": "Save providers to access them quickly later.",
+      "context": [
+        "TrustCare/Views/Profile/SavedProvidersView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "saved_empty_title",
+      "en": "No saved providers yet",
+      "context": [
+        "TrustCare/Views/Profile/SavedProvidersView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "search_facilities",
+      "en": "Search facilities",
+      "context": [
+        "TrustCare/Models/TaxonomyEntityType.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "search_languages",
+      "en": "Search languages",
+      "context": [
+        "TrustCare/Views/Profile/LanguageSettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "search_placeholder",
+      "en": "Search doctor, clinic...",
+      "context": [
+        "TrustCare/Views/Components/SearchBarView.swift",
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift",
+        "TrustCare/Views/Home/HomeView.swift",
+        "TrustCare/Views/Home/LocationSearchSheet.swift",
+        "TrustCare/Views/Home/LocationSelectorView.swift",
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "search_specialties",
+      "en": "Search specialties",
+      "context": [
+        "TrustCare/Models/TaxonomyEntityType.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "search_this_area",
+      "en": "Search this area",
+      "context": [
+        "TrustCare/Views/Home/ProviderMapView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "search_treatments",
+      "en": "Search treatments",
+      "context": [
+        "TrustCare/Models/TaxonomyEntityType.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_account",
+      "en": "Account",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_cancel",
+      "en": "Cancel",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift",
+        "TrustCare/Views/Rehber/RehberSessionListView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_change_password",
+      "en": "Change Password",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_data_privacy",
+      "en": "Data & Privacy",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_delete_account",
+      "en": "Delete Account",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_delete_account_confirm",
+      "en": "Delete My Account",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_delete_account_warning",
+      "en": "This action cannot be undone",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_download_data",
+      "en": "Download My Data",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_downloading_data",
+      "en": "Preparing data...",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_email",
+      "en": "Email",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_location_services",
+      "en": "Location Services",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_notifications",
+      "en": "Notifications",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_phone",
+      "en": "Phone",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "settings_preferences",
+      "en": "Preferences",
+      "context": [
+        "TrustCare/Views/Profile/SettingsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "show_all",
+      "en": "Show All",
+      "context": [
+        "TrustCare/Views/Home/MapLegendView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "showing_english_results",
+      "en": "Showing English results",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "specialties_label",
+      "en": "Specialties",
+      "context": [
+        "TrustCare/Views/Home/DiscoverSearchSurfaceView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "specialties_title",
+      "en": "Specialties",
+      "context": [
+        "TrustCare/Views/Home/SpecialtyBrowserSheet.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "specialty_label",
+      "en": "Specialty",
+      "context": [
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "splash_tagline",
+      "en": "Healthcare, Verified.",
+      "context": [
+        "TrustCare/Views/Onboarding/SplashView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "status_pending",
+      "en": "Pending",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "status_unverified",
+      "en": "Unverified",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "status_verified",
+      "en": "Verified",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "sub_acne",
+      "en": "Acne",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_acute_illness_treatment",
+      "en": "Acute Illness Treatment",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_anxiety",
+      "en": "Anxiety",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_arrhythmia",
+      "en": "Arrhythmia",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_arthritis",
+      "en": "Arthritis",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_asthma",
+      "en": "Asthma",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_bipolar_disorder",
+      "en": "Bipolar Disorder",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_cataracts",
+      "en": "Cataracts",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_chemotherapy",
+      "en": "Chemotherapy",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_child_development",
+      "en": "Child Development",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_childhood_illness",
+      "en": "Childhood Illness",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_chronic_disease_management",
+      "en": "Chronic Disease Management",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_chronic_kidney_disease",
+      "en": "Chronic Kidney Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_copd",
+      "en": "COPD",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_coronary_artery_disease",
+      "en": "Coronary Artery Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_dementia",
+      "en": "Dementia",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_depression",
+      "en": "Depression",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_diabetes",
+      "en": "Diabetes",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_dialysis",
+      "en": "Dialysis",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_eczema",
+      "en": "Eczema",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_endoscopy",
+      "en": "Endoscopy",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_erectile_dysfunction",
+      "en": "Erectile Dysfunction",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_fracture_treatment",
+      "en": "Fracture Treatment",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_general_consultation",
+      "en": "General Consultation",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_glaucoma",
+      "en": "Glaucoma",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_headache",
+      "en": "Headache",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_hearing_loss",
+      "en": "Hearing Loss",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_heart_failure",
+      "en": "Heart Failure",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_hormone_replacement",
+      "en": "Hormone Replacement",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_hypertension",
+      "en": "Hypertension",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_hypertension_mgmt",
+      "en": "Hypertension Management",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_incontinence",
+      "en": "Incontinence",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_infant_care",
+      "en": "Infant Care",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_inflammatory_bowel_disease",
+      "en": "Inflammatory Bowel Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_interstitial_lung_disease",
+      "en": "Interstitial Lung Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_joint_replacement",
+      "en": "Joint Replacement",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_kidney_stones",
+      "en": "Kidney Stones",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_kidney_transplant",
+      "en": "Kidney Transplant",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_liver_disease",
+      "en": "Liver Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_lupus",
+      "en": "Lupus",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_movement_disorders",
+      "en": "Movement Disorders",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_pain_management",
+      "en": "Pain Management",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_palliative_care",
+      "en": "Palliative Care",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_peptic_ulcer",
+      "en": "Peptic Ulcer",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_post_operative_care",
+      "en": "Post-operative Care",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_pre_operative_assessment",
+      "en": "Pre-operative Assessment",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_preventive_care",
+      "en": "Preventive Care",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_prostate_disease",
+      "en": "Prostate Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_psoriasis",
+      "en": "Psoriasis",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_radiation_therapy",
+      "en": "Radiation Therapy",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_refractive_error",
+      "en": "Refractive Error",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_retinal_disease",
+      "en": "Retinal Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_schizophrenia",
+      "en": "Schizophrenia",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_sinusitis",
+      "en": "Sinusitis",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_skin_cancer_screening",
+      "en": "Skin Cancer Screening",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_sleep_apnea",
+      "en": "Sleep Apnea",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_sleep_disorders",
+      "en": "Sleep Disorders",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_spine_surgery",
+      "en": "Spine Surgery",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_sports_medicine",
+      "en": "Sports Medicine",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_stroke",
+      "en": "Stroke",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_surgical_oncology",
+      "en": "Surgical Oncology",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_thyroid_disease",
+      "en": "Thyroid Disease",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_vaccination",
+      "en": "Vaccination",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "sub_vasculitis",
+      "en": "Vasculitis",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "survey_accuracy",
+      "en": "Accuracy & Care",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_accuracy_sub",
+      "en": "Was your prescription prepared correctly?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_admin_efficiency",
+      "en": "Administrative Efficiency",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_admin_efficiency_sub",
+      "en": "Were admission and discharge smooth?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_aesthetics",
+      "en": "Aesthetic Clinic",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_aftercare",
+      "en": "Aftercare",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_aftercare_sub",
+      "en": "Were aftercare instructions and follow-up clearly explained?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_bedside_manner",
+      "en": "Bedside Manner",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_bedside_manner_sub",
+      "en": "Did the doctor listen and explain clearly?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_care_quality",
+      "en": "Care Quality",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_care_quality_sub",
+      "en": "How would you rate the medical care?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_clinic_hygiene_sub",
+      "en": "Was the clinic clean and hygienic?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_communication_clarity",
+      "en": "Communication Clarity",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_communication_clarity_sub",
+      "en": "Were treatment plans explained clearly?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_consultation_quality",
+      "en": "Consultation Quality",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_consultation_quality_sub",
+      "en": "Were procedure risks and outcomes explained?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_dental",
+      "en": "Dental",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_dental_bedside_sub",
+      "en": "Did the dentist communicate clearly?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_dental_hygiene_sub",
+      "en": "Were treatment rooms and equipment clean?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_dental_wait_sub",
+      "en": "How quickly were you seated?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_diagnostic",
+      "en": "Diagnostic Center",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_diagnostic_wait_sub",
+      "en": "How quickly were you called for your test?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_empathy",
+      "en": "Empathy & Listening",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_empathy_sub",
+      "en": "Did you feel truly heard?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_environment_comfort",
+      "en": "Environment Comfort",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_environment_comfort_sub",
+      "en": "Was the office peaceful and private?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_facility_equipment",
+      "en": "Facility Equipment",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_facility_equipment_sub",
+      "en": "Was the facility well-equipped?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_facility_hygiene",
+      "en": "Facility Hygiene",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_facility_hygiene_sub",
+      "en": "Was the facility clean and hygienic?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_general_clinic",
+      "en": "General Clinic",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_hospital",
+      "en": "Hospital",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_hospital_wait_sub",
+      "en": "How quickly were you seen by a doctor?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_mental_health",
+      "en": "Mental Health",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_pain_management",
+      "en": "Pain Management",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_pain_management_sub",
+      "en": "How well did they manage pain?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_pharmacist_knowledge",
+      "en": "Pharmacist Knowledge",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_pharmacist_knowledge_sub",
+      "en": "Did the pharmacist answer your questions well?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_pharmacy",
+      "en": "Pharmacy",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_procedure_comfort",
+      "en": "Procedure Comfort",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_procedure_comfort_sub",
+      "en": "Did staff make the procedure comfortable?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_punctuality",
+      "en": "Punctuality",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_punctuality_sub",
+      "en": "Did your session start on time?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_rehab_effectiveness_sub",
+      "en": "Did sessions improve mobility or reduce pain?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_rehab_wait_sub",
+      "en": "How quickly did your session start?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_rehabilitation",
+      "en": "Rehabilitation",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_result_satisfaction",
+      "en": "Result Satisfaction",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_result_satisfaction_sub",
+      "en": "Are you satisfied with the results?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_result_speed",
+      "en": "Result Speed",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_result_speed_sub",
+      "en": "Were results delivered on time?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_room_hygiene",
+      "en": "Room Hygiene",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_room_hygiene_sub",
+      "en": "Were rooms and areas clean?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_speed",
+      "en": "Speed",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_speed_sub",
+      "en": "How quickly were you served?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_staff_courtesy",
+      "en": "Staff Courtesy",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_staff_courtesy_sub",
+      "en": "Was the staff polite?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_therapist_attentiveness",
+      "en": "Therapist Attentiveness",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_therapist_attentiveness_sub",
+      "en": "Did the therapist monitor and adapt?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_treatment_effectiveness_sub",
+      "en": "Did the treatment resolve your issue?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_waiting_time",
+      "en": "Waiting Time",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "survey_waiting_time_sub",
+      "en": "How long did you wait after your appointment time?",
+      "context": [
+        "TrustCare/Core/Services/SurveyConfiguration.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "switch_category_hint",
+      "en": "Try switching category.",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "switch_to_list",
+      "en": "Switch to list view for more results.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tab_badge_plus",
+      "en": "Plus",
+      "context": [
+        "TrustCare/Views/MainTabView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "tab_discover",
+      "en": "Discover",
+      "context": [
+        "TrustCare/Views/MainTabView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "tab_guide",
+      "en": "Guide",
+      "context": [
+        "TrustCare/Views/MainTabView.swift",
+        "TrustCare/Views/Rehber/RehberChatView.swift",
+        "TrustCare/Views/Rehber/RehberOnboardingView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "tab_profile",
+      "en": "Profile",
+      "context": [
+        "TrustCare/Views/MainTabView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "tab_review",
+      "en": "Review",
+      "context": [
+        "TrustCare/Views/MainTabView.swift",
+        "TrustCare/Views/Review/ReviewHubView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "tagline",
+      "en": "Healthcare, Verified.",
+      "context": [
+        "TrustCare/Views/Onboarding/SplashView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "taxonomy_segment_facilities",
+      "en": "Facilities",
+      "context": [
+        "TrustCare/Models/TaxonomyEntityType.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "taxonomy_segment_specialties",
+      "en": "Specialties",
+      "context": [
+        "TrustCare/Models/TaxonomyEntityType.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "taxonomy_segment_treatments",
+      "en": "Treatments",
+      "context": [
+        "TrustCare/Models/TaxonomyEntityType.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "top_picks",
+      "en": "Top Picks",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "tos_account_1",
+      "en": "You are responsible for maintaining the confidentiality of your credentials and activity under your account.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_account_2",
+      "en": "We may suspend or terminate accounts that violate these terms, applicable law, or platform safety requirements.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_account_title",
+      "en": "Accounts and Access",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_contact_1",
+      "en": "Questions about these Terms can be sent to support@trustcare.app.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_contact_2",
+      "en": "By continuing to use the service, you acknowledge that you have read and agreed to these Terms.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_contact_title",
+      "en": "Contact",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_dispute_1",
+      "en": "These Terms are governed by applicable laws of the jurisdiction where the service operator is established, unless local mandatory law provides otherwise.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_dispute_2",
+      "en": "Before initiating formal proceedings, you agree to contact us in good faith to seek an informal resolution.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_dispute_title",
+      "en": "Disputes and Governing Law",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_ip_1",
+      "en": "All platform content, branding, and software are owned by TrustCare or licensed to us, unless otherwise stated.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_ip_2",
+      "en": "You may not copy, scrape, reverse engineer, or redistribute platform content beyond permitted legal use.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_ip_title",
+      "en": "Intellectual Property",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_rehber_1",
+      "en": "Rehber provides informational guidance only and does not provide medical diagnosis, treatment, or emergency response.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_rehber_2",
+      "en": "In urgent or life-threatening situations, contact local emergency services immediately.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_rehber_3",
+      "en": "You remain responsible for healthcare decisions and should consult qualified medical professionals.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_rehber_title",
+      "en": "Rehber (AI Guidance) Disclaimer",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_review_1",
+      "en": "Reviews must reflect genuine, firsthand experiences and must not include harassment, hate speech, or unlawful content.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_review_2",
+      "en": "By submitting content, you grant TrustCare a license to host, display, and moderate that content for service operation.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_review_3",
+      "en": "We may remove, limit, or flag content that violates policy, legal obligations, or trust and safety standards.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_review_title",
+      "en": "Reviews and Community Content",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_service_1",
+      "en": "TrustCare provides healthcare discovery, review features, and informational guidance tools for general consumer use.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_service_2",
+      "en": "Service availability, features, and access may change over time; we may update or discontinue parts of the service without prior notice.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_service_title",
+      "en": "Service Overview",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_user_1",
+      "en": "You agree to provide accurate information and use the platform lawfully, respectfully, and in good faith.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_user_2",
+      "en": "You must not attempt to abuse the platform, bypass security controls, or interfere with other users.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_user_3",
+      "en": "You are responsible for content you submit and for complying with applicable local laws and regulations.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "tos_user_title",
+      "en": "User Responsibilities",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "try_english_keywords",
+      "en": "Try English keywords or check spelling.",
+      "context": [
+        "TrustCare/Views/Components/TaxonomyPickerView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "try_nearby_city",
+      "en": "Try a nearby city.",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "unauthorized_area",
+      "en": "Unknown area",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "unknown_provider",
+      "en": "Unknown Provider",
+      "context": [
+        "TrustCare/Views/Profile/MyReviewsView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "use_device_location",
+      "en": "Use device location",
+      "context": [
+        "TrustCare/Views/Home/LocationSearchSheet.swift",
+        "TrustCare/Views/Home/LocationSelectorView.swift"
+      ],
+      "note": ""
+    },
+    {
+      "key": "verified_badge",
+      "en": "Verified",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "visit_type_checkup",
+      "en": "Checkup",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "visit_type_emergency",
+      "en": "Emergency",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "visit_type_examination",
+      "en": "Examination",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "visit_type_procedure",
+      "en": "Procedure",
+      "context": [],
+      "note": ""
+    },
+    {
+      "key": "widen_map_area",
+      "en": "Widen the map area and search again.",
+      "context": [],
+      "note": ""
+    }
+  ]
+}
