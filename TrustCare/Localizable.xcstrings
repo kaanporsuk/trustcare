@@ -1621,6 +1621,106 @@
         }
       }
     },
+    "legal_translation_disclaimer" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preklad je poskytnut pro pohodli; anglicka verze je rozhodujici."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oversaettelsen leveres af hensyn til bekvemmelighed; den engelske version gaelder."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Ubersetzung dient nur der Bequemlichkeit; die englische Version ist massgeblich."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translation is provided for convenience; the English version prevails."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La traduccion se ofrece por comodidad; prevalece la version en ingles."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La traduction est fournie pour commodite; la version anglaise prevaut."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A forditas kenyelmi celokat szolgal; az angol valtozat az iranyado."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La traduzione e fornita per comodita; prevale la versione inglese."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De vertaling is alleen voor gemak; de Engelse versie is leidend."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tlumaczenie udostepniono dla wygody; wersja angielska ma pierwszenstwo."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A traducao e fornecida por conveniencia; a versao em ingles prevalece."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traducerea este oferita pentru confort; versiunea in engleza prevaleaza."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perevod predostavlen dlya udobstva; prioritet imeet angliyskaya versiya."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oversattningen tillhandahalls for bekvamlighet; den engelska versionen galler."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ceviri kolaylik icin saglanir; Ingilizce metin esas alinir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pereklad nadano dlya zruchnosti; perevazhae angliyska versiya."
+          }
+        }
+      }
+    },
     "providers_title" : {
       "localizations" : {
         "en" : {
