@@ -7,6 +7,12 @@ These instructions govern the "Living Trust + Dynamic Intelligence" redesign acr
 - Primary app: SwiftUI iOS (iOS 17+).
 - Backend: Supabase Cloud.
 - Redesign covers colors, typography, components, screens, states, and edge-case behavior.
+- These rules apply only to the `TrustCare/` app and its related `supabase/` project in this repository.
+- These rules do not apply to `admin/` or to any other Git or Supabase project.
+
+### Session-start project verification (required)
+
+- At every single session start (maximum daily), verify you are connected to the correct Git and Supabase Cloud projects, and verify you can deploy updates to live.
 
 ### Global constraints (must not be violated)
 
