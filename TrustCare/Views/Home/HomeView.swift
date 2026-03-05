@@ -8,7 +8,7 @@ struct HomeView: View {
     @EnvironmentObject private var localizationManager: LocalizationManager
 
     @State private var showLocationSearch = false
-    @State private var showResultsSheet = true
+    @State private var resultsDetent: ResultsSheetDetent = .medium
     @State private var showSearchOverlay = false
     @State private var selectedProviderID: UUID?
 
@@ -104,34 +104,45 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .top) {
-                ProviderMapView(
-                    viewModel: homeVM,
-                    providers: displayedProviders,
-                    selectedProviderID: $selectedProviderID,
-                    onOpenProvider: { provider in
-                        selectedProviderID = provider.id
+            GeometryReader { proxy in
+                ZStack(alignment: .top) {
+                    ProviderMapView(
+                        viewModel: homeVM,
+                        providers: displayedProviders,
+                        selectedProviderID: $selectedProviderID,
+                        allowsMapInteraction: resultsDetent != .large,
+                        onOpenProvider: { provider in
+                            selectedProviderID = provider.id
+                        }
+                    )
+
+                    VStack(spacing: AppSpacing.sm) {
+                        headerBar
+                            .padding(.horizontal, AppSpacing.md)
+                            .padding(.top, AppSpacing.sm)
+
+                        if homeVM.providers.isEmpty && !homeVM.isLoading {
+                            mapEmptyStateCard
+                                .padding(.horizontal, AppSpacing.lg)
+                        }
                     }
-                )
+                    .zIndex(3)
 
-                VStack(spacing: AppSpacing.sm) {
-                    headerBar
-                        .padding(.horizontal, AppSpacing.md)
-                        .padding(.top, AppSpacing.sm)
-
-                    if homeVM.providers.isEmpty && !homeVM.isLoading {
-                        mapEmptyStateCard
-                            .padding(.horizontal, AppSpacing.lg)
+                    if showSearchOverlay {
+                        searchOverlay
+                            .padding(.top, 84)
+                            .padding(.horizontal, AppSpacing.md)
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                            .zIndex(4)
                     }
                 }
-                .zIndex(3)
-
-                if showSearchOverlay {
-                    searchOverlay
-                        .padding(.top, 84)
-                        .padding(.horizontal, AppSpacing.md)
-                        .transition(.opacity.combined(with: .move(edge: .top)))
-                        .zIndex(4)
+                .safeAreaInset(edge: .bottom, spacing: 0) {
+                    ResultsBottomSheet(
+                        detent: $resultsDetent,
+                        availableHeight: proxy.size.height
+                    ) {
+                        mapResultsSheet
+                    }
                 }
             }
             .navigationBarHidden(true)
@@ -150,9 +161,6 @@ struct HomeView: View {
                 await homeVM.onAppear()
                 loadRecentSearches()
                 selectedDistanceKm = homeVM.selectedRadiusKm
-                if showResultsSheet == false {
-                    showResultsSheet = true
-                }
             }
             .onDisappear {
                 appRouter.unregisterHomeViewModel(homeVM)
@@ -162,13 +170,6 @@ struct HomeView: View {
                    !newProviders.contains(where: { $0.id == selectedProviderID }) {
                     self.selectedProviderID = nil
                 }
-            }
-            .sheet(isPresented: $showResultsSheet) {
-                mapResultsSheet
-                    .presentationDetents([.fraction(0.15), .medium, .large])
-                    .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-                    .interactiveDismissDisabled()
-                    .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $showLocationSearch) {
                 LocationSelectorView(
@@ -796,6 +797,82 @@ struct HomeView: View {
         }
         recentSearches = updated
         UserDefaults.standard.set(updated, forKey: recentSearchesKey)
+    }
+}
+
+private enum ResultsSheetDetent: CGFloat, CaseIterable {
+    case peek = 0.15
+    case medium = 0.5
+    case large = 0.9
+}
+
+private struct ResultsBottomSheet<Content: View>: View {
+    @Binding var detent: ResultsSheetDetent
+    let availableHeight: CGFloat
+    @ViewBuilder let content: () -> Content
+
+    @GestureState private var dragOffset: CGFloat = 0
+
+    private var allDetents: [ResultsSheetDetent] {
+        ResultsSheetDetent.allCases
+    }
+
+    private var minHeight: CGFloat {
+        availableHeight * ResultsSheetDetent.peek.rawValue
+    }
+
+    private var maxHeight: CGFloat {
+        availableHeight * ResultsSheetDetent.large.rawValue
+    }
+
+    private var liveHeight: CGFloat {
+        let base = availableHeight * detent.rawValue
+        return clamp(base - dragOffset)
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Capsule()
+                .fill(Color.tcBorder)
+                .frame(width: 44, height: 5)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
+
+            content()
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: liveHeight, alignment: .top)
+        .background(Color.tcBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .overlay(alignment: .top) {
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(Color.tcBorder, lineWidth: 1)
+        }
+        .shadow(color: Color.black.opacity(0.08), radius: 12, y: -2)
+        .gesture(dragGesture)
+        .animation(.spring(response: 0.28, dampingFraction: 0.88), value: detent)
+    }
+
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 8)
+            .updating($dragOffset) { value, state, _ in
+                state = value.translation.height
+            }
+            .onEnded { value in
+                let base = availableHeight * detent.rawValue
+                let projectedHeight = clamp(base - value.predictedEndTranslation.height)
+                let target = allDetents.min {
+                    abs((availableHeight * $0.rawValue) - projectedHeight)
+                        < abs((availableHeight * $1.rawValue) - projectedHeight)
+                } ?? detent
+                withAnimation(.spring(response: 0.28, dampingFraction: 0.88)) {
+                    detent = target
+                }
+            }
+    }
+
+    private func clamp(_ value: CGFloat) -> CGFloat {
+        min(max(value, minHeight), maxHeight)
     }
 }
 

@@ -5,6 +5,7 @@ struct ProviderMapView: View {
     @ObservedObject var viewModel: HomeViewModel
     let providers: [Provider]
     @Binding var selectedProviderID: UUID?
+    var allowsMapInteraction: Bool = true
     @EnvironmentObject var localizationManager: LocalizationManager
     let onOpenProvider: (Provider) -> Void
 
@@ -48,6 +49,7 @@ struct ProviderMapView: View {
                         }
                     }
                 }
+                .allowsHitTesting(allowsMapInteraction)
                 .mapControls {
                     MapUserLocationButton()
                     MapCompass()
