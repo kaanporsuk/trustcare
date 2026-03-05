@@ -15469,6 +15469,38 @@
         }
       }
     },
+    "rehber_plus_banner_body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This feature will become a subscription. It’s currently available to everyone for testing."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu özellik aboneliğe dönüşecek. Şu anda test için herkesin kullanımına açıktır."
+          }
+        }
+      }
+    },
+    "rehber_plus_banner_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus — free during launch"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus — lansman döneminde ücretsiz"
+          }
+        }
+      }
+    },
     "rehber_plus_trial" : {
       "localizations" : {
         "da" : {
