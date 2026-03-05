@@ -49,6 +49,9 @@
     "%lld" : {
 
     },
+    "%lld filters" : {
+
+    },
     "%lld min" : {
 
     },
@@ -81,6 +84,9 @@
         }
       }
     },
+    "%lld%% verified" : {
+
+    },
     "•" : {
 
     },
@@ -88,6 +94,18 @@
 
     },
     "$" : {
+
+    },
+    "5 km" : {
+
+    },
+    "10 km" : {
+
+    },
+    "25 km" : {
+
+    },
+    "50 km" : {
 
     },
     "112" : {
@@ -241,6 +259,7 @@
       }
     },
     "action_retry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -341,6 +360,7 @@
       }
     },
     "action_switch_to_list" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -441,6 +461,7 @@
       }
     },
     "action_switch_to_map" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -547,6 +568,9 @@
 
     },
     "Add Photos or Video" : {
+
+    },
+    "Add photos, services, prices, and availability" : {
 
     },
     "Add Video" : {
@@ -1426,6 +1450,9 @@
     "Approved" : {
 
     },
+    "Approximate location" : {
+
+    },
     "Avatar processing failed. Please use a different photo under 5 MB." : {
 
     },
@@ -1433,6 +1460,12 @@
 
     },
     "Basic" : {
+
+    },
+    "Be the first to review" : {
+
+    },
+    "Browse by city" : {
 
     },
     "button_add" : {
@@ -4786,6 +4819,7 @@
       }
     },
     "claim_description" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -4866,6 +4900,7 @@
       }
     },
     "claim_pending" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -4906,6 +4941,7 @@
       }
     },
     "claim_pending_message" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -4946,6 +4982,7 @@
       }
     },
     "claim_profile" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -5026,6 +5063,7 @@
       }
     },
     "claim_rejected" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -5066,6 +5104,7 @@
       }
     },
     "claim_resubmit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -5631,6 +5670,9 @@
     "Clear" : {
 
     },
+    "Clear one or more filters, or move the map to expand results." : {
+
+    },
     "Clear search" : {
 
     },
@@ -6049,6 +6091,9 @@
         }
       }
     },
+    "Distance" : {
+
+    },
     "Don't have an account? Sign Up" : {
 
     },
@@ -6390,6 +6435,7 @@
       }
     },
     "empty_home_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -6430,6 +6476,7 @@
       }
     },
     "empty_search" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -7597,7 +7644,13 @@
     "Get Started" : {
 
     },
+    "Help other patients by sharing the first trusted experience for this provider." : {
+
+    },
     "Help others see what to expect" : {
+
+    },
+    "Help patients choose you with a complete profile" : {
 
     },
     "help_contact" : {
@@ -8309,7 +8362,11 @@
     "Invalid email or password." : {
 
     },
+    "Is this your practice?" : {
+
+    },
     "is_this_your_practice" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -8348,6 +8405,9 @@
           }
         }
       }
+    },
+    "Language" : {
+
     },
     "language_changed_alert" : {
       "extractionState" : "stale",
@@ -9751,6 +9811,9 @@
         }
       }
     },
+    "Location: %@" : {
+
+    },
     "Log In" : {
 
     },
@@ -11111,6 +11174,9 @@
     "Network error. Please check your connection." : {
 
     },
+    "New on TrustCare" : {
+
+    },
     "New Password" : {
 
     },
@@ -11120,7 +11186,16 @@
     "next" : {
 
     },
+    "Next" : {
+
+    },
     "No locations found. Try a different search." : {
+
+    },
+    "No providers visible in this map area" : {
+
+    },
+    "No results match these filters" : {
 
     },
     "No reviews yet" : {
@@ -11188,6 +11263,9 @@
       }
     },
     "No services yet" : {
+
+    },
+    "No verified providers match this area yet." : {
 
     },
     "no_results" : {
@@ -11296,6 +11374,9 @@
     "OK" : {
 
     },
+    "Open in Maps" : {
+
+    },
     "OR" : {
 
     },
@@ -11365,6 +11446,9 @@
           }
         }
       }
+    },
+    "Pending verification" : {
+
     },
     "Pending Verification" : {
 
@@ -11470,6 +11554,9 @@
 
     },
     "Popular Cities" : {
+
+    },
+    "Popular near you" : {
 
     },
     "pp_contact_1" : {
@@ -13733,7 +13820,11 @@
     "Provider unavailable" : {
 
     },
+    "Providers" : {
+
+    },
     "providers_label" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -13773,6 +13864,9 @@
         }
       }
     },
+    "Rating filter is disabled at launch." : {
+
+    },
     "Ratings Breakdown" : {
 
     },
@@ -13780,6 +13874,9 @@
 
     },
     "Recent Locations" : {
+
+    },
+    "Recent searches" : {
 
     },
     "recents" : {
@@ -15470,6 +15567,7 @@
       }
     },
     "rehber_plus_banner_body" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -15486,6 +15584,7 @@
       }
     },
     "rehber_plus_banner_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -16433,6 +16532,9 @@
           }
         }
       }
+    },
+    "Reset" : {
+
     },
     "Review" : {
       "localizations" : {
@@ -19317,6 +19419,9 @@
         }
       }
     },
+    "Search another area" : {
+
+    },
     "Search city or region..." : {
 
     },
@@ -21116,6 +21221,9 @@
     "Show less" : {
 
     },
+    "Show only providers with verified reviews" : {
+
+    },
     "show_all" : {
       "localizations" : {
         "cs" : {
@@ -21867,6 +21975,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Підтверджений"
+          }
+        }
+      }
+    },
+    "Step %lld of %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step %1$lld of %2$lld"
           }
         }
       }
@@ -24496,6 +24614,9 @@
       }
     },
     "Success" : {
+
+    },
+    "Suggest a provider" : {
 
     },
     "support@trustcare.app" : {
@@ -27968,6 +28089,7 @@
       }
     },
     "switch_to_list" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -30249,6 +30371,12 @@
         }
       }
     },
+    "TrustCare is growing here" : {
+
+    },
+    "Try another area or pick a different city to continue." : {
+
+    },
     "try_english_keywords" : {
       "localizations" : {
         "cs" : {
@@ -30350,6 +30478,7 @@
       }
     },
     "try_nearby_city" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -30654,6 +30783,7 @@
       }
     },
     "verified_badge" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -30766,6 +30896,9 @@
 
     },
     "View image" : {
+
+    },
+    "View provider" : {
 
     },
     "visit_type_checkup" : {
@@ -31172,10 +31305,14 @@
         }
       }
     },
+    "We are onboarding providers in this region. Try a nearby city in the meantime." : {
+
+    },
     "Welcome Back" : {
 
     },
     "widen_map_area" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -31274,6 +31411,9 @@
           }
         }
       }
+    },
+    "Write the first review" : {
+
     },
     "You can upload up to 5 photos." : {
 
