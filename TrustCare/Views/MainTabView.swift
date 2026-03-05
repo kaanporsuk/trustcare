@@ -35,7 +35,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
-                Text("tab_discover")
+                Text(tcKey: "tab_discover", fallback: "Discover")
             }
             .tag(0)
 
@@ -44,7 +44,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "bubble.left.and.text.bubble.right")
-                Text("tab_guide")
+                Text(tcKey: "tab_guide", fallback: "Guide")
             }
             .tag(1)
             .badge(tcString("tab_badge_plus", fallback: "PLUS"))
@@ -54,7 +54,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Image(systemName: "plus.circle.fill")
-                Text("tab_review")
+                Text(tcKey: "tab_review", fallback: "Review")
             }
             .tag(2)
             .badge(showReviewNudge ? "" : nil)
@@ -65,7 +65,7 @@ struct MainTabView: View {
             .environmentObject(profileVM)
             .tabItem {
                 Image(systemName: "person.circle")
-                Text("tab_profile")
+                Text(tcKey: "tab_profile", fallback: "Profile")
             }
             .tag(3)
             .badge(profileVM.unreadNotificationCount)
@@ -98,11 +98,11 @@ struct MainTabView: View {
         .onReceive(NotificationCenter.default.publisher(for: .trustCareReviewNudgeUpdated)) { _ in
             showReviewNudge = ReviewSubmissionViewModel.shouldShowFirstReviewNudge
         }
-        .alert("Error", isPresented: Binding(
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button("OK") { profileVM.errorMessage = nil }
+            Button(tcString("button_ok", fallback: "OK")) { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }

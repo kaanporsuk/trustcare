@@ -18487,6 +18487,22 @@
         }
       }
     },
+    "review_view_provider" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View provider"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sağlayıcıyı görüntüle"
+          }
+        }
+      }
+    },
     "review_helpful_count_%lld" : {
       "localizations" : {
         "da" : {

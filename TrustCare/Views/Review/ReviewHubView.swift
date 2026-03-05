@@ -270,13 +270,13 @@ struct ReviewHubView: View {
     private var visitDetailsSection: some View {
         let lang = localizationManager.effectiveLanguage
         return VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_visit_details")
+            Text(tcKey: "review_visit_details", fallback: "Visit details")
                 .font(AppFont.title3)
 
-            DatePicker("review_visit_date", selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
+            DatePicker(tcString("review_visit_date", fallback: "Visit date"), selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
                 .datePickerStyle(.compact)
 
-            Picker("review_visit_type", selection: $viewModel.visitType) {
+            Picker(tcString("review_visit_type", fallback: "Visit type"), selection: $viewModel.visitType) {
                 ForEach(ReviewVisitType.all) { type in
                     Text(type.label(for: lang)).tag(type.id)
                 }
@@ -287,9 +287,9 @@ struct ReviewHubView: View {
 
     private var overallRatingSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_overall")
+            Text(tcKey: "review_overall", fallback: "Overall")
                 .font(AppFont.title3)
-            Text("review_overall_question")
+            Text(tcKey: "review_overall_question", fallback: "How was your overall experience?")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
@@ -299,7 +299,7 @@ struct ReviewHubView: View {
 
     private var detailedRatingsSection: some View {
         return VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_detailed")
+            Text(tcKey: "review_detailed", fallback: "Detailed ratings")
                 .font(AppFont.title3)
 
             ForEach(RatingCriterion.all) { criterion in
@@ -329,7 +329,7 @@ struct ReviewHubView: View {
 
     private var writtenReviewSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_comment")
+            Text(tcKey: "review_comment", fallback: "Write review")
                 .font(AppFont.title3)
 
             ZStack(alignment: .topLeading) {
@@ -344,7 +344,7 @@ struct ReviewHubView: View {
                     )
 
                 if viewModel.comment.isEmpty {
-                    Text("review_comment_placeholder")
+                    Text(tcKey: "review_comment_placeholder", fallback: "Share your experience in detail")
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                         .padding(.top, 16)
@@ -352,7 +352,7 @@ struct ReviewHubView: View {
                 }
             }
 
-            Text("review_char_count \(viewModel.commentCharCount)")
+            Text(String(format: tcString("review_char_count %lld", fallback: "%lld characters"), viewModel.commentCharCount))
                 .font(AppFont.caption)
                 .foregroundStyle(viewModel.commentCharCount >= 50 ? Color.tcSage : Color.tcCoral)
         }
@@ -360,11 +360,11 @@ struct ReviewHubView: View {
 
     private var photosSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_add_photo")
+            Text(tcKey: "review_add_photo", fallback: "Add photo")
                 .font(AppFont.title3)
 
             PhotosPicker(selection: $photoItems, maxSelectionCount: 5, matching: .images) {
-                Label("review_add_photo", systemImage: "photo.on.rectangle")
+                Label(tcString("review_add_photo", fallback: "Add photo"), systemImage: "photo.on.rectangle")
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
@@ -402,7 +402,7 @@ struct ReviewHubView: View {
                 }
             }
 
-            Text("review_photos_public")
+            Text(tcKey: "review_photos_public", fallback: "Photos and videos are visible to everyone.")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -410,9 +410,9 @@ struct ReviewHubView: View {
 
     private var verificationSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_verify")
+            Text(tcKey: "review_verify", fallback: "Verification")
                 .font(AppFont.title3)
-            Text("review_verify_hint")
+            Text(tcKey: "review_verify_hint", fallback: "Upload proof to improve trust.")
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
 
@@ -437,11 +437,11 @@ struct ReviewHubView: View {
                     .clipShape(RoundedRectangle(cornerRadius: AppRadius.standard))
             }
 
-            Text("review_proof_private")
+            Text(tcKey: "review_proof_private", fallback: "Proof stays private and is only used for verification.")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
 
-            Button("review_skip_verification") {
+            Button(tcString("review_skip_verification", fallback: "Skip verification")) {
                 viewModel.proofImage = nil
             }
             .font(AppFont.caption)
@@ -486,7 +486,7 @@ struct ReviewHubView: View {
                             ProgressView()
                                 .tint(.white)
                         }
-                        Text("review_submit")
+                        Text(tcKey: "review_submit", fallback: "Submit review")
                             .font(AppFont.headline)
                     }
                     .frame(maxWidth: .infinity)

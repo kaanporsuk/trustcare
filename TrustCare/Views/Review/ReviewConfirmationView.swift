@@ -27,14 +27,14 @@ struct ReviewConfirmationView: View {
             .animation(.spring(response: 0.6, dampingFraction: 0.6), value: animateCheck)
 
             VStack(spacing: AppSpacing.sm) {
-                Text("review_submitted_title")
+                Text(tcKey: "review_submitted_title", fallback: "Review submitted")
                     .font(AppFont.title2)
                     .foregroundStyle(Color.tcOcean)
 
                 if hasProof {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: "clock.badge.exclamationmark")
-                        Text("review_verification_pending")
+                        Text(tcKey: "review_verification_pending", fallback: "Verification pending")
                             .font(AppFont.body.weight(.semibold))
                     }
                     .foregroundStyle(Color.orange)
@@ -59,7 +59,7 @@ struct ReviewConfirmationView: View {
                             .allowsHitTesting(false)
                     }
                 } else {
-                    Text("review_submitted_message")
+                    Text(tcKey: "review_submitted_message", fallback: "Thank you for helping build trusted care.")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -72,7 +72,7 @@ struct ReviewConfirmationView: View {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     onViewProvider()
                 } label: {
-                    Text("View provider")
+                    Text(tcKey: "review_view_provider", fallback: "View provider")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(.white)
@@ -84,7 +84,7 @@ struct ReviewConfirmationView: View {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     onAnotherReview()
                 } label: {
-                    Text("review_another")
+                    Text(tcKey: "review_another", fallback: "Write another review")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(.white)
@@ -96,7 +96,7 @@ struct ReviewConfirmationView: View {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     onGoHome()
                 } label: {
-                    Text("review_go_home")
+                    Text(tcKey: "review_go_home", fallback: "Go home")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(Color.tcOcean)

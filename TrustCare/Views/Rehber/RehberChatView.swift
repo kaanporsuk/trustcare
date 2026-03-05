@@ -100,7 +100,7 @@ struct RehberChatView: View {
                     inputBar
                 }
                 .background(Color.tcBackground)
-                .navigationTitle("tab_guide")
+                .navigationTitle(Text(tcKey: "tab_guide", fallback: "Guide"))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -112,13 +112,13 @@ struct RehberChatView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "chevron.left")
-                                Text("rehber_sessions")
+                                Text(tcKey: "rehber_sessions", fallback: "Sessions")
                             }
                         }
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("rehber_new_short") {
+                        Button(tcString("rehber_new_short", fallback: "New")) {
                             Task {
                                 await viewModel.closeCurrentSession()
                                 viewModel.startNewChat()
