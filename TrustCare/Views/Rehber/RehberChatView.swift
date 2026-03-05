@@ -39,6 +39,7 @@ struct RehberChatView: View {
     @Binding var showChat: Bool
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @EnvironmentObject private var appRouter: AppRouter
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @Environment(\.locale) private var locale
     @State private var inputText: String = ""
     @FocusState private var isInputFocused: Bool
@@ -50,6 +51,9 @@ struct RehberChatView: View {
             ZStack {
                 VStack(spacing: 0) {
                     persistentInfoBar
+                    RehberPlusBannerCard()
+                        .padding(.horizontal, AppSpacing.md)
+                        .padding(.top, AppSpacing.sm)
 
                     ScrollViewReader { proxy in
                         ScrollView {
@@ -533,18 +537,74 @@ struct RehberChatView: View {
     }
 
     private var emptyState: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("rehber_empty_state")
-                .font(AppFont.body)
-                .foregroundStyle(.secondary)
-            Text("rehber_empty_state_sub")
-                .font(AppFont.footnote)
-                .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                Text("rehber_empty_state")
+                    .font(AppFont.body)
+                    .foregroundStyle(.secondary)
+                Text("rehber_empty_state_sub")
+                    .font(AppFont.footnote)
+                    .foregroundStyle(.secondary)
+            }
+
+            if !starterPromptSpecialties.isEmpty {
+                Text("rehber_start_guidance")
+                    .font(AppFont.footnote)
+                    .foregroundStyle(.secondary)
+
+                VStack(spacing: AppSpacing.xs) {
+                    ForEach(starterPromptSpecialties) { specialty in
+                        Button {
+                            Task {
+                                await viewModel.sendMessage(starterPrompt(for: specialty))
+                            }
+                        } label: {
+                            HStack(spacing: AppSpacing.sm) {
+                                Image(systemName: specialty.iconName)
+                                    .foregroundStyle(Color.tcOcean)
+                                Text(specialty.resolvedName(using: localizationManager))
+                                    .font(AppFont.body)
+                                    .foregroundStyle(Color.tcTextPrimary)
+                                Spacer()
+                                Image(systemName: "arrow.up.right")
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundStyle(Color.tcOcean)
+                            }
+                            .padding(.horizontal, AppSpacing.md)
+                            .padding(.vertical, AppSpacing.sm)
+                            .background(Color.tcBackground)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: AppRadius.button)
+                                    .stroke(Color.tcBorder, lineWidth: 1)
+                            )
+                            .cornerRadius(AppRadius.button)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
         }
         .padding(AppSpacing.md)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
+    }
+
+    private var starterPromptSpecialties: [Specialty] {
+        specialtyService.specialties
+            .filter { $0.isPopular }
+            .sorted { $0.displayOrder < $1.displayOrder }
+            .prefix(4)
+            .map { $0 }
+    }
+
+    private func starterPrompt(for specialty: Specialty) -> String {
+        let name = specialty.resolvedName(using: localizationManager)
+        let lang = localizationManager.effectiveLanguage.lowercased()
+        if lang == "tr" {
+            return "\(name) ile ilgili hangi doktora gitmeliyim?"
+        }
+        return "Can you guide me for \(name)?"
     }
 
     private func scrollToBottom(proxy: ScrollViewProxy) {

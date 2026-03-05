@@ -38,6 +38,9 @@ struct RehberSessionListView: View {
                     .background(Color.tcOcean.opacity(0.1))
                     .cornerRadius(AppRadius.card)
                     .padding(.horizontal, AppSpacing.md)
+
+                    RehberPlusBannerCard()
+                        .padding(.horizontal, AppSpacing.md)
                     
                     // New Conversation button
                     Button {

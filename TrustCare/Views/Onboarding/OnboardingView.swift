@@ -23,22 +23,22 @@ struct OnboardingView: View {
                 onboardingPage(
                     icon: "stethoscope",
                     color: Color.tcOcean,
-                    title: "Find Trusted Care",
-                    description: "Discover verified doctors based on real patient experiences",
+                    title: "Find healthcare you can trust.",
+                    description: "Find healthcare you can trust.",
                     tag: 0
                 )
                 onboardingPage(
                     icon: "checkmark.shield.fill",
                     color: Color.tcSage,
-                    title: "Verified Reviews",
-                    description: "AI-verified recommendations you can trust",
+                    title: "Every review builds trust.",
+                    description: "Every review builds trust.",
                     tag: 1
                 )
                 onboardingPage(
-                    icon: "person.3.fill",
+                    icon: "location.fill",
                     color: Color.tcOcean,
-                    title: "Help Others",
-                    description: "Your reviews guide others to better healthcare",
+                    title: "See what's near you.",
+                    description: "See what's near you. TrustCare is growing every day.",
                     tag: 2
                 )
             }
