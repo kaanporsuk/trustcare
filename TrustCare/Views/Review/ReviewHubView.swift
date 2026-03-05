@@ -171,7 +171,7 @@ struct ReviewHubView: View {
 
     private var providerSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(tcKey: "review_who", fallback: "Choose provider")
+            Text(tcKey: "review_who", fallback: "Who are you reviewing?")
                 .font(AppFont.title3)
 
             if let provider = viewModel.selectedProvider {
@@ -511,6 +511,13 @@ struct ReviewHubView: View {
                 .foregroundStyle(.white)
                 .background(canGoNext ? Color.tcOcean : Color.tcBorder)
                 .cornerRadius(AppRadius.button)
+
+                if currentStep == .provider && !canGoNext {
+                    Text(tcKey: "review_select_provider_to_continue", fallback: "Select a provider to continue")
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
         }
         .padding(.horizontal, AppSpacing.lg)

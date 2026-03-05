@@ -17114,6 +17114,12 @@
             "state" : "translated",
             "value" : "Next"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ileri"
+          }
         }
       }
     },
@@ -18871,6 +18877,12 @@
             "state" : "translated",
             "value" : "Choose provider"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saglayici sec"
+          }
         }
       }
     },
@@ -18892,6 +18904,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Step %1$lld of %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adim %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "review_select_provider_to_continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a provider to continue"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam etmek icin bir saglayici secin"
           }
         }
       }
