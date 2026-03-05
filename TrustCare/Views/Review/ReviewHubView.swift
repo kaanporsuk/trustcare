@@ -99,7 +99,7 @@ struct ReviewHubView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                         .foregroundStyle(.white)
-                        .background(AppColor.trustBlue)
+                        .background(Color.tcOcean)
                         .cornerRadius(AppRadius.button)
                     }
                     .buttonStyle(.plain)
@@ -115,11 +115,11 @@ struct ReviewHubView: View {
                 }
                 .padding(.horizontal, AppSpacing.md)
                 .frame(height: 44)
-                .background(AppColor.cardBackground)
+                .background(Color.tcSurface)
                 .cornerRadius(AppRadius.button)
                 .overlay(
                     RoundedRectangle(cornerRadius: AppRadius.button)
-                        .stroke(AppColor.border, lineWidth: 1)
+                        .stroke(Color.tcBorder, lineWidth: 1)
                 )
 
                 if isSearchingProviders {
@@ -160,7 +160,7 @@ struct ReviewHubView: View {
                         }
                     }
                     .padding(AppSpacing.md)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.card)
                 }
 
@@ -168,7 +168,7 @@ struct ReviewHubView: View {
                     showAddProviderSheet = true
                 }
                 .font(AppFont.caption)
-                .foregroundStyle(AppColor.trustBlue)
+                .foregroundStyle(Color.tcOcean)
             }
         }
     }
@@ -212,7 +212,7 @@ struct ReviewHubView: View {
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: criterion.icon)
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                         Text(LocalizedStringKey(criterion.labelKey))
                             .font(.system(size: 17, weight: .semibold))
                     }
@@ -242,11 +242,11 @@ struct ReviewHubView: View {
                 TextEditor(text: $viewModel.comment)
                     .frame(minHeight: 120)
                     .padding(8)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.standard)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.standard)
-                            .stroke(AppColor.border, lineWidth: 1)
+                            .stroke(Color.tcBorder, lineWidth: 1)
                     )
 
                 if viewModel.comment.isEmpty {
@@ -260,7 +260,7 @@ struct ReviewHubView: View {
 
             Text("review_char_count \(viewModel.commentCharCount)")
                 .font(AppFont.caption)
-                .foregroundStyle(viewModel.commentCharCount >= 50 ? AppColor.success : AppColor.error)
+                .foregroundStyle(viewModel.commentCharCount >= 50 ? Color.tcSage : Color.tcCoral)
         }
     }
 
@@ -274,11 +274,11 @@ struct ReviewHubView: View {
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.button)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.border, lineWidth: 1)
+                            .stroke(Color.tcBorder, lineWidth: 1)
                     )
             }
 
@@ -327,11 +327,11 @@ struct ReviewHubView: View {
                     .font(AppFont.body)
                     .padding(.vertical, 8)
                     .padding(.horizontal, AppSpacing.md)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.button)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.border, lineWidth: 1)
+                            .stroke(Color.tcBorder, lineWidth: 1)
                     )
             }
 
@@ -351,7 +351,7 @@ struct ReviewHubView: View {
                 viewModel.proofImage = nil
             }
             .font(AppFont.caption)
-            .foregroundStyle(AppColor.trustBlue)
+            .foregroundStyle(Color.tcOcean)
         }
     }
 
@@ -360,7 +360,7 @@ struct ReviewHubView: View {
             if let error = viewModel.submissionErrorMessage {
                 Text(error)
                     .font(AppFont.caption)
-                    .foregroundStyle(AppColor.error)
+                    .foregroundStyle(Color.tcCoral)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
 
@@ -380,12 +380,12 @@ struct ReviewHubView: View {
             }
             .disabled(!viewModel.canSubmit || viewModel.isSubmitting)
             .foregroundStyle(.white)
-            .background(viewModel.canSubmit ? AppColor.trustBlue : AppColor.border)
+            .background(viewModel.canSubmit ? Color.tcOcean : Color.tcBorder)
             .cornerRadius(AppRadius.button)
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.vertical, AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
     }
 
     private func searchProvidersAndSpecialties() async {
@@ -453,7 +453,7 @@ private struct ProviderMiniCard: View {
             Spacer()
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 

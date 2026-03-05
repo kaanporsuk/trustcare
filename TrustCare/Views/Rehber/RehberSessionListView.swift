@@ -26,7 +26,7 @@ struct RehberSessionListView: View {
                     HStack(spacing: AppSpacing.sm) {
                         Image(systemName: "info.circle.fill")
                             .font(.system(size: 16))
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(Color.tcOcean)
                         
                         Text("rehber_disclaimer")
                             .font(AppFont.footnote)
@@ -35,7 +35,7 @@ struct RehberSessionListView: View {
                     }
                     .padding(AppSpacing.md)
                     .frame(maxWidth: .infinity)
-                    .background(AppColor.trustBlue.opacity(0.1))
+                    .background(Color.tcOcean.opacity(0.1))
                     .cornerRadius(AppRadius.card)
                     .padding(.horizontal, AppSpacing.md)
                     
@@ -49,13 +49,13 @@ struct RehberSessionListView: View {
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
-                            .background(AppColor.trustBlue)
+                            .background(Color.tcOcean)
                             .cornerRadius(AppRadius.button)
                     }
                     .padding(.horizontal, AppSpacing.md)
                 }
                 .padding(.bottom, AppSpacing.lg)
-                .background(AppColor.background)
+                .background(Color.tcBackground)
                 
                 // Recent Sessions section
                 if viewModel.sessions.isEmpty && !viewModel.isLoadingSessions {
@@ -107,7 +107,7 @@ struct RehberSessionListView: View {
                     }
                 }
             }
-            .background(AppColor.background)
+            .background(Color.tcBackground)
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 await viewModel.loadSessions()
@@ -175,7 +175,7 @@ struct RehberSessionListView: View {
             }
             .padding(.horizontal, AppSpacing.md)
             .padding(.vertical, AppSpacing.md)
-            .background(AppColor.cardBackground)
+            .background(Color.tcSurface)
         }
         .buttonStyle(.plain)
         

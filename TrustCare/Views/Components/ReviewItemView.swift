@@ -38,7 +38,7 @@ struct ReviewItemView: View {
                         } else if review.status == .pendingVerification {
                             Text("Pending")
                                 .font(AppFont.footnote)
-                                .foregroundStyle(AppColor.pending)
+                                .foregroundStyle(Color.tcCoral)
                         }
                     }
                 }
@@ -65,7 +65,7 @@ struct ReviewItemView: View {
                 } label: {
                     Text(isExpanded ? "Show less" : "Read more")
                         .font(AppFont.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
                 .buttonStyle(.plain)
             }
@@ -80,10 +80,10 @@ struct ReviewItemView: View {
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: hasVoted ? "hand.thumbsup.fill" : "hand.thumbsup")
-                            .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
+                            .foregroundStyle(hasVoted ? Color.tcOcean : .secondary)
                         Text("review_helpful_count_\(helpfulCount)")
                             .font(AppFont.caption)
-                            .foregroundStyle(hasVoted ? AppColor.trustBlue : .secondary)
+                            .foregroundStyle(hasVoted ? Color.tcOcean : .secondary)
                     }
                 }
                 .buttonStyle(.plain)

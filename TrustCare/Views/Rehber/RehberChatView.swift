@@ -86,7 +86,7 @@ struct RehberChatView: View {
                     if let errorMessage = viewModel.errorMessage {
                         Text(errorMessage)
                             .font(AppFont.footnote)
-                            .foregroundStyle(AppColor.error)
+                            .foregroundStyle(Color.tcCoral)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, AppSpacing.md)
                     }
@@ -95,7 +95,7 @@ struct RehberChatView: View {
 
                     inputBar
                 }
-                .background(AppColor.background)
+                .background(Color.tcBackground)
                 .navigationTitle("tab_guide")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -161,7 +161,7 @@ struct RehberChatView: View {
         }
         .padding(.horizontal, AppSpacing.md)
         .padding(.vertical, AppSpacing.sm)
-        .background(AppColor.trustBlue.opacity(0.08))
+        .background(Color.tcOcean.opacity(0.08))
     }
 
     private var usageCounter: some View {
@@ -184,11 +184,11 @@ struct RehberChatView: View {
                     .focused($isInputFocused)
                     .padding(.horizontal, AppSpacing.md)
                     .padding(.vertical, AppSpacing.sm)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.button)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.border, lineWidth: 1)
+                            .stroke(Color.tcBorder, lineWidth: 1)
                     )
                     .submitLabel(.send)
                     .onSubmit {
@@ -201,7 +201,7 @@ struct RehberChatView: View {
                     Image(systemName: "paperplane.fill")
                         .foregroundStyle(.white)
                         .frame(width: 44, height: 44)
-                        .background(canSubmitMessage ? AppColor.trustBlue : AppColor.border)
+                        .background(canSubmitMessage ? Color.tcOcean : Color.tcBorder)
                         .clipShape(Circle())
                 }
                 .disabled(!canSubmitMessage)
@@ -215,7 +215,7 @@ struct RehberChatView: View {
         .padding(.horizontal, AppSpacing.md)
         .padding(.top, AppSpacing.xs)
         .padding(.bottom, AppSpacing.md)
-        .background(AppColor.background)
+        .background(Color.tcBackground)
     }
 
     private var canSubmitMessage: Bool {
@@ -266,11 +266,11 @@ struct RehberChatView: View {
                         .foregroundStyle(message.role == "user" ? Color.white : Color.primary)
                         .padding(.horizontal, AppSpacing.md)
                         .padding(.vertical, AppSpacing.sm)
-                        .background(message.role == "user" ? AppColor.trustBlue : Color(.systemGray6))
+                        .background(message.role == "user" ? Color.tcOcean : Color(.systemGray6))
                         .cornerRadius(AppRadius.card)
                         .overlay(
                             RoundedRectangle(cornerRadius: AppRadius.card)
-                                .stroke(isEmergencyMessage ? AppColor.error : Color.clear, lineWidth: 2)
+                                .stroke(isEmergencyMessage ? Color.tcCoral : Color.clear, lineWidth: 2)
                         )
                 }
 
@@ -287,7 +287,7 @@ struct RehberChatView: View {
                     viewModel.retryLastFailedMessage()
                 }
                 .font(AppFont.footnote)
-                .foregroundStyle(AppColor.trustBlue)
+                .foregroundStyle(Color.tcOcean)
                 .padding(.leading, AppSpacing.xs)
             }
 
@@ -344,7 +344,7 @@ struct RehberChatView: View {
                     .padding(.horizontal, AppSpacing.md)
                     .padding(.bottom, AppSpacing.sm)
             }
-            .background(AppColor.error)
+            .background(Color.tcCoral)
             .cornerRadius(AppRadius.card)
         }
         .buttonStyle(.plain)
@@ -361,22 +361,22 @@ struct RehberChatView: View {
                 } label: {
                     HStack(spacing: AppSpacing.sm) {
                         Image(systemName: iconName(for: specialty))
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                         Text(specialty)
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
                         Spacer()
                         Text("rehber_find_provider")
                             .font(AppFont.footnote)
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                     }
                     .padding(.horizontal, AppSpacing.md)
                     .padding(.vertical, AppSpacing.sm)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.button)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.border, lineWidth: 1)
+                            .stroke(Color.tcBorder, lineWidth: 1)
                     )
                 }
                 .buttonStyle(.plain)
@@ -402,13 +402,13 @@ struct RehberChatView: View {
                             Image(systemName: "arrow.right")
                                 .font(.system(size: 11, weight: .semibold))
                         }
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                         .padding(.horizontal, AppSpacing.md)
                         .padding(.vertical, AppSpacing.xs)
-                        .background(AppColor.cardBackground)
+                        .background(Color.tcSurface)
                         .overlay(
                             RoundedRectangle(cornerRadius: AppRadius.button)
-                                .stroke(AppColor.border, lineWidth: 1)
+                                .stroke(Color.tcBorder, lineWidth: 1)
                         )
                         .cornerRadius(AppRadius.button)
                     }
@@ -543,7 +543,7 @@ struct RehberChatView: View {
         }
         .padding(AppSpacing.md)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 
@@ -610,7 +610,7 @@ struct EmergencyCardView: View {
 
     var body: some View {
         ZStack {
-            AppColor.error.opacity(0.95)
+            Color.tcCoral.opacity(0.95)
                 .ignoresSafeArea()
 
             VStack(spacing: AppSpacing.lg) {

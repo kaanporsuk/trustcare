@@ -13,12 +13,12 @@ struct ReviewConfirmationView: View {
 
             ZStack {
                 Circle()
-                    .fill(AppColor.success.opacity(0.15))
+                    .fill(Color.tcSage.opacity(0.15))
                     .frame(width: 120, height: 120)
                 
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 70))
-                    .foregroundStyle(AppColor.success)
+                    .foregroundStyle(Color.tcSage)
                     .scaleEffect(animateCheck ? 1.0 : 0.3)
                     .opacity(animateCheck ? 1.0 : 0)
             }
@@ -27,15 +27,15 @@ struct ReviewConfirmationView: View {
             VStack(spacing: AppSpacing.sm) {
                 Text("review_submitted_title")
                     .font(AppFont.title2)
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
 
                 if hasProof {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: "clock.badge.exclamationmark")
-                            .foregroundStyle(AppColor.pending)
+                            .foregroundStyle(Color.tcCoral)
                         Text("review_verification_pending")
                             .font(AppFont.body)
-                            .foregroundStyle(AppColor.pending)
+                            .foregroundStyle(Color.tcCoral)
                     }
                 } else {
                     Text("review_submitted_message")
@@ -55,7 +55,7 @@ struct ReviewConfirmationView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(.white)
-                        .background(AppColor.trustBlue)
+                        .background(Color.tcOcean)
                         .cornerRadius(AppRadius.button)
                 }
 
@@ -66,8 +66,8 @@ struct ReviewConfirmationView: View {
                     Text("review_go_home")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
-                        .foregroundStyle(AppColor.trustBlue)
-                        .background(AppColor.cardBackground)
+                        .foregroundStyle(Color.tcOcean)
+                        .background(Color.tcSurface)
                         .cornerRadius(AppRadius.button)
                 }
             }

@@ -133,7 +133,7 @@ struct ProviderMapView: View {
                             .minimumScaleFactor(0.92)
                             .padding(.horizontal, 14)
                             .frame(height: 38)
-                            .background(AppColor.trustBlue, in: Capsule())
+                            .background(Color.tcOcean, in: Capsule())
                             .foregroundStyle(.white)
                             .shadow(radius: 4)
                     }
@@ -172,7 +172,7 @@ struct ProviderMapView: View {
             .background(ProviderMapColor.color(for: surveyType))
             .clipShape(Circle())
             .overlay(
-                Circle().stroke(isHighlighted ? AppColor.trustBlue : .white, lineWidth: isHighlighted ? 3 : 2)
+                Circle().stroke(isHighlighted ? Color.tcOcean : .white, lineWidth: isHighlighted ? 3 : 2)
             )
             .scaleEffect(isHighlighted ? 1.12 : 1.0)
             .shadow(radius: isHighlighted ? 4 : 2)

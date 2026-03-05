@@ -3,15 +3,15 @@ import SwiftUI
 enum ProviderMapColor {
     static func color(for surveyType: String) -> Color {
         switch surveyType {
-        case "pharmacy": return AppColor.mapPharmacy
-        case "hospital": return AppColor.mapHospital
-        case "dental": return AppColor.mapDental
-        case "general_clinic": return AppColor.mapClinic
-        case "diagnostic": return AppColor.mapDiagnostic
-        case "mental_health": return AppColor.mapMentalHealth
-        case "rehabilitation": return AppColor.mapRehab
-        case "aesthetics": return AppColor.mapAesthetics
-        default: return AppColor.unverified
+        case "pharmacy": return Color.tcSage
+        case "hospital": return Color.tcOcean
+        case "dental": return Color.tcOcean
+        case "general_clinic": return Color.tcOcean
+        case "diagnostic": return Color.tcCoral
+        case "mental_health": return Color.tcCoral
+        case "rehabilitation": return Color.tcSage
+        case "aesthetics": return Color.tcCoral
+        default: return Color.tcTextSecondary
         }
     }
 

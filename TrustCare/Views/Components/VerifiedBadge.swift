@@ -8,6 +8,6 @@ struct VerifiedBadge: View {
             Text("Verified")
                 .font(AppFont.footnote)
         }
-        .foregroundStyle(AppColor.success)
+        .foregroundStyle(Color.tcSage)
     }
 }

@@ -92,18 +92,18 @@ struct ClaimProviderView: View {
                             Spacer()
                             if claimVM.role == role {
                                 Image(systemName: "checkmark.circle.fill")
-                                    .foregroundStyle(AppColor.trustBlue)
+                                    .foregroundStyle(Color.tcOcean)
                             } else {
                                 Image(systemName: "circle")
                                     .foregroundStyle(.secondary)
                             }
                         }
                         .padding(AppSpacing.md)
-                        .background(claimVM.role == role ? AppColor.trustBlue.opacity(0.1) : Color(.systemGray6))
+                        .background(claimVM.role == role ? Color.tcOcean.opacity(0.1) : Color(.systemGray6))
                         .cornerRadius(AppRadius.card)
                         .overlay(
                             RoundedRectangle(cornerRadius: AppRadius.card)
-                                .stroke(claimVM.role == role ? AppColor.trustBlue : Color.clear, lineWidth: 2)
+                                .stroke(claimVM.role == role ? Color.tcOcean : Color.clear, lineWidth: 2)
                         )
                     }
                     .buttonStyle(.plain)
@@ -121,7 +121,7 @@ struct ClaimProviderView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(AppColor.trustBlue)
+                    .background(Color.tcOcean)
                     .cornerRadius(AppRadius.button)
             }
             .padding(.horizontal, AppSpacing.lg)
@@ -173,11 +173,11 @@ struct ClaimProviderView: View {
                     VStack(spacing: AppSpacing.md) {
                         Image(systemName: "doc.badge.plus")
                             .font(.system(size: 48))
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                         
                         Text("claim_tap_upload")
                             .font(AppFont.body)
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                         
                         Text("claim_file_format")
                             .font(AppFont.caption)
@@ -185,12 +185,12 @@ struct ClaimProviderView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, AppSpacing.xxl)
-                    .background(AppColor.trustBlue.opacity(0.1))
+                    .background(Color.tcOcean.opacity(0.1))
                     .cornerRadius(AppRadius.card)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.card)
                             .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [8]))
-                            .foregroundStyle(AppColor.trustBlue.opacity(0.3))
+                            .foregroundStyle(Color.tcOcean.opacity(0.3))
                     )
                 }
                 .padding(.horizontal, AppSpacing.lg)
@@ -204,7 +204,7 @@ struct ClaimProviderView: View {
                 } label: {
                     Text("button_back")
                         .font(AppFont.headline)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
                         .background(Color(.systemGray6))
@@ -219,7 +219,7 @@ struct ClaimProviderView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
-                        .background(claimVM.proofImage != nil ? AppColor.trustBlue : Color.gray)
+                        .background(claimVM.proofImage != nil ? Color.tcOcean : Color.gray)
                         .cornerRadius(AppRadius.button)
                 }
                 .disabled(claimVM.proofImage == nil)
@@ -309,7 +309,7 @@ struct ClaimProviderView: View {
                 } label: {
                     Text("button_back")
                         .font(AppFont.headline)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
                         .background(Color(.systemGray6))
@@ -336,7 +336,7 @@ struct ClaimProviderView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
-                .background(claimVM.isLoading ? Color.gray : AppColor.trustBlue)
+                .background(claimVM.isLoading ? Color.gray : Color.tcOcean)
                 .cornerRadius(AppRadius.button)
                 .disabled(claimVM.isLoading)
             }
@@ -373,7 +373,7 @@ struct ClaimProviderView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(AppColor.trustBlue)
+                    .background(Color.tcOcean)
                     .cornerRadius(AppRadius.button)
             }
             .padding(.horizontal, AppSpacing.lg)

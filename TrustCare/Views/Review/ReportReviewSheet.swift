@@ -47,7 +47,7 @@ struct ReportReviewSheet: View {
                     Section {
                         Text(errorMessage)
                             .font(AppFont.footnote)
-                            .foregroundStyle(AppColor.error)
+                            .foregroundStyle(Color.tcCoral)
                     }
                 }
             }

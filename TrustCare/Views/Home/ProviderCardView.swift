@@ -28,7 +28,7 @@ struct ProviderCardView: View {
 
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: "star.fill")
-                            .foregroundStyle(AppColor.starFilled)
+                            .foregroundStyle(Color.tcCoral)
                         Text(String(format: "%.1f", provider.ratingOverall))
                             .font(.subheadline)
                         Text("(\(provider.reviewCount))")
@@ -39,7 +39,7 @@ struct ProviderCardView: View {
                     if provider.verifiedReviewCount > 0 {
                         HStack(spacing: AppSpacing.xs) {
                             Image(systemName: "checkmark.seal.fill")
-                                .foregroundStyle(AppColor.success)
+                                .foregroundStyle(Color.tcSage)
                             Text("verified_badge")
                                 .font(.footnote)
                                 .foregroundStyle(.secondary)
@@ -55,7 +55,7 @@ struct ProviderCardView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(12)
-            .background(AppColor.cardBackground)
+            .background(Color.tcSurface)
             .cornerRadius(AppRadius.card)
             .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
         }

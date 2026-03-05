@@ -30,7 +30,7 @@ struct AuthView: View {
                 VStack(spacing: AppSpacing.lg) {
                     Image(systemName: "cross.case.fill")
                         .font(.system(size: 60))
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                         .padding(.top, AppSpacing.xxl)
 
                     Text(authVM.isSignUpMode ? "Create Account" : "Welcome Back")
@@ -60,18 +60,18 @@ struct AuthView: View {
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(AppColor.trustBlue)
+                            .background(Color.tcOcean)
                             .cornerRadius(AppRadius.button)
                     }
                     .padding(.horizontal, AppSpacing.xl)
                     .disabled(!isActionEnabled)
 
                     HStack {
-                        Rectangle().frame(height: 1).foregroundStyle(AppColor.border)
+                        Rectangle().frame(height: 1).foregroundStyle(Color.tcBorder)
                         Text("OR")
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
-                        Rectangle().frame(height: 1).foregroundStyle(AppColor.border)
+                        Rectangle().frame(height: 1).foregroundStyle(Color.tcBorder)
                     }
                     .padding(.horizontal, AppSpacing.xl)
 
@@ -102,7 +102,7 @@ struct AuthView: View {
                     } label: {
                         Text(authVM.isSignUpMode ? "Already have an account? Log In" : "Don't have an account? Sign Up")
                             .font(AppFont.caption)
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                     }
                     .padding(.bottom, AppSpacing.xxl)
                 }
@@ -114,7 +114,7 @@ struct AuthView: View {
                     .ignoresSafeArea()
                 ProgressView("Loading...")
                     .padding()
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.standard)
             }
         }
@@ -191,11 +191,11 @@ struct AuthView: View {
                 .keyboardType(keyboard)
         }
         .padding(AppSpacing.sm)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.standard)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.standard)
-                .stroke(isValid ? AppColor.border : AppColor.error, lineWidth: 1)
+                .stroke(isValid ? Color.tcBorder : Color.tcCoral, lineWidth: 1)
         )
     }
 
@@ -211,11 +211,11 @@ struct AuthView: View {
             SecureField(placeholder, text: text)
         }
         .padding(AppSpacing.sm)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.standard)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.standard)
-                .stroke(isValid ? AppColor.border : AppColor.error, lineWidth: 1)
+                .stroke(isValid ? Color.tcBorder : Color.tcCoral, lineWidth: 1)
         )
     }
 }

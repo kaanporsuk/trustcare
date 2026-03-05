@@ -10,7 +10,7 @@ struct RehberOnboardingView: View {
                 VStack(spacing: AppSpacing.sm) {
                     Image(systemName: "brain.head.profile")
                         .font(.system(size: 48, weight: .semibold))
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
 
                     Text("rehber_title")
                         .font(AppFont.title2)
@@ -28,7 +28,7 @@ struct RehberOnboardingView: View {
                     featureRow("rehber_feature_3")
                 }
                 .padding(AppSpacing.md)
-                .background(AppColor.cardBackground)
+                .background(Color.tcSurface)
                 .cornerRadius(AppRadius.card)
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
@@ -39,10 +39,10 @@ struct RehberOnboardingView: View {
                 }
                 .padding(AppSpacing.md)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(AppColor.cardBackground)
+                .background(Color.tcSurface)
                 .overlay(
                     RoundedRectangle(cornerRadius: AppRadius.card)
-                        .stroke(AppColor.warning, lineWidth: 1)
+                        .stroke(Color.tcCoral, lineWidth: 1)
                 )
 
                 Button {
@@ -50,7 +50,7 @@ struct RehberOnboardingView: View {
                 } label: {
                     HStack(alignment: .top, spacing: AppSpacing.sm) {
                         Image(systemName: consentChecked ? "checkmark.square.fill" : "square")
-                            .foregroundStyle(consentChecked ? AppColor.trustBlue : .secondary)
+                            .foregroundStyle(consentChecked ? Color.tcOcean : .secondary)
                         Text("rehber_consent_text")
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
@@ -61,10 +61,10 @@ struct RehberOnboardingView: View {
 
                 Text("rehber_plus_trial")
                     .font(AppFont.footnote)
-                    .foregroundStyle(AppColor.premium)
+                    .foregroundStyle(Color.tcCoral)
                     .padding(.horizontal, AppSpacing.md)
                     .padding(.vertical, AppSpacing.sm)
-                    .background(AppColor.premium.opacity(0.08))
+                    .background(Color.tcCoral.opacity(0.08))
                     .cornerRadius(AppRadius.button)
 
                 Button {
@@ -77,7 +77,7 @@ struct RehberOnboardingView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 52)
-                        .background(consentChecked ? AppColor.trustBlue : AppColor.border)
+                        .background(consentChecked ? Color.tcOcean : Color.tcBorder)
                         .cornerRadius(AppRadius.button)
                 }
                 .disabled(!consentChecked)
@@ -85,14 +85,14 @@ struct RehberOnboardingView: View {
             }
             .padding(.horizontal, AppSpacing.lg)
         }
-        .background(AppColor.background)
+        .background(Color.tcBackground)
         .navigationTitle("tab_guide")
     }
 
     private func featureRow(_ text: String) -> some View {
         HStack(alignment: .top, spacing: AppSpacing.sm) {
             Image(systemName: "checkmark.circle.fill")
-                .foregroundStyle(AppColor.trustBlue)
+                .foregroundStyle(Color.tcOcean)
             Text(text)
                 .font(AppFont.body)
                 .foregroundStyle(.primary)

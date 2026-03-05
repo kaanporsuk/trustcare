@@ -36,7 +36,7 @@ struct LanguageSettingsView: View {
 
                         if localizationManager.effectiveLanguage == language.code {
                             Image(systemName: "checkmark")
-                                .foregroundStyle(AppColor.trustBlue)
+                                .foregroundStyle(Color.tcOcean)
                                 .fontWeight(.semibold)
                         }
                     }

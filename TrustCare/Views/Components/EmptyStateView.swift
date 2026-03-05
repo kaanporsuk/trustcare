@@ -27,7 +27,7 @@ struct EmptyStateView: View {
             
             Image(systemName: icon)
                 .font(.system(size: 60))
-                .foregroundStyle(AppColor.trustBlue.opacity(0.5))
+                .foregroundStyle(Color.tcOcean.opacity(0.5))
             
             Text(LocalizedStringKey(title))
                 .font(.title3)
@@ -49,7 +49,7 @@ struct EmptyStateView: View {
                         .foregroundStyle(.white)
                         .padding(.vertical, 10)
                         .padding(.horizontal, 20)
-                        .background(AppColor.trustBlue)
+                        .background(Color.tcOcean)
                         .cornerRadius(AppRadius.button)
                 }
                 .padding(.top, AppSpacing.sm)
@@ -91,7 +91,7 @@ struct SkeletonReviewCard: View {
                 .frame(maxWidth: 80)
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
         .shimmering()
     }

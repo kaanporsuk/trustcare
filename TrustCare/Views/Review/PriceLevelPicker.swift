@@ -27,11 +27,11 @@ struct PriceLevelPicker: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 80)
                         .foregroundStyle(selection == level ? Color.white : Color.primary)
-                        .background(selection == level ? AppColor.trustBlue : AppColor.cardBackground)
+                        .background(selection == level ? Color.tcOcean : Color.tcSurface)
                         .cornerRadius(AppRadius.card)
                         .overlay(
                             RoundedRectangle(cornerRadius: AppRadius.card)
-                                .stroke(selection == level ? Color.white : AppColor.border, lineWidth: 1)
+                                .stroke(selection == level ? Color.white : Color.tcBorder, lineWidth: 1)
                         )
                     }
                     .buttonStyle(.plain)

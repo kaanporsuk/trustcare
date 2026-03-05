@@ -58,7 +58,7 @@ struct MyReviewsView: View {
                                 } label: {
                                     Label("button_edit", systemImage: "pencil")
                                 }
-                                .tint(AppColor.trustBlue)
+                                .tint(Color.tcOcean)
                             }
                         }
                     }
@@ -129,8 +129,8 @@ struct MyReviewsView: View {
                     .font(AppFont.footnote)
                     .padding(.horizontal, AppSpacing.sm)
                     .padding(.vertical, 4)
-                    .background(AppColor.trustBlue.opacity(0.12))
-                    .foregroundStyle(AppColor.trustBlue)
+                    .background(Color.tcOcean.opacity(0.12))
+                    .foregroundStyle(Color.tcOcean)
                     .cornerRadius(AppRadius.button)
 
                 if canEdit(review) {
@@ -165,11 +165,11 @@ struct MyReviewsView: View {
     @ViewBuilder
     private func statusBadge(_ review: Review) -> some View {
         if review.isVerified {
-            badge("status_verified", color: AppColor.success)
+            badge("status_verified", color: Color.tcSage)
         } else if review.status == .pendingVerification {
-            badge("status_pending", color: AppColor.pending)
+            badge("status_pending", color: Color.tcCoral)
         } else {
-            badge("status_unverified", color: AppColor.unverified)
+            badge("status_unverified", color: Color.tcTextSecondary)
         }
     }
 

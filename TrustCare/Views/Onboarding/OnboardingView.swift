@@ -14,7 +14,7 @@ struct OnboardingView: View {
                 } label: {
                     Text("skip")
                         .font(AppFont.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
                 .padding(.trailing, AppSpacing.lg)
             }
@@ -22,21 +22,21 @@ struct OnboardingView: View {
             TabView(selection: $currentPage) {
                 onboardingPage(
                     icon: "stethoscope",
-                    color: AppColor.trustBlue,
+                    color: Color.tcOcean,
                     title: "Find Trusted Care",
                     description: "Discover verified doctors based on real patient experiences",
                     tag: 0
                 )
                 onboardingPage(
                     icon: "checkmark.shield.fill",
-                    color: AppColor.success,
+                    color: Color.tcSage,
                     title: "Verified Reviews",
                     description: "AI-verified recommendations you can trust",
                     tag: 1
                 )
                 onboardingPage(
                     icon: "person.3.fill",
-                    color: Color(.systemBlue),
+                    color: Color.tcOcean,
                     title: "Help Others",
                     description: "Your reviews guide others to better healthcare",
                     tag: 2
@@ -56,7 +56,7 @@ struct OnboardingView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(AppColor.trustBlue)
+                    .background(Color.tcOcean)
                     .cornerRadius(AppRadius.button)
             }
             .padding(.horizontal, AppSpacing.xl)

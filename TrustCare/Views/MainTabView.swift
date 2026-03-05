@@ -8,13 +8,13 @@ struct MainTabView: View {
 
     init() {
         let appearance = UITabBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-        appearance.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.2)
-        appearance.shadowColor = UIColor(AppColor.border)
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundEffect = nil
+        appearance.backgroundColor = UIColor(Color.tcSurface)
+        appearance.shadowColor = UIColor(Color.tcBorder)
 
         let normalColor = UIColor.secondaryLabel
-        let selectedColor = UIColor(AppColor.trustBlue)
+        let selectedColor = UIColor(Color.tcOcean)
 
         appearance.stackedLayoutAppearance.normal.iconColor = normalColor
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: normalColor]
@@ -66,11 +66,11 @@ struct MainTabView: View {
             .tag(3)
             .badge(profileVM.unreadNotificationCount)
         }
-        .tint(AppColor.trustBlue)
+        .tint(Color.tcOcean)
         .background(alignment: .bottom) {
             GeometryReader { proxy in
                 Rectangle()
-                    .fill(.ultraThinMaterial)
+                    .fill(Color.tcSurface)
                     .frame(height: 49 + proxy.safeAreaInsets.bottom)
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .clipped()
@@ -78,7 +78,7 @@ struct MainTabView: View {
                     .allowsHitTesting(false)
             }
         }
-        .toolbarBackground(.ultraThinMaterial, for: .tabBar)
+        .toolbarBackground(Color.tcSurface, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
         .onChange(of: appRouter.selectedTab) { _, _ in
             UIImpactFeedbackGenerator(style: .light).impactOccurred()

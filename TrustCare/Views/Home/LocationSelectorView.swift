@@ -20,11 +20,11 @@ struct LocationSelectorView: View {
                 }
                 .padding(.horizontal, AppSpacing.md)
                 .frame(height: 44)
-                .background(AppColor.cardBackground)
+                .background(Color.tcSurface)
                 .cornerRadius(AppRadius.button)
                 .overlay(
                     RoundedRectangle(cornerRadius: AppRadius.button)
-                        .stroke(AppColor.border, lineWidth: 1)
+                        .stroke(Color.tcBorder, lineWidth: 1)
                 )
                 .padding(.horizontal, AppSpacing.lg)
 
@@ -37,7 +37,7 @@ struct LocationSelectorView: View {
                     } label: {
                         HStack(spacing: AppSpacing.sm) {
                             Image(systemName: "location.fill")
-                                .foregroundStyle(AppColor.trustBlue)
+                                .foregroundStyle(Color.tcOcean)
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("current_location")
                                     .font(AppFont.body)
@@ -49,7 +49,7 @@ struct LocationSelectorView: View {
                             Spacer()
                             if selectedLocation.isCurrentLocation {
                                 Image(systemName: "checkmark")
-                                    .foregroundStyle(AppColor.trustBlue)
+                                    .foregroundStyle(Color.tcOcean)
                             }
                         }
                     }
@@ -77,7 +77,7 @@ struct LocationSelectorView: View {
                                 if !selectedLocation.isCurrentLocation,
                                    selectedLocation.name == city.name {
                                     Image(systemName: "checkmark")
-                                        .foregroundStyle(AppColor.trustBlue)
+                                        .foregroundStyle(Color.tcOcean)
                                 }
                             }
                             .padding(.vertical, 2)
@@ -87,7 +87,7 @@ struct LocationSelectorView: View {
                 }
                 .listStyle(.plain)
             }
-            .background(AppColor.background)
+            .background(Color.tcBackground)
             .navigationTitle("location_select_title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -57,11 +57,11 @@ struct SignUpView: View {
                 .datePickerStyle(.compact)
                 .labelsHidden()
                 .padding(AppSpacing.sm)
-                .background(AppColor.cardBackground)
+                .background(Color.tcSurface)
                 .cornerRadius(AppRadius.standard)
                 .overlay(
                     RoundedRectangle(cornerRadius: AppRadius.standard)
-                        .stroke(authVM.isAgeValid ? AppColor.border : AppColor.error, lineWidth: 1)
+                        .stroke(authVM.isAgeValid ? Color.tcBorder : Color.tcCoral, lineWidth: 1)
                 )
             }
 
@@ -93,11 +93,11 @@ struct SignUpView: View {
                 .keyboardType(keyboard)
         }
         .padding(AppSpacing.sm)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.standard)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.standard)
-                .stroke(isValid ? AppColor.border : AppColor.error, lineWidth: 1)
+                .stroke(isValid ? Color.tcBorder : Color.tcCoral, lineWidth: 1)
         )
     }
 
@@ -113,11 +113,11 @@ struct SignUpView: View {
             SecureField(placeholder, text: text)
         }
         .padding(AppSpacing.sm)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.standard)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.standard)
-                .stroke(isValid ? AppColor.border : AppColor.error, lineWidth: 1)
+                .stroke(isValid ? Color.tcBorder : Color.tcCoral, lineWidth: 1)
         )
     }
 }

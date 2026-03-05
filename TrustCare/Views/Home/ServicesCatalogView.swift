@@ -64,7 +64,7 @@ struct ServicesCatalogView: View {
                                         }
                                     }
                                     .font(AppFont.body)
-                                    .foregroundStyle(AppColor.trustBlue)
+                                    .foregroundStyle(Color.tcOcean)
                                 }
                                 .padding(.vertical, AppSpacing.xs)
                             }
@@ -77,7 +77,7 @@ struct ServicesCatalogView: View {
                     Label("Contact for Booking", systemImage: "phone")
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(AppColor.trustBlue)
+                        .background(Color.tcOcean)
                         .foregroundStyle(.white)
                         .cornerRadius(AppRadius.button)
                 }

@@ -107,7 +107,7 @@ struct MediaPickerView: View {
                 if let duration = videoDuration, duration > 30 {
                     Text("Video will be trimmed to 30 seconds")
                         .font(AppFont.caption)
-                        .foregroundStyle(AppColor.warning)
+                        .foregroundStyle(Color.tcCoral)
                 }
             }
 

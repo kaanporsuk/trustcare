@@ -38,7 +38,7 @@ struct PremiumEmptyStateCard: View {
             HStack(spacing: AppSpacing.sm) {
                 Image(systemName: iconName)
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
                 Text(title)
                     .font(AppFont.headline)
                     .foregroundStyle(.primary)
@@ -65,7 +65,7 @@ struct PremiumEmptyStateCard: View {
                         .foregroundStyle(.white)
                         .padding(.horizontal, AppSpacing.md)
                         .padding(.vertical, AppSpacing.xs)
-                        .background(AppColor.trustBlue)
+                        .background(Color.tcOcean)
                         .clipShape(Capsule())
                 }
                 .buttonStyle(.plain)
@@ -74,12 +74,12 @@ struct PremiumEmptyStateCard: View {
                     Text(secondaryActionTitleKey)
                         .font(AppFont.callout)
                         .fontWeight(.semibold)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                         .padding(.horizontal, AppSpacing.md)
                         .padding(.vertical, AppSpacing.xs)
-                        .background(AppColor.cardBackground)
+                        .background(Color.tcSurface)
                         .overlay(
-                            Capsule().stroke(AppColor.border, lineWidth: 1)
+                            Capsule().stroke(Color.tcBorder, lineWidth: 1)
                         )
                 }
                 .buttonStyle(.plain)

@@ -72,7 +72,7 @@ struct LocationSearchSheet: View {
             }
             .padding(.horizontal, AppSpacing.lg)
         }
-        .background(AppColor.background.ignoresSafeArea())
+        .background(Color.tcBackground.ignoresSafeArea())
     }
 
     private var currentLocationSection: some View {
@@ -96,11 +96,11 @@ struct LocationSearchSheet: View {
                 if selectedLocation.isCurrentLocation {
                     Image(systemName: "checkmark")
                         .font(.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
             }
             .padding(AppSpacing.md)
-            .background(AppColor.cardBackground)
+            .background(Color.tcSurface)
             .cornerRadius(AppRadius.card)
         }
         .buttonStyle(.plain)
@@ -117,7 +117,7 @@ struct LocationSearchSheet: View {
                     onClearRecents()
                 }
                 .font(AppFont.caption)
-                .foregroundStyle(AppColor.trustBlue)
+                .foregroundStyle(Color.tcOcean)
             }
 
             VStack(spacing: AppSpacing.sm) {
@@ -210,7 +210,7 @@ private struct SearchField: View {
             }
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 }
@@ -241,11 +241,11 @@ private struct LocationRow: View {
                 if isSelected {
                     Image(systemName: "checkmark")
                         .font(.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
             }
             .padding(AppSpacing.md)
-            .background(AppColor.cardBackground)
+            .background(Color.tcSurface)
             .cornerRadius(AppRadius.card)
         }
         .buttonStyle(.plain)
@@ -258,12 +258,12 @@ private struct PulsingDot: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(AppColor.trustBlue.opacity(0.2))
+                .fill(Color.tcOcean.opacity(0.2))
                 .frame(width: 18, height: 18)
                 .scaleEffect(animate ? 1.4 : 0.8)
                 .opacity(animate ? 0.0 : 1.0)
             Circle()
-                .fill(AppColor.trustBlue)
+                .fill(Color.tcOcean)
                 .frame(width: 8, height: 8)
         }
         .onAppear {

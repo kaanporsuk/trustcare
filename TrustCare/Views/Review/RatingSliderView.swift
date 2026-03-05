@@ -13,7 +13,7 @@ struct RatingSliderView: View {
                     .font(.caption)
                     .foregroundStyle(.white)
                     .frame(width: 28, height: 28)
-                    .background(AppColor.trustBlue)
+                    .background(Color.tcOcean)
                     .clipShape(Circle())
                 Text(label)
                     .font(AppFont.headline)
@@ -21,7 +21,7 @@ struct RatingSliderView: View {
             }
 
             Slider(value: $value, in: 1...10, step: 1)
-                .tint(AppColor.trustBlue)
+                .tint(Color.tcOcean)
                 .onChange(of: value) { _, _ in
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 }
@@ -42,7 +42,7 @@ struct RatingSliderView: View {
             StarRatingInput(readOnlyRating: Int(round(value / 2.0)), starSize: 12)
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 }

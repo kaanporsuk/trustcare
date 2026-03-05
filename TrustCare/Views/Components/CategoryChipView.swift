@@ -18,11 +18,11 @@ struct CategoryChipView: View {
             .foregroundStyle(isSelected ? .white : .primary)
             .padding(.horizontal, AppSpacing.md)
             .padding(.vertical, AppSpacing.xs)
-            .background(isSelected ? tint : AppColor.cardBackground)
+            .background(isSelected ? tint : Color.tcSurface)
             .clipShape(Capsule())
             .overlay(
                 Capsule()
-                    .stroke(isSelected ? Color.clear : AppColor.border, lineWidth: 1)
+                    .stroke(isSelected ? Color.clear : Color.tcBorder, lineWidth: 1)
             )
         }
         .buttonStyle(.plain)

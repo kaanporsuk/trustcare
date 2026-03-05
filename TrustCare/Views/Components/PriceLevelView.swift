@@ -12,7 +12,7 @@ struct PriceLevelView: View {
             ForEach(1...4, id: \.self) { index in
                 Text("$")
                     .font(AppFont.caption)
-                    .foregroundStyle(index <= roundedLevel ? AppColor.priceActive : AppColor.priceInactive)
+                    .foregroundStyle(index <= roundedLevel ? Color.tcSage : Color.tcBorder)
             }
         }
     }

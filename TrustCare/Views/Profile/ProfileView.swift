@@ -193,7 +193,7 @@ struct ProfileView: View {
                         showEditProfile = true
                     } label: {
                         Image(systemName: "pencil")
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                     }
                     .accessibilityLabel("Edit Profile")
                 }
@@ -322,13 +322,13 @@ struct ProfileView: View {
         HStack {
             Text(LocalizedStringKey(title))
                 .font(AppFont.body)
-                .foregroundStyle(isDestructive ? AppColor.error : .primary)
+                .foregroundStyle(isDestructive ? Color.tcCoral : .primary)
             Spacer()
             Image(systemName: "chevron.right")
                 .foregroundStyle(.secondary)
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 
@@ -339,7 +339,7 @@ struct ProfileView: View {
         }
             .frame(maxWidth: .infinity)
             .padding(AppSpacing.md)
-            .background(AppColor.cardBackground)
+            .background(Color.tcSurface)
             .cornerRadius(AppRadius.card)
     }
 

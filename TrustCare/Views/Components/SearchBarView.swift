@@ -23,11 +23,11 @@ struct SearchBarView: View {
         }
         .padding(.horizontal, AppSpacing.md)
         .frame(height: 44)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.button)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.button)
-                .stroke(AppColor.border, lineWidth: 1)
+                .stroke(Color.tcBorder, lineWidth: 1)
         )
     }
 }

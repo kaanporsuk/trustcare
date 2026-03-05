@@ -52,9 +52,9 @@ struct DiscoverSearchSurfaceView: View {
                 HStack(spacing: AppSpacing.sm) {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                         .frame(width: 30, height: 30)
-                        .background(AppColor.trustBlue.opacity(0.12))
+                        .background(Color.tcOcean.opacity(0.12))
                         .clipShape(Circle())
 
                     VStack(alignment: .leading, spacing: 2) {
@@ -82,7 +82,7 @@ struct DiscoverSearchSurfaceView: View {
                 }
                 .padding(.horizontal, AppSpacing.md)
                 .padding(.vertical, 6)
-                .background(AppColor.cardBackground.opacity(0.78))
+                .background(Color.tcSurface.opacity(0.78))
                 .overlay(
                     RoundedRectangle(cornerRadius: AppRadius.button, style: .continuous)
                         .stroke(Color.white.opacity(0.52), lineWidth: 1)
@@ -115,7 +115,7 @@ struct DiscoverSearchSurfaceView: View {
                     }
                 }
                 .padding(AppSpacing.md)
-                .background(AppColor.cardBackground.opacity(0.9))
+                .background(Color.tcSurface.opacity(0.9))
                 .clipShape(RoundedRectangle(cornerRadius: AppRadius.card, style: .continuous))
                 .shadow(color: DesignShadow.color, radius: DesignShadow.radius, x: DesignShadow.x, y: DesignShadow.y)
             }
@@ -192,11 +192,11 @@ struct DiscoverSearchSurfaceView: View {
             .foregroundStyle(isSelected ? Color.white : Color.primary)
             .padding(.horizontal, AppSpacing.md)
             .frame(height: 36)
-            .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground.opacity(0.95))
+            .background(isSelected ? Color.tcOcean : Color.tcSurface.opacity(0.95))
             .clipShape(Capsule())
             .overlay(
                 Capsule()
-                    .stroke(isSelected ? Color.clear : AppColor.border.opacity(0.9), lineWidth: 1)
+                    .stroke(isSelected ? Color.clear : Color.tcBorder.opacity(0.9), lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
@@ -221,11 +221,11 @@ struct DiscoverSearchSurfaceView: View {
             .foregroundStyle(isSelected ? Color.white : Color.primary)
             .padding(.horizontal, AppSpacing.md)
             .frame(height: 36)
-            .background(isSelected ? AppColor.trustBlue : AppColor.cardBackground.opacity(0.95))
+            .background(isSelected ? Color.tcOcean : Color.tcSurface.opacity(0.95))
             .clipShape(Capsule())
             .overlay(
                 Capsule()
-                    .stroke(isSelected ? Color.clear : AppColor.border.opacity(0.9), lineWidth: 1)
+                    .stroke(isSelected ? Color.clear : Color.tcBorder.opacity(0.9), lineWidth: 1)
             )
         }
         .buttonStyle(.plain)

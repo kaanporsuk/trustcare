@@ -37,7 +37,7 @@ struct HelpSupportView: View {
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
                 Text("help_faq_title")
                     .font(AppFont.title2)
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
 
                 VStack(spacing: AppSpacing.sm) {
                     ForEach(Array(faqItems.enumerated()), id: \.offset) { _, item in
@@ -52,7 +52,7 @@ struct HelpSupportView: View {
                                 .foregroundStyle(.primary)
                         }
                         .padding(AppSpacing.md)
-                        .background(AppColor.cardBackground)
+                        .background(Color.tcSurface)
                         .cornerRadius(AppRadius.card)
                     }
                 }
@@ -78,11 +78,11 @@ struct HelpSupportView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
-                    .background(AppColor.trustBlue)
+                    .background(Color.tcOcean)
                     .cornerRadius(AppRadius.button)
                 }
                 .padding(AppSpacing.md)
-                .background(AppColor.cardBackground)
+                .background(Color.tcSurface)
                 .cornerRadius(AppRadius.card)
             }
             .padding(.horizontal, AppSpacing.lg)

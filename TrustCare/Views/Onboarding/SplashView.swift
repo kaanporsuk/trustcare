@@ -7,7 +7,7 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                colors: [AppColor.trustBlue, AppColor.trustBlueLight],
+                colors: [Color.tcOcean, Color.tcSage],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )

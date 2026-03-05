@@ -296,7 +296,7 @@ struct TaxonomyPickerView: View {
                             dismiss()
                         }
                         .font(AppFont.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
 
                         Spacer()
                     }
@@ -383,7 +383,7 @@ struct TaxonomyPickerView: View {
             .autocorrectionDisabled()
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 
@@ -417,7 +417,7 @@ struct TaxonomyPickerView: View {
                         Spacer()
                     }
                     .padding(AppSpacing.md)
-                    .background(AppColor.cardBackground)
+                    .background(Color.tcSurface)
                     .cornerRadius(AppRadius.card)
                 }
                 .buttonStyle(.plain)
@@ -439,7 +439,7 @@ struct TaxonomyPickerView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 

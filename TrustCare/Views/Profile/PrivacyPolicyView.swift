@@ -92,7 +92,7 @@ struct PrivacyPolicyView: View {
                 ForEach(bullets, id: \.self) { line in
                     HStack(alignment: .top, spacing: AppSpacing.xs) {
                         Text("•")
-                            .foregroundStyle(AppColor.trustBlue)
+                            .foregroundStyle(Color.tcOcean)
                         Text(LocalizedStringKey(line))
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
@@ -101,7 +101,7 @@ struct PrivacyPolicyView: View {
             }
         }
         .padding(AppSpacing.md)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 }

@@ -225,7 +225,7 @@ struct HomeView: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: AppRadius.card)
                                     .stroke(
-                                        homeVM.highlightedProviderID == provider.id ? AppColor.trustBlue : Color.clear,
+                                        homeVM.highlightedProviderID == provider.id ? Color.tcOcean : Color.clear,
                                         lineWidth: 2
                                     )
                             )
@@ -326,7 +326,7 @@ struct HomeView: View {
             HStack(spacing: AppSpacing.sm) {
                 Image(systemName: "wifi.exclamationmark")
                     .font(.title3)
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
                 Text(LocalizedStringKey(loadError.errorKey))
                     .font(AppFont.callout.weight(.semibold))
                     .foregroundStyle(.primary)
@@ -342,10 +342,10 @@ struct HomeView: View {
                 }
                 .buttonStyle(.plain)
                 .font(AppFont.callout.weight(.semibold))
-                .foregroundStyle(AppColor.trustBlue)
+                .foregroundStyle(Color.tcOcean)
                 .padding(.horizontal, AppSpacing.md)
                 .padding(.vertical, AppSpacing.xs)
-                .background(AppColor.trustBlue.opacity(0.14))
+                .background(Color.tcOcean.opacity(0.14))
                 .clipShape(Capsule())
 
                 Button(secondaryModeActionTitleKey) {
@@ -379,7 +379,7 @@ struct HomeView: View {
                 }
                 .buttonStyle(.plain)
                 .font(AppFont.callout)
-                .foregroundStyle(AppColor.trustBlue)
+                .foregroundStyle(Color.tcOcean)
 
                 Button(secondaryModeActionTitleKey) {
                     homeVM.viewMode = secondaryModeActionTarget
@@ -578,7 +578,7 @@ private struct SkeletonProviderCard: View {
             Spacer()
         }
         .padding(AppSpacing.lg)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
     }
 }
@@ -593,12 +593,12 @@ private struct CompactProviderCardForSheet: View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
             // Provider Avatar or Name initials
             ZStack {
-                AppColor.trustBlue.opacity(0.1)
+                Color.tcOcean.opacity(0.1)
                     .frame(height: 80)
 
                 Text(provider.name.prefix(2).uppercased())
                     .font(AppFont.headline)
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
                     .frame(height: 80)
             }
 
@@ -633,11 +633,11 @@ private struct CompactProviderCardForSheet: View {
             Spacer()
         }
         .frame(width: 140)
-        .background(AppColor.cardBackground)
+        .background(Color.tcSurface)
         .cornerRadius(AppRadius.card)
         .overlay(
             RoundedRectangle(cornerRadius: AppRadius.card)
-                .stroke(isHighlighted ? AppColor.trustBlue : AppColor.border, lineWidth: isHighlighted ? 2 : 1)
+                .stroke(isHighlighted ? Color.tcOcean : Color.tcBorder, lineWidth: isHighlighted ? 2 : 1)
         )
     }
 

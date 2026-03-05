@@ -12,7 +12,7 @@ struct StarRatingView: View {
         HStack(spacing: 4) {
             ForEach(1...5, id: \.self) { index in
                 Image(systemName: index <= roundedRating ? "star.fill" : "star")
-                    .foregroundStyle(index <= roundedRating ? AppColor.starFilled : AppColor.starEmpty)
+                    .foregroundStyle(index <= roundedRating ? Color.tcCoral : Color.tcBorder)
             }
             if showValue {
                 Text(String(format: "%.1f", rating))

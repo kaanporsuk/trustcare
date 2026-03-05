@@ -111,7 +111,7 @@ struct ProviderDetailView: View {
             .foregroundStyle(.white)
             .padding(.vertical, 12)
             .padding(.horizontal, AppSpacing.lg)
-            .background(AppColor.trustBlue)
+            .background(Color.tcOcean)
             .cornerRadius(999)
             .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 4)
     }
@@ -126,7 +126,7 @@ struct ProviderDetailView: View {
                     .clipped()
             } else {
                 LinearGradient(
-                    colors: [AppColor.trustBlueLight, AppColor.trustBlue],
+                    colors: [Color.tcSage, Color.tcOcean],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -232,10 +232,10 @@ struct ProviderDetailView: View {
                             } label: {
                                 Text("claim_resubmit")
                                     .font(AppFont.footnote)
-                                    .foregroundStyle(AppColor.trustBlue)
+                                    .foregroundStyle(Color.tcOcean)
                                     .padding(.vertical, 6)
                                     .padding(.horizontal, AppSpacing.md)
-                                    .background(AppColor.trustBlue.opacity(0.1))
+                                    .background(Color.tcOcean.opacity(0.1))
                                     .cornerRadius(AppRadius.button)
                             }
                         }
@@ -252,7 +252,7 @@ struct ProviderDetailView: View {
                     } label: {
                         HStack(spacing: AppSpacing.sm) {
                             Image(systemName: "building.2.fill")
-                                .foregroundStyle(AppColor.trustBlue)
+                                .foregroundStyle(Color.tcOcean)
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("is_this_your_practice")
                                     .font(AppFont.headline)
@@ -267,12 +267,12 @@ struct ProviderDetailView: View {
                                 .foregroundStyle(.white)
                                 .padding(.vertical, 8)
                                 .padding(.horizontal, AppSpacing.md)
-                                .background(AppColor.trustBlue)
+                                .background(Color.tcOcean)
                                 .cornerRadius(AppRadius.button)
                         }
                         .padding(AppSpacing.md)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(AppColor.trustBlue.opacity(0.1))
+                        .background(Color.tcOcean.opacity(0.1))
                         .cornerRadius(AppRadius.card)
                     }
                     .buttonStyle(.plain)
@@ -308,7 +308,7 @@ struct ProviderDetailView: View {
                     .foregroundStyle(.secondary)
                 Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \("Verified")")
                     .font(AppFont.caption)
-                    .foregroundStyle(AppColor.success)
+                    .foregroundStyle(Color.tcSage)
             }
 
             HStack(spacing: AppSpacing.sm) {
@@ -324,7 +324,7 @@ struct ProviderDetailView: View {
                 } label: {
                     Text(address)
                         .font(AppFont.body)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
                 .buttonStyle(.plain)
             }
@@ -335,7 +335,7 @@ struct ProviderDetailView: View {
                 } label: {
                     Text(phone)
                         .font(AppFont.body)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
                 .buttonStyle(.plain)
             }
@@ -388,10 +388,10 @@ struct ProviderDetailView: View {
                     Text("button_call")
                         .font(.system(size: 12, weight: .medium))
                 }
-                .foregroundColor(hasPhone ? .white : Color(hex: "#0055FF"))
+                .foregroundColor(hasPhone ? .white : Color.tcOcean)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
-                .background(hasPhone ? Color(hex: "#0055FF") : Color(hex: "#0055FF").opacity(0.1))
+                .background(hasPhone ? Color.tcOcean : Color.tcOcean.opacity(0.1))
                 .cornerRadius(12)
             }
 
@@ -405,9 +405,9 @@ struct ProviderDetailView: View {
                     .frame(height: 44)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.trustBlue, lineWidth: 1)
+                            .stroke(Color.tcOcean, lineWidth: 1)
                     )
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
             }
 
             Button {
@@ -416,12 +416,12 @@ struct ProviderDetailView: View {
                 Label("button_save", systemImage: isSaved ? "bookmark.fill" : "bookmark")
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
-                    .background(isSaved ? AppColor.trustBlue.opacity(0.12) : Color.clear)
+                    .background(isSaved ? Color.tcOcean.opacity(0.12) : Color.clear)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppRadius.button)
-                            .stroke(AppColor.trustBlue, lineWidth: 1)
+                            .stroke(Color.tcOcean, lineWidth: 1)
                     )
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
             }
         }
         .padding(.horizontal, AppSpacing.lg)
@@ -483,7 +483,7 @@ struct ProviderDetailView: View {
                         } label: {
                             Text("View All")
                                 .font(AppFont.caption)
-                                .foregroundStyle(AppColor.trustBlue)
+                                .foregroundStyle(Color.tcOcean)
                         }
                     }
 
@@ -532,7 +532,7 @@ struct ProviderDetailView: View {
             } label: {
                 Text("See All Reviews")
                     .font(AppFont.caption)
-                    .foregroundStyle(AppColor.trustBlue)
+                    .foregroundStyle(Color.tcOcean)
             }
         }
         .padding(.horizontal, AppSpacing.lg)
@@ -580,11 +580,11 @@ private struct ServiceItemRow: View {
                 if let priceMax = item.priceMax {
                     Text("\(item.currency)\(String(format: "%.0f", priceMin)) - \(item.currency)\(String(format: "%.0f", priceMax))")
                         .font(AppFont.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 } else {
                     Text("\(item.currency)\(String(format: "%.0f", priceMin))")
                         .font(AppFont.caption)
-                        .foregroundStyle(AppColor.trustBlue)
+                        .foregroundStyle(Color.tcOcean)
                 }
             }
         }
