@@ -613,6 +613,38 @@
         }
       }
     },
+    "add_provider_add" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
+          }
+        }
+      }
+    },
+    "add_provider_cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iptal"
+          }
+        }
+      }
+    },
     "add_provider_geocode_error" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -896,6 +928,38 @@
         }
       }
     },
+    "add_provider_phone_optional" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone (optional)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefon (istege bagli)"
+          }
+        }
+      }
+    },
+    "add_provider_provider_information" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provider information"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saglayici bilgileri"
+          }
+        }
+      }
+    },
     "add_provider_section" : {
       "localizations" : {
         "da" : {
@@ -1053,6 +1117,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lütfen bir uzmanlık seçin."
+          }
+        }
+      }
+    },
+    "add_provider_set_map_pin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set map pin"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harita pini belirle"
+          }
+        }
+      }
+    },
+    "add_provider_specialty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialty"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzmanlik"
           }
         }
       }
@@ -7761,6 +7857,28 @@
             "state" : "translated",
             "value" : "Distance"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesafe"
+          }
+        }
+      }
+    },
+    "filter_apply" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygula"
+          }
         }
       }
     },
@@ -7798,6 +7916,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Language"
+          }
+        }
+      }
+    },
+    "filter_language_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil"
           }
         }
       }
@@ -7896,6 +8030,22 @@
         }
       }
     },
+    "filter_reset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sifirla"
+          }
+        }
+      }
+    },
     "filter_verified" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -7903,6 +8053,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verified"
+          }
+        }
+      }
+    },
+    "filter_verified_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verified"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dogrulanmis"
+          }
+        }
+      }
+    },
+    "filter_verified_only_label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show only providers with verified reviews"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece dogrulanmis yorumlu saglayicilari goster"
           }
         }
       }
@@ -7936,6 +8118,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TrustCare is growing here"
+          }
+        }
+      }
+    },
+    "bul_growing_here_label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrustCare is growing here"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrustCare burada buyuyor"
           }
         }
       }

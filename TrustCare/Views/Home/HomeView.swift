@@ -357,7 +357,7 @@ struct HomeView: View {
                 }
             )
             .overlay(alignment: .topLeading) {
-                Text(tcKey: "find_empty_growing_here", fallback: "TrustCare is growing here")
+                Text(tcKey: "bul_growing_here_label", fallback: "TrustCare is growing here")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color.tcSage)
                     .padding(.horizontal, 12)
@@ -625,7 +625,7 @@ struct HomeView: View {
 
     private var distanceFilterSheet: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text("Distance")
+            Text(tcKey: "filter_distance", fallback: "Distance")
                 .font(.headline)
 
             Picker("Distance", selection: $selectedDistanceKm) {
@@ -637,11 +637,11 @@ struct HomeView: View {
             .pickerStyle(.segmented)
 
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                TCPrimaryButton(title: tcString("filter_apply", fallback: "Apply"), fullWidth: true) {
                     Task { await homeVM.selectRadius(selectedDistanceKm) }
                     activeFilterSheet = nil
                 }
-                Button("Reset") {
+                Button(tcString("filter_reset", fallback: "Reset")) {
                     selectedDistanceKm = 50
                     Task { await homeVM.selectRadius(50) }
                     activeFilterSheet = nil
@@ -657,7 +657,7 @@ struct HomeView: View {
 
     private var languageFilterSheet: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text("Language")
+            Text(tcKey: "filter_language_title", fallback: "Language")
                 .font(.headline)
 
             ScrollView {
@@ -687,10 +687,10 @@ struct HomeView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                TCPrimaryButton(title: tcString("filter_apply", fallback: "Apply"), fullWidth: true) {
                     activeFilterSheet = nil
                 }
-                Button("Reset") {
+                Button(tcString("filter_reset", fallback: "Reset")) {
                     selectedLanguages = []
                     activeFilterSheet = nil
                 }
@@ -703,11 +703,11 @@ struct HomeView: View {
 
     private var verifiedFilterSheet: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text("Verified")
+            Text(tcKey: "filter_verified_title", fallback: "Verified")
                 .font(.headline)
 
             Toggle(isOn: $verifiedOnly) {
-                Text("Show only providers with verified reviews")
+                Text(tcKey: "filter_verified_only_label", fallback: "Show only providers with verified reviews")
             }
             .toggleStyle(.switch)
 
@@ -719,10 +719,10 @@ struct HomeView: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                TCPrimaryButton(title: tcString("filter_apply", fallback: "Apply"), fullWidth: true) {
                     activeFilterSheet = nil
                 }
-                Button("Reset") {
+                Button(tcString("filter_reset", fallback: "Reset")) {
                     verifiedOnly = false
                     activeFilterSheet = nil
                 }
@@ -973,12 +973,12 @@ private struct TaxonomyMultiSelectFilterSheet: View {
             }
 
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Apply", fullWidth: true) {
+                TCPrimaryButton(title: tcString("filter_apply", fallback: "Apply"), fullWidth: true) {
                     onApply()
                     dismiss()
                 }
 
-                Button("Reset") {
+                Button(tcString("filter_reset", fallback: "Reset")) {
                     onReset()
                 }
                 .font(.subheadline.weight(.semibold))

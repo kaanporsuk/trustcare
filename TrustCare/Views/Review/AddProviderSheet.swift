@@ -23,7 +23,7 @@ struct AddProviderSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("add_provider_section") {
+                Section {
                     TextField("add_provider_name", text: $name)
 
                     if !placeSuggestions.isEmpty {
@@ -33,7 +33,7 @@ struct AddProviderSheet: View {
                                     applySuggestion(suggestion)
                                 } label: {
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("\("add_provider_is_this") \(suggestion.name)")
+                                        Text("\(tcString("add_provider_is_this", fallback: "Is this provider a...")) \(suggestion.name)")
                                             .font(AppFont.body)
                                             .foregroundStyle(.primary)
                                         Text(suggestion.address)
@@ -52,7 +52,7 @@ struct AddProviderSheet: View {
                         showSpecialtyPicker = true
                     } label: {
                         HStack {
-                            Text("specialty_label")
+                            Text(tcKey: "add_provider_specialty", fallback: "Specialty")
                             Spacer()
                             Text(selectedTaxonomy?.label ?? String(localized: "add_provider_select"))
                                 .foregroundStyle(.secondary)
@@ -60,12 +60,15 @@ struct AddProviderSheet: View {
                     }
 
                     TextField("add_provider_address", text: $address)
-                    TextField("add_provider_phone", text: $phone)
+                    TextField("add_provider_phone_optional", text: $phone)
                         .keyboardType(.phonePad)
                 }
+                header: {
+                    Text(tcKey: "add_provider_provider_information", fallback: "Provider information")
+                }
 
-                Section("add_provider_location") {
-                    Button("add_provider_map_pin") {
+                Section {
+                    Button(tcString("add_provider_set_map_pin", fallback: "Set map pin")) {
                         showMapPicker = true
                     }
 
@@ -85,14 +88,17 @@ struct AddProviderSheet: View {
                         }
                     }
                 }
+                header: {
+                    Text(tcKey: "add_provider_location", fallback: "Location")
+                }
             }
-            .navigationTitle("add_provider_title")
+            .navigationTitle(Text(tcKey: "add_provider_title", fallback: "Add provider"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("button_cancel") { dismiss() }
+                    Button(tcString("add_provider_cancel", fallback: "Cancel")) { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("button_add") {
+                    Button(tcString("add_provider_add", fallback: "Add")) {
                         Task { await submit() }
                     }
                     .disabled(!isValid || isSubmitting)
@@ -339,7 +345,7 @@ private struct MapPinSelectorSheet: View {
                     .offset(y: -16)
                     .allowsHitTesting(false)
             }
-            .navigationTitle("add_provider_map_pin")
+            .navigationTitle(Text(tcKey: "add_provider_set_map_pin", fallback: "Set map pin"))
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("button_ok") {
