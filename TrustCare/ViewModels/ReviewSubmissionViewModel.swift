@@ -5,6 +5,8 @@ import Supabase
 
 @MainActor
 final class ReviewSubmissionViewModel: ObservableObject {
+    private static let hasSubmittedReviewKey = "has_submitted_review_v1"
+
     @Published var selectedProvider: Provider?
     @Published var surveyConfig: SurveyConfig = SurveyConfigurations.generalClinic
     @Published var visitDate: Date = Date()
@@ -20,6 +22,12 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published var mediaUploadProgress: Double = 0
 
     @Published var didUploadProof: Bool = false
+    @Published var lastSubmittedReviewID: UUID?
+    @Published var lastSubmittedProviderID: UUID?
+
+    static var shouldShowFirstReviewNudge: Bool {
+        !UserDefaults.standard.bool(forKey: hasSubmittedReviewKey)
+    }
 
     var canSubmit: Bool {
         selectedProvider != nil
@@ -259,6 +267,9 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
             step()
             mediaUploadProgress = 1.0
+            lastSubmittedReviewID = reviewId
+            lastSubmittedProviderID = provider.id
+            markFirstSubmissionCompleted()
             isComplete = true
             UINotificationFeedbackGenerator().notificationOccurred(.success)
         } catch {
@@ -290,6 +301,13 @@ final class ReviewSubmissionViewModel: ObservableObject {
         mediaUploadProgress = 0
         didUploadProof = false
         isComplete = false
+        lastSubmittedReviewID = nil
+        lastSubmittedProviderID = nil
+    }
+
+    private func markFirstSubmissionCompleted() {
+        UserDefaults.standard.set(true, forKey: Self.hasSubmittedReviewKey)
+        NotificationCenter.default.post(name: .trustCareReviewNudgeUpdated, object: nil)
     }
 
     private func mappedVisitType(for uiValue: String) -> String {

@@ -12,6 +12,9 @@ extension Notification.Name {
     static let trustCareSwitchTab = Notification.Name("trustCareSwitchTab")
     static let trustCareApplySpecialtyFilter = Notification.Name("trustCareApplySpecialtyFilter")
     static let trustCareApplyCanonicalSpecialtyFilter = Notification.Name("trustCareApplyCanonicalSpecialtyFilter")
+    static let trustCareRouteToProviderDetail = Notification.Name("trustCareRouteToProviderDetail")
+    static let trustCareReviewSubmitted = Notification.Name("trustCareReviewSubmitted")
+    static let trustCareReviewNudgeUpdated = Notification.Name("trustCareReviewNudgeUpdated")
 }
 
 enum AppState {
@@ -91,6 +94,13 @@ struct TrustCareApp: App {
             .onReceive(NotificationCenter.default.publisher(for: .trustCareRouteToAuth)) { _ in
                 path = NavigationPath()
                 appState = .auth
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .trustCareRouteToProviderDetail)) { note in
+                guard let providerId = note.object as? UUID else { return }
+                appState = .main
+                appRouter.setSelectedTab(0)
+                path = NavigationPath()
+                path.append(AppRoute.provider(providerId))
             }
             .id(localizationManager.effectiveLanguage)
         }

@@ -10,6 +10,7 @@ final class ProviderDetailViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var myClaimStatus: ProviderClaim?
+    private var prioritizedReviewID: UUID?
 
     func loadDetails(id: UUID) async {
         guard !isLoading else { return }
@@ -23,13 +24,30 @@ final class ProviderDetailViewModel: ObservableObject {
 
             let (providerResult, reviewsResult, servicesResult, claimResult) = try await (providerTask, reviewsTask, servicesTask, claimTask)
             provider = providerResult
-            reviews = reviewsResult
+            reviews = prioritizeReviews(reviewsResult)
             services = servicesResult
             myClaimStatus = claimResult
         } catch {
             errorMessage = localizedErrorMessage(error)
         }
         isLoading = false
+    }
+
+    func prioritizeReview(id: UUID?) {
+        prioritizedReviewID = id
+        reviews = prioritizeReviews(reviews)
+    }
+
+    private func prioritizeReviews(_ items: [Review]) -> [Review] {
+        guard let prioritizedReviewID,
+              let index = items.firstIndex(where: { $0.id == prioritizedReviewID }) else {
+            return items
+        }
+
+        var reordered = items
+        let prioritized = reordered.remove(at: index)
+        reordered.insert(prioritized, at: 0)
+        return reordered
     }
 
     func voteHelpful(reviewId: UUID, isHelpful: Bool) async {

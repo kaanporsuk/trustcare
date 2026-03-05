@@ -5,6 +5,7 @@ struct MainTabView: View {
     @EnvironmentObject private var authVM: AuthViewModel
     @EnvironmentObject private var appRouter: AppRouter
     @StateObject private var profileVM = ProfileViewModel()
+    @State private var showReviewNudge = ReviewSubmissionViewModel.shouldShowFirstReviewNudge
 
     init() {
         let appearance = UITabBarAppearance()
@@ -20,6 +21,8 @@ struct MainTabView: View {
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: normalColor]
         appearance.stackedLayoutAppearance.selected.iconColor = selectedColor
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: selectedColor]
+        appearance.stackedLayoutAppearance.normal.badgeBackgroundColor = UIColor(Color.tcCoral)
+        appearance.stackedLayoutAppearance.selected.badgeBackgroundColor = UIColor(Color.tcCoral)
 
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
@@ -54,6 +57,7 @@ struct MainTabView: View {
                 Text("tab_review")
             }
             .tag(2)
+            .badge(showReviewNudge ? "" : nil)
 
             NavigationStack {
                 ProfileView(selectedTab: $appRouter.selectedTab)
@@ -90,6 +94,9 @@ struct MainTabView: View {
             if let tab = note.object as? Int {
                 appRouter.setSelectedTab(tab)
             }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .trustCareReviewNudgeUpdated)) { _ in
+            showReviewNudge = ReviewSubmissionViewModel.shouldShowFirstReviewNudge
         }
         .alert("Error", isPresented: Binding(
             get: { profileVM.errorMessage != nil },

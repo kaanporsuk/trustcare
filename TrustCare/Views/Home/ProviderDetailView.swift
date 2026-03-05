@@ -78,6 +78,20 @@ struct ProviderDetailView: View {
         .task {
             await detailVM.loadDetails(id: providerId)
         }
+        .onReceive(NotificationCenter.default.publisher(for: .trustCareReviewSubmitted)) { note in
+            guard let userInfo = note.userInfo,
+                  let submittedProviderId = userInfo["providerId"] as? UUID,
+                  submittedProviderId == providerId else {
+                return
+            }
+
+            let submittedReviewId = userInfo["reviewId"] as? UUID
+            Task {
+                detailVM.prioritizeReview(id: submittedReviewId)
+                await detailVM.loadDetails(id: providerId)
+                detailVM.prioritizeReview(id: submittedReviewId)
+            }
+        }
         .onChange(of: detailVM.provider?.id) { _, _ in
             if let provider = detailVM.provider {
                 RecentProvidersStore.add(provider)

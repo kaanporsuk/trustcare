@@ -35,10 +35,13 @@ struct ReviewItemView: View {
                     HStack(spacing: AppSpacing.sm) {
                         if review.isVerified {
                             VerifiedBadge()
-                        } else if review.status == .pendingVerification {
-                            Text("Pending")
-                                .font(AppFont.footnote)
-                                .foregroundStyle(Color.tcCoral)
+                        } else if review.status == .pendingVerification, review.proofImageUrl != nil {
+                            Text("Pending verification")
+                                .font(AppFont.footnote.weight(.semibold))
+                                .foregroundStyle(.orange)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 3)
+                                .background(Color.orange.opacity(0.12), in: Capsule())
                         }
                     }
                 }
@@ -53,7 +56,9 @@ struct ReviewItemView: View {
                 PriceLevelView(level: Double(review.priceLevel))
             }
 
-            reviewMetricsView
+            if hasContextualMetrics {
+                reviewMetricsView
+            }
 
             Text(review.comment)
                 .font(AppFont.body)
@@ -251,6 +256,16 @@ struct ReviewItemView: View {
                     }
                 }
             }
+        }
+    }
+
+    private var hasContextualMetrics: Bool {
+        let config = SurveyConfigurations.config(for: review.surveyType ?? "general_clinic")
+        return config.metrics.contains { metric in
+            if let value = review.ratingValue(for: metric.dbColumn) {
+                return value > 0
+            }
+            return false
         }
     }
 }

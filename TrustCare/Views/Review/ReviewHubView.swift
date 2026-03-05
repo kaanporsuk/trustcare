@@ -6,32 +6,74 @@ struct ReviewHubView: View {
     @StateObject private var viewModel = ReviewSubmissionViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
     @EnvironmentObject private var localizationManager: LocalizationManager
+    @Environment(\.dismiss) private var dismiss
 
     @State private var providerSearchText: String = ""
     @State private var providerResults: [Provider] = []
     @State private var specialtyResults: [Specialty] = []
     @State private var isSearchingProviders: Bool = false
     @State private var showAddProviderSheet: Bool = false
-    @State private var showProofPicker: Bool = false
     @State private var photoItems: [PhotosPickerItem] = []
     @State private var proofItem: PhotosPickerItem?
+
+    @State private var currentStep: ReviewStep = .provider
+
+    private let launchedFromProviderDetail: Bool
+
+    private enum ReviewStep: Int, CaseIterable {
+        case provider = 1
+        case visit = 2
+        case overall = 3
+        case detailed = 4
+        case comment = 5
+        case mediaAndSubmit = 6
+
+        var title: String {
+            switch self {
+            case .provider: return "Choose provider"
+            case .visit: return "Visit details"
+            case .overall: return "Overall rating"
+            case .detailed: return "Detailed ratings"
+            case .comment: return "Write review"
+            case .mediaAndSubmit: return "Media and submit"
+            }
+        }
+    }
+
+    private var progress: Double {
+        Double(currentStep.rawValue) / Double(ReviewStep.allCases.count)
+    }
+
+    private var canGoNext: Bool {
+        switch currentStep {
+        case .provider:
+            return viewModel.selectedProvider != nil
+        case .visit:
+            return true
+        case .overall:
+            return viewModel.overallRating > 0
+        case .detailed:
+            return true
+        case .comment:
+            return viewModel.commentCharCount >= 50
+        case .mediaAndSubmit:
+            return false
+        }
+    }
 
     init(initialProvider: Provider? = nil) {
         _viewModel = StateObject(wrappedValue: ReviewSubmissionViewModel(provider: initialProvider))
         _providerSearchText = State(initialValue: initialProvider?.name ?? "")
+        _currentStep = State(initialValue: initialProvider != nil ? .visit : .provider)
+        launchedFromProviderDetail = initialProvider != nil
     }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                    providerSection
-                    visitDetailsSection
-                    overallRatingSection
-                    detailedRatingsSection
-                    writtenReviewSection
-                    photosSection
-                    verificationSection
+                    stepHeader
+                    stepContent
                 }
                 .padding(.horizontal, AppSpacing.lg)
                 .padding(.top, AppSpacing.lg)
@@ -61,9 +103,13 @@ struct ReviewHubView: View {
             .fullScreenCover(isPresented: $viewModel.isComplete) {
                 ReviewConfirmationView(
                     hasProof: viewModel.didUploadProof,
+                    onViewProvider: {
+                        routeToProviderDetailAfterSubmit()
+                    },
                     onAnotherReview: {
                         viewModel.resetForm(keepProvider: false)
                         providerSearchText = ""
+                        currentStep = .provider
                     },
                     onGoHome: {
                         viewModel.isComplete = false
@@ -73,6 +119,39 @@ struct ReviewHubView: View {
             }
             .safeAreaInset(edge: .bottom) {
                 submitBar
+            }
+        }
+    }
+
+    private var stepHeader: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text("Step \(currentStep.rawValue) of \(ReviewStep.allCases.count)")
+                .font(AppFont.caption)
+                .foregroundStyle(.secondary)
+            Text(currentStep.title)
+                .font(AppFont.title3)
+            ProgressView(value: progress)
+                .tint(Color.tcOcean)
+        }
+    }
+
+    @ViewBuilder
+    private var stepContent: some View {
+        switch currentStep {
+        case .provider:
+            providerSection
+        case .visit:
+            visitDetailsSection
+        case .overall:
+            overallRatingSection
+        case .detailed:
+            detailedRatingsSection
+        case .comment:
+            writtenReviewSection
+        case .mediaAndSubmit:
+            VStack(alignment: .leading, spacing: AppSpacing.lg) {
+                photosSection
+                verificationSection
             }
         }
     }
@@ -364,28 +443,91 @@ struct ReviewHubView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
 
-            Button {
-                Task { await viewModel.submitReview() }
-            } label: {
-                HStack {
-                    if viewModel.isSubmitting {
-                        ProgressView()
-                            .tint(.white)
+            if currentStep != .provider {
+                Button {
+                    if let previous = ReviewStep(rawValue: currentStep.rawValue - 1) {
+                        currentStep = previous
                     }
-                    Text("review_submit")
-                        .font(AppFont.headline)
+                } label: {
+                    Text("Back")
+                        .font(AppFont.body)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .foregroundStyle(Color.tcOcean)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: AppRadius.button)
+                                .stroke(Color.tcOcean, lineWidth: 1)
+                        )
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
+                .buttonStyle(.plain)
             }
-            .disabled(!viewModel.canSubmit || viewModel.isSubmitting)
-            .foregroundStyle(.white)
-            .background(viewModel.canSubmit ? Color.tcOcean : Color.tcBorder)
-            .cornerRadius(AppRadius.button)
+
+            if currentStep == .mediaAndSubmit {
+                Button {
+                    Task { await viewModel.submitReview() }
+                } label: {
+                    HStack {
+                        if viewModel.isSubmitting {
+                            ProgressView()
+                                .tint(.white)
+                        }
+                        Text("review_submit")
+                            .font(AppFont.headline)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                }
+                .disabled(!viewModel.canSubmit || viewModel.isSubmitting)
+                .foregroundStyle(.white)
+                .background(viewModel.canSubmit ? Color.tcOcean : Color.tcBorder)
+                .cornerRadius(AppRadius.button)
+            } else {
+                Button {
+                    if let next = ReviewStep(rawValue: currentStep.rawValue + 1), canGoNext {
+                        currentStep = next
+                    }
+                } label: {
+                    Text("Next")
+                        .font(AppFont.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .disabled(!canGoNext)
+                .foregroundStyle(.white)
+                .background(canGoNext ? Color.tcOcean : Color.tcBorder)
+                .cornerRadius(AppRadius.button)
+            }
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.vertical, AppSpacing.md)
         .background(Color.tcSurface)
+    }
+
+    private func routeToProviderDetailAfterSubmit() {
+        guard let providerId = viewModel.lastSubmittedProviderID,
+              let reviewId = viewModel.lastSubmittedReviewID else {
+            viewModel.isComplete = false
+            return
+        }
+
+        NotificationCenter.default.post(
+            name: .trustCareReviewSubmitted,
+            object: nil,
+            userInfo: [
+                "providerId": providerId,
+                "reviewId": reviewId,
+            ]
+        )
+
+        viewModel.isComplete = false
+
+        if launchedFromProviderDetail {
+            dismiss()
+            return
+        }
+
+        NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
+        NotificationCenter.default.post(name: .trustCareRouteToProviderDetail, object: providerId)
     }
 
     private func searchProvidersAndSpecialties() async {
