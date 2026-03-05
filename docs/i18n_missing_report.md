@@ -1,0 +1,7330 @@
+# i18n Missing Translations Report
+
+- Source catalog: `TrustCare/Localizable.xcstrings`
+- Swift scan root: `TrustCare`
+
+## Languages Present
+
+`cs`, `da`, `de`, `en`, `es`, `fr`, `hu`, `it`, `nl`, `pl`, `pt`, `ro`, `ru`, `sv`, `tr`, `uk`
+
+## Missing Keys By Language
+
+### `cs`
+
+Missing count: **585**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q2`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `da`
+
+Missing count: **229**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Cancel`
+- `Change Avatar`
+- `Change Password`
+- `Checkup`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Emergency`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Log Out`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No reviews yet`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending`
+- `Pending Verification`
+- `Pending verification`
+- `Phone`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Procedure`
+- `Profile`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Review`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Verified`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `language_done`
+- `next`
+- `providers_title`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `review_button_back`
+- `review_button_next`
+- `review_select_provider_to_continue`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_view_provider`
+- `skip`
+- `splash_tagline`
+- `support@trustcare.app`
+- `survey_%@`
+- `•`
+- `🔵`
+
+### `de`
+
+Missing count: **229**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Cancel`
+- `Change Avatar`
+- `Change Password`
+- `Checkup`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Emergency`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Log Out`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No reviews yet`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending`
+- `Pending Verification`
+- `Pending verification`
+- `Phone`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Procedure`
+- `Profile`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Review`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Verified`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `language_done`
+- `next`
+- `providers_title`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `review_button_back`
+- `review_button_next`
+- `review_select_provider_to_continue`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_view_provider`
+- `skip`
+- `splash_tagline`
+- `support@trustcare.app`
+- `survey_%@`
+- `•`
+- `🔵`
+
+### `en`
+
+Missing count: **171**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% verified`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Cancel`
+- `Change Avatar`
+- `Change Password`
+- `Checkup`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Emergency`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Log Out`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No reviews yet`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending`
+- `Pending Verification`
+- `Pending verification`
+- `Phone`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Procedure`
+- `Profile`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Review`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Verified`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `next`
+- `skip`
+- `support@trustcare.app`
+- `survey_%@`
+- `•`
+- `🔵`
+
+### `es`
+
+Missing count: **582**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `fr`
+
+Missing count: **582**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `hu`
+
+Missing count: **585**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q2`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `it`
+
+Missing count: **582**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `nl`
+
+Missing count: **229**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Cancel`
+- `Change Avatar`
+- `Change Password`
+- `Checkup`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Emergency`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Log Out`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No reviews yet`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending`
+- `Pending Verification`
+- `Pending verification`
+- `Phone`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Procedure`
+- `Profile`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Review`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Verified`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `language_done`
+- `next`
+- `providers_title`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `review_button_back`
+- `review_button_next`
+- `review_select_provider_to_continue`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_view_provider`
+- `skip`
+- `splash_tagline`
+- `support@trustcare.app`
+- `survey_%@`
+- `•`
+- `🔵`
+
+### `pl`
+
+Missing count: **229**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Cancel`
+- `Change Avatar`
+- `Change Password`
+- `Checkup`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Emergency`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Log Out`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No reviews yet`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending`
+- `Pending Verification`
+- `Pending verification`
+- `Phone`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Procedure`
+- `Profile`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Review`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Verified`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `language_done`
+- `next`
+- `providers_title`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `review_button_back`
+- `review_button_next`
+- `review_select_provider_to_continue`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_view_provider`
+- `skip`
+- `splash_tagline`
+- `support@trustcare.app`
+- `survey_%@`
+- `•`
+- `🔵`
+
+### `pt`
+
+Missing count: **585**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q2`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `ro`
+
+Missing count: **584**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `ru`
+
+Missing count: **585**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q2`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `sv`
+
+Missing count: **585**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q2`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+### `tr`
+
+Missing count: **209**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Cancel`
+- `Change Avatar`
+- `Change Password`
+- `Checkup`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Emergency`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Log Out`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No reviews yet`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending`
+- `Pending Verification`
+- `Pending verification`
+- `Phone`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Procedure`
+- `Profile`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Review`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Verified`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `filter_distance`
+- `filter_facility`
+- `filter_language`
+- `filter_specialty`
+- `filter_treatment`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `next`
+- `review_button_back`
+- `review_step_detailed_ratings`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `skip`
+- `support@trustcare.app`
+- `survey_%@`
+- `•`
+- `🔵`
+
+### `uk`
+
+Missing count: **585**
+
+- ``
+- ` %lld`
+- ` %lld%%`
+- `$`
+- `%@ %@`
+- `%@%@`
+- `%@%@ - %@%@`
+- `%lld`
+- `%lld min`
+- `%lld out of 5 stars`
+- `%lld%% %@`
+- `%lld%% verified`
+- `%lld/%lld`
+- `%lld/10`
+- `%lld/5`
+- `(%lld)`
+- `10 km`
+- `112`
+- `25 km`
+- `5 km`
+- `50 km`
+- `: %@`
+- `A claim already exists for this provider.`
+- `Account created! Please check your email to confirm your account.`
+- `Active`
+- `Add Photos`
+- `Add Photos or Video`
+- `Add Video`
+- `Add photos, services, prices, and availability`
+- `Already have an account? Log In`
+- `Anonymous`
+- `Approved`
+- `Approximate location`
+- `Avatar processing failed. Please use a different photo under 5 MB.`
+- `Back`
+- `Basic`
+- `Be the first to review`
+- `Browse by city`
+- `Change Avatar`
+- `Choose from Library`
+- `Claimed Business`
+- `Clear`
+- `Clear search`
+- `Close`
+- `Confirm New Password`
+- `Consultation`
+- `Contact for Booking`
+- `Create Account`
+- `Current Password`
+- `Date of Birth`
+- `Deleted User`
+- `Distance`
+- `Don't have an account? Sign Up`
+- `Done`
+- `Edit Profile`
+- `Email address is invalid. Please use a valid email.`
+- `Email is required to update password.`
+- `Error`
+- `Excellent`
+- `Flagged`
+- `Follow-up`
+- `Free`
+- `Full Name`
+- `Get Started`
+- `Help other patients by sharing the first trusted experience for this provider.`
+- `Help others see what to expect`
+- `Help patients choose you with a complete profile`
+- `Highest Rated`
+- `How expensive was your visit?`
+- `I agree to Terms & Privacy`
+- `Image`
+- `Invalid email or password.`
+- `Is this your practice?`
+- `Language`
+- `Loading...`
+- `Location: %@`
+- `Log In`
+- `Login / Sign Up`
+- `N/A`
+- `Network error. Please check your connection.`
+- `New Password`
+- `New on TrustCare`
+- `Newest`
+- `No locations found. Try a different search.`
+- `No services yet`
+- `No verified providers match this area yet.`
+- `Not found.`
+- `OK`
+- `OR`
+- `Open in Maps`
+- `Overall rating is required.`
+- `Pending Verification`
+- `Pending verification`
+- `Photo updated`
+- `Photos and videos are visible to everyone.`
+- `Play video`
+- `Please select a provider.`
+- `Please sign in to add a healthcare provider.`
+- `Please sign in to continue.`
+- `Please sign in to report.`
+- `Please sign in to submit a review.`
+- `Please sign in to vote.`
+- `Please sign in.`
+- `Please upload a verification document.`
+- `Poor`
+- `Popular Cities`
+- `Popular near you`
+- `Premium`
+- `Price`
+- `Profile updated`
+- `Provider not found.`
+- `Provider unavailable`
+- `Rating filter is disabled at launch.`
+- `Ratings Breakdown`
+- `Read more`
+- `Recent Locations`
+- `Recent searches`
+- `Rejected`
+- `Remove photo`
+- `Remove video`
+- `Removed`
+- `Reset`
+- `Reviews`
+- `Save`
+- `Search Location`
+- `Search city or region...`
+- `See All Reviews`
+- `Services & Prices`
+- `Share`
+- `Show less`
+- `Show only providers with verified reviews`
+- `Sign In Required`
+- `Skip`
+- `Something went wrong.`
+- `Sort`
+- `Success`
+- `Take Photo`
+- `Tap to set location`
+- `This email is already registered.`
+- `Too many requests. Please try again later.`
+- `Unable to load provider details. Please try again.`
+- `Unable to load providers. Please try again.`
+- `Unable to submit claim. Please try again.`
+- `Unknown error`
+- `Update Password`
+- `Upload failed. Please try again.`
+- `Version 1.0.0`
+- `Video`
+- `Video will be trimmed to 30 seconds`
+- `View All`
+- `View image`
+- `View provider`
+- `Welcome Back`
+- `Write the first review`
+- `You can upload up to 5 photos.`
+- `You must be signed in to leave a review.`
+- `Your password has been updated.`
+- `Your review must be at least 50 characters.`
+- `accessibility_rating_hint`
+- `add_provider_address`
+- `add_provider_geocode_error`
+- `add_provider_is_this`
+- `add_provider_location`
+- `add_provider_map_pin`
+- `add_provider_name`
+- `add_provider_no_address`
+- `add_provider_phone`
+- `add_provider_section`
+- `add_provider_select`
+- `add_provider_select_specialty`
+- `add_provider_select_specialty_error`
+- `add_provider_title`
+- `app_name`
+- `button_add`
+- `button_back`
+- `button_call`
+- `button_continue`
+- `button_delete`
+- `button_directions`
+- `button_done`
+- `button_edit`
+- `button_ok`
+- `button_remove`
+- `button_save`
+- `button_submit`
+- `category_anesthesiology`
+- `category_cardiology`
+- `category_dermatology`
+- `category_endocrinology`
+- `category_ent`
+- `category_gastroenterology`
+- `category_general_practice`
+- `category_nephrology`
+- `category_neurology`
+- `category_oncology`
+- `category_ophthalmology`
+- `category_orthopedics`
+- `category_pediatrics`
+- `category_psychiatry`
+- `category_pulmonology`
+- `category_rheumatology`
+- `chip_distance`
+- `chip_facility`
+- `chip_language`
+- `chip_specialty`
+- `chip_treatment`
+- `claim_accepted_docs`
+- `claim_back_to_provider`
+- `claim_confirm_1`
+- `claim_confirm_2`
+- `claim_confirm_text`
+- `claim_description`
+- `claim_file_format`
+- `claim_pending`
+- `claim_pending_message`
+- `claim_profile`
+- `claim_provider_label`
+- `claim_rejected`
+- `claim_resubmit`
+- `claim_review_submit`
+- `claim_role_question`
+- `claim_step_1_of_3`
+- `claim_step_2_of_3`
+- `claim_step_3_of_3`
+- `claim_submit`
+- `claim_submitted`
+- `claim_submitted_message`
+- `claim_tap_upload`
+- `claim_title`
+- `claim_upload_doc`
+- `claim_verification_doc`
+- `claim_your_role`
+- `close_button`
+- `country_turkey`
+- `cta_change_city`
+- `cta_suggest_provider`
+- `current_location`
+- `date_today`
+- `date_yesterday`
+- `default_city_name`
+- `discover_error_providers_unavailable_body`
+- `discover_error_providers_unavailable_title`
+- `discover_error_switch_to_list`
+- `edit_review_title`
+- `edit_review_title_placeholder`
+- `edit_review_title_section`
+- `empty_home_cta`
+- `empty_home_title`
+- `empty_no_providers_body`
+- `empty_no_providers_title`
+- `empty_search`
+- `error_duplicate_review`
+- `error_generic`
+- `error_network`
+- `error_unknown`
+- `filter_distance`
+- `filter_facility`
+- `filter_facility_title`
+- `filter_language`
+- `filter_more`
+- `filter_specialty`
+- `filter_specialty_title`
+- `filter_treatment`
+- `filter_treatment_title`
+- `filter_verified`
+- `find_empty_change_city`
+- `find_empty_clear_filters`
+- `find_empty_growing_here`
+- `find_empty_search_another_area`
+- `find_empty_search_change_city`
+- `find_empty_suggest_provider`
+- `find_set_location`
+- `find_sheet_providers_title`
+- `find_state_change_city`
+- `find_state_clear_filters_body`
+- `find_state_clear_filters_title`
+- `find_state_growing_body`
+- `find_state_growing_title`
+- `find_state_no_providers_visible`
+- `find_state_search_another_area`
+- `find_state_try_another_area`
+- `help_contact`
+- `help_email_label`
+- `help_faq_a1`
+- `help_faq_a2`
+- `help_faq_a3`
+- `help_faq_a4`
+- `help_faq_a5`
+- `help_faq_a6`
+- `help_faq_q1`
+- `help_faq_q2`
+- `help_faq_q3`
+- `help_faq_q4`
+- `help_faq_q5`
+- `help_faq_q6`
+- `help_faq_title`
+- `help_report_issue`
+- `is_this_your_practice`
+- `language_changed_alert`
+- `language_changed_message`
+- `language_changed_message_named %@`
+- `language_danish`
+- `language_done`
+- `language_dutch`
+- `language_english`
+- `language_german`
+- `language_later`
+- `language_polish`
+- `language_restart_now`
+- `language_turkish`
+- `location_select_title`
+- `logout_confirm_message`
+- `media_photo_count_%lld`
+- `menu_saved`
+- `my_reviews_delete_message`
+- `my_reviews_delete_title`
+- `my_reviews_empty_action`
+- `my_reviews_empty_message`
+- `next`
+- `pp_contact_1`
+- `pp_contact_2`
+- `pp_cookies_1`
+- `pp_cookies_2`
+- `pp_cookies_3`
+- `pp_cookies_title`
+- `pp_data_collection_1`
+- `pp_data_collection_2`
+- `pp_data_collection_3`
+- `pp_data_collection_4`
+- `pp_data_collection_title`
+- `pp_data_sharing_1`
+- `pp_data_sharing_2`
+- `pp_data_sharing_3`
+- `pp_data_sharing_title`
+- `pp_data_usage_1`
+- `pp_data_usage_2`
+- `pp_data_usage_3`
+- `pp_data_usage_title`
+- `pp_last_updated`
+- `pp_rights_1`
+- `pp_rights_2`
+- `pp_rights_3`
+- `pp_rights_4`
+- `pp_rights_title`
+- `pp_security_1`
+- `pp_security_2`
+- `pp_security_3`
+- `pp_security_title`
+- `profile_member_since`
+- `profile_referral`
+- `profile_reviews_count`
+- `providers_label`
+- `providers_title`
+- `rehber_call_112`
+- `rehber_call_emergency`
+- `rehber_consent_text`
+- `rehber_cooldown`
+- `rehber_daily_limit_reached`
+- `rehber_delete`
+- `rehber_delete_conversation_message`
+- `rehber_delete_conversation_title`
+- `rehber_emergency_danger`
+- `rehber_emergency_detected`
+- `rehber_emergency_subtitle`
+- `rehber_emergency_title`
+- `rehber_empty_state`
+- `rehber_empty_state_sub`
+- `rehber_feature_1`
+- `rehber_feature_2`
+- `rehber_feature_3`
+- `rehber_find_provider`
+- `rehber_info_bar`
+- `rehber_input_placeholder`
+- `rehber_load_conversation_error`
+- `rehber_login_required`
+- `rehber_nearest_emergency`
+- `rehber_new_short`
+- `rehber_no_response`
+- `rehber_onboarding_subtitle`
+- `rehber_onboarding_warning`
+- `rehber_plus_banner_body`
+- `rehber_plus_banner_title`
+- `rehber_plus_trial`
+- `rehber_recent_sessions`
+- `rehber_response_failed`
+- `rehber_response_unavailable`
+- `rehber_sessions`
+- `rehber_start`
+- `rehber_title`
+- `rehber_try_again`
+- `rehber_usage_counter`
+- `report_additional_details`
+- `report_button`
+- `report_footer`
+- `report_header`
+- `report_optional_details`
+- `report_reason`
+- `report_reported`
+- `report_thank_you`
+- `report_title`
+- `review_add_photo`
+- `review_another`
+- `review_button_back`
+- `review_button_next`
+- `review_cant_find_add`
+- `review_char_count %lld`
+- `review_editable_24h`
+- `review_go_home`
+- `review_helpful_count_%lld`
+- `review_photos_public`
+- `review_proof_private`
+- `review_select_provider_to_continue`
+- `review_skip_verification`
+- `review_step_choose_provider`
+- `review_step_detailed_ratings`
+- `review_step_format`
+- `review_step_media_submit`
+- `review_step_overall_rating`
+- `review_step_visit_details`
+- `review_step_write_review`
+- `review_submitted_message`
+- `review_submitted_title`
+- `review_upload_proof`
+- `review_verification_pending`
+- `review_verify`
+- `review_verify_hint`
+- `review_view_provider`
+- `review_visit_type`
+- `reviews_count`
+- `saved_empty_action`
+- `saved_empty_message`
+- `settings_delete_account_confirm`
+- `settings_delete_account_warning`
+- `settings_downloading_data`
+- `settings_email`
+- `skip`
+- `specialty_label`
+- `splash_tagline`
+- `sub_acne`
+- `sub_acute_illness_treatment`
+- `sub_anxiety`
+- `sub_arrhythmia`
+- `sub_arthritis`
+- `sub_asthma`
+- `sub_bipolar_disorder`
+- `sub_cataracts`
+- `sub_chemotherapy`
+- `sub_child_development`
+- `sub_childhood_illness`
+- `sub_chronic_disease_management`
+- `sub_chronic_kidney_disease`
+- `sub_copd`
+- `sub_coronary_artery_disease`
+- `sub_dementia`
+- `sub_depression`
+- `sub_diabetes`
+- `sub_dialysis`
+- `sub_eczema`
+- `sub_endoscopy`
+- `sub_erectile_dysfunction`
+- `sub_fracture_treatment`
+- `sub_general_consultation`
+- `sub_glaucoma`
+- `sub_headache`
+- `sub_hearing_loss`
+- `sub_heart_failure`
+- `sub_hormone_replacement`
+- `sub_hypertension`
+- `sub_hypertension_mgmt`
+- `sub_incontinence`
+- `sub_infant_care`
+- `sub_inflammatory_bowel_disease`
+- `sub_interstitial_lung_disease`
+- `sub_joint_replacement`
+- `sub_kidney_stones`
+- `sub_kidney_transplant`
+- `sub_liver_disease`
+- `sub_lupus`
+- `sub_movement_disorders`
+- `sub_pain_management`
+- `sub_palliative_care`
+- `sub_peptic_ulcer`
+- `sub_post_operative_care`
+- `sub_pre_operative_assessment`
+- `sub_preventive_care`
+- `sub_prostate_disease`
+- `sub_psoriasis`
+- `sub_radiation_therapy`
+- `sub_refractive_error`
+- `sub_retinal_disease`
+- `sub_schizophrenia`
+- `sub_sinusitis`
+- `sub_skin_cancer_screening`
+- `sub_sleep_apnea`
+- `sub_sleep_disorders`
+- `sub_spine_surgery`
+- `sub_sports_medicine`
+- `sub_stroke`
+- `sub_surgical_oncology`
+- `sub_thyroid_disease`
+- `sub_vaccination`
+- `sub_vasculitis`
+- `support@trustcare.app`
+- `survey_%@`
+- `survey_accuracy`
+- `survey_accuracy_sub`
+- `survey_admin_efficiency`
+- `survey_admin_efficiency_sub`
+- `survey_aesthetics`
+- `survey_aftercare`
+- `survey_aftercare_sub`
+- `survey_care_quality`
+- `survey_care_quality_sub`
+- `survey_communication_clarity`
+- `survey_communication_clarity_sub`
+- `survey_consultation_quality`
+- `survey_consultation_quality_sub`
+- `survey_dental_bedside_sub`
+- `survey_dental_hygiene_sub`
+- `survey_dental_wait_sub`
+- `survey_diagnostic`
+- `survey_diagnostic_wait_sub`
+- `survey_empathy`
+- `survey_empathy_sub`
+- `survey_environment_comfort`
+- `survey_environment_comfort_sub`
+- `survey_facility_equipment`
+- `survey_facility_equipment_sub`
+- `survey_facility_hygiene`
+- `survey_facility_hygiene_sub`
+- `survey_general_clinic`
+- `survey_hospital_wait_sub`
+- `survey_pain_management`
+- `survey_pain_management_sub`
+- `survey_pharmacist_knowledge`
+- `survey_pharmacist_knowledge_sub`
+- `survey_procedure_comfort`
+- `survey_procedure_comfort_sub`
+- `survey_punctuality`
+- `survey_punctuality_sub`
+- `survey_rehab_effectiveness_sub`
+- `survey_rehab_wait_sub`
+- `survey_result_satisfaction`
+- `survey_result_satisfaction_sub`
+- `survey_result_speed`
+- `survey_result_speed_sub`
+- `survey_room_hygiene`
+- `survey_room_hygiene_sub`
+- `survey_speed`
+- `survey_speed_sub`
+- `survey_staff_courtesy`
+- `survey_staff_courtesy_sub`
+- `survey_therapist_attentiveness`
+- `survey_therapist_attentiveness_sub`
+- `tab_badge_plus`
+- `tagline`
+- `tos_account_1`
+- `tos_account_2`
+- `tos_account_title`
+- `tos_contact_1`
+- `tos_contact_2`
+- `tos_dispute_1`
+- `tos_dispute_2`
+- `tos_dispute_title`
+- `tos_ip_1`
+- `tos_ip_2`
+- `tos_rehber_1`
+- `tos_rehber_2`
+- `tos_rehber_3`
+- `tos_rehber_title`
+- `tos_review_1`
+- `tos_review_2`
+- `tos_review_3`
+- `tos_review_title`
+- `tos_service_1`
+- `tos_service_2`
+- `tos_service_title`
+- `tos_user_1`
+- `tos_user_2`
+- `tos_user_3`
+- `unauthorized_area`
+- `unknown_provider`
+- `use_device_location`
+- `•`
+- `🔵`
+
+## Hardcoded Swift String Literals (Text/Button)
+
+Potentially user-visible hardcoded literals found via `Text("...")` and `Button("...")` scanning.
+
+Total findings: **97**
+
+- `TrustCare/UI/Components/TCClaimBanner.swift:8` `Text` -> `Is this your practice?`
+- `TrustCare/UI/Components/TCClaimBanner.swift:12` `Text` -> `Add photos, services, prices, and availability`
+- `TrustCare/UI/Components/TCClaimBanner.swift:16` `Text` -> `Help patients choose you with a complete profile`
+- `TrustCare/UI/Components/TCProviderCard.swift:43` `Text` -> `Be the first to review`
+- `TrustCare/UI/Components/TCProviderCard.swift:47` `Text` -> `New on TrustCare`
+- `TrustCare/UI/Components/TCProviderCard.swift:61` `Text` -> `(\(provider.reviewCount))`
+- `TrustCare/UI/Components/TCProviderCard.swift:70` `Text` -> `\(provider.verifiedPercentage)% verified`
+- `TrustCare/UI/Components/TCSearchBar.swift:36` `Text` -> `Clear search`
+- `TrustCare/Views/Auth/SignUpView.swift:46` `Text` -> `Date of Birth`
+- `TrustCare/Views/Auth/SignUpView.swift:76` `Text` -> `I agree to Terms & Privacy`
+- `TrustCare/Views/Components/ClaimedBadge.swift:9` `Text` -> `Claimed Business`
+- `TrustCare/Views/Components/ProviderCategoryView.swift:54` `Text` -> `DynamicProviderAvatarView Preview`
+- `TrustCare/Views/Components/ReviewItemView.swift:39` `Text` -> `Pending verification`
+- `TrustCare/Views/Components/ReviewItemView.swift:89` `Text` -> `review_helpful_count_\(helpfulCount)`
+- `TrustCare/Views/Components/StarRatingInput.swift:80` `Text` -> `\(rating)/5`
+- `TrustCare/Views/Components/VerifiedBadge.swift:8` `Text` -> `Verified`
+- `TrustCare/Views/Home/ClaimProviderView.swift:56` `Button` -> `OK`
+- `TrustCare/Views/Home/HomeView.swift:288` `Text` -> `\(displayedProviders.count)`
+- `TrustCare/Views/Home/HomeView.swift:475` `Text` -> `Recent searches`
+- `TrustCare/Views/Home/HomeView.swift:497` `Text` -> `Browse by city`
+- `TrustCare/Views/Home/HomeView.swift:522` `Text` -> `\(item.count)`
+- `TrustCare/Views/Home/HomeView.swift:571` `Text` -> `Popular near you`
+- `TrustCare/Views/Home/HomeView.swift:628` `Text` -> `Distance`
+- `TrustCare/Views/Home/HomeView.swift:632` `Text` -> `5 km`
+- `TrustCare/Views/Home/HomeView.swift:633` `Text` -> `10 km`
+- `TrustCare/Views/Home/HomeView.swift:634` `Text` -> `25 km`
+- `TrustCare/Views/Home/HomeView.swift:635` `Text` -> `50 km`
+- `TrustCare/Views/Home/HomeView.swift:644` `Button` -> `Reset`
+- `TrustCare/Views/Home/HomeView.swift:660` `Text` -> `Language`
+- `TrustCare/Views/Home/HomeView.swift:693` `Button` -> `Reset`
+- `TrustCare/Views/Home/HomeView.swift:706` `Text` -> `Verified`
+- `TrustCare/Views/Home/HomeView.swift:710` `Text` -> `Show only providers with verified reviews`
+- `TrustCare/Views/Home/HomeView.swift:715` `Text` -> `No verified providers match this area yet.`
+- `TrustCare/Views/Home/HomeView.swift:725` `Button` -> `Reset`
+- `TrustCare/Views/Home/HomeView.swift:732` `Text` -> `Rating filter is disabled at launch.`
+- `TrustCare/Views/Home/HomeView.swift:981` `Button` -> `Reset`
+- `TrustCare/Views/Home/ProviderDetailView.swift:55` `Text` -> `Provider unavailable`
+- `TrustCare/Views/Home/ProviderDetailView.swift:109` `Button` -> `Done`
+- `TrustCare/Views/Home/ProviderDetailView.swift:116` `Button` -> `Login / Sign Up`
+- `TrustCare/Views/Home/ProviderDetailView.swift:119` `Button` -> `Cancel`
+- `TrustCare/Views/Home/ProviderDetailView.swift:121` `Text` -> `You must be signed in to leave a review.`
+- `TrustCare/Views/Home/ProviderDetailView.swift:271` `Text` -> `No reviews yet`
+- `TrustCare/Views/Home/ProviderDetailView.swift:279` `Text` -> `Price`
+- `TrustCare/Views/Home/ProviderDetailView.swift:294` `Text` -> `Open in Maps`
+- `TrustCare/Views/Home/ProviderDetailView.swift:301` `Text` -> `Location: \(city)`
+- `TrustCare/Views/Home/ProviderDetailView.swift:305` `Text` -> `Approximate location`
+- `TrustCare/Views/Home/ProviderDetailView.swift:438` `Text` -> `Ratings Breakdown`
+- `TrustCare/Views/Home/ProviderDetailView.swift:452` `Text` -> `N/A`
+- `TrustCare/Views/Home/ProviderDetailView.swift:469` `Text` -> `Services & Prices`
+- `TrustCare/Views/Home/ProviderDetailView.swift:475` `Text` -> `View All`
+- `TrustCare/Views/Home/ProviderDetailView.swift:493` `Text` -> `Reviews`
+- `TrustCare/Views/Home/ProviderDetailView.swift:498` `Text` -> `Newest`
+- `TrustCare/Views/Home/ProviderDetailView.swift:499` `Text` -> `Highest Rated`
+- `TrustCare/Views/Home/ProviderDetailView.swift:507` `Text` -> `No reviews yet`
+- `TrustCare/Views/Home/ProviderDetailView.swift:511` `Text` -> `Help other patients by sharing the first trusted experience for this provider.`
+- `TrustCare/Views/Home/ProviderDetailView.swift:520` `Text` -> `Write the first review`
+- `TrustCare/Views/Home/ProviderDetailView.swift:533` `Text` -> `Write the first review`
+- `TrustCare/Views/Home/ProviderDetailView.swift:564` `Text` -> `See All Reviews`
+- `TrustCare/Views/Home/ServicesCatalogView.swift:17` `Text` -> `Services & Prices`
+- `TrustCare/Views/Home/ServicesCatalogView.swift:31` `Text` -> `No services yet`
+- `TrustCare/Views/Home/ServicesCatalogView.swift:61` `Text` -> `\(duration) min`
+- `TrustCare/Views/Home/ServicesCatalogView.swift:96` `Button` -> `OK`
+- `TrustCare/Views/Onboarding/AuthView.swift:71` `Text` -> `OR`
+- `TrustCare/Views/Onboarding/AuthView.swift:125` `Button` -> `Done`
+- `TrustCare/Views/Onboarding/AuthView.swift:135` `Button` -> `Done`
+- `TrustCare/Views/Onboarding/OnboardingView.swift:15` `Text` -> `skip`
+- `TrustCare/Views/Profile/ChangePasswordView.swift:24` `Button` -> `Update Password`
+- `TrustCare/Views/Profile/ChangePasswordView.swift:47` `Button` -> `Done`
+- `TrustCare/Views/Profile/ChangePasswordView.swift:52` `Button` -> `Done`
+- `TrustCare/Views/Profile/ChangePasswordView.swift:56` `Text` -> `Your password has been updated.`
+- `TrustCare/Views/Profile/EditProfileView.swift:37` `Button` -> `Cancel`
+- `TrustCare/Views/Profile/EditProfileView.swift:42` `Button` -> `Save`
+- `TrustCare/Views/Profile/HelpSupportView.swift:86` `Text` -> `support@trustcare.app`
+- `TrustCare/Views/Profile/ProfileView.swift:121` `Button` -> `Take Photo`
+- `TrustCare/Views/Profile/ProfileView.swift:125` `Button` -> `Choose from Library`
+- `TrustCare/Views/Profile/ProfileView.swift:128` `Button` -> `Cancel`
+- `TrustCare/Views/Profile/ProfileView.swift:132` `Text` -> `Profile updated`
+- `TrustCare/Views/Profile/ProfileView.swift:141` `Text` -> `Photo updated`
+- `TrustCare/Views/Profile/ProfileView.swift:152` `Button` -> `Done`
+- `TrustCare/Views/Profile/ProfileView.swift:200` `Text` -> `: \(formattedMemberDate)`
+- `TrustCare/Views/Profile/ProfileView.swift:220` `Text` -> ` \(verifiedPercent)%`
+- `TrustCare/Views/Profile/ProfileView.swift:275` `Text` -> `Version 1.0.0`
+- `TrustCare/Views/Rehber/RehberChatView.swift:173` `Text` -> ` \(viewModel.usageCount)`
+- `TrustCare/Views/Review/MediaPickerView.swift:18` `Text` -> `Add Photos or Video`
+- `TrustCare/Views/Review/MediaPickerView.swift:20` `Text` -> `Help others see what to expect`
+- `TrustCare/Views/Review/MediaPickerView.swift:60` `Text` -> `media_photo_count_\(selectedImages.count)`
+- `TrustCare/Views/Review/MediaPickerView.swift:108` `Text` -> `Video will be trimmed to 30 seconds`
+- `TrustCare/Views/Review/MediaPickerView.swift:114` `Button` -> `Skip`
+- `TrustCare/Views/Review/MediaPickerView.swift:123` `Text` -> `Photos and videos are visible to everyone.`
+- `TrustCare/Views/Review/MediaPickerView.swift:158` `Button` -> `Done`
+- `TrustCare/Views/Review/PriceLevelPicker.swift:13` `Text` -> `How expensive was your visit?`
+- `TrustCare/Views/Review/RatingSliderView.swift:30` `Text` -> `Poor`
+- `TrustCare/Views/Review/RatingSliderView.swift:34` `Text` -> `\(Int(value))/10`
+- `TrustCare/Views/Review/RatingSliderView.swift:37` `Text` -> `Excellent`
+- `TrustCare/Views/Review/ReportReviewSheet.swift:36` `Text` -> `\(details.count)/\(maxDetailsLength)`
+- `TrustCare/Views/Review/ReviewListView.swift:22` `Text` -> `No reviews yet`
+- `TrustCare/Views/Review/ReviewListView.swift:48` `Button` -> `Done`
