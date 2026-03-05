@@ -52,6 +52,8 @@ struct TCEmptyState: View {
     }
 
     let variant: Variant
+    let customTitle: String?
+    let customBody: String?
     let primaryTitle: String
     let secondaryTitle: String?
     let onPrimary: () -> Void
@@ -59,12 +61,16 @@ struct TCEmptyState: View {
 
     init(
         variant: Variant,
+        customTitle: String? = nil,
+        customBody: String? = nil,
         primaryTitle: String,
         secondaryTitle: String? = nil,
         onPrimary: @escaping () -> Void,
         onSecondary: (() -> Void)? = nil
     ) {
         self.variant = variant
+        self.customTitle = customTitle
+        self.customBody = customBody
         self.primaryTitle = primaryTitle
         self.secondaryTitle = secondaryTitle
         self.onPrimary = onPrimary
@@ -81,11 +87,11 @@ struct TCEmptyState: View {
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundStyle(Color.tcTextSecondary)
 
-            Text(tcString(variant.titleKey, fallback: variant.titleFallback))
+            Text(customTitle ?? tcString(variant.titleKey, fallback: variant.titleFallback))
                 .font(.system(.title3, design: .default).weight(.semibold))
                 .foregroundStyle(Color.tcTextPrimary)
 
-            Text(tcString(variant.bodyKey, fallback: variant.bodyFallback))
+            Text(customBody ?? tcString(variant.bodyKey, fallback: variant.bodyFallback))
                 .font(.system(.body, design: .default))
                 .foregroundStyle(Color.tcTextSecondary)
                 .multilineTextAlignment(.center)

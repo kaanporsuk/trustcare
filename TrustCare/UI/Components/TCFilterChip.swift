@@ -9,11 +9,11 @@ struct TCFilterChip: View {
         Button(action: action) {
             Text(title)
                 .lineLimit(1)
-                .minimumScaleFactor(0.85)
+                .minimumScaleFactor(0.9)
                 .font(.system(.subheadline, design: .default).weight(.medium))
                 .foregroundStyle(isSelected ? Color.tcOcean : Color.tcTextSecondary)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 9)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
                 .frame(minHeight: 34)
                 .background(isSelected ? Color.tcOcean.opacity(0.15) : Color.tcSurface)
                 .overlay {

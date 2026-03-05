@@ -222,7 +222,7 @@ struct HomeView: View {
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "mappin.and.ellipse")
-                        Text(selectedCityName.isEmpty ? "Set location" : selectedCityName)
+                        Text(selectedCityName.isEmpty ? tcString("find_set_location", fallback: "Set location") : selectedCityName)
                             .lineLimit(1)
                     }
                     .font(.subheadline.weight(.semibold))
@@ -248,23 +248,23 @@ struct HomeView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: AppSpacing.xs) {
-                    TCFilterChip(title: tcString("filter_specialty", fallback: "Specialty"), isSelected: !selectedSpecialtyIDs.isEmpty) {
+                    TCFilterChip(title: tcString("chip_specialty", fallback: "Specialty"), isSelected: !selectedSpecialtyIDs.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .specialty
                     }
-                    TCFilterChip(title: tcString("filter_treatment", fallback: "Treatment"), isSelected: !selectedServiceIDs.isEmpty) {
+                    TCFilterChip(title: tcString("chip_treatment", fallback: "Treatment"), isSelected: !selectedServiceIDs.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .treatment
                     }
-                    TCFilterChip(title: tcString("filter_facility", fallback: "Facility"), isSelected: !selectedFacilityIDs.isEmpty) {
+                    TCFilterChip(title: tcString("chip_facility", fallback: "Facility"), isSelected: !selectedFacilityIDs.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .facility
                     }
-                    TCFilterChip(title: tcString("filter_distance", fallback: "Distance"), isSelected: selectedDistanceKm != 50) {
+                    TCFilterChip(title: tcString("chip_distance", fallback: "Distance"), isSelected: selectedDistanceKm != 50) {
                         showSearchOverlay = false
                         activeFilterSheet = .distance
                     }
-                    TCFilterChip(title: tcString("filter_language", fallback: "Language"), isSelected: !selectedLanguages.isEmpty) {
+                    TCFilterChip(title: tcString("chip_language", fallback: "Language"), isSelected: !selectedLanguages.isEmpty) {
                         showSearchOverlay = false
                         activeFilterSheet = .language
                     }
@@ -282,7 +282,7 @@ struct HomeView: View {
     private var mapResultsSheet: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack {
-                Text("Providers")
+                Text(tcKey: "find_sheet_providers_title", fallback: "Providers")
                     .font(.headline)
                 Spacer()
                 Text("\(displayedProviders.count)")
@@ -333,8 +333,8 @@ struct HomeView: View {
         if hasAnyActiveFilter {
             TCEmptyState(
                 variant: .noResults,
-                primaryTitle: "Clear filters",
-                secondaryTitle: "Search another area",
+                primaryTitle: tcString("find_empty_clear_filters", fallback: "Clear filters"),
+                secondaryTitle: tcString("find_empty_search_another_area", fallback: "Search another area"),
                 onPrimary: {
                     Task { await clearAllFilters() }
                 },
@@ -345,15 +345,15 @@ struct HomeView: View {
         } else if isRegionLikelyNew {
             TCEmptyState(
                 variant: .noProviders,
-                primaryTitle: "Change city",
-                secondaryTitle: "Suggest a provider",
+                primaryTitle: tcString("find_empty_change_city", fallback: "Change city"),
+                secondaryTitle: tcString("find_empty_suggest_provider", fallback: "Suggest a provider"),
                 onPrimary: {
                     showLocationSearch = true
                 },
                 onSecondary: {}
             )
             .overlay(alignment: .topLeading) {
-                Text("TrustCare is growing here")
+                Text(tcKey: "find_empty_growing_here", fallback: "TrustCare is growing here")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color.tcSage)
                     .padding(.horizontal, 12)
@@ -365,8 +365,8 @@ struct HomeView: View {
         } else {
             TCEmptyState(
                 variant: .noProviders,
-                primaryTitle: "Search another area / Change city",
-                secondaryTitle: "Suggest a provider",
+                primaryTitle: tcString("find_empty_search_change_city", fallback: "Search another area / Change city"),
+                secondaryTitle: tcString("find_empty_suggest_provider", fallback: "Suggest a provider"),
                 onPrimary: {
                     showLocationSearch = true
                 },
@@ -389,16 +389,16 @@ struct HomeView: View {
 
     private var stateACard: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("No providers visible in this map area")
+            Text(tcKey: "find_state_no_providers_visible", fallback: "No providers visible in this map area")
                 .font(.headline)
-            Text("Try another area or pick a different city to continue.")
+            Text(tcKey: "find_state_try_another_area", fallback: "Try another area or pick a different city to continue.")
                 .font(.subheadline)
                 .foregroundStyle(Color.tcTextSecondary)
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Search another area / Change city", fullWidth: false) {
+                TCPrimaryButton(title: tcString("find_empty_search_change_city", fallback: "Search another area / Change city"), fullWidth: false) {
                     showLocationSearch = true
                 }
-                Button("Suggest a provider") {}
+                Button(tcString("find_empty_suggest_provider", fallback: "Suggest a provider")) {}
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.tcOcean)
             }
@@ -410,16 +410,16 @@ struct HomeView: View {
 
     private var stateBCard: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("No results match these filters")
+            Text(tcKey: "find_state_clear_filters_title", fallback: "No results match these filters")
                 .font(.headline)
-            Text("Clear one or more filters, or move the map to expand results.")
+            Text(tcKey: "find_state_clear_filters_body", fallback: "Clear one or more filters, or move the map to expand results.")
                 .font(.subheadline)
                 .foregroundStyle(Color.tcTextSecondary)
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Clear filters", fullWidth: false) {
+                TCPrimaryButton(title: tcString("find_empty_clear_filters", fallback: "Clear filters"), fullWidth: false) {
                     Task { await clearAllFilters() }
                 }
-                Button("Search another area") {
+                Button(tcString("find_state_search_another_area", fallback: "Search another area")) {
                     showLocationSearch = true
                 }
                 .font(.subheadline.weight(.semibold))
@@ -433,17 +433,17 @@ struct HomeView: View {
 
     private var stateCCard: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("TrustCare is growing here")
+            Text(tcKey: "find_state_growing_title", fallback: "TrustCare is growing here")
                 .font(.headline)
                 .foregroundStyle(Color.tcSage)
-            Text("We are onboarding providers in this region. Try a nearby city in the meantime.")
+            Text(tcKey: "find_state_growing_body", fallback: "We are onboarding providers in this region. Try a nearby city in the meantime.")
                 .font(.subheadline)
                 .foregroundStyle(Color.tcTextSecondary)
             HStack(spacing: AppSpacing.sm) {
-                TCPrimaryButton(title: "Change city", fullWidth: false) {
+                TCPrimaryButton(title: tcString("find_state_change_city", fallback: "Change city"), fullWidth: false) {
                     showLocationSearch = true
                 }
-                Button("Suggest a provider") {}
+                Button(tcString("find_empty_suggest_provider", fallback: "Suggest a provider")) {}
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.tcOcean)
             }

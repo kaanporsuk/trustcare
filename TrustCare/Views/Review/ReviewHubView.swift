@@ -5,6 +5,7 @@ import UIKit
 struct ReviewHubView: View {
     @StateObject private var viewModel = ReviewSubmissionViewModel()
     @ObservedObject private var specialtyService = SpecialtyService.shared
+    @EnvironmentObject private var appRouter: AppRouter
     @EnvironmentObject private var localizationManager: LocalizationManager
     @Environment(\.dismiss) private var dismiss
 
@@ -30,18 +31,22 @@ struct ReviewHubView: View {
 
         var title: String {
             switch self {
-            case .provider: return "Choose provider"
-            case .visit: return "Visit details"
-            case .overall: return "Overall rating"
-            case .detailed: return "Detailed ratings"
-            case .comment: return "Write review"
-            case .mediaAndSubmit: return "Media and submit"
+            case .provider: return tcString("review_step_choose_provider", fallback: "Choose provider")
+            case .visit: return tcString("review_step_visit_details", fallback: "Visit details")
+            case .overall: return tcString("review_step_overall_rating", fallback: "Overall rating")
+            case .detailed: return tcString("review_step_detailed_ratings", fallback: "Detailed ratings")
+            case .comment: return tcString("review_step_write_review", fallback: "Write review")
+            case .mediaAndSubmit: return tcString("review_step_media_submit", fallback: "Media and submit")
             }
         }
     }
 
     private var progress: Double {
         Double(currentStep.rawValue) / Double(ReviewStep.allCases.count)
+    }
+
+    private var shouldShowTabBoundOverlay: Bool {
+        launchedFromProviderDetail || appRouter.selectedTab == 2
     }
 
     private var canGoNext: Bool {
@@ -79,7 +84,7 @@ struct ReviewHubView: View {
                 .padding(.top, AppSpacing.lg)
                 .padding(.bottom, AppSpacing.xxxxl)
             }
-            .navigationTitle("tab_review")
+            .navigationTitle(Text(tcKey: "tab_review", fallback: "Review"))
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 await specialtyService.loadSpecialties()
@@ -118,14 +123,22 @@ struct ReviewHubView: View {
                 )
             }
             .safeAreaInset(edge: .bottom) {
-                submitBar
+                if shouldShowTabBoundOverlay {
+                    submitBar
+                }
+            }
+            .onChange(of: appRouter.selectedTab) { _, newTab in
+                // Prevent stale CTA error state from lingering when users leave Review tab.
+                if !launchedFromProviderDetail, newTab != 2 {
+                    viewModel.submissionErrorMessage = nil
+                }
             }
         }
     }
 
     private var stepHeader: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Step \(currentStep.rawValue) of \(ReviewStep.allCases.count)")
+            Text(String(format: tcString("review_step_format", fallback: "Step %lld of %lld"), currentStep.rawValue, ReviewStep.allCases.count))
                 .font(AppFont.caption)
                 .foregroundStyle(.secondary)
             Text(currentStep.title)
@@ -158,7 +171,7 @@ struct ReviewHubView: View {
 
     private var providerSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("review_who")
+            Text(tcKey: "review_who", fallback: "Choose provider")
                 .font(AppFont.title3)
 
             if let provider = viewModel.selectedProvider {
@@ -173,7 +186,7 @@ struct ReviewHubView: View {
                     } label: {
                         HStack {
                             Image(systemName: "arrow.clockwise")
-                            Text("review_change_provider")
+                                Text(tcKey: "review_change_provider", fallback: "Change provider")
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -229,7 +242,7 @@ struct ReviewHubView: View {
                                     Text(specialty.resolvedName(using: localizationManager))
                                         .font(AppFont.body)
                                     Spacer()
-                                    Text("specialty_label")
+                                    Text(tcKey: "specialty_label", fallback: "Specialty")
                                         .font(AppFont.footnote)
                                         .foregroundStyle(.secondary)
                                 }
@@ -246,7 +259,7 @@ struct ReviewHubView: View {
                 Button {
                     showAddProviderSheet = true
                 } label: {
-                    Text(tcKey: "review_cant_find_add", fallback: "Can't find your provider? Add it")
+                    Text(tcKey: "review_cant_find_add", fallback: "Can't find it? Add new")
                 }
                 .font(AppFont.caption)
                 .foregroundStyle(Color.tcOcean)
@@ -451,7 +464,7 @@ struct ReviewHubView: View {
                         currentStep = previous
                     }
                 } label: {
-                    Text("Back")
+                    Text(tcKey: "review_button_back", fallback: "Back")
                         .font(AppFont.body)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -489,7 +502,7 @@ struct ReviewHubView: View {
                         currentStep = next
                     }
                 } label: {
-                    Text("Next")
+                    Text(tcKey: "review_button_next", fallback: "Next")
                         .font(AppFont.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)

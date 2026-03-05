@@ -12,11 +12,11 @@ struct RehberSessionListView: View {
                 // Header section
                 VStack(spacing: AppSpacing.md) {
                     VStack(spacing: AppSpacing.xs) {
-                        Text("rehber_title")
+                        Text(tcKey: "rehber_title", fallback: "Guide")
                             .font(AppFont.title2)
                             .fontWeight(.bold)
                         
-                        Text("rehber_subtitle")
+                        Text(tcKey: "rehber_subtitle", fallback: "Your health guidance assistant")
                             .font(AppFont.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -28,7 +28,7 @@ struct RehberSessionListView: View {
                             .font(.system(size: 16))
                             .foregroundStyle(Color.tcOcean)
                         
-                        Text("rehber_disclaimer")
+                        Text(tcKey: "rehber_disclaimer", fallback: "Rehber provides guidance, not a medical diagnosis.")
                             .font(AppFont.footnote)
                             .foregroundStyle(.primary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -47,7 +47,7 @@ struct RehberSessionListView: View {
                         viewModel.startNewChat()
                         showChat = true
                     } label: {
-                        Text("rehber_new_conversation")
+                        Text(tcKey: "rehber_new_conversation", fallback: "Start new conversation")
                             .font(AppFont.headline)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
@@ -68,11 +68,11 @@ struct RehberSessionListView: View {
                             .font(.system(size: 48))
                             .foregroundStyle(.secondary)
                         
-                        Text("rehber_no_conversations")
+                        Text(tcKey: "rehber_no_conversations", fallback: "No conversations yet")
                             .font(AppFont.headline)
                             .foregroundStyle(.primary)
                         
-                        Text("rehber_start_guidance")
+                        Text(tcKey: "rehber_start_guidance", fallback: "Start a new chat to get guided support.")
                             .font(AppFont.body)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -81,7 +81,7 @@ struct RehberSessionListView: View {
                     Spacer()
                 } else {
                     VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                        Text("rehber_recent_sessions")
+                        Text(tcKey: "rehber_recent_sessions", fallback: "Recent sessions")
                             .font(AppFont.headline)
                             .foregroundStyle(.secondary)
                             .padding(.horizontal, AppSpacing.md)
@@ -100,7 +100,7 @@ struct RehberSessionListView: View {
                                                     sessionToDelete = session
                                                     showDeleteConfirmation = true
                                                 } label: {
-                                                    Label("rehber_delete", systemImage: "trash")
+                                                    Label(tcString("rehber_delete", fallback: "Delete"), systemImage: "trash")
                                                 }
                                             }
                                     }
@@ -118,11 +118,11 @@ struct RehberSessionListView: View {
             .refreshable {
                 await viewModel.loadSessions()
             }
-            .alert("rehber_delete_conversation_title", isPresented: $showDeleteConfirmation, presenting: sessionToDelete) { session in
-                Button("settings_cancel", role: .cancel) {
+            .alert(tcString("rehber_delete_conversation_title", fallback: "Delete conversation"), isPresented: $showDeleteConfirmation, presenting: sessionToDelete) { session in
+                Button(tcString("settings_cancel", fallback: "Cancel"), role: .cancel) {
                     sessionToDelete = nil
                 }
-                Button("rehber_delete", role: .destructive) {
+                Button(tcString("rehber_delete", fallback: "Delete"), role: .destructive) {
                     Task {
                         do {
                             try await viewModel.deleteSession(id: session.id)
@@ -133,7 +133,7 @@ struct RehberSessionListView: View {
                     }
                 }
             } message: { session in
-                Text("rehber_delete_conversation_message")
+                Text(tcKey: "rehber_delete_conversation_message", fallback: "This conversation will be removed.")
             }
         }
     }

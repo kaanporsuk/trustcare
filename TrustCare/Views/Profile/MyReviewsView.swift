@@ -24,18 +24,19 @@ struct MyReviewsView: View {
             .pickerStyle(.segmented)
             .padding(.horizontal, AppSpacing.lg)
 
-            if profileVM.isLoading && profileVM.myReviews.isEmpty {
+            if profileVM.isLoadingReviews {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if profileVM.myReviews.isEmpty {
-                EmptyStateView(
-                    icon: "pencil.and.list.clipboard",
-                    title: "my_reviews_empty_title",
-                    message: "my_reviews_empty_message",
-                    actionTitle: "my_reviews_empty_action"
+                TCEmptyState(
+                    variant: .noReviews,
+                    customTitle: "No reviews yet",
+                    customBody: "Your reviews help build trust. Share your experience.",
+                    primaryTitle: "Write a review"
                 ) {
                     selectedTab = 2
                 }
+                .padding(.horizontal, AppSpacing.lg)
             } else {
                 List {
                     ForEach(profileVM.myReviews) { review in

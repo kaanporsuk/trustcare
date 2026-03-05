@@ -12,6 +12,7 @@ struct AddProviderSheet: View {
     @State private var phone: String = ""
     @State private var selectedTaxonomy: TaxonomySuggestion?
     @State private var selectedCoordinate: CLLocationCoordinate2D?
+    @State private var selectedCoordinateSummary: String?
     @State private var placeSuggestions: [PlaceSuggestion] = []
 
     @State private var isSubmitting: Bool = false
@@ -69,9 +70,19 @@ struct AddProviderSheet: View {
                     }
 
                     if let selectedCoordinate {
-                        Text(String(format: "%.5f, %.5f", selectedCoordinate.latitude, selectedCoordinate.longitude))
-                            .font(AppFont.footnote)
-                            .foregroundStyle(.secondary)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(tcKey: "add_provider_pin_set", fallback: "Pin set")
+                                .font(AppFont.body)
+                                .foregroundStyle(Color.tcSage)
+
+                            Text(selectedCoordinateSummary ?? fallbackLocationSummary())
+                                .font(AppFont.footnote)
+                                .foregroundStyle(.secondary)
+
+                            Text(String(format: "%.5f, %.5f", selectedCoordinate.latitude, selectedCoordinate.longitude))
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
             }
@@ -114,6 +125,9 @@ struct AddProviderSheet: View {
             .sheet(isPresented: $showMapPicker) {
                 MapPinSelectorSheet(selectedCoordinate: $selectedCoordinate)
             }
+            .task(id: coordinateTaskID) {
+                await refreshCoordinateSummary(for: selectedCoordinate)
+            }
             .task(id: name) {
                 await searchMapSuggestions()
             }
@@ -124,6 +138,11 @@ struct AddProviderSheet: View {
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             && !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             && selectedTaxonomy != nil
+    }
+
+    private var coordinateTaskID: String {
+        guard let selectedCoordinate else { return "none" }
+        return String(format: "%.6f,%.6f", selectedCoordinate.latitude, selectedCoordinate.longitude)
     }
 
     private func submit() async {
@@ -229,6 +248,50 @@ struct AddProviderSheet: View {
         placeSuggestions = []
     }
 
+    private func refreshCoordinateSummary(for coordinate: CLLocationCoordinate2D?) async {
+        guard let coordinate else {
+            selectedCoordinateSummary = nil
+            return
+        }
+
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+
+        do {
+            let placemarks = try await geocoder.reverseGeocodeLocation(location)
+            guard let placemark = placemarks.first else {
+                selectedCoordinateSummary = fallbackLocationSummary()
+                return
+            }
+
+            let parts = [
+                placemark.subLocality,
+                placemark.locality,
+                placemark.administrativeArea,
+            ]
+            .compactMap { $0 }
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+            selectedCoordinateSummary = parts.isEmpty ? fallbackLocationSummary() : parts.joined(separator: ", ")
+        } catch {
+            selectedCoordinateSummary = fallbackLocationSummary()
+        }
+    }
+
+    private func fallbackLocationSummary() -> String {
+        let chunks = address
+            .split(separator: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        if let cityLike = chunks.last {
+            return cityLike
+        }
+
+        return tcString("add_provider_location_selected", fallback: "Location selected")
+    }
+
     private func formatAddress(_ placemark: MKPlacemark) -> String {
         let chunks = [
             placemark.thoroughfare,
@@ -257,84 +320,68 @@ private struct PlaceSuggestion: Identifiable {
 private struct MapPinSelectorSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var selectedCoordinate: CLLocationCoordinate2D?
+    @State private var mapCenter: CLLocationCoordinate2D
+
+    init(selectedCoordinate: Binding<CLLocationCoordinate2D?>) {
+        _selectedCoordinate = selectedCoordinate
+        _mapCenter = State(initialValue: selectedCoordinate.wrappedValue ?? CLLocationCoordinate2D(latitude: 37.0000, longitude: 35.3213))
+    }
 
     var body: some View {
         NavigationStack {
-            CoordinatePickerMap(selectedCoordinate: $selectedCoordinate)
-                .navigationTitle("add_provider_map_pin")
-                .toolbar {
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("button_ok") { dismiss() }
+            ZStack {
+                CoordinatePickerMap(centerCoordinate: $mapCenter)
+
+                Image(systemName: "mappin.circle.fill")
+                    .font(.system(size: 34, weight: .semibold))
+                    .foregroundStyle(Color.tcCoral)
+                    .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 1)
+                    .offset(y: -16)
+                    .allowsHitTesting(false)
+            }
+            .navigationTitle("add_provider_map_pin")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("button_ok") {
+                        selectedCoordinate = mapCenter
+                        dismiss()
                     }
                 }
+            }
         }
     }
 }
 
 private struct CoordinatePickerMap: UIViewRepresentable {
-    @Binding var selectedCoordinate: CLLocationCoordinate2D?
+    @Binding var centerCoordinate: CLLocationCoordinate2D
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
         mapView.delegate = context.coordinator
 
-        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
-        mapView.addGestureRecognizer(tap)
-
         let region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 37.0000, longitude: 35.3213),
+            center: centerCoordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
         )
         mapView.setRegion(region, animated: false)
-        context.coordinator.mapView = mapView
         return mapView
     }
 
-    func updateUIView(_ uiView: MKMapView, context: Context) {
-        guard let selectedCoordinate else { return }
-
-        let threshold = 0.0001
-        if let lastCoordinate = context.coordinator.lastRenderedCoordinate {
-            let latitudeDistance = abs(lastCoordinate.latitude - selectedCoordinate.latitude)
-            let longitudeDistance = abs(lastCoordinate.longitude - selectedCoordinate.longitude)
-            if latitudeDistance <= threshold && longitudeDistance <= threshold {
-                return
-            }
-        }
-
-        let existingPointAnnotations = uiView.annotations.compactMap { $0 as? MKPointAnnotation }
-        uiView.removeAnnotations(existingPointAnnotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = selectedCoordinate
-        uiView.addAnnotation(annotation)
-        context.coordinator.lastRenderedCoordinate = selectedCoordinate
-    }
+    func updateUIView(_ uiView: MKMapView, context: Context) {}
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedCoordinate: $selectedCoordinate)
+        Coordinator(centerCoordinate: $centerCoordinate)
     }
 
     final class Coordinator: NSObject, MKMapViewDelegate {
-        @Binding var selectedCoordinate: CLLocationCoordinate2D?
-        weak var mapView: MKMapView?
-        var lastRenderedCoordinate: CLLocationCoordinate2D?
+        @Binding var centerCoordinate: CLLocationCoordinate2D
 
-        init(selectedCoordinate: Binding<CLLocationCoordinate2D?>) {
-            _selectedCoordinate = selectedCoordinate
+        init(centerCoordinate: Binding<CLLocationCoordinate2D>) {
+            _centerCoordinate = centerCoordinate
         }
 
-        @objc func handleTap(_ recognizer: UITapGestureRecognizer) {
-            guard let mapView else { return }
-            let point = recognizer.location(in: mapView)
-            let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
-            selectedCoordinate = coordinate
-
-            let existingPointAnnotations = mapView.annotations.compactMap { $0 as? MKPointAnnotation }
-            mapView.removeAnnotations(existingPointAnnotations)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            mapView.addAnnotation(annotation)
-            lastRenderedCoordinate = coordinate
+        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            centerCoordinate = mapView.centerCoordinate
         }
     }
 }

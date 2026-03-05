@@ -10,10 +10,10 @@ struct RehberPlusBannerCard: View {
                 .background(Color.tcOcean.opacity(0.12), in: Circle())
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(tcString("rehber_plus_banner_title", fallback: "Rehber Plus is rolling out"))
+                Text(tcKey: "rehber_plus_banner_title", fallback: "Rehber Plus is rolling out")
                     .font(AppFont.headline)
                     .foregroundStyle(Color.tcTextPrimary)
-                Text(tcString("rehber_plus_banner_body", fallback: "Smarter guidance, better follow-ups, and richer medical context are on the way."))
+                Text(tcKey: "rehber_plus_banner_body", fallback: "Smarter guidance, better follow-ups, and richer medical context are on the way.")
                     .font(AppFont.footnote)
                     .foregroundStyle(Color.tcTextSecondary)
                     .fixedSize(horizontal: false, vertical: true)

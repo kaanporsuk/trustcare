@@ -49,9 +49,6 @@
     "%lld" : {
 
     },
-    "%lld filters" : {
-
-    },
     "%lld min" : {
 
     },
@@ -1308,6 +1305,7 @@
 
     },
     "app_language" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4615,6 +4613,61 @@
         }
       }
     },
+    "chip_distance" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance"
+          }
+        }
+      }
+    },
+    "chip_facility" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facility"
+          }
+        }
+      }
+    },
+    "chip_language" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "chip_specialty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialty"
+          }
+        }
+      }
+    },
+    "chip_treatment" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treatment"
+          }
+        }
+      }
+    },
     "Choose from Library" : {
 
     },
@@ -5670,9 +5723,6 @@
     "Clear" : {
 
     },
-    "Clear one or more filters, or move the map to expand results." : {
-
-    },
     "Clear search" : {
 
     },
@@ -5780,6 +5830,7 @@
 
     },
     "close_button" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -5875,6 +5926,7 @@
 
     },
     "current_location" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -7589,6 +7641,39 @@
         }
       }
     },
+    "filter_distance" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance"
+          }
+        }
+      }
+    },
+    "filter_facility" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facility"
+          }
+        }
+      }
+    },
+    "filter_language" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
     "filter_more" : {
       "localizations" : {
         "da" : {
@@ -7625,6 +7710,215 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daha Fazla ▾"
+          }
+        }
+      }
+    },
+    "filter_specialty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialty"
+          }
+        }
+      }
+    },
+    "filter_treatment" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treatment"
+          }
+        }
+      }
+    },
+    "filter_verified" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verified"
+          }
+        }
+      }
+    },
+    "find_empty_change_city" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change city"
+          }
+        }
+      }
+    },
+    "find_empty_clear_filters" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filters"
+          }
+        }
+      }
+    },
+    "find_empty_growing_here" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrustCare is growing here"
+          }
+        }
+      }
+    },
+    "find_empty_search_another_area" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search another area"
+          }
+        }
+      }
+    },
+    "find_empty_search_change_city" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search another area / Change city"
+          }
+        }
+      }
+    },
+    "find_empty_suggest_provider" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggest a provider"
+          }
+        }
+      }
+    },
+    "find_set_location" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set location"
+          }
+        }
+      }
+    },
+    "find_sheet_providers_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Providers"
+          }
+        }
+      }
+    },
+    "find_state_change_city" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change city"
+          }
+        }
+      }
+    },
+    "find_state_clear_filters_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear one or more filters, or move the map to expand results."
+          }
+        }
+      }
+    },
+    "find_state_clear_filters_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results match these filters"
+          }
+        }
+      }
+    },
+    "find_state_growing_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We are onboarding providers in this region. Try a nearby city in the meantime."
+          }
+        }
+      }
+    },
+    "find_state_growing_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrustCare is growing here"
+          }
+        }
+      }
+    },
+    "find_state_no_providers_visible" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No providers visible in this map area"
+          }
+        }
+      }
+    },
+    "find_state_search_another_area" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search another area"
+          }
+        }
+      }
+    },
+    "find_state_try_another_area" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try another area or pick a different city to continue."
           }
         }
       }
@@ -8820,6 +9114,7 @@
       }
     },
     "language_section_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -9772,6 +10067,7 @@
 
     },
     "location_select_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -10566,6 +10862,7 @@
       }
     },
     "menu_privacy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -10666,6 +10963,7 @@
       }
     },
     "menu_saved" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -10706,6 +11004,7 @@
       }
     },
     "menu_settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -10806,6 +11105,7 @@
       }
     },
     "menu_terms" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -11186,16 +11486,7 @@
     "next" : {
 
     },
-    "Next" : {
-
-    },
     "No locations found. Try a different search." : {
-
-    },
-    "No providers visible in this map area" : {
-
-    },
-    "No results match these filters" : {
 
     },
     "No reviews yet" : {
@@ -12440,6 +12731,7 @@
       }
     },
     "pp_last_updated" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -12986,6 +13278,7 @@
 
     },
     "profile_member_since" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -13820,9 +14113,6 @@
     "Provider unavailable" : {
 
     },
-    "Providers" : {
-
-    },
     "providers_label" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -14060,6 +14350,7 @@
       }
     },
     "rehber_consent_text" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -14181,6 +14472,7 @@
       }
     },
     "rehber_delete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -14221,6 +14513,7 @@
       }
     },
     "rehber_delete_conversation_message" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -14261,6 +14554,7 @@
       }
     },
     "rehber_delete_conversation_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -14301,6 +14595,7 @@
       }
     },
     "rehber_disclaimer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -15347,6 +15642,7 @@
       }
     },
     "rehber_no_conversations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -15487,6 +15783,7 @@
       }
     },
     "rehber_onboarding_subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -15527,6 +15824,7 @@
       }
     },
     "rehber_onboarding_warning" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -15601,6 +15899,7 @@
       }
     },
     "rehber_plus_trial" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -15641,6 +15940,7 @@
       }
     },
     "rehber_recent_sessions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -15801,6 +16101,7 @@
       }
     },
     "rehber_start" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -15941,6 +16242,7 @@
       }
     },
     "rehber_subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -16041,6 +16343,7 @@
       }
     },
     "rehber_title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -16680,7 +16983,30 @@
         }
       }
     },
+    "review_button_back" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "review_button_next" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
     "review_cant_find_add" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -16721,6 +17047,7 @@
       }
     },
     "review_change_provider" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -18408,6 +18735,83 @@
         }
       }
     },
+    "review_step_choose_provider" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose provider"
+          }
+        }
+      }
+    },
+    "review_step_detailed_ratings" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed ratings"
+          }
+        }
+      }
+    },
+    "review_step_format" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "review_step_media_submit" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Media and submit"
+          }
+        }
+      }
+    },
+    "review_step_overall_rating" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overall rating"
+          }
+        }
+      }
+    },
+    "review_step_visit_details" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visit details"
+          }
+        }
+      }
+    },
+    "review_step_write_review" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write review"
+          }
+        }
+      }
+    },
     "review_submit" : {
       "localizations" : {
         "cs" : {
@@ -18989,6 +19393,7 @@
       }
     },
     "review_who" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -19419,9 +19824,6 @@
         }
       }
     },
-    "Search another area" : {
-
-    },
     "Search city or region..." : {
 
     },
@@ -19530,6 +19932,7 @@
       }
     },
     "search_languages" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20038,6 +20441,7 @@
 
     },
     "settings_account" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20138,6 +20542,7 @@
       }
     },
     "settings_cancel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20238,6 +20643,7 @@
       }
     },
     "settings_change_password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20338,6 +20744,7 @@
       }
     },
     "settings_data_privacy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20438,6 +20845,7 @@
       }
     },
     "settings_delete_account" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20538,6 +20946,7 @@
       }
     },
     "settings_delete_account_confirm" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -20578,6 +20987,7 @@
       }
     },
     "settings_delete_account_warning" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -20618,6 +21028,7 @@
       }
     },
     "settings_download_data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20718,6 +21129,7 @@
       }
     },
     "settings_downloading_data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -20758,6 +21170,7 @@
       }
     },
     "settings_email" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -20816,6 +21229,7 @@
       }
     },
     "settings_location_services" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -20916,6 +21330,7 @@
       }
     },
     "settings_notifications" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -21016,6 +21431,7 @@
       }
     },
     "settings_phone" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -21116,6 +21532,7 @@
       }
     },
     "settings_preferences" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -21975,16 +22392,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Підтверджений"
-          }
-        }
-      }
-    },
-    "Step %lld of %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Step %1$lld of %2$lld"
           }
         }
       }
@@ -24614,9 +25021,6 @@
       }
     },
     "Success" : {
-
-    },
-    "Suggest a provider" : {
 
     },
     "support@trustcare.app" : {
@@ -28190,6 +28594,7 @@
       }
     },
     "tab_badge_plus" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -28630,6 +29035,7 @@
       }
     },
     "tagline" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -30371,12 +30777,6 @@
         }
       }
     },
-    "TrustCare is growing here" : {
-
-    },
-    "Try another area or pick a different city to continue." : {
-
-    },
     "try_english_keywords" : {
       "localizations" : {
         "cs" : {
@@ -30679,6 +31079,7 @@
 
     },
     "use_device_location" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -31304,9 +31705,6 @@
           }
         }
       }
-    },
-    "We are onboarding providers in this region. Try a nearby city in the meantime." : {
-
     },
     "Welcome Back" : {
 

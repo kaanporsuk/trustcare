@@ -12,10 +12,10 @@ struct RehberOnboardingView: View {
                         .font(.system(size: 48, weight: .semibold))
                         .foregroundStyle(Color.tcOcean)
 
-                    Text("rehber_title")
+                    Text(tcKey: "rehber_title", fallback: "Guide")
                         .font(AppFont.title2)
 
-                    Text("rehber_onboarding_subtitle")
+                    Text(tcKey: "rehber_onboarding_subtitle", fallback: "Get trusted guidance before your next care decision.")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -32,7 +32,7 @@ struct RehberOnboardingView: View {
                 .cornerRadius(AppRadius.card)
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("rehber_onboarding_warning")
+                    Text(tcKey: "rehber_onboarding_warning", fallback: "Rehber is informational and does not replace professional medical advice.")
                         .font(AppFont.footnote)
                         .foregroundStyle(.orange)
                         .multilineTextAlignment(.leading)
@@ -51,7 +51,7 @@ struct RehberOnboardingView: View {
                     HStack(alignment: .top, spacing: AppSpacing.sm) {
                         Image(systemName: consentChecked ? "checkmark.square.fill" : "square")
                             .foregroundStyle(consentChecked ? Color.tcOcean : .secondary)
-                        Text("rehber_consent_text")
+                        Text(tcKey: "rehber_consent_text", fallback: "I understand Rehber provides guidance and I should seek emergency help when needed.")
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
                             .multilineTextAlignment(.leading)
@@ -59,7 +59,7 @@ struct RehberOnboardingView: View {
                 }
                 .buttonStyle(.plain)
 
-                Text("rehber_plus_trial")
+                Text(tcKey: "rehber_plus_trial", fallback: "Rehber Plus trial is now available")
                     .font(AppFont.footnote)
                     .foregroundStyle(Color.tcCoral)
                     .padding(.horizontal, AppSpacing.md)
@@ -72,7 +72,7 @@ struct RehberOnboardingView: View {
                     UserDefaults.standard.set(Date(), forKey: "rehber_consent_date")
                     onStart()
                 } label: {
-                    Text("rehber_start")
+                    Text(tcKey: "rehber_start", fallback: "Start")
                         .font(AppFont.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -86,14 +86,14 @@ struct RehberOnboardingView: View {
             .padding(.horizontal, AppSpacing.lg)
         }
         .background(Color.tcBackground)
-        .navigationTitle("tab_guide")
+        .navigationTitle(Text(tcKey: "tab_guide", fallback: "Rehber"))
     }
 
     private func featureRow(_ text: String) -> some View {
         HStack(alignment: .top, spacing: AppSpacing.sm) {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(Color.tcOcean)
-            Text(text)
+            Text(tcKey: text, fallback: "Feature details")
                 .font(AppFont.body)
                 .foregroundStyle(.primary)
         }

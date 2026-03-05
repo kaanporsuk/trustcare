@@ -9,6 +9,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var myReviews: [Review] = []
     @Published var reviewFilter: String = "all"
     @Published var isLoading: Bool = false
+    @Published var isLoadingReviews: Bool = false
     @Published var isUpdatingAvatar: Bool = false
     @Published var isSavingProfile: Bool = false
     @Published var errorMessage: String?
@@ -44,8 +45,9 @@ final class ProfileViewModel: ObservableObject {
     func loadReviews(filter: String? = nil) async {
         let selectedFilter = filter ?? reviewFilter
         reviewFilter = selectedFilter
-        isLoading = true
+        isLoadingReviews = true
         errorMessage = nil
+        defer { isLoadingReviews = false }
 
         do {
             let session = try await SupabaseManager.shared.client.auth.session
@@ -284,8 +286,6 @@ final class ProfileViewModel: ObservableObject {
         } catch {
             errorMessage = localizedErrorMessage(error)
         }
-
-        isLoading = false
     }
 
     func deleteReview(id: UUID) async {
