@@ -186,11 +186,11 @@ struct HomeView: View {
             .sheet(item: $activeFilterSheet) { sheet in
                 switch sheet {
                 case .specialty:
-                    taxonomyFilterSheet(title: tcString("filter_specialty", fallback: "Specialty"), entityType: .specialty, selectedIDs: $selectedSpecialtyIDs)
+                    taxonomyFilterSheet(titleKey: "filter_specialty_title", titleFallback: "Specialty", entityType: .specialty, selectedIDs: $selectedSpecialtyIDs)
                 case .treatment:
-                    taxonomyFilterSheet(title: tcString("filter_treatment", fallback: "Treatment"), entityType: .service, selectedIDs: $selectedServiceIDs)
+                    taxonomyFilterSheet(titleKey: "filter_treatment_title", titleFallback: "Treatment", entityType: .service, selectedIDs: $selectedServiceIDs)
                 case .facility:
-                    taxonomyFilterSheet(title: tcString("filter_facility", fallback: "Facility"), entityType: .facility, selectedIDs: $selectedFacilityIDs)
+                    taxonomyFilterSheet(titleKey: "filter_facility_title", titleFallback: "Facility", entityType: .facility, selectedIDs: $selectedFacilityIDs)
                 case .distance:
                     distanceFilterSheet
                 case .language:
@@ -593,12 +593,14 @@ struct HomeView: View {
     }
 
     private func taxonomyFilterSheet(
-        title: String,
+        titleKey: String,
+        titleFallback: String,
         entityType: TaxonomyEntityType,
         selectedIDs: Binding<Set<String>>
     ) -> some View {
         TaxonomyMultiSelectFilterSheet(
-            title: title,
+            titleKey: titleKey,
+            titleFallback: titleFallback,
             entityType: entityType,
             selectedIDs: selectedIDs,
             onApply: {
@@ -876,7 +878,8 @@ private struct ResultsBottomSheet<Content: View>: View {
 }
 
 private struct TaxonomyMultiSelectFilterSheet: View {
-    let title: String
+    let titleKey: String
+    let titleFallback: String
     let entityType: TaxonomyEntityType
     @Binding var selectedIDs: Set<String>
     let onApply: () -> Void
@@ -908,13 +911,13 @@ private struct TaxonomyMultiSelectFilterSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text(title)
+            Text(tcKey: titleKey, fallback: titleFallback)
                 .font(.headline)
 
             TCSearchBar(
                 text: $searchText,
                 placeholderKey: "search_placeholder",
-                placeholderFallback: "Search \(title.lowercased())"
+                placeholderFallback: "Search"
             )
 
             if loading {

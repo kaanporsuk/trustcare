@@ -7775,6 +7775,22 @@
         }
       }
     },
+    "filter_facility_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facility"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurum"
+          }
+        }
+      }
+    },
     "filter_language" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -7837,6 +7853,22 @@
         }
       }
     },
+    "filter_specialty_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialty"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzmanlik"
+          }
+        }
+      }
+    },
     "filter_treatment" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -7844,6 +7876,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Treatment"
+          }
+        }
+      }
+    },
+    "filter_treatment_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treatment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tedavi"
           }
         }
       }
