@@ -85,7 +85,7 @@ final class HomeViewModel: ObservableObject {
     @Published var isLoading: Bool = true
     @Published var providerLoadError: LoadErrorState?
     @Published var hasMoreResults: Bool = true
-    @Published var locationName: String = String(localized: "Tap to set location")
+    @Published var locationName: String = ""
     @Published var selectedCity: String = "Adana"
     @Published var userLatitude: Double = 37.0
     @Published var userLongitude: Double = 35.33

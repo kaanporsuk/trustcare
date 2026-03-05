@@ -70,7 +70,7 @@ struct TrustCareApp: App {
                 }
             }
             .dismissKeyboardOnTap()
-            .environment(\.locale, localizationManager.locale)
+            .environment(\.locale, Locale(identifier: localizationManager.effectiveLanguage))
             .environmentObject(localizationManager)
             .environmentObject(authViewModel)
             .environmentObject(appRouter)
