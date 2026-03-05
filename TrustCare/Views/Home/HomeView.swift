@@ -352,7 +352,9 @@ struct HomeView: View {
                 onPrimary: {
                     showLocationSearch = true
                 },
-                onSecondary: {}
+                onSecondary: {
+                    openSuggestProviderFlow()
+                }
             )
             .overlay(alignment: .topLeading) {
                 Text(tcKey: "find_empty_growing_here", fallback: "TrustCare is growing here")
@@ -374,7 +376,9 @@ struct HomeView: View {
                 onPrimary: {
                     showLocationSearch = true
                 },
-                onSecondary: {}
+                onSecondary: {
+                    openSuggestProviderFlow()
+                }
             )
         }
     }
@@ -402,7 +406,9 @@ struct HomeView: View {
                 TCPrimaryButton(title: tcString("cta_change_city", fallback: "Change city"), fullWidth: false) {
                     showLocationSearch = true
                 }
-                Button(tcString("cta_suggest_provider", fallback: "Suggest a provider")) {}
+                Button(tcString("cta_suggest_provider", fallback: "Suggest a provider")) {
+                    openSuggestProviderFlow()
+                }
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.tcOcean)
             }
@@ -447,7 +453,9 @@ struct HomeView: View {
                 TCPrimaryButton(title: tcString("cta_change_city", fallback: "Change city"), fullWidth: false) {
                     showLocationSearch = true
                 }
-                Button(tcString("cta_suggest_provider", fallback: "Suggest a provider")) {}
+                Button(tcString("cta_suggest_provider", fallback: "Suggest a provider")) {
+                    openSuggestProviderFlow()
+                }
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.tcOcean)
             }
@@ -749,6 +757,11 @@ struct HomeView: View {
         selectedDistanceKm = 50
         await homeVM.selectRadius(50)
         await homeVM.clearCanonicalFilter()
+    }
+
+    private func openSuggestProviderFlow() {
+        showSearchOverlay = false
+        NotificationCenter.default.post(name: .trustCareSwitchTab, object: 2)
     }
 
     private func localizedProviderSpecialty(_ provider: Provider) -> String {
