@@ -729,10 +729,6 @@ struct HomeView: View {
                 .foregroundStyle(Color.tcOcean)
             }
 
-            Text("Rating filter is disabled at launch.")
-                .font(.caption)
-                .foregroundStyle(Color.tcTextSecondary)
-
             Spacer()
         }
         .padding(AppSpacing.lg)
