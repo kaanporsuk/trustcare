@@ -28108,25 +28108,19 @@
                   "few": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenze"
-                    }
-                  },
-                  "many": {
-                    "stringUnit": {
-                      "state": "translated",
-                      "value": "%lld Recenzí"
+                      "value": "%lld recenze"
                     }
                   },
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenze"
+                      "value": "%lld recenze"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenze"
+                      "value": "%lld recenzí"
                     }
                   }
                 }
@@ -28148,13 +28142,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Anmeldelse"
+                      "value": "%lld anmeldelse"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Anmeldelser"
+                      "value": "%lld anmeldelser"
                     }
                   }
                 }
@@ -28232,13 +28226,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Reseña"
+                      "value": "%lld reseña"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Reseñas"
+                      "value": "%lld reseñas"
                     }
                   }
                 }
@@ -28260,13 +28254,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Avis"
+                      "value": "%lld avis"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Avis"
+                      "value": "%lld avis"
                     }
                   }
                 }
@@ -28285,16 +28279,10 @@
               "formatSpecifier": "lld",
               "variations": {
                 "plural": {
-                  "one": {
-                    "stringUnit": {
-                      "state": "translated",
-                      "value": "%lld Értékelés"
-                    }
-                  },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Értékelés"
+                      "value": "%lld értékelés"
                     }
                   }
                 }
@@ -28316,13 +28304,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recensione"
+                      "value": "%lld recensione"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recensioni"
+                      "value": "%lld recensioni"
                     }
                   }
                 }
@@ -28344,13 +28332,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Beoordeling"
+                      "value": "%lld beoordeling"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Beoordelingen"
+                      "value": "%lld beoordelingen"
                     }
                   }
                 }
@@ -28372,25 +28360,25 @@
                   "few": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzje"
+                      "value": "%lld opinie"
                     }
                   },
                   "many": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzji"
+                      "value": "%lld opinii"
                     }
                   },
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzja"
+                      "value": "%lld opinia"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzji"
+                      "value": "%lld opinii"
                     }
                   }
                 }
@@ -28412,13 +28400,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Avaliação"
+                      "value": "%lld avaliação"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Avaliações"
+                      "value": "%lld avaliações"
                     }
                   }
                 }
@@ -28440,19 +28428,19 @@
                   "few": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzii"
+                      "value": "%lld recenzii"
                     }
                   },
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzie"
+                      "value": "%lld recenzie"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recenzii"
+                      "value": "%lld de recenzii"
                     }
                   }
                 }
@@ -28474,25 +28462,25 @@
                   "few": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Отзыва"
+                      "value": "%lld отзыва"
                     }
                   },
                   "many": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Отзывов"
+                      "value": "%lld отзывов"
                     }
                   },
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Отзыв"
+                      "value": "%lld отзыв"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Отзыва"
+                      "value": "%lld отзыва"
                     }
                   }
                 }
@@ -28514,13 +28502,13 @@
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recension"
+                      "value": "%lld recension"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Recensioner"
+                      "value": "%lld recensioner"
                     }
                   }
                 }
@@ -28539,16 +28527,10 @@
               "formatSpecifier": "lld",
               "variations": {
                 "plural": {
-                  "one": {
-                    "stringUnit": {
-                      "state": "translated",
-                      "value": "%lld Değerlendirme"
-                    }
-                  },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Değerlendirme"
+                      "value": "%lld değerlendirme"
                     }
                   }
                 }
@@ -28570,25 +28552,25 @@
                   "few": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Відгуки"
+                      "value": "%lld відгуки"
                     }
                   },
                   "many": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Відгуків"
+                      "value": "%lld відгуків"
                     }
                   },
                   "one": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Відгук"
+                      "value": "%lld відгук"
                     }
                   },
                   "other": {
                     "stringUnit": {
                       "state": "translated",
-                      "value": "%lld Відгуку"
+                      "value": "%lld відгуків"
                     }
                   }
                 }
