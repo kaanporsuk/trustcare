@@ -85,7 +85,8 @@ enum TaxonomyService {
             .rpc("search_taxonomy", params: params)
             .execute()
 
-        return Array(response.value.prefix(limit))
+        let localized = applyLocalBundleOverrides(to: response.value, locale: locale)
+        return Array(localized.prefix(limit))
     }
 
     static func searchTaxonomyWithLocaleFallback(
@@ -131,10 +132,15 @@ enum TaxonomyService {
         let labels = try await labelsByEntityID(entityIDs: entityIDs, locale: locale)
 
         return response.value.map { row in
-            TaxonomySuggestion(
+            let resolvedLabel = TaxonomyI18nLoader.shared.localizedLabel(
+                for: row.id,
+                locale: locale,
+                fallback: labels[row.id] ?? row.defaultName
+            )
+            return TaxonomySuggestion(
                 entityId: row.id,
                 entityType: row.entityType ?? entityType.rawValue,
-                label: labels[row.id] ?? row.defaultName,
+                label: resolvedLabel,
                 score: nil
             )
         }
@@ -249,10 +255,38 @@ enum TaxonomyService {
 
         for entityID in missing {
             if let value = merged[entityID] {
-                result[entityID] = value
+                result[entityID] = TaxonomyI18nLoader.shared.localizedLabel(
+                    for: entityID,
+                    locale: normalizedLocale,
+                    fallback: value
+                )
             }
         }
 
+        for (entityID, value) in result {
+            result[entityID] = TaxonomyI18nLoader.shared.localizedLabel(
+                for: entityID,
+                locale: normalizedLocale,
+                fallback: value
+            )
+        }
+
         return result
+    }
+
+    private static func applyLocalBundleOverrides(to suggestions: [TaxonomySuggestion], locale: String) -> [TaxonomySuggestion] {
+        suggestions.map { suggestion in
+            let label = TaxonomyI18nLoader.shared.localizedLabel(
+                for: suggestion.entityId,
+                locale: locale,
+                fallback: suggestion.label
+            )
+            return TaxonomySuggestion(
+                entityId: suggestion.entityId,
+                entityType: suggestion.entityType,
+                label: label,
+                score: suggestion.score
+            )
+        }
     }
 }

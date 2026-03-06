@@ -1,0 +1,504 @@
+{
+  "meta": {
+    "generated_at": "2026-03-06T04:14:53.545772Z",
+    "source": "supabase/migrations/20260305000000_seed_canonical_ontology.sql",
+    "entry_count": 99
+  },
+  "items": [
+    {
+      "id": "FAC_HOSPITAL_GENERAL",
+      "type": "facility",
+      "en": "Hospital General"
+    },
+    {
+      "id": "FAC_LABORATORY",
+      "type": "facility",
+      "en": "Laboratory"
+    },
+    {
+      "id": "FAC_PHARMACY",
+      "type": "facility",
+      "en": "Pharmacy"
+    },
+    {
+      "id": "FAC_URGENT_CARE",
+      "type": "facility",
+      "en": "Urgent Care"
+    },
+    {
+      "id": "SERV_ACUPUNCTURE",
+      "type": "service",
+      "en": "Acupuncture"
+    },
+    {
+      "id": "SERV_BOTOX_FILLERS",
+      "type": "service",
+      "en": "Botox Fillers"
+    },
+    {
+      "id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "type": "service",
+      "en": "Breast Augmentation Reduction"
+    },
+    {
+      "id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "type": "service",
+      "en": "Chemical Peel Microneedling"
+    },
+    {
+      "id": "SERV_COSMETIC_DENTISTRY",
+      "type": "service",
+      "en": "Cosmetic Dentistry"
+    },
+    {
+      "id": "SERV_EYELID_SURGERY",
+      "type": "service",
+      "en": "Eyelid Surgery"
+    },
+    {
+      "id": "SERV_FACELIFT_NECKLIFT",
+      "type": "service",
+      "en": "Facelift Necklift"
+    },
+    {
+      "id": "SERV_HAIR_TRANSPLANT",
+      "type": "service",
+      "en": "Hair Transplant"
+    },
+    {
+      "id": "SERV_HOMEOPATHY",
+      "type": "service",
+      "en": "Homeopathy"
+    },
+    {
+      "id": "SERV_LASER_TREATMENTS",
+      "type": "service",
+      "en": "Laser Treatments"
+    },
+    {
+      "id": "SERV_LASIK_REFRACTIVE",
+      "type": "service",
+      "en": "LASIK Refractive"
+    },
+    {
+      "id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "type": "service",
+      "en": "Liposuction Body Contouring"
+    },
+    {
+      "id": "SERV_LIP_ENHANCEMENT",
+      "type": "service",
+      "en": "Lip Enhancement"
+    },
+    {
+      "id": "SERV_NATUROPATHY",
+      "type": "service",
+      "en": "Naturopathy"
+    },
+    {
+      "id": "SERV_PRP_SKIN_REJUVENATION",
+      "type": "service",
+      "en": "PRP Skin Rejuvenation"
+    },
+    {
+      "id": "SERV_RHINOPLASTY",
+      "type": "service",
+      "en": "Rhinoplasty"
+    },
+    {
+      "id": "SERV_SMILE_DESIGN",
+      "type": "service",
+      "en": "Smile Design"
+    },
+    {
+      "id": "SERV_TATTOO_REMOVAL",
+      "type": "service",
+      "en": "Tattoo Removal"
+    },
+    {
+      "id": "SERV_TCM",
+      "type": "service",
+      "en": "TCM"
+    },
+    {
+      "id": "SERV_TUMMY_TUCK",
+      "type": "service",
+      "en": "Tummy Tuck"
+    },
+    {
+      "id": "SPEC_ADDICTION_MEDICINE",
+      "type": "specialty",
+      "en": "Addiction Medicine"
+    },
+    {
+      "id": "SPEC_AESTHETIC_MEDICINE",
+      "type": "specialty",
+      "en": "Aesthetic Medicine"
+    },
+    {
+      "id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "type": "specialty",
+      "en": "Allergy Immunology"
+    },
+    {
+      "id": "SPEC_ANDROLOGY",
+      "type": "specialty",
+      "en": "Andrology"
+    },
+    {
+      "id": "SPEC_AUDIOLOGY",
+      "type": "specialty",
+      "en": "Audiology"
+    },
+    {
+      "id": "SPEC_BARIATRIC_SURGERY",
+      "type": "specialty",
+      "en": "Bariatric Surgery"
+    },
+    {
+      "id": "SPEC_BREAST_SURGERY",
+      "type": "specialty",
+      "en": "Breast Surgery"
+    },
+    {
+      "id": "SPEC_CARDIOLOGY",
+      "type": "specialty",
+      "en": "Cardiology"
+    },
+    {
+      "id": "SPEC_CARDIOVASCULAR_SURGERY",
+      "type": "specialty",
+      "en": "Cardiovascular Surgery"
+    },
+    {
+      "id": "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+      "type": "specialty",
+      "en": "Child Adolescent Psychiatry"
+    },
+    {
+      "id": "SPEC_CHIROPRACTIC",
+      "type": "specialty",
+      "en": "Chiropractic"
+    },
+    {
+      "id": "SPEC_DENTISTRY_GENERAL",
+      "type": "specialty",
+      "en": "Dentistry General"
+    },
+    {
+      "id": "SPEC_DERMATOLOGY",
+      "type": "specialty",
+      "en": "Dermatology"
+    },
+    {
+      "id": "SPEC_EMERGENCY_MEDICINE",
+      "type": "specialty",
+      "en": "Emergency Medicine"
+    },
+    {
+      "id": "SPEC_ENDOCRINOLOGY",
+      "type": "specialty",
+      "en": "Endocrinology"
+    },
+    {
+      "id": "SPEC_ENDODONTICS",
+      "type": "specialty",
+      "en": "Endodontics"
+    },
+    {
+      "id": "SPEC_ENT",
+      "type": "specialty",
+      "en": "ENT"
+    },
+    {
+      "id": "SPEC_FAMILY_MEDICINE",
+      "type": "specialty",
+      "en": "Family Medicine"
+    },
+    {
+      "id": "SPEC_GASTROENTEROLOGY",
+      "type": "specialty",
+      "en": "Gastroenterology"
+    },
+    {
+      "id": "SPEC_GENERAL_PRACTICE",
+      "type": "specialty",
+      "en": "General Practice"
+    },
+    {
+      "id": "SPEC_GENERAL_SURGERY",
+      "type": "specialty",
+      "en": "General Surgery"
+    },
+    {
+      "id": "SPEC_GENETICS_GENOMICS",
+      "type": "specialty",
+      "en": "Genetics Genomics"
+    },
+    {
+      "id": "SPEC_GERIATRICS",
+      "type": "specialty",
+      "en": "Geriatrics"
+    },
+    {
+      "id": "SPEC_HEAD_NECK_SURGERY",
+      "type": "specialty",
+      "en": "Head Neck Surgery"
+    },
+    {
+      "id": "SPEC_HEMATOLOGY",
+      "type": "specialty",
+      "en": "Hematology"
+    },
+    {
+      "id": "SPEC_INFECTIOUS_DISEASE",
+      "type": "specialty",
+      "en": "Infectious Disease"
+    },
+    {
+      "id": "SPEC_INTERNAL_MEDICINE",
+      "type": "specialty",
+      "en": "Internal Medicine"
+    },
+    {
+      "id": "SPEC_MATERNAL_FETAL_MEDICINE",
+      "type": "specialty",
+      "en": "Maternal Fetal Medicine"
+    },
+    {
+      "id": "SPEC_NEPHROLOGY",
+      "type": "specialty",
+      "en": "Nephrology"
+    },
+    {
+      "id": "SPEC_NEUROLOGY",
+      "type": "specialty",
+      "en": "Neurology"
+    },
+    {
+      "id": "SPEC_NEUROPSYCHOLOGY",
+      "type": "specialty",
+      "en": "Neuropsychology"
+    },
+    {
+      "id": "SPEC_NEUROSURGERY",
+      "type": "specialty",
+      "en": "Neurosurgery"
+    },
+    {
+      "id": "SPEC_NUCLEAR_MEDICINE",
+      "type": "specialty",
+      "en": "Nuclear Medicine"
+    },
+    {
+      "id": "SPEC_NUTRITION_DIETETICS",
+      "type": "specialty",
+      "en": "Nutrition Dietetics"
+    },
+    {
+      "id": "SPEC_OBGYN",
+      "type": "specialty",
+      "en": "OBGYN"
+    },
+    {
+      "id": "SPEC_OCCUPATIONAL_THERAPY",
+      "type": "specialty",
+      "en": "Occupational Therapy"
+    },
+    {
+      "id": "SPEC_ONCOLOGY",
+      "type": "specialty",
+      "en": "Oncology"
+    },
+    {
+      "id": "SPEC_OPHTHALMOLOGY",
+      "type": "specialty",
+      "en": "Ophthalmology"
+    },
+    {
+      "id": "SPEC_OPTOMETRY",
+      "type": "specialty",
+      "en": "Optometry"
+    },
+    {
+      "id": "SPEC_ORAL_SURGERY",
+      "type": "specialty",
+      "en": "Oral Surgery"
+    },
+    {
+      "id": "SPEC_ORTHODONTICS",
+      "type": "specialty",
+      "en": "Orthodontics"
+    },
+    {
+      "id": "SPEC_ORTHOPEDIC_SURGERY",
+      "type": "specialty",
+      "en": "Orthopedic Surgery"
+    },
+    {
+      "id": "SPEC_OSTEOPATHY",
+      "type": "specialty",
+      "en": "Osteopathy"
+    },
+    {
+      "id": "SPEC_PAIN_MANAGEMENT",
+      "type": "specialty",
+      "en": "Pain Management"
+    },
+    {
+      "id": "SPEC_PALLIATIVE_CARE",
+      "type": "specialty",
+      "en": "Palliative Care"
+    },
+    {
+      "id": "SPEC_PATHOLOGY",
+      "type": "specialty",
+      "en": "Pathology"
+    },
+    {
+      "id": "SPEC_PEDIATRICS",
+      "type": "specialty",
+      "en": "Pediatrics"
+    },
+    {
+      "id": "SPEC_PEDIATRIC_DENTISTRY",
+      "type": "specialty",
+      "en": "Pediatric Dentistry"
+    },
+    {
+      "id": "SPEC_PEDIATRIC_OPHTHALMOLOGY",
+      "type": "specialty",
+      "en": "Pediatric Ophthalmology"
+    },
+    {
+      "id": "SPEC_PEDIATRIC_SURGERY",
+      "type": "specialty",
+      "en": "Pediatric Surgery"
+    },
+    {
+      "id": "SPEC_PEDIATRIC_UROLOGY",
+      "type": "specialty",
+      "en": "Pediatric Urology"
+    },
+    {
+      "id": "SPEC_PERIODONTICS",
+      "type": "specialty",
+      "en": "Periodontics"
+    },
+    {
+      "id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "type": "specialty",
+      "en": "Physical Medicine Rehab"
+    },
+    {
+      "id": "SPEC_PHYSIOTHERAPY",
+      "type": "specialty",
+      "en": "Physiotherapy"
+    },
+    {
+      "id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+      "type": "specialty",
+      "en": "Plastic Reconstructive Surgery"
+    },
+    {
+      "id": "SPEC_PODIATRY",
+      "type": "specialty",
+      "en": "Podiatry"
+    },
+    {
+      "id": "SPEC_PROSTHODONTICS",
+      "type": "specialty",
+      "en": "Prosthodontics"
+    },
+    {
+      "id": "SPEC_PSYCHIATRY",
+      "type": "specialty",
+      "en": "Psychiatry"
+    },
+    {
+      "id": "SPEC_PSYCHOLOGY_THERAPY",
+      "type": "specialty",
+      "en": "Psychology Therapy"
+    },
+    {
+      "id": "SPEC_PULMONOLOGY",
+      "type": "specialty",
+      "en": "Pulmonology"
+    },
+    {
+      "id": "SPEC_RADIOLOGY",
+      "type": "specialty",
+      "en": "Radiology"
+    },
+    {
+      "id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "type": "specialty",
+      "en": "Reproductive Endocrinology IVF"
+    },
+    {
+      "id": "SPEC_RETINA_SPECIALIST",
+      "type": "specialty",
+      "en": "Retina Specialist"
+    },
+    {
+      "id": "SPEC_RHEUMATOLOGY",
+      "type": "specialty",
+      "en": "Rheumatology"
+    },
+    {
+      "id": "SPEC_RHINOLOGY",
+      "type": "specialty",
+      "en": "Rhinology"
+    },
+    {
+      "id": "SPEC_SLEEP_MEDICINE",
+      "type": "specialty",
+      "en": "Sleep Medicine"
+    },
+    {
+      "id": "SPEC_SPEECH_THERAPY",
+      "type": "specialty",
+      "en": "Speech Therapy"
+    },
+    {
+      "id": "SPEC_SPORTS_MEDICINE",
+      "type": "specialty",
+      "en": "Sports Medicine"
+    },
+    {
+      "id": "SPEC_THORACIC_SURGERY",
+      "type": "specialty",
+      "en": "Thoracic Surgery"
+    },
+    {
+      "id": "SPEC_TRANSPLANT_SURGERY",
+      "type": "specialty",
+      "en": "Transplant Surgery"
+    },
+    {
+      "id": "SPEC_TRAUMA_SURGERY",
+      "type": "specialty",
+      "en": "Trauma Surgery"
+    },
+    {
+      "id": "SPEC_UROGYNECOLOGY",
+      "type": "specialty",
+      "en": "Urogynecology"
+    },
+    {
+      "id": "SPEC_UROLOGY",
+      "type": "specialty",
+      "en": "Urology"
+    },
+    {
+      "id": "SPEC_VASCULAR_SURGERY",
+      "type": "specialty",
+      "en": "Vascular Surgery"
+    },
+    {
+      "id": "SPEC_WOUND_CARE",
+      "type": "specialty",
+      "en": "Wound Care"
+    }
+  ]
+}

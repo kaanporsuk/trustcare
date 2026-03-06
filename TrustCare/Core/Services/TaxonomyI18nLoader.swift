@@ -1,0 +1,91 @@
+import Foundation
+
+final class TaxonomyI18nLoader {
+    static let shared = TaxonomyI18nLoader()
+
+    private var cache: [String: [String: String]] = [:]
+    private let lock = NSLock()
+
+    private init() {}
+
+    func localizedLabel(for entityID: String, locale: String, fallback: String) -> String {
+        let normalizedID = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !normalizedID.isEmpty else { return fallback }
+
+        let localeCode = normalizedLocale(locale)
+        let localeMap = mapping(for: localeCode)
+
+        if let match = value(for: normalizedID, in: localeMap) {
+            return match
+        }
+
+        let englishMap = mapping(for: "en")
+        if let match = value(for: normalizedID, in: englishMap) {
+            return match
+        }
+
+        return fallback
+    }
+
+    private func mapping(for locale: String) -> [String: String] {
+        lock.lock()
+        if let cached = cache[locale] {
+            lock.unlock()
+            return cached
+        }
+        lock.unlock()
+
+        let loaded = loadMapping(for: locale)
+
+        lock.lock()
+        cache[locale] = loaded
+        lock.unlock()
+
+        return loaded
+    }
+
+    private func loadMapping(for locale: String) -> [String: String] {
+        guard let url = Bundle.main.url(forResource: locale, withExtension: "json", subdirectory: "TaxonomyI18n") else {
+            return [:]
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let decoded = try JSONDecoder().decode([String: String].self, from: data)
+            return Dictionary(uniqueKeysWithValues: decoded.map { key, value in
+                (normalizeKey(key), value)
+            })
+        } catch {
+            return [:]
+        }
+    }
+
+    private func value(for entityID: String, in mapping: [String: String]) -> String? {
+        for key in candidateKeys(for: entityID) {
+            if let value = mapping[key], !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                return value
+            }
+        }
+        return nil
+    }
+
+    private func candidateKeys(for entityID: String) -> [String] {
+        let trimmed = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return [] }
+
+        let upper = normalizeKey(trimmed)
+        let lower = trimmed.lowercased()
+        return Array(Set([upper, lower]))
+    }
+
+    private func normalizeKey(_ value: String) -> String {
+        value.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    }
+
+    private func normalizedLocale(_ locale: String) -> String {
+        locale
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? "en"
+    }
+}

@@ -562,7 +562,7 @@ struct RehberChatView: View {
                             HStack(spacing: AppSpacing.sm) {
                                 Image(systemName: specialty.iconName)
                                     .foregroundStyle(Color.tcOcean)
-                                Text(specialty.resolvedName(using: localizationManager))
+                                Text(localizedTaxonomyName(for: specialty))
                                     .font(AppFont.body)
                                     .foregroundStyle(Color.tcTextPrimary)
                                 Spacer()
@@ -599,12 +599,27 @@ struct RehberChatView: View {
     }
 
     private func starterPrompt(for specialty: Specialty) -> String {
-        let name = specialty.resolvedName(using: localizationManager)
+        let name = localizedTaxonomyName(for: specialty)
         let lang = localizationManager.effectiveLanguage.lowercased()
         if lang == "tr" {
             return "\(name) ile ilgili hangi doktora gitmeliyim?"
         }
         return "Can you guide me for \(name)?"
+    }
+
+    private func localizedTaxonomyName(for specialty: Specialty) -> String {
+        let fallbackName = specialty.resolvedName(using: localizationManager)
+        let taxonomyID = specialty.canonicalEntityId ?? specialty.canonicalId
+
+        guard let taxonomyID, !taxonomyID.isEmpty else {
+            return fallbackName
+        }
+
+        return TaxonomyI18nLoader.shared.localizedLabel(
+            for: taxonomyID,
+            locale: localizationManager.effectiveLanguage,
+            fallback: fallbackName
+        )
     }
 
     private func scrollToBottom(proxy: ScrollViewProxy) {
