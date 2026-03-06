@@ -4,13 +4,7 @@
     "" : {
 
     },
-    " " : {
-
-    },
     " %lld" : {
-
-    },
-    " %lld%%" : {
 
     },
     ": %@" : {
@@ -3404,9 +3398,6 @@
           }
         }
       }
-    },
-    "Avatar processing failed. Please use a different photo under 5 MB." : {
-
     },
     "Browse by city" : {
 
@@ -22918,6 +22909,7 @@
       }
     },
     "menu_my_reviews" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -28202,6 +28194,7 @@
       }
     },
     "profile_verified_percent" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -28401,9 +28394,6 @@
           }
         }
       }
-    },
-    "Provider not found." : {
-
     },
     "providers_label" : {
       "extractionState" : "stale",
@@ -33335,6 +33325,7 @@
       }
     },
     "report_button" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -33835,6 +33826,7 @@
       }
     },
     "report_reported" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -36220,6 +36212,7 @@
       }
     },
     "review_helpful_count_%lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -59251,12 +59244,6 @@
         }
       }
     },
-    "Unable to load provider details. Please try again." : {
-
-    },
-    "Unable to load providers. Please try again." : {
-
-    },
     "Unable to submit claim. Please try again." : {
 
     },
@@ -59360,9 +59347,6 @@
           }
         }
       }
-    },
-    "Unknown error" : {
-
     },
     "unknown_provider" : {
       "extractionState" : "stale",
