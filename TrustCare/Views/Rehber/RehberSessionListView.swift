@@ -165,7 +165,7 @@ struct RehberSessionListView: View {
                         }
                     }
                     
-                    Text(session.formattedDate)
+                    sessionDateText(session.updatedAt)
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -184,5 +184,15 @@ struct RehberSessionListView: View {
         
         Divider()
             .padding(.leading, AppSpacing.md)
+    }
+
+    @ViewBuilder
+    private func sessionDateText(_ date: Date) -> some View {
+        let calendar = Calendar.autoupdatingCurrent
+        if calendar.isDateInToday(date) || calendar.isDateInYesterday(date) {
+            Text(date, format: .relative(presentation: .named))
+        } else {
+            Text(date, format: .dateTime.year().month().day())
+        }
     }
 }

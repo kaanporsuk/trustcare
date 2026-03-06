@@ -23,18 +23,4 @@ struct RehberSession: Identifiable, Codable, Equatable {
         }
         return String(localized: "rehber_new_conversation")
     }
-    
-    var formattedDate: String {
-        let calendar = Calendar.current
-        
-        if calendar.isDateInToday(updatedAt) {
-            return String(localized: "date_today")
-        } else if calendar.isDateInYesterday(updatedAt) {
-            return String(localized: "date_yesterday")
-        } else {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM d"
-            return formatter.string(from: updatedAt)
-        }
-    }
 }
