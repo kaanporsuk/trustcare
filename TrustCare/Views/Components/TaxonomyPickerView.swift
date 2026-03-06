@@ -77,12 +77,12 @@ final class TaxonomyPickerViewModel: ObservableObject {
                 entityTypeFilter: selectedEntityType,
                 limit: 50
             )
-            suggestions = dedupeByEntityID(result.suggestions)
+            suggestions = dedupeSuggestions(result.suggestions)
             showEnglishFallbackHint = result.usedEnglishFallback
             await Self.searchCache.set(
                 key: cacheKey,
                 value: CachedSearchResult(
-                    suggestions: dedupeByEntityID(result.suggestions),
+                    suggestions: dedupeSuggestions(result.suggestions),
                     usedEnglishFallback: result.usedEnglishFallback
                 ),
                 maxEntries: Self.maxCacheEntries
@@ -98,14 +98,14 @@ final class TaxonomyPickerViewModel: ObservableObject {
         async let topPicks = resolveTopPicks(localeCode: localeCode)
         async let all = resolveAll(localeCode: localeCode)
 
-        let recentsValue = dedupeByEntityID(await recents)
+        let recentsValue = dedupeSuggestions(await recents)
         var seen = Set(recentsValue.map(\.entityId))
 
-        let topPicksValue = dedupeByEntityID(await topPicks).filter { suggestion in
+        let topPicksValue = dedupeSuggestions(await topPicks).filter { suggestion in
             seen.insert(suggestion.entityId).inserted
         }
 
-        let allValue = dedupeByEntityID(await all).filter { suggestion in
+        let allValue = dedupeSuggestions(await all).filter { suggestion in
             seen.insert(suggestion.entityId).inserted
         }
 
@@ -114,17 +114,27 @@ final class TaxonomyPickerViewModel: ObservableObject {
         allItems = allValue
     }
 
-    private func dedupeByEntityID(_ items: [TaxonomySuggestion]) -> [TaxonomySuggestion] {
-        var seen = Set<String>()
+    private func dedupeSuggestions(_ items: [TaxonomySuggestion]) -> [TaxonomySuggestion] {
+        var seenEntityIDs = Set<String>()
+        var seenDisplayKeys = Set<String>()
         var ordered: [TaxonomySuggestion] = []
 
         for item in items {
-            if seen.insert(item.entityId).inserted {
-                ordered.append(item)
-            }
+            if !seenEntityIDs.insert(item.entityId).inserted { continue }
+
+            let displayKey = "\(item.entityType.lowercased())|\(normalizedDisplayLabel(item.label))"
+            if !seenDisplayKeys.insert(displayKey).inserted { continue }
+
+            ordered.append(item)
         }
 
         return ordered
+    }
+
+    private func normalizedDisplayLabel(_ label: String) -> String {
+        label
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "en_US_POSIX"))
     }
 
     private func resolveRecents(localeCode: String) async -> [TaxonomySuggestion] {
@@ -270,7 +280,7 @@ struct TaxonomyPickerView: View {
     let initialEntityType: TaxonomyEntityType
 
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.locale) private var locale
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @StateObject private var viewModel: TaxonomyPickerViewModel
 
     init(
@@ -356,7 +366,7 @@ struct TaxonomyPickerView: View {
                     Button(tcString("close_button", fallback: "Close")) { dismiss() }
                 }
             }
-            .task {
+            .task(id: localizationManager.effectiveLanguage) {
                 await viewModel.refreshForCurrentType(localeCode: currentLocaleCode())
             }
             .onChange(of: viewModel.selectedEntityType) { _, _ in
@@ -444,10 +454,7 @@ struct TaxonomyPickerView: View {
     }
 
     private func currentLocaleCode() -> String {
-        if let languageCode = locale.language.languageCode?.identifier, !languageCode.isEmpty {
-            return languageCode
-        }
-        return locale.identifier
+        return localizationManager.effectiveLanguage
             .components(separatedBy: ["-", "_"])
             .first?
             .lowercased() ?? "en"

@@ -86,7 +86,8 @@ enum TaxonomyService {
             .execute()
 
         let localized = applyLocalBundleOverrides(to: response.value, locale: locale)
-        return Array(localized.prefix(limit))
+        let deduped = dedupeSuggestions(localized)
+        return Array(deduped.prefix(limit))
     }
 
     static func searchTaxonomyWithLocaleFallback(
@@ -131,7 +132,7 @@ enum TaxonomyService {
         let entityIDs = response.value.map { $0.id }
         let labels = try await labelsByEntityID(entityIDs: entityIDs, locale: locale)
 
-        return response.value.map { row in
+        let mapped = response.value.map { row in
             let resolvedLabel = TaxonomyI18nLoader.shared.localizedLabel(
                 for: row.id,
                 locale: locale,
@@ -144,6 +145,7 @@ enum TaxonomyService {
                 score: nil
             )
         }
+        return dedupeSuggestions(mapped)
     }
 
     static func searchProvidersByTaxonomy(entityIDs: [String]) async throws -> [Provider] {
@@ -288,5 +290,37 @@ enum TaxonomyService {
                 score: suggestion.score
             )
         }
+    }
+
+    private static func dedupeSuggestions(_ suggestions: [TaxonomySuggestion]) -> [TaxonomySuggestion] {
+        var seenEntityIDs = Set<String>()
+        var seenDisplayKeys = Set<String>()
+        var ordered: [TaxonomySuggestion] = []
+
+        for suggestion in suggestions {
+            let normalizedEntityID = suggestion.entityId.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !normalizedEntityID.isEmpty else { continue }
+            guard seenEntityIDs.insert(normalizedEntityID).inserted else { continue }
+
+            let displayKey = "\(suggestion.entityType.lowercased())|\(normalizedDisplayLabel(suggestion.label))"
+            guard seenDisplayKeys.insert(displayKey).inserted else { continue }
+
+            ordered.append(
+                TaxonomySuggestion(
+                    entityId: normalizedEntityID,
+                    entityType: suggestion.entityType,
+                    label: suggestion.label,
+                    score: suggestion.score
+                )
+            )
+        }
+
+        return ordered
+    }
+
+    private static func normalizedDisplayLabel(_ label: String) -> String {
+        label
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "en_US_POSIX"))
     }
 }

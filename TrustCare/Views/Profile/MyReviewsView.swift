@@ -32,8 +32,8 @@ struct MyReviewsView: View {
                 TCEmptyState(
                     variant: .noReviews,
                     customTitle: tcString("reviews_empty_title", fallback: "No reviews yet"),
-                    customBody: tcString("my_reviews_empty_body", fallback: "Your reviews help build trust. Share your experience."),
-                    primaryTitle: tcString("review_write_cta", fallback: "Write a review")
+                    customBody: tcString("empty_state_no_reviews_body", fallback: "Be the first to share an experience and help others."),
+                    primaryTitle: tcString("review_step_write_review", fallback: "Write review")
                 ) {
                     selectedTab = 2
                 }

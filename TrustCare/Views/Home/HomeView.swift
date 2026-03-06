@@ -894,28 +894,68 @@ private struct TaxonomyMultiSelectFilterSheet: View {
     let onApply: () -> Void
     let onReset: () -> Void
 
-    @Environment(\.locale) private var locale
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @Environment(\.dismiss) private var dismiss
     @State private var searchText = ""
     @State private var items: [TaxonomySuggestion] = []
     @State private var loading = false
 
+    private var dedupedItems: [TaxonomySuggestion] {
+        var seenEntityIDs = Set<String>()
+        var seenDisplayKeys = Set<String>()
+        var ordered: [TaxonomySuggestion] = []
+
+        for suggestion in items {
+            let normalizedEntityID = suggestion.entityId.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !normalizedEntityID.isEmpty else { continue }
+            guard seenEntityIDs.insert(normalizedEntityID).inserted else { continue }
+
+            let displayKey = "\(suggestion.entityType.lowercased())|\(normalizedLabel(suggestion.label))"
+            guard seenDisplayKeys.insert(displayKey).inserted else { continue }
+
+            ordered.append(suggestion)
+        }
+
+        return ordered
+    }
+
     private var filteredItems: [TaxonomySuggestion] {
         let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return items }
-        return items.filter {
-            $0.label.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR"))
-                .contains(trimmed.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "tr_TR")))
+        guard !trimmed.isEmpty else { return dedupedItems }
+
+        let query = normalizedLabel(trimmed)
+        return dedupedItems.filter {
+            normalizedLabel($0.label).contains(query)
         }
     }
 
     private var groupedItems: [(String, [TaxonomySuggestion])] {
         let grouped = Dictionary(grouping: filteredItems) { suggestion in
-            String(suggestion.label.prefix(1)).uppercased()
+            String(suggestion.label.prefix(1)).uppercased(with: activeLocale)
         }
         return grouped
-            .map { ($0.key, $0.value.sorted { $0.label < $1.label }) }
-            .sorted { $0.0 < $1.0 }
+            .map { key, values in
+                (
+                    key,
+                    values.sorted {
+                        $0.label.localizedCaseInsensitiveCompare($1.label) == .orderedAscending
+                    }
+                )
+            }
+            .sorted {
+                $0.0.localizedCaseInsensitiveCompare($1.0) == .orderedAscending
+            }
+    }
+
+    private var languageCode: String {
+        localizationManager.effectiveLanguage
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? "en"
+    }
+
+    private var activeLocale: Locale {
+        Locale(identifier: languageCode)
     }
 
     var body: some View {
@@ -941,7 +981,7 @@ private struct TaxonomyMultiSelectFilterSheet: View {
                             .foregroundStyle(Color.tcTextSecondary)
                             .padding(.top, AppSpacing.xs)
 
-                        ForEach(suggestions, id: \.id) { suggestion in
+                        ForEach(suggestions, id: \.entityId) { suggestion in
                             Button {
                                 if selectedIDs.contains(suggestion.entityId) {
                                     selectedIDs.remove(suggestion.entityId)
@@ -991,11 +1031,16 @@ private struct TaxonomyMultiSelectFilterSheet: View {
         loading = true
         defer { loading = false }
         do {
-            let localeCode = locale.language.languageCode?.identifier ?? "en"
-            items = try await TaxonomyService.browseTaxonomy(entityType: entityType, locale: localeCode, limit: 200)
+            items = try await TaxonomyService.browseTaxonomy(entityType: entityType, locale: languageCode, limit: 200)
         } catch {
             items = []
         }
+    }
+
+    private func normalizedLabel(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: activeLocale)
     }
 
     private func iconName(for suggestion: TaxonomySuggestion) -> String {
