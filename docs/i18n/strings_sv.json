@@ -1,0 +1,3527 @@
+{
+  "meta": {
+    "app": "TrustCare",
+    "source": "strings_en_bulletproof.json",
+    "target_language": "sv",
+    "generated_at": "2026-03-06T01:37:40Z",
+    "entry_count": 584,
+    "instructions": [
+      "Fill 'sv' for entries where locked=false.",
+      "Do NOT change 'key' or 'en'.",
+      "Keep placeholders EXACTLY (%@, %d, %lld, %1$@, %#@... etc).",
+      "If locked=true, leave the translation as-is."
+    ],
+    "validated_at": "2026-03-06T02:51:13Z",
+    "validated_by": "ChatGPT",
+    "quality_notes": [
+      "Standardized PLUS badge casing.",
+      "Shortened verified-only label for UI fit."
+    ]
+  },
+  "entries": [
+    {
+      "key": "%@ %@",
+      "en": "%1$@ %2$@",
+      "sv": "%1$@ %2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@",
+      "en": "%1$@%2$@",
+      "sv": "%1$@%2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@ - %@%@",
+      "en": "%1$@%2$@ - %3$@%4$@",
+      "sv": "%1$@%2$@ - %3$@%4$@",
+      "locked": true
+    },
+    {
+      "key": "%lld%% %@",
+      "en": "%1$lld%% %2$@",
+      "sv": "%1$lld%% %2$@",
+      "locked": true
+    },
+    {
+      "key": "%lld/%lld",
+      "en": "%1$lld/%2$lld",
+      "sv": "%1$lld/%2$lld",
+      "locked": true
+    },
+    {
+      "key": "accessibility_rating_hint",
+      "en": "Swipe up or down to adjust rating",
+      "sv": "Svep uppåt eller nedåt för att justera betyget",
+      "locked": false
+    },
+    {
+      "key": "action_dismiss",
+      "en": "Dismiss",
+      "sv": "Stäng",
+      "locked": false
+    },
+    {
+      "key": "action_retry",
+      "en": "Retry",
+      "sv": "Försök igen",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_list",
+      "en": "Switch to list view",
+      "sv": "Byt till listvy",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_map",
+      "en": "Switch to map view",
+      "sv": "Byt till kartvy",
+      "locked": false
+    },
+    {
+      "key": "add_provider_add",
+      "en": "Add",
+      "sv": "Lägg till",
+      "locked": false
+    },
+    {
+      "key": "add_provider_address",
+      "en": "Address",
+      "sv": "Adress",
+      "locked": false
+    },
+    {
+      "key": "add_provider_cancel",
+      "en": "Cancel",
+      "sv": "Avbryt",
+      "locked": false
+    },
+    {
+      "key": "add_provider_geocode_error",
+      "en": "Could not find coordinates for this address.",
+      "sv": "Kunde inte hitta koordinater för denna adress.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_is_this",
+      "en": "Is this provider a...",
+      "sv": "Är denna vårdgivare en...",
+      "locked": false
+    },
+    {
+      "key": "add_provider_location",
+      "en": "Location",
+      "sv": "Plats",
+      "locked": false
+    },
+    {
+      "key": "add_provider_map_pin",
+      "en": "Set map pin",
+      "sv": "Sätt kartnål",
+      "locked": false
+    },
+    {
+      "key": "add_provider_name",
+      "en": "Provider Name",
+      "sv": "Vårdgivarens namn",
+      "locked": false
+    },
+    {
+      "key": "add_provider_no_address",
+      "en": "Please enter an address.",
+      "sv": "Vänligen ange en adress.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone",
+      "en": "Phone (optional)",
+      "sv": "Telefon (valfritt)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone_optional",
+      "en": "Phone (optional)",
+      "sv": "Telefon (valfritt)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_provider_information",
+      "en": "Provider information",
+      "sv": "Information om vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "add_provider_section",
+      "en": "Provider Information",
+      "sv": "Information om vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select",
+      "en": "Select",
+      "sv": "Välj",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty",
+      "en": "Select Specialty",
+      "sv": "Välj specialitet",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty_error",
+      "en": "Please select a specialty.",
+      "sv": "Vänligen välj en specialitet.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_set_map_pin",
+      "en": "Set map pin",
+      "sv": "Sätt kartnål",
+      "locked": false
+    },
+    {
+      "key": "add_provider_specialty",
+      "en": "Specialty",
+      "sv": "Specialitet",
+      "locked": false
+    },
+    {
+      "key": "add_provider_title",
+      "en": "Add Provider",
+      "sv": "Lägg till vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "all",
+      "en": "All",
+      "sv": "Alla",
+      "locked": false
+    },
+    {
+      "key": "all_results",
+      "en": "All",
+      "sv": "Alla",
+      "locked": false
+    },
+    {
+      "key": "app_language",
+      "en": "App Language",
+      "sv": "App-språk",
+      "locked": false
+    },
+    {
+      "key": "app_name",
+      "en": "TrustCare",
+      "sv": "TrustCare",
+      "locked": false
+    },
+    {
+      "key": "bul_growing_here_label",
+      "en": "TrustCare is growing here",
+      "sv": "TrustCare växer här",
+      "locked": false
+    },
+    {
+      "key": "button_add",
+      "en": "Add",
+      "sv": "Lägg till",
+      "locked": false
+    },
+    {
+      "key": "button_back",
+      "en": "Back",
+      "sv": "Tillbaka",
+      "locked": false
+    },
+    {
+      "key": "button_call",
+      "en": "Call",
+      "sv": "Ring",
+      "locked": false
+    },
+    {
+      "key": "button_cancel",
+      "en": "Cancel",
+      "sv": "Avbryt",
+      "locked": false
+    },
+    {
+      "key": "button_continue",
+      "en": "Continue",
+      "sv": "Fortsätt",
+      "locked": false
+    },
+    {
+      "key": "button_delete",
+      "en": "Delete",
+      "sv": "Radera",
+      "locked": false
+    },
+    {
+      "key": "button_directions",
+      "en": "Directions",
+      "sv": "Vägbeskrivning",
+      "locked": false
+    },
+    {
+      "key": "button_done",
+      "en": "Done",
+      "sv": "Klar",
+      "locked": false
+    },
+    {
+      "key": "button_edit",
+      "en": "Edit",
+      "sv": "Redigera",
+      "locked": false
+    },
+    {
+      "key": "button_ok",
+      "en": "OK",
+      "sv": "OK",
+      "locked": false
+    },
+    {
+      "key": "button_remove",
+      "en": "Remove",
+      "sv": "Ta bort",
+      "locked": false
+    },
+    {
+      "key": "button_review",
+      "en": "Review",
+      "sv": "Recensera",
+      "locked": false
+    },
+    {
+      "key": "button_save",
+      "en": "Save",
+      "sv": "Spara",
+      "locked": false
+    },
+    {
+      "key": "button_submit",
+      "en": "Submit",
+      "sv": "Skicka in",
+      "locked": false
+    },
+    {
+      "key": "category_aesthetic_cosmetic",
+      "en": "Aesthetic & Cosmetic",
+      "sv": "Estetik & kosmetik",
+      "locked": false
+    },
+    {
+      "key": "category_alternative",
+      "en": "Alternative",
+      "sv": "Alternativ",
+      "locked": false
+    },
+    {
+      "key": "category_anesthesiology",
+      "en": "Anesthesiology",
+      "sv": "Anestesiologi",
+      "locked": false
+    },
+    {
+      "key": "category_cardiology",
+      "en": "Cardiology",
+      "sv": "Kardiologi",
+      "locked": false
+    },
+    {
+      "key": "category_dental",
+      "en": "Dental",
+      "sv": "Tandvård",
+      "locked": false
+    },
+    {
+      "key": "category_dermatology",
+      "en": "Dermatology",
+      "sv": "Dermatologi",
+      "locked": false
+    },
+    {
+      "key": "category_diagnostic",
+      "en": "Diagnostic",
+      "sv": "Diagnostik",
+      "locked": false
+    },
+    {
+      "key": "category_emergency",
+      "en": "Emergency",
+      "sv": "Akut",
+      "locked": false
+    },
+    {
+      "key": "category_endocrinology",
+      "en": "Endocrinology",
+      "sv": "Endokrinologi",
+      "locked": false
+    },
+    {
+      "key": "category_ent",
+      "en": "Ear, Nose & Throat",
+      "sv": "Öron, näsa & hals",
+      "locked": false
+    },
+    {
+      "key": "category_eye_care",
+      "en": "Eye Care",
+      "sv": "Ögonvård",
+      "locked": false
+    },
+    {
+      "key": "category_gastroenterology",
+      "en": "Gastroenterology",
+      "sv": "Gastroenterologi",
+      "locked": false
+    },
+    {
+      "key": "category_general_practice",
+      "en": "General Practice",
+      "sv": "Allmänläkare",
+      "locked": false
+    },
+    {
+      "key": "category_hospital",
+      "en": "Hospital",
+      "sv": "Sjukhus",
+      "locked": false
+    },
+    {
+      "key": "category_medical_specialties",
+      "en": "Medical Specialties",
+      "sv": "Medicinska specialiteter",
+      "locked": false
+    },
+    {
+      "key": "category_mental_health",
+      "en": "Mental Health",
+      "sv": "Psykisk hälsa",
+      "locked": false
+    },
+    {
+      "key": "category_nephrology",
+      "en": "Nephrology",
+      "sv": "Nefrologi",
+      "locked": false
+    },
+    {
+      "key": "category_neurology",
+      "en": "Neurology",
+      "sv": "Neurologi",
+      "locked": false
+    },
+    {
+      "key": "category_oncology",
+      "en": "Oncology",
+      "sv": "Onkologi",
+      "locked": false
+    },
+    {
+      "key": "category_ophthalmology",
+      "en": "Ophthalmology",
+      "sv": "Oftalmologi",
+      "locked": false
+    },
+    {
+      "key": "category_orthopedics",
+      "en": "Orthopedics",
+      "sv": "Ortopedi",
+      "locked": false
+    },
+    {
+      "key": "category_other",
+      "en": "Other",
+      "sv": "Övrigt",
+      "locked": false
+    },
+    {
+      "key": "category_pediatrics",
+      "en": "Pediatrics",
+      "sv": "Pediatrik",
+      "locked": false
+    },
+    {
+      "key": "category_pharmacy",
+      "en": "Pharmacy",
+      "sv": "Apotek",
+      "locked": false
+    },
+    {
+      "key": "category_primary_care",
+      "en": "Primary Care",
+      "sv": "Primärvård",
+      "locked": false
+    },
+    {
+      "key": "category_psychiatry",
+      "en": "Psychiatry",
+      "sv": "Psykiatri",
+      "locked": false
+    },
+    {
+      "key": "category_pulmonology",
+      "en": "Pulmonology",
+      "sv": "Lungmedicin",
+      "locked": false
+    },
+    {
+      "key": "category_rehabilitation",
+      "en": "Rehabilitation",
+      "sv": "Rehabilitering",
+      "locked": false
+    },
+    {
+      "key": "category_rheumatology",
+      "en": "Rheumatology",
+      "sv": "Reumatologi",
+      "locked": false
+    },
+    {
+      "key": "category_surgical",
+      "en": "Surgical",
+      "sv": "Kirurgi",
+      "locked": false
+    },
+    {
+      "key": "category_urology",
+      "en": "Urology",
+      "sv": "Urologi",
+      "locked": false
+    },
+    {
+      "key": "category_womens_health",
+      "en": "Women's Health",
+      "sv": "Kvinnohälsa",
+      "locked": false
+    },
+    {
+      "key": "chip_distance",
+      "en": "Distance",
+      "sv": "Avstånd",
+      "locked": false
+    },
+    {
+      "key": "chip_facility",
+      "en": "Facility",
+      "sv": "Klinik",
+      "locked": false
+    },
+    {
+      "key": "chip_language",
+      "en": "Language",
+      "sv": "Språk",
+      "locked": false
+    },
+    {
+      "key": "chip_specialty",
+      "en": "Specialty",
+      "sv": "Specialitet",
+      "locked": false
+    },
+    {
+      "key": "chip_treatment",
+      "en": "Treatment",
+      "sv": "Behandling",
+      "locked": false
+    },
+    {
+      "key": "claim_accepted_docs",
+      "en": "Accepted: Medical license, registration certificate, or official ID",
+      "sv": "Accepteras: Läkarlegitimation, registreringsbevis eller officiell legitimation",
+      "locked": false
+    },
+    {
+      "key": "claim_back_to_provider",
+      "en": "Back to Provider",
+      "sv": "Tillbaka till vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_1",
+      "en": "You are authorized to manage this profile",
+      "sv": "Du är behörig att hantera denna profil",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_2",
+      "en": "All information provided is accurate",
+      "sv": "All information som lämnas är korrekt",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_text",
+      "en": "By submitting, you confirm that:",
+      "sv": "Genom att skicka in bekräftar du att:",
+      "locked": false
+    },
+    {
+      "key": "claim_description",
+      "en": "Claim this profile to manage it",
+      "sv": "Gör anspråk på denna profil för att hantera den",
+      "locked": false
+    },
+    {
+      "key": "claim_file_format",
+      "en": "JPG or PNG, max 10 MB",
+      "sv": "JPG eller PNG, max 10 MB",
+      "locked": false
+    },
+    {
+      "key": "claim_pending",
+      "en": "Claim Pending",
+      "sv": "Anspråk väntar",
+      "locked": false
+    },
+    {
+      "key": "claim_pending_message",
+      "en": "Your claim is being reviewed.",
+      "sv": "Ditt anspråk granskas.",
+      "locked": false
+    },
+    {
+      "key": "claim_profile",
+      "en": "Claim Profile",
+      "sv": "Gör anspråk på profil",
+      "locked": false
+    },
+    {
+      "key": "claim_provider_label",
+      "en": "Provider",
+      "sv": "Vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "claim_rejected",
+      "en": "Claim Rejected",
+      "sv": "Anspråk avvisat",
+      "locked": false
+    },
+    {
+      "key": "claim_resubmit",
+      "en": "Resubmit",
+      "sv": "Skicka in igen",
+      "locked": false
+    },
+    {
+      "key": "claim_review_submit",
+      "en": "Review & Submit",
+      "sv": "Granska & Skicka in",
+      "locked": false
+    },
+    {
+      "key": "claim_role_question",
+      "en": "What is your role at this practice?",
+      "sv": "Vad är din roll på denna mottagning?",
+      "locked": false
+    },
+    {
+      "key": "claim_step_1_of_3",
+      "en": "Step 1 of 3",
+      "sv": "Steg 1 av 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_2_of_3",
+      "en": "Step 2 of 3",
+      "sv": "Steg 2 av 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_3_of_3",
+      "en": "Step 3 of 3",
+      "sv": "Steg 3 av 3",
+      "locked": false
+    },
+    {
+      "key": "claim_submit",
+      "en": "Submit Claim",
+      "sv": "Skicka in anspråk",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted",
+      "en": "Claim Submitted!",
+      "sv": "Anspråk inskickat!",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted_message",
+      "en": "We'll review your claim within 1-3 business days. You'll be notified when it's approved.",
+      "sv": "Vi kommer att granska ditt anspråk inom 1-3 arbetsdagar. Du meddelas när det har godkänts.",
+      "locked": false
+    },
+    {
+      "key": "claim_tap_upload",
+      "en": "Tap to upload document",
+      "sv": "Tryck för att ladda upp dokument",
+      "locked": false
+    },
+    {
+      "key": "claim_title",
+      "en": "Claim Profile",
+      "sv": "Gör anspråk på profil",
+      "locked": false
+    },
+    {
+      "key": "claim_upload_doc",
+      "en": "Upload verification document",
+      "sv": "Ladda upp verifikationsdokument",
+      "locked": false
+    },
+    {
+      "key": "claim_verification_doc",
+      "en": "Verification Document",
+      "sv": "Verifikationsdokument",
+      "locked": false
+    },
+    {
+      "key": "claim_your_role",
+      "en": "Your Role",
+      "sv": "Din roll",
+      "locked": false
+    },
+    {
+      "key": "clear_filter",
+      "en": "Clear Filter",
+      "sv": "Rensa filter",
+      "locked": false
+    },
+    {
+      "key": "close_button",
+      "en": "Close",
+      "sv": "Stäng",
+      "locked": false
+    },
+    {
+      "key": "country_turkey",
+      "en": "Türkiye",
+      "sv": "Turkiet",
+      "locked": false
+    },
+    {
+      "key": "cta_change_city",
+      "en": "Change city",
+      "sv": "Byt stad",
+      "locked": false
+    },
+    {
+      "key": "cta_suggest_provider",
+      "en": "Suggest a provider",
+      "sv": "Föreslå en vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "current_location",
+      "en": "Current Location",
+      "sv": "Nuvarande plats",
+      "locked": false
+    },
+    {
+      "key": "date_today",
+      "en": "Today",
+      "sv": "Idag",
+      "locked": false
+    },
+    {
+      "key": "date_yesterday",
+      "en": "Yesterday",
+      "sv": "Igår",
+      "locked": false
+    },
+    {
+      "key": "default_city_name",
+      "en": "Adana",
+      "sv": "Adana",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_body",
+      "en": "There may be a connection issue. Please try again.",
+      "sv": "Det kan vara ett anslutningsproblem. Vänligen försök igen.",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_title",
+      "en": "Providers could not be loaded",
+      "sv": "Vårdgivare kunde inte laddas",
+      "locked": false
+    },
+    {
+      "key": "discover_error_switch_to_list",
+      "en": "Switch to list view",
+      "sv": "Byt till listvy",
+      "locked": false
+    },
+    {
+      "key": "edit_review_comment_section",
+      "en": "Review",
+      "sv": "Recension",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title",
+      "en": "Edit Review",
+      "sv": "Redigera recension",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_placeholder",
+      "en": "Review title",
+      "sv": "Recensionstitel",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_section",
+      "en": "Title",
+      "sv": "Titel",
+      "locked": false
+    },
+    {
+      "key": "empty_home_cta",
+      "en": "Suggest a provider",
+      "sv": "Föreslå en vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "empty_home_title",
+      "en": "No providers in this area",
+      "sv": "Inga vårdgivare i detta område",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_body",
+      "en": "Try searching another area or changing city.",
+      "sv": "Testa att söka i ett annat område eller byt stad.",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_title",
+      "en": "No providers available",
+      "sv": "Inga vårdgivare tillgängliga",
+      "locked": false
+    },
+    {
+      "key": "empty_search",
+      "en": "No results found",
+      "sv": "Inga resultat hittades",
+      "locked": false
+    },
+    {
+      "key": "error_duplicate_review",
+      "en": "You can only submit one review per provider per date.",
+      "sv": "Du kan bara skicka in en recension per vårdgivare och datum.",
+      "locked": false
+    },
+    {
+      "key": "error_generic",
+      "en": "Error",
+      "sv": "Fel",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body",
+      "en": "Your connection may be unstable right now. Try again to load the list.",
+      "sv": "Din anslutning kan vara instabil just nu. Försök igen för att ladda listan.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body_generic",
+      "en": "Couldn't load providers. Please try again.",
+      "sv": "Kunde inte ladda vårdgivare. Vänligen försök igen.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_title",
+      "en": "Couldn't load providers",
+      "sv": "Kunde inte ladda vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "error_network",
+      "en": "A network issue occurred. Please check your connection and try again.",
+      "sv": "Ett nätverksproblem uppstod. Kontrollera din anslutning och försök igen.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_body",
+      "en": "Please check your connection and try again.",
+      "sv": "Kontrollera din anslutning och försök igen.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_title",
+      "en": "Network error",
+      "sv": "Nätverksfel",
+      "locked": false
+    },
+    {
+      "key": "error_offline_body",
+      "en": "It looks like you're offline. Check your connection and try again.",
+      "sv": "Det verkar som att du är offline. Kontrollera din anslutning och försök igen.",
+      "locked": false
+    },
+    {
+      "key": "error_offline_title",
+      "en": "Couldn't load providers",
+      "sv": "Kunde inte ladda vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "error_unknown",
+      "en": "An unknown error occurred.",
+      "sv": "Ett okänt fel uppstod.",
+      "locked": false
+    },
+    {
+      "key": "filter_all",
+      "en": "All",
+      "sv": "Alla",
+      "locked": false
+    },
+    {
+      "key": "filter_apply",
+      "en": "Apply",
+      "sv": "Tillämpa",
+      "locked": false
+    },
+    {
+      "key": "filter_button",
+      "en": "Filter",
+      "sv": "Filtrera",
+      "locked": false
+    },
+    {
+      "key": "filter_distance",
+      "en": "Distance",
+      "sv": "Avstånd",
+      "locked": false
+    },
+    {
+      "key": "filter_facility",
+      "en": "Facility",
+      "sv": "Klinik",
+      "locked": false
+    },
+    {
+      "key": "filter_facility_title",
+      "en": "Facility",
+      "sv": "Klinik",
+      "locked": false
+    },
+    {
+      "key": "filter_language",
+      "en": "Language",
+      "sv": "Språk",
+      "locked": false
+    },
+    {
+      "key": "filter_language_title",
+      "en": "Language",
+      "sv": "Språk",
+      "locked": false
+    },
+    {
+      "key": "filter_more",
+      "en": "More",
+      "sv": "Mer",
+      "locked": false
+    },
+    {
+      "key": "filter_reset",
+      "en": "Reset",
+      "sv": "Återställ",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty",
+      "en": "Specialty",
+      "sv": "Specialitet",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty_title",
+      "en": "Specialty",
+      "sv": "Specialitet",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment",
+      "en": "Treatment",
+      "sv": "Behandling",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment_title",
+      "en": "Treatment",
+      "sv": "Behandling",
+      "locked": false
+    },
+    {
+      "key": "filter_verified",
+      "en": "Verified",
+      "sv": "Verifierad",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_only_label",
+      "en": "Show only providers with verified reviews",
+      "sv": "Endast verifierade recensioner",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_title",
+      "en": "Verified",
+      "sv": "Verifierad",
+      "locked": false
+    },
+    {
+      "key": "find_empty_change_city",
+      "en": "Change city",
+      "sv": "Byt stad",
+      "locked": false
+    },
+    {
+      "key": "find_empty_clear_filters",
+      "en": "Clear filters",
+      "sv": "Rensa filter",
+      "locked": false
+    },
+    {
+      "key": "find_empty_growing_here",
+      "en": "TrustCare is growing here",
+      "sv": "TrustCare växer här",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_another_area",
+      "en": "Search another area",
+      "sv": "Sök i ett annat område",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_change_city",
+      "en": "Search another area / Change city",
+      "sv": "Sök i ett annat område / Byt stad",
+      "locked": false
+    },
+    {
+      "key": "find_empty_suggest_provider",
+      "en": "Suggest a provider",
+      "sv": "Föreslå en vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "find_set_location",
+      "en": "Set location",
+      "sv": "Ställ in plats",
+      "locked": false
+    },
+    {
+      "key": "find_sheet_providers_title",
+      "en": "Providers",
+      "sv": "Vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "find_state_change_city",
+      "en": "Change city",
+      "sv": "Byt stad",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_body",
+      "en": "Clear one or more filters, or move the map to expand results.",
+      "sv": "Rensa ett eller flera filter, eller flytta kartan för att utöka resultaten.",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_title",
+      "en": "No results match these filters",
+      "sv": "Inga resultat matchar dessa filter",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_body",
+      "en": "Coverage is expanding in this area. Try a nearby city for now.",
+      "sv": "Täckningen utökas i detta område. Prova en närliggande stad så länge.",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_title",
+      "en": "TrustCare is growing here",
+      "sv": "TrustCare växer här",
+      "locked": false
+    },
+    {
+      "key": "find_state_no_providers_visible",
+      "en": "No providers visible in this map area",
+      "sv": "Inga vårdgivare synliga i detta kartområde",
+      "locked": false
+    },
+    {
+      "key": "find_state_search_another_area",
+      "en": "Search another area",
+      "sv": "Sök i ett annat område",
+      "locked": false
+    },
+    {
+      "key": "find_state_try_another_area",
+      "en": "Try another area or pick a different city to continue.",
+      "sv": "Prova ett annat område eller välj en annan stad för att fortsätta.",
+      "locked": false
+    },
+    {
+      "key": "help_contact",
+      "en": "Contact",
+      "sv": "Kontakt",
+      "locked": false
+    },
+    {
+      "key": "help_email_label",
+      "en": "Email",
+      "sv": "E-post",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a1",
+      "en": "Open Review, choose a provider, and complete the guided form.",
+      "sv": "Öppna Recensera, välj en vårdgivare och fyll i det guidade formuläret.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a2",
+      "en": "Yes. Open My Reviews and tap Edit on your review.",
+      "sv": "Ja. Öppna Mina recensioner och tryck på Redigera på din recension.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a3",
+      "en": "Verified means the review passed our checks or includes supporting proof.",
+      "sv": "Verifierad innebär att recensionen har klarat våra kontroller eller inkluderar bevis.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a4",
+      "en": "Open the review and tap Report. Our team will review it.",
+      "sv": "Öppna recensionen och tryck på Anmäl. Vårt team kommer att granska den.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a5",
+      "en": "Go to Settings and request deletion. We will confirm when completed.",
+      "sv": "Gå till Inställningar och begär radering. Vi bekräftar när det är klart.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a6",
+      "en": "Email support@trustcare.app with your app version and issue details.",
+      "sv": "Maila support@trustcare.app med din app-version och information om problemet.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q1",
+      "en": "How do I add a review?",
+      "sv": "Hur lägger jag till en recension?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q2",
+      "en": "Can I edit my review?",
+      "sv": "Kan jag redigera min recension?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q3",
+      "en": "What does Verified mean?",
+      "sv": "Vad betyder Verifierad?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q4",
+      "en": "How do I report content?",
+      "sv": "Hur anmäler jag innehåll?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q5",
+      "en": "How do I delete my account or data?",
+      "sv": "Hur raderar jag mitt konto eller mina uppgifter?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q6",
+      "en": "How can I contact support?",
+      "sv": "Hur kan jag kontakta supporten?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_title",
+      "en": "Help & Support",
+      "sv": "Hjälp och support",
+      "locked": false
+    },
+    {
+      "key": "help_report_issue",
+      "en": "Report an issue",
+      "sv": "Rapportera ett problem",
+      "locked": false
+    },
+    {
+      "key": "is_this_your_practice",
+      "en": "Is this your practice?",
+      "sv": "Är detta din mottagning?",
+      "locked": false
+    },
+    {
+      "key": "language_changed_alert",
+      "en": "Language Changed",
+      "sv": "Språk ändrat",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message",
+      "en": "The app needs to restart to apply the new language.",
+      "sv": "Appen måste startas om för att tillämpa det nya språket.",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message_named %@",
+      "en": "The app will restart in %@. Continue?",
+      "sv": "Appen kommer att startas om om %@. Fortsätta?",
+      "locked": false
+    },
+    {
+      "key": "language_danish",
+      "en": "Dansk",
+      "sv": "Dansk",
+      "locked": false
+    },
+    {
+      "key": "language_done",
+      "en": "Done",
+      "sv": "Klar",
+      "locked": false
+    },
+    {
+      "key": "language_dutch",
+      "en": "Nederlands",
+      "sv": "Nederlands",
+      "locked": false
+    },
+    {
+      "key": "language_english",
+      "en": "English",
+      "sv": "English",
+      "locked": false
+    },
+    {
+      "key": "language_german",
+      "en": "Deutsch",
+      "sv": "Deutsch",
+      "locked": false
+    },
+    {
+      "key": "language_later",
+      "en": "Later",
+      "sv": "Senare",
+      "locked": false
+    },
+    {
+      "key": "language_polish",
+      "en": "Polski",
+      "sv": "Polski",
+      "locked": false
+    },
+    {
+      "key": "language_restart_now",
+      "en": "Restart Now",
+      "sv": "Starta om nu",
+      "locked": false
+    },
+    {
+      "key": "language_section_title",
+      "en": "Language",
+      "sv": "Språk",
+      "locked": false
+    },
+    {
+      "key": "language_turkish",
+      "en": "Türkçe",
+      "sv": "Türkçe",
+      "locked": false
+    },
+    {
+      "key": "legal_translation_disclaimer",
+      "en": "Translation is provided for convenience; the English version prevails.",
+      "sv": "Översättningen tillhandahålls för bekvämlighet; den engelska versionen har företräde.",
+      "locked": false
+    },
+    {
+      "key": "legend_aesthetics",
+      "en": "Aesthetics",
+      "sv": "Estetik",
+      "locked": false
+    },
+    {
+      "key": "legend_clinic",
+      "en": "Clinic",
+      "sv": "Klinik",
+      "locked": false
+    },
+    {
+      "key": "legend_dental",
+      "en": "Dental",
+      "sv": "Tandvård",
+      "locked": false
+    },
+    {
+      "key": "legend_hospital",
+      "en": "Hospital",
+      "sv": "Sjukhus",
+      "locked": false
+    },
+    {
+      "key": "legend_lab",
+      "en": "Lab",
+      "sv": "Laboratorium",
+      "locked": false
+    },
+    {
+      "key": "legend_mental_health",
+      "en": "Mental Health",
+      "sv": "Psykisk hälsa",
+      "locked": false
+    },
+    {
+      "key": "legend_pharmacy",
+      "en": "Pharmacy",
+      "sv": "Apotek",
+      "locked": false
+    },
+    {
+      "key": "legend_rehab",
+      "en": "Rehab",
+      "sv": "Rehab",
+      "locked": false
+    },
+    {
+      "key": "location_select_title",
+      "en": "Select Location",
+      "sv": "Välj plats",
+      "locked": false
+    },
+    {
+      "key": "logout_confirm_message",
+      "en": "Are you sure you want to log out?",
+      "sv": "Är du säker på att du vill logga ut?",
+      "locked": false
+    },
+    {
+      "key": "map_search_this_area",
+      "en": "Search this area",
+      "sv": "Sök i detta område",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_list",
+      "en": "List",
+      "sv": "Lista",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_map",
+      "en": "Map",
+      "sv": "Karta",
+      "locked": false
+    },
+    {
+      "key": "media_photo_count_%lld",
+      "en": "%lld of 5 photos",
+      "sv": "%lld of 5 photos",
+      "locked": true
+    },
+    {
+      "key": "menu_help",
+      "en": "Help & Support",
+      "sv": "Hjälp och support",
+      "locked": false
+    },
+    {
+      "key": "menu_logout",
+      "en": "Log Out",
+      "sv": "Logga ut",
+      "locked": false
+    },
+    {
+      "key": "menu_my_reviews",
+      "en": "My Reviews",
+      "sv": "Mina recensioner",
+      "locked": false
+    },
+    {
+      "key": "menu_privacy",
+      "en": "Privacy Policy",
+      "sv": "Integritetspolicy",
+      "locked": false
+    },
+    {
+      "key": "menu_saved",
+      "en": "Saved",
+      "sv": "Sparade",
+      "locked": false
+    },
+    {
+      "key": "menu_settings",
+      "en": "Settings",
+      "sv": "Inställningar",
+      "locked": false
+    },
+    {
+      "key": "menu_terms",
+      "en": "Terms of Service",
+      "sv": "Användarvillkor",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_message",
+      "en": "This action cannot be undone.",
+      "sv": "Denna åtgärd kan inte ångras.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_title",
+      "en": "Delete Review?",
+      "sv": "Radera recension?",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_action",
+      "en": "Write a Review",
+      "sv": "Skriv en recension",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_message",
+      "en": "Share your experience by posting your first review.",
+      "sv": "Dela din upplevelse genom att publicera din första recension.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_title",
+      "en": "No reviews yet",
+      "sv": "Inga recensioner ännu",
+      "locked": false
+    },
+    {
+      "key": "no_results",
+      "en": "No results",
+      "sv": "Inga resultat",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_1",
+      "en": "If you have questions about this Privacy Policy or your personal data, contact us at support@trustcare.app.",
+      "sv": "Om du har frågor om denna integritetspolicy eller dina personuppgifter, kontakta oss på support@trustcare.app.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_2",
+      "en": "If you are in the EEA/UK, you may also contact your local data protection authority.",
+      "sv": "Om du befinner dig i EES/Storbritannien kan du även kontakta din lokala dataskyddsmyndighet.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_title",
+      "en": "Contact",
+      "sv": "Kontakt",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_1",
+      "en": "Our web surfaces may use cookies and local storage to keep sessions secure and improve performance.",
+      "sv": "Våra webbplatser kan använda cookies och lokal lagring för att hålla sessioner säkra och förbättra prestandan.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_2",
+      "en": "You can control cookie preferences in your browser settings, though disabling them may affect functionality.",
+      "sv": "Du kan styra cookie-inställningar i din webbläsare, men inaktivering av dem kan påverka funktionaliteten.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_3",
+      "en": "Analytics cookies are used in aggregate form to understand usage trends and improve the service.",
+      "sv": "Analys-cookies används i samlad form för att förstå användningstrender och förbättra tjänsten.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_title",
+      "en": "Cookies and Similar Technologies",
+      "sv": "Cookies och liknande tekniker",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_1",
+      "en": "We collect account data such as email, name, profile preferences, and authentication metadata.",
+      "sv": "Vi samlar in kontouppgifter som e-post, namn, profilinställningar och autentiseringsmetadata.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_2",
+      "en": "When you submit reviews, we collect ratings, comments, optional media, and optional verification artifacts.",
+      "sv": "När du skickar in recensioner samlar vi in betyg, kommentarer, valfria media och valfria verifikationsdokument.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_3",
+      "en": "We may process device and usage data including app events, approximate location, and diagnostics.",
+      "sv": "Vi kan behandla enhets- och användningsdata, inklusive app-händelser, ungefärlig plats och diagnostik.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_4",
+      "en": "We do not intentionally collect sensitive health records beyond the information you choose to submit.",
+      "sv": "Vi samlar inte avsiktligt in känsliga hälsojournaler utöver den information du väljer att skicka in.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_title",
+      "en": "Data We Collect",
+      "sv": "Data vi samlar in",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_1",
+      "en": "We share data with service providers that operate hosting, analytics, moderation, and communication systems.",
+      "sv": "Vi delar data med tjänsteleverantörer som hanterar hosting, analys, moderering och kommunikationssystem.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_2",
+      "en": "We may disclose information when required by law, regulation, legal process, or to protect users and platform integrity.",
+      "sv": "Vi kan lämna ut information när det krävs enligt lag, förordning, rättslig process eller för att skydda användare och plattformens integritet.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_3",
+      "en": "We do not sell personal data to third parties.",
+      "sv": "Vi säljer inte personuppgifter till tredje part.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_title",
+      "en": "How We Share Data",
+      "sv": "Hur vi delar data",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_1",
+      "en": "We use personal data to provide core app functionality, personalize content, and maintain account security.",
+      "sv": "Vi använder personuppgifter för att tillhandahålla appens kärnfunktioner, anpassa innehåll och upprätthålla kontosäkerhet.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_2",
+      "en": "We use submitted reviews and metadata for trust, safety, moderation, fraud prevention, and quality assurance.",
+      "sv": "Vi använder inskickade recensioner och metadata för tillit, säkerhet, moderering, bedrägeriförebyggande och kvalitetssäkring.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_3",
+      "en": "We may use aggregated and de-identified analytics to improve product experience and reliability.",
+      "sv": "Vi kan använda aggregerad och avidentifierad analys för att förbättra produktupplevelsen och tillförlitligheten.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_title",
+      "en": "How We Use Data",
+      "sv": "Hur vi använder data",
+      "locked": false
+    },
+    {
+      "key": "pp_last_updated",
+      "en": "Last updated: March 2026",
+      "sv": "Senast uppdaterad: Mars 2026",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_1",
+      "en": "Depending on your region, you may have rights to access, correct, export, restrict, or delete your personal data.",
+      "sv": "Beroende på din region kan du ha rätt att få tillgång till, korrigera, exportera, begränsa eller radera dina personuppgifter.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_2",
+      "en": "You can update profile information directly in the app or request support for account-level actions.",
+      "sv": "Du kan uppdatera profilinformation direkt i appen eller begära support för åtgärder på kontonivå.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_3",
+      "en": "You may object to certain processing where applicable under local law.",
+      "sv": "Du kan invända mot viss behandling i tillämpliga fall enligt lokal lagstiftning.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_4",
+      "en": "To exercise your rights, contact support@trustcare.app and we will respond within the legally required timeframe.",
+      "sv": "För att utöva dina rättigheter, kontakta support@trustcare.app så svarar vi inom den tidsram som lagen kräver.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_title",
+      "en": "Your Rights",
+      "sv": "Dina rättigheter",
+      "locked": false
+    },
+    {
+      "key": "pp_security_1",
+      "en": "We apply technical and organizational safeguards designed to protect data against unauthorized access and misuse.",
+      "sv": "Vi tillämpar tekniska och organisatoriska skyddsåtgärder utformade för att skydda data mot obehörig åtkomst och missbruk.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_2",
+      "en": "No online system is completely secure; we continuously monitor and improve our controls.",
+      "sv": "Inget onlinesystem är helt säkert; vi övervakar och förbättrar kontinuerligt våra kontroller.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_3",
+      "en": "If a security incident affects your data, we will notify you and regulators when legally required.",
+      "sv": "Om en säkerhetsincident påverkar dina data kommer vi att meddela dig och tillsynsmyndigheter när lagen kräver det.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_title",
+      "en": "Security",
+      "sv": "Säkerhet",
+      "locked": false
+    },
+    {
+      "key": "profile_member_since",
+      "en": "Member since",
+      "sv": "Medlem sedan",
+      "locked": false
+    },
+    {
+      "key": "profile_referral",
+      "en": "Invite a friend - earn points",
+      "sv": "Bjud in en vän - tjäna poäng",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count",
+      "en": "Reviews",
+      "sv": "Recensioner",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count %lld",
+      "en": "%#@count@",
+      "sv": "%#@count@",
+      "locked": true
+    },
+    {
+      "key": "profile_verified_percent",
+      "en": "Verified",
+      "sv": "Verifierad",
+      "locked": false
+    },
+    {
+      "key": "profile_verified_percent %lld",
+      "en": "%lld%% Verified",
+      "sv": "%lld%% Verifierad",
+      "locked": true
+    },
+    {
+      "key": "providers_label",
+      "en": "Providers",
+      "sv": "Vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "providers_title",
+      "en": "Providers",
+      "sv": "Vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "recents",
+      "en": "Recents",
+      "sv": "Senaste",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_112",
+      "en": "Call 112",
+      "sv": "Ring 112",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_emergency",
+      "en": "Call Emergency Services",
+      "sv": "Ring nödsamtal",
+      "locked": false
+    },
+    {
+      "key": "rehber_consent_text",
+      "en": "I understand: These suggestions are for guidance only, not diagnosis",
+      "sv": "Jag förstår: Dessa förslag är endast vägledande, inte en diagnos",
+      "locked": false
+    },
+    {
+      "key": "rehber_cooldown",
+      "en": "Please wait %d seconds to send again.",
+      "sv": "Vänligen vänta %d sekunder innan du skickar igen.",
+      "locked": false
+    },
+    {
+      "key": "rehber_daily_limit_reached",
+      "en": "Daily free limit reached (5/5). Try again tomorrow.",
+      "sv": "Daglig gratisgräns nådd (5/5). Prova igen i morgon.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete",
+      "en": "Delete",
+      "sv": "Radera",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_message",
+      "en": "This will permanently delete this conversation and all its messages.",
+      "sv": "Detta kommer att permanent radera denna konversation och alla dess meddelanden.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_title",
+      "en": "Delete Conversation?",
+      "sv": "Radera konversation?",
+      "locked": false
+    },
+    {
+      "key": "rehber_disclaimer",
+      "en": "This is not medical advice. Always consult a healthcare professional.",
+      "sv": "Detta är inte medicinsk rådgivning. Rådfråga alltid sjukvårdspersonal.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_danger",
+      "en": "If you or someone else is in danger, call immediately.",
+      "sv": "Om du eller någon annan är i fara, ring omedelbart.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_detected",
+      "en": "🚨 A potential emergency risk was detected. Please call 112 immediately.",
+      "sv": "🚨 En potentiell akut risk upptäcktes. Ring omedelbart 112.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_subtitle",
+      "en": "Please call 112 immediately",
+      "sv": "Ring 112 omedelbart",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_title",
+      "en": "🚨 EMERGENCY",
+      "sv": "🚨 AKUT",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state",
+      "en": "Share your symptoms, I'll guide you to the right specialty.",
+      "sv": "Dela dina symptom, jag guidar dig till rätt specialitet.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state_sub",
+      "en": "No diagnosis or treatment is provided; guidance only.",
+      "sv": "Ingen diagnos eller behandling tillhandahålls; endast vägledning.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_subtitle",
+      "en": "Start one to get health guidance.",
+      "sv": "Starta en för att få hälsovägledning.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_title",
+      "en": "No conversations yet",
+      "sv": "Inga konversationer ännu",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_1",
+      "en": "Recommends the right specialty based on your symptoms",
+      "sv": "Rekommenderar rätt specialitet baserat på dina symptom",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_2",
+      "en": "Finds healthcare providers near you",
+      "sv": "Hittar vårdgivare nära dig",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_3",
+      "en": "Directs you to 112 in emergencies",
+      "sv": "Guidar dig till 112 i nödsituationer",
+      "locked": false
+    },
+    {
+      "key": "rehber_find_provider",
+      "en": "Find provider",
+      "sv": "Hitta vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "rehber_info_bar",
+      "en": "TrustCare Rehber - Health Information Service",
+      "sv": "TrustCare Rehber - Hälsoinformation",
+      "locked": false
+    },
+    {
+      "key": "rehber_input_placeholder",
+      "en": "Describe your symptoms...",
+      "sv": "Beskriv dina symptom...",
+      "locked": false
+    },
+    {
+      "key": "rehber_load_conversation_error",
+      "en": "Unable to load conversation.",
+      "sv": "Kunde inte ladda konversationen.",
+      "locked": false
+    },
+    {
+      "key": "rehber_login_required",
+      "en": "Please sign in to use Rehber.",
+      "sv": "Vänligen logga in för att använda Rehber.",
+      "locked": false
+    },
+    {
+      "key": "rehber_nearest_emergency",
+      "en": "Nearest Emergency Room",
+      "sv": "Närmaste akutmottagning",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_conversation",
+      "en": "New Conversation",
+      "sv": "Ny konversation",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_short",
+      "en": "New",
+      "sv": "Ny",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_conversations",
+      "en": "No conversations yet",
+      "sv": "Inga konversationer ännu",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_response",
+      "en": "Rehber could not respond. Please try again.",
+      "sv": "Rehber kunde inte svara. Vänligen försök igen.",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_subtitle",
+      "en": "Health Information Service",
+      "sv": "Hälsoinformation",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_warning",
+      "en": "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.",
+      "sv": "⚠️ Denna tjänst är inte en medicinsk diagnos eller behandlingsrekommendation. Rådfråga alltid sjukvårdspersonal.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_body",
+      "en": "This feature will become a subscription. It's currently available to everyone for testing.",
+      "sv": "Denna funktion kommer att bli en prenumeration. Den är för närvarande tillgänglig för alla för testning.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_title",
+      "en": "Plus - free during launch",
+      "sv": "PLUS - gratis vid lansering",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_trial",
+      "en": "TrustCare Plus feature - Free trial: 5 questions per day",
+      "sv": "TrustCare Plus-funktion - Gratis provperiod: 5 frågor per dag",
+      "locked": false
+    },
+    {
+      "key": "rehber_recent_sessions",
+      "en": "Recent Sessions",
+      "sv": "Senaste sessioner",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_failed",
+      "en": "Response could not be generated. Please try again.",
+      "sv": "Svaret kunde inte genereras. Vänligen försök igen.",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_unavailable",
+      "en": "Response unavailable.",
+      "sv": "Svar ej tillgängligt.",
+      "locked": false
+    },
+    {
+      "key": "rehber_sessions",
+      "en": "Sessions",
+      "sv": "Sessioner",
+      "locked": false
+    },
+    {
+      "key": "rehber_start",
+      "en": "Start",
+      "sv": "Starta",
+      "locked": false
+    },
+    {
+      "key": "rehber_start_guidance",
+      "en": "Start one to get health guidance.",
+      "sv": "Starta en för att få hälsovägledning.",
+      "locked": false
+    },
+    {
+      "key": "rehber_subtitle",
+      "en": "Your AI health guide",
+      "sv": "Din AI-hälsoguide",
+      "locked": false
+    },
+    {
+      "key": "rehber_title",
+      "en": "TrustCare Rehber",
+      "sv": "TrustCare Rehber",
+      "locked": false
+    },
+    {
+      "key": "rehber_try_again",
+      "en": "Try Again",
+      "sv": "Försök igen",
+      "locked": false
+    },
+    {
+      "key": "rehber_usage_counter",
+      "en": "Usage count:",
+      "sv": "Antal användningar:",
+      "locked": false
+    },
+    {
+      "key": "report_additional_details",
+      "en": "Additional details (optional)",
+      "sv": "Ytterligare detaljer (valfritt)",
+      "locked": false
+    },
+    {
+      "key": "report_button",
+      "en": "Report",
+      "sv": "Anmäl",
+      "locked": false
+    },
+    {
+      "key": "report_footer",
+      "en": "Please provide any additional context that might help us review this report.",
+      "sv": "Vänligen ge eventuell ytterligare kontext som kan hjälpa oss att granska denna anmälan.",
+      "locked": false
+    },
+    {
+      "key": "report_header",
+      "en": "Why are you reporting this review?",
+      "sv": "Varför anmäler du den här recensionen?",
+      "locked": false
+    },
+    {
+      "key": "report_optional_details",
+      "en": "Optional details",
+      "sv": "Valfria detaljer",
+      "locked": false
+    },
+    {
+      "key": "report_reason",
+      "en": "Reason",
+      "sv": "Anledning",
+      "locked": false
+    },
+    {
+      "key": "report_reported",
+      "en": "Reported",
+      "sv": "Anmäld",
+      "locked": false
+    },
+    {
+      "key": "report_thank_you",
+      "en": "Thank you. We'll review this report.",
+      "sv": "Tack. Vi kommer att granska denna anmälan.",
+      "locked": false
+    },
+    {
+      "key": "report_title",
+      "en": "Report Review",
+      "sv": "Anmäl recension",
+      "locked": false
+    },
+    {
+      "key": "review_add_photo",
+      "en": "Add Photo",
+      "sv": "Lägg till foto",
+      "locked": false
+    },
+    {
+      "key": "review_another",
+      "en": "Review Another Provider",
+      "sv": "Recensera en annan vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "review_button_back",
+      "en": "Back",
+      "sv": "Tillbaka",
+      "locked": false
+    },
+    {
+      "key": "review_button_next",
+      "en": "Next",
+      "sv": "Nästa",
+      "locked": false
+    },
+    {
+      "key": "review_cant_find_add",
+      "en": "Can't find it? Add new",
+      "sv": "Hittar du den inte? Lägg till ny",
+      "locked": false
+    },
+    {
+      "key": "review_change_provider",
+      "en": "Change",
+      "sv": "Ändra",
+      "locked": false
+    },
+    {
+      "key": "review_char_count %lld",
+      "en": "%lld/500 characters",
+      "sv": "%lld/500 characters",
+      "locked": true
+    },
+    {
+      "key": "review_comment",
+      "en": "Your Review",
+      "sv": "Din recension",
+      "locked": false
+    },
+    {
+      "key": "review_comment_placeholder",
+      "en": "Share your experience...",
+      "sv": "Dela din upplevelse...",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner",
+      "en": "Bedside Manner",
+      "sv": "Bemötande",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner_question",
+      "en": "Did the doctor listen and explain clearly?",
+      "sv": "Lyssande läkaren och förklarade tydligt?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "sv": "Klinikens hygien",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene_question",
+      "en": "Was the clinic clean and hygienic?",
+      "sv": "Var kliniken ren och hygienisk?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "sv": "Behandlingens effektivitet",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness_question",
+      "en": "Did the treatment resolve your issue?",
+      "sv": "Löste behandlingen ditt problem?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time",
+      "en": "Waiting Time",
+      "sv": "Väntetid",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time_question",
+      "en": "How long did you wait after your appointment time?",
+      "sv": "Hur länge väntade du efter din bokade tid?",
+      "locked": false
+    },
+    {
+      "key": "review_detailed",
+      "en": "Detailed Rating",
+      "sv": "Detaljerat betyg",
+      "locked": false
+    },
+    {
+      "key": "review_editable_24h",
+      "en": "Editable within 24h",
+      "sv": "Kan redigeras inom 24 timmar",
+      "locked": false
+    },
+    {
+      "key": "review_go_home",
+      "en": "Go to Home",
+      "sv": "Gå till startsidan",
+      "locked": false
+    },
+    {
+      "key": "review_helpful_count_%lld",
+      "en": "%lld helpful",
+      "sv": "%lld helpful",
+      "locked": true
+    },
+    {
+      "key": "review_overall",
+      "en": "Overall Rating",
+      "sv": "Helhetsbetyg",
+      "locked": false
+    },
+    {
+      "key": "review_overall_question",
+      "en": "How was your overall experience?",
+      "sv": "Hur var din helhetsupplevelse?",
+      "locked": false
+    },
+    {
+      "key": "review_photos_public",
+      "en": "Photos will be visible to everyone.",
+      "sv": "Foton kommer att vara synliga för alla.",
+      "locked": false
+    },
+    {
+      "key": "review_proof_private",
+      "en": "This will not be shown publicly.",
+      "sv": "Detta kommer inte att visas offentligt.",
+      "locked": false
+    },
+    {
+      "key": "review_select_provider_to_continue",
+      "en": "Select a provider to continue",
+      "sv": "Välj en vårdgivare för att fortsätta",
+      "locked": false
+    },
+    {
+      "key": "review_skip_verification",
+      "en": "Skip verification",
+      "sv": "Hoppa över verifiering",
+      "locked": false
+    },
+    {
+      "key": "review_step_choose_provider",
+      "en": "Choose provider",
+      "sv": "Välj vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "review_step_detailed_ratings",
+      "en": "Detailed ratings",
+      "sv": "Detaljerade betyg",
+      "locked": false
+    },
+    {
+      "key": "review_step_format",
+      "en": "Step %1$lld of %2$lld",
+      "sv": "Steg %1$lld av %2$lld",
+      "locked": false
+    },
+    {
+      "key": "review_step_media_submit",
+      "en": "Media and submit",
+      "sv": "Media och skicka in",
+      "locked": false
+    },
+    {
+      "key": "review_step_overall_rating",
+      "en": "Overall rating",
+      "sv": "Helhetsbetyg",
+      "locked": false
+    },
+    {
+      "key": "review_step_visit_details",
+      "en": "Visit details",
+      "sv": "Besöksdetaljer",
+      "locked": false
+    },
+    {
+      "key": "review_step_write_review",
+      "en": "Write review",
+      "sv": "Skriv recension",
+      "locked": false
+    },
+    {
+      "key": "review_submit",
+      "en": "Submit Review",
+      "sv": "Skicka in recension",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_message",
+      "en": "Your review has been submitted and will appear once processed.",
+      "sv": "Din recension har skickats in och kommer att visas när den har behandlats.",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_title",
+      "en": "Thank You!",
+      "sv": "Tack!",
+      "locked": false
+    },
+    {
+      "key": "review_upload_proof",
+      "en": "Upload proof of visit",
+      "sv": "Ladda upp bevis på besök",
+      "locked": false
+    },
+    {
+      "key": "review_verification_pending",
+      "en": "Verification Pending",
+      "sv": "Väntar på verifiering",
+      "locked": false
+    },
+    {
+      "key": "review_verify",
+      "en": "Verify Your Visit",
+      "sv": "Verifiera ditt besök",
+      "locked": false
+    },
+    {
+      "key": "review_verify_hint",
+      "en": "Help us maintain trust by verifying your visit.",
+      "sv": "Hjälp oss upprätthålla förtroendet genom att verifiera ditt besök.",
+      "locked": false
+    },
+    {
+      "key": "review_view_provider",
+      "en": "View provider",
+      "sv": "Visa vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "review_visit_date",
+      "en": "Visit Date",
+      "sv": "Besöksdatum",
+      "locked": false
+    },
+    {
+      "key": "review_visit_details",
+      "en": "Visit Details",
+      "sv": "Besöksdetaljer",
+      "locked": false
+    },
+    {
+      "key": "review_visit_type",
+      "en": "Visit Type",
+      "sv": "Typ av besök",
+      "locked": false
+    },
+    {
+      "key": "review_who",
+      "en": "Who are you reviewing?",
+      "sv": "Vem recenserar du?",
+      "locked": false
+    },
+    {
+      "key": "reviews_count",
+      "en": "reviews",
+      "sv": "recensioner",
+      "locked": false
+    },
+    {
+      "key": "reviews_empty_title",
+      "en": "No reviews yet",
+      "sv": "Inga recensioner ännu",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_action",
+      "en": "Discover Providers",
+      "sv": "Upptäck vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_message",
+      "en": "Save providers to access them quickly later.",
+      "sv": "Spara vårdgivare för att snabbt komma åt dem senare.",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_title",
+      "en": "No saved providers yet",
+      "sv": "Inga sparade vårdgivare ännu",
+      "locked": false
+    },
+    {
+      "key": "search_facilities",
+      "en": "Search facilities",
+      "sv": "Sök kliniker",
+      "locked": false
+    },
+    {
+      "key": "search_languages",
+      "en": "Search languages",
+      "sv": "Sök språk",
+      "locked": false
+    },
+    {
+      "key": "search_placeholder",
+      "en": "Search doctor, clinic...",
+      "sv": "Sök läkare, klinik...",
+      "locked": false
+    },
+    {
+      "key": "search_specialties",
+      "en": "Search specialties",
+      "sv": "Sök specialiteter",
+      "locked": false
+    },
+    {
+      "key": "search_this_area",
+      "en": "Search this area",
+      "sv": "Sök i detta område",
+      "locked": false
+    },
+    {
+      "key": "search_treatments",
+      "en": "Search treatments",
+      "sv": "Sök behandlingar",
+      "locked": false
+    },
+    {
+      "key": "settings_account",
+      "en": "Account",
+      "sv": "Konto",
+      "locked": false
+    },
+    {
+      "key": "settings_cancel",
+      "en": "Cancel",
+      "sv": "Avbryt",
+      "locked": false
+    },
+    {
+      "key": "settings_change_password",
+      "en": "Change Password",
+      "sv": "Ändra lösenord",
+      "locked": false
+    },
+    {
+      "key": "settings_data_privacy",
+      "en": "Data & Privacy",
+      "sv": "Data och integritet",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account",
+      "en": "Delete Account",
+      "sv": "Radera konto",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_confirm",
+      "en": "Delete My Account",
+      "sv": "Radera mitt konto",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_warning",
+      "en": "This action cannot be undone",
+      "sv": "Denna åtgärd kan inte ångras",
+      "locked": false
+    },
+    {
+      "key": "settings_download_data",
+      "en": "Download My Data",
+      "sv": "Ladda ner mina data",
+      "locked": false
+    },
+    {
+      "key": "settings_downloading_data",
+      "en": "Preparing data...",
+      "sv": "Förbereder data...",
+      "locked": false
+    },
+    {
+      "key": "settings_email",
+      "en": "Email",
+      "sv": "E-post",
+      "locked": false
+    },
+    {
+      "key": "settings_location_services",
+      "en": "Location Services",
+      "sv": "Platstjänster",
+      "locked": false
+    },
+    {
+      "key": "settings_notifications",
+      "en": "Notifications",
+      "sv": "Aviseringar",
+      "locked": false
+    },
+    {
+      "key": "settings_phone",
+      "en": "Phone",
+      "sv": "Telefon",
+      "locked": false
+    },
+    {
+      "key": "settings_preferences",
+      "en": "Preferences",
+      "sv": "Inställningar",
+      "locked": false
+    },
+    {
+      "key": "show_all",
+      "en": "Show All",
+      "sv": "Visa alla",
+      "locked": false
+    },
+    {
+      "key": "showing_english_results",
+      "en": "Showing English results",
+      "sv": "Visar engelska resultat",
+      "locked": false
+    },
+    {
+      "key": "specialties_label",
+      "en": "Specialties",
+      "sv": "Specialiteter",
+      "locked": false
+    },
+    {
+      "key": "specialties_title",
+      "en": "Specialties",
+      "sv": "Specialiteter",
+      "locked": false
+    },
+    {
+      "key": "specialty_label",
+      "en": "Specialty",
+      "sv": "Specialitet",
+      "locked": false
+    },
+    {
+      "key": "splash_tagline",
+      "en": "Healthcare, Verified.",
+      "sv": "Sjukvård, Verifierad.",
+      "locked": false
+    },
+    {
+      "key": "status_pending",
+      "en": "Pending",
+      "sv": "Väntar",
+      "locked": false
+    },
+    {
+      "key": "status_unverified",
+      "en": "Unverified",
+      "sv": "Ej verifierad",
+      "locked": false
+    },
+    {
+      "key": "status_verified",
+      "en": "Verified",
+      "sv": "Verifierad",
+      "locked": false
+    },
+    {
+      "key": "sub_acne",
+      "en": "Acne",
+      "sv": "Akne",
+      "locked": false
+    },
+    {
+      "key": "sub_acute_illness_treatment",
+      "en": "Acute Illness Treatment",
+      "sv": "Akut sjukdomsbehandling",
+      "locked": false
+    },
+    {
+      "key": "sub_anxiety",
+      "en": "Anxiety",
+      "sv": "Ångest",
+      "locked": false
+    },
+    {
+      "key": "sub_arrhythmia",
+      "en": "Arrhythmia",
+      "sv": "Arytmi",
+      "locked": false
+    },
+    {
+      "key": "sub_arthritis",
+      "en": "Arthritis",
+      "sv": "Artrit",
+      "locked": false
+    },
+    {
+      "key": "sub_asthma",
+      "en": "Asthma",
+      "sv": "Astma",
+      "locked": false
+    },
+    {
+      "key": "sub_bipolar_disorder",
+      "en": "Bipolar Disorder",
+      "sv": "Bipolär sjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_cataracts",
+      "en": "Cataracts",
+      "sv": "Grå starr",
+      "locked": false
+    },
+    {
+      "key": "sub_chemotherapy",
+      "en": "Chemotherapy",
+      "sv": "Kemoterapi",
+      "locked": false
+    },
+    {
+      "key": "sub_child_development",
+      "en": "Child Development",
+      "sv": "Barnutveckling",
+      "locked": false
+    },
+    {
+      "key": "sub_childhood_illness",
+      "en": "Childhood Illness",
+      "sv": "Barnsjukdomar",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_disease_management",
+      "en": "Chronic Disease Management",
+      "sv": "Hantering av kronisk sjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_kidney_disease",
+      "en": "Chronic Kidney Disease",
+      "sv": "Kronisk njursjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_copd",
+      "en": "COPD",
+      "sv": "KOL",
+      "locked": false
+    },
+    {
+      "key": "sub_coronary_artery_disease",
+      "en": "Coronary Artery Disease",
+      "sv": "Kranskärlssjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_dementia",
+      "en": "Dementia",
+      "sv": "Demens",
+      "locked": false
+    },
+    {
+      "key": "sub_depression",
+      "en": "Depression",
+      "sv": "Depression",
+      "locked": false
+    },
+    {
+      "key": "sub_diabetes",
+      "en": "Diabetes",
+      "sv": "Diabetes",
+      "locked": false
+    },
+    {
+      "key": "sub_dialysis",
+      "en": "Dialysis",
+      "sv": "Dialys",
+      "locked": false
+    },
+    {
+      "key": "sub_eczema",
+      "en": "Eczema",
+      "sv": "Eksem",
+      "locked": false
+    },
+    {
+      "key": "sub_endoscopy",
+      "en": "Endoscopy",
+      "sv": "Endoskopi",
+      "locked": false
+    },
+    {
+      "key": "sub_erectile_dysfunction",
+      "en": "Erectile Dysfunction",
+      "sv": "Erektil dysfunktion",
+      "locked": false
+    },
+    {
+      "key": "sub_fracture_treatment",
+      "en": "Fracture Treatment",
+      "sv": "Frakturbehandling",
+      "locked": false
+    },
+    {
+      "key": "sub_general_consultation",
+      "en": "General Consultation",
+      "sv": "Allmän konsultation",
+      "locked": false
+    },
+    {
+      "key": "sub_glaucoma",
+      "en": "Glaucoma",
+      "sv": "Glaukom",
+      "locked": false
+    },
+    {
+      "key": "sub_headache",
+      "en": "Headache",
+      "sv": "Huvudvärk",
+      "locked": false
+    },
+    {
+      "key": "sub_hearing_loss",
+      "en": "Hearing Loss",
+      "sv": "Hörselnedsättning",
+      "locked": false
+    },
+    {
+      "key": "sub_heart_failure",
+      "en": "Heart Failure",
+      "sv": "Hjärtsvikt",
+      "locked": false
+    },
+    {
+      "key": "sub_hormone_replacement",
+      "en": "Hormone Replacement",
+      "sv": "Hormonersättning",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension",
+      "en": "Hypertension",
+      "sv": "Högt blodtryck",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension_mgmt",
+      "en": "Hypertension Management",
+      "sv": "Hantering av högt blodtryck",
+      "locked": false
+    },
+    {
+      "key": "sub_incontinence",
+      "en": "Incontinence",
+      "sv": "Inkontinens",
+      "locked": false
+    },
+    {
+      "key": "sub_infant_care",
+      "en": "Infant Care",
+      "sv": "Spädbarnsvård",
+      "locked": false
+    },
+    {
+      "key": "sub_inflammatory_bowel_disease",
+      "en": "Inflammatory Bowel Disease",
+      "sv": "Inflammatorisk tarmsjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_interstitial_lung_disease",
+      "en": "Interstitial Lung Disease",
+      "sv": "Interstitiell lungsjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_joint_replacement",
+      "en": "Joint Replacement",
+      "sv": "Ledprotes",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_stones",
+      "en": "Kidney Stones",
+      "sv": "Njursten",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_transplant",
+      "en": "Kidney Transplant",
+      "sv": "Njurtransplantation",
+      "locked": false
+    },
+    {
+      "key": "sub_liver_disease",
+      "en": "Liver Disease",
+      "sv": "Leversjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_lupus",
+      "en": "Lupus",
+      "sv": "Lupus",
+      "locked": false
+    },
+    {
+      "key": "sub_movement_disorders",
+      "en": "Movement Disorders",
+      "sv": "Rörelsesjukdomar",
+      "locked": false
+    },
+    {
+      "key": "sub_pain_management",
+      "en": "Pain Management",
+      "sv": "Smärtlindring",
+      "locked": false
+    },
+    {
+      "key": "sub_palliative_care",
+      "en": "Palliative Care",
+      "sv": "Palliativ vård",
+      "locked": false
+    },
+    {
+      "key": "sub_peptic_ulcer",
+      "en": "Peptic Ulcer",
+      "sv": "Magsår",
+      "locked": false
+    },
+    {
+      "key": "sub_post_operative_care",
+      "en": "Post-operative Care",
+      "sv": "Postoperativ vård",
+      "locked": false
+    },
+    {
+      "key": "sub_pre_operative_assessment",
+      "en": "Pre-operative Assessment",
+      "sv": "Preoperativ bedömning",
+      "locked": false
+    },
+    {
+      "key": "sub_preventive_care",
+      "en": "Preventive Care",
+      "sv": "Förebyggande vård",
+      "locked": false
+    },
+    {
+      "key": "sub_prostate_disease",
+      "en": "Prostate Disease",
+      "sv": "Prostatasjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_psoriasis",
+      "en": "Psoriasis",
+      "sv": "Psoriasis",
+      "locked": false
+    },
+    {
+      "key": "sub_radiation_therapy",
+      "en": "Radiation Therapy",
+      "sv": "Strålbehandling",
+      "locked": false
+    },
+    {
+      "key": "sub_refractive_error",
+      "en": "Refractive Error",
+      "sv": "Brytningsfel",
+      "locked": false
+    },
+    {
+      "key": "sub_retinal_disease",
+      "en": "Retinal Disease",
+      "sv": "Nätsjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_schizophrenia",
+      "en": "Schizophrenia",
+      "sv": "Schizofreni",
+      "locked": false
+    },
+    {
+      "key": "sub_sinusitis",
+      "en": "Sinusitis",
+      "sv": "Bihåleinflammation",
+      "locked": false
+    },
+    {
+      "key": "sub_skin_cancer_screening",
+      "en": "Skin Cancer Screening",
+      "sv": "Hudcancerscreening",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_apnea",
+      "en": "Sleep Apnea",
+      "sv": "Sömnapné",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_disorders",
+      "en": "Sleep Disorders",
+      "sv": "Sömnstörningar",
+      "locked": false
+    },
+    {
+      "key": "sub_spine_surgery",
+      "en": "Spine Surgery",
+      "sv": "Ryggkirurgi",
+      "locked": false
+    },
+    {
+      "key": "sub_sports_medicine",
+      "en": "Sports Medicine",
+      "sv": "Idrottsmedicin",
+      "locked": false
+    },
+    {
+      "key": "sub_stroke",
+      "en": "Stroke",
+      "sv": "Stroke",
+      "locked": false
+    },
+    {
+      "key": "sub_surgical_oncology",
+      "en": "Surgical Oncology",
+      "sv": "Kirurgisk onkologi",
+      "locked": false
+    },
+    {
+      "key": "sub_thyroid_disease",
+      "en": "Thyroid Disease",
+      "sv": "Sköldkörtelsjukdom",
+      "locked": false
+    },
+    {
+      "key": "sub_vaccination",
+      "en": "Vaccination",
+      "sv": "Vaccination",
+      "locked": false
+    },
+    {
+      "key": "sub_vasculitis",
+      "en": "Vasculitis",
+      "sv": "Vaskulit",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy",
+      "en": "Accuracy & Care",
+      "sv": "Noggrannhet och omsorg",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy_sub",
+      "en": "Was your prescription prepared correctly?",
+      "sv": "Var ditt recept korrekt förberett?",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency",
+      "en": "Administrative Efficiency",
+      "sv": "Administrativ effektivitet",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency_sub",
+      "en": "Were admission and discharge smooth?",
+      "sv": "Gick inskrivning och utskrivning smidigt?",
+      "locked": false
+    },
+    {
+      "key": "survey_aesthetics",
+      "en": "Aesthetic Clinic",
+      "sv": "Estetisk klinik",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare",
+      "en": "Aftercare",
+      "sv": "Eftervård",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare_sub",
+      "en": "Were aftercare instructions and follow-up clearly explained?",
+      "sv": "Förklarades eftervårdsinstruktioner och uppföljning tydligt?",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner",
+      "en": "Bedside Manner",
+      "sv": "Bemötande",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner_sub",
+      "en": "Did the doctor listen and explain clearly?",
+      "sv": "Lyssnade läkaren och förklarade tydligt?",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality",
+      "en": "Care Quality",
+      "sv": "Vårdkvalitet",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality_sub",
+      "en": "How would you rate the medical care?",
+      "sv": "Hur skulle du bedöma den medicinska vården?",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "sv": "Klinikens hygien",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene_sub",
+      "en": "Was the clinic clean and hygienic?",
+      "sv": "Var kliniken ren och hygienisk?",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity",
+      "en": "Communication Clarity",
+      "sv": "Kommunikationens tydlighet",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity_sub",
+      "en": "Were treatment plans explained clearly?",
+      "sv": "Förklarades behandlingsplanerna tydligt?",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality",
+      "en": "Consultation Quality",
+      "sv": "Konsultationskvalitet",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality_sub",
+      "en": "Were procedure risks and outcomes explained?",
+      "sv": "Förklarades risker och resultat med ingreppet?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental",
+      "en": "Dental",
+      "sv": "Tandvård",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_bedside_sub",
+      "en": "Did the dentist communicate clearly?",
+      "sv": "Kommunicerade tandläkaren tydligt?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_hygiene_sub",
+      "en": "Were treatment rooms and equipment clean?",
+      "sv": "Var behandlingsrum och utrustning rena?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_wait_sub",
+      "en": "How quickly were you seated?",
+      "sv": "Hur snabbt fick du komma in?",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic",
+      "en": "Diagnostic Center",
+      "sv": "Diagnostiskt centrum",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic_wait_sub",
+      "en": "How quickly were you called for your test?",
+      "sv": "Hur snabbt kallades du till ditt test?",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy",
+      "en": "Empathy & Listening",
+      "sv": "Empati och lyssnande",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy_sub",
+      "en": "Did you feel truly heard?",
+      "sv": "Kände du dig verkligen hörd?",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort",
+      "en": "Environment Comfort",
+      "sv": "Miljöns bekvämlighet",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort_sub",
+      "en": "Was the office peaceful and private?",
+      "sv": "Var mottagningen lugn och privat?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment",
+      "en": "Facility Equipment",
+      "sv": "Klinikens utrustning",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment_sub",
+      "en": "Was the facility well-equipped?",
+      "sv": "Var kliniken välutrustad?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene",
+      "en": "Facility Hygiene",
+      "sv": "Klinikens hygien",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene_sub",
+      "en": "Was the facility clean and hygienic?",
+      "sv": "Var kliniken ren och hygienisk?",
+      "locked": false
+    },
+    {
+      "key": "survey_general_clinic",
+      "en": "General Clinic",
+      "sv": "Allmän klinik",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital",
+      "en": "Hospital",
+      "sv": "Sjukhus",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital_wait_sub",
+      "en": "How quickly were you seen by a doctor?",
+      "sv": "Hur snabbt fick du träffa en läkare?",
+      "locked": false
+    },
+    {
+      "key": "survey_mental_health",
+      "en": "Mental Health",
+      "sv": "Psykiatrisk mottagning",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management",
+      "en": "Pain Management",
+      "sv": "Smärtlindring",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management_sub",
+      "en": "How well did they manage pain?",
+      "sv": "Hur väl hanterade de smärtan?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge",
+      "en": "Pharmacist Knowledge",
+      "sv": "Apotekarens kunskap",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge_sub",
+      "en": "Did the pharmacist answer your questions well?",
+      "sv": "Besvarade apotekaren dina frågor väl?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacy",
+      "en": "Pharmacy",
+      "sv": "Apotek",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort",
+      "en": "Procedure Comfort",
+      "sv": "Komfort under ingreppet",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort_sub",
+      "en": "Did staff make the procedure comfortable?",
+      "sv": "Gjorde personalen ingreppet bekvämt?",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality",
+      "en": "Punctuality",
+      "sv": "Punktlighet",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality_sub",
+      "en": "Did your session start on time?",
+      "sv": "Började din session i tid?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_effectiveness_sub",
+      "en": "Did sessions improve mobility or reduce pain?",
+      "sv": "Förbättrade sessionerna rörligheten eller minskade smärtan?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_wait_sub",
+      "en": "How quickly did your session start?",
+      "sv": "Hur snabbt började din session?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehabilitation",
+      "en": "Rehabilitation",
+      "sv": "Rehabilitering",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction",
+      "en": "Result Satisfaction",
+      "sv": "Nöjdhet med resultatet",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction_sub",
+      "en": "Are you satisfied with the results?",
+      "sv": "Är du nöjd med resultaten?",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed",
+      "en": "Result Speed",
+      "sv": "Snabba resultat",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed_sub",
+      "en": "Were results delivered on time?",
+      "sv": "Levererades resultaten i tid?",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene",
+      "en": "Room Hygiene",
+      "sv": "Rumshygien",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene_sub",
+      "en": "Were rooms and areas clean?",
+      "sv": "Var rum och utrymmen rena?",
+      "locked": false
+    },
+    {
+      "key": "survey_speed",
+      "en": "Speed",
+      "sv": "Snabbhet",
+      "locked": false
+    },
+    {
+      "key": "survey_speed_sub",
+      "en": "How quickly were you served?",
+      "sv": "Hur snabbt fick du hjälp?",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy",
+      "en": "Staff Courtesy",
+      "sv": "Personalens bemötande",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy_sub",
+      "en": "Was the staff polite?",
+      "sv": "Var personalen artig?",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness",
+      "en": "Therapist Attentiveness",
+      "sv": "Terapeutens uppmärksamhet",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness_sub",
+      "en": "Did the therapist monitor and adapt?",
+      "sv": "Övervakade och anpassade terapeuten?",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "sv": "Behandlingens effektivitet",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness_sub",
+      "en": "Did the treatment resolve your issue?",
+      "sv": "Löste behandlingen ditt problem?",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time",
+      "en": "Waiting Time",
+      "sv": "Väntetid",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time_sub",
+      "en": "How long did you wait after your appointment time?",
+      "sv": "Hur länge väntade du efter din bokade tid?",
+      "locked": false
+    },
+    {
+      "key": "switch_category_hint",
+      "en": "Try switching category.",
+      "sv": "Testa att byta kategori.",
+      "locked": false
+    },
+    {
+      "key": "switch_to_list",
+      "en": "Switch to list view for more results.",
+      "sv": "Byt till listvy för fler resultat.",
+      "locked": false
+    },
+    {
+      "key": "tab_badge_plus",
+      "en": "Plus",
+      "sv": "PLUS",
+      "locked": false
+    },
+    {
+      "key": "tab_discover",
+      "en": "Find",
+      "sv": "Hitta",
+      "locked": false
+    },
+    {
+      "key": "tab_guide",
+      "en": "Guide",
+      "sv": "Guide",
+      "locked": false
+    },
+    {
+      "key": "tab_profile",
+      "en": "Profile",
+      "sv": "Profil",
+      "locked": false
+    },
+    {
+      "key": "tab_review",
+      "en": "Review",
+      "sv": "Recensera",
+      "locked": false
+    },
+    {
+      "key": "tagline",
+      "en": "Healthcare, Verified.",
+      "sv": "Sjukvård, Verifierad.",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_facilities",
+      "en": "Facilities",
+      "sv": "Kliniker",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_specialties",
+      "en": "Specialties",
+      "sv": "Specialiteter",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_treatments",
+      "en": "Treatments",
+      "sv": "Behandlingar",
+      "locked": false
+    },
+    {
+      "key": "top_picks",
+      "en": "Top Picks",
+      "sv": "Toppval",
+      "locked": false
+    },
+    {
+      "key": "tos_account_1",
+      "en": "You are responsible for maintaining the confidentiality of your credentials and activity under your account.",
+      "sv": "Du är ansvarig för att upprätthålla sekretessen för dina inloggningsuppgifter och aktiviteter på ditt konto.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_2",
+      "en": "We may suspend or terminate accounts that violate these terms, applicable law, or platform safety requirements.",
+      "sv": "Vi kan stänga av eller avsluta konton som bryter mot dessa villkor, tillämplig lagstiftning eller plattformens säkerhetskrav.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_title",
+      "en": "Accounts and Access",
+      "sv": "Konton och åtkomst",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_1",
+      "en": "Questions about these Terms can be sent to support@trustcare.app.",
+      "sv": "Frågor om dessa villkor kan skickas till support@trustcare.app.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_2",
+      "en": "By continuing to use the service, you acknowledge that you have read and agreed to these Terms.",
+      "sv": "Genom att fortsätta använda tjänsten bekräftar du att du har läst och godkänt dessa villkor.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_title",
+      "en": "Contact",
+      "sv": "Kontakt",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_1",
+      "en": "These Terms are governed by applicable laws of the jurisdiction where the service operator is established, unless local mandatory law provides otherwise.",
+      "sv": "Dessa villkor styrs av tillämpliga lagar i den jurisdiktion där tjänsteoperatören är etablerad, såvida inte tvingande lokal lag föreskriver något annat.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_2",
+      "en": "Before initiating formal proceedings, you agree to contact us in good faith to seek an informal resolution.",
+      "sv": "Innan du inleder ett formellt förfarande godkänner du att kontakta oss i god tro för att försöka hitta en informell lösning.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_title",
+      "en": "Disputes and Governing Law",
+      "sv": "Tvister och tillämplig lag",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_1",
+      "en": "All platform content, branding, and software are owned by TrustCare or licensed to us, unless otherwise stated.",
+      "sv": "Allt plattformsinnehåll, varumärke och programvara ägs av TrustCare eller licensieras till oss, om inget annat anges.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_2",
+      "en": "You may not copy, scrape, reverse engineer, or redistribute platform content beyond permitted legal use.",
+      "sv": "Du får inte kopiera, skrapa, bakåtkompilera eller vidaredistribuera plattformsinnehåll utöver tillåten laglig användning.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_title",
+      "en": "Intellectual Property",
+      "sv": "Immateriella rättigheter",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_1",
+      "en": "Rehber provides informational guidance only and does not provide medical diagnosis, treatment, or emergency response.",
+      "sv": "Rehber ger endast informativ vägledning och tillhandahåller ingen medicinsk diagnos, behandling eller insats i nödsituationer.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_2",
+      "en": "In urgent or life-threatening situations, contact local emergency services immediately.",
+      "sv": "Kontakta omedelbart lokala larmtjänster i brådskande eller livshotande situationer.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_3",
+      "en": "You remain responsible for healthcare decisions and should consult qualified medical professionals.",
+      "sv": "Du bär fortfarande ansvaret för beslut rörande din hälsa och bör rådfråga kvalificerad sjukvårdspersonal.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_title",
+      "en": "Rehber (AI Guidance) Disclaimer",
+      "sv": "Ansvarsfriskrivning för Rehber (AI-vägledning)",
+      "locked": false
+    },
+    {
+      "key": "tos_review_1",
+      "en": "Reviews must reflect genuine, firsthand experiences and must not include harassment, hate speech, or unlawful content.",
+      "sv": "Recensioner måste återspegla äkta, förstahandsupplevelser och får inte innehålla trakasserier, hatretorik eller olagligt innehåll.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_2",
+      "en": "By submitting content, you grant TrustCare a license to host, display, and moderate that content for service operation.",
+      "sv": "Genom att skicka in innehåll ger du TrustCare en licens att lagra, visa och moderera detta innehåll för driften av tjänsten.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_3",
+      "en": "We may remove, limit, or flag content that violates policy, legal obligations, or trust and safety standards.",
+      "sv": "Vi kan ta bort, begränsa eller flagga innehåll som bryter mot policyn, rättsliga skyldigheter eller tillits- och säkerhetsstandarder.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_title",
+      "en": "Reviews and Community Content",
+      "sv": "Recensioner och communityinnehåll",
+      "locked": false
+    },
+    {
+      "key": "tos_service_1",
+      "en": "TrustCare provides healthcare discovery, review features, and informational guidance tools for general consumer use.",
+      "sv": "TrustCare tillhandahåller funktioner för att upptäcka och recensera sjukvård samt informations- och vägledningsverktyg för allmänt konsumentbruk.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_2",
+      "en": "Service availability, features, and access may change over time; we may update or discontinue parts of the service without prior notice.",
+      "sv": "Tjänstens tillgänglighet, funktioner och åtkomst kan ändras över tid; vi kan uppdatera eller avbryta delar av tjänsten utan föregående meddelande.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_title",
+      "en": "Service Overview",
+      "sv": "Tjänsteöversikt",
+      "locked": false
+    },
+    {
+      "key": "tos_user_1",
+      "en": "You agree to provide accurate information and use the platform lawfully, respectfully, and in good faith.",
+      "sv": "Du godkänner att tillhandahålla korrekt information och använda plattformen på ett lagligt, respektfullt och uppriktigt sätt.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_2",
+      "en": "You must not attempt to abuse the platform, bypass security controls, or interfere with other users.",
+      "sv": "Du får inte försöka missbruka plattformen, kringgå säkerhetskontroller eller störa andra användare.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_3",
+      "en": "You are responsible for content you submit and for complying with applicable local laws and regulations.",
+      "sv": "Du är ansvarig för det innehåll du skickar in och för att följa tillämpliga lokala lagar och förordningar.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_title",
+      "en": "User Responsibilities",
+      "sv": "Användarens ansvar",
+      "locked": false
+    },
+    {
+      "key": "try_english_keywords",
+      "en": "Try English keywords or check spelling.",
+      "sv": "Testa engelska sökord eller kontrollera stavningen.",
+      "locked": false
+    },
+    {
+      "key": "try_nearby_city",
+      "en": "Try a nearby city.",
+      "sv": "Testa en närliggande stad.",
+      "locked": false
+    },
+    {
+      "key": "unauthorized_area",
+      "en": "Unknown area",
+      "sv": "Okänt område",
+      "locked": false
+    },
+    {
+      "key": "unknown_provider",
+      "en": "Unknown Provider",
+      "sv": "Okänd vårdgivare",
+      "locked": false
+    },
+    {
+      "key": "use_device_location",
+      "en": "Use device location",
+      "sv": "Använd enhetens plats",
+      "locked": false
+    },
+    {
+      "key": "verified_badge",
+      "en": "Verified",
+      "sv": "Verifierad",
+      "locked": false
+    },
+    {
+      "key": "visit_type_checkup",
+      "en": "Checkup",
+      "sv": "Hälsokontroll",
+      "locked": false
+    },
+    {
+      "key": "visit_type_emergency",
+      "en": "Emergency",
+      "sv": "Akut",
+      "locked": false
+    },
+    {
+      "key": "visit_type_examination",
+      "en": "Examination",
+      "sv": "Undersökning",
+      "locked": false
+    },
+    {
+      "key": "visit_type_procedure",
+      "en": "Procedure",
+      "sv": "Ingrepp",
+      "locked": false
+    },
+    {
+      "key": "widen_map_area",
+      "en": "Widen the map area and search again.",
+      "sv": "Utöka kartområdet och sök igen.",
+      "locked": false
+    }
+  ]
+}

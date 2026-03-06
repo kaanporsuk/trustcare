@@ -1,0 +1,3528 @@
+{
+  "meta": {
+    "app": "TrustCare",
+    "source": "strings_en_bulletproof.json",
+    "target_language": "fr",
+    "generated_at": "2026-03-06T01:30:47Z",
+    "entry_count": 584,
+    "instructions": [
+      "Fill 'fr' for entries where locked=false.",
+      "Do NOT change 'key' or 'en'.",
+      "Keep placeholders EXACTLY (%@, %d, %lld, %1$@, %#@... etc).",
+      "If locked=true, leave the translation as-is."
+    ],
+    "validated_at": "2026-03-06T02:32:43Z",
+    "validated_by": "ChatGPT",
+    "quality_notes": [
+      "Standardized PLUS badge casing.",
+      "Shortened verified-only label for UI fit.",
+      "Made PLUS banner title consistent."
+    ]
+  },
+  "entries": [
+    {
+      "key": "%@ %@",
+      "en": "%1$@ %2$@",
+      "fr": "%1$@ %2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@",
+      "en": "%1$@%2$@",
+      "fr": "%1$@%2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@ - %@%@",
+      "en": "%1$@%2$@ - %3$@%4$@",
+      "fr": "%1$@%2$@ - %3$@%4$@",
+      "locked": true
+    },
+    {
+      "key": "%lld%% %@",
+      "en": "%1$lld%% %2$@",
+      "fr": "%1$lld%% %2$@",
+      "locked": true
+    },
+    {
+      "key": "%lld/%lld",
+      "en": "%1$lld/%2$lld",
+      "fr": "%1$lld/%2$lld",
+      "locked": true
+    },
+    {
+      "key": "accessibility_rating_hint",
+      "en": "Swipe up or down to adjust rating",
+      "fr": "Balayez vers le haut ou le bas pour ajuster la note",
+      "locked": false
+    },
+    {
+      "key": "action_dismiss",
+      "en": "Dismiss",
+      "fr": "Fermer",
+      "locked": false
+    },
+    {
+      "key": "action_retry",
+      "en": "Retry",
+      "fr": "Réessayer",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_list",
+      "en": "Switch to list view",
+      "fr": "Passer en vue liste",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_map",
+      "en": "Switch to map view",
+      "fr": "Passer en vue carte",
+      "locked": false
+    },
+    {
+      "key": "add_provider_add",
+      "en": "Add",
+      "fr": "Ajouter",
+      "locked": false
+    },
+    {
+      "key": "add_provider_address",
+      "en": "Address",
+      "fr": "Adresse",
+      "locked": false
+    },
+    {
+      "key": "add_provider_cancel",
+      "en": "Cancel",
+      "fr": "Annuler",
+      "locked": false
+    },
+    {
+      "key": "add_provider_geocode_error",
+      "en": "Could not find coordinates for this address.",
+      "fr": "Impossible de trouver les coordonnées de cette adresse.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_is_this",
+      "en": "Is this provider a...",
+      "fr": "Ce professionnel est-il un...",
+      "locked": false
+    },
+    {
+      "key": "add_provider_location",
+      "en": "Location",
+      "fr": "Lieu",
+      "locked": false
+    },
+    {
+      "key": "add_provider_map_pin",
+      "en": "Set map pin",
+      "fr": "Placer un repère",
+      "locked": false
+    },
+    {
+      "key": "add_provider_name",
+      "en": "Provider Name",
+      "fr": "Nom du professionnel",
+      "locked": false
+    },
+    {
+      "key": "add_provider_no_address",
+      "en": "Please enter an address.",
+      "fr": "Veuillez entrer une adresse.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone",
+      "en": "Phone (optional)",
+      "fr": "Téléphone (facultatif)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone_optional",
+      "en": "Phone (optional)",
+      "fr": "Téléphone (facultatif)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_provider_information",
+      "en": "Provider information",
+      "fr": "Informations sur le professionnel",
+      "locked": false
+    },
+    {
+      "key": "add_provider_section",
+      "en": "Provider Information",
+      "fr": "Informations sur le professionnel",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select",
+      "en": "Select",
+      "fr": "Sélectionner",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty",
+      "en": "Select Specialty",
+      "fr": "Sélectionner la spécialité",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty_error",
+      "en": "Please select a specialty.",
+      "fr": "Veuillez sélectionner une spécialité.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_set_map_pin",
+      "en": "Set map pin",
+      "fr": "Placer un repère",
+      "locked": false
+    },
+    {
+      "key": "add_provider_specialty",
+      "en": "Specialty",
+      "fr": "Spécialité",
+      "locked": false
+    },
+    {
+      "key": "add_provider_title",
+      "en": "Add Provider",
+      "fr": "Ajouter un professionnel",
+      "locked": false
+    },
+    {
+      "key": "all",
+      "en": "All",
+      "fr": "Tout",
+      "locked": false
+    },
+    {
+      "key": "all_results",
+      "en": "All",
+      "fr": "Tout",
+      "locked": false
+    },
+    {
+      "key": "app_language",
+      "en": "App Language",
+      "fr": "Langue de l'application",
+      "locked": false
+    },
+    {
+      "key": "app_name",
+      "en": "TrustCare",
+      "fr": "TrustCare",
+      "locked": false
+    },
+    {
+      "key": "bul_growing_here_label",
+      "en": "TrustCare is growing here",
+      "fr": "TrustCare se développe ici",
+      "locked": false
+    },
+    {
+      "key": "button_add",
+      "en": "Add",
+      "fr": "Ajouter",
+      "locked": false
+    },
+    {
+      "key": "button_back",
+      "en": "Back",
+      "fr": "Retour",
+      "locked": false
+    },
+    {
+      "key": "button_call",
+      "en": "Call",
+      "fr": "Appeler",
+      "locked": false
+    },
+    {
+      "key": "button_cancel",
+      "en": "Cancel",
+      "fr": "Annuler",
+      "locked": false
+    },
+    {
+      "key": "button_continue",
+      "en": "Continue",
+      "fr": "Continuer",
+      "locked": false
+    },
+    {
+      "key": "button_delete",
+      "en": "Delete",
+      "fr": "Supprimer",
+      "locked": false
+    },
+    {
+      "key": "button_directions",
+      "en": "Directions",
+      "fr": "Itinéraire",
+      "locked": false
+    },
+    {
+      "key": "button_done",
+      "en": "Done",
+      "fr": "Terminé",
+      "locked": false
+    },
+    {
+      "key": "button_edit",
+      "en": "Edit",
+      "fr": "Modifier",
+      "locked": false
+    },
+    {
+      "key": "button_ok",
+      "en": "OK",
+      "fr": "OK",
+      "locked": false
+    },
+    {
+      "key": "button_remove",
+      "en": "Remove",
+      "fr": "Retirer",
+      "locked": false
+    },
+    {
+      "key": "button_review",
+      "en": "Review",
+      "fr": "Évaluer",
+      "locked": false
+    },
+    {
+      "key": "button_save",
+      "en": "Save",
+      "fr": "Enregistrer",
+      "locked": false
+    },
+    {
+      "key": "button_submit",
+      "en": "Submit",
+      "fr": "Envoyer",
+      "locked": false
+    },
+    {
+      "key": "category_aesthetic_cosmetic",
+      "en": "Aesthetic & Cosmetic",
+      "fr": "Esthétique et cosmétique",
+      "locked": false
+    },
+    {
+      "key": "category_alternative",
+      "en": "Alternative",
+      "fr": "Alternative",
+      "locked": false
+    },
+    {
+      "key": "category_anesthesiology",
+      "en": "Anesthesiology",
+      "fr": "Anesthésiologie",
+      "locked": false
+    },
+    {
+      "key": "category_cardiology",
+      "en": "Cardiology",
+      "fr": "Cardiologie",
+      "locked": false
+    },
+    {
+      "key": "category_dental",
+      "en": "Dental",
+      "fr": "Dentaire",
+      "locked": false
+    },
+    {
+      "key": "category_dermatology",
+      "en": "Dermatology",
+      "fr": "Dermatologie",
+      "locked": false
+    },
+    {
+      "key": "category_diagnostic",
+      "en": "Diagnostic",
+      "fr": "Diagnostic",
+      "locked": false
+    },
+    {
+      "key": "category_emergency",
+      "en": "Emergency",
+      "fr": "Urgences",
+      "locked": false
+    },
+    {
+      "key": "category_endocrinology",
+      "en": "Endocrinology",
+      "fr": "Endocrinologie",
+      "locked": false
+    },
+    {
+      "key": "category_ent",
+      "en": "Ear, Nose & Throat",
+      "fr": "Oto-rhino-laryngologie",
+      "locked": false
+    },
+    {
+      "key": "category_eye_care",
+      "en": "Eye Care",
+      "fr": "Soins oculaires",
+      "locked": false
+    },
+    {
+      "key": "category_gastroenterology",
+      "en": "Gastroenterology",
+      "fr": "Gastro-entérologie",
+      "locked": false
+    },
+    {
+      "key": "category_general_practice",
+      "en": "General Practice",
+      "fr": "Médecine générale",
+      "locked": false
+    },
+    {
+      "key": "category_hospital",
+      "en": "Hospital",
+      "fr": "Hôpital",
+      "locked": false
+    },
+    {
+      "key": "category_medical_specialties",
+      "en": "Medical Specialties",
+      "fr": "Spécialités médicales",
+      "locked": false
+    },
+    {
+      "key": "category_mental_health",
+      "en": "Mental Health",
+      "fr": "Santé mentale",
+      "locked": false
+    },
+    {
+      "key": "category_nephrology",
+      "en": "Nephrology",
+      "fr": "Néphrologie",
+      "locked": false
+    },
+    {
+      "key": "category_neurology",
+      "en": "Neurology",
+      "fr": "Neurologie",
+      "locked": false
+    },
+    {
+      "key": "category_oncology",
+      "en": "Oncology",
+      "fr": "Oncologie",
+      "locked": false
+    },
+    {
+      "key": "category_ophthalmology",
+      "en": "Ophthalmology",
+      "fr": "Ophtalmologie",
+      "locked": false
+    },
+    {
+      "key": "category_orthopedics",
+      "en": "Orthopedics",
+      "fr": "Orthopédie",
+      "locked": false
+    },
+    {
+      "key": "category_other",
+      "en": "Other",
+      "fr": "Autre",
+      "locked": false
+    },
+    {
+      "key": "category_pediatrics",
+      "en": "Pediatrics",
+      "fr": "Pédiatrie",
+      "locked": false
+    },
+    {
+      "key": "category_pharmacy",
+      "en": "Pharmacy",
+      "fr": "Pharmacie",
+      "locked": false
+    },
+    {
+      "key": "category_primary_care",
+      "en": "Primary Care",
+      "fr": "Soins primaires",
+      "locked": false
+    },
+    {
+      "key": "category_psychiatry",
+      "en": "Psychiatry",
+      "fr": "Psychiatrie",
+      "locked": false
+    },
+    {
+      "key": "category_pulmonology",
+      "en": "Pulmonology",
+      "fr": "Pneumologie",
+      "locked": false
+    },
+    {
+      "key": "category_rehabilitation",
+      "en": "Rehabilitation",
+      "fr": "Rééducation",
+      "locked": false
+    },
+    {
+      "key": "category_rheumatology",
+      "en": "Rheumatology",
+      "fr": "Rhumatologie",
+      "locked": false
+    },
+    {
+      "key": "category_surgical",
+      "en": "Surgical",
+      "fr": "Chirurgie",
+      "locked": false
+    },
+    {
+      "key": "category_urology",
+      "en": "Urology",
+      "fr": "Urologie",
+      "locked": false
+    },
+    {
+      "key": "category_womens_health",
+      "en": "Women's Health",
+      "fr": "Santé de la femme",
+      "locked": false
+    },
+    {
+      "key": "chip_distance",
+      "en": "Distance",
+      "fr": "Distance",
+      "locked": false
+    },
+    {
+      "key": "chip_facility",
+      "en": "Facility",
+      "fr": "Établissement",
+      "locked": false
+    },
+    {
+      "key": "chip_language",
+      "en": "Language",
+      "fr": "Langue",
+      "locked": false
+    },
+    {
+      "key": "chip_specialty",
+      "en": "Specialty",
+      "fr": "Spécialité",
+      "locked": false
+    },
+    {
+      "key": "chip_treatment",
+      "en": "Treatment",
+      "fr": "Traitement",
+      "locked": false
+    },
+    {
+      "key": "claim_accepted_docs",
+      "en": "Accepted: Medical license, registration certificate, or official ID",
+      "fr": "Accepté : licence médicale, certificat d'inscription ou pièce d'identité officielle",
+      "locked": false
+    },
+    {
+      "key": "claim_back_to_provider",
+      "en": "Back to Provider",
+      "fr": "Retour au professionnel",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_1",
+      "en": "You are authorized to manage this profile",
+      "fr": "Vous êtes autorisé à gérer ce profil",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_2",
+      "en": "All information provided is accurate",
+      "fr": "Toutes les informations fournies sont exactes",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_text",
+      "en": "By submitting, you confirm that:",
+      "fr": "En envoyant, vous confirmez que :",
+      "locked": false
+    },
+    {
+      "key": "claim_description",
+      "en": "Claim this profile to manage it",
+      "fr": "Revendiquez ce profil pour le gérer",
+      "locked": false
+    },
+    {
+      "key": "claim_file_format",
+      "en": "JPG or PNG, max 10 MB",
+      "fr": "JPG ou PNG, 10 Mo max.",
+      "locked": false
+    },
+    {
+      "key": "claim_pending",
+      "en": "Claim Pending",
+      "fr": "Revendication en attente",
+      "locked": false
+    },
+    {
+      "key": "claim_pending_message",
+      "en": "Your claim is being reviewed.",
+      "fr": "Votre revendication est en cours d'examen.",
+      "locked": false
+    },
+    {
+      "key": "claim_profile",
+      "en": "Claim Profile",
+      "fr": "Revendiquer le profil",
+      "locked": false
+    },
+    {
+      "key": "claim_provider_label",
+      "en": "Provider",
+      "fr": "Professionnel",
+      "locked": false
+    },
+    {
+      "key": "claim_rejected",
+      "en": "Claim Rejected",
+      "fr": "Revendication refusée",
+      "locked": false
+    },
+    {
+      "key": "claim_resubmit",
+      "en": "Resubmit",
+      "fr": "Renvoyer",
+      "locked": false
+    },
+    {
+      "key": "claim_review_submit",
+      "en": "Review & Submit",
+      "fr": "Vérifier et envoyer",
+      "locked": false
+    },
+    {
+      "key": "claim_role_question",
+      "en": "What is your role at this practice?",
+      "fr": "Quel est votre rôle dans ce cabinet ?",
+      "locked": false
+    },
+    {
+      "key": "claim_step_1_of_3",
+      "en": "Step 1 of 3",
+      "fr": "Étape 1 sur 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_2_of_3",
+      "en": "Step 2 of 3",
+      "fr": "Étape 2 sur 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_3_of_3",
+      "en": "Step 3 of 3",
+      "fr": "Étape 3 sur 3",
+      "locked": false
+    },
+    {
+      "key": "claim_submit",
+      "en": "Submit Claim",
+      "fr": "Envoyer la demande",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted",
+      "en": "Claim Submitted!",
+      "fr": "Demande envoyée !",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted_message",
+      "en": "We'll review your claim within 1-3 business days. You'll be notified when it's approved.",
+      "fr": "Nous examinerons votre demande sous 1 à 3 jours ouvrés. Vous serez informé de son approbation.",
+      "locked": false
+    },
+    {
+      "key": "claim_tap_upload",
+      "en": "Tap to upload document",
+      "fr": "Appuyez pour télécharger un document",
+      "locked": false
+    },
+    {
+      "key": "claim_title",
+      "en": "Claim Profile",
+      "fr": "Revendiquer le profil",
+      "locked": false
+    },
+    {
+      "key": "claim_upload_doc",
+      "en": "Upload verification document",
+      "fr": "Télécharger un document de vérification",
+      "locked": false
+    },
+    {
+      "key": "claim_verification_doc",
+      "en": "Verification Document",
+      "fr": "Document de vérification",
+      "locked": false
+    },
+    {
+      "key": "claim_your_role",
+      "en": "Your Role",
+      "fr": "Votre rôle",
+      "locked": false
+    },
+    {
+      "key": "clear_filter",
+      "en": "Clear Filter",
+      "fr": "Effacer le filtre",
+      "locked": false
+    },
+    {
+      "key": "close_button",
+      "en": "Close",
+      "fr": "Fermer",
+      "locked": false
+    },
+    {
+      "key": "country_turkey",
+      "en": "Türkiye",
+      "fr": "Turquie",
+      "locked": false
+    },
+    {
+      "key": "cta_change_city",
+      "en": "Change city",
+      "fr": "Changer de ville",
+      "locked": false
+    },
+    {
+      "key": "cta_suggest_provider",
+      "en": "Suggest a provider",
+      "fr": "Suggérer un professionnel",
+      "locked": false
+    },
+    {
+      "key": "current_location",
+      "en": "Current Location",
+      "fr": "Position actuelle",
+      "locked": false
+    },
+    {
+      "key": "date_today",
+      "en": "Today",
+      "fr": "Aujourd'hui",
+      "locked": false
+    },
+    {
+      "key": "date_yesterday",
+      "en": "Yesterday",
+      "fr": "Hier",
+      "locked": false
+    },
+    {
+      "key": "default_city_name",
+      "en": "Adana",
+      "fr": "Adana",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_body",
+      "en": "There may be a connection issue. Please try again.",
+      "fr": "Il y a peut-être un problème de connexion. Veuillez réessayer.",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_title",
+      "en": "Providers could not be loaded",
+      "fr": "Impossible de charger les professionnels",
+      "locked": false
+    },
+    {
+      "key": "discover_error_switch_to_list",
+      "en": "Switch to list view",
+      "fr": "Passer en vue liste",
+      "locked": false
+    },
+    {
+      "key": "edit_review_comment_section",
+      "en": "Review",
+      "fr": "Avis",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title",
+      "en": "Edit Review",
+      "fr": "Modifier l'avis",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_placeholder",
+      "en": "Review title",
+      "fr": "Titre de l'avis",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_section",
+      "en": "Title",
+      "fr": "Titre",
+      "locked": false
+    },
+    {
+      "key": "empty_home_cta",
+      "en": "Suggest a provider",
+      "fr": "Suggérer un professionnel",
+      "locked": false
+    },
+    {
+      "key": "empty_home_title",
+      "en": "No providers in this area",
+      "fr": "Aucun professionnel dans ce secteur",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_body",
+      "en": "Try searching another area or changing city.",
+      "fr": "Essayez de chercher dans un autre secteur ou de changer de ville.",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_title",
+      "en": "No providers available",
+      "fr": "Aucun professionnel disponible",
+      "locked": false
+    },
+    {
+      "key": "empty_search",
+      "en": "No results found",
+      "fr": "Aucun résultat trouvé",
+      "locked": false
+    },
+    {
+      "key": "error_duplicate_review",
+      "en": "You can only submit one review per provider per date.",
+      "fr": "Vous ne pouvez soumettre qu'un seul avis par professionnel et par date.",
+      "locked": false
+    },
+    {
+      "key": "error_generic",
+      "en": "Error",
+      "fr": "Erreur",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body",
+      "en": "Your connection may be unstable right now. Try again to load the list.",
+      "fr": "Votre connexion est peut-être instable. Réessayez de charger la liste.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body_generic",
+      "en": "Couldn't load providers. Please try again.",
+      "fr": "Impossible de charger les professionnels. Veuillez réessayer.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_title",
+      "en": "Couldn't load providers",
+      "fr": "Impossible de charger les professionnels",
+      "locked": false
+    },
+    {
+      "key": "error_network",
+      "en": "A network issue occurred. Please check your connection and try again.",
+      "fr": "Un problème de réseau est survenu. Veuillez vérifier votre connexion et réessayer.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_body",
+      "en": "Please check your connection and try again.",
+      "fr": "Veuillez vérifier votre connexion et réessayer.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_title",
+      "en": "Network error",
+      "fr": "Erreur réseau",
+      "locked": false
+    },
+    {
+      "key": "error_offline_body",
+      "en": "It looks like you're offline. Check your connection and try again.",
+      "fr": "Vous semblez être hors ligne. Vérifiez votre connexion et réessayez.",
+      "locked": false
+    },
+    {
+      "key": "error_offline_title",
+      "en": "Couldn't load providers",
+      "fr": "Impossible de charger les professionnels",
+      "locked": false
+    },
+    {
+      "key": "error_unknown",
+      "en": "An unknown error occurred.",
+      "fr": "Une erreur inconnue s'est produite.",
+      "locked": false
+    },
+    {
+      "key": "filter_all",
+      "en": "All",
+      "fr": "Tout",
+      "locked": false
+    },
+    {
+      "key": "filter_apply",
+      "en": "Apply",
+      "fr": "Appliquer",
+      "locked": false
+    },
+    {
+      "key": "filter_button",
+      "en": "Filter",
+      "fr": "Filtrer",
+      "locked": false
+    },
+    {
+      "key": "filter_distance",
+      "en": "Distance",
+      "fr": "Distance",
+      "locked": false
+    },
+    {
+      "key": "filter_facility",
+      "en": "Facility",
+      "fr": "Établissement",
+      "locked": false
+    },
+    {
+      "key": "filter_facility_title",
+      "en": "Facility",
+      "fr": "Établissement",
+      "locked": false
+    },
+    {
+      "key": "filter_language",
+      "en": "Language",
+      "fr": "Langue",
+      "locked": false
+    },
+    {
+      "key": "filter_language_title",
+      "en": "Language",
+      "fr": "Langue",
+      "locked": false
+    },
+    {
+      "key": "filter_more",
+      "en": "More",
+      "fr": "Plus",
+      "locked": false
+    },
+    {
+      "key": "filter_reset",
+      "en": "Reset",
+      "fr": "Réinitialiser",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty",
+      "en": "Specialty",
+      "fr": "Spécialité",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty_title",
+      "en": "Specialty",
+      "fr": "Spécialité",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment",
+      "en": "Treatment",
+      "fr": "Traitement",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment_title",
+      "en": "Treatment",
+      "fr": "Traitement",
+      "locked": false
+    },
+    {
+      "key": "filter_verified",
+      "en": "Verified",
+      "fr": "Vérifié",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_only_label",
+      "en": "Show only providers with verified reviews",
+      "fr": "Uniquement avis vérifiés",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_title",
+      "en": "Verified",
+      "fr": "Vérifié",
+      "locked": false
+    },
+    {
+      "key": "find_empty_change_city",
+      "en": "Change city",
+      "fr": "Changer de ville",
+      "locked": false
+    },
+    {
+      "key": "find_empty_clear_filters",
+      "en": "Clear filters",
+      "fr": "Effacer les filtres",
+      "locked": false
+    },
+    {
+      "key": "find_empty_growing_here",
+      "en": "TrustCare is growing here",
+      "fr": "TrustCare se développe ici",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_another_area",
+      "en": "Search another area",
+      "fr": "Chercher dans un autre secteur",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_change_city",
+      "en": "Search another area / Change city",
+      "fr": "Chercher ailleurs / Changer de ville",
+      "locked": false
+    },
+    {
+      "key": "find_empty_suggest_provider",
+      "en": "Suggest a provider",
+      "fr": "Suggérer un professionnel",
+      "locked": false
+    },
+    {
+      "key": "find_set_location",
+      "en": "Set location",
+      "fr": "Définir la position",
+      "locked": false
+    },
+    {
+      "key": "find_sheet_providers_title",
+      "en": "Providers",
+      "fr": "Professionnels",
+      "locked": false
+    },
+    {
+      "key": "find_state_change_city",
+      "en": "Change city",
+      "fr": "Changer de ville",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_body",
+      "en": "Clear one or more filters, or move the map to expand results.",
+      "fr": "Effacez un ou plusieurs filtres, ou déplacez la carte pour élargir les résultats.",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_title",
+      "en": "No results match these filters",
+      "fr": "Aucun résultat pour ces filtres",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_body",
+      "en": "Coverage is expanding in this area. Try a nearby city for now.",
+      "fr": "La couverture s'étend dans cette zone. Essayez une ville voisine pour le moment.",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_title",
+      "en": "TrustCare is growing here",
+      "fr": "TrustCare se développe ici",
+      "locked": false
+    },
+    {
+      "key": "find_state_no_providers_visible",
+      "en": "No providers visible in this map area",
+      "fr": "Aucun professionnel visible dans cette zone",
+      "locked": false
+    },
+    {
+      "key": "find_state_search_another_area",
+      "en": "Search another area",
+      "fr": "Chercher dans un autre secteur",
+      "locked": false
+    },
+    {
+      "key": "find_state_try_another_area",
+      "en": "Try another area or pick a different city to continue.",
+      "fr": "Essayez un autre secteur ou choisissez une autre ville pour continuer.",
+      "locked": false
+    },
+    {
+      "key": "help_contact",
+      "en": "Contact",
+      "fr": "Contact",
+      "locked": false
+    },
+    {
+      "key": "help_email_label",
+      "en": "Email",
+      "fr": "E-mail",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a1",
+      "en": "Open Review, choose a provider, and complete the guided form.",
+      "fr": "Ouvrez Évaluer, choisissez un professionnel et remplissez le formulaire guidé.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a2",
+      "en": "Yes. Open My Reviews and tap Edit on your review.",
+      "fr": "Oui. Ouvrez Mes Avis et appuyez sur Modifier sur votre avis.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a3",
+      "en": "Verified means the review passed our checks or includes supporting proof.",
+      "fr": "Vérifié signifie que l'avis a passé nos contrôles ou inclut une preuve à l'appui.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a4",
+      "en": "Open the review and tap Report. Our team will review it.",
+      "fr": "Ouvrez l'avis et appuyez sur Signaler. Notre équipe l'examinera.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a5",
+      "en": "Go to Settings and request deletion. We will confirm when completed.",
+      "fr": "Allez dans Paramètres et demandez la suppression. Nous confirmerons une fois terminé.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a6",
+      "en": "Email support@trustcare.app with your app version and issue details.",
+      "fr": "Envoyez un e-mail à support@trustcare.app avec la version de l'app et les détails.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q1",
+      "en": "How do I add a review?",
+      "fr": "Comment ajouter un avis ?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q2",
+      "en": "Can I edit my review?",
+      "fr": "Puis-je modifier mon avis ?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q3",
+      "en": "What does Verified mean?",
+      "fr": "Que signifie Vérifié ?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q4",
+      "en": "How do I report content?",
+      "fr": "Comment signaler un contenu ?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q5",
+      "en": "How do I delete my account or data?",
+      "fr": "Comment supprimer mon compte ou mes données ?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q6",
+      "en": "How can I contact support?",
+      "fr": "Comment contacter le support ?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_title",
+      "en": "Help & Support",
+      "fr": "Aide et support",
+      "locked": false
+    },
+    {
+      "key": "help_report_issue",
+      "en": "Report an issue",
+      "fr": "Signaler un problème",
+      "locked": false
+    },
+    {
+      "key": "is_this_your_practice",
+      "en": "Is this your practice?",
+      "fr": "Est-ce votre cabinet ?",
+      "locked": false
+    },
+    {
+      "key": "language_changed_alert",
+      "en": "Language Changed",
+      "fr": "Langue modifiée",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message",
+      "en": "The app needs to restart to apply the new language.",
+      "fr": "L'application doit redémarrer pour appliquer la nouvelle langue.",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message_named %@",
+      "en": "The app will restart in %@. Continue?",
+      "fr": "L'application va redémarrer dans %@. Continuer ?",
+      "locked": false
+    },
+    {
+      "key": "language_danish",
+      "en": "Dansk",
+      "fr": "Dansk",
+      "locked": false
+    },
+    {
+      "key": "language_done",
+      "en": "Done",
+      "fr": "OK",
+      "locked": false
+    },
+    {
+      "key": "language_dutch",
+      "en": "Nederlands",
+      "fr": "Nederlands",
+      "locked": false
+    },
+    {
+      "key": "language_english",
+      "en": "English",
+      "fr": "English",
+      "locked": false
+    },
+    {
+      "key": "language_german",
+      "en": "Deutsch",
+      "fr": "Deutsch",
+      "locked": false
+    },
+    {
+      "key": "language_later",
+      "en": "Later",
+      "fr": "Plus tard",
+      "locked": false
+    },
+    {
+      "key": "language_polish",
+      "en": "Polski",
+      "fr": "Polski",
+      "locked": false
+    },
+    {
+      "key": "language_restart_now",
+      "en": "Restart Now",
+      "fr": "Redémarrer maintenant",
+      "locked": false
+    },
+    {
+      "key": "language_section_title",
+      "en": "Language",
+      "fr": "Langue",
+      "locked": false
+    },
+    {
+      "key": "language_turkish",
+      "en": "Türkçe",
+      "fr": "Türkçe",
+      "locked": false
+    },
+    {
+      "key": "legal_translation_disclaimer",
+      "en": "Translation is provided for convenience; the English version prevails.",
+      "fr": "La traduction est fournie par commodité ; la version anglaise prévaut.",
+      "locked": false
+    },
+    {
+      "key": "legend_aesthetics",
+      "en": "Aesthetics",
+      "fr": "Esthétique",
+      "locked": false
+    },
+    {
+      "key": "legend_clinic",
+      "en": "Clinic",
+      "fr": "Clinique",
+      "locked": false
+    },
+    {
+      "key": "legend_dental",
+      "en": "Dental",
+      "fr": "Dentaire",
+      "locked": false
+    },
+    {
+      "key": "legend_hospital",
+      "en": "Hospital",
+      "fr": "Hôpital",
+      "locked": false
+    },
+    {
+      "key": "legend_lab",
+      "en": "Lab",
+      "fr": "Laboratoire",
+      "locked": false
+    },
+    {
+      "key": "legend_mental_health",
+      "en": "Mental Health",
+      "fr": "Santé mentale",
+      "locked": false
+    },
+    {
+      "key": "legend_pharmacy",
+      "en": "Pharmacy",
+      "fr": "Pharmacie",
+      "locked": false
+    },
+    {
+      "key": "legend_rehab",
+      "en": "Rehab",
+      "fr": "Rééducation",
+      "locked": false
+    },
+    {
+      "key": "location_select_title",
+      "en": "Select Location",
+      "fr": "Sélectionner le lieu",
+      "locked": false
+    },
+    {
+      "key": "logout_confirm_message",
+      "en": "Are you sure you want to log out?",
+      "fr": "Êtes-vous sûr de vouloir vous déconnecter ?",
+      "locked": false
+    },
+    {
+      "key": "map_search_this_area",
+      "en": "Search this area",
+      "fr": "Chercher dans cette zone",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_list",
+      "en": "List",
+      "fr": "Liste",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_map",
+      "en": "Map",
+      "fr": "Carte",
+      "locked": false
+    },
+    {
+      "key": "media_photo_count_%lld",
+      "en": "%lld of 5 photos",
+      "fr": "%lld of 5 photos",
+      "locked": true
+    },
+    {
+      "key": "menu_help",
+      "en": "Help & Support",
+      "fr": "Aide et support",
+      "locked": false
+    },
+    {
+      "key": "menu_logout",
+      "en": "Log Out",
+      "fr": "Se déconnecter",
+      "locked": false
+    },
+    {
+      "key": "menu_my_reviews",
+      "en": "My Reviews",
+      "fr": "Mes avis",
+      "locked": false
+    },
+    {
+      "key": "menu_privacy",
+      "en": "Privacy Policy",
+      "fr": "Politique de confidentialité",
+      "locked": false
+    },
+    {
+      "key": "menu_saved",
+      "en": "Saved",
+      "fr": "Enregistrés",
+      "locked": false
+    },
+    {
+      "key": "menu_settings",
+      "en": "Settings",
+      "fr": "Paramètres",
+      "locked": false
+    },
+    {
+      "key": "menu_terms",
+      "en": "Terms of Service",
+      "fr": "Conditions d'utilisation",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_message",
+      "en": "This action cannot be undone.",
+      "fr": "Cette action ne peut pas être annulée.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_title",
+      "en": "Delete Review?",
+      "fr": "Supprimer l'avis ?",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_action",
+      "en": "Write a Review",
+      "fr": "Rédiger un avis",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_message",
+      "en": "Share your experience by posting your first review.",
+      "fr": "Partagez votre expérience en publiant votre premier avis.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_title",
+      "en": "No reviews yet",
+      "fr": "Aucun avis pour le moment",
+      "locked": false
+    },
+    {
+      "key": "no_results",
+      "en": "No results",
+      "fr": "Aucun résultat",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_1",
+      "en": "If you have questions about this Privacy Policy or your personal data, contact us at support@trustcare.app.",
+      "fr": "Si vous avez des questions concernant cette Politique de confidentialité ou vos données personnelles, contactez-nous à support@trustcare.app.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_2",
+      "en": "If you are in the EEA/UK, you may also contact your local data protection authority.",
+      "fr": "Si vous êtes dans l'EEE/Royaume-Uni, vous pouvez également contacter votre autorité locale de protection des données.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_title",
+      "en": "Contact",
+      "fr": "Contact",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_1",
+      "en": "Our web surfaces may use cookies and local storage to keep sessions secure and improve performance.",
+      "fr": "Nos interfaces web peuvent utiliser des cookies et le stockage local pour sécuriser les sessions et améliorer les performances.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_2",
+      "en": "You can control cookie preferences in your browser settings, though disabling them may affect functionality.",
+      "fr": "Vous pouvez contrôler les préférences de cookies dans les paramètres de votre navigateur, bien que leur désactivation puisse affecter la fonctionnalité.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_3",
+      "en": "Analytics cookies are used in aggregate form to understand usage trends and improve the service.",
+      "fr": "Les cookies analytiques sont utilisés sous forme agrégée pour comprendre les tendances d'utilisation et améliorer le service.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_title",
+      "en": "Cookies and Similar Technologies",
+      "fr": "Cookies et technologies similaires",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_1",
+      "en": "We collect account data such as email, name, profile preferences, and authentication metadata.",
+      "fr": "Nous collectons des données de compte telles que l'e-mail, le nom, les préférences de profil et les métadonnées d'authentification.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_2",
+      "en": "When you submit reviews, we collect ratings, comments, optional media, and optional verification artifacts.",
+      "fr": "Lorsque vous soumettez des avis, nous collectons les notes, les commentaires, les médias facultatifs et les preuves de vérification facultatives.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_3",
+      "en": "We may process device and usage data including app events, approximate location, and diagnostics.",
+      "fr": "Nous pouvons traiter les données de l'appareil et d'utilisation, y compris les événements de l'application, l'emplacement approximatif et les diagnostics.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_4",
+      "en": "We do not intentionally collect sensitive health records beyond the information you choose to submit.",
+      "fr": "Nous ne collectons pas intentionnellement de dossiers médicaux sensibles au-delà des informations que vous choisissez de soumettre.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_title",
+      "en": "Data We Collect",
+      "fr": "Données que nous collectons",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_1",
+      "en": "We share data with service providers that operate hosting, analytics, moderation, and communication systems.",
+      "fr": "Nous partageons des données avec des prestataires de services qui exploitent les systèmes d'hébergement, d'analyse, de modération et de communication.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_2",
+      "en": "We may disclose information when required by law, regulation, legal process, or to protect users and platform integrity.",
+      "fr": "Nous pouvons divulguer des informations lorsque la loi, la réglementation, une procédure judiciaire l'exige, ou pour protéger les utilisateurs et l'intégrité de la plateforme.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_3",
+      "en": "We do not sell personal data to third parties.",
+      "fr": "Nous ne vendons pas de données personnelles à des tiers.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_title",
+      "en": "How We Share Data",
+      "fr": "Comment nous partageons les données",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_1",
+      "en": "We use personal data to provide core app functionality, personalize content, and maintain account security.",
+      "fr": "Nous utilisons les données personnelles pour fournir les fonctionnalités principales de l'application, personnaliser le contenu et maintenir la sécurité du compte.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_2",
+      "en": "We use submitted reviews and metadata for trust, safety, moderation, fraud prevention, and quality assurance.",
+      "fr": "Nous utilisons les avis soumis et les métadonnées pour la confiance, la sécurité, la modération, la prévention de la fraude et l'assurance qualité.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_3",
+      "en": "We may use aggregated and de-identified analytics to improve product experience and reliability.",
+      "fr": "Nous pouvons utiliser des analyses agrégées et anonymisées pour améliorer l'expérience produit et la fiabilité.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_title",
+      "en": "How We Use Data",
+      "fr": "Comment nous utilisons les données",
+      "locked": false
+    },
+    {
+      "key": "pp_last_updated",
+      "en": "Last updated: March 2026",
+      "fr": "Dernière mise à jour : Mars 2026",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_1",
+      "en": "Depending on your region, you may have rights to access, correct, export, restrict, or delete your personal data.",
+      "fr": "Selon votre région, vous pouvez avoir le droit d'accéder, corriger, exporter, restreindre ou supprimer vos données personnelles.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_2",
+      "en": "You can update profile information directly in the app or request support for account-level actions.",
+      "fr": "Vous pouvez mettre à jour les informations de profil directement dans l'application ou demander de l'aide pour les actions liées au compte.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_3",
+      "en": "You may object to certain processing where applicable under local law.",
+      "fr": "Vous pouvez vous opposer à certains traitements lorsque la loi locale le permet.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_4",
+      "en": "To exercise your rights, contact support@trustcare.app and we will respond within the legally required timeframe.",
+      "fr": "Pour exercer vos droits, contactez support@trustcare.app et nous vous répondrons dans les délais légaux requis.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_title",
+      "en": "Your Rights",
+      "fr": "Vos droits",
+      "locked": false
+    },
+    {
+      "key": "pp_security_1",
+      "en": "We apply technical and organizational safeguards designed to protect data against unauthorized access and misuse.",
+      "fr": "Nous appliquons des mesures de sécurité techniques et organisationnelles pour protéger les données contre l'accès non autorisé et l'utilisation abusive.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_2",
+      "en": "No online system is completely secure; we continuously monitor and improve our controls.",
+      "fr": "Aucun système en ligne n'est totalement sécurisé ; nous surveillons et améliorons continuellement nos contrôles.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_3",
+      "en": "If a security incident affects your data, we will notify you and regulators when legally required.",
+      "fr": "Si un incident de sécurité affecte vos données, nous vous en informerons ainsi que les autorités de régulation lorsque la loi l'exige.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_title",
+      "en": "Security",
+      "fr": "Sécurité",
+      "locked": false
+    },
+    {
+      "key": "profile_member_since",
+      "en": "Member since",
+      "fr": "Membre depuis",
+      "locked": false
+    },
+    {
+      "key": "profile_referral",
+      "en": "Invite a friend - earn points",
+      "fr": "Invitez un ami - gagnez des points",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count",
+      "en": "Reviews",
+      "fr": "Avis",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count %lld",
+      "en": "%#@count@",
+      "fr": "%#@count@",
+      "locked": true
+    },
+    {
+      "key": "profile_verified_percent",
+      "en": "Verified",
+      "fr": "Vérifié",
+      "locked": false
+    },
+    {
+      "key": "profile_verified_percent %lld",
+      "en": "%lld%% Verified",
+      "fr": "%lld%% Vérifié",
+      "locked": true
+    },
+    {
+      "key": "providers_label",
+      "en": "Providers",
+      "fr": "Professionnels",
+      "locked": false
+    },
+    {
+      "key": "providers_title",
+      "en": "Providers",
+      "fr": "Professionnels",
+      "locked": false
+    },
+    {
+      "key": "recents",
+      "en": "Recents",
+      "fr": "Récents",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_112",
+      "en": "Call 112",
+      "fr": "Appeler le 112",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_emergency",
+      "en": "Call Emergency Services",
+      "fr": "Appeler les urgences",
+      "locked": false
+    },
+    {
+      "key": "rehber_consent_text",
+      "en": "I understand: These suggestions are for guidance only, not diagnosis",
+      "fr": "Je comprends : ces suggestions sont fournies à titre indicatif et ne constituent pas un diagnostic",
+      "locked": false
+    },
+    {
+      "key": "rehber_cooldown",
+      "en": "Please wait %d seconds to send again.",
+      "fr": "Veuillez patienter %d secondes avant d'envoyer à nouveau.",
+      "locked": false
+    },
+    {
+      "key": "rehber_daily_limit_reached",
+      "en": "Daily free limit reached (5/5). Try again tomorrow.",
+      "fr": "Limite gratuite quotidienne atteinte (5/5). Réessayez demain.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete",
+      "en": "Delete",
+      "fr": "Supprimer",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_message",
+      "en": "This will permanently delete this conversation and all its messages.",
+      "fr": "Cela supprimera définitivement cette conversation et tous ses messages.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_title",
+      "en": "Delete Conversation?",
+      "fr": "Supprimer la conversation ?",
+      "locked": false
+    },
+    {
+      "key": "rehber_disclaimer",
+      "en": "This is not medical advice. Always consult a healthcare professional.",
+      "fr": "Ceci n'est pas un avis médical. Consultez toujours un professionnel de santé.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_danger",
+      "en": "If you or someone else is in danger, call immediately.",
+      "fr": "Si vous ou quelqu'un d'autre êtes en danger, appelez immédiatement.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_detected",
+      "en": "🚨 A potential emergency risk was detected. Please call 112 immediately.",
+      "fr": "🚨 Un risque d'urgence potentiel a été détecté. Appelez immédiatement le 112.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_subtitle",
+      "en": "Please call 112 immediately",
+      "fr": "Veuillez appeler le 112 immédiatement",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_title",
+      "en": "🚨 EMERGENCY",
+      "fr": "🚨 URGENCE",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state",
+      "en": "Share your symptoms, I'll guide you to the right specialty.",
+      "fr": "Partagez vos symptômes, je vous guiderai vers la bonne spécialité.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state_sub",
+      "en": "No diagnosis or treatment is provided; guidance only.",
+      "fr": "Aucun diagnostic ou traitement n'est fourni ; uniquement des conseils.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_subtitle",
+      "en": "Start one to get health guidance.",
+      "fr": "Démarrez-en une pour obtenir des conseils de santé.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_title",
+      "en": "No conversations yet",
+      "fr": "Aucune conversation pour le moment",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_1",
+      "en": "Recommends the right specialty based on your symptoms",
+      "fr": "Recommande la bonne spécialité selon vos symptômes",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_2",
+      "en": "Finds healthcare providers near you",
+      "fr": "Trouve des professionnels de santé près de chez vous",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_3",
+      "en": "Directs you to 112 in emergencies",
+      "fr": "Vous dirige vers le 112 en cas d'urgence",
+      "locked": false
+    },
+    {
+      "key": "rehber_find_provider",
+      "en": "Find provider",
+      "fr": "Trouver un professionnel",
+      "locked": false
+    },
+    {
+      "key": "rehber_info_bar",
+      "en": "TrustCare Rehber - Health Information Service",
+      "fr": "TrustCare Rehber - Service d'information sur la santé",
+      "locked": false
+    },
+    {
+      "key": "rehber_input_placeholder",
+      "en": "Describe your symptoms...",
+      "fr": "Décrivez vos symptômes...",
+      "locked": false
+    },
+    {
+      "key": "rehber_load_conversation_error",
+      "en": "Unable to load conversation.",
+      "fr": "Impossible de charger la conversation.",
+      "locked": false
+    },
+    {
+      "key": "rehber_login_required",
+      "en": "Please sign in to use Rehber.",
+      "fr": "Veuillez vous connecter pour utiliser Rehber.",
+      "locked": false
+    },
+    {
+      "key": "rehber_nearest_emergency",
+      "en": "Nearest Emergency Room",
+      "fr": "Service d'urgences le plus proche",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_conversation",
+      "en": "New Conversation",
+      "fr": "Nouvelle conversation",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_short",
+      "en": "New",
+      "fr": "Nouveau",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_conversations",
+      "en": "No conversations yet",
+      "fr": "Aucune conversation pour le moment",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_response",
+      "en": "Rehber could not respond. Please try again.",
+      "fr": "Rehber n'a pas pu répondre. Veuillez réessayer.",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_subtitle",
+      "en": "Health Information Service",
+      "fr": "Service d'information sur la santé",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_warning",
+      "en": "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.",
+      "fr": "⚠️ Ce service n'est pas un diagnostic médical ou une recommandation de traitement. Consultez toujours un professionnel de santé.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_body",
+      "en": "This feature will become a subscription. It's currently available to everyone for testing.",
+      "fr": "Cette fonctionnalité deviendra un abonnement. Elle est actuellement disponible pour tous à des fins de test.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_title",
+      "en": "Plus - free during launch",
+      "fr": "PLUS - gratuit au lancement",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_trial",
+      "en": "TrustCare Plus feature - Free trial: 5 questions per day",
+      "fr": "Fonctionnalité TrustCare Plus - Essai gratuit : 5 questions par jour",
+      "locked": false
+    },
+    {
+      "key": "rehber_recent_sessions",
+      "en": "Recent Sessions",
+      "fr": "Sessions récentes",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_failed",
+      "en": "Response could not be generated. Please try again.",
+      "fr": "La réponse n'a pas pu être générée. Veuillez réessayer.",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_unavailable",
+      "en": "Response unavailable.",
+      "fr": "Réponse indisponible.",
+      "locked": false
+    },
+    {
+      "key": "rehber_sessions",
+      "en": "Sessions",
+      "fr": "Sessions",
+      "locked": false
+    },
+    {
+      "key": "rehber_start",
+      "en": "Start",
+      "fr": "Démarrer",
+      "locked": false
+    },
+    {
+      "key": "rehber_start_guidance",
+      "en": "Start one to get health guidance.",
+      "fr": "Démarrez-en une pour obtenir des conseils de santé.",
+      "locked": false
+    },
+    {
+      "key": "rehber_subtitle",
+      "en": "Your AI health guide",
+      "fr": "Votre guide de santé par IA",
+      "locked": false
+    },
+    {
+      "key": "rehber_title",
+      "en": "TrustCare Rehber",
+      "fr": "TrustCare Rehber",
+      "locked": false
+    },
+    {
+      "key": "rehber_try_again",
+      "en": "Try Again",
+      "fr": "Réessayer",
+      "locked": false
+    },
+    {
+      "key": "rehber_usage_counter",
+      "en": "Usage count:",
+      "fr": "Nombre d'utilisations :",
+      "locked": false
+    },
+    {
+      "key": "report_additional_details",
+      "en": "Additional details (optional)",
+      "fr": "Détails supplémentaires (facultatif)",
+      "locked": false
+    },
+    {
+      "key": "report_button",
+      "en": "Report",
+      "fr": "Signaler",
+      "locked": false
+    },
+    {
+      "key": "report_footer",
+      "en": "Please provide any additional context that might help us review this report.",
+      "fr": "Veuillez fournir tout contexte supplémentaire pouvant nous aider à examiner ce signalement.",
+      "locked": false
+    },
+    {
+      "key": "report_header",
+      "en": "Why are you reporting this review?",
+      "fr": "Pourquoi signalez-vous cet avis ?",
+      "locked": false
+    },
+    {
+      "key": "report_optional_details",
+      "en": "Optional details",
+      "fr": "Détails facultatifs",
+      "locked": false
+    },
+    {
+      "key": "report_reason",
+      "en": "Reason",
+      "fr": "Raison",
+      "locked": false
+    },
+    {
+      "key": "report_reported",
+      "en": "Reported",
+      "fr": "Signalé",
+      "locked": false
+    },
+    {
+      "key": "report_thank_you",
+      "en": "Thank you. We'll review this report.",
+      "fr": "Merci. Nous examinerons ce signalement.",
+      "locked": false
+    },
+    {
+      "key": "report_title",
+      "en": "Report Review",
+      "fr": "Signaler l'avis",
+      "locked": false
+    },
+    {
+      "key": "review_add_photo",
+      "en": "Add Photo",
+      "fr": "Ajouter une photo",
+      "locked": false
+    },
+    {
+      "key": "review_another",
+      "en": "Review Another Provider",
+      "fr": "Évaluer un autre professionnel",
+      "locked": false
+    },
+    {
+      "key": "review_button_back",
+      "en": "Back",
+      "fr": "Retour",
+      "locked": false
+    },
+    {
+      "key": "review_button_next",
+      "en": "Next",
+      "fr": "Suivant",
+      "locked": false
+    },
+    {
+      "key": "review_cant_find_add",
+      "en": "Can't find it? Add new",
+      "fr": "Introuvable ? Ajouter",
+      "locked": false
+    },
+    {
+      "key": "review_change_provider",
+      "en": "Change",
+      "fr": "Modifier",
+      "locked": false
+    },
+    {
+      "key": "review_char_count %lld",
+      "en": "%lld/500 characters",
+      "fr": "%lld/500 caractères",
+      "locked": true
+    },
+    {
+      "key": "review_comment",
+      "en": "Your Review",
+      "fr": "Votre avis",
+      "locked": false
+    },
+    {
+      "key": "review_comment_placeholder",
+      "en": "Share your experience...",
+      "fr": "Partagez votre expérience...",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner",
+      "en": "Bedside Manner",
+      "fr": "Relationnel",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner_question",
+      "en": "Did the doctor listen and explain clearly?",
+      "fr": "Le médecin vous a-t-il écouté et expliqué clairement ?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "fr": "Hygiène de la clinique",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene_question",
+      "en": "Was the clinic clean and hygienic?",
+      "fr": "La clinique était-elle propre et hygiénique ?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "fr": "Efficacité du traitement",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness_question",
+      "en": "Did the treatment resolve your issue?",
+      "fr": "Le traitement a-t-il résolu votre problème ?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time",
+      "en": "Waiting Time",
+      "fr": "Temps d'attente",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time_question",
+      "en": "How long did you wait after your appointment time?",
+      "fr": "Combien de temps avez-vous attendu après l'heure de votre rendez-vous ?",
+      "locked": false
+    },
+    {
+      "key": "review_detailed",
+      "en": "Detailed Rating",
+      "fr": "Évaluation détaillée",
+      "locked": false
+    },
+    {
+      "key": "review_editable_24h",
+      "en": "Editable within 24h",
+      "fr": "Modifiable sous 24h",
+      "locked": false
+    },
+    {
+      "key": "review_go_home",
+      "en": "Go to Home",
+      "fr": "Aller à l'accueil",
+      "locked": false
+    },
+    {
+      "key": "review_helpful_count_%lld",
+      "en": "%lld helpful",
+      "fr": "%lld utile",
+      "locked": true
+    },
+    {
+      "key": "review_overall",
+      "en": "Overall Rating",
+      "fr": "Note globale",
+      "locked": false
+    },
+    {
+      "key": "review_overall_question",
+      "en": "How was your overall experience?",
+      "fr": "Comment s'est passée votre expérience globale ?",
+      "locked": false
+    },
+    {
+      "key": "review_photos_public",
+      "en": "Photos will be visible to everyone.",
+      "fr": "Les photos seront visibles par tous.",
+      "locked": false
+    },
+    {
+      "key": "review_proof_private",
+      "en": "This will not be shown publicly.",
+      "fr": "Ceci ne sera pas affiché publiquement.",
+      "locked": false
+    },
+    {
+      "key": "review_select_provider_to_continue",
+      "en": "Select a provider to continue",
+      "fr": "Sélectionnez un professionnel pour continuer",
+      "locked": false
+    },
+    {
+      "key": "review_skip_verification",
+      "en": "Skip verification",
+      "fr": "Ignorer la vérification",
+      "locked": false
+    },
+    {
+      "key": "review_step_choose_provider",
+      "en": "Choose provider",
+      "fr": "Choisir le professionnel",
+      "locked": false
+    },
+    {
+      "key": "review_step_detailed_ratings",
+      "en": "Detailed ratings",
+      "fr": "Notes détaillées",
+      "locked": false
+    },
+    {
+      "key": "review_step_format",
+      "en": "Step %1$lld of %2$lld",
+      "fr": "Étape %1$lld sur %2$lld",
+      "locked": false
+    },
+    {
+      "key": "review_step_media_submit",
+      "en": "Media and submit",
+      "fr": "Médias et envoi",
+      "locked": false
+    },
+    {
+      "key": "review_step_overall_rating",
+      "en": "Overall rating",
+      "fr": "Note globale",
+      "locked": false
+    },
+    {
+      "key": "review_step_visit_details",
+      "en": "Visit details",
+      "fr": "Détails de la visite",
+      "locked": false
+    },
+    {
+      "key": "review_step_write_review",
+      "en": "Write review",
+      "fr": "Rédiger l'avis",
+      "locked": false
+    },
+    {
+      "key": "review_submit",
+      "en": "Submit Review",
+      "fr": "Envoyer l'avis",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_message",
+      "en": "Your review has been submitted and will appear once processed.",
+      "fr": "Votre avis a été soumis et apparaîtra une fois traité.",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_title",
+      "en": "Thank You!",
+      "fr": "Merci !",
+      "locked": false
+    },
+    {
+      "key": "review_upload_proof",
+      "en": "Upload proof of visit",
+      "fr": "Télécharger une preuve de visite",
+      "locked": false
+    },
+    {
+      "key": "review_verification_pending",
+      "en": "Verification Pending",
+      "fr": "Vérification en attente",
+      "locked": false
+    },
+    {
+      "key": "review_verify",
+      "en": "Verify Your Visit",
+      "fr": "Vérifiez votre visite",
+      "locked": false
+    },
+    {
+      "key": "review_verify_hint",
+      "en": "Help us maintain trust by verifying your visit.",
+      "fr": "Aidez-nous à maintenir la confiance en vérifiant votre visite.",
+      "locked": false
+    },
+    {
+      "key": "review_view_provider",
+      "en": "View provider",
+      "fr": "Voir le professionnel",
+      "locked": false
+    },
+    {
+      "key": "review_visit_date",
+      "en": "Visit Date",
+      "fr": "Date de visite",
+      "locked": false
+    },
+    {
+      "key": "review_visit_details",
+      "en": "Visit Details",
+      "fr": "Détails de la visite",
+      "locked": false
+    },
+    {
+      "key": "review_visit_type",
+      "en": "Visit Type",
+      "fr": "Type de visite",
+      "locked": false
+    },
+    {
+      "key": "review_who",
+      "en": "Who are you reviewing?",
+      "fr": "Qui évaluez-vous ?",
+      "locked": false
+    },
+    {
+      "key": "reviews_count",
+      "en": "reviews",
+      "fr": "avis",
+      "locked": false
+    },
+    {
+      "key": "reviews_empty_title",
+      "en": "No reviews yet",
+      "fr": "Aucun avis pour le moment",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_action",
+      "en": "Discover Providers",
+      "fr": "Découvrir les professionnels",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_message",
+      "en": "Save providers to access them quickly later.",
+      "fr": "Enregistrez des professionnels pour y accéder rapidement plus tard.",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_title",
+      "en": "No saved providers yet",
+      "fr": "Aucun professionnel enregistré",
+      "locked": false
+    },
+    {
+      "key": "search_facilities",
+      "en": "Search facilities",
+      "fr": "Chercher un établissement",
+      "locked": false
+    },
+    {
+      "key": "search_languages",
+      "en": "Search languages",
+      "fr": "Chercher une langue",
+      "locked": false
+    },
+    {
+      "key": "search_placeholder",
+      "en": "Search doctor, clinic...",
+      "fr": "Chercher un médecin, clinique...",
+      "locked": false
+    },
+    {
+      "key": "search_specialties",
+      "en": "Search specialties",
+      "fr": "Chercher une spécialité",
+      "locked": false
+    },
+    {
+      "key": "search_this_area",
+      "en": "Search this area",
+      "fr": "Chercher dans cette zone",
+      "locked": false
+    },
+    {
+      "key": "search_treatments",
+      "en": "Search treatments",
+      "fr": "Chercher un traitement",
+      "locked": false
+    },
+    {
+      "key": "settings_account",
+      "en": "Account",
+      "fr": "Compte",
+      "locked": false
+    },
+    {
+      "key": "settings_cancel",
+      "en": "Cancel",
+      "fr": "Annuler",
+      "locked": false
+    },
+    {
+      "key": "settings_change_password",
+      "en": "Change Password",
+      "fr": "Changer le mot de passe",
+      "locked": false
+    },
+    {
+      "key": "settings_data_privacy",
+      "en": "Data & Privacy",
+      "fr": "Données et confidentialité",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account",
+      "en": "Delete Account",
+      "fr": "Supprimer le compte",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_confirm",
+      "en": "Delete My Account",
+      "fr": "Supprimer mon compte",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_warning",
+      "en": "This action cannot be undone",
+      "fr": "Cette action ne peut pas être annulée",
+      "locked": false
+    },
+    {
+      "key": "settings_download_data",
+      "en": "Download My Data",
+      "fr": "Télécharger mes données",
+      "locked": false
+    },
+    {
+      "key": "settings_downloading_data",
+      "en": "Preparing data...",
+      "fr": "Préparation des données...",
+      "locked": false
+    },
+    {
+      "key": "settings_email",
+      "en": "Email",
+      "fr": "E-mail",
+      "locked": false
+    },
+    {
+      "key": "settings_location_services",
+      "en": "Location Services",
+      "fr": "Services de localisation",
+      "locked": false
+    },
+    {
+      "key": "settings_notifications",
+      "en": "Notifications",
+      "fr": "Notifications",
+      "locked": false
+    },
+    {
+      "key": "settings_phone",
+      "en": "Phone",
+      "fr": "Téléphone",
+      "locked": false
+    },
+    {
+      "key": "settings_preferences",
+      "en": "Preferences",
+      "fr": "Préférences",
+      "locked": false
+    },
+    {
+      "key": "show_all",
+      "en": "Show All",
+      "fr": "Tout afficher",
+      "locked": false
+    },
+    {
+      "key": "showing_english_results",
+      "en": "Showing English results",
+      "fr": "Affichage des résultats en anglais",
+      "locked": false
+    },
+    {
+      "key": "specialties_label",
+      "en": "Specialties",
+      "fr": "Spécialités",
+      "locked": false
+    },
+    {
+      "key": "specialties_title",
+      "en": "Specialties",
+      "fr": "Spécialités",
+      "locked": false
+    },
+    {
+      "key": "specialty_label",
+      "en": "Specialty",
+      "fr": "Spécialité",
+      "locked": false
+    },
+    {
+      "key": "splash_tagline",
+      "en": "Healthcare, Verified.",
+      "fr": "La santé, vérifiée.",
+      "locked": false
+    },
+    {
+      "key": "status_pending",
+      "en": "Pending",
+      "fr": "En attente",
+      "locked": false
+    },
+    {
+      "key": "status_unverified",
+      "en": "Unverified",
+      "fr": "Non vérifié",
+      "locked": false
+    },
+    {
+      "key": "status_verified",
+      "en": "Verified",
+      "fr": "Vérifié",
+      "locked": false
+    },
+    {
+      "key": "sub_acne",
+      "en": "Acne",
+      "fr": "Acné",
+      "locked": false
+    },
+    {
+      "key": "sub_acute_illness_treatment",
+      "en": "Acute Illness Treatment",
+      "fr": "Traitement des maladies aiguës",
+      "locked": false
+    },
+    {
+      "key": "sub_anxiety",
+      "en": "Anxiety",
+      "fr": "Anxiété",
+      "locked": false
+    },
+    {
+      "key": "sub_arrhythmia",
+      "en": "Arrhythmia",
+      "fr": "Arythmie",
+      "locked": false
+    },
+    {
+      "key": "sub_arthritis",
+      "en": "Arthritis",
+      "fr": "Arthrite",
+      "locked": false
+    },
+    {
+      "key": "sub_asthma",
+      "en": "Asthma",
+      "fr": "Asthme",
+      "locked": false
+    },
+    {
+      "key": "sub_bipolar_disorder",
+      "en": "Bipolar Disorder",
+      "fr": "Trouble bipolaire",
+      "locked": false
+    },
+    {
+      "key": "sub_cataracts",
+      "en": "Cataracts",
+      "fr": "Cataracte",
+      "locked": false
+    },
+    {
+      "key": "sub_chemotherapy",
+      "en": "Chemotherapy",
+      "fr": "Chimiothérapie",
+      "locked": false
+    },
+    {
+      "key": "sub_child_development",
+      "en": "Child Development",
+      "fr": "Développement de l'enfant",
+      "locked": false
+    },
+    {
+      "key": "sub_childhood_illness",
+      "en": "Childhood Illness",
+      "fr": "Maladies infantiles",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_disease_management",
+      "en": "Chronic Disease Management",
+      "fr": "Prise en charge des maladies chroniques",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_kidney_disease",
+      "en": "Chronic Kidney Disease",
+      "fr": "Maladie rénale chronique",
+      "locked": false
+    },
+    {
+      "key": "sub_copd",
+      "en": "COPD",
+      "fr": "BPCO",
+      "locked": false
+    },
+    {
+      "key": "sub_coronary_artery_disease",
+      "en": "Coronary Artery Disease",
+      "fr": "Maladie coronarienne",
+      "locked": false
+    },
+    {
+      "key": "sub_dementia",
+      "en": "Dementia",
+      "fr": "Démence",
+      "locked": false
+    },
+    {
+      "key": "sub_depression",
+      "en": "Depression",
+      "fr": "Dépression",
+      "locked": false
+    },
+    {
+      "key": "sub_diabetes",
+      "en": "Diabetes",
+      "fr": "Diabète",
+      "locked": false
+    },
+    {
+      "key": "sub_dialysis",
+      "en": "Dialysis",
+      "fr": "Dialyse",
+      "locked": false
+    },
+    {
+      "key": "sub_eczema",
+      "en": "Eczema",
+      "fr": "Eczéma",
+      "locked": false
+    },
+    {
+      "key": "sub_endoscopy",
+      "en": "Endoscopy",
+      "fr": "Endoscopie",
+      "locked": false
+    },
+    {
+      "key": "sub_erectile_dysfunction",
+      "en": "Erectile Dysfunction",
+      "fr": "Dysfonction érectile",
+      "locked": false
+    },
+    {
+      "key": "sub_fracture_treatment",
+      "en": "Fracture Treatment",
+      "fr": "Traitement des fractures",
+      "locked": false
+    },
+    {
+      "key": "sub_general_consultation",
+      "en": "General Consultation",
+      "fr": "Consultation générale",
+      "locked": false
+    },
+    {
+      "key": "sub_glaucoma",
+      "en": "Glaucoma",
+      "fr": "Glaucome",
+      "locked": false
+    },
+    {
+      "key": "sub_headache",
+      "en": "Headache",
+      "fr": "Maux de tête",
+      "locked": false
+    },
+    {
+      "key": "sub_hearing_loss",
+      "en": "Hearing Loss",
+      "fr": "Perte auditive",
+      "locked": false
+    },
+    {
+      "key": "sub_heart_failure",
+      "en": "Heart Failure",
+      "fr": "Insuffisance cardiaque",
+      "locked": false
+    },
+    {
+      "key": "sub_hormone_replacement",
+      "en": "Hormone Replacement",
+      "fr": "Traitement hormonal substitutif",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension",
+      "en": "Hypertension",
+      "fr": "Hypertension",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension_mgmt",
+      "en": "Hypertension Management",
+      "fr": "Prise en charge de l'hypertension",
+      "locked": false
+    },
+    {
+      "key": "sub_incontinence",
+      "en": "Incontinence",
+      "fr": "Incontinence",
+      "locked": false
+    },
+    {
+      "key": "sub_infant_care",
+      "en": "Infant Care",
+      "fr": "Soins aux nourrissons",
+      "locked": false
+    },
+    {
+      "key": "sub_inflammatory_bowel_disease",
+      "en": "Inflammatory Bowel Disease",
+      "fr": "Maladie inflammatoire de l'intestin",
+      "locked": false
+    },
+    {
+      "key": "sub_interstitial_lung_disease",
+      "en": "Interstitial Lung Disease",
+      "fr": "Maladie pulmonaire interstitielle",
+      "locked": false
+    },
+    {
+      "key": "sub_joint_replacement",
+      "en": "Joint Replacement",
+      "fr": "Remplacement articulaire",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_stones",
+      "en": "Kidney Stones",
+      "fr": "Calculs rénaux",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_transplant",
+      "en": "Kidney Transplant",
+      "fr": "Greffe de rein",
+      "locked": false
+    },
+    {
+      "key": "sub_liver_disease",
+      "en": "Liver Disease",
+      "fr": "Maladie hépatique",
+      "locked": false
+    },
+    {
+      "key": "sub_lupus",
+      "en": "Lupus",
+      "fr": "Lupus",
+      "locked": false
+    },
+    {
+      "key": "sub_movement_disorders",
+      "en": "Movement Disorders",
+      "fr": "Troubles du mouvement",
+      "locked": false
+    },
+    {
+      "key": "sub_pain_management",
+      "en": "Pain Management",
+      "fr": "Prise en charge de la douleur",
+      "locked": false
+    },
+    {
+      "key": "sub_palliative_care",
+      "en": "Palliative Care",
+      "fr": "Soins palliatifs",
+      "locked": false
+    },
+    {
+      "key": "sub_peptic_ulcer",
+      "en": "Peptic Ulcer",
+      "fr": "Ulcère gastroduodénal",
+      "locked": false
+    },
+    {
+      "key": "sub_post_operative_care",
+      "en": "Post-operative Care",
+      "fr": "Soins postopératoires",
+      "locked": false
+    },
+    {
+      "key": "sub_pre_operative_assessment",
+      "en": "Pre-operative Assessment",
+      "fr": "Évaluation préopératoire",
+      "locked": false
+    },
+    {
+      "key": "sub_preventive_care",
+      "en": "Preventive Care",
+      "fr": "Soins préventifs",
+      "locked": false
+    },
+    {
+      "key": "sub_prostate_disease",
+      "en": "Prostate Disease",
+      "fr": "Maladie de la prostate",
+      "locked": false
+    },
+    {
+      "key": "sub_psoriasis",
+      "en": "Psoriasis",
+      "fr": "Psoriasis",
+      "locked": false
+    },
+    {
+      "key": "sub_radiation_therapy",
+      "en": "Radiation Therapy",
+      "fr": "Radiothérapie",
+      "locked": false
+    },
+    {
+      "key": "sub_refractive_error",
+      "en": "Refractive Error",
+      "fr": "Trouble de la réfraction",
+      "locked": false
+    },
+    {
+      "key": "sub_retinal_disease",
+      "en": "Retinal Disease",
+      "fr": "Maladie rétinienne",
+      "locked": false
+    },
+    {
+      "key": "sub_schizophrenia",
+      "en": "Schizophrenia",
+      "fr": "Schizophrénie",
+      "locked": false
+    },
+    {
+      "key": "sub_sinusitis",
+      "en": "Sinusitis",
+      "fr": "Sinusite",
+      "locked": false
+    },
+    {
+      "key": "sub_skin_cancer_screening",
+      "en": "Skin Cancer Screening",
+      "fr": "Dépistage du cancer de la peau",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_apnea",
+      "en": "Sleep Apnea",
+      "fr": "Apnée du sommeil",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_disorders",
+      "en": "Sleep Disorders",
+      "fr": "Troubles du sommeil",
+      "locked": false
+    },
+    {
+      "key": "sub_spine_surgery",
+      "en": "Spine Surgery",
+      "fr": "Chirurgie de la colonne vertébrale",
+      "locked": false
+    },
+    {
+      "key": "sub_sports_medicine",
+      "en": "Sports Medicine",
+      "fr": "Médecine du sport",
+      "locked": false
+    },
+    {
+      "key": "sub_stroke",
+      "en": "Stroke",
+      "fr": "Accident vasculaire cérébral (AVC)",
+      "locked": false
+    },
+    {
+      "key": "sub_surgical_oncology",
+      "en": "Surgical Oncology",
+      "fr": "Oncologie chirurgicale",
+      "locked": false
+    },
+    {
+      "key": "sub_thyroid_disease",
+      "en": "Thyroid Disease",
+      "fr": "Maladie de la thyroïde",
+      "locked": false
+    },
+    {
+      "key": "sub_vaccination",
+      "en": "Vaccination",
+      "fr": "Vaccination",
+      "locked": false
+    },
+    {
+      "key": "sub_vasculitis",
+      "en": "Vasculitis",
+      "fr": "Vascularite",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy",
+      "en": "Accuracy & Care",
+      "fr": "Précision et soin",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy_sub",
+      "en": "Was your prescription prepared correctly?",
+      "fr": "Votre ordonnance a-t-elle été préparée correctement ?",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency",
+      "en": "Administrative Efficiency",
+      "fr": "Efficacité administrative",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency_sub",
+      "en": "Were admission and discharge smooth?",
+      "fr": "L'admission et la sortie se sont-elles bien passées ?",
+      "locked": false
+    },
+    {
+      "key": "survey_aesthetics",
+      "en": "Aesthetic Clinic",
+      "fr": "Clinique esthétique",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare",
+      "en": "Aftercare",
+      "fr": "Suivi post-traitement",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare_sub",
+      "en": "Were aftercare instructions and follow-up clearly explained?",
+      "fr": "Les instructions de suivi ont-elles été clairement expliquées ?",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner",
+      "en": "Bedside Manner",
+      "fr": "Relationnel",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner_sub",
+      "en": "Did the doctor listen and explain clearly?",
+      "fr": "Le médecin vous a-t-il écouté et expliqué clairement ?",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality",
+      "en": "Care Quality",
+      "fr": "Qualité des soins",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality_sub",
+      "en": "How would you rate the medical care?",
+      "fr": "Comment évalueriez-vous les soins médicaux ?",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "fr": "Hygiène de la clinique",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene_sub",
+      "en": "Was the clinic clean and hygienic?",
+      "fr": "La clinique était-elle propre et hygiénique ?",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity",
+      "en": "Communication Clarity",
+      "fr": "Clarté de la communication",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity_sub",
+      "en": "Were treatment plans explained clearly?",
+      "fr": "Les plans de traitement ont-ils été expliqués clairement ?",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality",
+      "en": "Consultation Quality",
+      "fr": "Qualité de la consultation",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality_sub",
+      "en": "Were procedure risks and outcomes explained?",
+      "fr": "Les risques et résultats de l'intervention ont-ils été expliqués ?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental",
+      "en": "Dental",
+      "fr": "Dentaire",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_bedside_sub",
+      "en": "Did the dentist communicate clearly?",
+      "fr": "Le dentiste a-t-il communiqué clairement ?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_hygiene_sub",
+      "en": "Were treatment rooms and equipment clean?",
+      "fr": "Les salles de soins et l'équipement étaient-ils propres ?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_wait_sub",
+      "en": "How quickly were you seated?",
+      "fr": "À quelle vitesse avez-vous été installé ?",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic",
+      "en": "Diagnostic Center",
+      "fr": "Centre de diagnostic",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic_wait_sub",
+      "en": "How quickly were you called for your test?",
+      "fr": "À quelle vitesse avez-vous été appelé pour votre examen ?",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy",
+      "en": "Empathy & Listening",
+      "fr": "Empathie et écoute",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy_sub",
+      "en": "Did you feel truly heard?",
+      "fr": "Vous êtes-vous senti vraiment écouté ?",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort",
+      "en": "Environment Comfort",
+      "fr": "Confort de l'environnement",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort_sub",
+      "en": "Was the office peaceful and private?",
+      "fr": "Le cabinet était-il calme et confidentiel ?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment",
+      "en": "Facility Equipment",
+      "fr": "Équipement de l'établissement",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment_sub",
+      "en": "Was the facility well-equipped?",
+      "fr": "L'établissement était-il bien équipé ?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene",
+      "en": "Facility Hygiene",
+      "fr": "Hygiène de l'établissement",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene_sub",
+      "en": "Was the facility clean and hygienic?",
+      "fr": "L'établissement était-il propre et hygiénique ?",
+      "locked": false
+    },
+    {
+      "key": "survey_general_clinic",
+      "en": "General Clinic",
+      "fr": "Clinique générale",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital",
+      "en": "Hospital",
+      "fr": "Hôpital",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital_wait_sub",
+      "en": "How quickly were you seen by a doctor?",
+      "fr": "À quelle vitesse avez-vous été vu par un médecin ?",
+      "locked": false
+    },
+    {
+      "key": "survey_mental_health",
+      "en": "Mental Health",
+      "fr": "Santé mentale",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management",
+      "en": "Pain Management",
+      "fr": "Prise en charge de la douleur",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management_sub",
+      "en": "How well did they manage pain?",
+      "fr": "Comment ont-ils géré la douleur ?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge",
+      "en": "Pharmacist Knowledge",
+      "fr": "Connaissances du pharmacien",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge_sub",
+      "en": "Did the pharmacist answer your questions well?",
+      "fr": "Le pharmacien a-t-il bien répondu à vos questions ?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacy",
+      "en": "Pharmacy",
+      "fr": "Pharmacie",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort",
+      "en": "Procedure Comfort",
+      "fr": "Confort de l'intervention",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort_sub",
+      "en": "Did staff make the procedure comfortable?",
+      "fr": "Le personnel a-t-il rendu l'intervention confortable ?",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality",
+      "en": "Punctuality",
+      "fr": "Ponctualité",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality_sub",
+      "en": "Did your session start on time?",
+      "fr": "Votre séance a-t-elle commencé à l'heure ?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_effectiveness_sub",
+      "en": "Did sessions improve mobility or reduce pain?",
+      "fr": "Les séances ont-elles amélioré la mobilité ou réduit la douleur ?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_wait_sub",
+      "en": "How quickly did your session start?",
+      "fr": "À quelle vitesse votre séance a-t-elle commencé ?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehabilitation",
+      "en": "Rehabilitation",
+      "fr": "Rééducation",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction",
+      "en": "Result Satisfaction",
+      "fr": "Satisfaction du résultat",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction_sub",
+      "en": "Are you satisfied with the results?",
+      "fr": "Êtes-vous satisfait des résultats ?",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed",
+      "en": "Result Speed",
+      "fr": "Rapidité des résultats",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed_sub",
+      "en": "Were results delivered on time?",
+      "fr": "Les résultats ont-ils été remis à temps ?",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene",
+      "en": "Room Hygiene",
+      "fr": "Hygiène de la chambre",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene_sub",
+      "en": "Were rooms and areas clean?",
+      "fr": "Les chambres et espaces étaient-ils propres ?",
+      "locked": false
+    },
+    {
+      "key": "survey_speed",
+      "en": "Speed",
+      "fr": "Rapidité",
+      "locked": false
+    },
+    {
+      "key": "survey_speed_sub",
+      "en": "How quickly were you served?",
+      "fr": "À quelle vitesse avez-vous été servi ?",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy",
+      "en": "Staff Courtesy",
+      "fr": "Courtoisie du personnel",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy_sub",
+      "en": "Was the staff polite?",
+      "fr": "Le personnel était-il poli ?",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness",
+      "en": "Therapist Attentiveness",
+      "fr": "Attention du thérapeute",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness_sub",
+      "en": "Did the therapist monitor and adapt?",
+      "fr": "Le thérapeute a-t-il surveillé et adapté le traitement ?",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "fr": "Efficacité du traitement",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness_sub",
+      "en": "Did the treatment resolve your issue?",
+      "fr": "Le traitement a-t-il résolu votre problème ?",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time",
+      "en": "Waiting Time",
+      "fr": "Temps d'attente",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time_sub",
+      "en": "How long did you wait after your appointment time?",
+      "fr": "Combien de temps avez-vous attendu après l'heure de votre rendez-vous ?",
+      "locked": false
+    },
+    {
+      "key": "switch_category_hint",
+      "en": "Try switching category.",
+      "fr": "Essayez de changer de catégorie.",
+      "locked": false
+    },
+    {
+      "key": "switch_to_list",
+      "en": "Switch to list view for more results.",
+      "fr": "Passez en vue liste pour plus de résultats.",
+      "locked": false
+    },
+    {
+      "key": "tab_badge_plus",
+      "en": "Plus",
+      "fr": "PLUS",
+      "locked": false
+    },
+    {
+      "key": "tab_discover",
+      "en": "Find",
+      "fr": "Trouver",
+      "locked": false
+    },
+    {
+      "key": "tab_guide",
+      "en": "Guide",
+      "fr": "Guide",
+      "locked": false
+    },
+    {
+      "key": "tab_profile",
+      "en": "Profile",
+      "fr": "Profil",
+      "locked": false
+    },
+    {
+      "key": "tab_review",
+      "en": "Review",
+      "fr": "Évaluer",
+      "locked": false
+    },
+    {
+      "key": "tagline",
+      "en": "Healthcare, Verified.",
+      "fr": "La santé, vérifiée.",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_facilities",
+      "en": "Facilities",
+      "fr": "Établissements",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_specialties",
+      "en": "Specialties",
+      "fr": "Spécialités",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_treatments",
+      "en": "Treatments",
+      "fr": "Traitements",
+      "locked": false
+    },
+    {
+      "key": "top_picks",
+      "en": "Top Picks",
+      "fr": "Meilleurs choix",
+      "locked": false
+    },
+    {
+      "key": "tos_account_1",
+      "en": "You are responsible for maintaining the confidentiality of your credentials and activity under your account.",
+      "fr": "Vous êtes responsable du maintien de la confidentialité de vos identifiants et de l'activité sur votre compte.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_2",
+      "en": "We may suspend or terminate accounts that violate these terms, applicable law, or platform safety requirements.",
+      "fr": "Nous pouvons suspendre ou fermer les comptes qui violent ces conditions, la loi applicable ou les exigences de sécurité de la plateforme.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_title",
+      "en": "Accounts and Access",
+      "fr": "Comptes et accès",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_1",
+      "en": "Questions about these Terms can be sent to support@trustcare.app.",
+      "fr": "Les questions concernant ces Conditions peuvent être envoyées à support@trustcare.app.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_2",
+      "en": "By continuing to use the service, you acknowledge that you have read and agreed to these Terms.",
+      "fr": "En continuant à utiliser le service, vous reconnaissez avoir lu et accepté ces Conditions.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_title",
+      "en": "Contact",
+      "fr": "Contact",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_1",
+      "en": "These Terms are governed by applicable laws of the jurisdiction where the service operator is established, unless local mandatory law provides otherwise.",
+      "fr": "Ces conditions sont régies par les lois applicables de la juridiction où l'opérateur du service est établi, sauf disposition contraire de la loi locale impérative.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_2",
+      "en": "Before initiating formal proceedings, you agree to contact us in good faith to seek an informal resolution.",
+      "fr": "Avant d'entamer une procédure formelle, vous acceptez de nous contacter de bonne foi pour rechercher une résolution à l'amiable.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_title",
+      "en": "Disputes and Governing Law",
+      "fr": "Litiges et loi applicable",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_1",
+      "en": "All platform content, branding, and software are owned by TrustCare or licensed to us, unless otherwise stated.",
+      "fr": "Tout le contenu, la marque et le logiciel de la plateforme appartiennent à TrustCare ou nous sont concédés sous licence, sauf indication contraire.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_2",
+      "en": "You may not copy, scrape, reverse engineer, or redistribute platform content beyond permitted legal use.",
+      "fr": "Vous ne pouvez pas copier, extraire, procéder à une ingénierie inverse ou redistribuer le contenu de la plateforme au-delà de l'utilisation légale autorisée.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_title",
+      "en": "Intellectual Property",
+      "fr": "Propriété intellectuelle",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_1",
+      "en": "Rehber provides informational guidance only and does not provide medical diagnosis, treatment, or emergency response.",
+      "fr": "Rehber fournit uniquement des conseils informatifs et ne fournit pas de diagnostic médical, de traitement ou d'intervention d'urgence.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_2",
+      "en": "In urgent or life-threatening situations, contact local emergency services immediately.",
+      "fr": "En cas d'urgence ou de danger de mort, contactez immédiatement les services d'urgence locaux.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_3",
+      "en": "You remain responsible for healthcare decisions and should consult qualified medical professionals.",
+      "fr": "Vous restez responsable des décisions liées à votre santé et devez consulter des professionnels de santé qualifiés.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_title",
+      "en": "Rehber (AI Guidance) Disclaimer",
+      "fr": "Clause de non-responsabilité de Rehber (Guide IA)",
+      "locked": false
+    },
+    {
+      "key": "tos_review_1",
+      "en": "Reviews must reflect genuine, firsthand experiences and must not include harassment, hate speech, or unlawful content.",
+      "fr": "Les avis doivent refléter des expériences réelles de première main et ne doivent pas inclure de harcèlement, de discours de haine ou de contenu illégal.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_2",
+      "en": "By submitting content, you grant TrustCare a license to host, display, and moderate that content for service operation.",
+      "fr": "En soumettant du contenu, vous accordez à TrustCare une licence pour héberger, afficher et modérer ce contenu dans le cadre du fonctionnement du service.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_3",
+      "en": "We may remove, limit, or flag content that violates policy, legal obligations, or trust and safety standards.",
+      "fr": "Nous pouvons supprimer, limiter ou signaler tout contenu qui enfreint la politique, les obligations légales ou les normes de confiance et de sécurité.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_title",
+      "en": "Reviews and Community Content",
+      "fr": "Avis et contenu de la communauté",
+      "locked": false
+    },
+    {
+      "key": "tos_service_1",
+      "en": "TrustCare provides healthcare discovery, review features, and informational guidance tools for general consumer use.",
+      "fr": "TrustCare fournit des outils de recherche de professionnels de santé, d'évaluation et de conseils informatifs destinés au grand public.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_2",
+      "en": "Service availability, features, and access may change over time; we may update or discontinue parts of the service without prior notice.",
+      "fr": "La disponibilité, les fonctionnalités et l'accès au service peuvent évoluer ; nous pouvons mettre à jour ou interrompre certaines parties du service sans préavis.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_title",
+      "en": "Service Overview",
+      "fr": "Aperçu du service",
+      "locked": false
+    },
+    {
+      "key": "tos_user_1",
+      "en": "You agree to provide accurate information and use the platform lawfully, respectfully, and in good faith.",
+      "fr": "Vous acceptez de fournir des informations exactes et d'utiliser la plateforme de manière légale, respectueuse et de bonne foi.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_2",
+      "en": "You must not attempt to abuse the platform, bypass security controls, or interfere with other users.",
+      "fr": "Vous ne devez pas tenter d'abuser de la plateforme, de contourner les contrôles de sécurité ou d'interférer avec d'autres utilisateurs.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_3",
+      "en": "You are responsible for content you submit and for complying with applicable local laws and regulations.",
+      "fr": "Vous êtes responsable du contenu que vous soumettez et du respect des lois et réglementations locales applicables.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_title",
+      "en": "User Responsibilities",
+      "fr": "Responsabilités de l'utilisateur",
+      "locked": false
+    },
+    {
+      "key": "try_english_keywords",
+      "en": "Try English keywords or check spelling.",
+      "fr": "Essayez des mots-clés en anglais ou vérifiez l'orthographe.",
+      "locked": false
+    },
+    {
+      "key": "try_nearby_city",
+      "en": "Try a nearby city.",
+      "fr": "Essayez une ville à proximité.",
+      "locked": false
+    },
+    {
+      "key": "unauthorized_area",
+      "en": "Unknown area",
+      "fr": "Zone inconnue",
+      "locked": false
+    },
+    {
+      "key": "unknown_provider",
+      "en": "Unknown Provider",
+      "fr": "Professionnel inconnu",
+      "locked": false
+    },
+    {
+      "key": "use_device_location",
+      "en": "Use device location",
+      "fr": "Utiliser la position de l'appareil",
+      "locked": false
+    },
+    {
+      "key": "verified_badge",
+      "en": "Verified",
+      "fr": "Vérifié",
+      "locked": false
+    },
+    {
+      "key": "visit_type_checkup",
+      "en": "Checkup",
+      "fr": "Bilan de santé",
+      "locked": false
+    },
+    {
+      "key": "visit_type_emergency",
+      "en": "Emergency",
+      "fr": "Urgence",
+      "locked": false
+    },
+    {
+      "key": "visit_type_examination",
+      "en": "Examination",
+      "fr": "Examen",
+      "locked": false
+    },
+    {
+      "key": "visit_type_procedure",
+      "en": "Procedure",
+      "fr": "Intervention",
+      "locked": false
+    },
+    {
+      "key": "widen_map_area",
+      "en": "Widen the map area and search again.",
+      "fr": "Élargissez la zone de la carte et réessayez.",
+      "locked": false
+    }
+  ]
+}

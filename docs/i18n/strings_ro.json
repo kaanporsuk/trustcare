@@ -1,0 +1,3527 @@
+{
+  "meta": {
+    "app": "TrustCare",
+    "source": "strings_en_bulletproof.json",
+    "target_language": "ro",
+    "generated_at": "2026-03-06T01:32:48Z",
+    "entry_count": 584,
+    "instructions": [
+      "Fill 'ro' for entries where locked=false.",
+      "Do NOT change 'key' or 'en'.",
+      "Keep placeholders EXACTLY (%@, %d, %lld, %1$@, %#@... etc).",
+      "If locked=true, leave the translation as-is."
+    ],
+    "validated_at": "2026-03-06T02:43:50Z",
+    "validated_by": "ChatGPT",
+    "quality_notes": [
+      "Standardized PLUS badge casing.",
+      "Shortened verified-only label for UI fit."
+    ]
+  },
+  "entries": [
+    {
+      "key": "%@ %@",
+      "en": "%1$@ %2$@",
+      "ro": "%1$@ %2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@",
+      "en": "%1$@%2$@",
+      "ro": "%1$@%2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@ - %@%@",
+      "en": "%1$@%2$@ - %3$@%4$@",
+      "ro": "%1$@%2$@ - %3$@%4$@",
+      "locked": true
+    },
+    {
+      "key": "%lld%% %@",
+      "en": "%1$lld%% %2$@",
+      "ro": "%1$lld%% %2$@",
+      "locked": true
+    },
+    {
+      "key": "%lld/%lld",
+      "en": "%1$lld/%2$lld",
+      "ro": "%1$lld/%2$lld",
+      "locked": true
+    },
+    {
+      "key": "accessibility_rating_hint",
+      "en": "Swipe up or down to adjust rating",
+      "ro": "Glisați în sus sau în jos pentru a ajusta evaluarea",
+      "locked": false
+    },
+    {
+      "key": "action_dismiss",
+      "en": "Dismiss",
+      "ro": "Închide",
+      "locked": false
+    },
+    {
+      "key": "action_retry",
+      "en": "Retry",
+      "ro": "Încearcă din nou",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_list",
+      "en": "Switch to list view",
+      "ro": "Comută la vizualizarea listă",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_map",
+      "en": "Switch to map view",
+      "ro": "Comută la vizualizarea hartă",
+      "locked": false
+    },
+    {
+      "key": "add_provider_add",
+      "en": "Add",
+      "ro": "Adaugă",
+      "locked": false
+    },
+    {
+      "key": "add_provider_address",
+      "en": "Address",
+      "ro": "Adresă",
+      "locked": false
+    },
+    {
+      "key": "add_provider_cancel",
+      "en": "Cancel",
+      "ro": "Anulează",
+      "locked": false
+    },
+    {
+      "key": "add_provider_geocode_error",
+      "en": "Could not find coordinates for this address.",
+      "ro": "Nu s-au putut găsi coordonatele pentru această adresă.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_is_this",
+      "en": "Is this provider a...",
+      "ro": "Acest furnizor este un...",
+      "locked": false
+    },
+    {
+      "key": "add_provider_location",
+      "en": "Location",
+      "ro": "Locație",
+      "locked": false
+    },
+    {
+      "key": "add_provider_map_pin",
+      "en": "Set map pin",
+      "ro": "Fixează pe hartă",
+      "locked": false
+    },
+    {
+      "key": "add_provider_name",
+      "en": "Provider Name",
+      "ro": "Numele furnizorului",
+      "locked": false
+    },
+    {
+      "key": "add_provider_no_address",
+      "en": "Please enter an address.",
+      "ro": "Te rugăm să introduci o adresă.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone",
+      "en": "Phone (optional)",
+      "ro": "Telefon (opțional)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone_optional",
+      "en": "Phone (optional)",
+      "ro": "Telefon (opțional)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_provider_information",
+      "en": "Provider information",
+      "ro": "Informații despre furnizor",
+      "locked": false
+    },
+    {
+      "key": "add_provider_section",
+      "en": "Provider Information",
+      "ro": "Informații despre furnizor",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select",
+      "en": "Select",
+      "ro": "Selectează",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty",
+      "en": "Select Specialty",
+      "ro": "Selectează specialitatea",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty_error",
+      "en": "Please select a specialty.",
+      "ro": "Te rugăm să selectezi o specialitate.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_set_map_pin",
+      "en": "Set map pin",
+      "ro": "Fixează pe hartă",
+      "locked": false
+    },
+    {
+      "key": "add_provider_specialty",
+      "en": "Specialty",
+      "ro": "Specialitate",
+      "locked": false
+    },
+    {
+      "key": "add_provider_title",
+      "en": "Add Provider",
+      "ro": "Adaugă furnizor",
+      "locked": false
+    },
+    {
+      "key": "all",
+      "en": "All",
+      "ro": "Toate",
+      "locked": false
+    },
+    {
+      "key": "all_results",
+      "en": "All",
+      "ro": "Toate",
+      "locked": false
+    },
+    {
+      "key": "app_language",
+      "en": "App Language",
+      "ro": "Limba aplicației",
+      "locked": false
+    },
+    {
+      "key": "app_name",
+      "en": "TrustCare",
+      "ro": "TrustCare",
+      "locked": false
+    },
+    {
+      "key": "bul_growing_here_label",
+      "en": "TrustCare is growing here",
+      "ro": "TrustCare se extinde aici",
+      "locked": false
+    },
+    {
+      "key": "button_add",
+      "en": "Add",
+      "ro": "Adaugă",
+      "locked": false
+    },
+    {
+      "key": "button_back",
+      "en": "Back",
+      "ro": "Înapoi",
+      "locked": false
+    },
+    {
+      "key": "button_call",
+      "en": "Call",
+      "ro": "Sună",
+      "locked": false
+    },
+    {
+      "key": "button_cancel",
+      "en": "Cancel",
+      "ro": "Anulează",
+      "locked": false
+    },
+    {
+      "key": "button_continue",
+      "en": "Continue",
+      "ro": "Continuă",
+      "locked": false
+    },
+    {
+      "key": "button_delete",
+      "en": "Delete",
+      "ro": "Șterge",
+      "locked": false
+    },
+    {
+      "key": "button_directions",
+      "en": "Directions",
+      "ro": "Indicații",
+      "locked": false
+    },
+    {
+      "key": "button_done",
+      "en": "Done",
+      "ro": "Gata",
+      "locked": false
+    },
+    {
+      "key": "button_edit",
+      "en": "Edit",
+      "ro": "Editează",
+      "locked": false
+    },
+    {
+      "key": "button_ok",
+      "en": "OK",
+      "ro": "OK",
+      "locked": false
+    },
+    {
+      "key": "button_remove",
+      "en": "Remove",
+      "ro": "Elimină",
+      "locked": false
+    },
+    {
+      "key": "button_review",
+      "en": "Review",
+      "ro": "Evaluează",
+      "locked": false
+    },
+    {
+      "key": "button_save",
+      "en": "Save",
+      "ro": "Salvează",
+      "locked": false
+    },
+    {
+      "key": "button_submit",
+      "en": "Submit",
+      "ro": "Trimite",
+      "locked": false
+    },
+    {
+      "key": "category_aesthetic_cosmetic",
+      "en": "Aesthetic & Cosmetic",
+      "ro": "Estetică și cosmetică",
+      "locked": false
+    },
+    {
+      "key": "category_alternative",
+      "en": "Alternative",
+      "ro": "Alternativă",
+      "locked": false
+    },
+    {
+      "key": "category_anesthesiology",
+      "en": "Anesthesiology",
+      "ro": "Anesteziologie",
+      "locked": false
+    },
+    {
+      "key": "category_cardiology",
+      "en": "Cardiology",
+      "ro": "Cardiologie",
+      "locked": false
+    },
+    {
+      "key": "category_dental",
+      "en": "Dental",
+      "ro": "Stomatologie",
+      "locked": false
+    },
+    {
+      "key": "category_dermatology",
+      "en": "Dermatology",
+      "ro": "Dermatologie",
+      "locked": false
+    },
+    {
+      "key": "category_diagnostic",
+      "en": "Diagnostic",
+      "ro": "Diagnostic",
+      "locked": false
+    },
+    {
+      "key": "category_emergency",
+      "en": "Emergency",
+      "ro": "Urgențe",
+      "locked": false
+    },
+    {
+      "key": "category_endocrinology",
+      "en": "Endocrinology",
+      "ro": "Endocrinologie",
+      "locked": false
+    },
+    {
+      "key": "category_ent",
+      "en": "Ear, Nose & Throat",
+      "ro": "ORL",
+      "locked": false
+    },
+    {
+      "key": "category_eye_care",
+      "en": "Eye Care",
+      "ro": "Oftalmologie",
+      "locked": false
+    },
+    {
+      "key": "category_gastroenterology",
+      "en": "Gastroenterology",
+      "ro": "Gastroenterologie",
+      "locked": false
+    },
+    {
+      "key": "category_general_practice",
+      "en": "General Practice",
+      "ro": "Medicină generală",
+      "locked": false
+    },
+    {
+      "key": "category_hospital",
+      "en": "Hospital",
+      "ro": "Spital",
+      "locked": false
+    },
+    {
+      "key": "category_medical_specialties",
+      "en": "Medical Specialties",
+      "ro": "Specialități medicale",
+      "locked": false
+    },
+    {
+      "key": "category_mental_health",
+      "en": "Mental Health",
+      "ro": "Sănătate mintală",
+      "locked": false
+    },
+    {
+      "key": "category_nephrology",
+      "en": "Nephrology",
+      "ro": "Nefrologie",
+      "locked": false
+    },
+    {
+      "key": "category_neurology",
+      "en": "Neurology",
+      "ro": "Neurologie",
+      "locked": false
+    },
+    {
+      "key": "category_oncology",
+      "en": "Oncology",
+      "ro": "Oncologie",
+      "locked": false
+    },
+    {
+      "key": "category_ophthalmology",
+      "en": "Ophthalmology",
+      "ro": "Oftalmologie",
+      "locked": false
+    },
+    {
+      "key": "category_orthopedics",
+      "en": "Orthopedics",
+      "ro": "Ortopedie",
+      "locked": false
+    },
+    {
+      "key": "category_other",
+      "en": "Other",
+      "ro": "Altele",
+      "locked": false
+    },
+    {
+      "key": "category_pediatrics",
+      "en": "Pediatrics",
+      "ro": "Pediatrie",
+      "locked": false
+    },
+    {
+      "key": "category_pharmacy",
+      "en": "Pharmacy",
+      "ro": "Farmacie",
+      "locked": false
+    },
+    {
+      "key": "category_primary_care",
+      "en": "Primary Care",
+      "ro": "Asistență primară",
+      "locked": false
+    },
+    {
+      "key": "category_psychiatry",
+      "en": "Psychiatry",
+      "ro": "Psihiatrie",
+      "locked": false
+    },
+    {
+      "key": "category_pulmonology",
+      "en": "Pulmonology",
+      "ro": "Pneumologie",
+      "locked": false
+    },
+    {
+      "key": "category_rehabilitation",
+      "en": "Rehabilitation",
+      "ro": "Recuperare",
+      "locked": false
+    },
+    {
+      "key": "category_rheumatology",
+      "en": "Rheumatology",
+      "ro": "Reumatologie",
+      "locked": false
+    },
+    {
+      "key": "category_surgical",
+      "en": "Surgical",
+      "ro": "Chirurgie",
+      "locked": false
+    },
+    {
+      "key": "category_urology",
+      "en": "Urology",
+      "ro": "Urologie",
+      "locked": false
+    },
+    {
+      "key": "category_womens_health",
+      "en": "Women's Health",
+      "ro": "Sănătatea femeii",
+      "locked": false
+    },
+    {
+      "key": "chip_distance",
+      "en": "Distance",
+      "ro": "Distanță",
+      "locked": false
+    },
+    {
+      "key": "chip_facility",
+      "en": "Facility",
+      "ro": "Unitate",
+      "locked": false
+    },
+    {
+      "key": "chip_language",
+      "en": "Language",
+      "ro": "Limbă",
+      "locked": false
+    },
+    {
+      "key": "chip_specialty",
+      "en": "Specialty",
+      "ro": "Specialitate",
+      "locked": false
+    },
+    {
+      "key": "chip_treatment",
+      "en": "Treatment",
+      "ro": "Tratament",
+      "locked": false
+    },
+    {
+      "key": "claim_accepted_docs",
+      "en": "Accepted: Medical license, registration certificate, or official ID",
+      "ro": "Acceptate: Licență medicală, certificat de înregistrare sau act de identitate oficial",
+      "locked": false
+    },
+    {
+      "key": "claim_back_to_provider",
+      "en": "Back to Provider",
+      "ro": "Înapoi la furnizor",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_1",
+      "en": "You are authorized to manage this profile",
+      "ro": "Ești autorizat să gestionezi acest profil",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_2",
+      "en": "All information provided is accurate",
+      "ro": "Toate informațiile furnizate sunt corecte",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_text",
+      "en": "By submitting, you confirm that:",
+      "ro": "Prin trimitere, confirmi că:",
+      "locked": false
+    },
+    {
+      "key": "claim_description",
+      "en": "Claim this profile to manage it",
+      "ro": "Revendică acest profil pentru a-l gestiona",
+      "locked": false
+    },
+    {
+      "key": "claim_file_format",
+      "en": "JPG or PNG, max 10 MB",
+      "ro": "JPG sau PNG, max 10 MB",
+      "locked": false
+    },
+    {
+      "key": "claim_pending",
+      "en": "Claim Pending",
+      "ro": "Revendicare în așteptare",
+      "locked": false
+    },
+    {
+      "key": "claim_pending_message",
+      "en": "Your claim is being reviewed.",
+      "ro": "Revendicarea ta este în curs de revizuire.",
+      "locked": false
+    },
+    {
+      "key": "claim_profile",
+      "en": "Claim Profile",
+      "ro": "Revendică profil",
+      "locked": false
+    },
+    {
+      "key": "claim_provider_label",
+      "en": "Provider",
+      "ro": "Furnizor",
+      "locked": false
+    },
+    {
+      "key": "claim_rejected",
+      "en": "Claim Rejected",
+      "ro": "Revendicare respinsă",
+      "locked": false
+    },
+    {
+      "key": "claim_resubmit",
+      "en": "Resubmit",
+      "ro": "Retrimite",
+      "locked": false
+    },
+    {
+      "key": "claim_review_submit",
+      "en": "Review & Submit",
+      "ro": "Verifică și trimite",
+      "locked": false
+    },
+    {
+      "key": "claim_role_question",
+      "en": "What is your role at this practice?",
+      "ro": "Care este rolul tău la acest cabinet?",
+      "locked": false
+    },
+    {
+      "key": "claim_step_1_of_3",
+      "en": "Step 1 of 3",
+      "ro": "Pasul 1 din 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_2_of_3",
+      "en": "Step 2 of 3",
+      "ro": "Pasul 2 din 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_3_of_3",
+      "en": "Step 3 of 3",
+      "ro": "Pasul 3 din 3",
+      "locked": false
+    },
+    {
+      "key": "claim_submit",
+      "en": "Submit Claim",
+      "ro": "Trimite revendicarea",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted",
+      "en": "Claim Submitted!",
+      "ro": "Revendicare trimisă!",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted_message",
+      "en": "We'll review your claim within 1-3 business days. You'll be notified when it's approved.",
+      "ro": "Vom revizui revendicarea în 1-3 zile lucrătoare. Vei fi notificat când este aprobată.",
+      "locked": false
+    },
+    {
+      "key": "claim_tap_upload",
+      "en": "Tap to upload document",
+      "ro": "Atinge pentru a încărca documentul",
+      "locked": false
+    },
+    {
+      "key": "claim_title",
+      "en": "Claim Profile",
+      "ro": "Revendică profil",
+      "locked": false
+    },
+    {
+      "key": "claim_upload_doc",
+      "en": "Upload verification document",
+      "ro": "Încarcă documentul de verificare",
+      "locked": false
+    },
+    {
+      "key": "claim_verification_doc",
+      "en": "Verification Document",
+      "ro": "Document de verificare",
+      "locked": false
+    },
+    {
+      "key": "claim_your_role",
+      "en": "Your Role",
+      "ro": "Rolul tău",
+      "locked": false
+    },
+    {
+      "key": "clear_filter",
+      "en": "Clear Filter",
+      "ro": "Șterge filtrul",
+      "locked": false
+    },
+    {
+      "key": "close_button",
+      "en": "Close",
+      "ro": "Închide",
+      "locked": false
+    },
+    {
+      "key": "country_turkey",
+      "en": "Türkiye",
+      "ro": "Turcia",
+      "locked": false
+    },
+    {
+      "key": "cta_change_city",
+      "en": "Change city",
+      "ro": "Schimbă orașul",
+      "locked": false
+    },
+    {
+      "key": "cta_suggest_provider",
+      "en": "Suggest a provider",
+      "ro": "Sugerează un furnizor",
+      "locked": false
+    },
+    {
+      "key": "current_location",
+      "en": "Current Location",
+      "ro": "Locația curentă",
+      "locked": false
+    },
+    {
+      "key": "date_today",
+      "en": "Today",
+      "ro": "Astăzi",
+      "locked": false
+    },
+    {
+      "key": "date_yesterday",
+      "en": "Yesterday",
+      "ro": "Ieri",
+      "locked": false
+    },
+    {
+      "key": "default_city_name",
+      "en": "Adana",
+      "ro": "Adana",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_body",
+      "en": "There may be a connection issue. Please try again.",
+      "ro": "Ar putea exista o problemă de conexiune. Te rugăm să încerci din nou.",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_title",
+      "en": "Providers could not be loaded",
+      "ro": "Furnizorii nu au putut fi încărcați",
+      "locked": false
+    },
+    {
+      "key": "discover_error_switch_to_list",
+      "en": "Switch to list view",
+      "ro": "Comută la vizualizarea listă",
+      "locked": false
+    },
+    {
+      "key": "edit_review_comment_section",
+      "en": "Review",
+      "ro": "Recenzie",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title",
+      "en": "Edit Review",
+      "ro": "Editează recenzia",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_placeholder",
+      "en": "Review title",
+      "ro": "Titlul recenziei",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_section",
+      "en": "Title",
+      "ro": "Titlu",
+      "locked": false
+    },
+    {
+      "key": "empty_home_cta",
+      "en": "Suggest a provider",
+      "ro": "Sugerează un furnizor",
+      "locked": false
+    },
+    {
+      "key": "empty_home_title",
+      "en": "No providers in this area",
+      "ro": "Niciun furnizor în această zonă",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_body",
+      "en": "Try searching another area or changing city.",
+      "ro": "Încearcă să cauți în altă zonă sau să schimbi orașul.",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_title",
+      "en": "No providers available",
+      "ro": "Niciun furnizor disponibil",
+      "locked": false
+    },
+    {
+      "key": "empty_search",
+      "en": "No results found",
+      "ro": "Niciun rezultat găsit",
+      "locked": false
+    },
+    {
+      "key": "error_duplicate_review",
+      "en": "You can only submit one review per provider per date.",
+      "ro": "Poți trimite o singură recenzie per furnizor pe dată.",
+      "locked": false
+    },
+    {
+      "key": "error_generic",
+      "en": "Error",
+      "ro": "Eroare",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body",
+      "en": "Your connection may be unstable right now. Try again to load the list.",
+      "ro": "Conexiunea ta ar putea fi instabilă chiar acum. Încearcă din nou pentru a încărca lista.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body_generic",
+      "en": "Couldn't load providers. Please try again.",
+      "ro": "Nu s-au putut încărca furnizorii. Te rugăm să încerci din nou.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_title",
+      "en": "Couldn't load providers",
+      "ro": "Nu s-au putut încărca furnizorii",
+      "locked": false
+    },
+    {
+      "key": "error_network",
+      "en": "A network issue occurred. Please check your connection and try again.",
+      "ro": "A apărut o problemă de rețea. Verifică conexiunea și încearcă din nou.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_body",
+      "en": "Please check your connection and try again.",
+      "ro": "Te rugăm să verifici conexiunea și să încerci din nou.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_title",
+      "en": "Network error",
+      "ro": "Eroare de rețea",
+      "locked": false
+    },
+    {
+      "key": "error_offline_body",
+      "en": "It looks like you're offline. Check your connection and try again.",
+      "ro": "Se pare că ești offline. Verifică conexiunea și încearcă din nou.",
+      "locked": false
+    },
+    {
+      "key": "error_offline_title",
+      "en": "Couldn't load providers",
+      "ro": "Nu s-au putut încărca furnizorii",
+      "locked": false
+    },
+    {
+      "key": "error_unknown",
+      "en": "An unknown error occurred.",
+      "ro": "A apărut o eroare necunoscută.",
+      "locked": false
+    },
+    {
+      "key": "filter_all",
+      "en": "All",
+      "ro": "Toate",
+      "locked": false
+    },
+    {
+      "key": "filter_apply",
+      "en": "Apply",
+      "ro": "Aplică",
+      "locked": false
+    },
+    {
+      "key": "filter_button",
+      "en": "Filter",
+      "ro": "Filtrează",
+      "locked": false
+    },
+    {
+      "key": "filter_distance",
+      "en": "Distance",
+      "ro": "Distanță",
+      "locked": false
+    },
+    {
+      "key": "filter_facility",
+      "en": "Facility",
+      "ro": "Unitate",
+      "locked": false
+    },
+    {
+      "key": "filter_facility_title",
+      "en": "Facility",
+      "ro": "Unitate",
+      "locked": false
+    },
+    {
+      "key": "filter_language",
+      "en": "Language",
+      "ro": "Limbă",
+      "locked": false
+    },
+    {
+      "key": "filter_language_title",
+      "en": "Language",
+      "ro": "Limbă",
+      "locked": false
+    },
+    {
+      "key": "filter_more",
+      "en": "More",
+      "ro": "Mai multe",
+      "locked": false
+    },
+    {
+      "key": "filter_reset",
+      "en": "Reset",
+      "ro": "Resetează",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty",
+      "en": "Specialty",
+      "ro": "Specialitate",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty_title",
+      "en": "Specialty",
+      "ro": "Specialitate",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment",
+      "en": "Treatment",
+      "ro": "Tratament",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment_title",
+      "en": "Treatment",
+      "ro": "Tratament",
+      "locked": false
+    },
+    {
+      "key": "filter_verified",
+      "en": "Verified",
+      "ro": "Verificat",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_only_label",
+      "en": "Show only providers with verified reviews",
+      "ro": "Doar recenzii verificate",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_title",
+      "en": "Verified",
+      "ro": "Verificat",
+      "locked": false
+    },
+    {
+      "key": "find_empty_change_city",
+      "en": "Change city",
+      "ro": "Schimbă orașul",
+      "locked": false
+    },
+    {
+      "key": "find_empty_clear_filters",
+      "en": "Clear filters",
+      "ro": "Șterge filtrele",
+      "locked": false
+    },
+    {
+      "key": "find_empty_growing_here",
+      "en": "TrustCare is growing here",
+      "ro": "TrustCare se extinde aici",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_another_area",
+      "en": "Search another area",
+      "ro": "Caută în altă zonă",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_change_city",
+      "en": "Search another area / Change city",
+      "ro": "Caută în altă zonă / Schimbă orașul",
+      "locked": false
+    },
+    {
+      "key": "find_empty_suggest_provider",
+      "en": "Suggest a provider",
+      "ro": "Sugerează un furnizor",
+      "locked": false
+    },
+    {
+      "key": "find_set_location",
+      "en": "Set location",
+      "ro": "Setați locația",
+      "locked": false
+    },
+    {
+      "key": "find_sheet_providers_title",
+      "en": "Providers",
+      "ro": "Furnizori",
+      "locked": false
+    },
+    {
+      "key": "find_state_change_city",
+      "en": "Change city",
+      "ro": "Schimbă orașul",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_body",
+      "en": "Clear one or more filters, or move the map to expand results.",
+      "ro": "Șterge unul sau mai multe filtre, sau mută harta pentru a extinde rezultatele.",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_title",
+      "en": "No results match these filters",
+      "ro": "Niciun rezultat nu corespunde acestor filtre",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_body",
+      "en": "Coverage is expanding in this area. Try a nearby city for now.",
+      "ro": "Acoperirea se extinde în această zonă. Încearcă într-un oraș din apropiere deocamdată.",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_title",
+      "en": "TrustCare is growing here",
+      "ro": "TrustCare se extinde aici",
+      "locked": false
+    },
+    {
+      "key": "find_state_no_providers_visible",
+      "en": "No providers visible in this map area",
+      "ro": "Niciun furnizor vizibil în această zonă a hărții",
+      "locked": false
+    },
+    {
+      "key": "find_state_search_another_area",
+      "en": "Search another area",
+      "ro": "Caută în altă zonă",
+      "locked": false
+    },
+    {
+      "key": "find_state_try_another_area",
+      "en": "Try another area or pick a different city to continue.",
+      "ro": "Încearcă în altă zonă sau alege un alt oraș pentru a continua.",
+      "locked": false
+    },
+    {
+      "key": "help_contact",
+      "en": "Contact",
+      "ro": "Contact",
+      "locked": false
+    },
+    {
+      "key": "help_email_label",
+      "en": "Email",
+      "ro": "E-mail",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a1",
+      "en": "Open Review, choose a provider, and complete the guided form.",
+      "ro": "Deschide Recenzii, alege un furnizor și completează formularul ghidat.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a2",
+      "en": "Yes. Open My Reviews and tap Edit on your review.",
+      "ro": "Da. Deschide Recenziile mele și apasă Editează pe recenzia ta.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a3",
+      "en": "Verified means the review passed our checks or includes supporting proof.",
+      "ro": "Verificat înseamnă că recenzia a trecut de verificările noastre sau include dovezi justificative.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a4",
+      "en": "Open the review and tap Report. Our team will review it.",
+      "ro": "Deschide recenzia și apasă Raportează. Echipa noastră o va examina.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a5",
+      "en": "Go to Settings and request deletion. We will confirm when completed.",
+      "ro": "Mergi la Setări și solicită ștergerea. Vom confirma când se va finaliza.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a6",
+      "en": "Email support@trustcare.app with your app version and issue details.",
+      "ro": "Trimite un e-mail la support@trustcare.app cu versiunea aplicației și detaliile problemei.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q1",
+      "en": "How do I add a review?",
+      "ro": "Cum adaug o recenzie?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q2",
+      "en": "Can I edit my review?",
+      "ro": "Îmi pot edita recenzia?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q3",
+      "en": "What does Verified mean?",
+      "ro": "Ce înseamnă Verificat?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q4",
+      "en": "How do I report content?",
+      "ro": "Cum raportez un conținut?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q5",
+      "en": "How do I delete my account or data?",
+      "ro": "Cum îmi șterg contul sau datele?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q6",
+      "en": "How can I contact support?",
+      "ro": "Cum pot contacta asistența?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_title",
+      "en": "Help & Support",
+      "ro": "Ajutor și asistență",
+      "locked": false
+    },
+    {
+      "key": "help_report_issue",
+      "en": "Report an issue",
+      "ro": "Raportează o problemă",
+      "locked": false
+    },
+    {
+      "key": "is_this_your_practice",
+      "en": "Is this your practice?",
+      "ro": "Acesta este cabinetul tău?",
+      "locked": false
+    },
+    {
+      "key": "language_changed_alert",
+      "en": "Language Changed",
+      "ro": "Limba a fost schimbată",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message",
+      "en": "The app needs to restart to apply the new language.",
+      "ro": "Aplicația trebuie să repornească pentru a aplica noua limbă.",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message_named %@",
+      "en": "The app will restart in %@. Continue?",
+      "ro": "Aplicația va reporni în %@. Continuă?",
+      "locked": false
+    },
+    {
+      "key": "language_danish",
+      "en": "Dansk",
+      "ro": "Dansk",
+      "locked": false
+    },
+    {
+      "key": "language_done",
+      "en": "Done",
+      "ro": "Gata",
+      "locked": false
+    },
+    {
+      "key": "language_dutch",
+      "en": "Nederlands",
+      "ro": "Nederlands",
+      "locked": false
+    },
+    {
+      "key": "language_english",
+      "en": "English",
+      "ro": "English",
+      "locked": false
+    },
+    {
+      "key": "language_german",
+      "en": "Deutsch",
+      "ro": "Deutsch",
+      "locked": false
+    },
+    {
+      "key": "language_later",
+      "en": "Later",
+      "ro": "Mai târziu",
+      "locked": false
+    },
+    {
+      "key": "language_polish",
+      "en": "Polski",
+      "ro": "Polski",
+      "locked": false
+    },
+    {
+      "key": "language_restart_now",
+      "en": "Restart Now",
+      "ro": "Repornește acum",
+      "locked": false
+    },
+    {
+      "key": "language_section_title",
+      "en": "Language",
+      "ro": "Limbă",
+      "locked": false
+    },
+    {
+      "key": "language_turkish",
+      "en": "Türkçe",
+      "ro": "Türkçe",
+      "locked": false
+    },
+    {
+      "key": "legal_translation_disclaimer",
+      "en": "Translation is provided for convenience; the English version prevails.",
+      "ro": "Traducerea este oferită pentru comoditate; versiunea în limba engleză prevalează.",
+      "locked": false
+    },
+    {
+      "key": "legend_aesthetics",
+      "en": "Aesthetics",
+      "ro": "Estetică",
+      "locked": false
+    },
+    {
+      "key": "legend_clinic",
+      "en": "Clinic",
+      "ro": "Clinică",
+      "locked": false
+    },
+    {
+      "key": "legend_dental",
+      "en": "Dental",
+      "ro": "Stomatologie",
+      "locked": false
+    },
+    {
+      "key": "legend_hospital",
+      "en": "Hospital",
+      "ro": "Spital",
+      "locked": false
+    },
+    {
+      "key": "legend_lab",
+      "en": "Lab",
+      "ro": "Laborator",
+      "locked": false
+    },
+    {
+      "key": "legend_mental_health",
+      "en": "Mental Health",
+      "ro": "Psihiatrie",
+      "locked": false
+    },
+    {
+      "key": "legend_pharmacy",
+      "en": "Pharmacy",
+      "ro": "Farmacie",
+      "locked": false
+    },
+    {
+      "key": "legend_rehab",
+      "en": "Rehab",
+      "ro": "Recuperare",
+      "locked": false
+    },
+    {
+      "key": "location_select_title",
+      "en": "Select Location",
+      "ro": "Selectează locația",
+      "locked": false
+    },
+    {
+      "key": "logout_confirm_message",
+      "en": "Are you sure you want to log out?",
+      "ro": "Ești sigur că vrei să te deconectezi?",
+      "locked": false
+    },
+    {
+      "key": "map_search_this_area",
+      "en": "Search this area",
+      "ro": "Caută în această zonă",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_list",
+      "en": "List",
+      "ro": "Listă",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_map",
+      "en": "Map",
+      "ro": "Hartă",
+      "locked": false
+    },
+    {
+      "key": "media_photo_count_%lld",
+      "en": "%lld of 5 photos",
+      "ro": "%lld of 5 photos",
+      "locked": true
+    },
+    {
+      "key": "menu_help",
+      "en": "Help & Support",
+      "ro": "Ajutor și asistență",
+      "locked": false
+    },
+    {
+      "key": "menu_logout",
+      "en": "Log Out",
+      "ro": "Deconectare",
+      "locked": false
+    },
+    {
+      "key": "menu_my_reviews",
+      "en": "My Reviews",
+      "ro": "Recenziile mele",
+      "locked": false
+    },
+    {
+      "key": "menu_privacy",
+      "en": "Privacy Policy",
+      "ro": "Politica de confidențialitate",
+      "locked": false
+    },
+    {
+      "key": "menu_saved",
+      "en": "Saved",
+      "ro": "Salvate",
+      "locked": false
+    },
+    {
+      "key": "menu_settings",
+      "en": "Settings",
+      "ro": "Setări",
+      "locked": false
+    },
+    {
+      "key": "menu_terms",
+      "en": "Terms of Service",
+      "ro": "Termeni și condiții",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_message",
+      "en": "This action cannot be undone.",
+      "ro": "Această acțiune nu poate fi anulată.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_title",
+      "en": "Delete Review?",
+      "ro": "Șterge recenzia?",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_action",
+      "en": "Write a Review",
+      "ro": "Scrie o recenzie",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_message",
+      "en": "Share your experience by posting your first review.",
+      "ro": "Împărtășește-ți experiența postând prima ta recenzie.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_title",
+      "en": "No reviews yet",
+      "ro": "Nicio recenzie încă",
+      "locked": false
+    },
+    {
+      "key": "no_results",
+      "en": "No results",
+      "ro": "Niciun rezultat",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_1",
+      "en": "If you have questions about this Privacy Policy or your personal data, contact us at support@trustcare.app.",
+      "ro": "Dacă ai întrebări despre această Politică de confidențialitate sau datele tale personale, contactează-ne la support@trustcare.app.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_2",
+      "en": "If you are in the EEA/UK, you may also contact your local data protection authority.",
+      "ro": "Dacă te afli în SEE/Regatul Unit, poți contacta și autoritatea locală de protecție a datelor.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_title",
+      "en": "Contact",
+      "ro": "Contact",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_1",
+      "en": "Our web surfaces may use cookies and local storage to keep sessions secure and improve performance.",
+      "ro": "Serviciile noastre web pot utiliza cookie-uri și stocare locală pentru a menține sesiunile sigure și a îmbunătăți performanța.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_2",
+      "en": "You can control cookie preferences in your browser settings, though disabling them may affect functionality.",
+      "ro": "Poți controla preferințele pentru cookie-uri din setările browserului, deși dezactivarea lor poate afecta funcționalitatea.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_3",
+      "en": "Analytics cookies are used in aggregate form to understand usage trends and improve the service.",
+      "ro": "Cookie-urile de analiză sunt utilizate în formă agregată pentru a înțelege tendințele de utilizare și a îmbunătăți serviciul.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_title",
+      "en": "Cookies and Similar Technologies",
+      "ro": "Cookie-uri și tehnologii similare",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_1",
+      "en": "We collect account data such as email, name, profile preferences, and authentication metadata.",
+      "ro": "Colectăm date despre cont, cum ar fi e-mailul, numele, preferințele profilului și metadatele de autentificare.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_2",
+      "en": "When you submit reviews, we collect ratings, comments, optional media, and optional verification artifacts.",
+      "ro": "Când trimiți recenzii, colectăm evaluări, comentarii, elemente media opționale și dovezi de verificare opționale.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_3",
+      "en": "We may process device and usage data including app events, approximate location, and diagnostics.",
+      "ro": "Putem procesa datele dispozitivului și de utilizare, inclusiv evenimentele din aplicație, locația aproximativă și diagnosticele.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_4",
+      "en": "We do not intentionally collect sensitive health records beyond the information you choose to submit.",
+      "ro": "Nu colectăm intenționat dosare medicale sensibile dincolo de informațiile pe care alegi să le trimiți.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_title",
+      "en": "Data We Collect",
+      "ro": "Datele pe care le colectăm",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_1",
+      "en": "We share data with service providers that operate hosting, analytics, moderation, and communication systems.",
+      "ro": "Împărtășim date cu furnizorii de servicii care operează sisteme de găzduire, analiză, moderare și comunicare.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_2",
+      "en": "We may disclose information when required by law, regulation, legal process, or to protect users and platform integrity.",
+      "ro": "Putem dezvălui informații atunci când acest lucru este cerut de lege, reglementări, procese legale sau pentru a proteja utilizatorii și integritatea platformei.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_3",
+      "en": "We do not sell personal data to third parties.",
+      "ro": "Nu vindem date personale către terți.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_title",
+      "en": "How We Share Data",
+      "ro": "Cum partajăm datele",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_1",
+      "en": "We use personal data to provide core app functionality, personalize content, and maintain account security.",
+      "ro": "Folosim datele personale pentru a oferi funcționalitățile de bază ale aplicației, pentru a personaliza conținutul și pentru a menține securitatea contului.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_2",
+      "en": "We use submitted reviews and metadata for trust, safety, moderation, fraud prevention, and quality assurance.",
+      "ro": "Folosim recenziile și metadatele trimise pentru încredere, siguranță, moderare, prevenirea fraudelor și asigurarea calității.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_3",
+      "en": "We may use aggregated and de-identified analytics to improve product experience and reliability.",
+      "ro": "Putem folosi analize agregate și de-identificate pentru a îmbunătăți experiența și fiabilitatea produsului.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_title",
+      "en": "How We Use Data",
+      "ro": "Cum folosim datele",
+      "locked": false
+    },
+    {
+      "key": "pp_last_updated",
+      "en": "Last updated: March 2026",
+      "ro": "Ultima actualizare: Martie 2026",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_1",
+      "en": "Depending on your region, you may have rights to access, correct, export, restrict, or delete your personal data.",
+      "ro": "În funcție de regiunea ta, poți avea drepturi de a accesa, corecta, exporta, restricționa sau șterge datele tale personale.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_2",
+      "en": "You can update profile information directly in the app or request support for account-level actions.",
+      "ro": "Poți actualiza informațiile de profil direct din aplicație sau poți solicita asistență pentru acțiuni la nivel de cont.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_3",
+      "en": "You may object to certain processing where applicable under local law.",
+      "ro": "Poți obiecta la anumite procesări, acolo unde este aplicabil conform legislației locale.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_4",
+      "en": "To exercise your rights, contact support@trustcare.app and we will respond within the legally required timeframe.",
+      "ro": "Pentru a-ți exercita drepturile, contactează support@trustcare.app și îți vom răspunde în termenul prevăzut de lege.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_title",
+      "en": "Your Rights",
+      "ro": "Drepturile tale",
+      "locked": false
+    },
+    {
+      "key": "pp_security_1",
+      "en": "We apply technical and organizational safeguards designed to protect data against unauthorized access and misuse.",
+      "ro": "Aplicăm măsuri de protecție tehnice și organizaționale menite să protejeze datele împotriva accesului neautorizat și a utilizării abuzive.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_2",
+      "en": "No online system is completely secure; we continuously monitor and improve our controls.",
+      "ro": "Niciun sistem online nu este complet sigur; monitorizăm și ne îmbunătățim în permanență controalele.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_3",
+      "en": "If a security incident affects your data, we will notify you and regulators when legally required.",
+      "ro": "Dacă un incident de securitate îți afectează datele, te vom notifica pe tine și autoritățile de reglementare atunci când legea o impune.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_title",
+      "en": "Security",
+      "ro": "Securitate",
+      "locked": false
+    },
+    {
+      "key": "profile_member_since",
+      "en": "Member since",
+      "ro": "Membru din",
+      "locked": false
+    },
+    {
+      "key": "profile_referral",
+      "en": "Invite a friend - earn points",
+      "ro": "Invită un prieten - câștigă puncte",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count",
+      "en": "Reviews",
+      "ro": "Recenzii",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count %lld",
+      "en": "%#@count@",
+      "ro": "%#@count@",
+      "locked": true
+    },
+    {
+      "key": "profile_verified_percent",
+      "en": "Verified",
+      "ro": "Verificat",
+      "locked": false
+    },
+    {
+      "key": "profile_verified_percent %lld",
+      "en": "%lld%% Verified",
+      "ro": "%lld%% Verificat",
+      "locked": true
+    },
+    {
+      "key": "providers_label",
+      "en": "Providers",
+      "ro": "Furnizori",
+      "locked": false
+    },
+    {
+      "key": "providers_title",
+      "en": "Providers",
+      "ro": "Furnizori",
+      "locked": false
+    },
+    {
+      "key": "recents",
+      "en": "Recents",
+      "ro": "Recente",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_112",
+      "en": "Call 112",
+      "ro": "Sună la 112",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_emergency",
+      "en": "Call Emergency Services",
+      "ro": "Sună la Urgențe",
+      "locked": false
+    },
+    {
+      "key": "rehber_consent_text",
+      "en": "I understand: These suggestions are for guidance only, not diagnosis",
+      "ro": "Înțeleg: Aceste sugestii sunt doar orientative, nu un diagnostic",
+      "locked": false
+    },
+    {
+      "key": "rehber_cooldown",
+      "en": "Please wait %d seconds to send again.",
+      "ro": "Te rugăm să aștepți %d secunde pentru a trimite din nou.",
+      "locked": false
+    },
+    {
+      "key": "rehber_daily_limit_reached",
+      "en": "Daily free limit reached (5/5). Try again tomorrow.",
+      "ro": "Limita zilnică gratuită a fost atinsă (5/5). Încearcă din nou mâine.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete",
+      "en": "Delete",
+      "ro": "Șterge",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_message",
+      "en": "This will permanently delete this conversation and all its messages.",
+      "ro": "Aceasta va șterge permanent această conversație și toate mesajele sale.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_title",
+      "en": "Delete Conversation?",
+      "ro": "Ștergi conversația?",
+      "locked": false
+    },
+    {
+      "key": "rehber_disclaimer",
+      "en": "This is not medical advice. Always consult a healthcare professional.",
+      "ro": "Acesta nu este un sfat medical. Consultă întotdeauna un medic.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_danger",
+      "en": "If you or someone else is in danger, call immediately.",
+      "ro": "Dacă tu sau altcineva sunteți în pericol, sunați imediat.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_detected",
+      "en": "🚨 A potential emergency risk was detected. Please call 112 immediately.",
+      "ro": "🚨 A fost detectat un potențial risc de urgență. Sunați imediat la 112.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_subtitle",
+      "en": "Please call 112 immediately",
+      "ro": "Te rugăm să suni imediat la 112",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_title",
+      "en": "🚨 EMERGENCY",
+      "ro": "🚨 URGENȚĂ",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state",
+      "en": "Share your symptoms, I'll guide you to the right specialty.",
+      "ro": "Împărtășește-ți simptomele, te voi ghida către specialitatea potrivită.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state_sub",
+      "en": "No diagnosis or treatment is provided; guidance only.",
+      "ro": "Nu este furnizat niciun diagnostic sau tratament; doar orientare.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_subtitle",
+      "en": "Start one to get health guidance.",
+      "ro": "Începe una pentru a primi îndrumări de sănătate.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_title",
+      "en": "No conversations yet",
+      "ro": "Nicio conversație încă",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_1",
+      "en": "Recommends the right specialty based on your symptoms",
+      "ro": "Recomandă specialitatea potrivită în funcție de simptome",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_2",
+      "en": "Finds healthcare providers near you",
+      "ro": "Găsește furnizori de servicii medicale în apropiere",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_3",
+      "en": "Directs you to 112 in emergencies",
+      "ro": "Te direcționează către 112 în caz de urgență",
+      "locked": false
+    },
+    {
+      "key": "rehber_find_provider",
+      "en": "Find provider",
+      "ro": "Găsește furnizor",
+      "locked": false
+    },
+    {
+      "key": "rehber_info_bar",
+      "en": "TrustCare Rehber - Health Information Service",
+      "ro": "TrustCare Rehber - Serviciu de informații medicale",
+      "locked": false
+    },
+    {
+      "key": "rehber_input_placeholder",
+      "en": "Describe your symptoms...",
+      "ro": "Descrie simptomele tale...",
+      "locked": false
+    },
+    {
+      "key": "rehber_load_conversation_error",
+      "en": "Unable to load conversation.",
+      "ro": "Nu s-a putut încărca conversația.",
+      "locked": false
+    },
+    {
+      "key": "rehber_login_required",
+      "en": "Please sign in to use Rehber.",
+      "ro": "Te rugăm să te autentifici pentru a utiliza Rehber.",
+      "locked": false
+    },
+    {
+      "key": "rehber_nearest_emergency",
+      "en": "Nearest Emergency Room",
+      "ro": "Cea mai apropiată cameră de gardă",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_conversation",
+      "en": "New Conversation",
+      "ro": "Conversație nouă",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_short",
+      "en": "New",
+      "ro": "Nou",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_conversations",
+      "en": "No conversations yet",
+      "ro": "Nicio conversație încă",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_response",
+      "en": "Rehber could not respond. Please try again.",
+      "ro": "Rehber nu a putut răspunde. Te rugăm să încerci din nou.",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_subtitle",
+      "en": "Health Information Service",
+      "ro": "Serviciu de informații medicale",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_warning",
+      "en": "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.",
+      "ro": "⚠️ Acest serviciu nu este un diagnostic medical sau o recomandare de tratament. Consultă întotdeauna un medic.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_body",
+      "en": "This feature will become a subscription. It's currently available to everyone for testing.",
+      "ro": "Această funcționalitate va deveni un abonament. Momentan este disponibilă pentru toți utilizatorii pentru testare.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_title",
+      "en": "Plus - free during launch",
+      "ro": "PLUS - gratuit la lansare",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_trial",
+      "en": "TrustCare Plus feature - Free trial: 5 questions per day",
+      "ro": "Funcție TrustCare Plus - Probă gratuită: 5 întrebări pe zi",
+      "locked": false
+    },
+    {
+      "key": "rehber_recent_sessions",
+      "en": "Recent Sessions",
+      "ro": "Sesiuni recente",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_failed",
+      "en": "Response could not be generated. Please try again.",
+      "ro": "Răspunsul nu a putut fi generat. Te rugăm să încerci din nou.",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_unavailable",
+      "en": "Response unavailable.",
+      "ro": "Răspuns indisponibil.",
+      "locked": false
+    },
+    {
+      "key": "rehber_sessions",
+      "en": "Sessions",
+      "ro": "Sesiuni",
+      "locked": false
+    },
+    {
+      "key": "rehber_start",
+      "en": "Start",
+      "ro": "Începe",
+      "locked": false
+    },
+    {
+      "key": "rehber_start_guidance",
+      "en": "Start one to get health guidance.",
+      "ro": "Începe una pentru a primi îndrumări de sănătate.",
+      "locked": false
+    },
+    {
+      "key": "rehber_subtitle",
+      "en": "Your AI health guide",
+      "ro": "Ghidul tău de sănătate AI",
+      "locked": false
+    },
+    {
+      "key": "rehber_title",
+      "en": "TrustCare Rehber",
+      "ro": "TrustCare Rehber",
+      "locked": false
+    },
+    {
+      "key": "rehber_try_again",
+      "en": "Try Again",
+      "ro": "Încearcă din nou",
+      "locked": false
+    },
+    {
+      "key": "rehber_usage_counter",
+      "en": "Usage count:",
+      "ro": "Număr de utilizări:",
+      "locked": false
+    },
+    {
+      "key": "report_additional_details",
+      "en": "Additional details (optional)",
+      "ro": "Detalii suplimentare (opțional)",
+      "locked": false
+    },
+    {
+      "key": "report_button",
+      "en": "Report",
+      "ro": "Raportează",
+      "locked": false
+    },
+    {
+      "key": "report_footer",
+      "en": "Please provide any additional context that might help us review this report.",
+      "ro": "Te rugăm să oferi orice context suplimentar care ne-ar putea ajuta să revizuim acest raport.",
+      "locked": false
+    },
+    {
+      "key": "report_header",
+      "en": "Why are you reporting this review?",
+      "ro": "De ce raportezi această recenzie?",
+      "locked": false
+    },
+    {
+      "key": "report_optional_details",
+      "en": "Optional details",
+      "ro": "Detalii opționale",
+      "locked": false
+    },
+    {
+      "key": "report_reason",
+      "en": "Reason",
+      "ro": "Motiv",
+      "locked": false
+    },
+    {
+      "key": "report_reported",
+      "en": "Reported",
+      "ro": "Raportat",
+      "locked": false
+    },
+    {
+      "key": "report_thank_you",
+      "en": "Thank you. We'll review this report.",
+      "ro": "Mulțumim. Vom revizui acest raport.",
+      "locked": false
+    },
+    {
+      "key": "report_title",
+      "en": "Report Review",
+      "ro": "Raportează recenzia",
+      "locked": false
+    },
+    {
+      "key": "review_add_photo",
+      "en": "Add Photo",
+      "ro": "Adaugă fotografie",
+      "locked": false
+    },
+    {
+      "key": "review_another",
+      "en": "Review Another Provider",
+      "ro": "Evaluează alt furnizor",
+      "locked": false
+    },
+    {
+      "key": "review_button_back",
+      "en": "Back",
+      "ro": "Înapoi",
+      "locked": false
+    },
+    {
+      "key": "review_button_next",
+      "en": "Next",
+      "ro": "Înainte",
+      "locked": false
+    },
+    {
+      "key": "review_cant_find_add",
+      "en": "Can't find it? Add new",
+      "ro": "Nu îl găsești? Adaugă unul nou",
+      "locked": false
+    },
+    {
+      "key": "review_change_provider",
+      "en": "Change",
+      "ro": "Schimbă",
+      "locked": false
+    },
+    {
+      "key": "review_char_count %lld",
+      "en": "%lld/500 characters",
+      "ro": "%lld/500 characters",
+      "locked": true
+    },
+    {
+      "key": "review_comment",
+      "en": "Your Review",
+      "ro": "Recenzia ta",
+      "locked": false
+    },
+    {
+      "key": "review_comment_placeholder",
+      "en": "Share your experience...",
+      "ro": "Împărtășește experiența ta...",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner",
+      "en": "Bedside Manner",
+      "ro": "Interacțiunea cu pacientul",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner_question",
+      "en": "Did the doctor listen and explain clearly?",
+      "ro": "Medicul a ascultat și a explicat clar?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "ro": "Igienă clinică",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene_question",
+      "en": "Was the clinic clean and hygienic?",
+      "ro": "Clinica era curată și igienizată?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "ro": "Eficacitatea tratamentului",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness_question",
+      "en": "Did the treatment resolve your issue?",
+      "ro": "Tratamentul ți-a rezolvat problema?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time",
+      "en": "Waiting Time",
+      "ro": "Timp de așteptare",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time_question",
+      "en": "How long did you wait after your appointment time?",
+      "ro": "Cât timp ai așteptat după ora programării?",
+      "locked": false
+    },
+    {
+      "key": "review_detailed",
+      "en": "Detailed Rating",
+      "ro": "Evaluare detaliată",
+      "locked": false
+    },
+    {
+      "key": "review_editable_24h",
+      "en": "Editable within 24h",
+      "ro": "Editabil timp de 24h",
+      "locked": false
+    },
+    {
+      "key": "review_go_home",
+      "en": "Go to Home",
+      "ro": "Mergi la pagina principală",
+      "locked": false
+    },
+    {
+      "key": "review_helpful_count_%lld",
+      "en": "%lld helpful",
+      "ro": "%lld helpful",
+      "locked": true
+    },
+    {
+      "key": "review_overall",
+      "en": "Overall Rating",
+      "ro": "Evaluare generală",
+      "locked": false
+    },
+    {
+      "key": "review_overall_question",
+      "en": "How was your overall experience?",
+      "ro": "Cum a fost experiența ta generală?",
+      "locked": false
+    },
+    {
+      "key": "review_photos_public",
+      "en": "Photos will be visible to everyone.",
+      "ro": "Fotografiile vor fi vizibile pentru toți.",
+      "locked": false
+    },
+    {
+      "key": "review_proof_private",
+      "en": "This will not be shown publicly.",
+      "ro": "Acestea nu vor fi afișate public.",
+      "locked": false
+    },
+    {
+      "key": "review_select_provider_to_continue",
+      "en": "Select a provider to continue",
+      "ro": "Selectează un furnizor pentru a continua",
+      "locked": false
+    },
+    {
+      "key": "review_skip_verification",
+      "en": "Skip verification",
+      "ro": "Omite verificarea",
+      "locked": false
+    },
+    {
+      "key": "review_step_choose_provider",
+      "en": "Choose provider",
+      "ro": "Alege furnizorul",
+      "locked": false
+    },
+    {
+      "key": "review_step_detailed_ratings",
+      "en": "Detailed ratings",
+      "ro": "Evaluări detaliate",
+      "locked": false
+    },
+    {
+      "key": "review_step_format",
+      "en": "Step %1$lld of %2$lld",
+      "ro": "Pasul %1$lld din %2$lld",
+      "locked": false
+    },
+    {
+      "key": "review_step_media_submit",
+      "en": "Media and submit",
+      "ro": "Media și trimite",
+      "locked": false
+    },
+    {
+      "key": "review_step_overall_rating",
+      "en": "Overall rating",
+      "ro": "Evaluare generală",
+      "locked": false
+    },
+    {
+      "key": "review_step_visit_details",
+      "en": "Visit details",
+      "ro": "Detalii vizită",
+      "locked": false
+    },
+    {
+      "key": "review_step_write_review",
+      "en": "Write review",
+      "ro": "Scrie recenzia",
+      "locked": false
+    },
+    {
+      "key": "review_submit",
+      "en": "Submit Review",
+      "ro": "Trimite recenzia",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_message",
+      "en": "Your review has been submitted and will appear once processed.",
+      "ro": "Recenzia ta a fost trimisă și va apărea după ce este procesată.",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_title",
+      "en": "Thank You!",
+      "ro": "Mulțumim!",
+      "locked": false
+    },
+    {
+      "key": "review_upload_proof",
+      "en": "Upload proof of visit",
+      "ro": "Încarcă dovada vizitei",
+      "locked": false
+    },
+    {
+      "key": "review_verification_pending",
+      "en": "Verification Pending",
+      "ro": "Verificare în așteptare",
+      "locked": false
+    },
+    {
+      "key": "review_verify",
+      "en": "Verify Your Visit",
+      "ro": "Verifică-ți vizita",
+      "locked": false
+    },
+    {
+      "key": "review_verify_hint",
+      "en": "Help us maintain trust by verifying your visit.",
+      "ro": "Ajută-ne să menținem încrederea prin verificarea vizitei tale.",
+      "locked": false
+    },
+    {
+      "key": "review_view_provider",
+      "en": "View provider",
+      "ro": "Vezi furnizor",
+      "locked": false
+    },
+    {
+      "key": "review_visit_date",
+      "en": "Visit Date",
+      "ro": "Data vizitei",
+      "locked": false
+    },
+    {
+      "key": "review_visit_details",
+      "en": "Visit Details",
+      "ro": "Detalii vizită",
+      "locked": false
+    },
+    {
+      "key": "review_visit_type",
+      "en": "Visit Type",
+      "ro": "Tipul vizitei",
+      "locked": false
+    },
+    {
+      "key": "review_who",
+      "en": "Who are you reviewing?",
+      "ro": "Pe cine evaluezi?",
+      "locked": false
+    },
+    {
+      "key": "reviews_count",
+      "en": "reviews",
+      "ro": "recenzii",
+      "locked": false
+    },
+    {
+      "key": "reviews_empty_title",
+      "en": "No reviews yet",
+      "ro": "Nicio recenzie încă",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_action",
+      "en": "Discover Providers",
+      "ro": "Descoperă furnizori",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_message",
+      "en": "Save providers to access them quickly later.",
+      "ro": "Salvează furnizorii pentru a-i accesa rapid mai târziu.",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_title",
+      "en": "No saved providers yet",
+      "ro": "Niciun furnizor salvat încă",
+      "locked": false
+    },
+    {
+      "key": "search_facilities",
+      "en": "Search facilities",
+      "ro": "Caută unități",
+      "locked": false
+    },
+    {
+      "key": "search_languages",
+      "en": "Search languages",
+      "ro": "Caută limbi",
+      "locked": false
+    },
+    {
+      "key": "search_placeholder",
+      "en": "Search doctor, clinic...",
+      "ro": "Caută medic, clinică...",
+      "locked": false
+    },
+    {
+      "key": "search_specialties",
+      "en": "Search specialties",
+      "ro": "Caută specialități",
+      "locked": false
+    },
+    {
+      "key": "search_this_area",
+      "en": "Search this area",
+      "ro": "Caută în această zonă",
+      "locked": false
+    },
+    {
+      "key": "search_treatments",
+      "en": "Search treatments",
+      "ro": "Caută tratamente",
+      "locked": false
+    },
+    {
+      "key": "settings_account",
+      "en": "Account",
+      "ro": "Cont",
+      "locked": false
+    },
+    {
+      "key": "settings_cancel",
+      "en": "Cancel",
+      "ro": "Anulează",
+      "locked": false
+    },
+    {
+      "key": "settings_change_password",
+      "en": "Change Password",
+      "ro": "Schimbă parola",
+      "locked": false
+    },
+    {
+      "key": "settings_data_privacy",
+      "en": "Data & Privacy",
+      "ro": "Date și confidențialitate",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account",
+      "en": "Delete Account",
+      "ro": "Șterge contul",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_confirm",
+      "en": "Delete My Account",
+      "ro": "Șterge contul meu",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_warning",
+      "en": "This action cannot be undone",
+      "ro": "Această acțiune nu poate fi anulată",
+      "locked": false
+    },
+    {
+      "key": "settings_download_data",
+      "en": "Download My Data",
+      "ro": "Descarcă datele mele",
+      "locked": false
+    },
+    {
+      "key": "settings_downloading_data",
+      "en": "Preparing data...",
+      "ro": "Se pregătesc datele...",
+      "locked": false
+    },
+    {
+      "key": "settings_email",
+      "en": "Email",
+      "ro": "E-mail",
+      "locked": false
+    },
+    {
+      "key": "settings_location_services",
+      "en": "Location Services",
+      "ro": "Servicii de localizare",
+      "locked": false
+    },
+    {
+      "key": "settings_notifications",
+      "en": "Notifications",
+      "ro": "Notificări",
+      "locked": false
+    },
+    {
+      "key": "settings_phone",
+      "en": "Phone",
+      "ro": "Telefon",
+      "locked": false
+    },
+    {
+      "key": "settings_preferences",
+      "en": "Preferences",
+      "ro": "Preferințe",
+      "locked": false
+    },
+    {
+      "key": "show_all",
+      "en": "Show All",
+      "ro": "Afișează tot",
+      "locked": false
+    },
+    {
+      "key": "showing_english_results",
+      "en": "Showing English results",
+      "ro": "Se afișează rezultatele în engleză",
+      "locked": false
+    },
+    {
+      "key": "specialties_label",
+      "en": "Specialties",
+      "ro": "Specialități",
+      "locked": false
+    },
+    {
+      "key": "specialties_title",
+      "en": "Specialties",
+      "ro": "Specialități",
+      "locked": false
+    },
+    {
+      "key": "specialty_label",
+      "en": "Specialty",
+      "ro": "Specialitate",
+      "locked": false
+    },
+    {
+      "key": "splash_tagline",
+      "en": "Healthcare, Verified.",
+      "ro": "Sănătate, Verificată.",
+      "locked": false
+    },
+    {
+      "key": "status_pending",
+      "en": "Pending",
+      "ro": "În așteptare",
+      "locked": false
+    },
+    {
+      "key": "status_unverified",
+      "en": "Unverified",
+      "ro": "Neverificat",
+      "locked": false
+    },
+    {
+      "key": "status_verified",
+      "en": "Verified",
+      "ro": "Verificat",
+      "locked": false
+    },
+    {
+      "key": "sub_acne",
+      "en": "Acne",
+      "ro": "Acnee",
+      "locked": false
+    },
+    {
+      "key": "sub_acute_illness_treatment",
+      "en": "Acute Illness Treatment",
+      "ro": "Tratamentul bolilor acute",
+      "locked": false
+    },
+    {
+      "key": "sub_anxiety",
+      "en": "Anxiety",
+      "ro": "Anxietate",
+      "locked": false
+    },
+    {
+      "key": "sub_arrhythmia",
+      "en": "Arrhythmia",
+      "ro": "Aritmie",
+      "locked": false
+    },
+    {
+      "key": "sub_arthritis",
+      "en": "Arthritis",
+      "ro": "Artrită",
+      "locked": false
+    },
+    {
+      "key": "sub_asthma",
+      "en": "Asthma",
+      "ro": "Astm",
+      "locked": false
+    },
+    {
+      "key": "sub_bipolar_disorder",
+      "en": "Bipolar Disorder",
+      "ro": "Tulburare bipolară",
+      "locked": false
+    },
+    {
+      "key": "sub_cataracts",
+      "en": "Cataracts",
+      "ro": "Cataractă",
+      "locked": false
+    },
+    {
+      "key": "sub_chemotherapy",
+      "en": "Chemotherapy",
+      "ro": "Chimioterapie",
+      "locked": false
+    },
+    {
+      "key": "sub_child_development",
+      "en": "Child Development",
+      "ro": "Dezvoltarea copilului",
+      "locked": false
+    },
+    {
+      "key": "sub_childhood_illness",
+      "en": "Childhood Illness",
+      "ro": "Boli ale copilăriei",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_disease_management",
+      "en": "Chronic Disease Management",
+      "ro": "Gestionarea bolilor cronice",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_kidney_disease",
+      "en": "Chronic Kidney Disease",
+      "ro": "Boală cronică de rinichi",
+      "locked": false
+    },
+    {
+      "key": "sub_copd",
+      "en": "COPD",
+      "ro": "BPOC",
+      "locked": false
+    },
+    {
+      "key": "sub_coronary_artery_disease",
+      "en": "Coronary Artery Disease",
+      "ro": "Boală coronariană",
+      "locked": false
+    },
+    {
+      "key": "sub_dementia",
+      "en": "Dementia",
+      "ro": "Demență",
+      "locked": false
+    },
+    {
+      "key": "sub_depression",
+      "en": "Depression",
+      "ro": "Depresie",
+      "locked": false
+    },
+    {
+      "key": "sub_diabetes",
+      "en": "Diabetes",
+      "ro": "Diabet",
+      "locked": false
+    },
+    {
+      "key": "sub_dialysis",
+      "en": "Dialysis",
+      "ro": "Dializă",
+      "locked": false
+    },
+    {
+      "key": "sub_eczema",
+      "en": "Eczema",
+      "ro": "Eczemă",
+      "locked": false
+    },
+    {
+      "key": "sub_endoscopy",
+      "en": "Endoscopy",
+      "ro": "Endoscopie",
+      "locked": false
+    },
+    {
+      "key": "sub_erectile_dysfunction",
+      "en": "Erectile Dysfunction",
+      "ro": "Disfuncție erectilă",
+      "locked": false
+    },
+    {
+      "key": "sub_fracture_treatment",
+      "en": "Fracture Treatment",
+      "ro": "Tratamentul fracturilor",
+      "locked": false
+    },
+    {
+      "key": "sub_general_consultation",
+      "en": "General Consultation",
+      "ro": "Consultație generală",
+      "locked": false
+    },
+    {
+      "key": "sub_glaucoma",
+      "en": "Glaucoma",
+      "ro": "Glaucom",
+      "locked": false
+    },
+    {
+      "key": "sub_headache",
+      "en": "Headache",
+      "ro": "Dureri de cap",
+      "locked": false
+    },
+    {
+      "key": "sub_hearing_loss",
+      "en": "Hearing Loss",
+      "ro": "Pierderea auzului",
+      "locked": false
+    },
+    {
+      "key": "sub_heart_failure",
+      "en": "Heart Failure",
+      "ro": "Insuficiență cardiacă",
+      "locked": false
+    },
+    {
+      "key": "sub_hormone_replacement",
+      "en": "Hormone Replacement",
+      "ro": "Terapie de substituție hormonală",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension",
+      "en": "Hypertension",
+      "ro": "Hipertensiune arterială",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension_mgmt",
+      "en": "Hypertension Management",
+      "ro": "Gestionarea hipertensiunii",
+      "locked": false
+    },
+    {
+      "key": "sub_incontinence",
+      "en": "Incontinence",
+      "ro": "Incontinență",
+      "locked": false
+    },
+    {
+      "key": "sub_infant_care",
+      "en": "Infant Care",
+      "ro": "Îngrijirea sugarului",
+      "locked": false
+    },
+    {
+      "key": "sub_inflammatory_bowel_disease",
+      "en": "Inflammatory Bowel Disease",
+      "ro": "Boală inflamatorie intestinală",
+      "locked": false
+    },
+    {
+      "key": "sub_interstitial_lung_disease",
+      "en": "Interstitial Lung Disease",
+      "ro": "Boală pulmonară interstițială",
+      "locked": false
+    },
+    {
+      "key": "sub_joint_replacement",
+      "en": "Joint Replacement",
+      "ro": "Proteză articulară",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_stones",
+      "en": "Kidney Stones",
+      "ro": "Pietre la rinichi",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_transplant",
+      "en": "Kidney Transplant",
+      "ro": "Transplant renal",
+      "locked": false
+    },
+    {
+      "key": "sub_liver_disease",
+      "en": "Liver Disease",
+      "ro": "Boli hepatice",
+      "locked": false
+    },
+    {
+      "key": "sub_lupus",
+      "en": "Lupus",
+      "ro": "Lupus",
+      "locked": false
+    },
+    {
+      "key": "sub_movement_disorders",
+      "en": "Movement Disorders",
+      "ro": "Tulburări de mișcare",
+      "locked": false
+    },
+    {
+      "key": "sub_pain_management",
+      "en": "Pain Management",
+      "ro": "Gestionarea durerii",
+      "locked": false
+    },
+    {
+      "key": "sub_palliative_care",
+      "en": "Palliative Care",
+      "ro": "Îngrijire paliativă",
+      "locked": false
+    },
+    {
+      "key": "sub_peptic_ulcer",
+      "en": "Peptic Ulcer",
+      "ro": "Ulcer peptic",
+      "locked": false
+    },
+    {
+      "key": "sub_post_operative_care",
+      "en": "Post-operative Care",
+      "ro": "Îngrijire postoperatorie",
+      "locked": false
+    },
+    {
+      "key": "sub_pre_operative_assessment",
+      "en": "Pre-operative Assessment",
+      "ro": "Evaluare preoperatorie",
+      "locked": false
+    },
+    {
+      "key": "sub_preventive_care",
+      "en": "Preventive Care",
+      "ro": "Îngrijire preventivă",
+      "locked": false
+    },
+    {
+      "key": "sub_prostate_disease",
+      "en": "Prostate Disease",
+      "ro": "Boli ale prostatei",
+      "locked": false
+    },
+    {
+      "key": "sub_psoriasis",
+      "en": "Psoriasis",
+      "ro": "Psoriazis",
+      "locked": false
+    },
+    {
+      "key": "sub_radiation_therapy",
+      "en": "Radiation Therapy",
+      "ro": "Radioterapie",
+      "locked": false
+    },
+    {
+      "key": "sub_refractive_error",
+      "en": "Refractive Error",
+      "ro": "Viciu de refracție",
+      "locked": false
+    },
+    {
+      "key": "sub_retinal_disease",
+      "en": "Retinal Disease",
+      "ro": "Boli retiniene",
+      "locked": false
+    },
+    {
+      "key": "sub_schizophrenia",
+      "en": "Schizophrenia",
+      "ro": "Schizofrenie",
+      "locked": false
+    },
+    {
+      "key": "sub_sinusitis",
+      "en": "Sinusitis",
+      "ro": "Sinuzită",
+      "locked": false
+    },
+    {
+      "key": "sub_skin_cancer_screening",
+      "en": "Skin Cancer Screening",
+      "ro": "Screening pentru cancerul de piele",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_apnea",
+      "en": "Sleep Apnea",
+      "ro": "Apnee în somn",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_disorders",
+      "en": "Sleep Disorders",
+      "ro": "Tulburări de somn",
+      "locked": false
+    },
+    {
+      "key": "sub_spine_surgery",
+      "en": "Spine Surgery",
+      "ro": "Chirurgia coloanei vertebrale",
+      "locked": false
+    },
+    {
+      "key": "sub_sports_medicine",
+      "en": "Sports Medicine",
+      "ro": "Medicină sportivă",
+      "locked": false
+    },
+    {
+      "key": "sub_stroke",
+      "en": "Stroke",
+      "ro": "AVC",
+      "locked": false
+    },
+    {
+      "key": "sub_surgical_oncology",
+      "en": "Surgical Oncology",
+      "ro": "Chirurgie oncologică",
+      "locked": false
+    },
+    {
+      "key": "sub_thyroid_disease",
+      "en": "Thyroid Disease",
+      "ro": "Boli ale tiroidei",
+      "locked": false
+    },
+    {
+      "key": "sub_vaccination",
+      "en": "Vaccination",
+      "ro": "Vaccinare",
+      "locked": false
+    },
+    {
+      "key": "sub_vasculitis",
+      "en": "Vasculitis",
+      "ro": "Vasculită",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy",
+      "en": "Accuracy & Care",
+      "ro": "Acuratețe și grijă",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy_sub",
+      "en": "Was your prescription prepared correctly?",
+      "ro": "A fost rețeta pregătită corect?",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency",
+      "en": "Administrative Efficiency",
+      "ro": "Eficiență administrativă",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency_sub",
+      "en": "Were admission and discharge smooth?",
+      "ro": "Internarea și externarea au decurs fără probleme?",
+      "locked": false
+    },
+    {
+      "key": "survey_aesthetics",
+      "en": "Aesthetic Clinic",
+      "ro": "Clinică de estetică",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare",
+      "en": "Aftercare",
+      "ro": "Îngrijire ulterioară",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare_sub",
+      "en": "Were aftercare instructions and follow-up clearly explained?",
+      "ro": "Au fost explicate clar instrucțiunile de îngrijire ulterioară și de urmărire?",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner",
+      "en": "Bedside Manner",
+      "ro": "Interacțiunea cu pacientul",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner_sub",
+      "en": "Did the doctor listen and explain clearly?",
+      "ro": "Medicul a ascultat și a explicat clar?",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality",
+      "en": "Care Quality",
+      "ro": "Calitatea îngrijirii",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality_sub",
+      "en": "How would you rate the medical care?",
+      "ro": "Cum ai evalua îngrijirea medicală?",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "ro": "Igiena clinicii",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene_sub",
+      "en": "Was the clinic clean and hygienic?",
+      "ro": "A fost clinica curată și igienizată?",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity",
+      "en": "Communication Clarity",
+      "ro": "Claritatea comunicării",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity_sub",
+      "en": "Were treatment plans explained clearly?",
+      "ro": "Au fost explicate clar planurile de tratament?",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality",
+      "en": "Consultation Quality",
+      "ro": "Calitatea consultației",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality_sub",
+      "en": "Were procedure risks and outcomes explained?",
+      "ro": "Au fost explicate riscurile și rezultatele procedurii?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental",
+      "en": "Dental",
+      "ro": "Stomatologie",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_bedside_sub",
+      "en": "Did the dentist communicate clearly?",
+      "ro": "A comunicat clar medicul stomatolog?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_hygiene_sub",
+      "en": "Were treatment rooms and equipment clean?",
+      "ro": "Sălile de tratament și echipamentele au fost curate?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_wait_sub",
+      "en": "How quickly were you seated?",
+      "ro": "Cât de repede ai fost așezat?",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic",
+      "en": "Diagnostic Center",
+      "ro": "Centru de diagnostic",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic_wait_sub",
+      "en": "How quickly were you called for your test?",
+      "ro": "Cât de repede ai fost chemat pentru test?",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy",
+      "en": "Empathy & Listening",
+      "ro": "Empatie și ascultare",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy_sub",
+      "en": "Did you feel truly heard?",
+      "ro": "Te-ai simțit ascultat cu adevărat?",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort",
+      "en": "Environment Comfort",
+      "ro": "Confortul mediului",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort_sub",
+      "en": "Was the office peaceful and private?",
+      "ro": "A fost cabinetul liniștit și privat?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment",
+      "en": "Facility Equipment",
+      "ro": "Echipamentele unității",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment_sub",
+      "en": "Was the facility well-equipped?",
+      "ro": "Unitatea a fost bine echipată?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene",
+      "en": "Facility Hygiene",
+      "ro": "Igiena unității",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene_sub",
+      "en": "Was the facility clean and hygienic?",
+      "ro": "Unitatea a fost curată și igienizată?",
+      "locked": false
+    },
+    {
+      "key": "survey_general_clinic",
+      "en": "General Clinic",
+      "ro": "Clinică generală",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital",
+      "en": "Hospital",
+      "ro": "Spital",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital_wait_sub",
+      "en": "How quickly were you seen by a doctor?",
+      "ro": "Cât de repede ai fost consultat de un medic?",
+      "locked": false
+    },
+    {
+      "key": "survey_mental_health",
+      "en": "Mental Health",
+      "ro": "Sănătate mintală",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management",
+      "en": "Pain Management",
+      "ro": "Gestionarea durerii",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management_sub",
+      "en": "How well did they manage pain?",
+      "ro": "Cât de bine au gestionat durerea?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge",
+      "en": "Pharmacist Knowledge",
+      "ro": "Cunoștințele farmacistului",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge_sub",
+      "en": "Did the pharmacist answer your questions well?",
+      "ro": "Farmacistul a răspuns bine întrebărilor tale?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacy",
+      "en": "Pharmacy",
+      "ro": "Farmacie",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort",
+      "en": "Procedure Comfort",
+      "ro": "Confortul procedurii",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort_sub",
+      "en": "Did staff make the procedure comfortable?",
+      "ro": "A asigurat personalul confortul procedurii?",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality",
+      "en": "Punctuality",
+      "ro": "Punctualitate",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality_sub",
+      "en": "Did your session start on time?",
+      "ro": "A început sesiunea ta la timp?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_effectiveness_sub",
+      "en": "Did sessions improve mobility or reduce pain?",
+      "ro": "Au îmbunătățit sesiunile mobilitatea sau au redus durerea?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_wait_sub",
+      "en": "How quickly did your session start?",
+      "ro": "Cât de repede a început sesiunea ta?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehabilitation",
+      "en": "Rehabilitation",
+      "ro": "Recuperare",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction",
+      "en": "Result Satisfaction",
+      "ro": "Satisfacția față de rezultat",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction_sub",
+      "en": "Are you satisfied with the results?",
+      "ro": "Ești mulțumit de rezultate?",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed",
+      "en": "Result Speed",
+      "ro": "Viteza rezultatelor",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed_sub",
+      "en": "Were results delivered on time?",
+      "ro": "Rezultatele au fost livrate la timp?",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene",
+      "en": "Room Hygiene",
+      "ro": "Igiena camerei",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene_sub",
+      "en": "Were rooms and areas clean?",
+      "ro": "Au fost camerele și zonele curate?",
+      "locked": false
+    },
+    {
+      "key": "survey_speed",
+      "en": "Speed",
+      "ro": "Viteză",
+      "locked": false
+    },
+    {
+      "key": "survey_speed_sub",
+      "en": "How quickly were you served?",
+      "ro": "Cât de repede ai fost servit?",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy",
+      "en": "Staff Courtesy",
+      "ro": "Amabilitatea personalului",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy_sub",
+      "en": "Was the staff polite?",
+      "ro": "A fost personalul politicos?",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness",
+      "en": "Therapist Attentiveness",
+      "ro": "Atenția terapeutului",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness_sub",
+      "en": "Did the therapist monitor and adapt?",
+      "ro": "Terapeutul a monitorizat și s-a adaptat?",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "ro": "Eficacitatea tratamentului",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness_sub",
+      "en": "Did the treatment resolve your issue?",
+      "ro": "Tratamentul ți-a rezolvat problema?",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time",
+      "en": "Waiting Time",
+      "ro": "Timp de așteptare",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time_sub",
+      "en": "How long did you wait after your appointment time?",
+      "ro": "Cât ai așteptat după ora programată?",
+      "locked": false
+    },
+    {
+      "key": "switch_category_hint",
+      "en": "Try switching category.",
+      "ro": "Încearcă să schimbi categoria.",
+      "locked": false
+    },
+    {
+      "key": "switch_to_list",
+      "en": "Switch to list view for more results.",
+      "ro": "Comută la vizualizarea listă pentru mai multe rezultate.",
+      "locked": false
+    },
+    {
+      "key": "tab_badge_plus",
+      "en": "Plus",
+      "ro": "PLUS",
+      "locked": false
+    },
+    {
+      "key": "tab_discover",
+      "en": "Find",
+      "ro": "Găsește",
+      "locked": false
+    },
+    {
+      "key": "tab_guide",
+      "en": "Guide",
+      "ro": "Ghid",
+      "locked": false
+    },
+    {
+      "key": "tab_profile",
+      "en": "Profile",
+      "ro": "Profil",
+      "locked": false
+    },
+    {
+      "key": "tab_review",
+      "en": "Review",
+      "ro": "Evaluează",
+      "locked": false
+    },
+    {
+      "key": "tagline",
+      "en": "Healthcare, Verified.",
+      "ro": "Sănătate, Verificată.",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_facilities",
+      "en": "Facilities",
+      "ro": "Unități",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_specialties",
+      "en": "Specialties",
+      "ro": "Specialități",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_treatments",
+      "en": "Treatments",
+      "ro": "Tratamente",
+      "locked": false
+    },
+    {
+      "key": "top_picks",
+      "en": "Top Picks",
+      "ro": "Recomandări",
+      "locked": false
+    },
+    {
+      "key": "tos_account_1",
+      "en": "You are responsible for maintaining the confidentiality of your credentials and activity under your account.",
+      "ro": "Ești responsabil pentru menținerea confidențialității acreditărilor tale și a activității din contul tău.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_2",
+      "en": "We may suspend or terminate accounts that violate these terms, applicable law, or platform safety requirements.",
+      "ro": "Putem suspenda sau închide conturile care încalcă acești termeni, legile aplicabile sau cerințele de siguranță ale platformei.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_title",
+      "en": "Accounts and Access",
+      "ro": "Conturi și acces",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_1",
+      "en": "Questions about these Terms can be sent to support@trustcare.app.",
+      "ro": "Întrebările referitoare la acești Termeni pot fi trimise la support@trustcare.app.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_2",
+      "en": "By continuing to use the service, you acknowledge that you have read and agreed to these Terms.",
+      "ro": "Continuând să folosești serviciul, recunoști că ai citit și ai acceptat acești Termeni.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_title",
+      "en": "Contact",
+      "ro": "Contact",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_1",
+      "en": "These Terms are governed by applicable laws of the jurisdiction where the service operator is established, unless local mandatory law provides otherwise.",
+      "ro": "Acești Termeni sunt guvernați de legile aplicabile din jurisdicția unde este stabilit operatorul serviciului, cu excepția cazului în care legislația locală obligatorie prevede altfel.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_2",
+      "en": "Before initiating formal proceedings, you agree to contact us in good faith to seek an informal resolution.",
+      "ro": "Înainte de a iniția proceduri formale, ești de acord să ne contactezi cu bună-credință pentru a căuta o rezolvare informală.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_title",
+      "en": "Disputes and Governing Law",
+      "ro": "Dispute și legislația aplicabilă",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_1",
+      "en": "All platform content, branding, and software are owned by TrustCare or licensed to us, unless otherwise stated.",
+      "ro": "Tot conținutul platformei, brandingul și software-ul sunt deținute de TrustCare sau ne sunt licențiate, cu excepția cazului în care se specifică altfel.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_2",
+      "en": "You may not copy, scrape, reverse engineer, or redistribute platform content beyond permitted legal use.",
+      "ro": "Nu ai voie să copiezi, să extragi, să decodifici (reverse engineer) sau să redistribui conținutul platformei dincolo de utilizarea legală permisă.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_title",
+      "en": "Intellectual Property",
+      "ro": "Proprietate intelectuală",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_1",
+      "en": "Rehber provides informational guidance only and does not provide medical diagnosis, treatment, or emergency response.",
+      "ro": "Rehber oferă doar îndrumări informative și nu oferă diagnostic medical, tratament sau intervenție de urgență.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_2",
+      "en": "In urgent or life-threatening situations, contact local emergency services immediately.",
+      "ro": "În situații urgente sau care pun viața în pericol, contactează imediat serviciile locale de urgență.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_3",
+      "en": "You remain responsible for healthcare decisions and should consult qualified medical professionals.",
+      "ro": "Rămâi responsabil pentru deciziile referitoare la asistența medicală și ar trebui să consulți profesioniști medicali calificați.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_title",
+      "en": "Rehber (AI Guidance) Disclaimer",
+      "ro": "Disclaimer Rehber (Îndrumare AI)",
+      "locked": false
+    },
+    {
+      "key": "tos_review_1",
+      "en": "Reviews must reflect genuine, firsthand experiences and must not include harassment, hate speech, or unlawful content.",
+      "ro": "Recenziile trebuie să reflecte experiențe autentice, directe și nu trebuie să includă hărțuire, discurs instigator la ură sau conținut ilegal.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_2",
+      "en": "By submitting content, you grant TrustCare a license to host, display, and moderate that content for service operation.",
+      "ro": "Prin trimiterea conținutului, acorzi TrustCare o licență de a găzdui, afișa și modera acel conținut pentru funcționarea serviciului.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_3",
+      "en": "We may remove, limit, or flag content that violates policy, legal obligations, or trust and safety standards.",
+      "ro": "Putem elimina, limita sau marca conținutul care încalcă politicile, obligațiile legale sau standardele de încredere și siguranță.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_title",
+      "en": "Reviews and Community Content",
+      "ro": "Recenzii și conținutul comunității",
+      "locked": false
+    },
+    {
+      "key": "tos_service_1",
+      "en": "TrustCare provides healthcare discovery, review features, and informational guidance tools for general consumer use.",
+      "ro": "TrustCare oferă descoperire în domeniul sănătății, funcții de recenzie și instrumente de orientare informativă pentru uzul general al consumatorilor.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_2",
+      "en": "Service availability, features, and access may change over time; we may update or discontinue parts of the service without prior notice.",
+      "ro": "Disponibilitatea serviciului, funcțiile și accesul se pot schimba în timp; putem actualiza sau întrerupe părți ale serviciului fără notificare prealabilă.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_title",
+      "en": "Service Overview",
+      "ro": "Prezentare generală a serviciului",
+      "locked": false
+    },
+    {
+      "key": "tos_user_1",
+      "en": "You agree to provide accurate information and use the platform lawfully, respectfully, and in good faith.",
+      "ro": "Ești de acord să furnizezi informații precise și să utilizezi platforma în mod legal, respectuos și cu bună-credință.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_2",
+      "en": "You must not attempt to abuse the platform, bypass security controls, or interfere with other users.",
+      "ro": "Nu trebuie să încerci să abuzezi platforma, să ocolești controalele de securitate sau să interferezi cu alți utilizatori.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_3",
+      "en": "You are responsible for content you submit and for complying with applicable local laws and regulations.",
+      "ro": "Ești responsabil pentru conținutul pe care îl trimiți și pentru respectarea legilor și reglementărilor locale aplicabile.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_title",
+      "en": "User Responsibilities",
+      "ro": "Responsabilitățile utilizatorului",
+      "locked": false
+    },
+    {
+      "key": "try_english_keywords",
+      "en": "Try English keywords or check spelling.",
+      "ro": "Încearcă cuvinte cheie în engleză sau verifică ortografia.",
+      "locked": false
+    },
+    {
+      "key": "try_nearby_city",
+      "en": "Try a nearby city.",
+      "ro": "Încearcă un oraș din apropiere.",
+      "locked": false
+    },
+    {
+      "key": "unauthorized_area",
+      "en": "Unknown area",
+      "ro": "Zonă necunoscută",
+      "locked": false
+    },
+    {
+      "key": "unknown_provider",
+      "en": "Unknown Provider",
+      "ro": "Furnizor necunoscut",
+      "locked": false
+    },
+    {
+      "key": "use_device_location",
+      "en": "Use device location",
+      "ro": "Folosește locația dispozitivului",
+      "locked": false
+    },
+    {
+      "key": "verified_badge",
+      "en": "Verified",
+      "ro": "Verificat",
+      "locked": false
+    },
+    {
+      "key": "visit_type_checkup",
+      "en": "Checkup",
+      "ro": "Control",
+      "locked": false
+    },
+    {
+      "key": "visit_type_emergency",
+      "en": "Emergency",
+      "ro": "Urgență",
+      "locked": false
+    },
+    {
+      "key": "visit_type_examination",
+      "en": "Examination",
+      "ro": "Examinare",
+      "locked": false
+    },
+    {
+      "key": "visit_type_procedure",
+      "en": "Procedure",
+      "ro": "Procedură",
+      "locked": false
+    },
+    {
+      "key": "widen_map_area",
+      "en": "Widen the map area and search again.",
+      "ro": "Mărește zona hărții și caută din nou.",
+      "locked": false
+    }
+  ]
+}

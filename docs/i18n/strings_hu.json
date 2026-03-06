@@ -1,0 +1,3528 @@
+{
+  "meta": {
+    "app": "TrustCare",
+    "source": "strings_en_bulletproof.json",
+    "target_language": "hu",
+    "generated_at": "2026-03-06T01:39:18Z",
+    "entry_count": 584,
+    "instructions": [
+      "Fill 'hu' for entries where locked=false.",
+      "Do NOT change 'key' or 'en'.",
+      "Keep placeholders EXACTLY (%@, %d, %lld, %1$@, %#@... etc).",
+      "If locked=true, leave the translation as-is."
+    ],
+    "validated_at": "2026-03-06T02:47:54Z",
+    "validated_by": "ChatGPT",
+    "quality_notes": [
+      "Standardized PLUS badge casing.",
+      "Shortened verified-only label for UI fit.",
+      "Adjusted a couple of HU UI labels for consistent casing."
+    ]
+  },
+  "entries": [
+    {
+      "key": "%@ %@",
+      "en": "%1$@ %2$@",
+      "hu": "%1$@ %2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@",
+      "en": "%1$@%2$@",
+      "hu": "%1$@%2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@ - %@%@",
+      "en": "%1$@%2$@ - %3$@%4$@",
+      "hu": "%1$@%2$@ - %3$@%4$@",
+      "locked": true
+    },
+    {
+      "key": "%lld%% %@",
+      "en": "%1$lld%% %2$@",
+      "hu": "%1$lld%% %2$@",
+      "locked": true
+    },
+    {
+      "key": "%lld/%lld",
+      "en": "%1$lld/%2$lld",
+      "hu": "%1$lld/%2$lld",
+      "locked": true
+    },
+    {
+      "key": "accessibility_rating_hint",
+      "en": "Swipe up or down to adjust rating",
+      "hu": "Csúsztassa felfelé vagy lefelé az értékelés beállításához",
+      "locked": false
+    },
+    {
+      "key": "action_dismiss",
+      "en": "Dismiss",
+      "hu": "Bezárás",
+      "locked": false
+    },
+    {
+      "key": "action_retry",
+      "en": "Retry",
+      "hu": "Újrapróbálkozás",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_list",
+      "en": "Switch to list view",
+      "hu": "Váltás listanézetre",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_map",
+      "en": "Switch to map view",
+      "hu": "Váltás térképnézetre",
+      "locked": false
+    },
+    {
+      "key": "add_provider_add",
+      "en": "Add",
+      "hu": "Hozzáadás",
+      "locked": false
+    },
+    {
+      "key": "add_provider_address",
+      "en": "Address",
+      "hu": "Cím",
+      "locked": false
+    },
+    {
+      "key": "add_provider_cancel",
+      "en": "Cancel",
+      "hu": "Mégse",
+      "locked": false
+    },
+    {
+      "key": "add_provider_geocode_error",
+      "en": "Could not find coordinates for this address.",
+      "hu": "Nem találhatók koordináták ehhez a címhez.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_is_this",
+      "en": "Is this provider a...",
+      "hu": "Ez a szolgáltató egy...",
+      "locked": false
+    },
+    {
+      "key": "add_provider_location",
+      "en": "Location",
+      "hu": "Helyszín",
+      "locked": false
+    },
+    {
+      "key": "add_provider_map_pin",
+      "en": "Set map pin",
+      "hu": "Térképtű elhelyezése",
+      "locked": false
+    },
+    {
+      "key": "add_provider_name",
+      "en": "Provider Name",
+      "hu": "Szolgáltató neve",
+      "locked": false
+    },
+    {
+      "key": "add_provider_no_address",
+      "en": "Please enter an address.",
+      "hu": "Kérjük, adjon meg egy címet.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone",
+      "en": "Phone (optional)",
+      "hu": "Telefon (opcionális)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone_optional",
+      "en": "Phone (optional)",
+      "hu": "Telefon (opcionális)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_provider_information",
+      "en": "Provider information",
+      "hu": "Szolgáltató adatai",
+      "locked": false
+    },
+    {
+      "key": "add_provider_section",
+      "en": "Provider Information",
+      "hu": "Szolgáltató Adatai",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select",
+      "en": "Select",
+      "hu": "Kiválasztás",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty",
+      "en": "Select Specialty",
+      "hu": "Szakterület kiválasztása",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty_error",
+      "en": "Please select a specialty.",
+      "hu": "Kérjük, válasszon egy szakterületet.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_set_map_pin",
+      "en": "Set map pin",
+      "hu": "Térképtű elhelyezése",
+      "locked": false
+    },
+    {
+      "key": "add_provider_specialty",
+      "en": "Specialty",
+      "hu": "Szakterület",
+      "locked": false
+    },
+    {
+      "key": "add_provider_title",
+      "en": "Add Provider",
+      "hu": "Szolgáltató Hozzáadása",
+      "locked": false
+    },
+    {
+      "key": "all",
+      "en": "All",
+      "hu": "Összes",
+      "locked": false
+    },
+    {
+      "key": "all_results",
+      "en": "All",
+      "hu": "Összes",
+      "locked": false
+    },
+    {
+      "key": "app_language",
+      "en": "App Language",
+      "hu": "Alkalmazás nyelve",
+      "locked": false
+    },
+    {
+      "key": "app_name",
+      "en": "TrustCare",
+      "hu": "TrustCare",
+      "locked": false
+    },
+    {
+      "key": "bul_growing_here_label",
+      "en": "TrustCare is growing here",
+      "hu": "A TrustCare itt terjeszkedik",
+      "locked": false
+    },
+    {
+      "key": "button_add",
+      "en": "Add",
+      "hu": "Hozzáadás",
+      "locked": false
+    },
+    {
+      "key": "button_back",
+      "en": "Back",
+      "hu": "Vissza",
+      "locked": false
+    },
+    {
+      "key": "button_call",
+      "en": "Call",
+      "hu": "Hívás",
+      "locked": false
+    },
+    {
+      "key": "button_cancel",
+      "en": "Cancel",
+      "hu": "Mégse",
+      "locked": false
+    },
+    {
+      "key": "button_continue",
+      "en": "Continue",
+      "hu": "Folytatás",
+      "locked": false
+    },
+    {
+      "key": "button_delete",
+      "en": "Delete",
+      "hu": "Törlés",
+      "locked": false
+    },
+    {
+      "key": "button_directions",
+      "en": "Directions",
+      "hu": "Útvonal",
+      "locked": false
+    },
+    {
+      "key": "button_done",
+      "en": "Done",
+      "hu": "Kész",
+      "locked": false
+    },
+    {
+      "key": "button_edit",
+      "en": "Edit",
+      "hu": "Szerkesztés",
+      "locked": false
+    },
+    {
+      "key": "button_ok",
+      "en": "OK",
+      "hu": "OK",
+      "locked": false
+    },
+    {
+      "key": "button_remove",
+      "en": "Remove",
+      "hu": "Eltávolítás",
+      "locked": false
+    },
+    {
+      "key": "button_review",
+      "en": "Review",
+      "hu": "Értékelés",
+      "locked": false
+    },
+    {
+      "key": "button_save",
+      "en": "Save",
+      "hu": "Mentés",
+      "locked": false
+    },
+    {
+      "key": "button_submit",
+      "en": "Submit",
+      "hu": "Küldés",
+      "locked": false
+    },
+    {
+      "key": "category_aesthetic_cosmetic",
+      "en": "Aesthetic & Cosmetic",
+      "hu": "Esztétika és Kozmetika",
+      "locked": false
+    },
+    {
+      "key": "category_alternative",
+      "en": "Alternative",
+      "hu": "Alternatív",
+      "locked": false
+    },
+    {
+      "key": "category_anesthesiology",
+      "en": "Anesthesiology",
+      "hu": "Aneszteziológia",
+      "locked": false
+    },
+    {
+      "key": "category_cardiology",
+      "en": "Cardiology",
+      "hu": "Kardiológia",
+      "locked": false
+    },
+    {
+      "key": "category_dental",
+      "en": "Dental",
+      "hu": "Fogászat",
+      "locked": false
+    },
+    {
+      "key": "category_dermatology",
+      "en": "Dermatology",
+      "hu": "Bőrgyógyászat",
+      "locked": false
+    },
+    {
+      "key": "category_diagnostic",
+      "en": "Diagnostic",
+      "hu": "Diagnosztika",
+      "locked": false
+    },
+    {
+      "key": "category_emergency",
+      "en": "Emergency",
+      "hu": "Sürgősségi",
+      "locked": false
+    },
+    {
+      "key": "category_endocrinology",
+      "en": "Endocrinology",
+      "hu": "Endokrinológia",
+      "locked": false
+    },
+    {
+      "key": "category_ent",
+      "en": "Ear, Nose & Throat",
+      "hu": "Fül-orr-gégészet",
+      "locked": false
+    },
+    {
+      "key": "category_eye_care",
+      "en": "Eye Care",
+      "hu": "Szemészet",
+      "locked": false
+    },
+    {
+      "key": "category_gastroenterology",
+      "en": "Gastroenterology",
+      "hu": "Gasztronenterológia",
+      "locked": false
+    },
+    {
+      "key": "category_general_practice",
+      "en": "General Practice",
+      "hu": "Általános Orvoslás",
+      "locked": false
+    },
+    {
+      "key": "category_hospital",
+      "en": "Hospital",
+      "hu": "Kórház",
+      "locked": false
+    },
+    {
+      "key": "category_medical_specialties",
+      "en": "Medical Specialties",
+      "hu": "Orvosi Szakterületek",
+      "locked": false
+    },
+    {
+      "key": "category_mental_health",
+      "en": "Mental Health",
+      "hu": "Mentálhigiéné",
+      "locked": false
+    },
+    {
+      "key": "category_nephrology",
+      "en": "Nephrology",
+      "hu": "Nefrológia",
+      "locked": false
+    },
+    {
+      "key": "category_neurology",
+      "en": "Neurology",
+      "hu": "Neurológia",
+      "locked": false
+    },
+    {
+      "key": "category_oncology",
+      "en": "Oncology",
+      "hu": "Onkológia",
+      "locked": false
+    },
+    {
+      "key": "category_ophthalmology",
+      "en": "Ophthalmology",
+      "hu": "Szemészet",
+      "locked": false
+    },
+    {
+      "key": "category_orthopedics",
+      "en": "Orthopedics",
+      "hu": "Ortopédia",
+      "locked": false
+    },
+    {
+      "key": "category_other",
+      "en": "Other",
+      "hu": "Egyéb",
+      "locked": false
+    },
+    {
+      "key": "category_pediatrics",
+      "en": "Pediatrics",
+      "hu": "Gyermekgyógyászat",
+      "locked": false
+    },
+    {
+      "key": "category_pharmacy",
+      "en": "Pharmacy",
+      "hu": "Gyógyszertár",
+      "locked": false
+    },
+    {
+      "key": "category_primary_care",
+      "en": "Primary Care",
+      "hu": "Alapellátás",
+      "locked": false
+    },
+    {
+      "key": "category_psychiatry",
+      "en": "Psychiatry",
+      "hu": "Pszichiátria",
+      "locked": false
+    },
+    {
+      "key": "category_pulmonology",
+      "en": "Pulmonology",
+      "hu": "Pulmonológia",
+      "locked": false
+    },
+    {
+      "key": "category_rehabilitation",
+      "en": "Rehabilitation",
+      "hu": "Rehabilitáció",
+      "locked": false
+    },
+    {
+      "key": "category_rheumatology",
+      "en": "Rheumatology",
+      "hu": "Reumatológia",
+      "locked": false
+    },
+    {
+      "key": "category_surgical",
+      "en": "Surgical",
+      "hu": "Sebészet",
+      "locked": false
+    },
+    {
+      "key": "category_urology",
+      "en": "Urology",
+      "hu": "Urológia",
+      "locked": false
+    },
+    {
+      "key": "category_womens_health",
+      "en": "Women's Health",
+      "hu": "Női Egészség",
+      "locked": false
+    },
+    {
+      "key": "chip_distance",
+      "en": "Distance",
+      "hu": "Távolság",
+      "locked": false
+    },
+    {
+      "key": "chip_facility",
+      "en": "Facility",
+      "hu": "Intézmény",
+      "locked": false
+    },
+    {
+      "key": "chip_language",
+      "en": "Language",
+      "hu": "Nyelv",
+      "locked": false
+    },
+    {
+      "key": "chip_specialty",
+      "en": "Specialty",
+      "hu": "Szakterület",
+      "locked": false
+    },
+    {
+      "key": "chip_treatment",
+      "en": "Treatment",
+      "hu": "Kezelés",
+      "locked": false
+    },
+    {
+      "key": "claim_accepted_docs",
+      "en": "Accepted: Medical license, registration certificate, or official ID",
+      "hu": "Elfogadva: Orvosi engedély, nyilvántartási igazolás vagy hivatalos azonosító",
+      "locked": false
+    },
+    {
+      "key": "claim_back_to_provider",
+      "en": "Back to Provider",
+      "hu": "Vissza a szolgáltatóhoz",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_1",
+      "en": "You are authorized to manage this profile",
+      "hu": "Ön jogosult ezen profil kezelésére",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_2",
+      "en": "All information provided is accurate",
+      "hu": "Minden megadott információ pontos",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_text",
+      "en": "By submitting, you confirm that:",
+      "hu": "A küldéssel megerősíti, hogy:",
+      "locked": false
+    },
+    {
+      "key": "claim_description",
+      "en": "Claim this profile to manage it",
+      "hu": "Igényelje ezt a profilt a kezeléséhez",
+      "locked": false
+    },
+    {
+      "key": "claim_file_format",
+      "en": "JPG or PNG, max 10 MB",
+      "hu": "JPG vagy PNG, max 10 MB",
+      "locked": false
+    },
+    {
+      "key": "claim_pending",
+      "en": "Claim Pending",
+      "hu": "Igénylés folyamatban",
+      "locked": false
+    },
+    {
+      "key": "claim_pending_message",
+      "en": "Your claim is being reviewed.",
+      "hu": "Az igénylése elbírálás alatt áll.",
+      "locked": false
+    },
+    {
+      "key": "claim_profile",
+      "en": "Claim Profile",
+      "hu": "Profil Igénylése",
+      "locked": false
+    },
+    {
+      "key": "claim_provider_label",
+      "en": "Provider",
+      "hu": "Szolgáltató",
+      "locked": false
+    },
+    {
+      "key": "claim_rejected",
+      "en": "Claim Rejected",
+      "hu": "Igénylés elutasítva",
+      "locked": false
+    },
+    {
+      "key": "claim_resubmit",
+      "en": "Resubmit",
+      "hu": "Újraküldés",
+      "locked": false
+    },
+    {
+      "key": "claim_review_submit",
+      "en": "Review & Submit",
+      "hu": "Áttekintés és Küldés",
+      "locked": false
+    },
+    {
+      "key": "claim_role_question",
+      "en": "What is your role at this practice?",
+      "hu": "Mi az Ön szerepe ebben a praxisban?",
+      "locked": false
+    },
+    {
+      "key": "claim_step_1_of_3",
+      "en": "Step 1 of 3",
+      "hu": "1. lépés a 3-ból",
+      "locked": false
+    },
+    {
+      "key": "claim_step_2_of_3",
+      "en": "Step 2 of 3",
+      "hu": "2. lépés a 3-ból",
+      "locked": false
+    },
+    {
+      "key": "claim_step_3_of_3",
+      "en": "Step 3 of 3",
+      "hu": "3. lépés a 3-ból",
+      "locked": false
+    },
+    {
+      "key": "claim_submit",
+      "en": "Submit Claim",
+      "hu": "Igénylés Küldése",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted",
+      "en": "Claim Submitted!",
+      "hu": "Igénylés elküldve!",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted_message",
+      "en": "We'll review your claim within 1-3 business days. You'll be notified when it's approved.",
+      "hu": "Igénylését 1-3 munkanapon belül elbíráljuk. Értesítjük, amint jóváhagyásra került.",
+      "locked": false
+    },
+    {
+      "key": "claim_tap_upload",
+      "en": "Tap to upload document",
+      "hu": "Koppintson a dokumentum feltöltéséhez",
+      "locked": false
+    },
+    {
+      "key": "claim_title",
+      "en": "Claim Profile",
+      "hu": "Profil Igénylése",
+      "locked": false
+    },
+    {
+      "key": "claim_upload_doc",
+      "en": "Upload verification document",
+      "hu": "Hitelesítő dokumentum feltöltése",
+      "locked": false
+    },
+    {
+      "key": "claim_verification_doc",
+      "en": "Verification Document",
+      "hu": "Hitelesítő Dokumentum",
+      "locked": false
+    },
+    {
+      "key": "claim_your_role",
+      "en": "Your Role",
+      "hu": "Az Ön szerepe",
+      "locked": false
+    },
+    {
+      "key": "clear_filter",
+      "en": "Clear Filter",
+      "hu": "Szűrő törlése",
+      "locked": false
+    },
+    {
+      "key": "close_button",
+      "en": "Close",
+      "hu": "Bezárás",
+      "locked": false
+    },
+    {
+      "key": "country_turkey",
+      "en": "Türkiye",
+      "hu": "Törökország",
+      "locked": false
+    },
+    {
+      "key": "cta_change_city",
+      "en": "Change city",
+      "hu": "Város módosítása",
+      "locked": false
+    },
+    {
+      "key": "cta_suggest_provider",
+      "en": "Suggest a provider",
+      "hu": "Szolgáltató javaslása",
+      "locked": false
+    },
+    {
+      "key": "current_location",
+      "en": "Current Location",
+      "hu": "Jelenlegi Hely",
+      "locked": false
+    },
+    {
+      "key": "date_today",
+      "en": "Today",
+      "hu": "Ma",
+      "locked": false
+    },
+    {
+      "key": "date_yesterday",
+      "en": "Yesterday",
+      "hu": "Tegnap",
+      "locked": false
+    },
+    {
+      "key": "default_city_name",
+      "en": "Adana",
+      "hu": "Adana",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_body",
+      "en": "There may be a connection issue. Please try again.",
+      "hu": "Kapcsolódási hiba léphetett fel. Kérjük, próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_title",
+      "en": "Providers could not be loaded",
+      "hu": "A szolgáltatókat nem sikerült betölteni",
+      "locked": false
+    },
+    {
+      "key": "discover_error_switch_to_list",
+      "en": "Switch to list view",
+      "hu": "Váltás listanézetre",
+      "locked": false
+    },
+    {
+      "key": "edit_review_comment_section",
+      "en": "Review",
+      "hu": "Értékelés",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title",
+      "en": "Edit Review",
+      "hu": "Értékelés Szerkesztése",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_placeholder",
+      "en": "Review title",
+      "hu": "Értékelés címe",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_section",
+      "en": "Title",
+      "hu": "Cím",
+      "locked": false
+    },
+    {
+      "key": "empty_home_cta",
+      "en": "Suggest a provider",
+      "hu": "Szolgáltató javaslása",
+      "locked": false
+    },
+    {
+      "key": "empty_home_title",
+      "en": "No providers in this area",
+      "hu": "Nincs szolgáltató ezen a területen",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_body",
+      "en": "Try searching another area or changing city.",
+      "hu": "Próbáljon meg másik területen keresni, vagy várost váltani.",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_title",
+      "en": "No providers available",
+      "hu": "Nincsenek elérhető szolgáltatók",
+      "locked": false
+    },
+    {
+      "key": "empty_search",
+      "en": "No results found",
+      "hu": "Nincs találat",
+      "locked": false
+    },
+    {
+      "key": "error_duplicate_review",
+      "en": "You can only submit one review per provider per date.",
+      "hu": "Szolgáltatónként és naponta csak egy értékelést küldhet be.",
+      "locked": false
+    },
+    {
+      "key": "error_generic",
+      "en": "Error",
+      "hu": "Hiba",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body",
+      "en": "Your connection may be unstable right now. Try again to load the list.",
+      "hu": "A kapcsolata jelenleg instabil lehet. Próbálja meg újra betölteni a listát.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body_generic",
+      "en": "Couldn't load providers. Please try again.",
+      "hu": "Nem sikerült betölteni a szolgáltatókat. Kérjük, próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_title",
+      "en": "Couldn't load providers",
+      "hu": "Nem sikerült betölteni a szolgáltatókat",
+      "locked": false
+    },
+    {
+      "key": "error_network",
+      "en": "A network issue occurred. Please check your connection and try again.",
+      "hu": "Hálózati probléma lépett fel. Kérjük, ellenőrizze a kapcsolatot, és próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_body",
+      "en": "Please check your connection and try again.",
+      "hu": "Kérjük, ellenőrizze a kapcsolatot, és próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_title",
+      "en": "Network error",
+      "hu": "Hálózati hiba",
+      "locked": false
+    },
+    {
+      "key": "error_offline_body",
+      "en": "It looks like you're offline. Check your connection and try again.",
+      "hu": "Úgy tűnik, offline állapotban van. Ellenőrizze a kapcsolatot, és próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "error_offline_title",
+      "en": "Couldn't load providers",
+      "hu": "Nem sikerült betölteni a szolgáltatókat",
+      "locked": false
+    },
+    {
+      "key": "error_unknown",
+      "en": "An unknown error occurred.",
+      "hu": "Ismeretlen hiba történt.",
+      "locked": false
+    },
+    {
+      "key": "filter_all",
+      "en": "All",
+      "hu": "Összes",
+      "locked": false
+    },
+    {
+      "key": "filter_apply",
+      "en": "Apply",
+      "hu": "Alkalmaz",
+      "locked": false
+    },
+    {
+      "key": "filter_button",
+      "en": "Filter",
+      "hu": "Szűrő",
+      "locked": false
+    },
+    {
+      "key": "filter_distance",
+      "en": "Distance",
+      "hu": "Távolság",
+      "locked": false
+    },
+    {
+      "key": "filter_facility",
+      "en": "Facility",
+      "hu": "Intézmény",
+      "locked": false
+    },
+    {
+      "key": "filter_facility_title",
+      "en": "Facility",
+      "hu": "Intézmény",
+      "locked": false
+    },
+    {
+      "key": "filter_language",
+      "en": "Language",
+      "hu": "Nyelv",
+      "locked": false
+    },
+    {
+      "key": "filter_language_title",
+      "en": "Language",
+      "hu": "Nyelv",
+      "locked": false
+    },
+    {
+      "key": "filter_more",
+      "en": "More",
+      "hu": "Több",
+      "locked": false
+    },
+    {
+      "key": "filter_reset",
+      "en": "Reset",
+      "hu": "Visszaállítás",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty",
+      "en": "Specialty",
+      "hu": "Szakterület",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty_title",
+      "en": "Specialty",
+      "hu": "Szakterület",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment",
+      "en": "Treatment",
+      "hu": "Kezelés",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment_title",
+      "en": "Treatment",
+      "hu": "Kezelés",
+      "locked": false
+    },
+    {
+      "key": "filter_verified",
+      "en": "Verified",
+      "hu": "Ellenőrzött",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_only_label",
+      "en": "Show only providers with verified reviews",
+      "hu": "Csak ellenőrzött értékelések",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_title",
+      "en": "Verified",
+      "hu": "Ellenőrzött",
+      "locked": false
+    },
+    {
+      "key": "find_empty_change_city",
+      "en": "Change city",
+      "hu": "Város módosítása",
+      "locked": false
+    },
+    {
+      "key": "find_empty_clear_filters",
+      "en": "Clear filters",
+      "hu": "Szűrők törlése",
+      "locked": false
+    },
+    {
+      "key": "find_empty_growing_here",
+      "en": "TrustCare is growing here",
+      "hu": "A TrustCare itt terjeszkedik",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_another_area",
+      "en": "Search another area",
+      "hu": "Keresés más területen",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_change_city",
+      "en": "Search another area / Change city",
+      "hu": "Keresés más területen / Város módosítása",
+      "locked": false
+    },
+    {
+      "key": "find_empty_suggest_provider",
+      "en": "Suggest a provider",
+      "hu": "Szolgáltató javaslása",
+      "locked": false
+    },
+    {
+      "key": "find_set_location",
+      "en": "Set location",
+      "hu": "Hely beállítása",
+      "locked": false
+    },
+    {
+      "key": "find_sheet_providers_title",
+      "en": "Providers",
+      "hu": "Szolgáltatók",
+      "locked": false
+    },
+    {
+      "key": "find_state_change_city",
+      "en": "Change city",
+      "hu": "Város módosítása",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_body",
+      "en": "Clear one or more filters, or move the map to expand results.",
+      "hu": "Töröljön egy vagy több szűrőt, vagy mozgassa a térképet a találatok bővítéséhez.",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_title",
+      "en": "No results match these filters",
+      "hu": "Nincs a szűrőknek megfelelő találat",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_body",
+      "en": "Coverage is expanding in this area. Try a nearby city for now.",
+      "hu": "A lefedettség bővül ezen a területen. Egyelőre próbáljon meg egy közeli várost.",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_title",
+      "en": "TrustCare is growing here",
+      "hu": "A TrustCare itt terjeszkedik",
+      "locked": false
+    },
+    {
+      "key": "find_state_no_providers_visible",
+      "en": "No providers visible in this map area",
+      "hu": "Nincsenek látható szolgáltatók ezen a térképrészen",
+      "locked": false
+    },
+    {
+      "key": "find_state_search_another_area",
+      "en": "Search another area",
+      "hu": "Keresés más területen",
+      "locked": false
+    },
+    {
+      "key": "find_state_try_another_area",
+      "en": "Try another area or pick a different city to continue.",
+      "hu": "Próbálkozzon más területtel, vagy válasszon másik várost a folytatáshoz.",
+      "locked": false
+    },
+    {
+      "key": "help_contact",
+      "en": "Contact",
+      "hu": "Kapcsolat",
+      "locked": false
+    },
+    {
+      "key": "help_email_label",
+      "en": "Email",
+      "hu": "E-mail",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a1",
+      "en": "Open Review, choose a provider, and complete the guided form.",
+      "hu": "Nyissa meg az Értékelést, válasszon egy szolgáltatót, és töltse ki az űrlapot.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a2",
+      "en": "Yes. Open My Reviews and tap Edit on your review.",
+      "hu": "Igen. Nyissa meg az Értékeléseim menüpontot, és koppintson a Szerkesztés gombra az értékelésénél.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a3",
+      "en": "Verified means the review passed our checks or includes supporting proof.",
+      "hu": "Az 'Ellenőrzött' azt jelenti, hogy az értékelés átment az ellenőrzéseinken, vagy tartalmaz bizonyító erejű dokumentumot.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a4",
+      "en": "Open the review and tap Report. Our team will review it.",
+      "hu": "Nyissa meg az értékelést, és koppintson a Jelentés gombra. Csapatunk felülvizsgálja.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a5",
+      "en": "Go to Settings and request deletion. We will confirm when completed.",
+      "hu": "Lépjen a Beállításokba, és kérje a törlést. Megerősítjük, amint elkészült.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a6",
+      "en": "Email support@trustcare.app with your app version and issue details.",
+      "hu": "Írjon e-mailt a support@trustcare.app címre az alkalmazás verziójával és a probléma részleteivel.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q1",
+      "en": "How do I add a review?",
+      "hu": "Hogyan adhatok hozzá értékelést?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q2",
+      "en": "Can I edit my review?",
+      "hu": "Módosíthatom az értékelésemet?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q3",
+      "en": "What does Verified mean?",
+      "hu": "Mit jelent az Ellenőrzött?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q4",
+      "en": "How do I report content?",
+      "hu": "Hogyan jelenthetek egy tartalmat?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q5",
+      "en": "How do I delete my account or data?",
+      "hu": "Hogyan törölhetem a fiókomat vagy az adataimat?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q6",
+      "en": "How can I contact support?",
+      "hu": "Hogyan léphetek kapcsolatba az ügyfélszolgálattal?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_title",
+      "en": "Help & Support",
+      "hu": "Súgó és Támogatás",
+      "locked": false
+    },
+    {
+      "key": "help_report_issue",
+      "en": "Report an issue",
+      "hu": "Probléma jelentése",
+      "locked": false
+    },
+    {
+      "key": "is_this_your_practice",
+      "en": "Is this your practice?",
+      "hu": "Ez az Ön praxisa?",
+      "locked": false
+    },
+    {
+      "key": "language_changed_alert",
+      "en": "Language Changed",
+      "hu": "Nyelv Megváltozott",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message",
+      "en": "The app needs to restart to apply the new language.",
+      "hu": "Az alkalmazásnak újra kell indulnia az új nyelv alkalmazásához.",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message_named %@",
+      "en": "The app will restart in %@. Continue?",
+      "hu": "Az alkalmazás újraindul %@ múlva. Folytatja?",
+      "locked": false
+    },
+    {
+      "key": "language_danish",
+      "en": "Dansk",
+      "hu": "Dansk",
+      "locked": false
+    },
+    {
+      "key": "language_done",
+      "en": "Done",
+      "hu": "Kész",
+      "locked": false
+    },
+    {
+      "key": "language_dutch",
+      "en": "Nederlands",
+      "hu": "Nederlands",
+      "locked": false
+    },
+    {
+      "key": "language_english",
+      "en": "English",
+      "hu": "English",
+      "locked": false
+    },
+    {
+      "key": "language_german",
+      "en": "Deutsch",
+      "hu": "Deutsch",
+      "locked": false
+    },
+    {
+      "key": "language_later",
+      "en": "Later",
+      "hu": "Később",
+      "locked": false
+    },
+    {
+      "key": "language_polish",
+      "en": "Polski",
+      "hu": "Polski",
+      "locked": false
+    },
+    {
+      "key": "language_restart_now",
+      "en": "Restart Now",
+      "hu": "Újraindítás Most",
+      "locked": false
+    },
+    {
+      "key": "language_section_title",
+      "en": "Language",
+      "hu": "Nyelv",
+      "locked": false
+    },
+    {
+      "key": "language_turkish",
+      "en": "Türkçe",
+      "hu": "Türkçe",
+      "locked": false
+    },
+    {
+      "key": "legal_translation_disclaimer",
+      "en": "Translation is provided for convenience; the English version prevails.",
+      "hu": "A fordítás a kényelmet szolgálja; az angol verzió az irányadó.",
+      "locked": false
+    },
+    {
+      "key": "legend_aesthetics",
+      "en": "Aesthetics",
+      "hu": "Esztétika",
+      "locked": false
+    },
+    {
+      "key": "legend_clinic",
+      "en": "Clinic",
+      "hu": "Klinika",
+      "locked": false
+    },
+    {
+      "key": "legend_dental",
+      "en": "Dental",
+      "hu": "Fogászat",
+      "locked": false
+    },
+    {
+      "key": "legend_hospital",
+      "en": "Hospital",
+      "hu": "Kórház",
+      "locked": false
+    },
+    {
+      "key": "legend_lab",
+      "en": "Lab",
+      "hu": "Labor",
+      "locked": false
+    },
+    {
+      "key": "legend_mental_health",
+      "en": "Mental Health",
+      "hu": "Mentálhigiéné",
+      "locked": false
+    },
+    {
+      "key": "legend_pharmacy",
+      "en": "Pharmacy",
+      "hu": "Gyógyszertár",
+      "locked": false
+    },
+    {
+      "key": "legend_rehab",
+      "en": "Rehab",
+      "hu": "Rehab",
+      "locked": false
+    },
+    {
+      "key": "location_select_title",
+      "en": "Select Location",
+      "hu": "Helyszín kiválasztása",
+      "locked": false
+    },
+    {
+      "key": "logout_confirm_message",
+      "en": "Are you sure you want to log out?",
+      "hu": "Biztosan ki akar jelentkezni?",
+      "locked": false
+    },
+    {
+      "key": "map_search_this_area",
+      "en": "Search this area",
+      "hu": "Keresés ezen a területen",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_list",
+      "en": "List",
+      "hu": "Lista",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_map",
+      "en": "Map",
+      "hu": "Térkép",
+      "locked": false
+    },
+    {
+      "key": "media_photo_count_%lld",
+      "en": "%lld of 5 photos",
+      "hu": "%lld / 5 fotó",
+      "locked": true
+    },
+    {
+      "key": "menu_help",
+      "en": "Help & Support",
+      "hu": "Súgó és Támogatás",
+      "locked": false
+    },
+    {
+      "key": "menu_logout",
+      "en": "Log Out",
+      "hu": "Kijelentkezés",
+      "locked": false
+    },
+    {
+      "key": "menu_my_reviews",
+      "en": "My Reviews",
+      "hu": "Értékeléseim",
+      "locked": false
+    },
+    {
+      "key": "menu_privacy",
+      "en": "Privacy Policy",
+      "hu": "Adatvédelmi Irányelvek",
+      "locked": false
+    },
+    {
+      "key": "menu_saved",
+      "en": "Saved",
+      "hu": "Mentett",
+      "locked": false
+    },
+    {
+      "key": "menu_settings",
+      "en": "Settings",
+      "hu": "Beállítások",
+      "locked": false
+    },
+    {
+      "key": "menu_terms",
+      "en": "Terms of Service",
+      "hu": "Szolgáltatási Feltételek",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_message",
+      "en": "This action cannot be undone.",
+      "hu": "Ez a művelet nem vonható vissza.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_title",
+      "en": "Delete Review?",
+      "hu": "Értékelés Törlése?",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_action",
+      "en": "Write a Review",
+      "hu": "Értékelés Írása",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_message",
+      "en": "Share your experience by posting your first review.",
+      "hu": "Ossza meg tapasztalatait az első értékelésének közzétételével.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_title",
+      "en": "No reviews yet",
+      "hu": "Még nincsenek értékelések",
+      "locked": false
+    },
+    {
+      "key": "no_results",
+      "en": "No results",
+      "hu": "Nincs találat",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_1",
+      "en": "If you have questions about this Privacy Policy or your personal data, contact us at support@trustcare.app.",
+      "hu": "Ha kérdése van az Adatvédelmi Irányelvekkel vagy a személyes adataival kapcsolatban, lépjen kapcsolatba velünk a support@trustcare.app címen.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_2",
+      "en": "If you are in the EEA/UK, you may also contact your local data protection authority.",
+      "hu": "Ha Ön az EGT/Egyesült Királyság területén tartózkodik, kapcsolatba léphet a helyi adatvédelmi hatósággal is.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_title",
+      "en": "Contact",
+      "hu": "Kapcsolat",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_1",
+      "en": "Our web surfaces may use cookies and local storage to keep sessions secure and improve performance.",
+      "hu": "A webes felületeink cookie-kat és helyi tárolást használhatnak a munkamenetek biztonságának megőrzése és a teljesítmény javítása érdekében.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_2",
+      "en": "You can control cookie preferences in your browser settings, though disabling them may affect functionality.",
+      "hu": "A cookie-k beállításait a böngésző beállításaiban kezelheti, bár a letiltásuk befolyásolhatja a funkcionalitást.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_3",
+      "en": "Analytics cookies are used in aggregate form to understand usage trends and improve the service.",
+      "hu": "Az analitikai cookie-kat összesített formában használjuk a használati trendek megértése és a szolgáltatás javítása érdekében.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_title",
+      "en": "Cookies and Similar Technologies",
+      "hu": "Cookie-k és Hasonló Technológiák",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_1",
+      "en": "We collect account data such as email, name, profile preferences, and authentication metadata.",
+      "hu": "Olyan fiókadatokat gyűjtünk, mint az e-mail cím, név, profil beállítások és hitelesítési metaadatok.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_2",
+      "en": "When you submit reviews, we collect ratings, comments, optional media, and optional verification artifacts.",
+      "hu": "Amikor értékeléseket küld be, összegyűjtjük a minősítéseket, a megjegyzéseket, az opcionális médiát és az opcionális ellenőrzési dokumentumokat.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_3",
+      "en": "We may process device and usage data including app events, approximate location, and diagnostics.",
+      "hu": "Feldolgozhatjuk az eszköz- és használati adatokat, beleértve az alkalmazás eseményeit, a hozzávetőleges helyet és a diagnosztikát.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_4",
+      "en": "We do not intentionally collect sensitive health records beyond the information you choose to submit.",
+      "hu": "Szándékosan nem gyűjtünk érzékeny egészségügyi nyilvántartásokat azon információkon túl, amelyeket Ön önként megad.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_title",
+      "en": "Data We Collect",
+      "hu": "Az Általunk Gyűjtött Adatok",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_1",
+      "en": "We share data with service providers that operate hosting, analytics, moderation, and communication systems.",
+      "hu": "Megosztunk adatokat olyan szolgáltatókkal, akik tárhelyet, elemzést, moderálást és kommunikációs rendszereket üzemeltetnek.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_2",
+      "en": "We may disclose information when required by law, regulation, legal process, or to protect users and platform integrity.",
+      "hu": "Felfedhetünk információkat, ha azt törvény, rendelet, jogi eljárás követeli meg, vagy a felhasználók és a platform integritásának védelme érdekében.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_3",
+      "en": "We do not sell personal data to third parties.",
+      "hu": "Nem adunk el személyes adatokat harmadik feleknek.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_title",
+      "en": "How We Share Data",
+      "hu": "Hogyan Osztjuk Meg az Adatokat",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_1",
+      "en": "We use personal data to provide core app functionality, personalize content, and maintain account security.",
+      "hu": "A személyes adatokat az alkalmazás alapvető funkcióinak biztosítására, a tartalom személyre szabására és a fiók biztonságának fenntartására használjuk.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_2",
+      "en": "We use submitted reviews and metadata for trust, safety, moderation, fraud prevention, and quality assurance.",
+      "hu": "A beküldött értékeléseket és metaadatokat a bizalom, a biztonság, a moderálás, a csalásmegelőzés és a minőségbiztosítás érdekében használjuk fel.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_3",
+      "en": "We may use aggregated and de-identified analytics to improve product experience and reliability.",
+      "hu": "Összesített és anonimizált analitikát használhatunk a termékélmény és a megbízhatóság javítására.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_title",
+      "en": "How We Use Data",
+      "hu": "Hogyan Használjuk az Adatokat",
+      "locked": false
+    },
+    {
+      "key": "pp_last_updated",
+      "en": "Last updated: March 2026",
+      "hu": "Utolsó frissítés: 2026. március",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_1",
+      "en": "Depending on your region, you may have rights to access, correct, export, restrict, or delete your personal data.",
+      "hu": "A régiójától függően joga lehet a személyes adataihoz való hozzáféréshez, azok helyesbítéséhez, exportálásához, korlátozásához vagy törléséhez.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_2",
+      "en": "You can update profile information directly in the app or request support for account-level actions.",
+      "hu": "Frissítheti a profilinformációkat közvetlenül az alkalmazásban, vagy kérhet támogatást a fiókszintű műveletekhez.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_3",
+      "en": "You may object to certain processing where applicable under local law.",
+      "hu": "A helyi törvényeknek megfelelően tiltakozhat bizonyos adatkezelések ellen.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_4",
+      "en": "To exercise your rights, contact support@trustcare.app and we will respond within the legally required timeframe.",
+      "hu": "A jogai gyakorlásához lépjen kapcsolatba a support@trustcare.app címmel, és a törvényben előírt időkereten belül válaszolunk.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_title",
+      "en": "Your Rights",
+      "hu": "Az Ön Jogai",
+      "locked": false
+    },
+    {
+      "key": "pp_security_1",
+      "en": "We apply technical and organizational safeguards designed to protect data against unauthorized access and misuse.",
+      "hu": "Olyan technikai és szervezési biztosítékokat alkalmazunk, amelyek célja az adatok védelme a jogosulatlan hozzáférés és visszaélés ellen.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_2",
+      "en": "No online system is completely secure; we continuously monitor and improve our controls.",
+      "hu": "Nincs teljesen biztonságos online rendszer; folyamatosan figyeljük és fejlesztjük ellenőrzéseinket.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_3",
+      "en": "If a security incident affects your data, we will notify you and regulators when legally required.",
+      "hu": "Ha egy biztonsági incidens érinti az Ön adatait, értesítjük Önt és a szabályozó hatóságokat, amikor azt a törvény megköveteli.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_title",
+      "en": "Security",
+      "hu": "Biztonság",
+      "locked": false
+    },
+    {
+      "key": "profile_member_since",
+      "en": "Member since",
+      "hu": "Tag mióta",
+      "locked": false
+    },
+    {
+      "key": "profile_referral",
+      "en": "Invite a friend - earn points",
+      "hu": "Hívjon meg egy barátot - szerezzen pontokat",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count",
+      "en": "Reviews",
+      "hu": "Értékelések",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count %lld",
+      "en": "%#@count@",
+      "hu": "%#@count@",
+      "locked": true
+    },
+    {
+      "key": "profile_verified_percent",
+      "en": "Verified",
+      "hu": "Ellenőrzött",
+      "locked": false
+    },
+    {
+      "key": "profile_verified_percent %lld",
+      "en": "%lld%% Verified",
+      "hu": "%lld%% Ellenőrzött",
+      "locked": true
+    },
+    {
+      "key": "providers_label",
+      "en": "Providers",
+      "hu": "Szolgáltatók",
+      "locked": false
+    },
+    {
+      "key": "providers_title",
+      "en": "Providers",
+      "hu": "Szolgáltatók",
+      "locked": false
+    },
+    {
+      "key": "recents",
+      "en": "Recents",
+      "hu": "Legutóbbiak",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_112",
+      "en": "Call 112",
+      "hu": "Hívja a 112-t",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_emergency",
+      "en": "Call Emergency Services",
+      "hu": "Sürgősségi Szolgálat Hívása",
+      "locked": false
+    },
+    {
+      "key": "rehber_consent_text",
+      "en": "I understand: These suggestions are for guidance only, not diagnosis",
+      "hu": "Megértettem: Ezek a javaslatok csak útmutatásra szolgálnak, nem diagnózis",
+      "locked": false
+    },
+    {
+      "key": "rehber_cooldown",
+      "en": "Please wait %d seconds to send again.",
+      "hu": "Kérjük, várjon %d másodpercet az újbóli küldésig.",
+      "locked": false
+    },
+    {
+      "key": "rehber_daily_limit_reached",
+      "en": "Daily free limit reached (5/5). Try again tomorrow.",
+      "hu": "Napi ingyenes limit elérve (5/5). Próbálja újra holnap.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete",
+      "en": "Delete",
+      "hu": "Törlés",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_message",
+      "en": "This will permanently delete this conversation and all its messages.",
+      "hu": "Ezzel véglegesen törli ezt a beszélgetést és az összes üzenetét.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_title",
+      "en": "Delete Conversation?",
+      "hu": "Beszélgetés Törlése?",
+      "locked": false
+    },
+    {
+      "key": "rehber_disclaimer",
+      "en": "This is not medical advice. Always consult a healthcare professional.",
+      "hu": "Ez nem orvosi tanács. Mindig konzultáljon egészségügyi szakemberrel.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_danger",
+      "en": "If you or someone else is in danger, call immediately.",
+      "hu": "Ha Ön vagy más veszélyben van, hívjon segítséget azonnal.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_detected",
+      "en": "🚨 A potential emergency risk was detected. Please call 112 immediately.",
+      "hu": "🚨 Potenciális vészhelyzeti kockázatot észleltünk. Kérjük, azonnal hívja a 112-t.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_subtitle",
+      "en": "Please call 112 immediately",
+      "hu": "Kérjük, azonnal hívja a 112-t",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_title",
+      "en": "🚨 EMERGENCY",
+      "hu": "🚨 VÉSZHELYZET",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state",
+      "en": "Share your symptoms, I'll guide you to the right specialty.",
+      "hu": "Ossza meg a tüneteit, és én a megfelelő szakterülethez irányítom.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state_sub",
+      "en": "No diagnosis or treatment is provided; guidance only.",
+      "hu": "Nem adunk diagnózist vagy kezelést; csak útmutatást.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_subtitle",
+      "en": "Start one to get health guidance.",
+      "hu": "Kezdjen egyet egészségügyi útmutatásért.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_title",
+      "en": "No conversations yet",
+      "hu": "Még nincsenek beszélgetések",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_1",
+      "en": "Recommends the right specialty based on your symptoms",
+      "hu": "A tünetei alapján a megfelelő szakterületet ajánlja",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_2",
+      "en": "Finds healthcare providers near you",
+      "hu": "Megtalálja a közelben lévő egészségügyi szolgáltatókat",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_3",
+      "en": "Directs you to 112 in emergencies",
+      "hu": "Vészhelyzet esetén a 112-höz irányítja",
+      "locked": false
+    },
+    {
+      "key": "rehber_find_provider",
+      "en": "Find provider",
+      "hu": "Szolgáltató keresése",
+      "locked": false
+    },
+    {
+      "key": "rehber_info_bar",
+      "en": "TrustCare Rehber - Health Information Service",
+      "hu": "TrustCare Rehber - Egészségügyi Információs Szolgáltatás",
+      "locked": false
+    },
+    {
+      "key": "rehber_input_placeholder",
+      "en": "Describe your symptoms...",
+      "hu": "Írja le a tüneteit...",
+      "locked": false
+    },
+    {
+      "key": "rehber_load_conversation_error",
+      "en": "Unable to load conversation.",
+      "hu": "Nem sikerült betölteni a beszélgetést.",
+      "locked": false
+    },
+    {
+      "key": "rehber_login_required",
+      "en": "Please sign in to use Rehber.",
+      "hu": "Kérjük, jelentkezzen be a Rehber használatához.",
+      "locked": false
+    },
+    {
+      "key": "rehber_nearest_emergency",
+      "en": "Nearest Emergency Room",
+      "hu": "Legközelebbi Sürgősségi Osztály",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_conversation",
+      "en": "New Conversation",
+      "hu": "Új Beszélgetés",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_short",
+      "en": "New",
+      "hu": "Új",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_conversations",
+      "en": "No conversations yet",
+      "hu": "Még nincsenek beszélgetések",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_response",
+      "en": "Rehber could not respond. Please try again.",
+      "hu": "A Rehber nem tudott válaszolni. Kérjük, próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_subtitle",
+      "en": "Health Information Service",
+      "hu": "Egészségügyi Információs Szolgáltatás",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_warning",
+      "en": "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.",
+      "hu": "⚠️ Ez a szolgáltatás nem nyújt orvosi diagnózist vagy kezelési javaslatot. Mindig konzultáljon egészségügyi szakemberrel.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_body",
+      "en": "This feature will become a subscription. It's currently available to everyone for testing.",
+      "hu": "Ez a funkció előfizetésessé fog válni. Jelenleg mindenki számára elérhető tesztelés céljából.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_title",
+      "en": "Plus - free during launch",
+      "hu": "PLUS - bevezetéskor ingyenes",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_trial",
+      "en": "TrustCare Plus feature - Free trial: 5 questions per day",
+      "hu": "TrustCare Plus funkció - Ingyenes próba: Napi 5 kérdés",
+      "locked": false
+    },
+    {
+      "key": "rehber_recent_sessions",
+      "en": "Recent Sessions",
+      "hu": "Legutóbbi Munkamenetek",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_failed",
+      "en": "Response could not be generated. Please try again.",
+      "hu": "A választ nem sikerült létrehozni. Kérjük, próbálja újra.",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_unavailable",
+      "en": "Response unavailable.",
+      "hu": "Válasz nem elérhető.",
+      "locked": false
+    },
+    {
+      "key": "rehber_sessions",
+      "en": "Sessions",
+      "hu": "Munkamenetek",
+      "locked": false
+    },
+    {
+      "key": "rehber_start",
+      "en": "Start",
+      "hu": "Indítás",
+      "locked": false
+    },
+    {
+      "key": "rehber_start_guidance",
+      "en": "Start one to get health guidance.",
+      "hu": "Kezdjen egyet egészségügyi útmutatásért.",
+      "locked": false
+    },
+    {
+      "key": "rehber_subtitle",
+      "en": "Your AI health guide",
+      "hu": "Az Ön MI egészségügyi útmutatója",
+      "locked": false
+    },
+    {
+      "key": "rehber_title",
+      "en": "TrustCare Rehber",
+      "hu": "TrustCare Rehber",
+      "locked": false
+    },
+    {
+      "key": "rehber_try_again",
+      "en": "Try Again",
+      "hu": "Újra",
+      "locked": false
+    },
+    {
+      "key": "rehber_usage_counter",
+      "en": "Usage count:",
+      "hu": "Használat száma:",
+      "locked": false
+    },
+    {
+      "key": "report_additional_details",
+      "en": "Additional details (optional)",
+      "hu": "További részletek (opcionális)",
+      "locked": false
+    },
+    {
+      "key": "report_button",
+      "en": "Report",
+      "hu": "Jelentés",
+      "locked": false
+    },
+    {
+      "key": "report_footer",
+      "en": "Please provide any additional context that might help us review this report.",
+      "hu": "Kérjük, adjon meg minden olyan további információt, amely segíthet a jelentés kivizsgálásában.",
+      "locked": false
+    },
+    {
+      "key": "report_header",
+      "en": "Why are you reporting this review?",
+      "hu": "Miért jelenti ezt az értékelést?",
+      "locked": false
+    },
+    {
+      "key": "report_optional_details",
+      "en": "Optional details",
+      "hu": "Opcionális részletek",
+      "locked": false
+    },
+    {
+      "key": "report_reason",
+      "en": "Reason",
+      "hu": "Ok",
+      "locked": false
+    },
+    {
+      "key": "report_reported",
+      "en": "Reported",
+      "hu": "Jelentve",
+      "locked": false
+    },
+    {
+      "key": "report_thank_you",
+      "en": "Thank you. We'll review this report.",
+      "hu": "Köszönjük. Ki fogjuk vizsgálni ezt a jelentést.",
+      "locked": false
+    },
+    {
+      "key": "report_title",
+      "en": "Report Review",
+      "hu": "Értékelés Jelentése",
+      "locked": false
+    },
+    {
+      "key": "review_add_photo",
+      "en": "Add Photo",
+      "hu": "Fotó Hozzáadása",
+      "locked": false
+    },
+    {
+      "key": "review_another",
+      "en": "Review Another Provider",
+      "hu": "Másik Szolgáltató Értékelése",
+      "locked": false
+    },
+    {
+      "key": "review_button_back",
+      "en": "Back",
+      "hu": "Vissza",
+      "locked": false
+    },
+    {
+      "key": "review_button_next",
+      "en": "Next",
+      "hu": "Tovább",
+      "locked": false
+    },
+    {
+      "key": "review_cant_find_add",
+      "en": "Can't find it? Add new",
+      "hu": "Nem találja? Új hozzáadása",
+      "locked": false
+    },
+    {
+      "key": "review_change_provider",
+      "en": "Change",
+      "hu": "Módosítás",
+      "locked": false
+    },
+    {
+      "key": "review_char_count %lld",
+      "en": "%lld/500 characters",
+      "hu": "%lld/500 karakter",
+      "locked": true
+    },
+    {
+      "key": "review_comment",
+      "en": "Your Review",
+      "hu": "Az Ön Értékelése",
+      "locked": false
+    },
+    {
+      "key": "review_comment_placeholder",
+      "en": "Share your experience...",
+      "hu": "Ossza meg tapasztalatait...",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner",
+      "en": "Bedside Manner",
+      "hu": "Bánásmód",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner_question",
+      "en": "Did the doctor listen and explain clearly?",
+      "hu": "Az orvos meghallgatta és érthetően elmagyarázott mindent?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "hu": "Klinika Higiéniája",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene_question",
+      "en": "Was the clinic clean and hygienic?",
+      "hu": "A klinika tiszta és higiénikus volt?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "hu": "Kezelés Hatékonysága",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness_question",
+      "en": "Did the treatment resolve your issue?",
+      "hu": "A kezelés megoldotta a problémáját?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time",
+      "en": "Waiting Time",
+      "hu": "Várakozási Idő",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time_question",
+      "en": "How long did you wait after your appointment time?",
+      "hu": "Mennyit várt a lefoglalt időponthoz képest?",
+      "locked": false
+    },
+    {
+      "key": "review_detailed",
+      "en": "Detailed Rating",
+      "hu": "Részletes Értékelés",
+      "locked": false
+    },
+    {
+      "key": "review_editable_24h",
+      "en": "Editable within 24h",
+      "hu": "24 órán belül szerkeszthető",
+      "locked": false
+    },
+    {
+      "key": "review_go_home",
+      "en": "Go to Home",
+      "hu": "Ugrás a Kezdőlapra",
+      "locked": false
+    },
+    {
+      "key": "review_helpful_count_%lld",
+      "en": "%lld helpful",
+      "hu": "%lld hasznos",
+      "locked": true
+    },
+    {
+      "key": "review_overall",
+      "en": "Overall Rating",
+      "hu": "Összesített Értékelés",
+      "locked": false
+    },
+    {
+      "key": "review_overall_question",
+      "en": "How was your overall experience?",
+      "hu": "Milyen volt az általános tapasztalata?",
+      "locked": false
+    },
+    {
+      "key": "review_photos_public",
+      "en": "Photos will be visible to everyone.",
+      "hu": "A fotók mindenki számára láthatók lesznek.",
+      "locked": false
+    },
+    {
+      "key": "review_proof_private",
+      "en": "This will not be shown publicly.",
+      "hu": "Ez nem lesz nyilvánosan látható.",
+      "locked": false
+    },
+    {
+      "key": "review_select_provider_to_continue",
+      "en": "Select a provider to continue",
+      "hu": "Válasszon egy szolgáltatót a folytatáshoz",
+      "locked": false
+    },
+    {
+      "key": "review_skip_verification",
+      "en": "Skip verification",
+      "hu": "Ellenőrzés kihagyása",
+      "locked": false
+    },
+    {
+      "key": "review_step_choose_provider",
+      "en": "Choose provider",
+      "hu": "Szolgáltató kiválasztása",
+      "locked": false
+    },
+    {
+      "key": "review_step_detailed_ratings",
+      "en": "Detailed ratings",
+      "hu": "Részletes értékelések",
+      "locked": false
+    },
+    {
+      "key": "review_step_format",
+      "en": "Step %1$lld of %2$lld",
+      "hu": "Lépés: %1$lld / %2$lld",
+      "locked": false
+    },
+    {
+      "key": "review_step_media_submit",
+      "en": "Media and submit",
+      "hu": "Média és beküldés",
+      "locked": false
+    },
+    {
+      "key": "review_step_overall_rating",
+      "en": "Overall rating",
+      "hu": "Összesített értékelés",
+      "locked": false
+    },
+    {
+      "key": "review_step_visit_details",
+      "en": "Visit details",
+      "hu": "Látogatás részletei",
+      "locked": false
+    },
+    {
+      "key": "review_step_write_review",
+      "en": "Write review",
+      "hu": "Értékelés írása",
+      "locked": false
+    },
+    {
+      "key": "review_submit",
+      "en": "Submit Review",
+      "hu": "Értékelés Küldése",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_message",
+      "en": "Your review has been submitted and will appear once processed.",
+      "hu": "Az értékelését beküldtük, és a feldolgozás után jelenik meg.",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_title",
+      "en": "Thank You!",
+      "hu": "Köszönjük!",
+      "locked": false
+    },
+    {
+      "key": "review_upload_proof",
+      "en": "Upload proof of visit",
+      "hu": "Látogatás igazolásának feltöltése",
+      "locked": false
+    },
+    {
+      "key": "review_verification_pending",
+      "en": "Verification Pending",
+      "hu": "Ellenőrzés Folyamatban",
+      "locked": false
+    },
+    {
+      "key": "review_verify",
+      "en": "Verify Your Visit",
+      "hu": "Látogatásának Ellenőrzése",
+      "locked": false
+    },
+    {
+      "key": "review_verify_hint",
+      "en": "Help us maintain trust by verifying your visit.",
+      "hu": "Segítsen fenntartani a bizalmat a látogatásának ellenőrzésével.",
+      "locked": false
+    },
+    {
+      "key": "review_view_provider",
+      "en": "View provider",
+      "hu": "Szolgáltató megtekintése",
+      "locked": false
+    },
+    {
+      "key": "review_visit_date",
+      "en": "Visit Date",
+      "hu": "Látogatás Dátuma",
+      "locked": false
+    },
+    {
+      "key": "review_visit_details",
+      "en": "Visit Details",
+      "hu": "Látogatás Részletei",
+      "locked": false
+    },
+    {
+      "key": "review_visit_type",
+      "en": "Visit Type",
+      "hu": "Látogatás Típusa",
+      "locked": false
+    },
+    {
+      "key": "review_who",
+      "en": "Who are you reviewing?",
+      "hu": "Kit értékel?",
+      "locked": false
+    },
+    {
+      "key": "reviews_count",
+      "en": "reviews",
+      "hu": "értékelés",
+      "locked": false
+    },
+    {
+      "key": "reviews_empty_title",
+      "en": "No reviews yet",
+      "hu": "Még nincsenek értékelések",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_action",
+      "en": "Discover Providers",
+      "hu": "Szolgáltatók Felfedezése",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_message",
+      "en": "Save providers to access them quickly later.",
+      "hu": "Mentse el a szolgáltatókat, hogy később gyorsan elérje őket.",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_title",
+      "en": "No saved providers yet",
+      "hu": "Még nincsenek mentett szolgáltatók",
+      "locked": false
+    },
+    {
+      "key": "search_facilities",
+      "en": "Search facilities",
+      "hu": "Intézmények keresése",
+      "locked": false
+    },
+    {
+      "key": "search_languages",
+      "en": "Search languages",
+      "hu": "Nyelvek keresése",
+      "locked": false
+    },
+    {
+      "key": "search_placeholder",
+      "en": "Search doctor, clinic...",
+      "hu": "Orvos, klinika keresése...",
+      "locked": false
+    },
+    {
+      "key": "search_specialties",
+      "en": "Search specialties",
+      "hu": "Szakterületek keresése",
+      "locked": false
+    },
+    {
+      "key": "search_this_area",
+      "en": "Search this area",
+      "hu": "Keresés ezen a területen",
+      "locked": false
+    },
+    {
+      "key": "search_treatments",
+      "en": "Search treatments",
+      "hu": "Kezelések keresése",
+      "locked": false
+    },
+    {
+      "key": "settings_account",
+      "en": "Account",
+      "hu": "Fiók",
+      "locked": false
+    },
+    {
+      "key": "settings_cancel",
+      "en": "Cancel",
+      "hu": "Mégse",
+      "locked": false
+    },
+    {
+      "key": "settings_change_password",
+      "en": "Change Password",
+      "hu": "Jelszó Módosítása",
+      "locked": false
+    },
+    {
+      "key": "settings_data_privacy",
+      "en": "Data & Privacy",
+      "hu": "Adatok és Adatvédelem",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account",
+      "en": "Delete Account",
+      "hu": "Fiók Törlése",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_confirm",
+      "en": "Delete My Account",
+      "hu": "Fiókom Törlése",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_warning",
+      "en": "This action cannot be undone",
+      "hu": "Ez a művelet nem vonható vissza",
+      "locked": false
+    },
+    {
+      "key": "settings_download_data",
+      "en": "Download My Data",
+      "hu": "Adataim Letöltése",
+      "locked": false
+    },
+    {
+      "key": "settings_downloading_data",
+      "en": "Preparing data...",
+      "hu": "Adatok előkészítése...",
+      "locked": false
+    },
+    {
+      "key": "settings_email",
+      "en": "Email",
+      "hu": "E-mail",
+      "locked": false
+    },
+    {
+      "key": "settings_location_services",
+      "en": "Location Services",
+      "hu": "Helyszolgáltatások",
+      "locked": false
+    },
+    {
+      "key": "settings_notifications",
+      "en": "Notifications",
+      "hu": "Értesítések",
+      "locked": false
+    },
+    {
+      "key": "settings_phone",
+      "en": "Phone",
+      "hu": "Telefon",
+      "locked": false
+    },
+    {
+      "key": "settings_preferences",
+      "en": "Preferences",
+      "hu": "Beállítások",
+      "locked": false
+    },
+    {
+      "key": "show_all",
+      "en": "Show All",
+      "hu": "Összes Mutatása",
+      "locked": false
+    },
+    {
+      "key": "showing_english_results",
+      "en": "Showing English results",
+      "hu": "Angol nyelvű találatok megjelenítése",
+      "locked": false
+    },
+    {
+      "key": "specialties_label",
+      "en": "Specialties",
+      "hu": "Szakterületek",
+      "locked": false
+    },
+    {
+      "key": "specialties_title",
+      "en": "Specialties",
+      "hu": "Szakterületek",
+      "locked": false
+    },
+    {
+      "key": "specialty_label",
+      "en": "Specialty",
+      "hu": "Szakterület",
+      "locked": false
+    },
+    {
+      "key": "splash_tagline",
+      "en": "Healthcare, Verified.",
+      "hu": "Egészségügy, Ellenőrzötten.",
+      "locked": false
+    },
+    {
+      "key": "status_pending",
+      "en": "Pending",
+      "hu": "Függőben",
+      "locked": false
+    },
+    {
+      "key": "status_unverified",
+      "en": "Unverified",
+      "hu": "Nem ellenőrzött",
+      "locked": false
+    },
+    {
+      "key": "status_verified",
+      "en": "Verified",
+      "hu": "Ellenőrzött",
+      "locked": false
+    },
+    {
+      "key": "sub_acne",
+      "en": "Acne",
+      "hu": "Akne",
+      "locked": false
+    },
+    {
+      "key": "sub_acute_illness_treatment",
+      "en": "Acute Illness Treatment",
+      "hu": "Akut Betegségek Kezelése",
+      "locked": false
+    },
+    {
+      "key": "sub_anxiety",
+      "en": "Anxiety",
+      "hu": "Szorongás",
+      "locked": false
+    },
+    {
+      "key": "sub_arrhythmia",
+      "en": "Arrhythmia",
+      "hu": "Aritmia",
+      "locked": false
+    },
+    {
+      "key": "sub_arthritis",
+      "en": "Arthritis",
+      "hu": "Ízületi gyulladás",
+      "locked": false
+    },
+    {
+      "key": "sub_asthma",
+      "en": "Asthma",
+      "hu": "Asztma",
+      "locked": false
+    },
+    {
+      "key": "sub_bipolar_disorder",
+      "en": "Bipolar Disorder",
+      "hu": "Bipoláris zavar",
+      "locked": false
+    },
+    {
+      "key": "sub_cataracts",
+      "en": "Cataracts",
+      "hu": "Szürkehályog",
+      "locked": false
+    },
+    {
+      "key": "sub_chemotherapy",
+      "en": "Chemotherapy",
+      "hu": "Kemoterápia",
+      "locked": false
+    },
+    {
+      "key": "sub_child_development",
+      "en": "Child Development",
+      "hu": "Gyermekfejlődés",
+      "locked": false
+    },
+    {
+      "key": "sub_childhood_illness",
+      "en": "Childhood Illness",
+      "hu": "Gyermekkori betegségek",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_disease_management",
+      "en": "Chronic Disease Management",
+      "hu": "Krónikus Betegségek Kezelése",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_kidney_disease",
+      "en": "Chronic Kidney Disease",
+      "hu": "Krónikus Vesebetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_copd",
+      "en": "COPD",
+      "hu": "COPD",
+      "locked": false
+    },
+    {
+      "key": "sub_coronary_artery_disease",
+      "en": "Coronary Artery Disease",
+      "hu": "Koszorúér-betegség",
+      "locked": false
+    },
+    {
+      "key": "sub_dementia",
+      "en": "Dementia",
+      "hu": "Demencia",
+      "locked": false
+    },
+    {
+      "key": "sub_depression",
+      "en": "Depression",
+      "hu": "Depresszió",
+      "locked": false
+    },
+    {
+      "key": "sub_diabetes",
+      "en": "Diabetes",
+      "hu": "Cukorbetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_dialysis",
+      "en": "Dialysis",
+      "hu": "Dialízis",
+      "locked": false
+    },
+    {
+      "key": "sub_eczema",
+      "en": "Eczema",
+      "hu": "Ekcéma",
+      "locked": false
+    },
+    {
+      "key": "sub_endoscopy",
+      "en": "Endoscopy",
+      "hu": "Endoszkópia",
+      "locked": false
+    },
+    {
+      "key": "sub_erectile_dysfunction",
+      "en": "Erectile Dysfunction",
+      "hu": "Erektilis diszfunkció",
+      "locked": false
+    },
+    {
+      "key": "sub_fracture_treatment",
+      "en": "Fracture Treatment",
+      "hu": "Töréskezelés",
+      "locked": false
+    },
+    {
+      "key": "sub_general_consultation",
+      "en": "General Consultation",
+      "hu": "Általános Konzultáció",
+      "locked": false
+    },
+    {
+      "key": "sub_glaucoma",
+      "en": "Glaucoma",
+      "hu": "Zöldhályog",
+      "locked": false
+    },
+    {
+      "key": "sub_headache",
+      "en": "Headache",
+      "hu": "Fejfájás",
+      "locked": false
+    },
+    {
+      "key": "sub_hearing_loss",
+      "en": "Hearing Loss",
+      "hu": "Halláskárosodás",
+      "locked": false
+    },
+    {
+      "key": "sub_heart_failure",
+      "en": "Heart Failure",
+      "hu": "Szívelégtelenség",
+      "locked": false
+    },
+    {
+      "key": "sub_hormone_replacement",
+      "en": "Hormone Replacement",
+      "hu": "Hormonpótló Terápia",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension",
+      "en": "Hypertension",
+      "hu": "Hipertónia",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension_mgmt",
+      "en": "Hypertension Management",
+      "hu": "Hipertónia Kezelése",
+      "locked": false
+    },
+    {
+      "key": "sub_incontinence",
+      "en": "Incontinence",
+      "hu": "Inkontinencia",
+      "locked": false
+    },
+    {
+      "key": "sub_infant_care",
+      "en": "Infant Care",
+      "hu": "Csecsemőgondozás",
+      "locked": false
+    },
+    {
+      "key": "sub_inflammatory_bowel_disease",
+      "en": "Inflammatory Bowel Disease",
+      "hu": "Gyulladásos Bélbetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_interstitial_lung_disease",
+      "en": "Interstitial Lung Disease",
+      "hu": "Intersticiális Tüdőbetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_joint_replacement",
+      "en": "Joint Replacement",
+      "hu": "Ízületpótlás",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_stones",
+      "en": "Kidney Stones",
+      "hu": "Vesekő",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_transplant",
+      "en": "Kidney Transplant",
+      "hu": "Veseátültetés",
+      "locked": false
+    },
+    {
+      "key": "sub_liver_disease",
+      "en": "Liver Disease",
+      "hu": "Májbetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_lupus",
+      "en": "Lupus",
+      "hu": "Lupus",
+      "locked": false
+    },
+    {
+      "key": "sub_movement_disorders",
+      "en": "Movement Disorders",
+      "hu": "Mozgászavarok",
+      "locked": false
+    },
+    {
+      "key": "sub_pain_management",
+      "en": "Pain Management",
+      "hu": "Fájdalomcsillapítás",
+      "locked": false
+    },
+    {
+      "key": "sub_palliative_care",
+      "en": "Palliative Care",
+      "hu": "Palliatív Ellátás",
+      "locked": false
+    },
+    {
+      "key": "sub_peptic_ulcer",
+      "en": "Peptic Ulcer",
+      "hu": "Gyomorfekély",
+      "locked": false
+    },
+    {
+      "key": "sub_post_operative_care",
+      "en": "Post-operative Care",
+      "hu": "Posztoperatív Ellátás",
+      "locked": false
+    },
+    {
+      "key": "sub_pre_operative_assessment",
+      "en": "Pre-operative Assessment",
+      "hu": "Műtét Előtti Felmérés",
+      "locked": false
+    },
+    {
+      "key": "sub_preventive_care",
+      "en": "Preventive Care",
+      "hu": "Megelőző Ellátás",
+      "locked": false
+    },
+    {
+      "key": "sub_prostate_disease",
+      "en": "Prostate Disease",
+      "hu": "Prosztatabetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_psoriasis",
+      "en": "Psoriasis",
+      "hu": "Pikkelysömör",
+      "locked": false
+    },
+    {
+      "key": "sub_radiation_therapy",
+      "en": "Radiation Therapy",
+      "hu": "Sugárterápia",
+      "locked": false
+    },
+    {
+      "key": "sub_refractive_error",
+      "en": "Refractive Error",
+      "hu": "Fénytörési hiba",
+      "locked": false
+    },
+    {
+      "key": "sub_retinal_disease",
+      "en": "Retinal Disease",
+      "hu": "Retinabetegség",
+      "locked": false
+    },
+    {
+      "key": "sub_schizophrenia",
+      "en": "Schizophrenia",
+      "hu": "Skizofrénia",
+      "locked": false
+    },
+    {
+      "key": "sub_sinusitis",
+      "en": "Sinusitis",
+      "hu": "Arcüreggyulladás",
+      "locked": false
+    },
+    {
+      "key": "sub_skin_cancer_screening",
+      "en": "Skin Cancer Screening",
+      "hu": "Bőrrák Szűrés",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_apnea",
+      "en": "Sleep Apnea",
+      "hu": "Alvási Apnoe",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_disorders",
+      "en": "Sleep Disorders",
+      "hu": "Alvászavarok",
+      "locked": false
+    },
+    {
+      "key": "sub_spine_surgery",
+      "en": "Spine Surgery",
+      "hu": "Gerincsebészet",
+      "locked": false
+    },
+    {
+      "key": "sub_sports_medicine",
+      "en": "Sports Medicine",
+      "hu": "Sportorvoslás",
+      "locked": false
+    },
+    {
+      "key": "sub_stroke",
+      "en": "Stroke",
+      "hu": "Stroke",
+      "locked": false
+    },
+    {
+      "key": "sub_surgical_oncology",
+      "en": "Surgical Oncology",
+      "hu": "Sebészeti Onkológia",
+      "locked": false
+    },
+    {
+      "key": "sub_thyroid_disease",
+      "en": "Thyroid Disease",
+      "hu": "Pajzsmirigy-betegség",
+      "locked": false
+    },
+    {
+      "key": "sub_vaccination",
+      "en": "Vaccination",
+      "hu": "Oltás",
+      "locked": false
+    },
+    {
+      "key": "sub_vasculitis",
+      "en": "Vasculitis",
+      "hu": "Vasculitis",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy",
+      "en": "Accuracy & Care",
+      "hu": "Pontosság és Figyelem",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy_sub",
+      "en": "Was your prescription prepared correctly?",
+      "hu": "A receptet megfelelően készítették el?",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency",
+      "en": "Administrative Efficiency",
+      "hu": "Adminisztrációs Hatékonyság",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency_sub",
+      "en": "Were admission and discharge smooth?",
+      "hu": "Zökkenőmentes volt a felvétel és a távozás?",
+      "locked": false
+    },
+    {
+      "key": "survey_aesthetics",
+      "en": "Aesthetic Clinic",
+      "hu": "Esztétikai Klinika",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare",
+      "en": "Aftercare",
+      "hu": "Utókezelés",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare_sub",
+      "en": "Were aftercare instructions and follow-up clearly explained?",
+      "hu": "Egyértelműen elmagyarázták az utókezelési utasításokat és a nyomon követést?",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner",
+      "en": "Bedside Manner",
+      "hu": "Bánásmód",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner_sub",
+      "en": "Did the doctor listen and explain clearly?",
+      "hu": "Az orvos meghallgatta és egyértelműen elmagyarázta?",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality",
+      "en": "Care Quality",
+      "hu": "Ellátás Minősége",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality_sub",
+      "en": "How would you rate the medical care?",
+      "hu": "Hogyan értékelné az orvosi ellátást?",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "hu": "Klinika Higiéniája",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene_sub",
+      "en": "Was the clinic clean and hygienic?",
+      "hu": "A klinika tiszta és higiénikus volt?",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity",
+      "en": "Communication Clarity",
+      "hu": "Kommunikáció Tisztasága",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity_sub",
+      "en": "Were treatment plans explained clearly?",
+      "hu": "Egyértelműen elmagyarázták a kezelési terveket?",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality",
+      "en": "Consultation Quality",
+      "hu": "Konzultáció Minősége",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality_sub",
+      "en": "Were procedure risks and outcomes explained?",
+      "hu": "Elmagyarázták az eljárás kockázatait és eredményeit?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental",
+      "en": "Dental",
+      "hu": "Fogászat",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_bedside_sub",
+      "en": "Did the dentist communicate clearly?",
+      "hu": "A fogorvos egyértelműen kommunikált?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_hygiene_sub",
+      "en": "Were treatment rooms and equipment clean?",
+      "hu": "A kezelőhelyiségek és a berendezések tiszták voltak?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_wait_sub",
+      "en": "How quickly were you seated?",
+      "hu": "Milyen gyorsan hívták be a székbe?",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic",
+      "en": "Diagnostic Center",
+      "hu": "Diagnosztikai Központ",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic_wait_sub",
+      "en": "How quickly were you called for your test?",
+      "hu": "Milyen gyorsan hívták be a vizsgálatra?",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy",
+      "en": "Empathy & Listening",
+      "hu": "Empátia és Figyelem",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy_sub",
+      "en": "Did you feel truly heard?",
+      "hu": "Úgy érezte, hogy valóban meghallgatták?",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort",
+      "en": "Environment Comfort",
+      "hu": "Környezet Kényelme",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort_sub",
+      "en": "Was the office peaceful and private?",
+      "hu": "A rendelő csendes és privát volt?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment",
+      "en": "Facility Equipment",
+      "hu": "Intézmény Felszereltsége",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment_sub",
+      "en": "Was the facility well-equipped?",
+      "hu": "Az intézmény jól felszerelt volt?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene",
+      "en": "Facility Hygiene",
+      "hu": "Intézmény Higiéniája",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene_sub",
+      "en": "Was the facility clean and hygienic?",
+      "hu": "Az intézmény tiszta és higiénikus volt?",
+      "locked": false
+    },
+    {
+      "key": "survey_general_clinic",
+      "en": "General Clinic",
+      "hu": "Általános Klinika",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital",
+      "en": "Hospital",
+      "hu": "Kórház",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital_wait_sub",
+      "en": "How quickly were you seen by a doctor?",
+      "hu": "Milyen gyorsan látta el az orvos?",
+      "locked": false
+    },
+    {
+      "key": "survey_mental_health",
+      "en": "Mental Health",
+      "hu": "Mentálhigiéné",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management",
+      "en": "Pain Management",
+      "hu": "Fájdalomcsillapítás",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management_sub",
+      "en": "How well did they manage pain?",
+      "hu": "Mennyire jól kezelték a fájdalmat?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge",
+      "en": "Pharmacist Knowledge",
+      "hu": "Gyógyszerész Szakértelme",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge_sub",
+      "en": "Did the pharmacist answer your questions well?",
+      "hu": "A gyógyszerész jól megválaszolta a kérdéseit?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacy",
+      "en": "Pharmacy",
+      "hu": "Gyógyszertár",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort",
+      "en": "Procedure Comfort",
+      "hu": "Eljárás Kényelme",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort_sub",
+      "en": "Did staff make the procedure comfortable?",
+      "hu": "A személyzet kényelmessé tette az eljárást?",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality",
+      "en": "Punctuality",
+      "hu": "Pontosság",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality_sub",
+      "en": "Did your session start on time?",
+      "hu": "A munkamenet időben elkezdődött?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_effectiveness_sub",
+      "en": "Did sessions improve mobility or reduce pain?",
+      "hu": "A foglalkozások javították a mobilitást vagy csökkentették a fájdalmat?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_wait_sub",
+      "en": "How quickly did your session start?",
+      "hu": "Milyen gyorsan kezdődött el a foglalkozása?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehabilitation",
+      "en": "Rehabilitation",
+      "hu": "Rehabilitáció",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction",
+      "en": "Result Satisfaction",
+      "hu": "Eredménnyel Való Elégedettség",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction_sub",
+      "en": "Are you satisfied with the results?",
+      "hu": "Elégedett az eredményekkel?",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed",
+      "en": "Result Speed",
+      "hu": "Eredmény Gyorsasága",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed_sub",
+      "en": "Were results delivered on time?",
+      "hu": "Időben megkapták az eredményeket?",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene",
+      "en": "Room Hygiene",
+      "hu": "Szoba Higiéniája",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene_sub",
+      "en": "Were rooms and areas clean?",
+      "hu": "A szobák és a területek tiszták voltak?",
+      "locked": false
+    },
+    {
+      "key": "survey_speed",
+      "en": "Speed",
+      "hu": "Gyorsaság",
+      "locked": false
+    },
+    {
+      "key": "survey_speed_sub",
+      "en": "How quickly were you served?",
+      "hu": "Milyen gyorsan szolgálták ki?",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy",
+      "en": "Staff Courtesy",
+      "hu": "Személyzet Udvariassága",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy_sub",
+      "en": "Was the staff polite?",
+      "hu": "A személyzet udvarias volt?",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness",
+      "en": "Therapist Attentiveness",
+      "hu": "Terapeuta Figyelme",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness_sub",
+      "en": "Did the therapist monitor and adapt?",
+      "hu": "A terapeuta figyelemmel kísérte és alkalmazkodott?",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "hu": "Kezelés Hatékonysága",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness_sub",
+      "en": "Did the treatment resolve your issue?",
+      "hu": "A kezelés megoldotta a problémáját?",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time",
+      "en": "Waiting Time",
+      "hu": "Várakozási Idő",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time_sub",
+      "en": "How long did you wait after your appointment time?",
+      "hu": "Mennyit várt az időpontja után?",
+      "locked": false
+    },
+    {
+      "key": "switch_category_hint",
+      "en": "Try switching category.",
+      "hu": "Próbáljon kategóriát váltani.",
+      "locked": false
+    },
+    {
+      "key": "switch_to_list",
+      "en": "Switch to list view for more results.",
+      "hu": "További találatokért váltson listanézetre.",
+      "locked": false
+    },
+    {
+      "key": "tab_badge_plus",
+      "en": "Plus",
+      "hu": "PLUS",
+      "locked": false
+    },
+    {
+      "key": "tab_discover",
+      "en": "Find",
+      "hu": "Keresés",
+      "locked": false
+    },
+    {
+      "key": "tab_guide",
+      "en": "Guide",
+      "hu": "Útmutató",
+      "locked": false
+    },
+    {
+      "key": "tab_profile",
+      "en": "Profile",
+      "hu": "Profil",
+      "locked": false
+    },
+    {
+      "key": "tab_review",
+      "en": "Review",
+      "hu": "Értékelés",
+      "locked": false
+    },
+    {
+      "key": "tagline",
+      "en": "Healthcare, Verified.",
+      "hu": "Egészségügy, Ellenőrzötten.",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_facilities",
+      "en": "Facilities",
+      "hu": "Intézmények",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_specialties",
+      "en": "Specialties",
+      "hu": "Szakterületek",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_treatments",
+      "en": "Treatments",
+      "hu": "Kezelések",
+      "locked": false
+    },
+    {
+      "key": "top_picks",
+      "en": "Top Picks",
+      "hu": "Kiemelt",
+      "locked": false
+    },
+    {
+      "key": "tos_account_1",
+      "en": "You are responsible for maintaining the confidentiality of your credentials and activity under your account.",
+      "hu": "Ön felelős a hitelesítő adatai és a fiókja alatti tevékenységek titkosságának megőrzéséért.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_2",
+      "en": "We may suspend or terminate accounts that violate these terms, applicable law, or platform safety requirements.",
+      "hu": "Felfüggeszthetjük vagy megszüntethetjük azokat a fiókokat, amelyek megsértik ezeket a feltételeket, a vonatkozó jogszabályokat vagy a platform biztonsági követelményeit.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_title",
+      "en": "Accounts and Access",
+      "hu": "Fiókok és Hozzáférés",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_1",
+      "en": "Questions about these Terms can be sent to support@trustcare.app.",
+      "hu": "A Feltételekkel kapcsolatos kérdéseket a support@trustcare.app címre lehet elküldeni.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_2",
+      "en": "By continuing to use the service, you acknowledge that you have read and agreed to these Terms.",
+      "hu": "A szolgáltatás további használatával tudomásul veszi, hogy elolvasta és elfogadta a jelen Feltételeket.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_title",
+      "en": "Contact",
+      "hu": "Kapcsolat",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_1",
+      "en": "These Terms are governed by applicable laws of the jurisdiction where the service operator is established, unless local mandatory law provides otherwise.",
+      "hu": "Ezekre a Feltételekre a szolgáltató székhelye szerinti joghatóság alkalmazandó törvényei az irányadóak, kivéve, ha a helyi kötelező erejű jogszabály másként rendelkezik.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_2",
+      "en": "Before initiating formal proceedings, you agree to contact us in good faith to seek an informal resolution.",
+      "hu": "A hivatalos eljárás megindítása előtt vállalja, hogy jóhiszeműen felveszi velünk a kapcsolatot az informális megoldás érdekében.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_title",
+      "en": "Disputes and Governing Law",
+      "hu": "Viták és Irányadó Jog",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_1",
+      "en": "All platform content, branding, and software are owned by TrustCare or licensed to us, unless otherwise stated.",
+      "hu": "Minden platformtartalom, márkaépítés és szoftver a TrustCare tulajdonát képezi, vagy ránk van licencelve, hacsak nincs másképp feltüntetve.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_2",
+      "en": "You may not copy, scrape, reverse engineer, or redistribute platform content beyond permitted legal use.",
+      "hu": "Nem másolhatja, nem gyűjtheti le, nem fejtheti vissza és nem terjesztheti tovább a platform tartalmát az engedélyezett jogszerű használaton túl.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_title",
+      "en": "Intellectual Property",
+      "hu": "Szellemi Tulajdon",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_1",
+      "en": "Rehber provides informational guidance only and does not provide medical diagnosis, treatment, or emergency response.",
+      "hu": "A Rehber csak információs útmutatást nyújt, és nem biztosít orvosi diagnózist, kezelést vagy vészhelyzeti reagálást.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_2",
+      "en": "In urgent or life-threatening situations, contact local emergency services immediately.",
+      "hu": "Sürgős vagy életveszélyes helyzetekben azonnal lépjen kapcsolatba a helyi segélyhívó szolgálatokkal.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_3",
+      "en": "You remain responsible for healthcare decisions and should consult qualified medical professionals.",
+      "hu": "Ön továbbra is felelős az egészségügyi döntésekért, és szakképzett orvoshoz kell fordulnia.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_title",
+      "en": "Rehber (AI Guidance) Disclaimer",
+      "hu": "Rehber (MI Útmutató) Felelősségkizárás",
+      "locked": false
+    },
+    {
+      "key": "tos_review_1",
+      "en": "Reviews must reflect genuine, firsthand experiences and must not include harassment, hate speech, or unlawful content.",
+      "hu": "Az értékeléseknek valódi, első kézből származó tapasztalatokat kell tükrözniük, és nem tartalmazhatnak zaklatást, gyűlöletbeszédet vagy jogellenes tartalmat.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_2",
+      "en": "By submitting content, you grant TrustCare a license to host, display, and moderate that content for service operation.",
+      "hu": "A tartalom beküldésével licencet ad a TrustCare számára, hogy a szolgáltatás működtetése érdekében tárolja, megjelenítse és moderálja ezt a tartalmat.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_3",
+      "en": "We may remove, limit, or flag content that violates policy, legal obligations, or trust and safety standards.",
+      "hu": "Eltávolíthatjuk, korlátozhatjuk vagy megjelölhetjük azokat a tartalmakat, amelyek sértik a szabályzatot, a jogi kötelezettségeket vagy a bizalmi és biztonsági előírásokat.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_title",
+      "en": "Reviews and Community Content",
+      "hu": "Értékelések és Közösségi Tartalom",
+      "locked": false
+    },
+    {
+      "key": "tos_service_1",
+      "en": "TrustCare provides healthcare discovery, review features, and informational guidance tools for general consumer use.",
+      "hu": "A TrustCare egészségügyi kereső-, értékelési funkciókat és információs útmutató eszközöket kínál általános fogyasztói használatra.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_2",
+      "en": "Service availability, features, and access may change over time; we may update or discontinue parts of the service without prior notice.",
+      "hu": "A szolgáltatás elérhetősége, a funkciók és a hozzáférés idővel változhat; előzetes értesítés nélkül frissíthetjük vagy megszüntethetjük a szolgáltatás egyes részeit.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_title",
+      "en": "Service Overview",
+      "hu": "Szolgáltatás Áttekintése",
+      "locked": false
+    },
+    {
+      "key": "tos_user_1",
+      "en": "You agree to provide accurate information and use the platform lawfully, respectfully, and in good faith.",
+      "hu": "Ön beleegyezik, hogy pontos információkat ad meg, és a platformot jogszerűen, tisztelettudóan és jóhiszeműen használja.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_2",
+      "en": "You must not attempt to abuse the platform, bypass security controls, or interfere with other users.",
+      "hu": "Nem kísérelheti meg a platform visszaélésszerű használatát, a biztonsági ellenőrzések megkerülését vagy a többi felhasználó zavarását.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_3",
+      "en": "You are responsible for content you submit and for complying with applicable local laws and regulations.",
+      "hu": "Ön felelős az Ön által beküldött tartalomért, valamint a vonatkozó helyi törvények és előírások betartásáért.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_title",
+      "en": "User Responsibilities",
+      "hu": "Felhasználói Felelősségek",
+      "locked": false
+    },
+    {
+      "key": "try_english_keywords",
+      "en": "Try English keywords or check spelling.",
+      "hu": "Próbálkozzon angol kulcsszavakkal, vagy ellenőrizze a helyesírást.",
+      "locked": false
+    },
+    {
+      "key": "try_nearby_city",
+      "en": "Try a nearby city.",
+      "hu": "Próbáljon meg egy közeli várost.",
+      "locked": false
+    },
+    {
+      "key": "unauthorized_area",
+      "en": "Unknown area",
+      "hu": "Ismeretlen terület",
+      "locked": false
+    },
+    {
+      "key": "unknown_provider",
+      "en": "Unknown Provider",
+      "hu": "Ismeretlen Szolgáltató",
+      "locked": false
+    },
+    {
+      "key": "use_device_location",
+      "en": "Use device location",
+      "hu": "Eszköz helyzetének használata",
+      "locked": false
+    },
+    {
+      "key": "verified_badge",
+      "en": "Verified",
+      "hu": "Ellenőrzött",
+      "locked": false
+    },
+    {
+      "key": "visit_type_checkup",
+      "en": "Checkup",
+      "hu": "Kivizsgálás",
+      "locked": false
+    },
+    {
+      "key": "visit_type_emergency",
+      "en": "Emergency",
+      "hu": "Sürgősségi",
+      "locked": false
+    },
+    {
+      "key": "visit_type_examination",
+      "en": "Examination",
+      "hu": "Vizsgálat",
+      "locked": false
+    },
+    {
+      "key": "visit_type_procedure",
+      "en": "Procedure",
+      "hu": "Eljárás",
+      "locked": false
+    },
+    {
+      "key": "widen_map_area",
+      "en": "Widen the map area and search again.",
+      "hu": "Növelje a térkép területét, és keressen újra.",
+      "locked": false
+    }
+  ]
+}

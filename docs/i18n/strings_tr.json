@@ -1,0 +1,3529 @@
+{
+  "meta": {
+    "app": "TrustCare",
+    "source": "strings_en_bulletproof.json",
+    "target_language": "tr",
+    "generated_at": "2026-03-06T00:59:42Z",
+    "entry_count": 584,
+    "instructions": [
+      "Fill 'tr' for entries where locked=false.",
+      "Do NOT change 'key' or 'en'.",
+      "Keep placeholders EXACTLY (%@, %d, %lld, %1$@, %#@... etc).",
+      "If locked=true, leave the translation as-is."
+    ],
+    "validated_at": "2026-03-06T01:19:07Z",
+    "validated_by": "ChatGPT",
+    "quality_notes": [
+      "Shortened long UI label filter_verified_only_label.",
+      "Standardized PLUS badge casing.",
+      "Shortened key CTAs for Find empty state.",
+      "No placeholder changes; locked entries unchanged."
+    ]
+  },
+  "entries": [
+    {
+      "key": "%@ %@",
+      "en": "%1$@ %2$@",
+      "tr": "%1$@ %2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@",
+      "en": "%1$@%2$@",
+      "tr": "%1$@%2$@",
+      "locked": true
+    },
+    {
+      "key": "%@%@ - %@%@",
+      "en": "%1$@%2$@ - %3$@%4$@",
+      "tr": "%1$@%2$@ - %3$@%4$@",
+      "locked": true
+    },
+    {
+      "key": "%lld%% %@",
+      "en": "%1$lld%% %2$@",
+      "tr": "%1$lld%% %2$@",
+      "locked": true
+    },
+    {
+      "key": "%lld/%lld",
+      "en": "%1$lld/%2$lld",
+      "tr": "%1$lld/%2$lld",
+      "locked": true
+    },
+    {
+      "key": "accessibility_rating_hint",
+      "en": "Swipe up or down to adjust rating",
+      "tr": "Değerlendirmeyi ayarlamak için yukarı veya aşağı kaydırın",
+      "locked": false
+    },
+    {
+      "key": "action_dismiss",
+      "en": "Dismiss",
+      "tr": "Kapat",
+      "locked": false
+    },
+    {
+      "key": "action_retry",
+      "en": "Retry",
+      "tr": "Tekrar dene",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_list",
+      "en": "Switch to list view",
+      "tr": "Liste görünümüne geç",
+      "locked": false
+    },
+    {
+      "key": "action_switch_to_map",
+      "en": "Switch to map view",
+      "tr": "Harita görünümüne geç",
+      "locked": false
+    },
+    {
+      "key": "add_provider_add",
+      "en": "Add",
+      "tr": "Ekle",
+      "locked": false
+    },
+    {
+      "key": "add_provider_address",
+      "en": "Address",
+      "tr": "Adres",
+      "locked": false
+    },
+    {
+      "key": "add_provider_cancel",
+      "en": "Cancel",
+      "tr": "İptal",
+      "locked": false
+    },
+    {
+      "key": "add_provider_geocode_error",
+      "en": "Could not find coordinates for this address.",
+      "tr": "Bu adres için koordinat bulunamadı.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_is_this",
+      "en": "Is this provider a...",
+      "tr": "Bu sağlayıcı bir...",
+      "locked": false
+    },
+    {
+      "key": "add_provider_location",
+      "en": "Location",
+      "tr": "Konum",
+      "locked": false
+    },
+    {
+      "key": "add_provider_map_pin",
+      "en": "Set map pin",
+      "tr": "Haritada işaretle",
+      "locked": false
+    },
+    {
+      "key": "add_provider_name",
+      "en": "Provider Name",
+      "tr": "Sağlayıcı Adı",
+      "locked": false
+    },
+    {
+      "key": "add_provider_no_address",
+      "en": "Please enter an address.",
+      "tr": "Lütfen bir adres girin.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone",
+      "en": "Phone (optional)",
+      "tr": "Telefon (isteğe bağlı)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_phone_optional",
+      "en": "Phone (optional)",
+      "tr": "Telefon (isteğe bağlı)",
+      "locked": false
+    },
+    {
+      "key": "add_provider_provider_information",
+      "en": "Provider information",
+      "tr": "Sağlayıcı bilgileri",
+      "locked": false
+    },
+    {
+      "key": "add_provider_section",
+      "en": "Provider Information",
+      "tr": "Sağlayıcı Bilgileri",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select",
+      "en": "Select",
+      "tr": "Seç",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty",
+      "en": "Select Specialty",
+      "tr": "Uzmanlık Seç",
+      "locked": false
+    },
+    {
+      "key": "add_provider_select_specialty_error",
+      "en": "Please select a specialty.",
+      "tr": "Lütfen bir uzmanlık seçin.",
+      "locked": false
+    },
+    {
+      "key": "add_provider_set_map_pin",
+      "en": "Set map pin",
+      "tr": "Haritada işaretle",
+      "locked": false
+    },
+    {
+      "key": "add_provider_specialty",
+      "en": "Specialty",
+      "tr": "Uzmanlık",
+      "locked": false
+    },
+    {
+      "key": "add_provider_title",
+      "en": "Add Provider",
+      "tr": "Sağlayıcı Ekle",
+      "locked": false
+    },
+    {
+      "key": "all",
+      "en": "All",
+      "tr": "Tümü",
+      "locked": false
+    },
+    {
+      "key": "all_results",
+      "en": "All",
+      "tr": "Tümü",
+      "locked": false
+    },
+    {
+      "key": "app_language",
+      "en": "App Language",
+      "tr": "Uygulama Dili",
+      "locked": false
+    },
+    {
+      "key": "app_name",
+      "en": "TrustCare",
+      "tr": "TrustCare",
+      "locked": false
+    },
+    {
+      "key": "bul_growing_here_label",
+      "en": "TrustCare is growing here",
+      "tr": "TrustCare burada büyüyor",
+      "locked": false
+    },
+    {
+      "key": "button_add",
+      "en": "Add",
+      "tr": "Ekle",
+      "locked": false
+    },
+    {
+      "key": "button_back",
+      "en": "Back",
+      "tr": "Geri",
+      "locked": false
+    },
+    {
+      "key": "button_call",
+      "en": "Call",
+      "tr": "Ara",
+      "locked": false
+    },
+    {
+      "key": "button_cancel",
+      "en": "Cancel",
+      "tr": "İptal",
+      "locked": false
+    },
+    {
+      "key": "button_continue",
+      "en": "Continue",
+      "tr": "Devam Et",
+      "locked": false
+    },
+    {
+      "key": "button_delete",
+      "en": "Delete",
+      "tr": "Sil",
+      "locked": false
+    },
+    {
+      "key": "button_directions",
+      "en": "Directions",
+      "tr": "Yol Tarifi",
+      "locked": false
+    },
+    {
+      "key": "button_done",
+      "en": "Done",
+      "tr": "Bitti",
+      "locked": false
+    },
+    {
+      "key": "button_edit",
+      "en": "Edit",
+      "tr": "Düzenle",
+      "locked": false
+    },
+    {
+      "key": "button_ok",
+      "en": "OK",
+      "tr": "Tamam",
+      "locked": false
+    },
+    {
+      "key": "button_remove",
+      "en": "Remove",
+      "tr": "Kaldır",
+      "locked": false
+    },
+    {
+      "key": "button_review",
+      "en": "Review",
+      "tr": "Değerlendir",
+      "locked": false
+    },
+    {
+      "key": "button_save",
+      "en": "Save",
+      "tr": "Kaydet",
+      "locked": false
+    },
+    {
+      "key": "button_submit",
+      "en": "Submit",
+      "tr": "Gönder",
+      "locked": false
+    },
+    {
+      "key": "category_aesthetic_cosmetic",
+      "en": "Aesthetic & Cosmetic",
+      "tr": "Estetik ve Kozmetik",
+      "locked": false
+    },
+    {
+      "key": "category_alternative",
+      "en": "Alternative",
+      "tr": "Alternatif",
+      "locked": false
+    },
+    {
+      "key": "category_anesthesiology",
+      "en": "Anesthesiology",
+      "tr": "Anesteziyoloji",
+      "locked": false
+    },
+    {
+      "key": "category_cardiology",
+      "en": "Cardiology",
+      "tr": "Kardiyoloji",
+      "locked": false
+    },
+    {
+      "key": "category_dental",
+      "en": "Dental",
+      "tr": "Diş",
+      "locked": false
+    },
+    {
+      "key": "category_dermatology",
+      "en": "Dermatology",
+      "tr": "Dermatoloji",
+      "locked": false
+    },
+    {
+      "key": "category_diagnostic",
+      "en": "Diagnostic",
+      "tr": "Tanı Merkezi",
+      "locked": false
+    },
+    {
+      "key": "category_emergency",
+      "en": "Emergency",
+      "tr": "Acil",
+      "locked": false
+    },
+    {
+      "key": "category_endocrinology",
+      "en": "Endocrinology",
+      "tr": "Endokrinoloji",
+      "locked": false
+    },
+    {
+      "key": "category_ent",
+      "en": "Ear, Nose & Throat",
+      "tr": "Kulak, Burun ve Boğaz",
+      "locked": false
+    },
+    {
+      "key": "category_eye_care",
+      "en": "Eye Care",
+      "tr": "Göz Bakımı",
+      "locked": false
+    },
+    {
+      "key": "category_gastroenterology",
+      "en": "Gastroenterology",
+      "tr": "Gastroenteroloji",
+      "locked": false
+    },
+    {
+      "key": "category_general_practice",
+      "en": "General Practice",
+      "tr": "Pratisyen Hekimlik",
+      "locked": false
+    },
+    {
+      "key": "category_hospital",
+      "en": "Hospital",
+      "tr": "Hastane",
+      "locked": false
+    },
+    {
+      "key": "category_medical_specialties",
+      "en": "Medical Specialties",
+      "tr": "Tıbbi Uzmanlıklar",
+      "locked": false
+    },
+    {
+      "key": "category_mental_health",
+      "en": "Mental Health",
+      "tr": "Ruh Sağlığı",
+      "locked": false
+    },
+    {
+      "key": "category_nephrology",
+      "en": "Nephrology",
+      "tr": "Nefroloji",
+      "locked": false
+    },
+    {
+      "key": "category_neurology",
+      "en": "Neurology",
+      "tr": "Nöroloji",
+      "locked": false
+    },
+    {
+      "key": "category_oncology",
+      "en": "Oncology",
+      "tr": "Onkoloji",
+      "locked": false
+    },
+    {
+      "key": "category_ophthalmology",
+      "en": "Ophthalmology",
+      "tr": "Oftalmoloji",
+      "locked": false
+    },
+    {
+      "key": "category_orthopedics",
+      "en": "Orthopedics",
+      "tr": "Ortopedi",
+      "locked": false
+    },
+    {
+      "key": "category_other",
+      "en": "Other",
+      "tr": "Diğer",
+      "locked": false
+    },
+    {
+      "key": "category_pediatrics",
+      "en": "Pediatrics",
+      "tr": "Pediatri",
+      "locked": false
+    },
+    {
+      "key": "category_pharmacy",
+      "en": "Pharmacy",
+      "tr": "Eczane",
+      "locked": false
+    },
+    {
+      "key": "category_primary_care",
+      "en": "Primary Care",
+      "tr": "Birinci Basamak Sağlık",
+      "locked": false
+    },
+    {
+      "key": "category_psychiatry",
+      "en": "Psychiatry",
+      "tr": "Psikiyatri",
+      "locked": false
+    },
+    {
+      "key": "category_pulmonology",
+      "en": "Pulmonology",
+      "tr": "Göğüs Hastalıkları",
+      "locked": false
+    },
+    {
+      "key": "category_rehabilitation",
+      "en": "Rehabilitation",
+      "tr": "Rehabilitasyon",
+      "locked": false
+    },
+    {
+      "key": "category_rheumatology",
+      "en": "Rheumatology",
+      "tr": "Romatoloji",
+      "locked": false
+    },
+    {
+      "key": "category_surgical",
+      "en": "Surgical",
+      "tr": "Cerrahi",
+      "locked": false
+    },
+    {
+      "key": "category_urology",
+      "en": "Urology",
+      "tr": "Üroloji",
+      "locked": false
+    },
+    {
+      "key": "category_womens_health",
+      "en": "Women's Health",
+      "tr": "Kadın Sağlığı",
+      "locked": false
+    },
+    {
+      "key": "chip_distance",
+      "en": "Distance",
+      "tr": "Mesafe",
+      "locked": false
+    },
+    {
+      "key": "chip_facility",
+      "en": "Facility",
+      "tr": "Kurum",
+      "locked": false
+    },
+    {
+      "key": "chip_language",
+      "en": "Language",
+      "tr": "Dil",
+      "locked": false
+    },
+    {
+      "key": "chip_specialty",
+      "en": "Specialty",
+      "tr": "Uzmanlık",
+      "locked": false
+    },
+    {
+      "key": "chip_treatment",
+      "en": "Treatment",
+      "tr": "Tedavi",
+      "locked": false
+    },
+    {
+      "key": "claim_accepted_docs",
+      "en": "Accepted: Medical license, registration certificate, or official ID",
+      "tr": "Kabul edilenler: Tıbbi lisans, kayıt belgesi veya resmi kimlik",
+      "locked": false
+    },
+    {
+      "key": "claim_back_to_provider",
+      "en": "Back to Provider",
+      "tr": "Sağlayıcıya Dön",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_1",
+      "en": "You are authorized to manage this profile",
+      "tr": "Bu profili yönetmeye yetkilisiniz",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_2",
+      "en": "All information provided is accurate",
+      "tr": "Verilen tüm bilgiler doğrudur",
+      "locked": false
+    },
+    {
+      "key": "claim_confirm_text",
+      "en": "By submitting, you confirm that:",
+      "tr": "Göndererek şunları onaylıyorsunuz:",
+      "locked": false
+    },
+    {
+      "key": "claim_description",
+      "en": "Claim this profile to manage it",
+      "tr": "Yönetmek için bu profili sahiplenin",
+      "locked": false
+    },
+    {
+      "key": "claim_file_format",
+      "en": "JPG or PNG, max 10 MB",
+      "tr": "JPG veya PNG, maks 10 MB",
+      "locked": false
+    },
+    {
+      "key": "claim_pending",
+      "en": "Claim Pending",
+      "tr": "Talep Bekliyor",
+      "locked": false
+    },
+    {
+      "key": "claim_pending_message",
+      "en": "Your claim is being reviewed.",
+      "tr": "Talebiniz inceleniyor.",
+      "locked": false
+    },
+    {
+      "key": "claim_profile",
+      "en": "Claim Profile",
+      "tr": "Profili Sahiplen",
+      "locked": false
+    },
+    {
+      "key": "claim_provider_label",
+      "en": "Provider",
+      "tr": "Sağlayıcı",
+      "locked": false
+    },
+    {
+      "key": "claim_rejected",
+      "en": "Claim Rejected",
+      "tr": "Talep Reddedildi",
+      "locked": false
+    },
+    {
+      "key": "claim_resubmit",
+      "en": "Resubmit",
+      "tr": "Yeniden Gönder",
+      "locked": false
+    },
+    {
+      "key": "claim_review_submit",
+      "en": "Review & Submit",
+      "tr": "İncele ve Gönder",
+      "locked": false
+    },
+    {
+      "key": "claim_role_question",
+      "en": "What is your role at this practice?",
+      "tr": "Bu kurumdaki rolünüz nedir?",
+      "locked": false
+    },
+    {
+      "key": "claim_step_1_of_3",
+      "en": "Step 1 of 3",
+      "tr": "Adım 1 / 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_2_of_3",
+      "en": "Step 2 of 3",
+      "tr": "Adım 2 / 3",
+      "locked": false
+    },
+    {
+      "key": "claim_step_3_of_3",
+      "en": "Step 3 of 3",
+      "tr": "Adım 3 / 3",
+      "locked": false
+    },
+    {
+      "key": "claim_submit",
+      "en": "Submit Claim",
+      "tr": "Talebi Gönder",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted",
+      "en": "Claim Submitted!",
+      "tr": "Talep Gönderildi!",
+      "locked": false
+    },
+    {
+      "key": "claim_submitted_message",
+      "en": "We'll review your claim within 1-3 business days. You'll be notified when it's approved.",
+      "tr": "Talebinizi 1-3 iş günü içinde inceleyeceğiz. Onaylandığında bilgilendirileceksiniz.",
+      "locked": false
+    },
+    {
+      "key": "claim_tap_upload",
+      "en": "Tap to upload document",
+      "tr": "Belge yüklemek için dokunun",
+      "locked": false
+    },
+    {
+      "key": "claim_title",
+      "en": "Claim Profile",
+      "tr": "Profili Sahiplen",
+      "locked": false
+    },
+    {
+      "key": "claim_upload_doc",
+      "en": "Upload verification document",
+      "tr": "Doğrulama belgesi yükle",
+      "locked": false
+    },
+    {
+      "key": "claim_verification_doc",
+      "en": "Verification Document",
+      "tr": "Doğrulama Belgesi",
+      "locked": false
+    },
+    {
+      "key": "claim_your_role",
+      "en": "Your Role",
+      "tr": "Rolünüz",
+      "locked": false
+    },
+    {
+      "key": "clear_filter",
+      "en": "Clear Filter",
+      "tr": "Filtreyi Temizle",
+      "locked": false
+    },
+    {
+      "key": "close_button",
+      "en": "Close",
+      "tr": "Kapat",
+      "locked": false
+    },
+    {
+      "key": "country_turkey",
+      "en": "Türkiye",
+      "tr": "Türkiye",
+      "locked": false
+    },
+    {
+      "key": "cta_change_city",
+      "en": "Change city",
+      "tr": "Şehir değiştir",
+      "locked": false
+    },
+    {
+      "key": "cta_suggest_provider",
+      "en": "Suggest a provider",
+      "tr": "Sağlayıcı öner",
+      "locked": false
+    },
+    {
+      "key": "current_location",
+      "en": "Current Location",
+      "tr": "Mevcut Konum",
+      "locked": false
+    },
+    {
+      "key": "date_today",
+      "en": "Today",
+      "tr": "Bugün",
+      "locked": false
+    },
+    {
+      "key": "date_yesterday",
+      "en": "Yesterday",
+      "tr": "Dün",
+      "locked": false
+    },
+    {
+      "key": "default_city_name",
+      "en": "Adana",
+      "tr": "Adana",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_body",
+      "en": "There may be a connection issue. Please try again.",
+      "tr": "Bağlantı sorunu olabilir. Lütfen tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "discover_error_providers_unavailable_title",
+      "en": "Providers could not be loaded",
+      "tr": "Sağlayıcılar yüklenemedi",
+      "locked": false
+    },
+    {
+      "key": "discover_error_switch_to_list",
+      "en": "Switch to list view",
+      "tr": "Liste görünümüne geç",
+      "locked": false
+    },
+    {
+      "key": "edit_review_comment_section",
+      "en": "Review",
+      "tr": "Değerlendirme",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title",
+      "en": "Edit Review",
+      "tr": "Değerlendirmeyi Düzenle",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_placeholder",
+      "en": "Review title",
+      "tr": "Değerlendirme başlığı",
+      "locked": false
+    },
+    {
+      "key": "edit_review_title_section",
+      "en": "Title",
+      "tr": "Başlık",
+      "locked": false
+    },
+    {
+      "key": "empty_home_cta",
+      "en": "Suggest a provider",
+      "tr": "Bir sağlayıcı öner",
+      "locked": false
+    },
+    {
+      "key": "empty_home_title",
+      "en": "No providers in this area",
+      "tr": "Bu bölgede sağlayıcı yok",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_body",
+      "en": "Try searching another area or changing city.",
+      "tr": "Başka bir bölge aramayı veya şehri değiştirmeyi deneyin.",
+      "locked": false
+    },
+    {
+      "key": "empty_no_providers_title",
+      "en": "No providers available",
+      "tr": "Uygun sağlayıcı yok",
+      "locked": false
+    },
+    {
+      "key": "empty_search",
+      "en": "No results found",
+      "tr": "Sonuç bulunamadı",
+      "locked": false
+    },
+    {
+      "key": "error_duplicate_review",
+      "en": "You can only submit one review per provider per date.",
+      "tr": "Aynı tarihte her bir sağlayıcı için yalnızca bir değerlendirme gönderebilirsiniz.",
+      "locked": false
+    },
+    {
+      "key": "error_generic",
+      "en": "Error",
+      "tr": "Hata",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body",
+      "en": "Your connection may be unstable right now. Try again to load the list.",
+      "tr": "Bağlantınız şu anda kararsız olabilir. Listeyi yüklemek için tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_body_generic",
+      "en": "Couldn't load providers. Please try again.",
+      "tr": "Sağlayıcılar yüklenemedi. Lütfen tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "error_load_providers_title",
+      "en": "Couldn't load providers",
+      "tr": "Sağlayıcılar yüklenemedi",
+      "locked": false
+    },
+    {
+      "key": "error_network",
+      "en": "A network issue occurred. Please check your connection and try again.",
+      "tr": "Bir ağ sorunu oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_body",
+      "en": "Please check your connection and try again.",
+      "tr": "Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "error_network_generic_title",
+      "en": "Network error",
+      "tr": "Ağ hatası",
+      "locked": false
+    },
+    {
+      "key": "error_offline_body",
+      "en": "It looks like you're offline. Check your connection and try again.",
+      "tr": "Çevrimdışı görünüyorsunuz. Bağlantınızı kontrol edip tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "error_offline_title",
+      "en": "Couldn't load providers",
+      "tr": "Sağlayıcılar yüklenemedi",
+      "locked": false
+    },
+    {
+      "key": "error_unknown",
+      "en": "An unknown error occurred.",
+      "tr": "Bilinmeyen bir hata oluştu.",
+      "locked": false
+    },
+    {
+      "key": "filter_all",
+      "en": "All",
+      "tr": "Tümü",
+      "locked": false
+    },
+    {
+      "key": "filter_apply",
+      "en": "Apply",
+      "tr": "Uygula",
+      "locked": false
+    },
+    {
+      "key": "filter_button",
+      "en": "Filter",
+      "tr": "Filtrele",
+      "locked": false
+    },
+    {
+      "key": "filter_distance",
+      "en": "Distance",
+      "tr": "Mesafe",
+      "locked": false
+    },
+    {
+      "key": "filter_facility",
+      "en": "Facility",
+      "tr": "Kurum",
+      "locked": false
+    },
+    {
+      "key": "filter_facility_title",
+      "en": "Facility",
+      "tr": "Kurum",
+      "locked": false
+    },
+    {
+      "key": "filter_language",
+      "en": "Language",
+      "tr": "Dil",
+      "locked": false
+    },
+    {
+      "key": "filter_language_title",
+      "en": "Language",
+      "tr": "Dil",
+      "locked": false
+    },
+    {
+      "key": "filter_more",
+      "en": "More",
+      "tr": "Daha Fazla",
+      "locked": false
+    },
+    {
+      "key": "filter_reset",
+      "en": "Reset",
+      "tr": "Sıfırla",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty",
+      "en": "Specialty",
+      "tr": "Uzmanlık",
+      "locked": false
+    },
+    {
+      "key": "filter_specialty_title",
+      "en": "Specialty",
+      "tr": "Uzmanlık",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment",
+      "en": "Treatment",
+      "tr": "Tedavi",
+      "locked": false
+    },
+    {
+      "key": "filter_treatment_title",
+      "en": "Treatment",
+      "tr": "Tedavi",
+      "locked": false
+    },
+    {
+      "key": "filter_verified",
+      "en": "Verified",
+      "tr": "Doğrulanmış",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_only_label",
+      "en": "Show only providers with verified reviews",
+      "tr": "Yalnızca doğrulanmış değerlendirmesi olanları göster",
+      "locked": false
+    },
+    {
+      "key": "filter_verified_title",
+      "en": "Verified",
+      "tr": "Doğrulanmış",
+      "locked": false
+    },
+    {
+      "key": "find_empty_change_city",
+      "en": "Change city",
+      "tr": "Şehri değiştir",
+      "locked": false
+    },
+    {
+      "key": "find_empty_clear_filters",
+      "en": "Clear filters",
+      "tr": "Filtreleri temizle",
+      "locked": false
+    },
+    {
+      "key": "find_empty_growing_here",
+      "en": "TrustCare is growing here",
+      "tr": "TrustCare burada büyüyor",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_another_area",
+      "en": "Search another area",
+      "tr": "Başka bir bölgede ara",
+      "locked": false
+    },
+    {
+      "key": "find_empty_search_change_city",
+      "en": "Search another area / Change city",
+      "tr": "Başka bir bölge ara / Şehri değiştir",
+      "locked": false
+    },
+    {
+      "key": "find_empty_suggest_provider",
+      "en": "Suggest a provider",
+      "tr": "Bir sağlayıcı öner",
+      "locked": false
+    },
+    {
+      "key": "find_set_location",
+      "en": "Set location",
+      "tr": "Konum ayarla",
+      "locked": false
+    },
+    {
+      "key": "find_sheet_providers_title",
+      "en": "Providers",
+      "tr": "Sağlayıcılar",
+      "locked": false
+    },
+    {
+      "key": "find_state_change_city",
+      "en": "Change city",
+      "tr": "Şehri değiştir",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_body",
+      "en": "Clear one or more filters, or move the map to expand results.",
+      "tr": "Sonuçları genişletmek için bir veya daha fazla filtreyi temizleyin veya haritayı kaydırın.",
+      "locked": false
+    },
+    {
+      "key": "find_state_clear_filters_title",
+      "en": "No results match these filters",
+      "tr": "Bu filtrelerle eşleşen sonuç yok",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_body",
+      "en": "Coverage is expanding in this area. Try a nearby city for now.",
+      "tr": "Kapsam bu bölgede genişliyor. Şimdilik yakındaki bir şehri deneyin.",
+      "locked": false
+    },
+    {
+      "key": "find_state_growing_title",
+      "en": "TrustCare is growing here",
+      "tr": "TrustCare burada büyüyor",
+      "locked": false
+    },
+    {
+      "key": "find_state_no_providers_visible",
+      "en": "No providers visible in this map area",
+      "tr": "Bu harita alanında görünür sağlayıcı yok",
+      "locked": false
+    },
+    {
+      "key": "find_state_search_another_area",
+      "en": "Search another area",
+      "tr": "Başka bir bölgede ara",
+      "locked": false
+    },
+    {
+      "key": "find_state_try_another_area",
+      "en": "Try another area or pick a different city to continue.",
+      "tr": "Devam etmek için başka bir bölge deneyin veya farklı bir şehir seçin.",
+      "locked": false
+    },
+    {
+      "key": "help_contact",
+      "en": "Contact",
+      "tr": "İletişim",
+      "locked": false
+    },
+    {
+      "key": "help_email_label",
+      "en": "Email",
+      "tr": "E-posta",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a1",
+      "en": "Open Review, choose a provider, and complete the guided form.",
+      "tr": "Değerlendir'i açın, bir sağlayıcı seçin ve yönlendirmeli formu doldurun.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a2",
+      "en": "Yes. Open My Reviews and tap Edit on your review.",
+      "tr": "Evet. Değerlendirmelerim'i açın ve değerlendirmeniz üzerinde Düzenle'ye dokunun.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a3",
+      "en": "Verified means the review passed our checks or includes supporting proof.",
+      "tr": "Doğrulanmış, değerlendirmenin kontrollerimizden geçtiği veya destekleyici kanıt içerdiği anlamına gelir.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a4",
+      "en": "Open the review and tap Report. Our team will review it.",
+      "tr": "Değerlendirmeyi açın ve Bildir'e dokunun. Ekibimiz inceleyecektir.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a5",
+      "en": "Go to Settings and request deletion. We will confirm when completed.",
+      "tr": "Ayarlar'a gidin ve silme isteğinde bulunun. İşlem tamamlandığında onaylayacağız.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_a6",
+      "en": "Email support@trustcare.app with your app version and issue details.",
+      "tr": "Uygulama sürümünüz ve sorunun ayrıntılarıyla birlikte support@trustcare.app adresine e-posta gönderin.",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q1",
+      "en": "How do I add a review?",
+      "tr": "Nasıl değerlendirme eklerim?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q2",
+      "en": "Can I edit my review?",
+      "tr": "Değerlendirmemi düzenleyebilir miyim?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q3",
+      "en": "What does Verified mean?",
+      "tr": "Doğrulanmış ne anlama geliyor?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q4",
+      "en": "How do I report content?",
+      "tr": "İçeriği nasıl bildiririm?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q5",
+      "en": "How do I delete my account or data?",
+      "tr": "Hesabımı veya verilerimi nasıl silerim?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_q6",
+      "en": "How can I contact support?",
+      "tr": "Destek ekibiyle nasıl iletişime geçebilirim?",
+      "locked": false
+    },
+    {
+      "key": "help_faq_title",
+      "en": "Help & Support",
+      "tr": "Yardım ve Destek",
+      "locked": false
+    },
+    {
+      "key": "help_report_issue",
+      "en": "Report an issue",
+      "tr": "Sorun bildir",
+      "locked": false
+    },
+    {
+      "key": "is_this_your_practice",
+      "en": "Is this your practice?",
+      "tr": "Bu sizin kurumunuz mu?",
+      "locked": false
+    },
+    {
+      "key": "language_changed_alert",
+      "en": "Language Changed",
+      "tr": "Dil Değiştirildi",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message",
+      "en": "The app needs to restart to apply the new language.",
+      "tr": "Yeni dilin uygulanması için uygulamanın yeniden başlatılması gerekiyor.",
+      "locked": false
+    },
+    {
+      "key": "language_changed_message_named %@",
+      "en": "The app will restart in %@. Continue?",
+      "tr": "Uygulama %@ içinde yeniden başlatılacak. Devam edilsin mi?",
+      "locked": false
+    },
+    {
+      "key": "language_danish",
+      "en": "Dansk",
+      "tr": "Dansk",
+      "locked": false
+    },
+    {
+      "key": "language_done",
+      "en": "Done",
+      "tr": "Bitti",
+      "locked": false
+    },
+    {
+      "key": "language_dutch",
+      "en": "Nederlands",
+      "tr": "Nederlands",
+      "locked": false
+    },
+    {
+      "key": "language_english",
+      "en": "English",
+      "tr": "English",
+      "locked": false
+    },
+    {
+      "key": "language_german",
+      "en": "Deutsch",
+      "tr": "Deutsch",
+      "locked": false
+    },
+    {
+      "key": "language_later",
+      "en": "Later",
+      "tr": "Daha Sonra",
+      "locked": false
+    },
+    {
+      "key": "language_polish",
+      "en": "Polski",
+      "tr": "Polski",
+      "locked": false
+    },
+    {
+      "key": "language_restart_now",
+      "en": "Restart Now",
+      "tr": "Şimdi Yeniden Başlat",
+      "locked": false
+    },
+    {
+      "key": "language_section_title",
+      "en": "Language",
+      "tr": "Dil",
+      "locked": false
+    },
+    {
+      "key": "language_turkish",
+      "en": "Türkçe",
+      "tr": "Türkçe",
+      "locked": false
+    },
+    {
+      "key": "legal_translation_disclaimer",
+      "en": "Translation is provided for convenience; the English version prevails.",
+      "tr": "Çeviri kolaylık sağlamak amacıyla sunulmuştur; İngilizce sürüm geçerlidir.",
+      "locked": false
+    },
+    {
+      "key": "legend_aesthetics",
+      "en": "Aesthetics",
+      "tr": "Estetik",
+      "locked": false
+    },
+    {
+      "key": "legend_clinic",
+      "en": "Clinic",
+      "tr": "Klinik",
+      "locked": false
+    },
+    {
+      "key": "legend_dental",
+      "en": "Dental",
+      "tr": "Diş",
+      "locked": false
+    },
+    {
+      "key": "legend_hospital",
+      "en": "Hospital",
+      "tr": "Hastane",
+      "locked": false
+    },
+    {
+      "key": "legend_lab",
+      "en": "Lab",
+      "tr": "Laboratuvar",
+      "locked": false
+    },
+    {
+      "key": "legend_mental_health",
+      "en": "Mental Health",
+      "tr": "Ruh Sağlığı",
+      "locked": false
+    },
+    {
+      "key": "legend_pharmacy",
+      "en": "Pharmacy",
+      "tr": "Eczane",
+      "locked": false
+    },
+    {
+      "key": "legend_rehab",
+      "en": "Rehab",
+      "tr": "Rehabilitasyon",
+      "locked": false
+    },
+    {
+      "key": "location_select_title",
+      "en": "Select Location",
+      "tr": "Konum Seç",
+      "locked": false
+    },
+    {
+      "key": "logout_confirm_message",
+      "en": "Are you sure you want to log out?",
+      "tr": "Çıkış yapmak istediğinizden emin misiniz?",
+      "locked": false
+    },
+    {
+      "key": "map_search_this_area",
+      "en": "Search this area",
+      "tr": "Bu alanda ara",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_list",
+      "en": "List",
+      "tr": "Liste",
+      "locked": false
+    },
+    {
+      "key": "map_toggle_map",
+      "en": "Map",
+      "tr": "Harita",
+      "locked": false
+    },
+    {
+      "key": "media_photo_count_%lld",
+      "en": "%lld of 5 photos",
+      "tr": "%lld of 5 photos",
+      "locked": true
+    },
+    {
+      "key": "menu_help",
+      "en": "Help & Support",
+      "tr": "Yardım ve Destek",
+      "locked": false
+    },
+    {
+      "key": "menu_logout",
+      "en": "Log Out",
+      "tr": "Çıkış Yap",
+      "locked": false
+    },
+    {
+      "key": "menu_my_reviews",
+      "en": "My Reviews",
+      "tr": "Değerlendirmelerim",
+      "locked": false
+    },
+    {
+      "key": "menu_privacy",
+      "en": "Privacy Policy",
+      "tr": "Gizlilik Politikası",
+      "locked": false
+    },
+    {
+      "key": "menu_saved",
+      "en": "Saved",
+      "tr": "Kaydedilenler",
+      "locked": false
+    },
+    {
+      "key": "menu_settings",
+      "en": "Settings",
+      "tr": "Ayarlar",
+      "locked": false
+    },
+    {
+      "key": "menu_terms",
+      "en": "Terms of Service",
+      "tr": "Hizmet Şartları",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_message",
+      "en": "This action cannot be undone.",
+      "tr": "Bu işlem geri alınamaz.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_delete_title",
+      "en": "Delete Review?",
+      "tr": "Değerlendirme Silinsin mi?",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_action",
+      "en": "Write a Review",
+      "tr": "Değerlendirme Yaz",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_message",
+      "en": "Share your experience by posting your first review.",
+      "tr": "İlk değerlendirmenizi göndererek deneyiminizi paylaşın.",
+      "locked": false
+    },
+    {
+      "key": "my_reviews_empty_title",
+      "en": "No reviews yet",
+      "tr": "Henüz değerlendirme yok",
+      "locked": false
+    },
+    {
+      "key": "no_results",
+      "en": "No results",
+      "tr": "Sonuç yok",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_1",
+      "en": "If you have questions about this Privacy Policy or your personal data, contact us at support@trustcare.app.",
+      "tr": "Bu Gizlilik Politikası veya kişisel verileriniz hakkında sorularınız varsa support@trustcare.app adresinden bizimle iletişime geçin.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_2",
+      "en": "If you are in the EEA/UK, you may also contact your local data protection authority.",
+      "tr": "AEA/Birleşik Krallık'taysanız yerel veri koruma makamınızla da iletişime geçebilirsiniz.",
+      "locked": false
+    },
+    {
+      "key": "pp_contact_title",
+      "en": "Contact",
+      "tr": "İletişim",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_1",
+      "en": "Our web surfaces may use cookies and local storage to keep sessions secure and improve performance.",
+      "tr": "Web yüzeylerimiz, oturumları güvende tutmak ve performansı artırmak için çerezleri ve yerel depolamayı kullanabilir.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_2",
+      "en": "You can control cookie preferences in your browser settings, though disabling them may affect functionality.",
+      "tr": "Çerez tercihlerini tarayıcı ayarlarınızdan kontrol edebilirsiniz ancak bunları devre dışı bırakmak işlevselliği etkileyebilir.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_3",
+      "en": "Analytics cookies are used in aggregate form to understand usage trends and improve the service.",
+      "tr": "Analitik çerezleri, kullanım eğilimlerini anlamak ve hizmeti iyileştirmek için toplu biçimde kullanılır.",
+      "locked": false
+    },
+    {
+      "key": "pp_cookies_title",
+      "en": "Cookies and Similar Technologies",
+      "tr": "Çerezler ve Benzer Teknolojiler",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_1",
+      "en": "We collect account data such as email, name, profile preferences, and authentication metadata.",
+      "tr": "E-posta, ad, profil tercihleri ve kimlik doğrulama meta verileri gibi hesap verilerini topluyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_2",
+      "en": "When you submit reviews, we collect ratings, comments, optional media, and optional verification artifacts.",
+      "tr": "Değerlendirmeler gönderdiğinizde, puanlamaları, yorumları, isteğe bağlı medyayı ve isteğe bağlı doğrulama eserlerini topluyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_3",
+      "en": "We may process device and usage data including app events, approximate location, and diagnostics.",
+      "tr": "Uygulama etkinlikleri, yaklaşık konum ve tanılama dahil olmak üzere cihaz ve kullanım verilerini işleyebiliriz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_4",
+      "en": "We do not intentionally collect sensitive health records beyond the information you choose to submit.",
+      "tr": "Göndermeyi seçtiğiniz bilgilerin ötesinde, kasıtlı olarak hassas sağlık kayıtları toplamıyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_collection_title",
+      "en": "Data We Collect",
+      "tr": "Topladığımız Veriler",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_1",
+      "en": "We share data with service providers that operate hosting, analytics, moderation, and communication systems.",
+      "tr": "Verileri, barındırma, analitik, denetim ve iletişim sistemlerini işleten hizmet sağlayıcılarla paylaşıyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_2",
+      "en": "We may disclose information when required by law, regulation, legal process, or to protect users and platform integrity.",
+      "tr": "Yasalar, yönetmelikler, hukuki süreçler gerektirdiğinde veya kullanıcıları ve platform bütünlüğünü korumak için bilgileri ifşa edebiliriz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_3",
+      "en": "We do not sell personal data to third parties.",
+      "tr": "Kişisel verileri üçüncü taraflara satmıyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_sharing_title",
+      "en": "How We Share Data",
+      "tr": "Verileri Nasıl Paylaşıyoruz",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_1",
+      "en": "We use personal data to provide core app functionality, personalize content, and maintain account security.",
+      "tr": "Kişisel verileri temel uygulama işlevlerini sağlamak, içeriği kişiselleştirmek ve hesap güvenliğini sağlamak için kullanıyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_2",
+      "en": "We use submitted reviews and metadata for trust, safety, moderation, fraud prevention, and quality assurance.",
+      "tr": "Gönderilen değerlendirmeleri ve meta verileri güven, güvenlik, denetim, dolandırıcılığı önleme ve kalite güvencesi için kullanıyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_3",
+      "en": "We may use aggregated and de-identified analytics to improve product experience and reliability.",
+      "tr": "Ürün deneyimini ve güvenilirliğini artırmak için toplu ve kimliği gizlenmiş analitiği kullanabiliriz.",
+      "locked": false
+    },
+    {
+      "key": "pp_data_usage_title",
+      "en": "How We Use Data",
+      "tr": "Verileri Nasıl Kullanıyoruz",
+      "locked": false
+    },
+    {
+      "key": "pp_last_updated",
+      "en": "Last updated: March 2026",
+      "tr": "Son güncelleme: Mart 2026",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_1",
+      "en": "Depending on your region, you may have rights to access, correct, export, restrict, or delete your personal data.",
+      "tr": "Bölgenize bağlı olarak kişisel verilerinize erişme, düzeltme, dışa aktarma, kısıtlama veya silme haklarına sahip olabilirsiniz.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_2",
+      "en": "You can update profile information directly in the app or request support for account-level actions.",
+      "tr": "Profil bilgilerini doğrudan uygulamadan güncelleyebilir veya hesap düzeyindeki işlemler için destek isteyebilirsiniz.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_3",
+      "en": "You may object to certain processing where applicable under local law.",
+      "tr": "Yerel yasalar uyarınca geçerli olduğu durumlarda belirli işlemlere itiraz edebilirsiniz.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_4",
+      "en": "To exercise your rights, contact support@trustcare.app and we will respond within the legally required timeframe.",
+      "tr": "Haklarınızı kullanmak için support@trustcare.app adresiyle iletişime geçin, yasal olarak gerekli süre içinde yanıt vereceğiz.",
+      "locked": false
+    },
+    {
+      "key": "pp_rights_title",
+      "en": "Your Rights",
+      "tr": "Haklarınız",
+      "locked": false
+    },
+    {
+      "key": "pp_security_1",
+      "en": "We apply technical and organizational safeguards designed to protect data against unauthorized access and misuse.",
+      "tr": "Verileri yetkisiz erişime ve kötüye kullanıma karşı korumak için tasarlanmış teknik ve organizasyonel önlemler uyguluyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_2",
+      "en": "No online system is completely secure; we continuously monitor and improve our controls.",
+      "tr": "Hiçbir çevrimiçi sistem tamamen güvenli değildir; kontrollerimizi sürekli olarak izliyor ve iyileştiriyoruz.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_3",
+      "en": "If a security incident affects your data, we will notify you and regulators when legally required.",
+      "tr": "Bir güvenlik olayı verilerinizi etkilerse, yasal olarak gerektiğinde sizi ve düzenleyicileri bilgilendireceğiz.",
+      "locked": false
+    },
+    {
+      "key": "pp_security_title",
+      "en": "Security",
+      "tr": "Güvenlik",
+      "locked": false
+    },
+    {
+      "key": "profile_member_since",
+      "en": "Member since",
+      "tr": "Üyelik tarihi",
+      "locked": false
+    },
+    {
+      "key": "profile_referral",
+      "en": "Invite a friend - earn points",
+      "tr": "Bir arkadaşını davet et - puan kazan",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count",
+      "en": "Reviews",
+      "tr": "Değerlendirmeler",
+      "locked": false
+    },
+    {
+      "key": "profile_reviews_count %lld",
+      "en": "%#@count@",
+      "tr": "%#@count@",
+      "locked": true
+    },
+    {
+      "key": "profile_verified_percent",
+      "en": "Verified",
+      "tr": "Doğrulanmış",
+      "locked": false
+    },
+    {
+      "key": "profile_verified_percent %lld",
+      "en": "%lld%% Verified",
+      "tr": "%lld%% Verified",
+      "locked": true
+    },
+    {
+      "key": "providers_label",
+      "en": "Providers",
+      "tr": "Sağlayıcılar",
+      "locked": false
+    },
+    {
+      "key": "providers_title",
+      "en": "Providers",
+      "tr": "Sağlayıcılar",
+      "locked": false
+    },
+    {
+      "key": "recents",
+      "en": "Recents",
+      "tr": "Son Aramalar",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_112",
+      "en": "Call 112",
+      "tr": "112'yi Ara",
+      "locked": false
+    },
+    {
+      "key": "rehber_call_emergency",
+      "en": "Call Emergency Services",
+      "tr": "Acil Servisleri Ara",
+      "locked": false
+    },
+    {
+      "key": "rehber_consent_text",
+      "en": "I understand: These suggestions are for guidance only, not diagnosis",
+      "tr": "Anlıyorum: Bu öneriler sadece rehberlik amaçlıdır, teşhis değildir",
+      "locked": false
+    },
+    {
+      "key": "rehber_cooldown",
+      "en": "Please wait %d seconds to send again.",
+      "tr": "Tekrar göndermek için lütfen %d saniye bekleyin.",
+      "locked": false
+    },
+    {
+      "key": "rehber_daily_limit_reached",
+      "en": "Daily free limit reached (5/5). Try again tomorrow.",
+      "tr": "Günlük ücretsiz sınıra ulaşıldı (5/5). Yarın tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete",
+      "en": "Delete",
+      "tr": "Sil",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_message",
+      "en": "This will permanently delete this conversation and all its messages.",
+      "tr": "Bu, bu konuşmayı ve tüm mesajlarını kalıcı olarak silecektir.",
+      "locked": false
+    },
+    {
+      "key": "rehber_delete_conversation_title",
+      "en": "Delete Conversation?",
+      "tr": "Konuşma Silinsin mi?",
+      "locked": false
+    },
+    {
+      "key": "rehber_disclaimer",
+      "en": "This is not medical advice. Always consult a healthcare professional.",
+      "tr": "Bu tıbbi bir tavsiye değildir. Her zaman bir sağlık uzmanına danışın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_danger",
+      "en": "If you or someone else is in danger, call immediately.",
+      "tr": "Siz veya başka biri tehlikedeyse hemen arayın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_detected",
+      "en": "🚨 A potential emergency risk was detected. Please call 112 immediately.",
+      "tr": "🚨 Olası bir acil durum riski tespit edildi. Lütfen hemen 112'yi arayın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_subtitle",
+      "en": "Please call 112 immediately",
+      "tr": "Lütfen hemen 112'yi arayın",
+      "locked": false
+    },
+    {
+      "key": "rehber_emergency_title",
+      "en": "🚨 EMERGENCY",
+      "tr": "🚨 ACİL DURUM",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state",
+      "en": "Share your symptoms, I'll guide you to the right specialty.",
+      "tr": "Belirtilerinizi paylaşın, sizi doğru uzmanlığa yönlendireceğim.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_state_sub",
+      "en": "No diagnosis or treatment is provided; guidance only.",
+      "tr": "Herhangi bir teşhis veya tedavi sağlanmaz; sadece rehberlik amaçlıdır.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_subtitle",
+      "en": "Start one to get health guidance.",
+      "tr": "Sağlık rehberliği almak için bir tane başlatın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_empty_title",
+      "en": "No conversations yet",
+      "tr": "Henüz konuşma yok",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_1",
+      "en": "Recommends the right specialty based on your symptoms",
+      "tr": "Belirtilerinize göre doğru uzmanlığı önerir",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_2",
+      "en": "Finds healthcare providers near you",
+      "tr": "Yakınınızdaki sağlık hizmeti sağlayıcılarını bulur",
+      "locked": false
+    },
+    {
+      "key": "rehber_feature_3",
+      "en": "Directs you to 112 in emergencies",
+      "tr": "Acil durumlarda sizi 112'ye yönlendirir",
+      "locked": false
+    },
+    {
+      "key": "rehber_find_provider",
+      "en": "Find provider",
+      "tr": "Sağlayıcı bul",
+      "locked": false
+    },
+    {
+      "key": "rehber_info_bar",
+      "en": "TrustCare Rehber - Health Information Service",
+      "tr": "TrustCare Rehber - Sağlık Bilgi Hizmeti",
+      "locked": false
+    },
+    {
+      "key": "rehber_input_placeholder",
+      "en": "Describe your symptoms...",
+      "tr": "Belirtilerinizi açıklayın...",
+      "locked": false
+    },
+    {
+      "key": "rehber_load_conversation_error",
+      "en": "Unable to load conversation.",
+      "tr": "Konuşma yüklenemedi.",
+      "locked": false
+    },
+    {
+      "key": "rehber_login_required",
+      "en": "Please sign in to use Rehber.",
+      "tr": "Rehber'i kullanmak için lütfen giriş yapın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_nearest_emergency",
+      "en": "Nearest Emergency Room",
+      "tr": "En Yakın Acil Servis",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_conversation",
+      "en": "New Conversation",
+      "tr": "Yeni Konuşma",
+      "locked": false
+    },
+    {
+      "key": "rehber_new_short",
+      "en": "New",
+      "tr": "Yeni",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_conversations",
+      "en": "No conversations yet",
+      "tr": "Henüz konuşma yok",
+      "locked": false
+    },
+    {
+      "key": "rehber_no_response",
+      "en": "Rehber could not respond. Please try again.",
+      "tr": "Rehber yanıt veremedi. Lütfen tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_subtitle",
+      "en": "Health Information Service",
+      "tr": "Sağlık Bilgi Hizmeti",
+      "locked": false
+    },
+    {
+      "key": "rehber_onboarding_warning",
+      "en": "⚠️ This service is not a medical diagnosis or treatment recommendation. Always consult a healthcare professional.",
+      "tr": "⚠️ Bu hizmet bir tıbbi teşhis veya tedavi önerisi değildir. Her zaman bir sağlık uzmanına danışın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_body",
+      "en": "This feature will become a subscription. It's currently available to everyone for testing.",
+      "tr": "Bu özellik ileride ücretli bir abonelik olacaktır. Şu anda test amaçlı herkesin kullanımına açıktır.",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_banner_title",
+      "en": "Plus - free during launch",
+      "tr": "PLUS - lansman süresince ücretsiz",
+      "locked": false
+    },
+    {
+      "key": "rehber_plus_trial",
+      "en": "TrustCare Plus feature - Free trial: 5 questions per day",
+      "tr": "TrustCare Plus özelliği - Ücretsiz deneme: Günde 5 soru",
+      "locked": false
+    },
+    {
+      "key": "rehber_recent_sessions",
+      "en": "Recent Sessions",
+      "tr": "Son Oturumlar",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_failed",
+      "en": "Response could not be generated. Please try again.",
+      "tr": "Yanıt oluşturulamadı. Lütfen tekrar deneyin.",
+      "locked": false
+    },
+    {
+      "key": "rehber_response_unavailable",
+      "en": "Response unavailable.",
+      "tr": "Yanıt kullanılamıyor.",
+      "locked": false
+    },
+    {
+      "key": "rehber_sessions",
+      "en": "Sessions",
+      "tr": "Oturumlar",
+      "locked": false
+    },
+    {
+      "key": "rehber_start",
+      "en": "Start",
+      "tr": "Başlat",
+      "locked": false
+    },
+    {
+      "key": "rehber_start_guidance",
+      "en": "Start one to get health guidance.",
+      "tr": "Sağlık rehberliği almak için bir tane başlatın.",
+      "locked": false
+    },
+    {
+      "key": "rehber_subtitle",
+      "en": "Your AI health guide",
+      "tr": "Yapay zeka sağlık rehberiniz",
+      "locked": false
+    },
+    {
+      "key": "rehber_title",
+      "en": "TrustCare Rehber",
+      "tr": "TrustCare Rehber",
+      "locked": false
+    },
+    {
+      "key": "rehber_try_again",
+      "en": "Try Again",
+      "tr": "Tekrar Dene",
+      "locked": false
+    },
+    {
+      "key": "rehber_usage_counter",
+      "en": "Usage count:",
+      "tr": "Kullanım sayısı:",
+      "locked": false
+    },
+    {
+      "key": "report_additional_details",
+      "en": "Additional details (optional)",
+      "tr": "Ek detaylar (isteğe bağlı)",
+      "locked": false
+    },
+    {
+      "key": "report_button",
+      "en": "Report",
+      "tr": "Bildir",
+      "locked": false
+    },
+    {
+      "key": "report_footer",
+      "en": "Please provide any additional context that might help us review this report.",
+      "tr": "Lütfen bu raporu incelememize yardımcı olabilecek her türlü ek bağlamı sağlayın.",
+      "locked": false
+    },
+    {
+      "key": "report_header",
+      "en": "Why are you reporting this review?",
+      "tr": "Bu değerlendirmeyi neden bildiriyorsunuz?",
+      "locked": false
+    },
+    {
+      "key": "report_optional_details",
+      "en": "Optional details",
+      "tr": "İsteğe bağlı detaylar",
+      "locked": false
+    },
+    {
+      "key": "report_reason",
+      "en": "Reason",
+      "tr": "Neden",
+      "locked": false
+    },
+    {
+      "key": "report_reported",
+      "en": "Reported",
+      "tr": "Bildirildi",
+      "locked": false
+    },
+    {
+      "key": "report_thank_you",
+      "en": "Thank you. We'll review this report.",
+      "tr": "Teşekkür ederiz. Bu raporu inceleyeceğiz.",
+      "locked": false
+    },
+    {
+      "key": "report_title",
+      "en": "Report Review",
+      "tr": "Değerlendirmeyi Bildir",
+      "locked": false
+    },
+    {
+      "key": "review_add_photo",
+      "en": "Add Photo",
+      "tr": "Fotoğraf Ekle",
+      "locked": false
+    },
+    {
+      "key": "review_another",
+      "en": "Review Another Provider",
+      "tr": "Başka Bir Sağlayıcıyı Değerlendir",
+      "locked": false
+    },
+    {
+      "key": "review_button_back",
+      "en": "Back",
+      "tr": "Geri",
+      "locked": false
+    },
+    {
+      "key": "review_button_next",
+      "en": "Next",
+      "tr": "İleri",
+      "locked": false
+    },
+    {
+      "key": "review_cant_find_add",
+      "en": "Can't find it? Add new",
+      "tr": "Bulamadınız mı? Yeni ekle",
+      "locked": false
+    },
+    {
+      "key": "review_change_provider",
+      "en": "Change",
+      "tr": "Değiştir",
+      "locked": false
+    },
+    {
+      "key": "review_char_count %lld",
+      "en": "%lld/500 characters",
+      "tr": "%lld/500 characters",
+      "locked": true
+    },
+    {
+      "key": "review_comment",
+      "en": "Your Review",
+      "tr": "Değerlendirmeniz",
+      "locked": false
+    },
+    {
+      "key": "review_comment_placeholder",
+      "en": "Share your experience...",
+      "tr": "Deneyiminizi paylaşın...",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner",
+      "en": "Bedside Manner",
+      "tr": "Hastayla İletişim",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_bedside_manner_question",
+      "en": "Did the doctor listen and explain clearly?",
+      "tr": "Doktor sizi dinledi ve net bir şekilde açıkladı mı?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "tr": "Klinik Hijyeni",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_clinic_hygiene_question",
+      "en": "Was the clinic clean and hygienic?",
+      "tr": "Klinik temiz ve hijyenik miydi?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "tr": "Tedavi Etkililiği",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_treatment_effectiveness_question",
+      "en": "Did the treatment resolve your issue?",
+      "tr": "Tedavi sorununuzu çözdü mü?",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time",
+      "en": "Waiting Time",
+      "tr": "Bekleme Süresi",
+      "locked": false
+    },
+    {
+      "key": "review_criterion_waiting_time_question",
+      "en": "How long did you wait after your appointment time?",
+      "tr": "Randevu saatinizden sonra ne kadar beklediniz?",
+      "locked": false
+    },
+    {
+      "key": "review_detailed",
+      "en": "Detailed Rating",
+      "tr": "Detaylı Değerlendirme",
+      "locked": false
+    },
+    {
+      "key": "review_editable_24h",
+      "en": "Editable within 24h",
+      "tr": "24 saat içinde düzenlenebilir",
+      "locked": false
+    },
+    {
+      "key": "review_go_home",
+      "en": "Go to Home",
+      "tr": "Ana Sayfaya Git",
+      "locked": false
+    },
+    {
+      "key": "review_helpful_count_%lld",
+      "en": "%lld helpful",
+      "tr": "%lld helpful",
+      "locked": true
+    },
+    {
+      "key": "review_overall",
+      "en": "Overall Rating",
+      "tr": "Genel Değerlendirme",
+      "locked": false
+    },
+    {
+      "key": "review_overall_question",
+      "en": "How was your overall experience?",
+      "tr": "Genel deneyiminiz nasıldı?",
+      "locked": false
+    },
+    {
+      "key": "review_photos_public",
+      "en": "Photos will be visible to everyone.",
+      "tr": "Fotoğraflar herkese açık olacaktır.",
+      "locked": false
+    },
+    {
+      "key": "review_proof_private",
+      "en": "This will not be shown publicly.",
+      "tr": "Bu, herkese açık olarak gösterilmeyecektir.",
+      "locked": false
+    },
+    {
+      "key": "review_select_provider_to_continue",
+      "en": "Select a provider to continue",
+      "tr": "Devam etmek için bir sağlayıcı seçin",
+      "locked": false
+    },
+    {
+      "key": "review_skip_verification",
+      "en": "Skip verification",
+      "tr": "Doğrulamayı atla",
+      "locked": false
+    },
+    {
+      "key": "review_step_choose_provider",
+      "en": "Choose provider",
+      "tr": "Sağlayıcı seçin",
+      "locked": false
+    },
+    {
+      "key": "review_step_detailed_ratings",
+      "en": "Detailed ratings",
+      "tr": "Detaylı değerlendirmeler",
+      "locked": false
+    },
+    {
+      "key": "review_step_format",
+      "en": "Step %1$lld of %2$lld",
+      "tr": "Adım %1$lld / %2$lld",
+      "locked": false
+    },
+    {
+      "key": "review_step_media_submit",
+      "en": "Media and submit",
+      "tr": "Medya ve gönder",
+      "locked": false
+    },
+    {
+      "key": "review_step_overall_rating",
+      "en": "Overall rating",
+      "tr": "Genel değerlendirme",
+      "locked": false
+    },
+    {
+      "key": "review_step_visit_details",
+      "en": "Visit details",
+      "tr": "Ziyaret detayları",
+      "locked": false
+    },
+    {
+      "key": "review_step_write_review",
+      "en": "Write review",
+      "tr": "Değerlendirme yazın",
+      "locked": false
+    },
+    {
+      "key": "review_submit",
+      "en": "Submit Review",
+      "tr": "Değerlendirmeyi Gönder",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_message",
+      "en": "Your review has been submitted and will appear once processed.",
+      "tr": "Değerlendirmeniz gönderildi ve işlendikten sonra görünecektir.",
+      "locked": false
+    },
+    {
+      "key": "review_submitted_title",
+      "en": "Thank You!",
+      "tr": "Teşekkür Ederiz!",
+      "locked": false
+    },
+    {
+      "key": "review_upload_proof",
+      "en": "Upload proof of visit",
+      "tr": "Ziyaret kanıtı yükle",
+      "locked": false
+    },
+    {
+      "key": "review_verification_pending",
+      "en": "Verification Pending",
+      "tr": "Doğrulama Bekliyor",
+      "locked": false
+    },
+    {
+      "key": "review_verify",
+      "en": "Verify Your Visit",
+      "tr": "Ziyaretinizi Doğrulayın",
+      "locked": false
+    },
+    {
+      "key": "review_verify_hint",
+      "en": "Help us maintain trust by verifying your visit.",
+      "tr": "Ziyaretinizi doğrulayarak güveni korumamıza yardımcı olun.",
+      "locked": false
+    },
+    {
+      "key": "review_view_provider",
+      "en": "View provider",
+      "tr": "Sağlayıcıyı görüntüle",
+      "locked": false
+    },
+    {
+      "key": "review_visit_date",
+      "en": "Visit Date",
+      "tr": "Ziyaret Tarihi",
+      "locked": false
+    },
+    {
+      "key": "review_visit_details",
+      "en": "Visit Details",
+      "tr": "Ziyaret Detayları",
+      "locked": false
+    },
+    {
+      "key": "review_visit_type",
+      "en": "Visit Type",
+      "tr": "Ziyaret Türü",
+      "locked": false
+    },
+    {
+      "key": "review_who",
+      "en": "Who are you reviewing?",
+      "tr": "Kimi değerlendiriyorsunuz?",
+      "locked": false
+    },
+    {
+      "key": "reviews_count",
+      "en": "reviews",
+      "tr": "değerlendirme",
+      "locked": false
+    },
+    {
+      "key": "reviews_empty_title",
+      "en": "No reviews yet",
+      "tr": "Henüz değerlendirme yok",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_action",
+      "en": "Discover Providers",
+      "tr": "Sağlayıcıları Keşfet",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_message",
+      "en": "Save providers to access them quickly later.",
+      "tr": "Daha sonra hızlıca erişmek için sağlayıcıları kaydedin.",
+      "locked": false
+    },
+    {
+      "key": "saved_empty_title",
+      "en": "No saved providers yet",
+      "tr": "Henüz kaydedilmiş sağlayıcı yok",
+      "locked": false
+    },
+    {
+      "key": "search_facilities",
+      "en": "Search facilities",
+      "tr": "Kurumları ara",
+      "locked": false
+    },
+    {
+      "key": "search_languages",
+      "en": "Search languages",
+      "tr": "Dilleri ara",
+      "locked": false
+    },
+    {
+      "key": "search_placeholder",
+      "en": "Search doctor, clinic...",
+      "tr": "Doktor, klinik ara...",
+      "locked": false
+    },
+    {
+      "key": "search_specialties",
+      "en": "Search specialties",
+      "tr": "Uzmanlıkları ara",
+      "locked": false
+    },
+    {
+      "key": "search_this_area",
+      "en": "Search this area",
+      "tr": "Bu alanda ara",
+      "locked": false
+    },
+    {
+      "key": "search_treatments",
+      "en": "Search treatments",
+      "tr": "Tedavileri ara",
+      "locked": false
+    },
+    {
+      "key": "settings_account",
+      "en": "Account",
+      "tr": "Hesap",
+      "locked": false
+    },
+    {
+      "key": "settings_cancel",
+      "en": "Cancel",
+      "tr": "İptal",
+      "locked": false
+    },
+    {
+      "key": "settings_change_password",
+      "en": "Change Password",
+      "tr": "Şifre Değiştir",
+      "locked": false
+    },
+    {
+      "key": "settings_data_privacy",
+      "en": "Data & Privacy",
+      "tr": "Veri ve Gizlilik",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account",
+      "en": "Delete Account",
+      "tr": "Hesabı Sil",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_confirm",
+      "en": "Delete My Account",
+      "tr": "Hesabımı Sil",
+      "locked": false
+    },
+    {
+      "key": "settings_delete_account_warning",
+      "en": "This action cannot be undone",
+      "tr": "Bu işlem geri alınamaz",
+      "locked": false
+    },
+    {
+      "key": "settings_download_data",
+      "en": "Download My Data",
+      "tr": "Verilerimi İndir",
+      "locked": false
+    },
+    {
+      "key": "settings_downloading_data",
+      "en": "Preparing data...",
+      "tr": "Veriler hazırlanıyor...",
+      "locked": false
+    },
+    {
+      "key": "settings_email",
+      "en": "Email",
+      "tr": "E-posta",
+      "locked": false
+    },
+    {
+      "key": "settings_location_services",
+      "en": "Location Services",
+      "tr": "Konum Servisleri",
+      "locked": false
+    },
+    {
+      "key": "settings_notifications",
+      "en": "Notifications",
+      "tr": "Bildirimler",
+      "locked": false
+    },
+    {
+      "key": "settings_phone",
+      "en": "Phone",
+      "tr": "Telefon",
+      "locked": false
+    },
+    {
+      "key": "settings_preferences",
+      "en": "Preferences",
+      "tr": "Tercihler",
+      "locked": false
+    },
+    {
+      "key": "show_all",
+      "en": "Show All",
+      "tr": "Tümünü Göster",
+      "locked": false
+    },
+    {
+      "key": "showing_english_results",
+      "en": "Showing English results",
+      "tr": "İngilizce sonuçlar gösteriliyor",
+      "locked": false
+    },
+    {
+      "key": "specialties_label",
+      "en": "Specialties",
+      "tr": "Uzmanlıklar",
+      "locked": false
+    },
+    {
+      "key": "specialties_title",
+      "en": "Specialties",
+      "tr": "Uzmanlıklar",
+      "locked": false
+    },
+    {
+      "key": "specialty_label",
+      "en": "Specialty",
+      "tr": "Uzmanlık",
+      "locked": false
+    },
+    {
+      "key": "splash_tagline",
+      "en": "Healthcare, Verified.",
+      "tr": "Doğrulanmış Sağlık Hizmetleri.",
+      "locked": false
+    },
+    {
+      "key": "status_pending",
+      "en": "Pending",
+      "tr": "Bekliyor",
+      "locked": false
+    },
+    {
+      "key": "status_unverified",
+      "en": "Unverified",
+      "tr": "Doğrulanmadı",
+      "locked": false
+    },
+    {
+      "key": "status_verified",
+      "en": "Verified",
+      "tr": "Doğrulandı",
+      "locked": false
+    },
+    {
+      "key": "sub_acne",
+      "en": "Acne",
+      "tr": "Akne",
+      "locked": false
+    },
+    {
+      "key": "sub_acute_illness_treatment",
+      "en": "Acute Illness Treatment",
+      "tr": "Akut Hastalık Tedavisi",
+      "locked": false
+    },
+    {
+      "key": "sub_anxiety",
+      "en": "Anxiety",
+      "tr": "Anksiyete",
+      "locked": false
+    },
+    {
+      "key": "sub_arrhythmia",
+      "en": "Arrhythmia",
+      "tr": "Aritmi",
+      "locked": false
+    },
+    {
+      "key": "sub_arthritis",
+      "en": "Arthritis",
+      "tr": "Artrit",
+      "locked": false
+    },
+    {
+      "key": "sub_asthma",
+      "en": "Asthma",
+      "tr": "Astım",
+      "locked": false
+    },
+    {
+      "key": "sub_bipolar_disorder",
+      "en": "Bipolar Disorder",
+      "tr": "Bipolar Bozukluk",
+      "locked": false
+    },
+    {
+      "key": "sub_cataracts",
+      "en": "Cataracts",
+      "tr": "Katarakt",
+      "locked": false
+    },
+    {
+      "key": "sub_chemotherapy",
+      "en": "Chemotherapy",
+      "tr": "Kemoterapi",
+      "locked": false
+    },
+    {
+      "key": "sub_child_development",
+      "en": "Child Development",
+      "tr": "Çocuk Gelişimi",
+      "locked": false
+    },
+    {
+      "key": "sub_childhood_illness",
+      "en": "Childhood Illness",
+      "tr": "Çocukluk Çağı Hastalıkları",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_disease_management",
+      "en": "Chronic Disease Management",
+      "tr": "Kronik Hastalık Yönetimi",
+      "locked": false
+    },
+    {
+      "key": "sub_chronic_kidney_disease",
+      "en": "Chronic Kidney Disease",
+      "tr": "Kronik Böbrek Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_copd",
+      "en": "COPD",
+      "tr": "KOAH",
+      "locked": false
+    },
+    {
+      "key": "sub_coronary_artery_disease",
+      "en": "Coronary Artery Disease",
+      "tr": "Koroner Arter Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_dementia",
+      "en": "Dementia",
+      "tr": "Demans",
+      "locked": false
+    },
+    {
+      "key": "sub_depression",
+      "en": "Depression",
+      "tr": "Depresyon",
+      "locked": false
+    },
+    {
+      "key": "sub_diabetes",
+      "en": "Diabetes",
+      "tr": "Diyabet",
+      "locked": false
+    },
+    {
+      "key": "sub_dialysis",
+      "en": "Dialysis",
+      "tr": "Diyaliz",
+      "locked": false
+    },
+    {
+      "key": "sub_eczema",
+      "en": "Eczema",
+      "tr": "Egzama",
+      "locked": false
+    },
+    {
+      "key": "sub_endoscopy",
+      "en": "Endoscopy",
+      "tr": "Endoskopi",
+      "locked": false
+    },
+    {
+      "key": "sub_erectile_dysfunction",
+      "en": "Erectile Dysfunction",
+      "tr": "Sertleşme Sorunu",
+      "locked": false
+    },
+    {
+      "key": "sub_fracture_treatment",
+      "en": "Fracture Treatment",
+      "tr": "Kırık Tedavisi",
+      "locked": false
+    },
+    {
+      "key": "sub_general_consultation",
+      "en": "General Consultation",
+      "tr": "Genel Muayene",
+      "locked": false
+    },
+    {
+      "key": "sub_glaucoma",
+      "en": "Glaucoma",
+      "tr": "Glokom",
+      "locked": false
+    },
+    {
+      "key": "sub_headache",
+      "en": "Headache",
+      "tr": "Baş Ağrısı",
+      "locked": false
+    },
+    {
+      "key": "sub_hearing_loss",
+      "en": "Hearing Loss",
+      "tr": "İşitme Kaybı",
+      "locked": false
+    },
+    {
+      "key": "sub_heart_failure",
+      "en": "Heart Failure",
+      "tr": "Kalp Yetmezliği",
+      "locked": false
+    },
+    {
+      "key": "sub_hormone_replacement",
+      "en": "Hormone Replacement",
+      "tr": "Hormon Replasmanı",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension",
+      "en": "Hypertension",
+      "tr": "Hipertansiyon",
+      "locked": false
+    },
+    {
+      "key": "sub_hypertension_mgmt",
+      "en": "Hypertension Management",
+      "tr": "Hipertansiyon Yönetimi",
+      "locked": false
+    },
+    {
+      "key": "sub_incontinence",
+      "en": "Incontinence",
+      "tr": "İdrar Kaçırma",
+      "locked": false
+    },
+    {
+      "key": "sub_infant_care",
+      "en": "Infant Care",
+      "tr": "Bebek Bakımı",
+      "locked": false
+    },
+    {
+      "key": "sub_inflammatory_bowel_disease",
+      "en": "Inflammatory Bowel Disease",
+      "tr": "İnflamatuar Bağırsak Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_interstitial_lung_disease",
+      "en": "Interstitial Lung Disease",
+      "tr": "İnterstisyel Akciğer Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_joint_replacement",
+      "en": "Joint Replacement",
+      "tr": "Eklem Protezi",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_stones",
+      "en": "Kidney Stones",
+      "tr": "Böbrek Taşı",
+      "locked": false
+    },
+    {
+      "key": "sub_kidney_transplant",
+      "en": "Kidney Transplant",
+      "tr": "Böbrek Nakli",
+      "locked": false
+    },
+    {
+      "key": "sub_liver_disease",
+      "en": "Liver Disease",
+      "tr": "Karaciğer Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_lupus",
+      "en": "Lupus",
+      "tr": "Lupus",
+      "locked": false
+    },
+    {
+      "key": "sub_movement_disorders",
+      "en": "Movement Disorders",
+      "tr": "Hareket Bozuklukları",
+      "locked": false
+    },
+    {
+      "key": "sub_pain_management",
+      "en": "Pain Management",
+      "tr": "Ağrı Yönetimi",
+      "locked": false
+    },
+    {
+      "key": "sub_palliative_care",
+      "en": "Palliative Care",
+      "tr": "Palyatif Bakım",
+      "locked": false
+    },
+    {
+      "key": "sub_peptic_ulcer",
+      "en": "Peptic Ulcer",
+      "tr": "Peptik Ülser",
+      "locked": false
+    },
+    {
+      "key": "sub_post_operative_care",
+      "en": "Post-operative Care",
+      "tr": "Ameliyat Sonrası Bakım",
+      "locked": false
+    },
+    {
+      "key": "sub_pre_operative_assessment",
+      "en": "Pre-operative Assessment",
+      "tr": "Ameliyat Öncesi Değerlendirme",
+      "locked": false
+    },
+    {
+      "key": "sub_preventive_care",
+      "en": "Preventive Care",
+      "tr": "Önleyici Bakım",
+      "locked": false
+    },
+    {
+      "key": "sub_prostate_disease",
+      "en": "Prostate Disease",
+      "tr": "Prostat Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_psoriasis",
+      "en": "Psoriasis",
+      "tr": "Sedef Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_radiation_therapy",
+      "en": "Radiation Therapy",
+      "tr": "Radyoterapi",
+      "locked": false
+    },
+    {
+      "key": "sub_refractive_error",
+      "en": "Refractive Error",
+      "tr": "Kırma Kusuru",
+      "locked": false
+    },
+    {
+      "key": "sub_retinal_disease",
+      "en": "Retinal Disease",
+      "tr": "Retina Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_schizophrenia",
+      "en": "Schizophrenia",
+      "tr": "Şizofreni",
+      "locked": false
+    },
+    {
+      "key": "sub_sinusitis",
+      "en": "Sinusitis",
+      "tr": "Sinüzit",
+      "locked": false
+    },
+    {
+      "key": "sub_skin_cancer_screening",
+      "en": "Skin Cancer Screening",
+      "tr": "Cilt Kanseri Taraması",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_apnea",
+      "en": "Sleep Apnea",
+      "tr": "Uyku Apnesi",
+      "locked": false
+    },
+    {
+      "key": "sub_sleep_disorders",
+      "en": "Sleep Disorders",
+      "tr": "Uyku Bozuklukları",
+      "locked": false
+    },
+    {
+      "key": "sub_spine_surgery",
+      "en": "Spine Surgery",
+      "tr": "Omurga Cerrahisi",
+      "locked": false
+    },
+    {
+      "key": "sub_sports_medicine",
+      "en": "Sports Medicine",
+      "tr": "Spor Hekimliği",
+      "locked": false
+    },
+    {
+      "key": "sub_stroke",
+      "en": "Stroke",
+      "tr": "İnme",
+      "locked": false
+    },
+    {
+      "key": "sub_surgical_oncology",
+      "en": "Surgical Oncology",
+      "tr": "Cerrahi Onkoloji",
+      "locked": false
+    },
+    {
+      "key": "sub_thyroid_disease",
+      "en": "Thyroid Disease",
+      "tr": "Tiroid Hastalığı",
+      "locked": false
+    },
+    {
+      "key": "sub_vaccination",
+      "en": "Vaccination",
+      "tr": "Aşılama",
+      "locked": false
+    },
+    {
+      "key": "sub_vasculitis",
+      "en": "Vasculitis",
+      "tr": "Vaskülit",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy",
+      "en": "Accuracy & Care",
+      "tr": "Doğruluk ve Özen",
+      "locked": false
+    },
+    {
+      "key": "survey_accuracy_sub",
+      "en": "Was your prescription prepared correctly?",
+      "tr": "Reçeteniz doğru hazırlandı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency",
+      "en": "Administrative Efficiency",
+      "tr": "İdari Verimlilik",
+      "locked": false
+    },
+    {
+      "key": "survey_admin_efficiency_sub",
+      "en": "Were admission and discharge smooth?",
+      "tr": "Kabul ve taburcu işlemleri sorunsuz muydu?",
+      "locked": false
+    },
+    {
+      "key": "survey_aesthetics",
+      "en": "Aesthetic Clinic",
+      "tr": "Estetik Kliniği",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare",
+      "en": "Aftercare",
+      "tr": "Sonraki Bakım",
+      "locked": false
+    },
+    {
+      "key": "survey_aftercare_sub",
+      "en": "Were aftercare instructions and follow-up clearly explained?",
+      "tr": "Bakım talimatları ve takip süreci net bir şekilde açıklandı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner",
+      "en": "Bedside Manner",
+      "tr": "Hastayla İletişim",
+      "locked": false
+    },
+    {
+      "key": "survey_bedside_manner_sub",
+      "en": "Did the doctor listen and explain clearly?",
+      "tr": "Doktor sizi dinledi ve net bir şekilde açıkladı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality",
+      "en": "Care Quality",
+      "tr": "Bakım Kalitesi",
+      "locked": false
+    },
+    {
+      "key": "survey_care_quality_sub",
+      "en": "How would you rate the medical care?",
+      "tr": "Tıbbi bakımı nasıl değerlendirirsiniz?",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene",
+      "en": "Clinic Hygiene",
+      "tr": "Klinik Hijyeni",
+      "locked": false
+    },
+    {
+      "key": "survey_clinic_hygiene_sub",
+      "en": "Was the clinic clean and hygienic?",
+      "tr": "Klinik temiz ve hijyenik miydi?",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity",
+      "en": "Communication Clarity",
+      "tr": "İletişim Netliği",
+      "locked": false
+    },
+    {
+      "key": "survey_communication_clarity_sub",
+      "en": "Were treatment plans explained clearly?",
+      "tr": "Tedavi planları net bir şekilde açıklandı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality",
+      "en": "Consultation Quality",
+      "tr": "Muayene Kalitesi",
+      "locked": false
+    },
+    {
+      "key": "survey_consultation_quality_sub",
+      "en": "Were procedure risks and outcomes explained?",
+      "tr": "Prosedür riskleri ve sonuçları açıklandı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental",
+      "en": "Dental",
+      "tr": "Diş",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_bedside_sub",
+      "en": "Did the dentist communicate clearly?",
+      "tr": "Diş hekimi açık bir şekilde iletişim kurdu mu?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_hygiene_sub",
+      "en": "Were treatment rooms and equipment clean?",
+      "tr": "Tedavi odaları ve ekipmanlar temiz miydi?",
+      "locked": false
+    },
+    {
+      "key": "survey_dental_wait_sub",
+      "en": "How quickly were you seated?",
+      "tr": "Ne kadar sürede koltuğa alındınız?",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic",
+      "en": "Diagnostic Center",
+      "tr": "Tanı Merkezi",
+      "locked": false
+    },
+    {
+      "key": "survey_diagnostic_wait_sub",
+      "en": "How quickly were you called for your test?",
+      "tr": "Testiniz için ne kadar sürede çağrıldınız?",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy",
+      "en": "Empathy & Listening",
+      "tr": "Empati ve Dinleme",
+      "locked": false
+    },
+    {
+      "key": "survey_empathy_sub",
+      "en": "Did you feel truly heard?",
+      "tr": "Gerçekten dinlendiğinizi hissettiniz mi?",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort",
+      "en": "Environment Comfort",
+      "tr": "Ortam Konforu",
+      "locked": false
+    },
+    {
+      "key": "survey_environment_comfort_sub",
+      "en": "Was the office peaceful and private?",
+      "tr": "Ofis huzurlu ve özel miydi?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment",
+      "en": "Facility Equipment",
+      "tr": "Tesis Ekipmanları",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_equipment_sub",
+      "en": "Was the facility well-equipped?",
+      "tr": "Tesis iyi donanımlı mıydı?",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene",
+      "en": "Facility Hygiene",
+      "tr": "Tesis Hijyeni",
+      "locked": false
+    },
+    {
+      "key": "survey_facility_hygiene_sub",
+      "en": "Was the facility clean and hygienic?",
+      "tr": "Tesis temiz ve hijyenik miydi?",
+      "locked": false
+    },
+    {
+      "key": "survey_general_clinic",
+      "en": "General Clinic",
+      "tr": "Genel Klinik",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital",
+      "en": "Hospital",
+      "tr": "Hastane",
+      "locked": false
+    },
+    {
+      "key": "survey_hospital_wait_sub",
+      "en": "How quickly were you seen by a doctor?",
+      "tr": "Ne kadar sürede bir doktor tarafından görüldünüz?",
+      "locked": false
+    },
+    {
+      "key": "survey_mental_health",
+      "en": "Mental Health",
+      "tr": "Ruh Sağlığı",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management",
+      "en": "Pain Management",
+      "tr": "Ağrı Yönetimi",
+      "locked": false
+    },
+    {
+      "key": "survey_pain_management_sub",
+      "en": "How well did they manage pain?",
+      "tr": "Ağrıyı ne kadar iyi yönettiler?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge",
+      "en": "Pharmacist Knowledge",
+      "tr": "Eczacı Bilgisi",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacist_knowledge_sub",
+      "en": "Did the pharmacist answer your questions well?",
+      "tr": "Eczacı sorularınızı iyi yanıtladı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_pharmacy",
+      "en": "Pharmacy",
+      "tr": "Eczane",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort",
+      "en": "Procedure Comfort",
+      "tr": "İşlem Konforu",
+      "locked": false
+    },
+    {
+      "key": "survey_procedure_comfort_sub",
+      "en": "Did staff make the procedure comfortable?",
+      "tr": "Personel işlemin rahat geçmesini sağladı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality",
+      "en": "Punctuality",
+      "tr": "Zamanlama",
+      "locked": false
+    },
+    {
+      "key": "survey_punctuality_sub",
+      "en": "Did your session start on time?",
+      "tr": "Seansınız zamanında başladı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_effectiveness_sub",
+      "en": "Did sessions improve mobility or reduce pain?",
+      "tr": "Seanslar hareketliliği artırdı mı veya ağrıyı azalttı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehab_wait_sub",
+      "en": "How quickly did your session start?",
+      "tr": "Seansınız ne kadar çabuk başladı?",
+      "locked": false
+    },
+    {
+      "key": "survey_rehabilitation",
+      "en": "Rehabilitation",
+      "tr": "Rehabilitasyon",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction",
+      "en": "Result Satisfaction",
+      "tr": "Sonuç Memnuniyeti",
+      "locked": false
+    },
+    {
+      "key": "survey_result_satisfaction_sub",
+      "en": "Are you satisfied with the results?",
+      "tr": "Sonuçlardan memnun musunuz?",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed",
+      "en": "Result Speed",
+      "tr": "Sonuç Hızı",
+      "locked": false
+    },
+    {
+      "key": "survey_result_speed_sub",
+      "en": "Were results delivered on time?",
+      "tr": "Sonuçlar zamanında teslim edildi mi?",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene",
+      "en": "Room Hygiene",
+      "tr": "Oda Hijyeni",
+      "locked": false
+    },
+    {
+      "key": "survey_room_hygiene_sub",
+      "en": "Were rooms and areas clean?",
+      "tr": "Odalar ve alanlar temiz miydi?",
+      "locked": false
+    },
+    {
+      "key": "survey_speed",
+      "en": "Speed",
+      "tr": "Hız",
+      "locked": false
+    },
+    {
+      "key": "survey_speed_sub",
+      "en": "How quickly were you served?",
+      "tr": "Ne kadar hızlı hizmet aldınız?",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy",
+      "en": "Staff Courtesy",
+      "tr": "Personel Nezaketi",
+      "locked": false
+    },
+    {
+      "key": "survey_staff_courtesy_sub",
+      "en": "Was the staff polite?",
+      "tr": "Personel kibar mıydı?",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness",
+      "en": "Therapist Attentiveness",
+      "tr": "Terapist İlgisi",
+      "locked": false
+    },
+    {
+      "key": "survey_therapist_attentiveness_sub",
+      "en": "Did the therapist monitor and adapt?",
+      "tr": "Terapist sizi izledi ve duruma göre uyum sağladı mı?",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness",
+      "en": "Treatment Effectiveness",
+      "tr": "Tedavi Etkililiği",
+      "locked": false
+    },
+    {
+      "key": "survey_treatment_effectiveness_sub",
+      "en": "Did the treatment resolve your issue?",
+      "tr": "Tedavi sorununuzu çözdü mü?",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time",
+      "en": "Waiting Time",
+      "tr": "Bekleme Süresi",
+      "locked": false
+    },
+    {
+      "key": "survey_waiting_time_sub",
+      "en": "How long did you wait after your appointment time?",
+      "tr": "Randevu saatinizden sonra ne kadar beklediniz?",
+      "locked": false
+    },
+    {
+      "key": "switch_category_hint",
+      "en": "Try switching category.",
+      "tr": "Kategoriyi değiştirmeyi deneyin.",
+      "locked": false
+    },
+    {
+      "key": "switch_to_list",
+      "en": "Switch to list view for more results.",
+      "tr": "Daha fazla sonuç için liste görünümüne geçin.",
+      "locked": false
+    },
+    {
+      "key": "tab_badge_plus",
+      "en": "Plus",
+      "tr": "PLUS",
+      "locked": false
+    },
+    {
+      "key": "tab_discover",
+      "en": "Find",
+      "tr": "Bul",
+      "locked": false
+    },
+    {
+      "key": "tab_guide",
+      "en": "Guide",
+      "tr": "Rehber",
+      "locked": false
+    },
+    {
+      "key": "tab_profile",
+      "en": "Profile",
+      "tr": "Profil",
+      "locked": false
+    },
+    {
+      "key": "tab_review",
+      "en": "Review",
+      "tr": "Değerlendir",
+      "locked": false
+    },
+    {
+      "key": "tagline",
+      "en": "Healthcare, Verified.",
+      "tr": "Doğrulanmış Sağlık Hizmetleri.",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_facilities",
+      "en": "Facilities",
+      "tr": "Kurumlar",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_specialties",
+      "en": "Specialties",
+      "tr": "Uzmanlıklar",
+      "locked": false
+    },
+    {
+      "key": "taxonomy_segment_treatments",
+      "en": "Treatments",
+      "tr": "Tedaviler",
+      "locked": false
+    },
+    {
+      "key": "top_picks",
+      "en": "Top Picks",
+      "tr": "Öne Çıkanlar",
+      "locked": false
+    },
+    {
+      "key": "tos_account_1",
+      "en": "You are responsible for maintaining the confidentiality of your credentials and activity under your account.",
+      "tr": "Kimlik bilgilerinizin ve hesabınız altındaki faaliyetlerin gizliliğini korumaktan siz sorumlusunuz.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_2",
+      "en": "We may suspend or terminate accounts that violate these terms, applicable law, or platform safety requirements.",
+      "tr": "Bu şartları, yürürlükteki yasaları veya platform güvenlik gereksinimlerini ihlal eden hesapları askıya alabilir veya feshedebiliriz.",
+      "locked": false
+    },
+    {
+      "key": "tos_account_title",
+      "en": "Accounts and Access",
+      "tr": "Hesaplar ve Erişim",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_1",
+      "en": "Questions about these Terms can be sent to support@trustcare.app.",
+      "tr": "Bu Şartlarla ilgili sorularınızı support@trustcare.app adresine gönderebilirsiniz.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_2",
+      "en": "By continuing to use the service, you acknowledge that you have read and agreed to these Terms.",
+      "tr": "Hizmeti kullanmaya devam ederek, bu Şartları okuduğunuzu ve kabul ettiğinizi onaylarsınız.",
+      "locked": false
+    },
+    {
+      "key": "tos_contact_title",
+      "en": "Contact",
+      "tr": "İletişim",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_1",
+      "en": "These Terms are governed by applicable laws of the jurisdiction where the service operator is established, unless local mandatory law provides otherwise.",
+      "tr": "Yerel emredici hukuk aksini öngörmedikçe, bu Şartlar, hizmet operatörünün bulunduğu yargı bölgesinin geçerli yasalarına tabidir.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_2",
+      "en": "Before initiating formal proceedings, you agree to contact us in good faith to seek an informal resolution.",
+      "tr": "Resmi işlemlere başlamadan önce, gayri resmi bir çözüm aramak için iyi niyetle bizimle iletişime geçmeyi kabul edersiniz.",
+      "locked": false
+    },
+    {
+      "key": "tos_dispute_title",
+      "en": "Disputes and Governing Law",
+      "tr": "Anlaşmazlıklar ve Geçerli Kanun",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_1",
+      "en": "All platform content, branding, and software are owned by TrustCare or licensed to us, unless otherwise stated.",
+      "tr": "Aksi belirtilmedikçe, tüm platform içeriği, markalaşma ve yazılım TrustCare'e aittir veya tarafımıza lisanslanmıştır.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_2",
+      "en": "You may not copy, scrape, reverse engineer, or redistribute platform content beyond permitted legal use.",
+      "tr": "İzin verilen yasal kullanımın ötesinde platform içeriğini kopyalayamaz, kazıyamaz, tersine mühendislik yapamaz veya yeniden dağıtamazsınız.",
+      "locked": false
+    },
+    {
+      "key": "tos_ip_title",
+      "en": "Intellectual Property",
+      "tr": "Fikri Mülkiyet",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_1",
+      "en": "Rehber provides informational guidance only and does not provide medical diagnosis, treatment, or emergency response.",
+      "tr": "Rehber yalnızca bilgilendirme amaçlı rehberlik sağlar ve tıbbi teşhis, tedavi veya acil durum müdahalesi sunmaz.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_2",
+      "en": "In urgent or life-threatening situations, contact local emergency services immediately.",
+      "tr": "Acil veya hayati tehlike arz eden durumlarda derhal yerel acil servislerle iletişime geçin.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_3",
+      "en": "You remain responsible for healthcare decisions and should consult qualified medical professionals.",
+      "tr": "Sağlık hizmeti kararlarından siz sorumlusunuz ve nitelikli tıbbi uzmanlara danışmalısınız.",
+      "locked": false
+    },
+    {
+      "key": "tos_rehber_title",
+      "en": "Rehber (AI Guidance) Disclaimer",
+      "tr": "Rehber (Yapay Zeka Yönlendirmesi) Sorumluluk Reddi",
+      "locked": false
+    },
+    {
+      "key": "tos_review_1",
+      "en": "Reviews must reflect genuine, firsthand experiences and must not include harassment, hate speech, or unlawful content.",
+      "tr": "Değerlendirmeler gerçek, ilk elden deneyimleri yansıtmalı ve taciz, nefret söylemi veya yasa dışı içerik barındırmamalıdır.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_2",
+      "en": "By submitting content, you grant TrustCare a license to host, display, and moderate that content for service operation.",
+      "tr": "İçerik göndererek, TrustCare'e bu içeriği barındırma, görüntüleme ve hizmetin işleyişi için denetleme lisansı vermiş olursunuz.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_3",
+      "en": "We may remove, limit, or flag content that violates policy, legal obligations, or trust and safety standards.",
+      "tr": "Politikaları, yasal yükümlülükleri veya güven ve güvenlik standartlarını ihlal eden içeriği kaldırabilir, sınırlayabilir veya işaretleyebiliriz.",
+      "locked": false
+    },
+    {
+      "key": "tos_review_title",
+      "en": "Reviews and Community Content",
+      "tr": "Değerlendirmeler ve Topluluk İçeriği",
+      "locked": false
+    },
+    {
+      "key": "tos_service_1",
+      "en": "TrustCare provides healthcare discovery, review features, and informational guidance tools for general consumer use.",
+      "tr": "TrustCare, genel tüketici kullanımı için sağlık hizmeti keşfi, değerlendirme özellikleri ve bilgilendirici rehberlik araçları sağlar.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_2",
+      "en": "Service availability, features, and access may change over time; we may update or discontinue parts of the service without prior notice.",
+      "tr": "Hizmetin kullanılabilirliği, özellikleri ve erişimi zamanla değişebilir; önceden haber vermeksizin hizmetin bazı kısımlarını güncelleyebilir veya sonlandırabiliriz.",
+      "locked": false
+    },
+    {
+      "key": "tos_service_title",
+      "en": "Service Overview",
+      "tr": "Hizmete Genel Bakış",
+      "locked": false
+    },
+    {
+      "key": "tos_user_1",
+      "en": "You agree to provide accurate information and use the platform lawfully, respectfully, and in good faith.",
+      "tr": "Doğru bilgi sağlamayı ve platformu yasal, saygılı ve iyi niyetli bir şekilde kullanmayı kabul edersiniz.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_2",
+      "en": "You must not attempt to abuse the platform, bypass security controls, or interfere with other users.",
+      "tr": "Platformu kötüye kullanmaya, güvenlik kontrollerini atlamaya veya diğer kullanıcılara müdahale etmeye çalışmamalısınız.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_3",
+      "en": "You are responsible for content you submit and for complying with applicable local laws and regulations.",
+      "tr": "Gönderdiğiniz içerikten ve yürürlükteki yerel yasalara ve düzenlemelere uymaktan siz sorumlusunuz.",
+      "locked": false
+    },
+    {
+      "key": "tos_user_title",
+      "en": "User Responsibilities",
+      "tr": "Kullanıcı Sorumlulukları",
+      "locked": false
+    },
+    {
+      "key": "try_english_keywords",
+      "en": "Try English keywords or check spelling.",
+      "tr": "İngilizce anahtar kelimeler deneyin veya yazılışı kontrol edin.",
+      "locked": false
+    },
+    {
+      "key": "try_nearby_city",
+      "en": "Try a nearby city.",
+      "tr": "Yakındaki bir şehri deneyin.",
+      "locked": false
+    },
+    {
+      "key": "unauthorized_area",
+      "en": "Unknown area",
+      "tr": "Bilinmeyen bölge",
+      "locked": false
+    },
+    {
+      "key": "unknown_provider",
+      "en": "Unknown Provider",
+      "tr": "Bilinmeyen Sağlayıcı",
+      "locked": false
+    },
+    {
+      "key": "use_device_location",
+      "en": "Use device location",
+      "tr": "Cihaz konumunu kullan",
+      "locked": false
+    },
+    {
+      "key": "verified_badge",
+      "en": "Verified",
+      "tr": "Doğrulanmış",
+      "locked": false
+    },
+    {
+      "key": "visit_type_checkup",
+      "en": "Checkup",
+      "tr": "Check-up",
+      "locked": false
+    },
+    {
+      "key": "visit_type_emergency",
+      "en": "Emergency",
+      "tr": "Acil",
+      "locked": false
+    },
+    {
+      "key": "visit_type_examination",
+      "en": "Examination",
+      "tr": "Muayene",
+      "locked": false
+    },
+    {
+      "key": "visit_type_procedure",
+      "en": "Procedure",
+      "tr": "İşlem",
+      "locked": false
+    },
+    {
+      "key": "widen_map_area",
+      "en": "Widen the map area and search again.",
+      "tr": "Harita alanını genişletin ve tekrar arayın.",
+      "locked": false
+    }
+  ]
+}
