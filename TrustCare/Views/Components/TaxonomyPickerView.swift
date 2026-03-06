@@ -349,7 +349,7 @@ struct TaxonomyPickerView: View {
                     .padding(.bottom, AppSpacing.xxl)
                 }
             }
-            .navigationTitle(titleKey)
+            .navigationTitle(LocalizedStringKey(viewModel.selectedEntityType.segmentTitleKey))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
