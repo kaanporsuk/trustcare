@@ -59,29 +59,29 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     func submitReview() async {
         guard let provider = selectedProvider else {
-            submissionErrorMessage = String(localized: "Please select a provider.")
+            submissionErrorMessage = tcString("Please select a provider.", fallback: "Please select a provider.")
             return
         }
 
         guard let session = try? await SupabaseManager.shared.client.auth.session else {
-            submissionErrorMessage = String(localized: "Please sign in to submit a review.")
+            submissionErrorMessage = tcString("Please sign in to submit a review.", fallback: "Please sign in to submit a review.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
 
         let trimmedComment = comment.trimmingCharacters(in: .whitespacesAndNewlines)
         if overallRating <= 0 {
-            submissionErrorMessage = String(localized: "Overall rating is required.")
+            submissionErrorMessage = tcString("Overall rating is required.", fallback: "Overall rating is required.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
         if trimmedComment.count < 50 {
-            submissionErrorMessage = String(localized: "Your review must be at least 50 characters.")
+            submissionErrorMessage = tcString("Your review must be at least 50 characters.", fallback: "Your review must be at least 50 characters.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
         if photos.count > 5 {
-            submissionErrorMessage = String(localized: "You can upload up to 5 photos.")
+            submissionErrorMessage = tcString("You can upload up to 5 photos.", fallback: "You can upload up to 5 photos.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
@@ -329,14 +329,14 @@ final class ReviewSubmissionViewModel: ObservableObject {
         if !localized.isEmpty {
             let lower = localized.lowercased()
             if lower.contains("network") || lower.contains("offline") || lower.contains("internet") {
-                return String(localized: "error_network")
+                return tcString("error_network", fallback: "Network error")
             }
             if lower.contains("duplicate") || lower.contains("unique") {
-                return String(localized: "error_duplicate_review")
+                return tcString("error_duplicate_review", fallback: "Duplicate review")
             }
             return localized
         }
-        return String(localized: "Unknown error")
+        return tcString("Unknown error", fallback: "Unknown error")
     }
 
     private func retry<T>(times: Int, operation: @escaping () async throws -> T) async throws -> T {

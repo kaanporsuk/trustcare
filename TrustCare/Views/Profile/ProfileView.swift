@@ -116,20 +116,20 @@ struct ProfileView: View {
                 }
             )
         }
-        .confirmationDialog("Change Avatar", isPresented: $showAvatarOptions) {
+        .confirmationDialog(tcString("profile_change_avatar", fallback: "Change Avatar"), isPresented: $showAvatarOptions) {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                Button("Take Photo") {
+                Button(tcString("profile_take_photo", fallback: "Take Photo")) {
                     showCameraPicker = true
                 }
             }
-            Button("Choose from Library") {
+            Button(tcString("profile_choose_from_library", fallback: "Choose from Library")) {
                 showPhotoPicker = true
             }
-            Button("Cancel", role: .cancel) { }
+            Button(tcString("button_cancel", fallback: "Cancel"), role: .cancel) { }
         }
         .overlay(alignment: .top) {
             if showProfileSavedToast {
-                Text("Profile updated")
+                Text(tcKey: "profile_updated_toast", fallback: "Profile updated")
                     .font(AppFont.caption)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 12)
@@ -138,7 +138,7 @@ struct ProfileView: View {
                     .cornerRadius(AppRadius.standard)
                     .padding(.top, AppSpacing.lg)
             } else if showAvatarUpdatedToast {
-                Text("Photo updated")
+                Text(tcKey: "profile_photo_updated_toast", fallback: "Photo updated")
                     .font(AppFont.caption)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 12)
@@ -148,8 +148,8 @@ struct ProfileView: View {
                     .padding(.top, AppSpacing.lg)
             }
         }
-        .alert("Error", isPresented: $showErrorAlert) {
-            Button("Done") {
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: $showErrorAlert) {
+            Button(tcString("button_done", fallback: "Done")) {
                 showErrorAlert = false
                 profileVM.errorMessage = nil
             }
@@ -182,7 +182,7 @@ struct ProfileView: View {
                 }
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Change Avatar")
+            .accessibilityLabel(tcString("profile_change_avatar", fallback: "Change Avatar"))
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: AppSpacing.xs) {
@@ -272,7 +272,7 @@ struct ProfileView: View {
     }
 
     private var footerSection: some View {
-        Text("Version 1.0.0")
+        Text("\(tcString("app_version_prefix", fallback: "Version")) 1.0.0")
             .font(AppFont.footnote)
             .foregroundStyle(.secondary)
     }

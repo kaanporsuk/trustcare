@@ -15,9 +15,9 @@ struct MediaPickerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text("Add Photos or Video")
+            Text(tcKey: "review_media_title", fallback: "Add Photos or Video")
                 .font(AppFont.title2)
-            Text("Help others see what to expect")
+            Text(tcKey: "review_media_subtitle", fallback: "Help others see what to expect")
                 .font(AppFont.body)
                 .foregroundStyle(.secondary)
 
@@ -27,7 +27,7 @@ struct MediaPickerView: View {
                     maxSelectionCount: 5,
                     matching: .images
                 ) {
-                    Label("Add Photos", systemImage: "photo.on.rectangle")
+                    Label(tcString("review_media_add_photos", fallback: "Add Photos"), systemImage: "photo.on.rectangle")
                         .font(AppFont.headline)
                 }
 
@@ -50,7 +50,7 @@ struct MediaPickerView: View {
                                         .background(Color.black.opacity(0.6))
                                         .clipShape(Circle())
                                 }
-                                .accessibilityLabel("Remove photo")
+                                .accessibilityLabel(tcString("review_media_remove_photo", fallback: "Remove photo"))
                                 .offset(x: 6, y: -6)
                             }
                         }
@@ -67,7 +67,7 @@ struct MediaPickerView: View {
                     selection: $videoItem,
                     matching: .videos
                 ) {
-                    Label("Add Video", systemImage: "video")
+                    Label(tcString("review_media_add_video", fallback: "Add Video"), systemImage: "video")
                         .font(AppFont.headline)
                 }
 
@@ -99,19 +99,19 @@ struct MediaPickerView: View {
                                 .background(Color.black.opacity(0.6))
                                 .clipShape(Circle())
                         }
-                        .accessibilityLabel("Remove video")
+                        .accessibilityLabel(tcString("review_media_remove_video", fallback: "Remove video"))
                         .offset(x: 6, y: -6)
                     }
                 }
 
                 if let duration = videoDuration, duration > 30 {
-                    Text("Video will be trimmed to 30 seconds")
+                    Text(tcKey: "review_media_trim_notice", fallback: "Video will be trimmed to 30 seconds")
                         .font(AppFont.caption)
                         .foregroundStyle(Color.tcCoral)
                 }
             }
 
-            Button("Skip") {
+            Button(tcString("button_skip", fallback: "Skip")) {
                 selectedImages = []
                 selectedVideo = nil
                 videoItem = nil
@@ -120,7 +120,7 @@ struct MediaPickerView: View {
             }
             .font(AppFont.body)
 
-            Text("Photos and videos are visible to everyone.")
+            Text(tcKey: "review_media_visibility_notice", fallback: "Photos and videos are visible to everyone.")
                 .font(AppFont.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -146,16 +146,16 @@ struct MediaPickerView: View {
                         videoDuration = duration.seconds
                         selectedVideoDuration = duration.seconds
                     } catch {
-                        errorMessage = "Something went wrong."
+                        errorMessage = tcString("error_generic_message", fallback: "Something went wrong.")
                     }
                 }
             }
         }
-        .alert("Error", isPresented: Binding(
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button("Done") { errorMessage = nil }
+            Button(tcString("button_done", fallback: "Done")) { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }
@@ -182,14 +182,14 @@ struct MediaPickerView: View {
                         try FileManager.default.removeItem(at: tempURL)
                     }
                 } catch {
-                    errorMessage = "Something went wrong."
+                    errorMessage = tcString("error_generic_message", fallback: "Something went wrong.")
                     return nil
                 }
                 try FileManager.default.copyItem(at: url, to: tempURL)
                 return tempURL
             }
         } catch {
-            errorMessage = "Something went wrong."
+            errorMessage = tcString("error_generic_message", fallback: "Something went wrong.")
             return nil
         }
         return nil

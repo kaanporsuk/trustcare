@@ -5,6 +5,7 @@ import Auth
 struct ReviewItemView: View {
     let review: Review
     var onHelpful: ((Bool) -> Void)?
+    @Environment(\.locale) private var locale
     @State private var isExpanded: Bool = false
     @State private var hasVoted: Bool = false
     @State private var helpfulCount: Int = 0
@@ -16,6 +17,7 @@ struct ReviewItemView: View {
     private var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: locale.identifier)
         return formatter.string(from: review.createdAt)
     }
     
@@ -30,13 +32,13 @@ struct ReviewItemView: View {
                 avatarView
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(review.reviewerName ?? "Anonymous")
+                    Text(review.reviewerName ?? tcString("Anonymous", fallback: "Anonymous"))
                         .font(AppFont.headline)
                     HStack(spacing: AppSpacing.sm) {
                         if review.isVerified {
                             VerifiedBadge()
                         } else if review.status == .pendingVerification, review.proofImageUrl != nil {
-                            Text("Pending verification")
+                            Text(tcKey: "status_pending", fallback: "Pending")
                                 .font(AppFont.footnote.weight(.semibold))
                                 .foregroundStyle(.orange)
                                 .padding(.horizontal, 8)
@@ -68,7 +70,9 @@ struct ReviewItemView: View {
                 Button {
                     isExpanded.toggle()
                 } label: {
-                    Text(isExpanded ? "Show less" : "Read more")
+                    Text(isExpanded
+                        ? tcString("Show less", fallback: "Show less")
+                        : tcString("Read more", fallback: "Read more"))
                         .font(AppFont.caption)
                         .foregroundStyle(Color.tcOcean)
                 }

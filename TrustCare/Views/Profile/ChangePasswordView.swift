@@ -15,19 +15,19 @@ struct ChangePasswordView: View {
     var body: some View {
         Form {
             Section {
-                SecureField("Current Password", text: $currentPassword)
-                SecureField("New Password", text: $newPassword)
-                SecureField("Confirm New Password", text: $confirmPassword)
+                SecureField(tcString("settings_current_password", fallback: "Current Password"), text: $currentPassword)
+                SecureField(tcString("settings_new_password", fallback: "New Password"), text: $newPassword)
+                SecureField(tcString("settings_confirm_new_password", fallback: "Confirm New Password"), text: $confirmPassword)
             }
 
             Section {
-                Button("Update Password") {
+                Button(tcString("settings_update_password", fallback: "Update Password")) {
                     Task { await updatePassword() }
                 }
                 .disabled(!canSubmit || isSubmitting)
             }
         }
-        .navigationTitle("Change Password")
+        .navigationTitle(tcString("settings_change_password", fallback: "Change Password"))
         .navigationBarTitleDisplayMode(.inline)
         .dismissKeyboardOnTap()
         .keyboardDoneToolbar()
@@ -40,20 +40,20 @@ struct ChangePasswordView: View {
                     .tint(.white)
             }
         }
-        .alert("Error", isPresented: Binding(
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button("Done") { errorMessage = nil }
+            Button(tcString("button_done", fallback: "Done")) { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
         }
-        .alert("Success", isPresented: $showSuccess) {
-            Button("Done") {
+        .alert(tcString("success_title", fallback: "Success"), isPresented: $showSuccess) {
+            Button(tcString("button_done", fallback: "Done")) {
                 dismiss()
             }
         } message: {
-            Text("Your password has been updated.")
+            Text(tcKey: "settings_password_updated_message", fallback: "Your password has been updated.")
         }
     }
 
@@ -65,11 +65,11 @@ struct ChangePasswordView: View {
 
     private func updatePassword() async {
         guard newPassword.count >= 8 else {
-            errorMessage = "Password must be at least 8 characters."
+            errorMessage = tcString("settings_password_length_error", fallback: "Password must be at least 8 characters.")
             return
         }
         guard newPassword == confirmPassword else {
-            errorMessage = "Passwords do not match."
+            errorMessage = tcString("settings_password_match_error", fallback: "Passwords do not match.")
             return
         }
 

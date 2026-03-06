@@ -52,7 +52,7 @@ struct ProviderDetailView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.title2)
                         .foregroundStyle(.secondary)
-                    Text("Provider unavailable")
+                    Text(tcKey: "provider_unavailable", fallback: "Provider unavailable")
                         .font(AppFont.body)
                         .foregroundStyle(.secondary)
                 }
@@ -102,23 +102,23 @@ struct ProviderDetailView: View {
                 ClaimProviderView(providerId: provider.id, providerName: provider.name)
             }
         }
-        .alert("Error", isPresented: Binding(
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: Binding(
             get: { detailVM.errorMessage != nil },
             set: { if !$0 { detailVM.errorMessage = nil } }
         )) {
-            Button("Done") {
+            Button(tcString("button_done", fallback: "Done")) {
                 detailVM.errorMessage = nil
             }
         } message: {
             Text(detailVM.errorMessage ?? "")
         }
-        .alert("Sign In Required", isPresented: $showAuthRequiredAlert) {
-            Button("Login / Sign Up") {
+        .alert(tcString("auth_required_title", fallback: "Sign In Required"), isPresented: $showAuthRequiredAlert) {
+            Button(tcString("auth_login_signup", fallback: "Login / Sign Up")) {
                 NotificationCenter.default.post(name: .trustCareRouteToAuth, object: nil)
             }
-            Button("Cancel", role: .cancel) {}
+            Button(tcString("button_cancel", fallback: "Cancel"), role: .cancel) {}
         } message: {
-            Text("You must be signed in to leave a review.")
+            Text(tcKey: "auth_review_required_message", fallback: "You must be signed in to leave a review.")
         }
         .toolbar(.hidden, for: .tabBar)
         .overlay(alignment: .bottom) {
@@ -206,7 +206,7 @@ struct ProviderDetailView: View {
                         .background(Color.black.opacity(0.4))
                         .clipShape(Circle())
                 }
-                .accessibilityLabel("Back")
+                .accessibilityLabel(tcString("button_back", fallback: "Back"))
 
                 Spacer()
 
@@ -218,7 +218,7 @@ struct ProviderDetailView: View {
                             .background(Color.black.opacity(0.4))
                             .clipShape(Circle())
                     }
-                    .accessibilityLabel("Share")
+                    .accessibilityLabel(tcString("button_share", fallback: "Share"))
                 }
             }
             .padding([.top, .horizontal], AppSpacing.lg)
@@ -263,12 +263,12 @@ struct ProviderDetailView: View {
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                     if (detailVM.provider?.verifiedReviewCount ?? 0) > 0 {
-                        Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \("Verified")")
+                        Text("\(detailVM.provider?.verifiedPercentage ?? 0)% \(tcString("status_verified", fallback: "Verified"))")
                             .font(AppFont.caption)
                             .foregroundStyle(Color.tcSage)
                     }
                 } else {
-                    Text("No reviews yet")
+                    Text(tcKey: "reviews_empty_title", fallback: "No reviews yet")
                         .font(AppFont.caption)
                         .foregroundStyle(Color.tcTextSecondary)
                 }
@@ -276,7 +276,7 @@ struct ProviderDetailView: View {
 
             HStack(spacing: AppSpacing.sm) {
                 PriceLevelView(level: detailVM.provider?.priceLevelAvg ?? 0)
-                Text("Price")
+                Text(tcKey: "provider_price", fallback: "Price")
                     .font(AppFont.caption)
                     .foregroundStyle(.secondary)
             }
@@ -291,18 +291,18 @@ struct ProviderDetailView: View {
                         Button {
                             openMaps(provider: provider)
                         } label: {
-                            Text("Open in Maps")
+                            Text(tcKey: "provider_open_in_maps", fallback: "Open in Maps")
                                 .font(AppFont.body)
                                 .foregroundStyle(Color.tcOcean)
                         }
                         .buttonStyle(.plain)
                     }
                 } else if let city = detailVM.provider?.city, !city.isEmpty {
-                    Text("Location: \(city)")
+                    Text("\(tcString("provider_location_prefix", fallback: "Location")): \(city)")
                         .font(AppFont.body)
                         .foregroundStyle(Color.tcTextSecondary)
                 } else {
-                    Text("Approximate location")
+                    Text(tcKey: "provider_approximate_location", fallback: "Approximate location")
                         .font(AppFont.body)
                         .foregroundStyle(Color.tcTextSecondary)
                 }
@@ -435,7 +435,7 @@ struct ProviderDetailView: View {
 
         return AnyView(
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Ratings Breakdown")
+                Text(tcKey: "provider_ratings_breakdown", fallback: "Ratings Breakdown")
                     .font(AppFont.title3)
 
                 ForEach(config.metrics) { metric in
@@ -449,7 +449,7 @@ struct ProviderDetailView: View {
                             Text(String(format: "%.1f/5", value))
                                 .font(AppFont.headline)
                         } else {
-                            Text("N/A")
+                            Text(tcKey: "common_not_available_short", fallback: "N/A")
                                 .font(AppFont.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -466,13 +466,13 @@ struct ProviderDetailView: View {
             if detailVM.provider?.isClaimed == true && !detailVM.services.isEmpty {
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
                     HStack {
-                        Text("Services & Prices")
+                        Text(tcKey: "provider_services_prices", fallback: "Services & Prices")
                             .font(AppFont.title3)
                         Spacer()
                         NavigationLink {
                             ServicesCatalogView(providerName: detailVM.provider?.name ?? "", services: detailVM.services)
                         } label: {
-                            Text("View All")
+                            Text(tcKey: "button_view_all", fallback: "View All")
                                 .font(AppFont.caption)
                                 .foregroundStyle(Color.tcOcean)
                         }
@@ -490,13 +490,13 @@ struct ProviderDetailView: View {
     private var reviewsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
             HStack {
-                Text("Reviews")
+                Text(tcKey: "reviews_title", fallback: "Reviews")
                     .font(AppFont.title3)
                 Spacer()
                 if !detailVM.reviews.isEmpty {
-                    Picker("Sort", selection: .constant(0)) {
-                        Text("Newest").tag(0)
-                        Text("Highest Rated").tag(1)
+                    Picker(tcString("sort_title", fallback: "Sort"), selection: .constant(0)) {
+                        Text(tcKey: "sort_newest", fallback: "Newest").tag(0)
+                        Text(tcKey: "sort_highest_rated", fallback: "Highest Rated").tag(1)
                     }
                     .pickerStyle(.menu)
                 }
@@ -504,11 +504,11 @@ struct ProviderDetailView: View {
 
             if detailVM.reviews.isEmpty {
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("No reviews yet")
+                    Text(tcKey: "reviews_empty_title", fallback: "No reviews yet")
                         .font(AppFont.headline)
                         .foregroundStyle(Color.tcTextPrimary)
 
-                    Text("Help other patients by sharing the first trusted experience for this provider.")
+                    Text(tcKey: "reviews_empty_provider_body", fallback: "Help other patients by sharing the first trusted experience for this provider.")
                         .font(AppFont.body)
                         .foregroundStyle(Color.tcTextSecondary)
 
@@ -517,7 +517,7 @@ struct ProviderDetailView: View {
                             NavigationLink {
                                 ReviewHubView(initialProvider: provider)
                             } label: {
-                                Text("Write the first review")
+                                Text(tcKey: "reviews_write_first", fallback: "Write the first review")
                                     .font(AppFont.headline)
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity)
@@ -530,7 +530,7 @@ struct ProviderDetailView: View {
                             Button {
                                 showAuthRequiredAlert = true
                             } label: {
-                                Text("Write the first review")
+                                Text(tcKey: "reviews_write_first", fallback: "Write the first review")
                                     .font(AppFont.headline)
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity)
@@ -561,7 +561,7 @@ struct ProviderDetailView: View {
                 NavigationLink {
                     ReviewListView(providerId: providerId)
                 } label: {
-                    Text("See All Reviews")
+                    Text(tcKey: "reviews_see_all", fallback: "See All Reviews")
                         .font(AppFont.caption)
                         .foregroundStyle(Color.tcOcean)
                 }

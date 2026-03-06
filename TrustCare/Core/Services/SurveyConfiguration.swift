@@ -7,10 +7,9 @@ struct SurveyMetric: Identifiable {
     let dbColumn: String
     let icon: String
 
-    /// Resolved label for current language (via Bundle swizzle)
-    var label: String { String(localized: String.LocalizationValue(labelKey)) }
-    /// Resolved subtext for current language (via Bundle swizzle)
-    var subtext: String { String(localized: String.LocalizationValue(subtextKey)) }
+    /// Resolve through TrustCare's selected-language lookup to avoid mixed-language UI.
+    var label: String { tcString(labelKey, fallback: labelKey) }
+    var subtext: String { tcString(subtextKey, fallback: subtextKey) }
 }
 
 struct SurveyConfig {
@@ -18,8 +17,7 @@ struct SurveyConfig {
     let displayNameKey: String
     let metrics: [SurveyMetric]
 
-    /// Resolved display name for current language
-    var displayName: String { String(localized: String.LocalizationValue(displayNameKey)) }
+    var displayName: String { tcString(displayNameKey, fallback: displayNameKey) }
 }
 
 enum SurveyConfigurations {

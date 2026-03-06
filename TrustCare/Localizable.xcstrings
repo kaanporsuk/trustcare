@@ -119,6 +119,19 @@
         }
       }
     },
+    "%@ 1.0.0" : {
+
+    },
+    "%@: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
     "%@%@" : {
       "localizations" : {
         "cs" : {
@@ -1070,21 +1083,6 @@
           }
         }
       }
-    },
-    "Active" : {
-
-    },
-    "Add Photos" : {
-
-    },
-    "Add Photos or Video" : {
-
-    },
-    "Add photos, services, prices, and availability" : {
-
-    },
-    "Add Video" : {
-
     },
     "add_provider_add" : {
       "extractionState" : "stale",
@@ -2397,6 +2395,7 @@
       }
     },
     "add_provider_select" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3204,9 +3203,6 @@
     "Already have an account? Log In" : {
 
     },
-    "Anonymous" : {
-
-    },
     "app_language" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3409,22 +3405,7 @@
         }
       }
     },
-    "Approved" : {
-
-    },
-    "Approximate location" : {
-
-    },
     "Avatar processing failed. Please use a different photo under 5 MB." : {
-
-    },
-    "Back" : {
-
-    },
-    "Basic" : {
-
-    },
-    "Be the first to review" : {
 
     },
     "Browse by city" : {
@@ -4933,6 +4914,7 @@
       }
     },
     "Cancel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8228,10 +8210,8 @@
         }
       }
     },
-    "Change Avatar" : {
-
-    },
     "Change Password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8296,6 +8276,7 @@
       }
     },
     "Checkup" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8863,9 +8844,6 @@
           }
         }
       }
-    },
-    "Choose from Library" : {
-
     },
     "claim_accepted_docs" : {
       "localizations" : {
@@ -11473,12 +11451,6 @@
         }
       }
     },
-    "Claimed Business" : {
-
-    },
-    "Clear search" : {
-
-    },
     "clear_filter" : {
       "localizations" : {
         "cs" : {
@@ -11679,12 +11651,6 @@
           }
         }
       }
-    },
-    "Confirm New Password" : {
-
-    },
-    "Consultation" : {
-
     },
     "Contact for Booking" : {
 
@@ -11993,9 +11959,6 @@
           }
         }
       }
-    },
-    "Current Password" : {
-
     },
     "current_location" : {
       "extractionState" : "stale",
@@ -12718,9 +12681,6 @@
     "Done" : {
 
     },
-    "Edit Profile" : {
-
-    },
     "edit_review_comment_section" : {
       "localizations" : {
         "cs" : {
@@ -13128,6 +13088,7 @@
 
     },
     "Emergency" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -13700,6 +13661,7 @@
 
     },
     "error_duplicate_review" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -14203,6 +14165,7 @@
       }
     },
     "error_network" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -14805,9 +14768,6 @@
           }
         }
       }
-    },
-    "Excellent" : {
-
     },
     "filter_all" : {
       "localizations" : {
@@ -18139,28 +18099,7 @@
         }
       }
     },
-    "Flagged" : {
-
-    },
-    "Follow-up" : {
-
-    },
-    "Free" : {
-
-    },
-    "Full Name" : {
-
-    },
     "Get Started" : {
-
-    },
-    "Help other patients by sharing the first trusted experience for this provider." : {
-
-    },
-    "Help others see what to expect" : {
-
-    },
-    "Help patients choose you with a complete profile" : {
 
     },
     "help_contact" : {
@@ -19779,22 +19718,7 @@
         }
       }
     },
-    "Highest Rated" : {
-
-    },
-    "How expensive was your visit?" : {
-
-    },
-    "I agree to Terms & Privacy" : {
-
-    },
-    "Image" : {
-
-    },
     "Invalid email or password." : {
-
-    },
-    "Is this your practice?" : {
 
     },
     "is_this_your_practice" : {
@@ -22224,9 +22148,6 @@
         }
       }
     },
-    "Location: %@" : {
-
-    },
     "Log In" : {
 
     },
@@ -22293,9 +22214,6 @@
           }
         }
       }
-    },
-    "Login / Sign Up" : {
-
     },
     "logout_confirm_message" : {
       "localizations" : {
@@ -24006,25 +23924,14 @@
         }
       }
     },
-    "N/A" : {
-
-    },
     "Network error. Please check your connection." : {
-
-    },
-    "New on TrustCare" : {
-
-    },
-    "New Password" : {
-
-    },
-    "Newest" : {
 
     },
     "next" : {
 
     },
     "No reviews yet" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -24194,22 +24101,14 @@
         }
       }
     },
-    "Not found." : {
-
-    },
     "OK" : {
-
-    },
-    "Open in Maps" : {
 
     },
     "OR" : {
 
     },
-    "Overall rating is required." : {
-
-    },
     "Pending" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -24273,13 +24172,8 @@
         }
       }
     },
-    "Pending verification" : {
-
-    },
-    "Pending Verification" : {
-
-    },
     "Phone" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -24343,40 +24237,13 @@
         }
       }
     },
-    "Photo updated" : {
-
-    },
-    "Photos and videos are visible to everyone." : {
-
-    },
     "Play video" : {
-
-    },
-    "Please select a provider." : {
-
-    },
-    "Please sign in to add a healthcare provider." : {
 
     },
     "Please sign in to continue." : {
 
     },
-    "Please sign in to report." : {
-
-    },
-    "Please sign in to submit a review." : {
-
-    },
-    "Please sign in to vote." : {
-
-    },
-    "Please sign in." : {
-
-    },
     "Please upload a verification document." : {
-
-    },
-    "Poor" : {
 
     },
     "Popular near you" : {
@@ -27412,13 +27279,8 @@
         }
       }
     },
-    "Premium" : {
-
-    },
-    "Price" : {
-
-    },
     "Procedure" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -27483,6 +27345,7 @@
       }
     },
     "Profile" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -27545,9 +27408,6 @@
           }
         }
       }
-    },
-    "Profile updated" : {
-
     },
     "profile_member_since" : {
       "extractionState" : "stale",
@@ -28545,9 +28405,6 @@
     "Provider not found." : {
 
     },
-    "Provider unavailable" : {
-
-    },
     "providers_label" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -28749,12 +28606,6 @@
           }
         }
       }
-    },
-    "Ratings Breakdown" : {
-
-    },
-    "Read more" : {
-
     },
     "Recent searches" : {
 
@@ -33383,18 +33234,6 @@
         }
       }
     },
-    "Rejected" : {
-
-    },
-    "Remove photo" : {
-
-    },
-    "Remove video" : {
-
-    },
-    "Removed" : {
-
-    },
     "report_additional_details" : {
       "localizations" : {
         "cs" : {
@@ -34297,6 +34136,7 @@
       }
     },
     "Review" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -39003,9 +38843,6 @@
         }
       }
     },
-    "Reviews" : {
-
-    },
     "reviews_count" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -39207,9 +39044,6 @@
           }
         }
       }
-    },
-    "Save" : {
-
     },
     "saved_empty_action" : {
       "extractionState" : "stale",
@@ -40117,9 +39951,6 @@
           }
         }
       }
-    },
-    "See All Reviews" : {
-
     },
     "Services & Prices" : {
 
@@ -41538,12 +41369,6 @@
         }
       }
     },
-    "Share" : {
-
-    },
-    "Show less" : {
-
-    },
     "show_all" : {
       "localizations" : {
         "cs" : {
@@ -41744,19 +41569,7 @@
         }
       }
     },
-    "Sign In Required" : {
-
-    },
     "skip" : {
-
-    },
-    "Skip" : {
-
-    },
-    "Something went wrong." : {
-
-    },
-    "Sort" : {
 
     },
     "specialties_label" : {
@@ -56104,9 +55917,6 @@
         }
       }
     },
-    "Take Photo" : {
-
-    },
     "taxonomy_segment_facilities" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -56411,9 +56221,6 @@
       }
     },
     "This email is already registered." : {
-
-    },
-    "Too many requests. Please try again later." : {
 
     },
     "top_picks" : {
@@ -59658,12 +59465,6 @@
         }
       }
     },
-    "Update Password" : {
-
-    },
-    "Upload failed. Please try again." : {
-
-    },
     "use_device_location" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -59766,6 +59567,7 @@
       }
     },
     "Verified" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -59929,18 +59731,6 @@
           }
         }
       }
-    },
-    "Version 1.0.0" : {
-
-    },
-    "Video" : {
-
-    },
-    "Video will be trimmed to 30 seconds" : {
-
-    },
-    "View All" : {
-
     },
     "View image" : {
 
@@ -60452,21 +60242,6 @@
           }
         }
       }
-    },
-    "Write the first review" : {
-
-    },
-    "You can upload up to 5 photos." : {
-
-    },
-    "You must be signed in to leave a review." : {
-
-    },
-    "Your password has been updated." : {
-
-    },
-    "Your review must be at least 50 characters." : {
-
     }
   },
   "version" : "1.0"

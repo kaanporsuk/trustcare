@@ -10,7 +10,7 @@ struct PriceLevelPicker: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text("How expensive was your visit?")
+            Text(tcKey: "review_price_question", fallback: "How expensive was your visit?")
                 .font(AppFont.title3)
 
             LazyVGrid(columns: columns, spacing: AppSpacing.md) {

@@ -3,6 +3,7 @@ import SwiftUI
 struct MyReviewsView: View {
     @EnvironmentObject private var profileVM: ProfileViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
+    @Environment(\.locale) private var locale
     @Binding var selectedTab: Int
 
     @State private var pendingDeleteReviewId: UUID?
@@ -30,9 +31,9 @@ struct MyReviewsView: View {
             } else if profileVM.myReviews.isEmpty {
                 TCEmptyState(
                     variant: .noReviews,
-                    customTitle: "No reviews yet",
-                    customBody: "Your reviews help build trust. Share your experience.",
-                    primaryTitle: "Write a review"
+                    customTitle: tcString("reviews_empty_title", fallback: "No reviews yet"),
+                    customBody: tcString("my_reviews_empty_body", fallback: "Your reviews help build trust. Share your experience."),
+                    primaryTitle: tcString("review_write_cta", fallback: "Write a review")
                 ) {
                     selectedTab = 2
                 }
@@ -152,6 +153,7 @@ struct MyReviewsView: View {
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: locale.identifier)
         return formatter.string(from: date)
     }
 

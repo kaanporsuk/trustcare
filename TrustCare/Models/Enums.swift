@@ -5,11 +5,11 @@ enum VisitType: String, Codable, CaseIterable, Identifiable {
     var id: String { rawValue }
     var displayName: String {
         switch self {
-        case .consultation: return String(localized: "Consultation")
-        case .procedure: return String(localized: "Procedure")
-        case .checkup: return String(localized: "Checkup")
-        case .emergency: return String(localized: "Emergency")
-        case .followUp: return String(localized: "Follow-up")
+        case .consultation: return tcString("Consultation", fallback: "Consultation")
+        case .procedure: return tcString("Procedure", fallback: "Procedure")
+        case .checkup: return tcString("Checkup", fallback: "Checkup")
+        case .emergency: return tcString("Emergency", fallback: "Emergency")
+        case .followUp: return tcString("Follow-up", fallback: "Follow-up")
         }
     }
 }
@@ -35,10 +35,10 @@ enum ReviewStatus: String, Codable {
 
     var displayName: String {
         switch self {
-        case .active: return String(localized: "Active")
-        case .pendingVerification: return String(localized: "Pending Verification")
-        case .flagged: return String(localized: "Flagged")
-        case .removed: return String(localized: "Removed")
+        case .active: return tcString("Active", fallback: "Active")
+        case .pendingVerification: return tcString("Pending Verification", fallback: "Pending Verification")
+        case .flagged: return tcString("Flagged", fallback: "Flagged")
+        case .removed: return tcString("Removed", fallback: "Removed")
         }
     }
 }
@@ -48,8 +48,8 @@ enum MediaType: String, Codable {
 
     var displayName: String {
         switch self {
-        case .image: return String(localized: "Image")
-        case .video: return String(localized: "Video")
+        case .image: return tcString("Image", fallback: "Image")
+        case .video: return tcString("Video", fallback: "Video")
         }
     }
 }
@@ -59,9 +59,9 @@ enum SubscriptionTier: String, Codable {
 
     var displayName: String {
         switch self {
-        case .free: return String(localized: "Free")
-        case .basic: return String(localized: "Basic")
-        case .premium: return String(localized: "Premium")
+        case .free: return tcString("Free", fallback: "Free")
+        case .basic: return tcString("Basic", fallback: "Basic")
+        case .premium: return tcString("Premium", fallback: "Premium")
         }
     }
 }
@@ -71,9 +71,9 @@ enum ClaimStatus: String, Codable {
 
     var displayName: String {
         switch self {
-        case .pending: return String(localized: "Pending")
-        case .approved: return String(localized: "Approved")
-        case .rejected: return String(localized: "Rejected")
+        case .pending: return tcString("Pending", fallback: "Pending")
+        case .approved: return tcString("Approved", fallback: "Approved")
+        case .rejected: return tcString("Rejected", fallback: "Rejected")
         }
     }
 }
@@ -104,10 +104,10 @@ enum AppError: Error, LocalizedError {
         case .networkError(let msg): return msg
         case .authError(let msg): return msg
         case .validationError(let msg): return msg
-        case .uploadFailed: return String(localized: "Upload failed. Please try again.")
-        case .rateLimitExceeded: return String(localized: "Too many requests. Please try again later.")
-        case .notFound: return String(localized: "Not found.")
-        case .unknown: return String(localized: "Something went wrong.")
+        case .uploadFailed: return tcString("Upload failed. Please try again.", fallback: "Upload failed. Please try again.")
+        case .rateLimitExceeded: return tcString("Too many requests. Please try again later.", fallback: "Too many requests. Please try again later.")
+        case .notFound: return tcString("Not found.", fallback: "Not found.")
+        case .unknown: return tcString("Something went wrong.", fallback: "Something went wrong.")
         }
     }
 }

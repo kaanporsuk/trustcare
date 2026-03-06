@@ -4,6 +4,7 @@ import UIKit
 struct MainTabView: View {
     @EnvironmentObject private var authVM: AuthViewModel
     @EnvironmentObject private var appRouter: AppRouter
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @StateObject private var profileVM = ProfileViewModel()
     @State private var showReviewNudge = ReviewSubmissionViewModel.shouldShowFirstReviewNudge
 
@@ -29,6 +30,8 @@ struct MainTabView: View {
     }
 
     var body: some View {
+        let _ = localizationManager.currentLanguage
+
         TabView(selection: $appRouter.selectedTab) {
             NavigationStack {
                 HomeView()

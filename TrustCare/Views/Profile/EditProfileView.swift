@@ -20,26 +20,26 @@ struct EditProfileView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Profile") {
-                    TextField("Full Name", text: $fullName)
-                    TextField("Phone", text: $phone)
+                Section(tcString("profile_section_title", fallback: "Profile")) {
+                    TextField(tcString("profile_full_name", fallback: "Full Name"), text: $fullName)
+                    TextField(tcString("settings_phone", fallback: "Phone"), text: $phone)
                         .keyboardType(.phonePad)
                     TextEditor(text: $bio)
                         .frame(minHeight: 120)
                 }
             }
-            .navigationTitle("Edit Profile")
+            .navigationTitle(tcString("profile_edit", fallback: "Edit Profile"))
             .navigationBarTitleDisplayMode(.inline)
             .dismissKeyboardOnTap()
             .keyboardDoneToolbar()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(tcString("button_cancel", fallback: "Cancel")) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button(tcString("button_save", fallback: "Save")) {
                         Task { await save() }
                     }
                     .disabled(isSaving || fullName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)

@@ -54,7 +54,7 @@ struct AddProviderSheet: View {
                         HStack {
                             Text(tcKey: "add_provider_specialty", fallback: "Specialty")
                             Spacer()
-                            Text(selectedTaxonomy?.label ?? String(localized: "add_provider_select"))
+                            Text(selectedTaxonomy?.label ?? tcString("add_provider_select", fallback: "Select"))
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -114,9 +114,9 @@ struct AddProviderSheet: View {
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )) {
-                Button("button_ok") { errorMessage = nil }
+                Button(tcString("button_ok", fallback: "OK")) { errorMessage = nil }
             } message: {
-                Text(errorMessage ?? "")
+                Text(localizedErrorMessage)
             }
             .sheet(isPresented: $showSpecialtyPicker) {
                 TaxonomyPickerView(
@@ -149,6 +149,11 @@ struct AddProviderSheet: View {
     private var coordinateTaskID: String {
         guard let selectedCoordinate else { return "none" }
         return String(format: "%.6f,%.6f", selectedCoordinate.latitude, selectedCoordinate.longitude)
+    }
+
+    private var localizedErrorMessage: String {
+        guard let message = errorMessage else { return "" }
+        return tcString(message, fallback: message)
     }
 
     private func submit() async {
@@ -311,7 +316,7 @@ struct AddProviderSheet: View {
         if !chunks.isEmpty {
             return chunks.joined(separator: ", ")
         }
-        return placemark.title ?? "add_provider_no_address"
+        return placemark.title ?? tcString("add_provider_no_address", fallback: "Address unavailable")
     }
 }
 

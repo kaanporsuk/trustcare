@@ -13,9 +13,10 @@ struct TCProviderCard<Destination: View>: View {
 
     private var locationLine: String {
         if let city = provider.city?.trimmingCharacters(in: .whitespacesAndNewlines), !city.isEmpty {
-            return "Location: \(city)"
+            let format = tcString("Location: %@", fallback: "Location: %@")
+            return String(format: format, city)
         }
-        return "Approximate location"
+        return tcString("Approximate location", fallback: "Approximate location")
     }
 
     var body: some View {
@@ -40,11 +41,11 @@ struct TCProviderCard<Destination: View>: View {
                         .foregroundStyle(Color.tcTextSecondary)
 
                     if provider.reviewCount == 0 {
-                        Text("Be the first to review")
+                        Text(tcKey: "Be the first to review", fallback: "Be the first to review")
                             .font(.footnote)
                             .foregroundStyle(Color.tcTextSecondary)
 
-                        Text("New on TrustCare")
+                        Text(tcKey: "New on TrustCare", fallback: "New on TrustCare")
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(Color.tcCoral)
                             .padding(.horizontal, 10)

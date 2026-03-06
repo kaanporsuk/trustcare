@@ -73,7 +73,7 @@ struct SignUpView: View {
             )
 
             Toggle(isOn: $agreedToTerms) {
-                Text("I agree to Terms & Privacy")
+                Text(tcKey: "I agree to Terms & Privacy", fallback: "I agree to Terms & Privacy")
                     .font(AppFont.caption)
             }
         }

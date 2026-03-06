@@ -3,6 +3,10 @@ import SwiftUI
 struct HelpSupportView: View {
     @Environment(\.openURL) private var openURL
 
+    private var supportEmailSubject: String {
+        tcString("menu_help", fallback: "Help & support")
+    }
+
     private struct FAQItem {
         let questionKey: String
         let questionFallback: String
@@ -89,7 +93,14 @@ struct HelpSupportView: View {
                     }
 
                     Button(tcString("help_report_issue", fallback: "Report an issue")) {
-                        if let url = URL(string: "mailto:support@trustcare.app?subject=TrustCare%20Destek") {
+                        var components = URLComponents()
+                        components.scheme = "mailto"
+                        components.path = "support@trustcare.app"
+                        components.queryItems = [
+                            URLQueryItem(name: "subject", value: supportEmailSubject)
+                        ]
+
+                        if let url = components.url {
                             openURL(url)
                         }
                     }

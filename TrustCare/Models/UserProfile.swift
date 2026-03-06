@@ -15,7 +15,7 @@ struct UserProfile: Identifiable, Codable {
 
     var displayName: String {
         guard let name = fullName, !name.isEmpty else {
-            return String(localized: "Anonymous")
+            return tcString("Anonymous", fallback: "Anonymous")
         }
         return name
     }

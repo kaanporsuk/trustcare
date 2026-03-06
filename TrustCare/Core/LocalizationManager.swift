@@ -65,13 +65,7 @@ final class LocalizationManager: ObservableObject {
 
     /// The user's chosen language code. Empty = use system default.
     /// When this changes, SwiftUI rebuilds via .id() and .environment(\\.locale).
-    @Published var currentLanguage: String {
-        didSet {
-            UserDefaults.standard.set(currentLanguage, forKey: "app_language")
-            UserDefaults.standard.set([effectiveLanguage], forKey: "AppleLanguages")
-            UserDefaults.standard.synchronize()
-        }
-    }
+    @Published var currentLanguage: String
 
     /// The effective language code the app is running in right now.
     var effectiveLanguage: String {
@@ -90,6 +84,7 @@ final class LocalizationManager: ObservableObject {
         let saved = UserDefaults.standard.string(forKey: "app_language")
             ?? ""
         self.currentLanguage = saved
+        persistLanguageSelection(saved)
     }
 
     // MARK: - Public API
@@ -98,7 +93,20 @@ final class LocalizationManager: ObservableObject {
     /// NO restart needed — the @Published change triggers instant UI update.
     func changeLanguage(to newCode: String) {
         guard Self.supportedCodes.contains(newCode) else { return }
+        // Persist before publishing so tcString lookups that read UserDefaults
+        // resolve the newly selected language during the first re-render pass.
+        persistLanguageSelection(newCode)
         currentLanguage = newCode
+    }
+
+    private func persistLanguageSelection(_ selectedCode: String) {
+        UserDefaults.standard.set(selectedCode, forKey: "app_language")
+
+        let languageForApple = selectedCode.isEmpty
+            ? Self.detectSystemLanguage()
+            : selectedCode
+        UserDefaults.standard.set([languageForApple], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
     }
 
     // MARK: - System Detection

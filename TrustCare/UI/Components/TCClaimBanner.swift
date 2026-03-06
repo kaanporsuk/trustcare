@@ -5,19 +5,19 @@ struct TCClaimBanner: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Is this your practice?")
+            Text(tcKey: "Is this your practice?", fallback: "Is this your practice?")
                 .font(AppFont.headline)
                 .foregroundStyle(Color.tcTextPrimary)
 
-            Text("Add photos, services, prices, and availability")
+            Text(tcKey: "Add photos, services, prices, and availability", fallback: "Add photos, services, prices, and availability")
                 .font(AppFont.body)
                 .foregroundStyle(Color.tcTextSecondary)
 
-            Text("Help patients choose you with a complete profile")
+            Text(tcKey: "Help patients choose you with a complete profile", fallback: "Help patients choose you with a complete profile")
                 .font(AppFont.body)
                 .foregroundStyle(Color.tcTextSecondary)
 
-            TCPrimaryButton(title: "Claim this profile", fullWidth: true, action: action)
+            TCPrimaryButton(title: tcString("claim_profile", fallback: "Claim Profile"), fullWidth: true, action: action)
                 .padding(.top, 4)
         }
         .padding(AppSpacing.md)

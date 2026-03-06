@@ -33,7 +33,7 @@ struct TCSearchBar: View {
                         .foregroundStyle(Color.tcTextSecondary)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel(Text("Clear search"))
+                .accessibilityLabel(Text(tcKey: "Clear search", fallback: "Clear search"))
             }
         }
         .padding(.horizontal, 14)
