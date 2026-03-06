@@ -90,7 +90,7 @@ struct ReviewItemView: View {
                     HStack(spacing: 6) {
                         Image(systemName: hasVoted ? "hand.thumbsup.fill" : "hand.thumbsup")
                             .foregroundStyle(hasVoted ? Color.tcOcean : .secondary)
-                        Text("review_helpful_count_\(helpfulCount)")
+                        Text(helpfulCountLabel)
                             .font(AppFont.caption)
                             .foregroundStyle(hasVoted ? Color.tcOcean : .secondary)
                     }
@@ -108,7 +108,9 @@ struct ReviewItemView: View {
                     } label: {
                         HStack(spacing: 4) {
                             Image(systemName: "flag")
-                            Text(hasReported ? "report_reported" : "report_button")
+                            Text(hasReported
+                                ? tcString("report_reported", fallback: "Reported")
+                                : tcString("report_button", fallback: "Report"))
                         }
                         .font(AppFont.footnote)
                         .foregroundStyle(hasReported ? .secondary : .secondary)
@@ -126,6 +128,14 @@ struct ReviewItemView: View {
                 hasReported = true
             }
         }
+    }
+
+    private var helpfulCountLabel: String {
+        String(
+            format: tcString("review_helpful_count_%lld", fallback: "%lld helpful"),
+            locale: locale,
+            helpfulCount
+        )
     }
     
     private func loadVoteData() async {

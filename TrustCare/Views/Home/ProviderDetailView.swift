@@ -259,7 +259,7 @@ struct ProviderDetailView: View {
             HStack(spacing: AppSpacing.sm) {
                 if hasReviews {
                     StarRatingInput(readOnlyRating: Int(round(detailVM.provider?.ratingOverall ?? 0)), starSize: 16)
-                    Text(String(format: "reviews_count", detailVM.provider?.reviewCount ?? 0))
+                    Text(reviewsCountLabel(detailVM.provider?.reviewCount ?? 0))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                     if (detailVM.provider?.verifiedReviewCount ?? 0) > 0 {
@@ -569,6 +569,11 @@ struct ProviderDetailView: View {
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.bottom, AppSpacing.xxl)
+    }
+
+    private func reviewsCountLabel(_ count: Int) -> String {
+        let suffix = tcString("reviews_count", fallback: "reviews")
+        return "\(count) \(suffix)"
     }
 
     private func openMaps(provider: Provider) {

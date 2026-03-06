@@ -186,7 +186,7 @@ struct ProfileView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: AppSpacing.xs) {
-                    Text(profileVM.profile?.displayName ?? "Anonymous")
+                    Text(profileVM.profile?.displayName ?? tcString("Anonymous", fallback: "Anonymous"))
                         .font(AppFont.title2)
                     Button {
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -214,12 +214,20 @@ struct ProfileView: View {
 
         return HStack(spacing: AppSpacing.md) {
             statCard(
-                label: Text("\(totalReviews)") + Text(" ") + Text(tcKey: "Reviews", fallback: "Reviews")
+                label: Text(profileReviewsCountLabel(totalReviews))
             )
             statCard(
-                label: Text("profile_verified_percent") + Text(" \(verifiedPercent)%")
+                label: Text(profileVerifiedPercentLabel(verifiedPercent))
             )
         }
+    }
+
+    private func profileReviewsCountLabel(_ count: Int) -> String {
+        String(format: tcString("profile_reviews_count %lld", fallback: "%lld reviews"), locale: locale, count)
+    }
+
+    private func profileVerifiedPercentLabel(_ percent: Int) -> String {
+        String(format: tcString("profile_verified_percent %lld", fallback: "%lld%% Verified"), locale: locale, percent)
     }
 
     private var menuSection: some View {

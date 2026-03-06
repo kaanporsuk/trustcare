@@ -162,11 +162,11 @@ final class ProviderDetailViewModel: ObservableObject {
 
         let message = error.localizedDescription.lowercased()
         if message.contains("network") || message.contains("offline") {
-            return String(localized: "Network error. Please check your connection.")
+            return tcString("Network error. Please check your connection.", fallback: "Network error. Please check your connection.")
         }
         if message.contains("not found") {
-            return String(localized: "Provider not found.")
+            return tcString("Provider not found.", fallback: "Provider not found.")
         }
-        return String(localized: "Unable to load provider details. Please try again.")
+        return tcString("Unable to load provider details. Please try again.", fallback: "Unable to load provider details. Please try again.")
     }
 }

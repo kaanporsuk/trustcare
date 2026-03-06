@@ -58,38 +58,32 @@ struct HelpSupportView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                Text(tcKey: "help_faq_title", fallback: "Help & Support")
-                    .font(AppFont.title2)
-                    .foregroundStyle(Color.tcOcean)
+                VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                    Text(tcKey: "menu_help", fallback: "Help & support")
+                        .font(AppFont.title2)
+                        .foregroundStyle(Color.tcTextPrimary)
 
-                VStack(spacing: AppSpacing.sm) {
-                    ForEach(Array(faqItems.enumerated()), id: \.offset) { _, item in
-                        DisclosureGroup {
-                            Text(tcKey: item.answerKey, fallback: item.answerFallback)
-                                .font(AppFont.body)
-                                .foregroundStyle(.secondary)
-                                .padding(.top, AppSpacing.xs)
-                        } label: {
-                            Text(tcKey: item.questionKey, fallback: item.questionFallback)
-                                .font(AppFont.headline)
-                                .foregroundStyle(.primary)
-                        }
-                        .padding(AppSpacing.md)
-                        .background(Color.tcSurface)
-                        .cornerRadius(AppRadius.card)
-                    }
+                    Text(tcKey: "help_faq_a6", fallback: "Email support@trustcare.app with your app version and issue details.")
+                        .font(AppFont.body)
+                        .foregroundStyle(Color.tcTextSecondary)
                 }
+                .padding(AppSpacing.md)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.tcSurface)
+                .cornerRadius(AppRadius.card)
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
                     Text(tcKey: "help_contact", fallback: "Contact")
-                        .font(AppFont.title3)
+                        .font(AppFont.headline)
+                        .foregroundStyle(Color.tcTextPrimary)
 
                     HStack {
                         Text(tcKey: "help_email_label", fallback: "Email")
                             .font(AppFont.body)
+                        Spacer()
                         Text("support@trustcare.app")
                             .font(AppFont.body)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.tcTextSecondary)
                     }
 
                     Button(tcString("help_report_issue", fallback: "Report an issue")) {
@@ -104,7 +98,7 @@ struct HelpSupportView: View {
                             openURL(url)
                         }
                     }
-                    .font(AppFont.body)
+                    .font(AppFont.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
@@ -114,6 +108,30 @@ struct HelpSupportView: View {
                 .padding(AppSpacing.md)
                 .background(Color.tcSurface)
                 .cornerRadius(AppRadius.card)
+
+                VStack(spacing: AppSpacing.sm) {
+                    Text(tcKey: "help_faq_title", fallback: "Help & Support")
+                        .font(AppFont.headline)
+                        .foregroundStyle(Color.tcTextPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    ForEach(Array(faqItems.enumerated()), id: \.offset) { _, item in
+                        DisclosureGroup {
+                            Text(tcKey: item.answerKey, fallback: item.answerFallback)
+                                .font(AppFont.body)
+                                .foregroundStyle(Color.tcTextSecondary)
+                                .padding(.top, AppSpacing.xs)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        } label: {
+                            Text(tcKey: item.questionKey, fallback: item.questionFallback)
+                                .font(AppFont.headline)
+                                .foregroundStyle(Color.tcTextPrimary)
+                        }
+                        .padding(AppSpacing.md)
+                        .background(Color.tcSurface)
+                        .cornerRadius(AppRadius.card)
+                    }
+                }
             }
             .padding(.horizontal, AppSpacing.lg)
             .padding(.vertical, AppSpacing.lg)

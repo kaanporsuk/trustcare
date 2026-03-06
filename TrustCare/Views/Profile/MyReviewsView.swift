@@ -71,7 +71,7 @@ struct MyReviewsView: View {
                 }
             }
         }
-        .navigationTitle("menu_my_reviews")
+        .navigationTitle(tcString("menu_my_reviews", fallback: "My reviews"))
         .toolbar(.hidden, for: .tabBar)
         .task {
             if profileVM.myReviews.isEmpty {
@@ -100,11 +100,11 @@ struct MyReviewsView: View {
                 editingReview = nil
             }
         }
-        .alert("error_generic", isPresented: Binding(
+        .alert(tcString("error_generic", fallback: "Error"), isPresented: Binding(
             get: { profileVM.errorMessage != nil },
             set: { if !$0 { profileVM.errorMessage = nil } }
         )) {
-            Button("button_ok") { profileVM.errorMessage = nil }
+            Button(tcString("button_ok", fallback: "OK")) { profileVM.errorMessage = nil }
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
