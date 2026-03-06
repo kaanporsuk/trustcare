@@ -214,7 +214,7 @@ struct ProfileView: View {
 
         return HStack(spacing: AppSpacing.md) {
             statCard(
-                label: Text(String(localized: "profile_reviews_count \(totalReviews)"))
+                label: Text("\(totalReviews)") + Text(" ") + Text(tcKey: "Reviews", fallback: "Reviews")
             )
             statCard(
                 label: Text("profile_verified_percent") + Text(" \(verifiedPercent)%")
