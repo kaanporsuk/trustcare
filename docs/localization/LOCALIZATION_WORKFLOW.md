@@ -56,16 +56,24 @@ xcodebuild -scheme TrustCare -destination 'platform=iOS Simulator,name=iPhone 15
 
 ## Deprecated/Stale Localization Audit Snapshot (2026-03-07)
 
-Remaining deprecated or stale paths/keys identified:
+Removed in Phase 5 cleanup:
 
-1. Deprecated key still present in string catalog:
-   - `TrustCare/Localizable.xcstrings` contains `my_reviews_empty_subtitle` (replaced in UI by `my_reviews_empty_message`).
-2. Deprecated import helper still targets old key:
+1. Stale key removed from active string catalog:
+   - `my_reviews_empty_subtitle` (UI uses `my_reviews_empty_message`).
+2. Obsolete import helper removed:
    - `scripts/import_my_reviews_empty_subtitle.py`
-3. Legacy taxonomy fallback resources are still referenced in runtime store for compatibility:
+
+Intentionally kept for runtime safety:
+
+1. Legacy taxonomy fallback resources in runtime store:
    - `TrustCare/Core/Services/TaxonomyCatalogStore.swift` references `taxonomy_v21_canonical_en`, `taxonomy_v21_symptom_concern_en`, `taxonomy_v21_labels_en`, `taxonomy_v21_aliases_en`.
-4. Legacy taxonomy i18n folder loader remains as fallback compatibility path:
+   - Kept because some resource-bundle flattening and legacy package states may still require these compatibility lookups.
+2. Legacy taxonomy i18n folder fallback:
    - `TrustCare/Core/Services/TaxonomyI18nLoader.swift` reads from `TaxonomyI18n/<locale>.json`.
-5. Additional cleanup candidate (not changed in this phase): several call sites still pass literal English strings as `tcString` keys instead of stable key IDs.
+   - Kept as a final fallback path to avoid locale regressions when canonical v2.1 files are unavailable.
+
+Additional cleanup candidate:
+
+1. Several call sites still pass literal English strings as `tcString` keys instead of stable key IDs.
 
 Note: QA deep links/tools are still guarded with `#if DEBUG` in `TrustCare/TrustCareApp.swift` and `TrustCare/Views/Debug/LocalizationFitPreviewView.swift`.

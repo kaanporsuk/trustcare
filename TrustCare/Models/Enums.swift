@@ -6,9 +6,9 @@ enum VisitType: String, Codable, CaseIterable, Identifiable {
     var displayName: String {
         switch self {
         case .consultation: return tcString("Consultation", fallback: "Consultation")
-        case .procedure: return tcString("Procedure", fallback: "Procedure")
-        case .checkup: return tcString("Checkup", fallback: "Checkup")
-        case .emergency: return tcString("Emergency", fallback: "Emergency")
+        case .procedure: return tcString("visit_type_procedure", fallback: "Procedure")
+        case .checkup: return tcString("visit_type_checkup", fallback: "Checkup")
+        case .emergency: return tcString("visit_type_emergency", fallback: "Emergency")
         case .followUp: return tcString("Follow-up", fallback: "Follow-up")
         }
     }
