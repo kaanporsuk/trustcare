@@ -6,14 +6,25 @@ SCHEME := TrustCare
 CONFIGURATION := Debug
 SIM_DEVICE ?= iPhone 15
 
-.PHONY: verify verify-local localization-check ontology-audit taxonomy-v21-validate taxonomy-v21-build taxonomy-v21-import-locale taxonomy-v21-import-locale-dry-run xcode-build
+.PHONY: verify verify-local localization-check localization-regression taxonomy-phase2-regression my-reviews-empty-state-regression localization-ui-fit-regression ontology-audit taxonomy-v21-validate taxonomy-v21-build taxonomy-v21-import-locale taxonomy-v21-import-locale-dry-run xcode-build
 
 verify: localization-check ontology-audit taxonomy-v21-validate xcode-build
 
 verify-local: localization-check taxonomy-v21-validate xcode-build
 
+localization-regression: taxonomy-phase2-regression my-reviews-empty-state-regression localization-ui-fit-regression
+
 localization-check:
 	swift tools/localization_check.swift
+
+taxonomy-phase2-regression:
+	swift tools/taxonomy_phase2_regression.swift
+
+my-reviews-empty-state-regression:
+	swift tools/my_reviews_empty_state_regression.swift
+
+localization-ui-fit-regression:
+	swift tools/localization_ui_fit_regression.swift
 
 ontology-audit:
 	swift tools/ontology_audit.swift

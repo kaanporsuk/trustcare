@@ -38,6 +38,9 @@ jobs:
       - name: Localization check
         run: swift tools/localization_check.swift
 
+      - name: Localization regressions
+        run: make localization-regression
+
       - name: Xcode build
         run: |
           xcodebuild \
