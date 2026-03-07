@@ -31,9 +31,9 @@ struct MyReviewsView: View {
             } else if profileVM.myReviews.isEmpty {
                 TCEmptyState(
                     variant: .noReviews,
-                    customTitle: tcString("reviews_empty_title", fallback: "No reviews yet"),
-                    customBody: tcString("my_reviews_empty_subtitle", fallback: "Be the first to share an experience and help others."),
-                    primaryTitle: tcString("review_step_write_review", fallback: "Write review")
+                    customTitle: tcString("my_reviews_empty_title", fallback: "No reviews yet"),
+                    customBody: tcString("my_reviews_empty_message", fallback: "Share your experience by posting your first review."),
+                    primaryTitle: tcString("my_reviews_empty_action", fallback: "Write a Review")
                 ) {
                     selectedTab = 2
                 }
