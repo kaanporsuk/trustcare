@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "source": "phase8_stable_keys_manual_translations",
+    "generated_by": "OpenAI GPT-5.4 Thinking",
+    "languages": ["en","tr","de","pl","nl","da","es","fr","it","ro","pt","uk","ru","sv","cs","hu"]
+  },
+  "entries": [
+    {
+      "key": "error_network_check_connection",
+      "translations": {
+        "en": "Network error. Please check your connection.",
+        "tr": "Ağ hatası. Lütfen bağlantınızı kontrol edin.",
+        "de": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+        "pl": "Błąd sieci. Sprawdź połączenie internetowe.",
+        "nl": "Netwerkfout. Controleer uw verbinding.",
+        "da": "Netværksfejl. Kontrollér din forbindelse.",
+        "es": "Error de red. Revisa tu conexión.",
+        "fr": "Erreur réseau. Veuillez vérifier votre connexion.",
+        "it": "Errore di rete. Controlla la tua connessione.",
+        "ro": "Eroare de rețea. Verificați conexiunea.",
+        "pt": "Erro de rede. Verifique a sua ligação.",
+        "uk": "Помилка мережі. Перевірте підключення.",
+        "ru": "Ошибка сети. Проверьте подключение.",
+        "sv": "Nätverksfel. Kontrollera din anslutning.",
+        "cs": "Chyba sítě. Zkontrolujte připojení.",
+        "hu": "Hálózati hiba. Kérjük, ellenőrizze a kapcsolatot."
+      }
+    },
+    {
+      "key": "error_providers_load_failed",
+      "translations": {
+        "en": "Unable to load providers. Please try again.",
+        "tr": "Sağlık hizmeti sağlayıcıları yüklenemedi. Lütfen tekrar deneyin.",
+        "de": "Anbieter konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+        "pl": "Nie udało się załadować placówek. Spróbuj ponownie.",
+        "nl": "Aanbieders konden niet worden geladen. Probeer het opnieuw.",
+        "da": "Det var ikke muligt at indlæse udbydere. Prøv igen.",
+        "es": "No se pudieron cargar los proveedores. Inténtalo de nuevo.",
+        "fr": "Impossible de charger les établissements. Veuillez réessayer.",
+        "it": "Impossibile caricare i provider. Riprova.",
+        "ro": "Furnizorii nu au putut fi încărcați. Încercați din nou.",
+        "pt": "Não foi possível carregar os prestadores. Tente novamente.",
+        "uk": "Не вдалося завантажити заклади. Спробуйте ще раз.",
+        "ru": "Не удалось загрузить учреждения. Попробуйте еще раз.",
+        "sv": "Det gick inte att ladda vårdgivare. Försök igen.",
+        "cs": "Poskytovatele se nepodařilo načíst. Zkuste to znovu.",
+        "hu": "Nem sikerült betölteni a szolgáltatókat. Kérjük, próbálja újra."
+      }
+    },
+    {
+      "key": "error_provider_not_found",
+      "translations": {
+        "en": "Provider not found.",
+        "tr": "Sağlık hizmeti sağlayıcısı bulunamadı.",
+        "de": "Anbieter nicht gefunden.",
+        "pl": "Nie znaleziono placówki.",
+        "nl": "Aanbieder niet gevonden.",
+        "da": "Udbyder blev ikke fundet.",
+        "es": "Proveedor no encontrado.",
+        "fr": "Établissement introuvable.",
+        "it": "Provider non trovato.",
+        "ro": "Furnizorul nu a fost găsit.",
+        "pt": "Prestador não encontrado.",
+        "uk": "Заклад не знайдено.",
+        "ru": "Учреждение не найдено.",
+        "sv": "Vårdgivaren hittades inte.",
+        "cs": "Poskytovatel nebyl nalezen.",
+        "hu": "A szolgáltató nem található."
+      }
+    },
+    {
+      "key": "error_provider_details_load_failed",
+      "translations": {
+        "en": "Unable to load provider details. Please try again.",
+        "tr": "Sağlık hizmeti sağlayıcısı ayrıntıları yüklenemedi. Lütfen tekrar deneyin.",
+        "de": "Anbieterdetails konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+        "pl": "Nie udało się załadować szczegółów placówki. Spróbuj ponownie.",
+        "nl": "Details van de aanbieder konden niet worden geladen. Probeer het opnieuw.",
+        "da": "Det var ikke muligt at indlæse udbyderoplysninger. Prøv igen.",
+        "es": "No se pudieron cargar los detalles del proveedor. Inténtalo de nuevo.",
+        "fr": "Impossible de charger les détails de l’établissement. Veuillez réessayer.",
+        "it": "Impossibile caricare i dettagli del provider. Riprova.",
+        "ro": "Detaliile furnizorului nu au putut fi încărcate. Încercați din nou.",
+        "pt": "Não foi possível carregar os detalhes do prestador. Tente novamente.",
+        "uk": "Не вдалося завантажити деталі закладу. Спробуйте ще раз.",
+        "ru": "Не удалось загрузить сведения об учреждении. Попробуйте еще раз.",
+        "sv": "Det gick inte att ladda vårdgivarens uppgifter. Försök igen.",
+        "cs": "Podrobnosti o poskytovateli se nepodařilo načíst. Zkuste to znovu.",
+        "hu": "Nem sikerült betölteni a szolgáltató adatait. Kérjük, próbálja újra."
+      }
+    },
+    {
+      "key": "auth_sign_in_submit_review",
+      "translations": {
+        "en": "Please sign in to submit a review.",
+        "tr": "Yorum göndermek için lütfen giriş yapın.",
+        "de": "Bitte melden Sie sich an, um eine Bewertung abzugeben.",
+        "pl": "Zaloguj się, aby dodać opinię.",
+        "nl": "Meld u aan om een beoordeling te plaatsen.",
+        "da": "Log ind for at indsende en anmeldelse.",
+        "es": "Inicia sesión para enviar una reseña.",
+        "fr": "Connectez-vous pour publier un avis.",
+        "it": "Accedi per inviare una recensione.",
+        "ro": "Conectați-vă pentru a trimite o recenzie.",
+        "pt": "Inicie sessão para enviar uma avaliação.",
+        "uk": "Увійдіть, щоб залишити відгук.",
+        "ru": "Войдите, чтобы оставить отзыв.",
+        "sv": "Logga in för att skicka en recension.",
+        "cs": "Přihlaste se, chcete-li odeslat recenzi.",
+        "hu": "A vélemény elküldéséhez kérjük, jelentkezzen be."
+      }
+    },
+    {
+      "key": "auth_sign_in_vote",
+      "translations": {
+        "en": "Please sign in to vote.",
+        "tr": "Oy vermek için lütfen giriş yapın.",
+        "de": "Bitte melden Sie sich an, um abzustimmen.",
+        "pl": "Zaloguj się, aby głosować.",
+        "nl": "Meld u aan om te stemmen.",
+        "da": "Log ind for at stemme.",
+        "es": "Inicia sesión para votar.",
+        "fr": "Connectez-vous pour voter.",
+        "it": "Accedi per votare.",
+        "ro": "Conectați-vă pentru a vota.",
+        "pt": "Inicie sessão para votar.",
+        "uk": "Увійдіть, щоб проголосувати.",
+        "ru": "Войдите, чтобы проголосовать.",
+        "sv": "Logga in för att rösta.",
+        "cs": "Přihlaste se, chcete-li hlasovat.",
+        "hu": "A szavazáshoz kérjük, jelentkezzen be."
+      }
+    },
+    {
+      "key": "auth_sign_in",
+      "translations": {
+        "en": "Please sign in.",
+        "tr": "Lütfen giriş yapın.",
+        "de": "Bitte melden Sie sich an.",
+        "pl": "Zaloguj się.",
+        "nl": "Meld u aan.",
+        "da": "Log ind.",
+        "es": "Inicia sesión.",
+        "fr": "Connectez-vous.",
+        "it": "Accedi.",
+        "ro": "Conectați-vă.",
+        "pt": "Inicie sessão.",
+        "uk": "Увійдіть.",
+        "ru": "Войдите.",
+        "sv": "Logga in.",
+        "cs": "Přihlaste se.",
+        "hu": "Kérjük, jelentkezzen be."
+      }
+    },
+    {
+      "key": "auth_sign_in_report",
+      "translations": {
+        "en": "Please sign in to report.",
+        "tr": "Bildirmek için lütfen giriş yapın.",
+        "de": "Bitte melden Sie sich an, um etwas zu melden.",
+        "pl": "Zaloguj się, aby zgłosić.",
+        "nl": "Meld u aan om te rapporteren.",
+        "da": "Log ind for at anmelde.",
+        "es": "Inicia sesión para denunciar.",
+        "fr": "Connectez-vous pour signaler.",
+        "it": "Accedi per segnalare.",
+        "ro": "Conectați-vă pentru a raporta.",
+        "pt": "Inicie sessão para denunciar.",
+        "uk": "Увійдіть, щоб поскаржитися.",
+        "ru": "Войдите, чтобы пожаловаться.",
+        "sv": "Logga in för att rapportera.",
+        "cs": "Přihlaste se, chcete-li nahlásit.",
+        "hu": "A jelentéshez kérjük, jelentkezzen be."
+      }
+    },
+    {
+      "key": "auth_sign_in_add_provider",
+      "translations": {
+        "en": "Please sign in to add a healthcare provider.",
+        "tr": "Bir sağlık hizmeti sağlayıcısı eklemek için lütfen giriş yapın.",
+        "de": "Bitte melden Sie sich an, um einen Gesundheitsdienstleister hinzuzufügen.",
+        "pl": "Zaloguj się, aby dodać placówkę medyczną.",
+        "nl": "Meld u aan om een zorgaanbieder toe te voegen.",
+        "da": "Log ind for at tilføje en sundhedsudbyder.",
+        "es": "Inicia sesión para añadir un proveedor sanitario.",
+        "fr": "Connectez-vous pour ajouter un établissement de santé.",
+        "it": "Accedi per aggiungere un provider sanitario.",
+        "ro": "Conectați-vă pentru a adăuga un furnizor de servicii medicale.",
+        "pt": "Inicie sessão para adicionar um prestador de cuidados de saúde.",
+        "uk": "Увійдіть, щоб додати заклад охорони здоров’я.",
+        "ru": "Войдите, чтобы добавить медицинское учреждение.",
+        "sv": "Logga in för att lägga till en vårdgivare.",
+        "cs": "Přihlaste se, chcete-li přidat poskytovatele zdravotní péče.",
+        "hu": "Egészségügyi szolgáltató hozzáadásához kérjük, jelentkezzen be."
+      }
+    },
+    {
+      "key": "review_error_overall_rating_required",
+      "translations": {
+        "en": "Overall rating is required.",
+        "tr": "Genel puan zorunludur.",
+        "de": "Eine Gesamtbewertung ist erforderlich.",
+        "pl": "Ocena ogólna jest wymagana.",
+        "nl": "Een algemene beoordeling is vereist.",
+        "da": "En samlet vurdering er påkrævet.",
+        "es": "La valoración general es obligatoria.",
+        "fr": "Une note globale est requise.",
+        "it": "La valutazione complessiva è obbligatoria.",
+        "ro": "Evaluarea generală este obligatorie.",
+        "pt": "A classificação geral é obrigatória.",
+        "uk": "Загальна оцінка є обов’язковою.",
+        "ru": "Общая оценка обязательна.",
+        "sv": "Ett helhetsbetyg krävs.",
+        "cs": "Celkové hodnocení je povinné.",
+        "hu": "Összesített értékelés megadása kötelező."
+      }
+    },
+    {
+      "key": "review_error_min_characters",
+      "translations": {
+        "en": "Your review must be at least 50 characters.",
+        "tr": "Yorumunuz en az 50 karakter olmalıdır.",
+        "de": "Ihre Bewertung muss mindestens 50 Zeichen lang sein.",
+        "pl": "Twoja opinia musi mieć co najmniej 50 znaków.",
+        "nl": "Uw beoordeling moet minimaal 50 tekens bevatten.",
+        "da": "Din anmeldelse skal være på mindst 50 tegn.",
+        "es": "Tu reseña debe tener al menos 50 caracteres.",
+        "fr": "Votre avis doit comporter au moins 50 caractères.",
+        "it": "La tua recensione deve contenere almeno 50 caratteri.",
+        "ro": "Recenzia trebuie să aibă cel puțin 50 de caractere.",
+        "pt": "A sua avaliação tem de ter pelo menos 50 caracteres.",
+        "uk": "Ваш відгук має містити щонайменше 50 символів.",
+        "ru": "Ваш отзыв должен содержать не менее 50 символов.",
+        "sv": "Din recension måste vara minst 50 tecken lång.",
+        "cs": "Vaše recenze musí mít alespoň 50 znaků.",
+        "hu": "A véleményének legalább 50 karakterből kell állnia."
+      }
+    },
+    {
+      "key": "review_error_max_photos",
+      "translations": {
+        "en": "You can upload up to 5 photos.",
+        "tr": "En fazla 5 fotoğraf yükleyebilirsiniz.",
+        "de": "Sie können bis zu 5 Fotos hochladen.",
+        "pl": "Możesz przesłać maksymalnie 5 zdjęć.",
+        "nl": "U kunt maximaal 5 foto's uploaden.",
+        "da": "Du kan uploade op til 5 billeder.",
+        "es": "Puedes subir hasta 5 fotos.",
+        "fr": "Vous pouvez téléverser jusqu’à 5 photos.",
+        "it": "Puoi caricare fino a 5 foto.",
+        "ro": "Puteți încărca până la 5 fotografii.",
+        "pt": "Pode carregar até 5 fotografias.",
+        "uk": "Ви можете завантажити до 5 фото.",
+        "ru": "Вы можете загрузить до 5 фотографий.",
+        "sv": "Du kan ladda upp upp till 5 bilder.",
+        "cs": "Můžete nahrát až 5 fotografií.",
+        "hu": "Legfeljebb 5 fényképet tölthet fel."
+      }
+    },
+    {
+      "key": "error_unknown_generic",
+      "translations": {
+        "en": "Unknown error",
+        "tr": "Bilinmeyen hata",
+        "de": "Unbekannter Fehler",
+        "pl": "Nieznany błąd",
+        "nl": "Onbekende fout",
+        "da": "Ukendt fejl",
+        "es": "Error desconocido",
+        "fr": "Erreur inconnue",
+        "it": "Errore sconosciuto",
+        "ro": "Eroare necunoscută",
+        "pt": "Erro desconhecido",
+        "uk": "Невідома помилка",
+        "ru": "Неизвестная ошибка",
+        "sv": "Okänt fel",
+        "cs": "Neznámá chyba",
+        "hu": "Ismeretlen hiba"
+      }
+    },
+    {
+      "key": "error_avatar_processing_failed_photo",
+      "translations": {
+        "en": "Avatar processing failed. Please use a different photo under 5 MB.",
+        "tr": "Profil fotoğrafı işlenemedi. Lütfen 5 MB'tan küçük farklı bir fotoğraf kullanın.",
+        "de": "Die Verarbeitung des Profilbilds ist fehlgeschlagen. Bitte verwenden Sie ein anderes Foto unter 5 MB.",
+        "pl": "Nie udało się przetworzyć awatara. Użyj innego zdjęcia o rozmiarze poniżej 5 MB.",
+        "nl": "Het verwerken van de avatar is mislukt. Gebruik een andere foto kleiner dan 5 MB.",
+        "da": "Behandlingen af avataren mislykkedes. Brug et andet foto på under 5 MB.",
+        "es": "No se pudo procesar el avatar. Usa una foto diferente de menos de 5 MB.",
+        "fr": "Le traitement de l’avatar a échoué. Veuillez utiliser une autre photo de moins de 5 Mo.",
+        "it": "Elaborazione dell’avatar non riuscita. Usa un’altra foto inferiore a 5 MB.",
+        "ro": "Procesarea avatarului a eșuat. Folosiți o altă fotografie mai mică de 5 MB.",
+        "pt": "Falha ao processar o avatar. Utilize outra foto com menos de 5 MB.",
+        "uk": "Не вдалося обробити аватар. Використайте інше фото розміром менше 5 МБ.",
+        "ru": "Не удалось обработать аватар. Используйте другое фото размером менее 5 МБ.",
+        "sv": "Det gick inte att bearbeta avataren. Använd en annan bild som är mindre än 5 MB.",
+        "cs": "Zpracování avatara se nezdařilo. Použijte jinou fotografii menší než 5 MB.",
+        "hu": "Az avatar feldolgozása sikertelen volt. Kérjük, használjon egy másik, 5 MB-nál kisebb fényképet."
+      }
+    },
+    {
+      "key": "label_anonymous",
+      "translations": {
+        "en": "Anonymous",
+        "tr": "Anonim",
+        "de": "Anonym",
+        "pl": "Anonimowo",
+        "nl": "Anoniem",
+        "da": "Anonym",
+        "es": "Anónimo",
+        "fr": "Anonyme",
+        "it": "Anonimo",
+        "ro": "Anonim",
+        "pt": "Anónimo",
+        "uk": "Анонімно",
+        "ru": "Анонимно",
+        "sv": "Anonym",
+        "cs": "Anonymně",
+        "hu": "Névtelen"
+      }
+    },
+    {
+      "key": "label_read_more",
+      "translations": {
+        "en": "Read more",
+        "tr": "Devamını oku",
+        "de": "Mehr lesen",
+        "pl": "Czytaj więcej",
+        "nl": "Meer lezen",
+        "da": "Læs mere",
+        "es": "Leer más",
+        "fr": "Lire la suite",
+        "it": "Leggi di più",
+        "ro": "Citește mai mult",
+        "pt": "Ler mais",
+        "uk": "Читати далі",
+        "ru": "Читать далее",
+        "sv": "Läs mer",
+        "cs": "Číst více",
+        "hu": "Tovább olvasom"
+      }
+    },
+    {
+      "key": "label_show_less",
+      "translations": {
+        "en": "Show less",
+        "tr": "Daha az göster",
+        "de": "Weniger anzeigen",
+        "pl": "Pokaż mniej",
+        "nl": "Minder weergeven",
+        "da": "Vis mindre",
+        "es": "Mostrar menos",
+        "fr": "Afficher moins",
+        "it": "Mostra meno",
+        "ro": "Arată mai puțin",
+        "pt": "Mostrar menos",
+        "uk": "Показати менше",
+        "ru": "Показать меньше",
+        "sv": "Visa mindre",
+        "cs": "Zobrazit méně",
+        "hu": "Kevesebb megjelenítése"
+      }
+    },
+    {
+      "key": "label_clear_search",
+      "translations": {
+        "en": "Clear search",
+        "tr": "Aramayı temizle",
+        "de": "Suche löschen",
+        "pl": "Wyczyść wyszukiwanie",
+        "nl": "Zoekopdracht wissen",
+        "da": "Ryd søgning",
+        "es": "Borrar búsqueda",
+        "fr": "Effacer la recherche",
+        "it": "Cancella ricerca",
+        "ro": "Șterge căutarea",
+        "pt": "Limpar pesquisa",
+        "uk": "Очистити пошук",
+        "ru": "Очистить поиск",
+        "sv": "Rensa sökning",
+        "cs": "Vymazat hledání",
+        "hu": "Keresés törlése"
+      }
+    }
+  ]
+}
