@@ -71,7 +71,7 @@ enum ClaimStatus: String, Codable {
 
     var displayName: String {
         switch self {
-        case .pending: return tcString("Pending", fallback: "Pending")
+        case .pending: return tcString("status_pending", fallback: "Pending")
         case .approved: return tcString("Approved", fallback: "Approved")
         case .rejected: return tcString("Rejected", fallback: "Rejected")
         }
