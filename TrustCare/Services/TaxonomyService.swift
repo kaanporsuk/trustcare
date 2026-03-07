@@ -2,21 +2,24 @@ import Foundation
 import Supabase
 
 enum TaxonomyService {
-    private static let localizationCacheVersion = "taxonomy-v21-localization-phase1"
-
     struct TaxonomySearchResult {
         let suggestions: [TaxonomySuggestion]
         let usedEnglishFallback: Bool
     }
 
     private actor LabelCache {
-        private var cacheVersion: String = TaxonomyService.localizationCacheVersion
+        private let expectedVersion = "taxonomy-v21-localization-phase1"
+        private var cacheVersion: String
         private var storage: [String: [String: String]] = [:]
 
+        init() {
+            cacheVersion = expectedVersion
+        }
+
         private func ensureVersion() {
-            guard cacheVersion == TaxonomyService.localizationCacheVersion else {
+            guard cacheVersion == expectedVersion else {
                 storage = [:]
-                cacheVersion = TaxonomyService.localizationCacheVersion
+                cacheVersion = expectedVersion
                 return
             }
         }
