@@ -372,7 +372,7 @@ struct ProviderDetailView: View {
             return provider.specialty
         }
 
-        return specialty.resolvedName(using: localizationManager)
+        return specialty.taxonomyDisplayName(using: localizationManager)
     }
 
     private var quickActions: some View {

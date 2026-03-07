@@ -13,6 +13,7 @@ struct DiscoverSearchSurfaceView: View {
     let onSelectSuggestion: (TaxonomySuggestion) -> Void
     let onSelectSmartPill: (String?) -> Void
     let onTapMore: () -> Void
+    @EnvironmentObject private var localizationManager: LocalizationManager
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
@@ -105,7 +106,7 @@ struct DiscoverSearchSurfaceView: View {
                         } label: {
                             HStack(spacing: AppSpacing.sm) {
                                 Image(systemName: "cross.case")
-                                Text(suggestion.label)
+                                Text(TaxonomyService.localizedLabel(for: suggestion, locale: localizationManager.effectiveLanguage))
                                     .font(AppFont.body)
                                 Spacer()
                             }

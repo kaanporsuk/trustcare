@@ -482,8 +482,10 @@ final class TaxonomyCatalogStore {
     }
 
     private func loadCanonicalPayload() -> CanonicalPayload {
-        let url = Bundle.main.url(forResource: "taxonomy_v21_base_en", withExtension: "json", subdirectory: "TaxonomyV21/base")
-            ?? Bundle.main.url(forResource: "taxonomy_v21_canonical_en", withExtension: "json")
+        let baseLookup = bundleLookup(forResource: "taxonomy_v21_base_en", withExtension: "json", subdirectory: "TaxonomyV21/base")
+        let canonicalLookup = bundleLookup(forResource: "taxonomy_v21_canonical_en", withExtension: "json", subdirectory: nil)
+        let selected = baseLookup.url != nil ? baseLookup : canonicalLookup
+        let url = selected.url
 
         guard let url else {
             return CanonicalPayload(taxonomy: [], symptomConcerns: [])
@@ -498,8 +500,10 @@ final class TaxonomyCatalogStore {
     }
 
     private func loadConcernPayload() -> ConcernPayload {
-        let url = Bundle.main.url(forResource: "taxonomy_v21_concern_domains_en", withExtension: "json", subdirectory: "TaxonomyV21/concerns")
-            ?? Bundle.main.url(forResource: "taxonomy_v21_symptom_concern_en", withExtension: "json")
+        let concernLookup = bundleLookup(forResource: "taxonomy_v21_concern_domains_en", withExtension: "json", subdirectory: "TaxonomyV21/concerns")
+        let legacyLookup = bundleLookup(forResource: "taxonomy_v21_symptom_concern_en", withExtension: "json", subdirectory: nil)
+        let selected = concernLookup.url != nil ? concernLookup : legacyLookup
+        let url = selected.url
 
         guard let url else {
             return ConcernPayload(concernDomains: [])
@@ -515,11 +519,12 @@ final class TaxonomyCatalogStore {
 
     private func loadLabels(locale: String) -> [String: String] {
         let normalized = TaxonomyIdentity.normalizedLocale(locale)
-        let url = Bundle.main.url(forResource: "taxonomy_v21_locale_labels_\(normalized)", withExtension: "json", subdirectory: "TaxonomyV21/labels")
-            // Legacy fallback is intentionally limited to English-only compatibility bundles.
-            ?? (normalized == "en"
-                ? Bundle.main.url(forResource: "taxonomy_v21_labels_en", withExtension: "json")
-                : nil)
+        let primaryLookup = bundleLookup(forResource: "taxonomy_v21_locale_labels_\(normalized)", withExtension: "json", subdirectory: "TaxonomyV21/labels")
+        let fallbackLookup = normalized == "en"
+            ? bundleLookup(forResource: "taxonomy_v21_labels_en", withExtension: "json", subdirectory: nil)
+            : (nil, false)
+        let selected = primaryLookup.url != nil ? primaryLookup : fallbackLookup
+        let url = selected.0
 
         guard let url else {
             return [:]
@@ -536,11 +541,12 @@ final class TaxonomyCatalogStore {
 
     private func loadAliases(locale: String) -> [String: [String]] {
         let normalized = TaxonomyIdentity.normalizedLocale(locale)
-        let url = Bundle.main.url(forResource: "taxonomy_v21_aliases_\(normalized)", withExtension: "json", subdirectory: "TaxonomyV21/aliases")
-            // Legacy fallback is intentionally limited to English-only compatibility bundles.
-            ?? (normalized == "en"
-                ? Bundle.main.url(forResource: "taxonomy_v21_aliases_en", withExtension: "json")
-                : nil)
+        let primaryLookup = bundleLookup(forResource: "taxonomy_v21_aliases_\(normalized)", withExtension: "json", subdirectory: "TaxonomyV21/aliases")
+        let fallbackLookup = normalized == "en"
+            ? bundleLookup(forResource: "taxonomy_v21_aliases_en", withExtension: "json", subdirectory: nil)
+            : (nil, false)
+        let selected = primaryLookup.url != nil ? primaryLookup : fallbackLookup
+        let url = selected.0
 
         guard let url else {
             return [:]
@@ -570,6 +576,20 @@ final class TaxonomyCatalogStore {
         }
 
         return ordered
+    }
+
+    private func bundleLookup(forResource name: String, withExtension ext: String, subdirectory: String?) -> (url: URL?, usedSubdirectory: Bool) {
+        if let subdirectory,
+           let nested = Bundle.main.url(forResource: name, withExtension: ext, subdirectory: subdirectory) {
+            return (nested, true)
+        }
+
+        // Some Xcode resource copy modes flatten folder hierarchy at runtime.
+        if let root = Bundle.main.url(forResource: name, withExtension: ext) {
+            return (root, false)
+        }
+
+        return (nil, false)
     }
 
 }

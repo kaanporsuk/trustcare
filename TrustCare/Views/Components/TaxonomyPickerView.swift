@@ -463,16 +463,6 @@ struct TaxonomyPickerView: View {
     }
 
     private func displayLabel(for suggestion: TaxonomySuggestion) -> String {
-        let localeCode = currentLocaleCode()
-        let resolved = TaxonomyCatalogStore.shared.localizedLabel(
-            for: suggestion.entityId,
-            locale: localeCode
-        )
-        let label = resolved ?? suggestion.label
-#if DEBUG
-        let source = resolved == nil ? "suggestion_label" : "catalog_localized"
-        print("[TaxonomyRowRender] surface=taxonomy_picker locale=\(localeCode) entityID=\(suggestion.entityId) source=\(source) label=\(label)")
-#endif
-        return label
+        TaxonomyService.localizedLabel(for: suggestion, locale: currentLocaleCode())
     }
 }

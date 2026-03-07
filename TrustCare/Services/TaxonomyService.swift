@@ -2,19 +2,21 @@ import Foundation
 import Supabase
 
 enum TaxonomyService {
+    private static let localizationCacheVersion = "taxonomy-v21-localization-phase1"
+
     struct TaxonomySearchResult {
         let suggestions: [TaxonomySuggestion]
         let usedEnglishFallback: Bool
     }
 
     private actor LabelCache {
-        private var cacheVersion: String = TaxonomyIdentity.cacheVersion
+        private var cacheVersion: String = TaxonomyService.localizationCacheVersion
         private var storage: [String: [String: String]] = [:]
 
         private func ensureVersion() {
-            guard cacheVersion == TaxonomyIdentity.cacheVersion else {
+            guard cacheVersion == TaxonomyService.localizationCacheVersion else {
                 storage = [:]
-                cacheVersion = TaxonomyIdentity.cacheVersion
+                cacheVersion = TaxonomyService.localizationCacheVersion
                 return
             }
         }
@@ -70,6 +72,26 @@ enum TaxonomyService {
 
         let labels = try await labelsByEntityID(entityIDs: [normalizedID], locale: locale)
         return labels[normalizedID] ?? normalizedID
+    }
+
+    static func localizedLabel(for entityID: String, locale: String, fallback: String) -> String {
+        let normalizedLocale = TaxonomyIdentity.normalizedLocale(locale)
+        let normalizedID = TaxonomyIdentity.normalizedCanonicalID(entityID)
+        guard !normalizedID.isEmpty else { return fallback }
+
+        if let resolved = TaxonomyCatalogStore.shared.localizedLabel(for: normalizedID, locale: normalizedLocale) {
+            return resolved
+        }
+
+        return TaxonomyI18nLoader.shared.localizedLabel(
+            for: normalizedID,
+            locale: normalizedLocale,
+            fallback: fallback
+        )
+    }
+
+    static func localizedLabel(for suggestion: TaxonomySuggestion, locale: String) -> String {
+        localizedLabel(for: suggestion.entityId, locale: locale, fallback: suggestion.label)
     }
 
     static func searchTaxonomy(
@@ -375,7 +397,7 @@ enum TaxonomyService {
 #if DEBUG
         let isFallbackSource = source.contains("english") || source.contains("default") || source.contains("alias") || source == "label_cache"
         if isFallbackSource {
-            print("[TaxonomyLabelFallback] entityType=\(entityType?.rawValue ?? "unknown") locale=\(locale) incomingID=\(incomingID) normalizedID=\(normalizedID) source=\(source)")
+            NSLog("[TaxonomyLabelFallback] entityType=\(entityType?.rawValue ?? "unknown") locale=\(locale) incomingID=\(incomingID) normalizedID=\(normalizedID) source=\(source)")
         }
 #endif
     }
@@ -388,18 +410,13 @@ enum TaxonomyService {
         source: String
     ) {
 #if DEBUG
-        print("[TaxonomyLabelMiss] entityType=\(entityType?.rawValue ?? "unknown") locale=\(locale) incomingID=\(incomingID) normalizedID=\(normalizedID) source=\(source)")
+        NSLog("[TaxonomyLabelMiss] entityType=\(entityType?.rawValue ?? "unknown") locale=\(locale) incomingID=\(incomingID) normalizedID=\(normalizedID) source=\(source)")
 #endif
     }
 
     private static func applyLocalBundleOverrides(to suggestions: [TaxonomySuggestion], locale: String) -> [TaxonomySuggestion] {
         suggestions.map { suggestion in
-            let label = TaxonomyCatalogStore.shared.localizedLabel(for: suggestion.entityId, locale: locale)
-                ?? TaxonomyI18nLoader.shared.localizedLabel(
-                    for: suggestion.entityId,
-                    locale: locale,
-                    fallback: suggestion.label
-                )
+            let label = localizedLabel(for: suggestion, locale: locale)
             let canonicalType = TaxonomyEntityType.fromBackend(suggestion.entityType)?.rawValue ?? suggestion.entityType
             return TaxonomySuggestion(
                 entityId: suggestion.entityId,

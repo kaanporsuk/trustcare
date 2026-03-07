@@ -110,6 +110,6 @@ struct SavedProvidersView: View {
         }) else {
             return provider.specialty
         }
-        return specialty.resolvedName(using: localizationManager)
+        return specialty.taxonomyDisplayName(using: localizationManager)
     }
 }

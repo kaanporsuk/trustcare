@@ -608,14 +608,14 @@ struct RehberChatView: View {
     }
 
     private func localizedTaxonomyName(for specialty: Specialty) -> String {
-        let fallbackName = specialty.resolvedName(using: localizationManager)
+        let fallbackName = specialty.taxonomyDisplayName(using: localizationManager)
         let taxonomyID = specialty.canonicalEntityId ?? specialty.canonicalId
 
         guard let taxonomyID, !taxonomyID.isEmpty else {
             return fallbackName
         }
 
-        return TaxonomyI18nLoader.shared.localizedLabel(
+        return TaxonomyService.localizedLabel(
             for: taxonomyID,
             locale: localizationManager.effectiveLanguage,
             fallback: fallbackName

@@ -49,8 +49,24 @@ struct Specialty: Codable, Identifiable, Hashable {
         }
     }
 
+    @available(*, deprecated, message: "Use taxonomyDisplayName(using:) for UI display labels.")
     func resolvedName(using localizationManager: LocalizationManager) -> String {
         localizedName(for: localizationManager.effectiveLanguage)
+    }
+
+    func taxonomyDisplayName(using localizationManager: LocalizationManager) -> String {
+        let fallback = localizedName(for: localizationManager.effectiveLanguage)
+        let taxonomyID = canonicalEntityId ?? canonicalId
+
+        guard let taxonomyID, !taxonomyID.isEmpty else {
+            return fallback
+        }
+
+        return TaxonomyService.localizedLabel(
+            for: taxonomyID,
+            locale: localizationManager.effectiveLanguage,
+            fallback: fallback
+        )
     }
 
     func matchesSearch(_ query: String) -> Bool {

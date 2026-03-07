@@ -293,11 +293,11 @@ struct ReviewHubView: View {
 
                         ForEach(specialtyResults.prefix(4)) { specialty in
                             Button {
-                                providerSearchText = specialty.resolvedName(using: localizationManager)
+                                providerSearchText = specialty.taxonomyDisplayName(using: localizationManager)
                             } label: {
                                 HStack(spacing: AppSpacing.sm) {
                                     Image(systemName: specialty.iconName)
-                                    Text(specialty.resolvedName(using: localizationManager))
+                                    Text(specialty.taxonomyDisplayName(using: localizationManager))
                                         .font(AppFont.body)
                                     Spacer()
                                     Text(tcKey: "specialty_label", fallback: "Specialty")
@@ -866,7 +866,7 @@ private struct ProviderMiniCard: View {
             return provider.specialty
         }
 
-        return specialty.resolvedName(using: localizationManager)
+        return specialty.taxonomyDisplayName(using: localizationManager)
     }
 }
 
@@ -908,6 +908,6 @@ private struct ProviderMiniRow: View {
             return provider.specialty
         }
 
-        return specialty.resolvedName(using: localizationManager)
+        return specialty.taxonomyDisplayName(using: localizationManager)
     }
 }
