@@ -129,24 +129,24 @@ final class ReviewSubmissionViewModel: ObservableObject {
         }
 
         guard (try? await SupabaseManager.shared.client.auth.session) != nil else {
-            submissionErrorMessage = tcString("Please sign in to submit a review.", fallback: "Please sign in to submit a review.")
+            submissionErrorMessage = tcString("auth_sign_in_submit_review", fallback: "Please sign in to submit a review.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
 
         let trimmedComment = comment.trimmingCharacters(in: .whitespacesAndNewlines)
         if overallRating <= 0 {
-            submissionErrorMessage = tcString("Overall rating is required.", fallback: "Overall rating is required.")
+            submissionErrorMessage = tcString("review_error_overall_rating_required", fallback: "Overall rating is required.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
         if trimmedComment.count < 50 {
-            submissionErrorMessage = tcString("Your review must be at least 50 characters.", fallback: "Your review must be at least 50 characters.")
+            submissionErrorMessage = tcString("review_error_min_characters", fallback: "Your review must be at least 50 characters.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
         if photos.count > 5 {
-            submissionErrorMessage = tcString("You can upload up to 5 photos.", fallback: "You can upload up to 5 photos.")
+            submissionErrorMessage = tcString("review_error_max_photos", fallback: "You can upload up to 5 photos.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
         }
@@ -310,7 +310,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
             }
             return localized
         }
-        return tcString("Unknown error", fallback: "Unknown error")
+        return tcString("error_unknown_generic", fallback: "Unknown error")
     }
 
     private func retry<T>(times: Int, operation: @escaping () async throws -> T) async throws -> T {

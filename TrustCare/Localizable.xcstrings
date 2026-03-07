@@ -3409,6 +3409,56 @@
         }
       }
     },
+    "auth_sign_in" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in."
+          }
+        }
+      }
+    },
+    "auth_sign_in_add_provider" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in to add a healthcare provider."
+          }
+        }
+      }
+    },
+    "auth_sign_in_report" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in to report."
+          }
+        }
+      }
+    },
+    "auth_sign_in_submit_review" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in to submit a review."
+          }
+        }
+      }
+    },
+    "auth_sign_in_vote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in to vote."
+          }
+        }
+      }
+    },
     "bul_growing_here_label" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -14256,6 +14306,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Проблема з мережею. Перевірте з'єднання і спробуйте ще раз."
+          }
+        }
+      }
+    },
+    "error_network_check_connection" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error. Please check your connection."
+          }
+        }
+      }
+    },
+    "error_provider_details_load_failed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load provider details. Please try again."
+          }
+        }
+      }
+    },
+    "error_provider_not_found" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provider not found."
+          }
+        }
+      }
+    },
+    "error_providers_load_failed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load providers. Please try again."
+          }
+        }
+      }
+    },
+    "error_unknown_generic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown error"
+          }
+        }
+      }
+    },
+    "error_avatar_processing_failed_photo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar processing failed. Please use a different photo under 5 MB."
           }
         }
       }
@@ -36202,6 +36312,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "На головну"
+          }
+        }
+      }
+    },
+    "review_error_max_photos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can upload up to 5 photos."
+          }
+        }
+      }
+    },
+    "review_error_min_characters" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your review must be at least 50 characters."
+          }
+        }
+      }
+    },
+    "review_error_overall_rating_required" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overall rating is required."
+          }
+        }
+      }
+    },
+    "label_anonymous" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anonymous"
+          }
+        }
+      }
+    },
+    "label_clear_search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        }
+      }
+    },
+    "label_read_more" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read more"
+          }
+        }
+      }
+    },
+    "label_show_less" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show less"
           }
         }
       }

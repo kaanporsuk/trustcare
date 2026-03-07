@@ -186,7 +186,7 @@ struct ProfileView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: AppSpacing.xs) {
-                    Text(profileVM.profile?.displayName ?? tcString("Anonymous", fallback: "Anonymous"))
+                    Text(profileVM.profile?.displayName ?? tcString("label_anonymous", fallback: "Anonymous"))
                         .font(AppFont.title2)
                     Button {
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()

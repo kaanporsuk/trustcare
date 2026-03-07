@@ -346,7 +346,7 @@ final class ProfileViewModel: ObservableObject {
                 throw NSError(
                     domain: "ProfileAvatarUpload",
                     code: 1001,
-                    userInfo: [NSLocalizedDescriptionKey: tcString("Avatar processing failed. Please use a different photo under 5 MB.", fallback: "Avatar processing failed. Please use a different photo under 5 MB.")]
+                    userInfo: [NSLocalizedDescriptionKey: tcString("error_avatar_processing_failed_photo", fallback: "Avatar processing failed. Please use a different photo under 5 MB.")]
                 )
             }
 
@@ -521,6 +521,6 @@ final class ProfileViewModel: ObservableObject {
             return debugDescription
         }
 
-        return tcString("Unknown error", fallback: "Unknown error")
+        return tcString("error_unknown_generic", fallback: "Unknown error")
     }
 }

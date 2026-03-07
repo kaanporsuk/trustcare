@@ -32,7 +32,7 @@ struct ReviewItemView: View {
                 avatarView
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(review.reviewerName ?? tcString("Anonymous", fallback: "Anonymous"))
+                    Text(review.reviewerName ?? tcString("label_anonymous", fallback: "Anonymous"))
                         .font(AppFont.headline)
                     HStack(spacing: AppSpacing.sm) {
                         if review.isVerified {
@@ -71,8 +71,8 @@ struct ReviewItemView: View {
                     isExpanded.toggle()
                 } label: {
                     Text(isExpanded
-                        ? tcString("Show less", fallback: "Show less")
-                        : tcString("Read more", fallback: "Read more"))
+                        ? tcString("label_show_less", fallback: "Show less")
+                        : tcString("label_read_more", fallback: "Read more"))
                         .font(AppFont.caption)
                         .foregroundStyle(Color.tcOcean)
                 }
