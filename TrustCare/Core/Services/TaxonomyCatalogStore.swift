@@ -1,5 +1,28 @@
 import Foundation
 
+enum TaxonomyIdentity {
+    static let cacheVersion = "taxonomy-v21-localization-phase1"
+
+    static func normalizedLocale(_ locale: String) -> String {
+        locale
+            .components(separatedBy: ["-", "_"])
+            .first?
+            .lowercased() ?? "en"
+    }
+
+    static func normalizedCanonicalID(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .uppercased()
+    }
+
+    static func normalizedAliasKey(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "en_US_POSIX"))
+    }
+}
+
 struct TaxonomyCanonicalEntry: Decodable, Hashable {
     let canonicalID: String
     let entityType: String
@@ -99,6 +122,12 @@ struct SymptomConcernEntry: Decodable, Hashable {
 final class TaxonomyCatalogStore {
     static let shared = TaxonomyCatalogStore()
 
+    struct LabelResolution {
+        let label: String
+        let normalizedIncomingID: String
+        let source: String
+    }
+
     private struct CanonicalPayload: Decodable {
         let taxonomy: [TaxonomyCanonicalEntry]
         let symptomConcerns: [SymptomConcernEntry]
@@ -154,33 +183,78 @@ final class TaxonomyCatalogStore {
     private var concernCache: ConcernPayload?
     private var labelsCache: [String: [String: String]] = [:]
     private var aliasesCache: [String: [String: [String]]] = [:]
+    private var aliasLookupCache: [String: [String: String]] = [:]
+    private var activeCacheVersion: String = TaxonomyIdentity.cacheVersion
 
     private init() {}
 
     func localizedLabel(for canonicalID: String, locale: String) -> String? {
-        let normalizedID = normalizedCanonicalID(canonicalID)
-        guard !normalizedID.isEmpty else { return nil }
+        localizedLabelResolution(for: canonicalID, locale: locale)?.label
+    }
 
-        let localeCode = normalizedLocale(locale)
+    func localizedLabelResolution(for canonicalOrAlias: String, locale: String) -> LabelResolution? {
+        ensureCacheVersion()
+
+        let incomingID = canonicalOrAlias.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedIncomingID = TaxonomyIdentity.normalizedCanonicalID(incomingID)
+        guard !normalizedIncomingID.isEmpty else { return nil }
+
+        let localeCode = TaxonomyIdentity.normalizedLocale(locale)
         let localeMap = labels(for: localeCode)
-
-        if let value = localeMap[normalizedID], !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return value
-        }
-
         let englishMap = labels(for: "en")
-        if let value = englishMap[normalizedID], !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return value
+
+        let resolvedCanonicalID: String
+        let idResolutionSource: String
+
+        if hasExactCanonicalID(incomingID) {
+            resolvedCanonicalID = incomingID
+            idResolutionSource = "exact_canonical_id"
+        } else if containsCanonicalID(normalizedIncomingID) {
+            resolvedCanonicalID = normalizedIncomingID
+            idResolutionSource = "normalized_canonical_id"
+        } else if let aliasResolvedID = canonicalIDFromAlias(incomingID, locale: localeCode) {
+            resolvedCanonicalID = aliasResolvedID
+            idResolutionSource = "normalized_alias"
+        } else {
+            resolvedCanonicalID = normalizedIncomingID
+            idResolutionSource = "normalized_canonical_id"
         }
 
-        return canonicalEntry(by: normalizedID)?.displayEnglishLabel
+        if let value = localeMap[resolvedCanonicalID], !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return LabelResolution(
+                label: value,
+                normalizedIncomingID: normalizedIncomingID,
+                source: "\(idResolutionSource)>locale_label_map"
+            )
+        }
+
+        if let value = englishMap[resolvedCanonicalID], !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return LabelResolution(
+                label: value,
+                normalizedIncomingID: normalizedIncomingID,
+                source: "\(idResolutionSource)>english_label_map"
+            )
+        }
+
+        if let value = canonicalEntry(by: resolvedCanonicalID)?.displayEnglishLabel,
+           !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return LabelResolution(
+                label: value,
+                normalizedIncomingID: normalizedIncomingID,
+                source: "\(idResolutionSource)>canonical_english_default"
+            )
+        }
+
+        return nil
     }
 
     func aliases(for canonicalID: String, locale: String) -> [String] {
-        let normalizedID = normalizedCanonicalID(canonicalID)
+        ensureCacheVersion()
+
+        let normalizedID = TaxonomyIdentity.normalizedCanonicalID(canonicalID)
         guard !normalizedID.isEmpty else { return [] }
 
-        let localeCode = normalizedLocale(locale)
+        let localeCode = TaxonomyIdentity.normalizedLocale(locale)
         let localeAliases = aliasMap(for: localeCode)[normalizedID] ?? []
         let englishAliases = aliasMap(for: "en")[normalizedID] ?? []
         let canonicalAliases = canonicalEntry(by: normalizedID)?.aliasesEnglish ?? []
@@ -190,24 +264,32 @@ final class TaxonomyCatalogStore {
     }
 
     func containsCanonicalID(_ canonicalID: String) -> Bool {
-        let normalizedID = normalizedCanonicalID(canonicalID)
+        ensureCacheVersion()
+
+        let normalizedID = TaxonomyIdentity.normalizedCanonicalID(canonicalID)
         guard !normalizedID.isEmpty else { return false }
         return canonicalEntry(by: normalizedID) != nil || symptomConcerns().contains(where: { $0.canonicalID == normalizedID })
     }
 
     func canonicalEntry(by canonicalID: String) -> TaxonomyCanonicalEntry? {
-        let normalizedID = normalizedCanonicalID(canonicalID)
+        ensureCacheVersion()
+
+        let normalizedID = TaxonomyIdentity.normalizedCanonicalID(canonicalID)
         guard !normalizedID.isEmpty else { return nil }
         return canonicalPayload().taxonomy.first(where: { $0.canonicalID == normalizedID })
     }
 
     func canonicalEntries(for entityType: TaxonomyEntityType) -> [TaxonomyCanonicalEntry] {
-        canonicalPayload().taxonomy.filter { entry in
+        ensureCacheVersion()
+
+        return canonicalPayload().taxonomy.filter { entry in
             TaxonomyEntityType.fromBackend(entry.entityType) == entityType || entry.entityType == entityType.rawValue
         }
     }
 
     func symptomConcerns() -> [SymptomConcernEntry] {
+        ensureCacheVersion()
+
         let concerns = concernPayload().concernDomains
         return concerns.isEmpty ? canonicalPayload().symptomConcerns : concerns
     }
@@ -241,11 +323,94 @@ final class TaxonomyCatalogStore {
     }
 
     func hasLocalTaxonomyCorpus() -> Bool {
-        !canonicalPayload().taxonomy.isEmpty
+        ensureCacheVersion()
+        return !canonicalPayload().taxonomy.isEmpty
     }
 
     func hasLocalConcernCorpus() -> Bool {
-        !symptomConcerns().isEmpty
+        ensureCacheVersion()
+        return !symptomConcerns().isEmpty
+    }
+
+    private func hasExactCanonicalID(_ value: String) -> Bool {
+        guard !value.isEmpty else { return false }
+        return canonicalPayload().taxonomy.contains(where: { $0.canonicalID == value })
+            || symptomConcerns().contains(where: { $0.canonicalID == value })
+    }
+
+    private func canonicalIDFromAlias(_ aliasOrID: String, locale: String) -> String? {
+        let normalizedAlias = TaxonomyIdentity.normalizedAliasKey(aliasOrID)
+        guard !normalizedAlias.isEmpty else { return nil }
+
+        if let localeMatch = aliasLookup(for: locale)[normalizedAlias] {
+            return localeMatch
+        }
+
+        if locale != "en", let englishMatch = aliasLookup(for: "en")[normalizedAlias] {
+            return englishMatch
+        }
+
+        return nil
+    }
+
+    private func aliasLookup(for locale: String) -> [String: String] {
+        lock.lock()
+        if let cached = aliasLookupCache[locale] {
+            lock.unlock()
+            return cached
+        }
+        lock.unlock()
+
+        let localeAliases = aliasMap(for: locale)
+        let englishAliases = aliasMap(for: "en")
+        let localeLabels = labels(for: locale)
+        let englishLabels = labels(for: "en")
+
+        var mapping: [String: String] = [:]
+
+        func insert(_ rawValue: String, canonicalID: String) {
+            let key = TaxonomyIdentity.normalizedAliasKey(rawValue)
+            guard !key.isEmpty else { return }
+            if mapping[key] == nil {
+                mapping[key] = canonicalID
+            }
+        }
+
+        let canonicalIDs = Set(canonicalPayload().taxonomy.map(\.canonicalID) + symptomConcerns().map(\.canonicalID))
+        for canonicalID in canonicalIDs {
+            insert(canonicalID, canonicalID: canonicalID)
+            insert(localeLabels[canonicalID] ?? "", canonicalID: canonicalID)
+            insert(englishLabels[canonicalID] ?? "", canonicalID: canonicalID)
+            for alias in localeAliases[canonicalID] ?? [] {
+                insert(alias, canonicalID: canonicalID)
+            }
+            for alias in englishAliases[canonicalID] ?? [] {
+                insert(alias, canonicalID: canonicalID)
+            }
+            for alias in canonicalEntry(by: canonicalID)?.aliasesEnglish ?? [] {
+                insert(alias, canonicalID: canonicalID)
+            }
+        }
+
+        lock.lock()
+        aliasLookupCache[locale] = mapping
+        lock.unlock()
+
+        return mapping
+    }
+
+    private func ensureCacheVersion() {
+        lock.lock()
+        defer { lock.unlock() }
+
+        guard activeCacheVersion != TaxonomyIdentity.cacheVersion else { return }
+
+        canonicalCache = nil
+        concernCache = nil
+        labelsCache = [:]
+        aliasesCache = [:]
+        aliasLookupCache = [:]
+        activeCacheVersion = TaxonomyIdentity.cacheVersion
     }
 
     private func canonicalPayload() -> CanonicalPayload {
@@ -349,7 +514,7 @@ final class TaxonomyCatalogStore {
     }
 
     private func loadLabels(locale: String) -> [String: String] {
-        let normalized = normalizedLocale(locale)
+        let normalized = TaxonomyIdentity.normalizedLocale(locale)
         let url = Bundle.main.url(forResource: "taxonomy_v21_locale_labels_\(normalized)", withExtension: "json", subdirectory: "TaxonomyV21/labels")
             // Legacy fallback is intentionally limited to English-only compatibility bundles.
             ?? (normalized == "en"
@@ -370,7 +535,7 @@ final class TaxonomyCatalogStore {
     }
 
     private func loadAliases(locale: String) -> [String: [String]] {
-        let normalized = normalizedLocale(locale)
+        let normalized = TaxonomyIdentity.normalizedLocale(locale)
         let url = Bundle.main.url(forResource: "taxonomy_v21_aliases_\(normalized)", withExtension: "json", subdirectory: "TaxonomyV21/aliases")
             // Legacy fallback is intentionally limited to English-only compatibility bundles.
             ?? (normalized == "en"
@@ -407,16 +572,4 @@ final class TaxonomyCatalogStore {
         return ordered
     }
 
-    private func normalizedLocale(_ locale: String) -> String {
-        locale
-            .components(separatedBy: ["-", "_"])
-            .first?
-            .lowercased() ?? "en"
-    }
-
-    private func normalizedCanonicalID(_ value: String) -> String {
-        value
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .uppercased()
-    }
 }

@@ -8,13 +8,24 @@ enum TaxonomyService {
     }
 
     private actor LabelCache {
+        private var cacheVersion: String = TaxonomyIdentity.cacheVersion
         private var storage: [String: [String: String]] = [:]
 
+        private func ensureVersion() {
+            guard cacheVersion == TaxonomyIdentity.cacheVersion else {
+                storage = [:]
+                cacheVersion = TaxonomyIdentity.cacheVersion
+                return
+            }
+        }
+
         func value(locale: String, entityId: String) -> String? {
-            storage[locale]?[entityId]
+            ensureVersion()
+            return storage[locale]?[entityId]
         }
 
         func set(locale: String, mapping: [String: String]) {
+            ensureVersion()
             var existing = storage[locale] ?? [:]
             for (key, value) in mapping {
                 existing[key] = value
@@ -54,7 +65,7 @@ enum TaxonomyService {
     private static let labelCache = LabelCache()
 
     static func displayLabel(for entityID: String, locale: String) async throws -> String {
-        let normalizedID = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedID = TaxonomyIdentity.normalizedCanonicalID(entityID)
         guard !normalizedID.isEmpty else { return entityID }
 
         let labels = try await labelsByEntityID(entityIDs: [normalizedID], locale: locale)
@@ -156,7 +167,7 @@ enum TaxonomyService {
             .execute()
 
         let entityIDs = response.value.map { $0.id }
-        let labels = try await labelsByEntityID(entityIDs: entityIDs, locale: locale)
+        let labels = try await labelsByEntityID(entityIDs: entityIDs, locale: locale, entityType: entityType)
 
         let mapped = response.value.map { row in
             let mappedType = TaxonomyEntityType.fromBackend(row.entityType ?? backendEntityType)?.rawValue ?? entityType.rawValue
@@ -176,7 +187,7 @@ enum TaxonomyService {
     }
 
     static func searchProvidersByTaxonomy(entityIDs: [String]) async throws -> [Provider] {
-        let normalized = Array(Set(entityIDs.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }))
+        let normalized = Array(Set(entityIDs.map { TaxonomyIdentity.normalizedCanonicalID($0) }))
             .filter { !$0.isEmpty }
 
         guard !normalized.isEmpty else { return [] }
@@ -194,7 +205,7 @@ enum TaxonomyService {
 
     static func validateEntityIDs(_ entityIDs: [String]) async throws -> [String] {
         let normalized = entityIDs
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .map { TaxonomyIdentity.normalizedCanonicalID($0) }
             .filter { !$0.isEmpty }
 
         guard !normalized.isEmpty else { return [] }
@@ -233,13 +244,14 @@ enum TaxonomyService {
         return orderedValid
     }
 
-    static func labelsByEntityID(entityIDs: [String], locale: String) async throws -> [String: String] {
-        let normalizedIDs = Array(Set(entityIDs.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }))
+    static func labelsByEntityID(
+        entityIDs: [String],
+        locale: String,
+        entityType: TaxonomyEntityType? = nil
+    ) async throws -> [String: String] {
+        let normalizedIDs = Array(Set(entityIDs.map { TaxonomyIdentity.normalizedCanonicalID($0) }))
             .filter { !$0.isEmpty }
-        let normalizedLocale = locale
-            .components(separatedBy: ["-", "_"])
-            .first?
-            .lowercased() ?? "en"
+        let normalizedLocale = TaxonomyIdentity.normalizedLocale(locale)
 
         guard !normalizedIDs.isEmpty else { return [:] }
 
@@ -247,13 +259,27 @@ enum TaxonomyService {
         var missing: [String] = []
 
         for entityID in normalizedIDs {
-            if let localLabel = TaxonomyCatalogStore.shared.localizedLabel(for: entityID, locale: normalizedLocale) {
-                result[entityID] = localLabel
+            if let localResolution = TaxonomyCatalogStore.shared.localizedLabelResolution(for: entityID, locale: normalizedLocale) {
+                result[entityID] = localResolution.label
+                logLabelFallbackIfNeeded(
+                    entityType: entityType,
+                    locale: normalizedLocale,
+                    incomingID: entityID,
+                    normalizedID: localResolution.normalizedIncomingID,
+                    source: localResolution.source
+                )
                 continue
             }
 
             if let cached = await labelCache.value(locale: normalizedLocale, entityId: entityID) {
                 result[entityID] = cached
+                logLabelFallbackIfNeeded(
+                    entityType: entityType,
+                    locale: normalizedLocale,
+                    incomingID: entityID,
+                    normalizedID: TaxonomyIdentity.normalizedCanonicalID(entityID),
+                    source: "label_cache"
+                )
             } else {
                 missing.append(entityID)
             }
@@ -287,34 +313,10 @@ enum TaxonomyService {
         var defaultFallback: [String: String] = [:]
 
         if !unresolvedAfterEnglish.isEmpty {
-            // Only use database default names for IDs that are unknown to canonical v2.1 resources.
-            let nonCanonicalIDs = unresolvedAfterEnglish.filter { !TaxonomyCatalogStore.shared.containsCanonicalID($0) }
-            if nonCanonicalIDs.isEmpty {
-                let merged = localized.merging(englishFallback) { current, _ in current }
-                await labelCache.set(locale: normalizedLocale, mapping: merged)
-                for entityID in missing {
-                    if let value = merged[entityID] {
-                        result[entityID] = TaxonomyI18nLoader.shared.localizedLabel(
-                            for: entityID,
-                            locale: normalizedLocale,
-                            fallback: value
-                        )
-                    }
-                }
-                for (entityID, value) in result {
-                    result[entityID] = TaxonomyI18nLoader.shared.localizedLabel(
-                        for: entityID,
-                        locale: normalizedLocale,
-                        fallback: value
-                    )
-                }
-                return result
-            }
-
             let fallbackResponse: PostgrestResponse<[TaxonomyEntityRow]> = try await client
                 .from("taxonomy_entities")
                 .select("id,default_name")
-                .in("id", values: nonCanonicalIDs)
+                .in("id", values: unresolvedAfterEnglish)
                 .execute()
             defaultFallback = Dictionary(uniqueKeysWithValues: fallbackResponse.value.map { ($0.id, $0.defaultName) })
         }
@@ -331,6 +333,24 @@ enum TaxonomyService {
                     locale: normalizedLocale,
                     fallback: value
                 )
+                let source = localized[entityID] != nil
+                    ? "locale_label_map"
+                    : (englishFallback[entityID] != nil ? "english_label_map" : "backend_default_name")
+                logLabelFallbackIfNeeded(
+                    entityType: entityType,
+                    locale: normalizedLocale,
+                    incomingID: entityID,
+                    normalizedID: TaxonomyIdentity.normalizedCanonicalID(entityID),
+                    source: source
+                )
+            } else {
+                logLabelMiss(
+                    entityType: entityType,
+                    locale: normalizedLocale,
+                    incomingID: entityID,
+                    normalizedID: TaxonomyIdentity.normalizedCanonicalID(entityID),
+                    source: "unresolved"
+                )
             }
         }
 
@@ -343,6 +363,33 @@ enum TaxonomyService {
         }
 
         return result
+    }
+
+    private static func logLabelFallbackIfNeeded(
+        entityType: TaxonomyEntityType?,
+        locale: String,
+        incomingID: String,
+        normalizedID: String,
+        source: String
+    ) {
+#if DEBUG
+        let isFallbackSource = source.contains("english") || source.contains("default") || source.contains("alias") || source == "label_cache"
+        if isFallbackSource {
+            print("[TaxonomyLabelFallback] entityType=\(entityType?.rawValue ?? "unknown") locale=\(locale) incomingID=\(incomingID) normalizedID=\(normalizedID) source=\(source)")
+        }
+#endif
+    }
+
+    private static func logLabelMiss(
+        entityType: TaxonomyEntityType?,
+        locale: String,
+        incomingID: String,
+        normalizedID: String,
+        source: String
+    ) {
+#if DEBUG
+        print("[TaxonomyLabelMiss] entityType=\(entityType?.rawValue ?? "unknown") locale=\(locale) incomingID=\(incomingID) normalizedID=\(normalizedID) source=\(source)")
+#endif
     }
 
     private static func applyLocalBundleOverrides(to suggestions: [TaxonomySuggestion], locale: String) -> [TaxonomySuggestion] {

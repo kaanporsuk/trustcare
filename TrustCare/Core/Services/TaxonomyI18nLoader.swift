@@ -3,20 +3,23 @@ import Foundation
 final class TaxonomyI18nLoader {
     static let shared = TaxonomyI18nLoader()
 
+    private var cacheVersion: String = TaxonomyIdentity.cacheVersion
     private var cache: [String: [String: String]] = [:]
     private let lock = NSLock()
 
     private init() {}
 
     func localizedLabel(for entityID: String, locale: String, fallback: String) -> String {
-        let normalizedID = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
+        ensureCacheVersion()
+
+        let normalizedID = TaxonomyIdentity.normalizedCanonicalID(entityID)
         guard !normalizedID.isEmpty else { return fallback }
 
         if let canonicalLabel = TaxonomyCatalogStore.shared.localizedLabel(for: normalizedID, locale: locale) {
             return canonicalLabel
         }
 
-        let localeCode = normalizedLocale(locale)
+        let localeCode = TaxonomyIdentity.normalizedLocale(locale)
         let localeMap = mapping(for: localeCode)
 
         if let match = value(for: normalizedID, in: localeMap) {
@@ -60,7 +63,7 @@ final class TaxonomyI18nLoader {
             let data = try Data(contentsOf: url)
             let decoded = try JSONDecoder().decode([String: String].self, from: data)
             return Dictionary(uniqueKeysWithValues: decoded.map { key, value in
-                (normalizeKey(key), value)
+                (TaxonomyIdentity.normalizedCanonicalID(key), value)
             })
         } catch {
             return [:]
@@ -80,19 +83,17 @@ final class TaxonomyI18nLoader {
         let trimmed = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return [] }
 
-        let upper = normalizeKey(trimmed)
+        let upper = TaxonomyIdentity.normalizedCanonicalID(trimmed)
         let lower = trimmed.lowercased()
         return Array(Set([upper, lower]))
     }
 
-    private func normalizeKey(_ value: String) -> String {
-        value.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-    }
+    private func ensureCacheVersion() {
+        lock.lock()
+        defer { lock.unlock() }
 
-    private func normalizedLocale(_ locale: String) -> String {
-        locale
-            .components(separatedBy: ["-", "_"])
-            .first?
-            .lowercased() ?? "en"
+        guard cacheVersion != TaxonomyIdentity.cacheVersion else { return }
+        cache = [:]
+        cacheVersion = TaxonomyIdentity.cacheVersion
     }
 }

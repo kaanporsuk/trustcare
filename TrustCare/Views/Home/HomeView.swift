@@ -540,7 +540,7 @@ struct HomeView: View {
                         } label: {
                             HStack {
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text(suggestion.label)
+                                    Text(localizedTaxonomyLabel(for: suggestion))
                                         .font(.subheadline.weight(.semibold))
                                         .foregroundStyle(Color.tcTextPrimary)
                                     Text(typeLabel(for: suggestion.entityType))
@@ -778,6 +778,19 @@ struct HomeView: View {
             return specialty.iconName
         }
         return "cross.case"
+    }
+
+    private func localizedTaxonomyLabel(for suggestion: TaxonomySuggestion) -> String {
+        let resolved = TaxonomyCatalogStore.shared.localizedLabel(
+            for: suggestion.entityId,
+            locale: localizationManager.effectiveLanguage
+        )
+        let label = resolved ?? suggestion.label
+#if DEBUG
+        let source = resolved == nil ? "suggestion_label" : "catalog_localized"
+        print("[TaxonomyRowRender] surface=home_overlay locale=\(localizationManager.effectiveLanguage) entityID=\(suggestion.entityId) source=\(source) label=\(label)")
+#endif
+        return label
     }
 
     private func typeLabel(for entityType: String) -> String {
@@ -1032,7 +1045,7 @@ private struct TaxonomyMultiSelectFilterSheet: View {
             }
         }
         .padding(AppSpacing.lg)
-        .task {
+        .task(id: languageCode) {
             await loadItems()
         }
     }
@@ -1056,7 +1069,13 @@ private struct TaxonomyMultiSelectFilterSheet: View {
     }
 
     private func localizedLabel(for suggestion: TaxonomySuggestion) -> String {
-        TaxonomyCatalogStore.shared.localizedLabel(for: suggestion.entityId, locale: languageCode) ?? suggestion.label
+        let resolved = TaxonomyCatalogStore.shared.localizedLabel(for: suggestion.entityId, locale: languageCode)
+        let label = resolved ?? suggestion.label
+    #if DEBUG
+        let source = resolved == nil ? "suggestion_label" : "catalog_localized"
+        print("[TaxonomyRowRender] surface=taxonomy_filter_sheet locale=\(languageCode) entityID=\(suggestion.entityId) source=\(source) label=\(label)")
+    #endif
+        return label
     }
 
     private func normalizedLabel(_ value: String) -> String {

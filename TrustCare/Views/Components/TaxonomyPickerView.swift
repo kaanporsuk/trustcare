@@ -60,7 +60,7 @@ final class TaxonomyPickerViewModel: ObservableObject {
             return
         }
 
-        let cacheKey = "\(localeCode)|\(selectedEntityType.rawValue)|\(query.lowercased())"
+        let cacheKey = "\(TaxonomyIdentity.cacheVersion)|\(localeCode)|\(selectedEntityType.rawValue)|\(query.lowercased())"
         if let cached = await Self.searchCache.value(for: cacheKey) {
             suggestions = cached.suggestions
             showEnglishFallbackHint = cached.usedEnglishFallback
@@ -142,7 +142,7 @@ final class TaxonomyPickerViewModel: ObservableObject {
         guard !ids.isEmpty else { return [] }
 
         do {
-            let labels = try await TaxonomyService.labelsByEntityID(entityIDs: ids, locale: localeCode)
+            let labels = try await TaxonomyService.labelsByEntityID(entityIDs: ids, locale: localeCode, entityType: selectedEntityType)
             return ids.map { entityID in
                 TaxonomySuggestion(
                     entityId: entityID,
@@ -163,7 +163,7 @@ final class TaxonomyPickerViewModel: ObservableObject {
         guard !ids.isEmpty else { return [] }
 
         do {
-            let labels = try await TaxonomyService.labelsByEntityID(entityIDs: ids, locale: localeCode)
+            let labels = try await TaxonomyService.labelsByEntityID(entityIDs: ids, locale: localeCode, entityType: selectedEntityType)
             return ids.map { entityID in
                 TaxonomySuggestion(
                     entityId: entityID,
@@ -463,9 +463,16 @@ struct TaxonomyPickerView: View {
     }
 
     private func displayLabel(for suggestion: TaxonomySuggestion) -> String {
-        TaxonomyCatalogStore.shared.localizedLabel(
+        let localeCode = currentLocaleCode()
+        let resolved = TaxonomyCatalogStore.shared.localizedLabel(
             for: suggestion.entityId,
-            locale: currentLocaleCode()
-        ) ?? suggestion.label
+            locale: localeCode
+        )
+        let label = resolved ?? suggestion.label
+#if DEBUG
+        let source = resolved == nil ? "suggestion_label" : "catalog_localized"
+        print("[TaxonomyRowRender] surface=taxonomy_picker locale=\(localeCode) entityID=\(suggestion.entityId) source=\(source) label=\(label)")
+#endif
+        return label
     }
 }

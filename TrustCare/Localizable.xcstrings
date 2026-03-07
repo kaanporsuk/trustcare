@@ -113,6 +113,16 @@
         }
       }
     },
+    "%@ + %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ + %2$@"
+          }
+        }
+      }
+    },
     "%@ 1.0.0" : {
 
     },
@@ -42064,6 +42074,7 @@
       }
     },
     "status_pending" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -42164,6 +42175,7 @@
       }
     },
     "status_unverified" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -42264,6 +42276,7 @@
       }
     },
     "status_verified" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
