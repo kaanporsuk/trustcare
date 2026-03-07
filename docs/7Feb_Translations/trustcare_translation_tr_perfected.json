@@ -1,0 +1,2113 @@
+{
+  "meta": {
+    "project": "TrustCare",
+    "version": "taxonomy-v2.1-locale-template",
+    "locale": "tr",
+    "source": "trustcare_translation_source_master.json",
+    "generated_by": "OpenAI",
+    "rules": [
+      "Do not change canonical_id, entity_type, or key values.",
+      "Fill translated_label for every entry.",
+      "Translate aliases/example inputs naturally; keep arrays non-empty when English source has values.",
+      "If there is no natural alias, you may leave translated_aliases as an empty array.",
+      "Do not leave translated_label blank."
+    ]
+  },
+  "taxonomy_labels": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ADDICTION_MEDICINE",
+      "english_label": "Addiction Medicine",
+      "translated_label": "Bağımlılık Tıbbı"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AESTHETIC_MEDICINE",
+      "english_label": "Aesthetic Medicine",
+      "translated_label": "Estetik Tıp"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_label": "Allergy & Immunology",
+      "translated_label": "Alerji ve İmmünoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANDROLOGY",
+      "english_label": "Andrology",
+      "translated_label": "Androloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_label": "Anesthesiology",
+      "translated_label": "Anesteziyoloji ve Reanimasyon"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AUDIOLOGY",
+      "english_label": "Audiology",
+      "translated_label": "Odyoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Bariatrik Cerrahi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BREAST_SURGERY",
+      "english_label": "Breast Surgery",
+      "translated_label": "Meme Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOLOGY",
+      "english_label": "Cardiology",
+      "translated_label": "Kardiyoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOVASCULAR_SURGERY",
+      "english_label": "Cardiovascular Surgery",
+      "translated_label": "Kalp ve Damar Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+      "english_label": "Child & Adolescent Psychiatry",
+      "translated_label": "Çocuk ve Ergen Psikiyatrisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHIROPRACTIC",
+      "english_label": "Chiropractic",
+      "translated_label": "Kiropraktik"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_label": "Clinical Genetics",
+      "translated_label": "Klinik Genetik"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_label": "Colorectal Surgery",
+      "translated_label": "Kolorektal Cerrahi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_label": "Critical Care / Intensive Care",
+      "translated_label": "Yoğun Bakım"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DERMATOLOGY",
+      "english_label": "Dermatology",
+      "translated_label": "Dermatoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_EMERGENCY_MEDICINE",
+      "english_label": "Emergency Medicine",
+      "translated_label": "Acil Tıp"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDOCRINOLOGY",
+      "english_label": "Endocrinology",
+      "translated_label": "Endokrinoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDODONTICS",
+      "english_label": "Endodontics",
+      "translated_label": "Endodonti"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_label": "ENT / Otolaryngology",
+      "translated_label": "KBB / Kulak Burun Boğaz"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_label": "Family Medicine",
+      "translated_label": "Aile Hekimliği"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GASTROENTEROLOGY",
+      "english_label": "Gastroenterology",
+      "translated_label": "Gastroenteroloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_label": "General Dentistry",
+      "translated_label": "Genel Diş Hekimliği"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_label": "General Practice",
+      "translated_label": "Pratisyen Hekimlik"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_SURGERY",
+      "english_label": "General Surgery",
+      "translated_label": "Genel Cerrahi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENETICS_GENOMICS",
+      "english_label": "Genetics & Genomics",
+      "translated_label": "Genetik ve Genomik"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRIC_PSYCHIATRY",
+      "english_label": "Geriatric Psychiatry",
+      "translated_label": "Geriyatrik Psikiyatri"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRICS",
+      "english_label": "Geriatrics",
+      "translated_label": "Geriatri"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEAD_NECK_SURGERY",
+      "english_label": "Head & Neck Surgery",
+      "translated_label": "Baş ve Boyun Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEMATOLOGY",
+      "english_label": "Hematology",
+      "translated_label": "Hematoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_label": "Hepatology",
+      "translated_label": "Hepatoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INFECTIOUS_DISEASE",
+      "english_label": "Infectious Disease",
+      "translated_label": "Enfeksiyon Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_label": "Internal Medicine",
+      "translated_label": "İç Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERVENTIONAL_RADIOLOGY",
+      "english_label": "Interventional Radiology",
+      "translated_label": "Girişimsel Radyoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_MATERNAL_FETAL_MEDICINE",
+      "english_label": "Maternal-Fetal Medicine",
+      "translated_label": "Perinatoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEONATOLOGY",
+      "english_label": "Neonatology",
+      "translated_label": "Neonatoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEPHROLOGY",
+      "english_label": "Nephrology",
+      "translated_label": "Nefroloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROLOGY",
+      "english_label": "Neurology",
+      "translated_label": "Nöroloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROPSYCHOLOGY",
+      "english_label": "Neuropsychology",
+      "translated_label": "Nöropsikoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROSURGERY",
+      "english_label": "Neurosurgery",
+      "translated_label": "Beyin ve Sinir Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUCLEAR_MEDICINE",
+      "english_label": "Nuclear Medicine",
+      "translated_label": "Nükleer Tıp"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUTRITION_DIETETICS",
+      "english_label": "Nutrition & Dietetics",
+      "translated_label": "Beslenme ve Diyetetik"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_label": "Obstetrics & Gynecology",
+      "translated_label": "Kadın Hastalıkları ve Doğum"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OCCUPATIONAL_THERAPY",
+      "english_label": "Occupational Therapy",
+      "translated_label": "Ergoterapi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ONCOLOGY",
+      "english_label": "Oncology",
+      "translated_label": "Onkoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPHTHALMOLOGY",
+      "english_label": "Ophthalmology",
+      "translated_label": "Göz Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPTOMETRY",
+      "english_label": "Optometry",
+      "translated_label": "Optometri"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_label": "Oral & Maxillofacial Surgery",
+      "translated_label": "Ağız, Diş ve Çene Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_SURGERY",
+      "english_label": "Oral Surgery",
+      "translated_label": "Ağız Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHODONTICS",
+      "english_label": "Orthodontics",
+      "translated_label": "Ortodonti"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHOPEDIC_SURGERY",
+      "english_label": "Orthopedic Surgery",
+      "translated_label": "Ortopedi ve Travmatoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OSTEOPATHY",
+      "english_label": "Osteopathy",
+      "translated_label": "Osteopati"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PAIN_MANAGEMENT",
+      "english_label": "Pain Management",
+      "translated_label": "Algoloji (Ağrı Tıbbı)"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PALLIATIVE_CARE",
+      "english_label": "Palliative Care",
+      "translated_label": "Palyatif Bakım"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PATHOLOGY",
+      "english_label": "Pathology",
+      "translated_label": "Patoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_DENTISTRY",
+      "english_label": "Pediatric Dentistry",
+      "translated_label": "Çocuk Diş Hekimliği / Pedodonti"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_OPHTHALMOLOGY",
+      "english_label": "Pediatric Ophthalmology",
+      "translated_label": "Çocuk Göz Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_SURGERY",
+      "english_label": "Pediatric Surgery",
+      "translated_label": "Çocuk Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_UROLOGY",
+      "english_label": "Pediatric Urology",
+      "translated_label": "Çocuk Ürolojisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRICS",
+      "english_label": "Pediatrics",
+      "translated_label": "Çocuk Sağlığı ve Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PERIODONTICS",
+      "english_label": "Periodontics",
+      "translated_label": "Periodontoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_label": "Physical Medicine & Rehab",
+      "translated_label": "Fiziksel Tıp ve Rehabilitasyon"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_label": "Physical Therapy / Physiotherapy",
+      "translated_label": "Fizyoterapi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+      "english_label": "Plastic & Reconstructive Surgery",
+      "translated_label": "Plastik ve Rekonstrüktif Cerrahi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PODIATRY",
+      "english_label": "Podiatry",
+      "translated_label": "Podiyatri / Ayak Sağlığı"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PROSTHODONTICS",
+      "english_label": "Prosthodontics",
+      "translated_label": "Protetik Diş Tedavisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_label": "Psychiatry",
+      "translated_label": "Psikiyatri"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_label": "Psychology / Therapy",
+      "translated_label": "Psikoloji / Psikoterapi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PULMONOLOGY",
+      "english_label": "Pulmonology",
+      "translated_label": "Göğüs Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RADIOLOGY",
+      "english_label": "Radiology",
+      "translated_label": "Radyoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_label": "Reproductive Endocrinology / IVF",
+      "translated_label": "Üreme Endokrinolojisi ve İnfertilite"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_label": "Retina Specialist",
+      "translated_label": "Retina Hastalıkları"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHEUMATOLOGY",
+      "english_label": "Rheumatology",
+      "translated_label": "Romatoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_label": "Rhinology",
+      "translated_label": "Rinoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SLEEP_MEDICINE",
+      "english_label": "Sleep Medicine",
+      "translated_label": "Uyku Tıbbı"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPEECH_THERAPY",
+      "english_label": "Speech Therapy",
+      "translated_label": "Dil ve Konuşma Terapisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_label": "Sports Medicine",
+      "translated_label": "Spor Hekimliği"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_THORACIC_SURGERY",
+      "english_label": "Thoracic Surgery",
+      "translated_label": "Göğüs Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRANSPLANT_SURGERY",
+      "english_label": "Transplant Surgery",
+      "translated_label": "Organ Nakli Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRAUMA_SURGERY",
+      "english_label": "Trauma Surgery",
+      "translated_label": "Travma Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_label": "Urogynecology",
+      "translated_label": "Ürojinekoloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROLOGY",
+      "english_label": "Urology",
+      "translated_label": "Üroloji"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_VASCULAR_SURGERY",
+      "english_label": "Vascular Surgery",
+      "translated_label": "Damar Cerrahisi"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_WOUND_CARE",
+      "english_label": "Wound Care",
+      "translated_label": "Yara Bakımı"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_label": "Acupuncture",
+      "translated_label": "Akupunktur"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_label": "Allergy Testing",
+      "translated_label": "Alerji Testi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Bariatrik Cerrahi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_label": "Blood Tests / Lab Work",
+      "translated_label": "Kan Tahlilleri / Laboratuvar Tetkikleri"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_label": "Botox & Fillers",
+      "translated_label": "Botoks ve Dolgu"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_label": "Breast Augmentation / Reduction",
+      "translated_label": "Meme Büyütme / Küçültme"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_label": "Cataract Surgery",
+      "translated_label": "Katarakt Ameliyatı"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_label": "Chemical Peels & Microneedling",
+      "translated_label": "Kimyasal Peeling ve Mikroiğneleme"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_label": "Chemotherapy",
+      "translated_label": "Kemoterapi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COLOSCOPY",
+      "english_label": "Colonoscopy",
+      "translated_label": "Kolonoskopi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_label": "Cosmetic Dentistry",
+      "translated_label": "Estetik Diş Hekimliği"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_label": "CT Scan",
+      "translated_label": "Bilgisayarlı Tomografi (BT)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_label": "Dental Aesthetics (Smile Design)",
+      "translated_label": "Diş Estetiği (Gülüş Tasarımı)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_label": "Dental Implants",
+      "translated_label": "Diş İmplantı"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DIALYSIS",
+      "english_label": "Dialysis",
+      "translated_label": "Diyaliz"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ENDOSCOPY",
+      "english_label": "Endoscopy",
+      "translated_label": "Endoskopi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_label": "Eyelid Surgery",
+      "translated_label": "Göz Kapağı Ameliyatı (Blefaroplasti)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_label": "Facelift & Neck Lift",
+      "translated_label": "Yüz & Boyun Germe"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_label": "Fertility Treatment / IVF",
+      "translated_label": "İnfertilite Tedavisi / Tüp Bebek (IVF)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_label": "Hair Transplant",
+      "translated_label": "Saç Ekimi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_label": "Health Check-up / Preventive Screening",
+      "translated_label": "Check-up / Koruyucu Tarama"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HIP_REPLACEMENT",
+      "english_label": "Hip Replacement",
+      "translated_label": "Kalça Protezi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_label": "Homeopathy",
+      "translated_label": "Homeopati"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_KNEE_REPLACEMENT",
+      "english_label": "Knee Replacement",
+      "translated_label": "Diz Protezi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_label": "Laser Treatments",
+      "translated_label": "Lazer Tedavileri"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_label": "LASIK / Refractive Surgery",
+      "translated_label": "LASIK / Refraktif Cerrahi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_label": "Lip Enhancement",
+      "translated_label": "Dudak Dolgusu"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_label": "Liposuction & Body Contouring",
+      "translated_label": "Liposuction ve Vücut Şekillendirme"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_label": "Mammography",
+      "translated_label": "Mamografi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_label": "MRI",
+      "translated_label": "MR (Manyetik Rezonans)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_label": "Naturopathy",
+      "translated_label": "Natüropati"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_label": "Orthodontics / Clear Aligners",
+      "translated_label": "Ortodonti / Şeffaf Plak Tedavisi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_label": "Psychotherapy / Counseling",
+      "translated_label": "Psikoterapi / Psikolojik Danışmanlık"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_label": "Radiotherapy",
+      "translated_label": "Radyoterapi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_label": "Rehabilitation / Physiotherapy",
+      "translated_label": "Rehabilitasyon / Fizyoterapi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_label": "Rhinoplasty",
+      "translated_label": "Rinoplasti"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_label": "Root Canal Treatment",
+      "translated_label": "Kanal Tedavisi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SKIN_CANCER_SCREENING",
+      "english_label": "Skin Cancer Screening",
+      "translated_label": "Cilt Kanseri Taraması"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_label": "Skin Rejuvenation / PRP",
+      "translated_label": "Cilt Yenileme / PRP"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_label": "Tattoo Removal",
+      "translated_label": "Dövme Silme"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_label": "Teeth Whitening",
+      "translated_label": "Diş Beyazlatma"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_label": "Traditional Chinese Medicine",
+      "translated_label": "Geleneksel Çin Tıbbı"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_label": "Tummy Tuck",
+      "translated_label": "Karın Germe (Abdominoplasti)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_label": "Ultrasound",
+      "translated_label": "Ultrasonografi (USG)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_label": "Vaccination / Immunization",
+      "translated_label": "Aşılama"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VARICOSE_VEIN_TREATMENT",
+      "english_label": "Varicose Vein Treatment",
+      "translated_label": "Varis Tedavisi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_label": "X-ray",
+      "translated_label": "Röntgen"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_AESTHETIC_COSMETIC_CLINIC",
+      "english_label": "Aesthetic / Cosmetic Clinic",
+      "translated_label": "Estetik / Kozmetik Kliniği"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_label": "Clinic / Medical Center",
+      "translated_label": "Klinik / Tıp Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DENTAL_CLINIC",
+      "english_label": "Dental Clinic",
+      "translated_label": "Ağız ve Diş Sağlığı Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DIALYSIS_CENTER",
+      "english_label": "Dialysis Center",
+      "translated_label": "Diyaliz Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_label": "Eye Clinic",
+      "translated_label": "Göz Kliniği"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_FERTILITY_IVF_CLINIC",
+      "english_label": "Fertility / IVF Clinic",
+      "translated_label": "İnfertilite / Tüp Bebek Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_label": "Hospital (General)",
+      "translated_label": "Genel Hastane"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_IMAGING_DIAGNOSTIC_CENTER",
+      "english_label": "Imaging / Diagnostic Center",
+      "translated_label": "Görüntüleme / Tanı Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_label": "Laboratory / Blood Tests",
+      "translated_label": "Laboratuvar / Kan Tahlili"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MATERNITY_WOMENS_HEALTH_CLINIC",
+      "english_label": "Maternity / Women's Health Clinic",
+      "translated_label": "Kadın Sağlığı ve Doğum Kliniği"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MENTAL_HEALTH_CLINIC",
+      "english_label": "Mental Health Clinic",
+      "translated_label": "Ruh Sağlığı Kliniği"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_ONCOLOGY_CENTER",
+      "english_label": "Oncology Center",
+      "translated_label": "Onkoloji Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PEDIATRIC_CLINIC",
+      "english_label": "Pediatric Clinic",
+      "translated_label": "Çocuk Kliniği"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_label": "Pharmacy",
+      "translated_label": "Eczane"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER",
+      "english_label": "Rehabilitation / Physiotherapy Center",
+      "translated_label": "Rehabilitasyon / Fizyoterapi Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SPECIALTY_CLINIC",
+      "english_label": "Specialty Clinic",
+      "translated_label": "Uzmanlık Kliniği"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SURGERY_CENTER_DAY_SURGERY",
+      "english_label": "Surgery Center / Day Surgery Center",
+      "translated_label": "Cerrahi Merkezi / Günübirlik Cerrahi Merkezi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_label": "Telehealth / Virtual Care",
+      "translated_label": "Tele-sağlık / Çevrimiçi Bakım"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_label": "Urgent Care / Walk-in Clinic",
+      "translated_label": "Acil Bakım / Randevusuz Klinik"
+    }
+  ],
+  "taxonomy_aliases": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_aliases": [
+        "Allergist",
+        "Immunology"
+      ],
+      "translated_aliases": [
+        "Alerjist",
+        "İmmünoloji"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_aliases": [
+        "Anaesthesiology",
+        "Anesthesia"
+      ],
+      "translated_aliases": [
+        "Anestezi",
+        "Anesteziyoloji"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_aliases": [
+        "Genetic medicine",
+        "Genetics clinic"
+      ],
+      "translated_aliases": [
+        "Genetik tıp",
+        "Genetik kliniği"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_aliases": [
+        "Colon surgery",
+        "Rectal surgery"
+      ],
+      "translated_aliases": [
+        "Kolon cerrahisi",
+        "Rektum cerrahisi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_aliases": [
+        "ICU",
+        "Intensive care"
+      ],
+      "translated_aliases": [
+        "Yoğun bakım",
+        "YBÜ",
+        "Yoğun bakım ünitesi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_aliases": [
+        "ENT",
+        "Ear nose throat",
+        "Otolaryngology"
+      ],
+      "translated_aliases": [
+        "KBB",
+        "Kulak burun boğaz",
+        "Otolaringoloji"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_aliases": [
+        "Family doctor",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "Aile hekimi",
+        "Birinci basamak hekimi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_aliases": [
+        "Dentist",
+        "General dentist"
+      ],
+      "translated_aliases": [
+        "Diş hekimi",
+        "Genel diş hekimi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_aliases": [
+        "GP",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "Pratisyen hekim",
+        "Genel pratisyen"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_aliases": [
+        "Liver specialist"
+      ],
+      "translated_aliases": [
+        "Karaciğer uzmanı"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_aliases": [
+        "Internist"
+      ],
+      "translated_aliases": [
+        "Dahiliye uzmanı"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_aliases": [
+        "OB-GYN",
+        "Gynecology",
+        "Obstetrics"
+      ],
+      "translated_aliases": [
+        "Kadın doğum",
+        "Jinekoloji",
+        "Obstetrik"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_aliases": [
+        "Jaw surgery",
+        "Maxillofacial surgery"
+      ],
+      "translated_aliases": [
+        "Çene cerrahisi",
+        "Maksillofasiyal cerrahi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_aliases": [
+        "PM&R",
+        "Physical medicine and rehabilitation"
+      ],
+      "translated_aliases": [
+        "FTR",
+        "Fizik tedavi ve rehabilitasyon"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Physical therapy",
+        "Physiotherapy",
+        "Physio"
+      ],
+      "translated_aliases": [
+        "Fizyoterapi",
+        "Fizik tedavi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_aliases": [
+        "Psychiatrist"
+      ],
+      "translated_aliases": [
+        "Psikiyatrist"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_aliases": [
+        "Psychology",
+        "Therapy",
+        "Psychotherapist",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "Psikoloji",
+        "Terapi",
+        "Psikoterapi",
+        "Psikolojik danışmanlık"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_aliases": [
+        "IVF specialist",
+        "Fertility specialist",
+        "Reproductive endocrinology"
+      ],
+      "translated_aliases": [
+        "Tüp bebek uzmanı",
+        "Kısırlık uzmanı",
+        "Üreme endokrinolojisi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_aliases": [
+        "Retina",
+        "Retinal specialist"
+      ],
+      "translated_aliases": [
+        "Retina",
+        "Retina uzmanı"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_aliases": [
+        "Sinus specialist",
+        "Nasal specialist"
+      ],
+      "translated_aliases": [
+        "Sinüs uzmanı",
+        "Burun hastalıkları uzmanı"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_aliases": [
+        "Sports injury"
+      ],
+      "translated_aliases": [
+        "Spor yaralanması"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_aliases": [
+        "Pelvic floor specialist"
+      ],
+      "translated_aliases": [
+        "Pelvik taban uzmanı"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_aliases": [
+        "Acupuncture treatment"
+      ],
+      "translated_aliases": [
+        "Akupunktur tedavisi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_aliases": [
+        "Allergy test"
+      ],
+      "translated_aliases": [
+        "Alerji testi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_aliases": [
+        "Weight loss surgery"
+      ],
+      "translated_aliases": [
+        "Obezite ameliyatı"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_aliases": [
+        "Blood test",
+        "Lab work",
+        "Lab tests"
+      ],
+      "translated_aliases": [
+        "Kan tahlili",
+        "Laboratuvar testi",
+        "Laboratuvar tetkikleri"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_aliases": [
+        "Botox",
+        "Fillers",
+        "Injectables"
+      ],
+      "translated_aliases": [
+        "Botoks",
+        "Dolgu",
+        "Enjeksiyon uygulamaları"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_aliases": [
+        "Breast augmentation",
+        "Breast reduction"
+      ],
+      "translated_aliases": [
+        "Meme büyütme",
+        "Meme küçültme"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_aliases": [
+        "Cataract operation"
+      ],
+      "translated_aliases": [
+        "Katarakt ameliyatı"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_aliases": [
+        "Chemical peel",
+        "Microneedling"
+      ],
+      "translated_aliases": [
+        "Kimyasal peeling",
+        "Mikro iğne tedavisi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_aliases": [
+        "Chemo"
+      ],
+      "translated_aliases": [
+        "Kemoterapi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_aliases": [
+        "Cosmetic dentist",
+        "Smile makeover"
+      ],
+      "translated_aliases": [
+        "Estetik diş hekimliği",
+        "Gülüş estetiği"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_aliases": [
+        "CAT scan"
+      ],
+      "translated_aliases": [
+        "BT",
+        "Bilgisayarlı tomografi",
+        "Tomografi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_aliases": [
+        "Smile design",
+        "Dental aesthetics"
+      ],
+      "translated_aliases": [
+        "Gülüş tasarımı",
+        "Diş estetiği"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_aliases": [
+        "Tooth implants"
+      ],
+      "translated_aliases": [
+        "Diş implantı"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_aliases": [
+        "Blepharoplasty"
+      ],
+      "translated_aliases": [
+        "Blefaroplasti"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_aliases": [
+        "Facelift",
+        "Neck lift"
+      ],
+      "translated_aliases": [
+        "Yüz germe",
+        "Boyun germe"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_aliases": [
+        "IVF",
+        "Fertility treatment"
+      ],
+      "translated_aliases": [
+        "Tüp bebek",
+        "Kısırlık tedavisi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_aliases": [
+        "Hair restoration"
+      ],
+      "translated_aliases": [
+        "Saç transplantasyonu",
+        "Saç restorasyonu"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_aliases": [
+        "Check-up",
+        "Health screening",
+        "Preventive screening"
+      ],
+      "translated_aliases": [
+        "Check-up",
+        "Sağlık taraması",
+        "Genel sağlık kontrolü"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_aliases": [
+        "Homeopathic care"
+      ],
+      "translated_aliases": [
+        "Homeopatik tedavi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_aliases": [
+        "Laser treatment",
+        "Laser therapy"
+      ],
+      "translated_aliases": [
+        "Lazer tedavisi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_aliases": [
+        "LASIK",
+        "Refractive surgery"
+      ],
+      "translated_aliases": [
+        "LASIK",
+        "Refraktif cerrahi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_aliases": [
+        "Lip filler",
+        "Lip augmentation"
+      ],
+      "translated_aliases": [
+        "Dudak dolgusu",
+        "Dudak büyütme"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_aliases": [
+        "Liposuction",
+        "Body contouring"
+      ],
+      "translated_aliases": [
+        "Liposuction",
+        "Vücut şekillendirme"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_aliases": [
+        "Mammogram"
+      ],
+      "translated_aliases": [
+        "Mamogram"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_aliases": [
+        "Magnetic resonance imaging"
+      ],
+      "translated_aliases": [
+        "Manyetik rezonans görüntüleme"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_aliases": [
+        "Naturopathic care"
+      ],
+      "translated_aliases": [
+        "Natüropati",
+        "Doğal tedavi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_aliases": [
+        "Braces",
+        "Aligners",
+        "Invisalign"
+      ],
+      "translated_aliases": [
+        "Diş teli",
+        "Şeffaf plak",
+        "Invisalign"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_aliases": [
+        "Therapy",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "Terapi",
+        "Psikolojik danışmanlık"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_aliases": [
+        "Radiation therapy"
+      ],
+      "translated_aliases": [
+        "Radyoterapi",
+        "Işın tedavisi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Rehab",
+        "Physiotherapy",
+        "Physical therapy"
+      ],
+      "translated_aliases": [
+        "Rehabilitasyon",
+        "Fizyoterapi",
+        "Fizik tedavi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_aliases": [
+        "Nose job",
+        "Nose surgery"
+      ],
+      "translated_aliases": [
+        "Burun ameliyatı",
+        "Burun estetiği"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_aliases": [
+        "Root canal"
+      ],
+      "translated_aliases": [
+        "Kanal tedavisi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_aliases": [
+        "PRP",
+        "Skin rejuvenation"
+      ],
+      "translated_aliases": [
+        "PRP tedavisi",
+        "Cilt yenileme"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_aliases": [
+        "Laser tattoo removal"
+      ],
+      "translated_aliases": [
+        "Lazerle dövme silme"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_aliases": [
+        "Tooth whitening"
+      ],
+      "translated_aliases": [
+        "Diş beyazlatma"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_aliases": [
+        "TCM",
+        "Chinese medicine"
+      ],
+      "translated_aliases": [
+        "TCM",
+        "Geleneksel Çin tıbbı"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_aliases": [
+        "Abdominoplasty"
+      ],
+      "translated_aliases": [
+        "Abdominoplasti"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_aliases": [
+        "Sonography"
+      ],
+      "translated_aliases": [
+        "USG",
+        "Sonografi"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_aliases": [
+        "Vaccination",
+        "Immunization",
+        "Vaccine"
+      ],
+      "translated_aliases": [
+        "Aşılama",
+        "Bağışıklama"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_aliases": [
+        "Xray"
+      ],
+      "translated_aliases": [
+        "Röntgen"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_aliases": [
+        "Medical center",
+        "Clinic"
+      ],
+      "translated_aliases": [
+        "Tıp merkezi",
+        "Klinik"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_aliases": [
+        "Ophthalmology clinic"
+      ],
+      "translated_aliases": [
+        "Göz kliniği",
+        "Oftalmoloji kliniği"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_aliases": [
+        "Hospital"
+      ],
+      "translated_aliases": [
+        "Hastane"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_aliases": [
+        "Lab",
+        "Laboratory",
+        "Blood test center"
+      ],
+      "translated_aliases": [
+        "Laboratuvar",
+        "Kan tahlili merkezi"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_aliases": [
+        "Drugstore"
+      ],
+      "translated_aliases": [
+        "Eczane"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_aliases": [
+        "Online consultation",
+        "Virtual consultation"
+      ],
+      "translated_aliases": [
+        "Online konsültasyon",
+        "Uzaktan muayene"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_aliases": [
+        "Walk-in clinic",
+        "Urgent care"
+      ],
+      "translated_aliases": [
+        "Acil bakım",
+        "Randevusuz klinik"
+      ]
+    }
+  ],
+  "concern_labels": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_label": "Aesthetic & Cosmetic Care",
+      "translated_label": "Estetik ve Kozmetik Bakım"
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_label": "Bones, Joints, Muscles & Sports Injuries",
+      "translated_label": "Kemikler, Eklemler, Kaslar ve Spor Yaralanmaları"
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_label": "Children's Health",
+      "translated_label": "Çocuk Sağlığı"
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_label": "Digestion & Liver",
+      "translated_label": "Sindirim ve Karaciğer"
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_label": "Ears, Nose & Throat",
+      "translated_label": "Kulak, Burun ve Boğaz"
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_label": "Emergency & Urgent Symptoms",
+      "translated_label": "Acil / Öncelikli Belirtiler"
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_label": "Eyes & Vision",
+      "translated_label": "Göz ve Görme"
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_label": "Head, Brain & Nerves",
+      "translated_label": "Baş, Beyin ve Sinir Sistemi"
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_label": "Heart & Circulation",
+      "translated_label": "Kalp ve Dolaşım"
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_label": "Kidneys, Bladder & Urinary Health",
+      "translated_label": "Böbrek, Mesane ve İdrar Yolu Sağlığı"
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_label": "Lungs & Breathing",
+      "translated_label": "Akciğer ve Solunum"
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_label": "Men's Health",
+      "translated_label": "Erkek Sağlığı"
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_label": "Mental Health & Well-being",
+      "translated_label": "Ruh Sağlığı ve İyi Oluş"
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_label": "Pain, Rehabilitation & Mobility",
+      "translated_label": "Ağrı, Rehabilitasyon ve Hareket"
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_label": "Preventive Checks, Tests & Imaging",
+      "translated_label": "Koruyucu Kontroller, Testler ve Görüntüleme"
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_label": "Skin, Hair & Nails",
+      "translated_label": "Cilt, Saç ve Tırnaklar"
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_label": "Teeth, Jaw & Mouth",
+      "translated_label": "Dişler, Çene ve Ağız"
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_label": "Women's Health, Pregnancy & Fertility",
+      "translated_label": "Kadın Sağlığı, Gebelik ve Doğurganlık"
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_label": "Cancer & Tumor Care",
+      "translated_label": "Kanser ve Tümör Tedavisi"
+    }
+  ],
+  "concern_example_inputs": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_example_inputs": [
+        "botox",
+        "fillers",
+        "nose job",
+        "hair loss",
+        "skin rejuvenation"
+      ],
+      "translated_example_inputs": [
+        "botoks",
+        "dolgu",
+        "rinoplasti",
+        "saç dökülmesi",
+        "cilt yenileme"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_example_inputs": [
+        "knee pain",
+        "back pain",
+        "shoulder injury",
+        "sports injury"
+      ],
+      "translated_example_inputs": [
+        "diz ağrısı",
+        "bel ağrısı",
+        "omuz yaralanması",
+        "spor yaralanması"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_example_inputs": [
+        "child fever",
+        "newborn issue",
+        "pediatric checkup"
+      ],
+      "translated_example_inputs": [
+        "çocuk ateşi",
+        "yenidoğan sorunu",
+        "çocuk kontrolü"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_example_inputs": [
+        "stomach pain",
+        "acid reflux",
+        "liver problem"
+      ],
+      "translated_example_inputs": [
+        "mide ağrısı",
+        "mide yanması",
+        "karaciğer sorunu"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_example_inputs": [
+        "sinus pain",
+        "ear infection",
+        "tonsils",
+        "hearing issue"
+      ],
+      "translated_example_inputs": [
+        "sinüs ağrısı",
+        "kulak enfeksiyonu",
+        "bademcik",
+        "işitme sorunu"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_example_inputs": [
+        "chest pain",
+        "severe bleeding",
+        "shortness of breath",
+        "sudden weakness"
+      ],
+      "translated_example_inputs": [
+        "göğüs ağrısı",
+        "şiddetli kanama",
+        "nefes darlığı",
+        "ani güçsüzlük"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_example_inputs": [
+        "blurred vision",
+        "cataract",
+        "retina issue",
+        "eye pain"
+      ],
+      "translated_example_inputs": [
+        "bulanık görme",
+        "katarakt",
+        "retina sorunu",
+        "göz ağrısı"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_example_inputs": [
+        "headache",
+        "migraine",
+        "dizziness",
+        "numbness"
+      ],
+      "translated_example_inputs": [
+        "baş ağrısı",
+        "migren",
+        "baş dönmesi",
+        "uyuşma"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_example_inputs": [
+        "palpitations",
+        "chest discomfort",
+        "high blood pressure",
+        "leg swelling"
+      ],
+      "translated_example_inputs": [
+        "çarpıntı",
+        "göğüs rahatsızlığı",
+        "yüksek tansiyon",
+        "bacak şişliği"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_example_inputs": [
+        "kidney pain",
+        "urinary infection",
+        "blood in urine",
+        "dialysis"
+      ],
+      "translated_example_inputs": [
+        "böbrek ağrısı",
+        "idrar yolu enfeksiyonu",
+        "idrarda kan",
+        "diyaliz"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_example_inputs": [
+        "cough",
+        "shortness of breath",
+        "asthma",
+        "sleep apnea"
+      ],
+      "translated_example_inputs": [
+        "öksürük",
+        "nefes darlığı",
+        "astım",
+        "uyku apnesi"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_example_inputs": [
+        "fertility issue",
+        "testosterone",
+        "erectile dysfunction"
+      ],
+      "translated_example_inputs": [
+        "kısırlık sorunu",
+        "testosteron",
+        "erektil disfonksiyon"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_example_inputs": [
+        "anxiety",
+        "depression",
+        "stress",
+        "therapy"
+      ],
+      "translated_example_inputs": [
+        "anksiyete",
+        "depresyon",
+        "stres",
+        "psikoterapi"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_example_inputs": [
+        "chronic pain",
+        "rehab",
+        "mobility issue",
+        "back rehabilitation"
+      ],
+      "translated_example_inputs": [
+        "kronik ağrı",
+        "rehabilitasyon",
+        "hareket kısıtlılığı",
+        "bel rehabilitasyonu"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_example_inputs": [
+        "blood test",
+        "health checkup",
+        "xray",
+        "mri",
+        "screening"
+      ],
+      "translated_example_inputs": [
+        "kan tahlili",
+        "check-up",
+        "röntgen",
+        "MR",
+        "tarama"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_example_inputs": [
+        "acne",
+        "rash",
+        "hair loss",
+        "mole check"
+      ],
+      "translated_example_inputs": [
+        "akne",
+        "döküntü",
+        "saç dökülmesi",
+        "ben kontrolü"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_example_inputs": [
+        "tooth pain",
+        "braces",
+        "implants",
+        "root canal"
+      ],
+      "translated_example_inputs": [
+        "diş ağrısı",
+        "diş teli",
+        "implant",
+        "kanal tedavisi"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_example_inputs": [
+        "pregnancy",
+        "ivf",
+        "fertility",
+        "pelvic pain",
+        "period issues"
+      ],
+      "translated_example_inputs": [
+        "gebelik",
+        "tüp bebek",
+        "kısırlık",
+        "pelvik ağrı",
+        "adet düzensizliği"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_example_inputs": [
+        "cancer treatment",
+        "tumor",
+        "chemotherapy",
+        "radiation"
+      ],
+      "translated_example_inputs": [
+        "kanser tedavisi",
+        "tümör",
+        "kemoterapi",
+        "radyasyon"
+      ]
+    }
+  ],
+  "ui_strings": [
+    {
+      "key": "my_reviews_empty_subtitle",
+      "english_label": "Be the first to share an experience and help others.",
+      "translated_label": "Deneyimini ilk paylaşan kişi olun ve başkalarına yardımcı olun."
+    }
+  ]
+}

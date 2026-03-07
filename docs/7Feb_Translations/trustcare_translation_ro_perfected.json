@@ -1,0 +1,2118 @@
+{
+  "meta": {
+    "project": "TrustCare",
+    "version": "taxonomy-v2.1-locale-template",
+    "locale": "ro",
+    "source": "trustcare_translation_source_master.json",
+    "generated_by": "OpenAI",
+    "rules": [
+      "Do not change canonical_id, entity_type, or key values.",
+      "Fill translated_label for every entry.",
+      "Translate aliases/example inputs naturally; keep arrays non-empty when English source has values.",
+      "If there is no natural alias, you may leave translated_aliases as an empty array.",
+      "Do not leave translated_label blank."
+    ]
+  },
+  "taxonomy_labels": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ADDICTION_MEDICINE",
+      "english_label": "Addiction Medicine",
+      "translated_label": "Medicina Dependențelor"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AESTHETIC_MEDICINE",
+      "english_label": "Aesthetic Medicine",
+      "translated_label": "Medicină Estetică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_label": "Allergy & Immunology",
+      "translated_label": "Alergologie și Imunologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANDROLOGY",
+      "english_label": "Andrology",
+      "translated_label": "Andrologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_label": "Anesthesiology",
+      "translated_label": "Anestezie și Terapie Intensivă"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AUDIOLOGY",
+      "english_label": "Audiology",
+      "translated_label": "Audiologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Chirurgie Bariatrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BREAST_SURGERY",
+      "english_label": "Breast Surgery",
+      "translated_label": "Chirurgie mamară"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOLOGY",
+      "english_label": "Cardiology",
+      "translated_label": "Cardiologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOVASCULAR_SURGERY",
+      "english_label": "Cardiovascular Surgery",
+      "translated_label": "Chirurgie Cardiovasculară"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+      "english_label": "Child & Adolescent Psychiatry",
+      "translated_label": "Psihiatrie Pediatrică și a Adolescentului"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHIROPRACTIC",
+      "english_label": "Chiropractic",
+      "translated_label": "Chiropractică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_label": "Clinical Genetics",
+      "translated_label": "Genetică Clinică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_label": "Colorectal Surgery",
+      "translated_label": "Chirurgie Colorectală"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_label": "Critical Care / Intensive Care",
+      "translated_label": "Medicină critică / terapie intensivă"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DERMATOLOGY",
+      "english_label": "Dermatology",
+      "translated_label": "Dermatologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_EMERGENCY_MEDICINE",
+      "english_label": "Emergency Medicine",
+      "translated_label": "Medicină de Urgență"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDOCRINOLOGY",
+      "english_label": "Endocrinology",
+      "translated_label": "Endocrinologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDODONTICS",
+      "english_label": "Endodontics",
+      "translated_label": "Endodonție"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_label": "ENT / Otolaryngology",
+      "translated_label": "ORL / Otorinolaringologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_label": "Family Medicine",
+      "translated_label": "Medicină de Familie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GASTROENTEROLOGY",
+      "english_label": "Gastroenterology",
+      "translated_label": "Gastroenterologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_label": "General Dentistry",
+      "translated_label": "Stomatologie Generală"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_label": "General Practice",
+      "translated_label": "Medicină generală"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_SURGERY",
+      "english_label": "General Surgery",
+      "translated_label": "Chirurgie Generală"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENETICS_GENOMICS",
+      "english_label": "Genetics & Genomics",
+      "translated_label": "Genetică și Genomică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRIC_PSYCHIATRY",
+      "english_label": "Geriatric Psychiatry",
+      "translated_label": "Psihiatrie Geriatrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRICS",
+      "english_label": "Geriatrics",
+      "translated_label": "Geriatrie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEAD_NECK_SURGERY",
+      "english_label": "Head & Neck Surgery",
+      "translated_label": "Chirurgia Capului și Gâtului"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEMATOLOGY",
+      "english_label": "Hematology",
+      "translated_label": "Hematologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_label": "Hepatology",
+      "translated_label": "Hepatologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INFECTIOUS_DISEASE",
+      "english_label": "Infectious Disease",
+      "translated_label": "Boli Infecțioase"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_label": "Internal Medicine",
+      "translated_label": "Medicină Internă"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERVENTIONAL_RADIOLOGY",
+      "english_label": "Interventional Radiology",
+      "translated_label": "Radiologie Intervențională"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_MATERNAL_FETAL_MEDICINE",
+      "english_label": "Maternal-Fetal Medicine",
+      "translated_label": "Medicină Materno-Fetală / Perinatologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEONATOLOGY",
+      "english_label": "Neonatology",
+      "translated_label": "Neonatologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEPHROLOGY",
+      "english_label": "Nephrology",
+      "translated_label": "Nefrologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROLOGY",
+      "english_label": "Neurology",
+      "translated_label": "Neurologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROPSYCHOLOGY",
+      "english_label": "Neuropsychology",
+      "translated_label": "Neuropsihologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROSURGERY",
+      "english_label": "Neurosurgery",
+      "translated_label": "Neurochirurgie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUCLEAR_MEDICINE",
+      "english_label": "Nuclear Medicine",
+      "translated_label": "Medicină Nucleară"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUTRITION_DIETETICS",
+      "english_label": "Nutrition & Dietetics",
+      "translated_label": "Nutriție și Dietetică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_label": "Obstetrics & Gynecology",
+      "translated_label": "Ginecologie și Obstetrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OCCUPATIONAL_THERAPY",
+      "english_label": "Occupational Therapy",
+      "translated_label": "Terapie Ocupațională"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ONCOLOGY",
+      "english_label": "Oncology",
+      "translated_label": "Oncologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPHTHALMOLOGY",
+      "english_label": "Ophthalmology",
+      "translated_label": "Oftalmologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPTOMETRY",
+      "english_label": "Optometry",
+      "translated_label": "Optometrie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_label": "Oral & Maxillofacial Surgery",
+      "translated_label": "Chirurgie Orală și Maxilo-Facială"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_SURGERY",
+      "english_label": "Oral Surgery",
+      "translated_label": "Chirurgie Orală"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHODONTICS",
+      "english_label": "Orthodontics",
+      "translated_label": "Ortodonție"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHOPEDIC_SURGERY",
+      "english_label": "Orthopedic Surgery",
+      "translated_label": "Chirurgie ortopedică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OSTEOPATHY",
+      "english_label": "Osteopathy",
+      "translated_label": "Osteopatie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PAIN_MANAGEMENT",
+      "english_label": "Pain Management",
+      "translated_label": "Medicina durerii"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PALLIATIVE_CARE",
+      "english_label": "Palliative Care",
+      "translated_label": "Îngrijiri Paliative"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PATHOLOGY",
+      "english_label": "Pathology",
+      "translated_label": "Anatomie Patologică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_DENTISTRY",
+      "english_label": "Pediatric Dentistry",
+      "translated_label": "Stomatologie Pediatrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_OPHTHALMOLOGY",
+      "english_label": "Pediatric Ophthalmology",
+      "translated_label": "Oftalmologie Pediatrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_SURGERY",
+      "english_label": "Pediatric Surgery",
+      "translated_label": "Chirurgie Pediatrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_UROLOGY",
+      "english_label": "Pediatric Urology",
+      "translated_label": "Urologie Pediatrică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRICS",
+      "english_label": "Pediatrics",
+      "translated_label": "Pediatrie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PERIODONTICS",
+      "english_label": "Periodontics",
+      "translated_label": "Parodontologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_label": "Physical Medicine & Rehab",
+      "translated_label": "Medicină fizică și de reabilitare"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_label": "Physical Therapy / Physiotherapy",
+      "translated_label": "Fizioterapie / kinetoterapie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+      "english_label": "Plastic & Reconstructive Surgery",
+      "translated_label": "Chirurgie Plastică și Reconstructivă"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PODIATRY",
+      "english_label": "Podiatry",
+      "translated_label": "Podologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PROSTHODONTICS",
+      "english_label": "Prosthodontics",
+      "translated_label": "Protetică Dentară"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_label": "Psychiatry",
+      "translated_label": "Psihiatrie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_label": "Psychology / Therapy",
+      "translated_label": "Psihologie / Psihoterapie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PULMONOLOGY",
+      "english_label": "Pulmonology",
+      "translated_label": "Pneumologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RADIOLOGY",
+      "english_label": "Radiology",
+      "translated_label": "Radiologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_label": "Reproductive Endocrinology / IVF",
+      "translated_label": "Endocrinologie reproductivă / FIV"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_label": "Retina Specialist",
+      "translated_label": "Retinologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHEUMATOLOGY",
+      "english_label": "Rheumatology",
+      "translated_label": "Reumatologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_label": "Rhinology",
+      "translated_label": "Rinologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SLEEP_MEDICINE",
+      "english_label": "Sleep Medicine",
+      "translated_label": "Medicina Somnului"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPEECH_THERAPY",
+      "english_label": "Speech Therapy",
+      "translated_label": "Logopedie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_label": "Sports Medicine",
+      "translated_label": "Medicină Sportivă"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_THORACIC_SURGERY",
+      "english_label": "Thoracic Surgery",
+      "translated_label": "Chirurgie Toracică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRANSPLANT_SURGERY",
+      "english_label": "Transplant Surgery",
+      "translated_label": "Chirurgie de Transplant"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRAUMA_SURGERY",
+      "english_label": "Trauma Surgery",
+      "translated_label": "Chirurgie Traumatologică"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_label": "Urogynecology",
+      "translated_label": "Uroginecologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROLOGY",
+      "english_label": "Urology",
+      "translated_label": "Urologie"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_VASCULAR_SURGERY",
+      "english_label": "Vascular Surgery",
+      "translated_label": "Chirurgie Vasculară"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_WOUND_CARE",
+      "english_label": "Wound Care",
+      "translated_label": "Îngrijirea Plăgilor"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_label": "Acupuncture",
+      "translated_label": "Acupunctură"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_label": "Allergy Testing",
+      "translated_label": "Testare alergologică"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Chirurgie Bariatrică"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_label": "Blood Tests / Lab Work",
+      "translated_label": "Analize de sânge / investigații de laborator"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_label": "Botox & Fillers",
+      "translated_label": "Botox și fillere"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_label": "Breast Augmentation / Reduction",
+      "translated_label": "Augmentare / reducere mamară"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_label": "Cataract Surgery",
+      "translated_label": "Operație de Cataractă"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_label": "Chemical Peels & Microneedling",
+      "translated_label": "Peeling Chimic și Microneedling"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_label": "Chemotherapy",
+      "translated_label": "Chimioterapie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COLOSCOPY",
+      "english_label": "Colonoscopy",
+      "translated_label": "Colonoscopie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_label": "Cosmetic Dentistry",
+      "translated_label": "Stomatologie Estetică"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_label": "CT Scan",
+      "translated_label": "Tomografie Computerizată (CT)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_label": "Dental Aesthetics (Smile Design)",
+      "translated_label": "Estetică Dentară (Smile Design)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_label": "Dental Implants",
+      "translated_label": "Implanturi Dentare"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DIALYSIS",
+      "english_label": "Dialysis",
+      "translated_label": "Dializă"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ENDOSCOPY",
+      "english_label": "Endoscopy",
+      "translated_label": "Endoscopie / Gastroscopie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_label": "Eyelid Surgery",
+      "translated_label": "Blefaroplastie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_label": "Facelift & Neck Lift",
+      "translated_label": "Lifting Facial și Cervical"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_label": "Fertility Treatment / IVF",
+      "translated_label": "Tratament de Fertilitate / FIV"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_label": "Hair Transplant",
+      "translated_label": "Transplant de Păr"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_label": "Health Check-up / Preventive Screening",
+      "translated_label": "Control medical / screening preventiv"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HIP_REPLACEMENT",
+      "english_label": "Hip Replacement",
+      "translated_label": "Proteză de Șold"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_label": "Homeopathy",
+      "translated_label": "Homeopatie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_KNEE_REPLACEMENT",
+      "english_label": "Knee Replacement",
+      "translated_label": "Proteză de Genunchi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_label": "Laser Treatments",
+      "translated_label": "Tratamente Laser"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_label": "LASIK / Refractive Surgery",
+      "translated_label": "LASIK / Chirurgie Refractivă"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_label": "Lip Enhancement",
+      "translated_label": "Mărire de Buze"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_label": "Liposuction & Body Contouring",
+      "translated_label": "Liposucție și Modelare Corporală"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_label": "Mammography",
+      "translated_label": "Mamografie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_label": "MRI",
+      "translated_label": "RMN / Imagistică prin Rezonanță Magnetică"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_label": "Naturopathy",
+      "translated_label": "Naturopatie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_label": "Orthodontics / Clear Aligners",
+      "translated_label": "Ortodonție / Gutiere Transparente"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_label": "Psychotherapy / Counseling",
+      "translated_label": "Psihoterapie / Consiliere Psihologică"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_label": "Radiotherapy",
+      "translated_label": "Radioterapie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_label": "Rehabilitation / Physiotherapy",
+      "translated_label": "Recuperare Medicală / Kinetoterapie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_label": "Rhinoplasty",
+      "translated_label": "Rinoplastie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_label": "Root Canal Treatment",
+      "translated_label": "Tratament de Canal Radicular"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SKIN_CANCER_SCREENING",
+      "english_label": "Skin Cancer Screening",
+      "translated_label": "Screening Cancer de Piele / Dermatoscopie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_label": "Skin Rejuvenation / PRP",
+      "translated_label": "Rejuvenare Cutanată / PRP"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_label": "Tattoo Removal",
+      "translated_label": "Eliminare Tatuaje"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_label": "Teeth Whitening",
+      "translated_label": "Albire Dentară"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_label": "Traditional Chinese Medicine",
+      "translated_label": "Medicină Tradițională Chineză"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_label": "Tummy Tuck",
+      "translated_label": "Abdominoplastie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_label": "Ultrasound",
+      "translated_label": "Ecografie"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_label": "Vaccination / Immunization",
+      "translated_label": "Vaccinare"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VARICOSE_VEIN_TREATMENT",
+      "english_label": "Varicose Vein Treatment",
+      "translated_label": "Tratamentul Varicelor"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_label": "X-ray",
+      "translated_label": "Radiografie"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_AESTHETIC_COSMETIC_CLINIC",
+      "english_label": "Aesthetic / Cosmetic Clinic",
+      "translated_label": "Clinică de medicină estetică"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_label": "Clinic / Medical Center",
+      "translated_label": "Clinică / Centru Medical"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DENTAL_CLINIC",
+      "english_label": "Dental Clinic",
+      "translated_label": "Clinică stomatologică"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DIALYSIS_CENTER",
+      "english_label": "Dialysis Center",
+      "translated_label": "Centru de Dializă"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_label": "Eye Clinic",
+      "translated_label": "Clinică Oftalmologică"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_FERTILITY_IVF_CLINIC",
+      "english_label": "Fertility / IVF Clinic",
+      "translated_label": "Clinică de Fertilitate / FIV"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_label": "Hospital (General)",
+      "translated_label": "Spital general"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_IMAGING_DIAGNOSTIC_CENTER",
+      "english_label": "Imaging / Diagnostic Center",
+      "translated_label": "Centru de Imagistică Medicală"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_label": "Laboratory / Blood Tests",
+      "translated_label": "Laborator de Analize Medicale"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MATERNITY_WOMENS_HEALTH_CLINIC",
+      "english_label": "Maternity / Women's Health Clinic",
+      "translated_label": "Maternitate / Clinică de Sănătate a Femeii"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MENTAL_HEALTH_CLINIC",
+      "english_label": "Mental Health Clinic",
+      "translated_label": "Clinică de sănătate mintală"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_ONCOLOGY_CENTER",
+      "english_label": "Oncology Center",
+      "translated_label": "Centru Oncologic"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PEDIATRIC_CLINIC",
+      "english_label": "Pediatric Clinic",
+      "translated_label": "Clinică pediatrică"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_label": "Pharmacy",
+      "translated_label": "Farmacie"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER",
+      "english_label": "Rehabilitation / Physiotherapy Center",
+      "translated_label": "Centru de recuperare medicală / fiziokinetoterapie"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SPECIALTY_CLINIC",
+      "english_label": "Specialty Clinic",
+      "translated_label": "Clinică de specialitate"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SURGERY_CENTER_DAY_SURGERY",
+      "english_label": "Surgery Center / Day Surgery Center",
+      "translated_label": "Centru Chirurgical / Chirurgie de Zi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_label": "Telehealth / Virtual Care",
+      "translated_label": "Telemedicină / Consultație Online"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_label": "Urgent Care / Walk-in Clinic",
+      "translated_label": "Centru de îngrijiri urgente / clinică fără programare"
+    }
+  ],
+  "taxonomy_aliases": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_aliases": [
+        "Allergist",
+        "Immunology"
+      ],
+      "translated_aliases": [
+        "Alergolog",
+        "Imunologie"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_aliases": [
+        "Anaesthesiology",
+        "Anesthesia"
+      ],
+      "translated_aliases": [
+        "Anestezie",
+        "ATI"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_aliases": [
+        "Genetic medicine",
+        "Genetics clinic"
+      ],
+      "translated_aliases": [
+        "Medicină genetică",
+        "Consiliere genetică"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_aliases": [
+        "Colon surgery",
+        "Rectal surgery"
+      ],
+      "translated_aliases": [
+        "Chirurgie de colon",
+        "Chirurgie rectală"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_aliases": [
+        "ICU",
+        "Intensive care"
+      ],
+      "translated_aliases": [
+        "ATI",
+        "Terapie intensivă"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_aliases": [
+        "ENT",
+        "Ear nose throat",
+        "Otolaryngology"
+      ],
+      "translated_aliases": [
+        "ORL",
+        "Otorinolaringolog",
+        "Urechi nas gât"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_aliases": [
+        "Family doctor",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "Medic de familie",
+        "Medicină primară"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_aliases": [
+        "Dentist",
+        "General dentist"
+      ],
+      "translated_aliases": [
+        "stomatolog",
+        "dentist generalist"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_aliases": [
+        "GP",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "medic generalist",
+        "asistență medicală primară"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_aliases": [
+        "Liver specialist"
+      ],
+      "translated_aliases": [
+        "Specialist boli hepatice"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_aliases": [
+        "Internist"
+      ],
+      "translated_aliases": [
+        "Internist",
+        "Medic internist"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_aliases": [
+        "OB-GYN",
+        "Gynecology",
+        "Obstetrics"
+      ],
+      "translated_aliases": [
+        "Ginecolog",
+        "Ginecologie",
+        "Obstetrică"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_aliases": [
+        "Jaw surgery",
+        "Maxillofacial surgery"
+      ],
+      "translated_aliases": [
+        "Chirurgie maxilo-facială",
+        "Chirurgie de maxilar"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_aliases": [
+        "PM&R",
+        "Physical medicine and rehabilitation"
+      ],
+      "translated_aliases": [
+        "Recuperare medicală",
+        "Medicină fizică"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Physical therapy",
+        "Physiotherapy",
+        "Physio"
+      ],
+      "translated_aliases": [
+        "fizioterapeut",
+        "kinetoterapeut"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_aliases": [
+        "Psychiatrist"
+      ],
+      "translated_aliases": [
+        "Psihiatru"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_aliases": [
+        "Psychology",
+        "Therapy",
+        "Psychotherapist",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "Psihologie",
+        "Terapie",
+        "Psihoterapeut",
+        "Consiliere psihologică"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_aliases": [
+        "IVF specialist",
+        "Fertility specialist",
+        "Reproductive endocrinology"
+      ],
+      "translated_aliases": [
+        "Specialist FIV",
+        "Specialist fertilitate",
+        "Endocrinologie reproductivă"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_aliases": [
+        "Retina",
+        "Retinal specialist"
+      ],
+      "translated_aliases": [
+        "retină",
+        "specialist în retină"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_aliases": [
+        "Sinus specialist",
+        "Nasal specialist"
+      ],
+      "translated_aliases": [
+        "sinusuri",
+        "specialist ORL pentru nas și sinusuri"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_aliases": [
+        "Sports injury"
+      ],
+      "translated_aliases": [
+        "Traumatism sportiv"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_aliases": [
+        "Pelvic floor specialist"
+      ],
+      "translated_aliases": [
+        "Specialist planșeu pelvin"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_aliases": [
+        "Acupuncture treatment"
+      ],
+      "translated_aliases": [
+        "Tratament prin acupunctură"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_aliases": [
+        "Allergy test"
+      ],
+      "translated_aliases": [
+        "test de alergie",
+        "prick test"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_aliases": [
+        "Weight loss surgery"
+      ],
+      "translated_aliases": [
+        "Operație de slăbire",
+        "Sleeve gastric"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_aliases": [
+        "Blood test",
+        "Lab work",
+        "Lab tests"
+      ],
+      "translated_aliases": [
+        "Analiză de sânge",
+        "Hemoleucogramă",
+        "Analize medicale"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_aliases": [
+        "Botox",
+        "Fillers",
+        "Injectables"
+      ],
+      "translated_aliases": [
+        "botox",
+        "fillere",
+        "injecții estetice"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_aliases": [
+        "Breast augmentation",
+        "Breast reduction"
+      ],
+      "translated_aliases": [
+        "Mărire de sân",
+        "Reducere de sân"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_aliases": [
+        "Cataract operation"
+      ],
+      "translated_aliases": [
+        "Operație cataractă"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_aliases": [
+        "Chemical peel",
+        "Microneedling"
+      ],
+      "translated_aliases": [
+        "Peeling chimic",
+        "Microneedling"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_aliases": [
+        "Chemo"
+      ],
+      "translated_aliases": [
+        "chimioterapie"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_aliases": [
+        "Cosmetic dentist",
+        "Smile makeover"
+      ],
+      "translated_aliases": [
+        "Stomatolog estetic",
+        "Smile design"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_aliases": [
+        "CAT scan"
+      ],
+      "translated_aliases": [
+        "CT",
+        "tomografie computerizată"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_aliases": [
+        "Smile design",
+        "Dental aesthetics"
+      ],
+      "translated_aliases": [
+        "Smile design",
+        "Estetică dentară"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_aliases": [
+        "Tooth implants"
+      ],
+      "translated_aliases": [
+        "Implanturi dentare"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_aliases": [
+        "Blepharoplasty"
+      ],
+      "translated_aliases": [
+        "Blefaroplastie",
+        "Operație pleoape"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_aliases": [
+        "Facelift",
+        "Neck lift"
+      ],
+      "translated_aliases": [
+        "Lifting facial",
+        "Lifting cervical"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_aliases": [
+        "IVF",
+        "Fertility treatment"
+      ],
+      "translated_aliases": [
+        "FIV",
+        "Fertilizare in vitro"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_aliases": [
+        "Hair restoration"
+      ],
+      "translated_aliases": [
+        "Implant de păr"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_aliases": [
+        "Check-up",
+        "Health screening",
+        "Preventive screening"
+      ],
+      "translated_aliases": [
+        "control medical",
+        "screening medical",
+        "investigații preventive"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_aliases": [
+        "Homeopathic care"
+      ],
+      "translated_aliases": [
+        "Tratament homeopatic"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_aliases": [
+        "Laser treatment",
+        "Laser therapy"
+      ],
+      "translated_aliases": [
+        "Tratament laser",
+        "Terapie laser"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_aliases": [
+        "LASIK",
+        "Refractive surgery"
+      ],
+      "translated_aliases": [
+        "LASIK",
+        "Chirurgie refractivă"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_aliases": [
+        "Lip filler",
+        "Lip augmentation"
+      ],
+      "translated_aliases": [
+        "Filler buze",
+        "Mărire buze"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_aliases": [
+        "Liposuction",
+        "Body contouring"
+      ],
+      "translated_aliases": [
+        "Liposucție",
+        "Modelare corporală"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_aliases": [
+        "Mammogram"
+      ],
+      "translated_aliases": [
+        "Mamogramă"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_aliases": [
+        "Magnetic resonance imaging"
+      ],
+      "translated_aliases": [
+        "RMN",
+        "Rezonanță magnetică"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_aliases": [
+        "Naturopathic care"
+      ],
+      "translated_aliases": [
+        "Medicină naturistă"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_aliases": [
+        "Braces",
+        "Aligners",
+        "Invisalign"
+      ],
+      "translated_aliases": [
+        "Aparat dentar",
+        "Gutiere",
+        "Invisalign"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_aliases": [
+        "Therapy",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "Terapie psihologică",
+        "Consiliere"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_aliases": [
+        "Radiation therapy"
+      ],
+      "translated_aliases": [
+        "Radioterapie",
+        "Iradiere"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Rehab",
+        "Physiotherapy",
+        "Physical therapy"
+      ],
+      "translated_aliases": [
+        "Recuperare",
+        "Kinetoterapie",
+        "Fizioterapie"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_aliases": [
+        "Nose job",
+        "Nose surgery"
+      ],
+      "translated_aliases": [
+        "Operație nas",
+        "Chirurgie estetică nas"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_aliases": [
+        "Root canal"
+      ],
+      "translated_aliases": [
+        "Tratament de canal",
+        "Devitalizare"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_aliases": [
+        "PRP",
+        "Skin rejuvenation"
+      ],
+      "translated_aliases": [
+        "PRP",
+        "Rejuvenare cutanată"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_aliases": [
+        "Laser tattoo removal"
+      ],
+      "translated_aliases": [
+        "Eliminare tatuaj laser"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_aliases": [
+        "Tooth whitening"
+      ],
+      "translated_aliases": [
+        "Albire dentară"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_aliases": [
+        "TCM",
+        "Chinese medicine"
+      ],
+      "translated_aliases": [
+        "MTC",
+        "Medicină chineză"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_aliases": [
+        "Abdominoplasty"
+      ],
+      "translated_aliases": [
+        "Abdominoplastie"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_aliases": [
+        "Sonography"
+      ],
+      "translated_aliases": [
+        "Eco",
+        "Ecografie"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_aliases": [
+        "Vaccination",
+        "Immunization",
+        "Vaccine"
+      ],
+      "translated_aliases": [
+        "Vaccin",
+        "Vaccinare"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_aliases": [
+        "Xray"
+      ],
+      "translated_aliases": [
+        "Radiografie",
+        "Rx"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_aliases": [
+        "Medical center",
+        "Clinic"
+      ],
+      "translated_aliases": [
+        "Centru medical",
+        "Clinică privată"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_aliases": [
+        "Ophthalmology clinic"
+      ],
+      "translated_aliases": [
+        "Clinică oftalmologică"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_aliases": [
+        "Hospital"
+      ],
+      "translated_aliases": [
+        "spital",
+        "spital general"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_aliases": [
+        "Lab",
+        "Laboratory",
+        "Blood test center"
+      ],
+      "translated_aliases": [
+        "Laborator",
+        "Punct de recoltare",
+        "Analize medicale"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_aliases": [
+        "Drugstore"
+      ],
+      "translated_aliases": [
+        "Farmacie"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_aliases": [
+        "Online consultation",
+        "Virtual consultation"
+      ],
+      "translated_aliases": [
+        "Consultație online",
+        "Telemedicină"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_aliases": [
+        "Walk-in clinic",
+        "Urgent care"
+      ],
+      "translated_aliases": [
+        "îngrijiri urgente",
+        "consultație fără programare"
+      ]
+    }
+  ],
+  "concern_labels": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_label": "Aesthetic & Cosmetic Care",
+      "translated_label": "Estetică și Medicină Cosmetică"
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_label": "Bones, Joints, Muscles & Sports Injuries",
+      "translated_label": "Oase, Articulații, Mușchi și Traumatisme Sportive"
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_label": "Children's Health",
+      "translated_label": "Sănătatea Copilului"
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_label": "Digestion & Liver",
+      "translated_label": "Digestie și Ficat"
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_label": "Ears, Nose & Throat",
+      "translated_label": "Urechi, Nas și Gât"
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_label": "Emergency & Urgent Symptoms",
+      "translated_label": "Urgențe și Simptome Grave"
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_label": "Eyes & Vision",
+      "translated_label": "Ochi și Vedere"
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_label": "Head, Brain & Nerves",
+      "translated_label": "Cap, Creier și Sistem Nervos"
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_label": "Heart & Circulation",
+      "translated_label": "Inimă și Circulație"
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_label": "Kidneys, Bladder & Urinary Health",
+      "translated_label": "Rinichi, Vezică și Căi Urinare"
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_label": "Lungs & Breathing",
+      "translated_label": "Plămâni și Respirație"
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_label": "Men's Health",
+      "translated_label": "Sănătatea Bărbaților"
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_label": "Mental Health & Well-being",
+      "translated_label": "Sănătate mintală și stare de bine"
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_label": "Pain, Rehabilitation & Mobility",
+      "translated_label": "Durere, Recuperare și Mobilitate"
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_label": "Preventive Checks, Tests & Imaging",
+      "translated_label": "Analize Preventive, Teste și Imagistică"
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_label": "Skin, Hair & Nails",
+      "translated_label": "Piele, Păr și Unghii"
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_label": "Teeth, Jaw & Mouth",
+      "translated_label": "Dinți, Maxilar și Gură"
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_label": "Women's Health, Pregnancy & Fertility",
+      "translated_label": "Sănătatea Femeii, Sarcină și Fertilitate"
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_label": "Cancer & Tumor Care",
+      "translated_label": "Cancer și îngrijire oncologică"
+    }
+  ],
+  "concern_example_inputs": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_example_inputs": [
+        "botox",
+        "fillers",
+        "nose job",
+        "hair loss",
+        "skin rejuvenation"
+      ],
+      "translated_example_inputs": [
+        "botox",
+        "filler",
+        "rinoplastie",
+        "căderea părului",
+        "rejuvenare cutanată"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_example_inputs": [
+        "knee pain",
+        "back pain",
+        "shoulder injury",
+        "sports injury"
+      ],
+      "translated_example_inputs": [
+        "durere de genunchi",
+        "durere de spate",
+        "traumatism umăr",
+        "traumatism sportiv"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_example_inputs": [
+        "child fever",
+        "newborn issue",
+        "pediatric checkup"
+      ],
+      "translated_example_inputs": [
+        "febră la copil",
+        "probleme la nou-născut",
+        "control pediatric"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_example_inputs": [
+        "stomach pain",
+        "acid reflux",
+        "liver problem"
+      ],
+      "translated_example_inputs": [
+        "durere de stomac",
+        "reflux gastric",
+        "problemă la ficat"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_example_inputs": [
+        "sinus pain",
+        "ear infection",
+        "tonsils",
+        "hearing issue"
+      ],
+      "translated_example_inputs": [
+        "sinuzită",
+        "otită",
+        "amigdale",
+        "probleme de auz"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_example_inputs": [
+        "chest pain",
+        "severe bleeding",
+        "shortness of breath",
+        "sudden weakness"
+      ],
+      "translated_example_inputs": [
+        "durere în piept",
+        "hemoragie severă",
+        "dificultăți de respirație",
+        "slăbiciune bruscă"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_example_inputs": [
+        "blurred vision",
+        "cataract",
+        "retina issue",
+        "eye pain"
+      ],
+      "translated_example_inputs": [
+        "vedere încetoșată",
+        "cataractă",
+        "problemă de retină",
+        "durere la ochi"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_example_inputs": [
+        "headache",
+        "migraine",
+        "dizziness",
+        "numbness"
+      ],
+      "translated_example_inputs": [
+        "durere de cap",
+        "migrenă",
+        "amețeli",
+        "amorțeală"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_example_inputs": [
+        "palpitations",
+        "chest discomfort",
+        "high blood pressure",
+        "leg swelling"
+      ],
+      "translated_example_inputs": [
+        "palpitații",
+        "presiune în piept",
+        "tensiune arterială mare",
+        "picioare umflate"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_example_inputs": [
+        "kidney pain",
+        "urinary infection",
+        "blood in urine",
+        "dialysis"
+      ],
+      "translated_example_inputs": [
+        "durere de rinichi",
+        "infecție urinară",
+        "sânge în urină",
+        "dializă"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_example_inputs": [
+        "cough",
+        "shortness of breath",
+        "asthma",
+        "sleep apnea"
+      ],
+      "translated_example_inputs": [
+        "tuse",
+        "dificultăți de respirație",
+        "astm",
+        "apnee de somn"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_example_inputs": [
+        "fertility issue",
+        "testosterone",
+        "erectile dysfunction"
+      ],
+      "translated_example_inputs": [
+        "problemă de fertilitate",
+        "testosteron",
+        "disfuncție erectilă"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_example_inputs": [
+        "anxiety",
+        "depression",
+        "stress",
+        "therapy"
+      ],
+      "translated_example_inputs": [
+        "anxietate",
+        "depresie",
+        "stres",
+        "terapie"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_example_inputs": [
+        "chronic pain",
+        "rehab",
+        "mobility issue",
+        "back rehabilitation"
+      ],
+      "translated_example_inputs": [
+        "durere cronică",
+        "recuperare medicală",
+        "probleme de mobilitate",
+        "recuperare pentru spate"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_example_inputs": [
+        "blood test",
+        "health checkup",
+        "xray",
+        "mri",
+        "screening"
+      ],
+      "translated_example_inputs": [
+        "analize de sânge",
+        "control medical",
+        "radiografie",
+        "RMN",
+        "screening"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_example_inputs": [
+        "acne",
+        "rash",
+        "hair loss",
+        "mole check"
+      ],
+      "translated_example_inputs": [
+        "acnee",
+        "erupție cutanată",
+        "căderea părului",
+        "control pentru alunițe"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_example_inputs": [
+        "tooth pain",
+        "braces",
+        "implants",
+        "root canal"
+      ],
+      "translated_example_inputs": [
+        "durere de dinți",
+        "aparat dentar",
+        "implanturi",
+        "tratament de canal"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_example_inputs": [
+        "pregnancy",
+        "ivf",
+        "fertility",
+        "pelvic pain",
+        "period issues"
+      ],
+      "translated_example_inputs": [
+        "sarcină",
+        "FIV",
+        "fertilitate",
+        "durere pelvină",
+        "probleme cu menstruația"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_example_inputs": [
+        "cancer treatment",
+        "tumor",
+        "chemotherapy",
+        "radiation"
+      ],
+      "translated_example_inputs": [
+        "tratament oncologic",
+        "tumoare",
+        "chimioterapie",
+        "radioterapie"
+      ]
+    }
+  ],
+  "ui_strings": [
+    {
+      "key": "my_reviews_empty_subtitle",
+      "english_label": "Be the first to share an experience and help others.",
+      "translated_label": "Fii printre primii care împărtășesc o experiență și îi ajută pe ceilalți."
+    }
+  ]
+}

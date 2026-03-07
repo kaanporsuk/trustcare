@@ -1,0 +1,2123 @@
+{
+  "meta": {
+    "project": "TrustCare",
+    "version": "taxonomy-v2.1-locale-template",
+    "locale": "it",
+    "source": "trustcare_translation_source_master.json",
+    "generated_by": "OpenAI",
+    "rules": [
+      "Do not change canonical_id, entity_type, or key values.",
+      "Fill translated_label for every entry.",
+      "Translate aliases/example inputs naturally; keep arrays non-empty when English source has values.",
+      "If there is no natural alias, you may leave translated_aliases as an empty array.",
+      "Do not leave translated_label blank."
+    ]
+  },
+  "taxonomy_labels": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ADDICTION_MEDICINE",
+      "english_label": "Addiction Medicine",
+      "translated_label": "Medicina delle Dipendenze"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AESTHETIC_MEDICINE",
+      "english_label": "Aesthetic Medicine",
+      "translated_label": "Medicina Estetica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_label": "Allergy & Immunology",
+      "translated_label": "Allergologia e Immunologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANDROLOGY",
+      "english_label": "Andrology",
+      "translated_label": "Andrologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_label": "Anesthesiology",
+      "translated_label": "Anestesiologia e Rianimazione"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AUDIOLOGY",
+      "english_label": "Audiology",
+      "translated_label": "Audiologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Chirurgia Bariatrica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BREAST_SURGERY",
+      "english_label": "Breast Surgery",
+      "translated_label": "Chirurgia della Mammella"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOLOGY",
+      "english_label": "Cardiology",
+      "translated_label": "Cardiologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOVASCULAR_SURGERY",
+      "english_label": "Cardiovascular Surgery",
+      "translated_label": "Chirurgia Cardiovascolare"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+      "english_label": "Child & Adolescent Psychiatry",
+      "translated_label": "Neuropsichiatria Infantile"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHIROPRACTIC",
+      "english_label": "Chiropractic",
+      "translated_label": "Chiropratica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_label": "Clinical Genetics",
+      "translated_label": "Genetica Clinica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_label": "Colorectal Surgery",
+      "translated_label": "Chirurgia Colorettale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_label": "Critical Care / Intensive Care",
+      "translated_label": "Terapia Intensiva / Rianimazione"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DERMATOLOGY",
+      "english_label": "Dermatology",
+      "translated_label": "Dermatologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_EMERGENCY_MEDICINE",
+      "english_label": "Emergency Medicine",
+      "translated_label": "Medicina d'Urgenza e Pronto Soccorso"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDOCRINOLOGY",
+      "english_label": "Endocrinology",
+      "translated_label": "Endocrinologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDODONTICS",
+      "english_label": "Endodontics",
+      "translated_label": "Endodonzia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_label": "ENT / Otolaryngology",
+      "translated_label": "Otorinolaringoiatria (ORL)"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_label": "Family Medicine",
+      "translated_label": "Medicina di famiglia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GASTROENTEROLOGY",
+      "english_label": "Gastroenterology",
+      "translated_label": "Gastroenterologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_label": "General Dentistry",
+      "translated_label": "Odontoiatria Generale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_label": "General Practice",
+      "translated_label": "Medicina generale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_SURGERY",
+      "english_label": "General Surgery",
+      "translated_label": "Chirurgia Generale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENETICS_GENOMICS",
+      "english_label": "Genetics & Genomics",
+      "translated_label": "Genetica e Genomica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRIC_PSYCHIATRY",
+      "english_label": "Geriatric Psychiatry",
+      "translated_label": "Psicogeriatria"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRICS",
+      "english_label": "Geriatrics",
+      "translated_label": "Geriatria"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEAD_NECK_SURGERY",
+      "english_label": "Head & Neck Surgery",
+      "translated_label": "Chirurgia della Testa e del Collo"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEMATOLOGY",
+      "english_label": "Hematology",
+      "translated_label": "Ematologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_label": "Hepatology",
+      "translated_label": "Epatologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INFECTIOUS_DISEASE",
+      "english_label": "Infectious Disease",
+      "translated_label": "Malattie Infettive"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_label": "Internal Medicine",
+      "translated_label": "Medicina Interna"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERVENTIONAL_RADIOLOGY",
+      "english_label": "Interventional Radiology",
+      "translated_label": "Radiologia Interventistica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_MATERNAL_FETAL_MEDICINE",
+      "english_label": "Maternal-Fetal Medicine",
+      "translated_label": "Medicina materno-fetale / perinatologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEONATOLOGY",
+      "english_label": "Neonatology",
+      "translated_label": "Neonatologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEPHROLOGY",
+      "english_label": "Nephrology",
+      "translated_label": "Nefrologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROLOGY",
+      "english_label": "Neurology",
+      "translated_label": "Neurologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROPSYCHOLOGY",
+      "english_label": "Neuropsychology",
+      "translated_label": "Neuropsicologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROSURGERY",
+      "english_label": "Neurosurgery",
+      "translated_label": "Neurochirurgia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUCLEAR_MEDICINE",
+      "english_label": "Nuclear Medicine",
+      "translated_label": "Medicina Nucleare"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUTRITION_DIETETICS",
+      "english_label": "Nutrition & Dietetics",
+      "translated_label": "Nutrizione e Dietetica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_label": "Obstetrics & Gynecology",
+      "translated_label": "Ginecologia e Ostetricia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OCCUPATIONAL_THERAPY",
+      "english_label": "Occupational Therapy",
+      "translated_label": "Terapia Occupazionale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ONCOLOGY",
+      "english_label": "Oncology",
+      "translated_label": "Oncologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPHTHALMOLOGY",
+      "english_label": "Ophthalmology",
+      "translated_label": "Oftalmologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPTOMETRY",
+      "english_label": "Optometry",
+      "translated_label": "Optometria"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_label": "Oral & Maxillofacial Surgery",
+      "translated_label": "Chirurgia Orale e Maxillo-Facciale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_SURGERY",
+      "english_label": "Oral Surgery",
+      "translated_label": "Chirurgia Orale"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHODONTICS",
+      "english_label": "Orthodontics",
+      "translated_label": "Ortodonzia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHOPEDIC_SURGERY",
+      "english_label": "Orthopedic Surgery",
+      "translated_label": "Ortopedia e Traumatologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OSTEOPATHY",
+      "english_label": "Osteopathy",
+      "translated_label": "Osteopatia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PAIN_MANAGEMENT",
+      "english_label": "Pain Management",
+      "translated_label": "Terapia del Dolore"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PALLIATIVE_CARE",
+      "english_label": "Palliative Care",
+      "translated_label": "Cure Palliative"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PATHOLOGY",
+      "english_label": "Pathology",
+      "translated_label": "Anatomia Patologica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_DENTISTRY",
+      "english_label": "Pediatric Dentistry",
+      "translated_label": "Odontoiatria Pediatrica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_OPHTHALMOLOGY",
+      "english_label": "Pediatric Ophthalmology",
+      "translated_label": "Oftalmologia pediatrica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_SURGERY",
+      "english_label": "Pediatric Surgery",
+      "translated_label": "Chirurgia Pediatrica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_UROLOGY",
+      "english_label": "Pediatric Urology",
+      "translated_label": "Urologia Pediatrica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRICS",
+      "english_label": "Pediatrics",
+      "translated_label": "Pediatria"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PERIODONTICS",
+      "english_label": "Periodontics",
+      "translated_label": "Parodontologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_label": "Physical Medicine & Rehab",
+      "translated_label": "Medicina fisica e riabilitativa"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_label": "Physical Therapy / Physiotherapy",
+      "translated_label": "Fisioterapia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+      "english_label": "Plastic & Reconstructive Surgery",
+      "translated_label": "Chirurgia Plastica e Ricostruttiva"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PODIATRY",
+      "english_label": "Podiatry",
+      "translated_label": "Podologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PROSTHODONTICS",
+      "english_label": "Prosthodontics",
+      "translated_label": "Protesi dentaria"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_label": "Psychiatry",
+      "translated_label": "Psichiatria"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_label": "Psychology / Therapy",
+      "translated_label": "Psicologia / Psicoterapia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PULMONOLOGY",
+      "english_label": "Pulmonology",
+      "translated_label": "Pneumologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RADIOLOGY",
+      "english_label": "Radiology",
+      "translated_label": "Radiologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_label": "Reproductive Endocrinology / IVF",
+      "translated_label": "Endocrinologia riproduttiva / PMA"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_label": "Retina Specialist",
+      "translated_label": "Retinologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHEUMATOLOGY",
+      "english_label": "Rheumatology",
+      "translated_label": "Reumatologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_label": "Rhinology",
+      "translated_label": "Rinologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SLEEP_MEDICINE",
+      "english_label": "Sleep Medicine",
+      "translated_label": "Medicina del Sonno"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPEECH_THERAPY",
+      "english_label": "Speech Therapy",
+      "translated_label": "Logopedia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_label": "Sports Medicine",
+      "translated_label": "Medicina dello Sport"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_THORACIC_SURGERY",
+      "english_label": "Thoracic Surgery",
+      "translated_label": "Chirurgia Toracica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRANSPLANT_SURGERY",
+      "english_label": "Transplant Surgery",
+      "translated_label": "Chirurgia dei Trapianti"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRAUMA_SURGERY",
+      "english_label": "Trauma Surgery",
+      "translated_label": "Chirurgia Traumatologica"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_label": "Urogynecology",
+      "translated_label": "Uroginecologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROLOGY",
+      "english_label": "Urology",
+      "translated_label": "Urologia"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_VASCULAR_SURGERY",
+      "english_label": "Vascular Surgery",
+      "translated_label": "Chirurgia Vascolare"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_WOUND_CARE",
+      "english_label": "Wound Care",
+      "translated_label": "Cura avanzata delle ferite"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_label": "Acupuncture",
+      "translated_label": "Agopuntura"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_label": "Allergy Testing",
+      "translated_label": "Test allergologici"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Chirurgia Bariatrica"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_label": "Blood Tests / Lab Work",
+      "translated_label": "Esami del Sangue / Analisi di Laboratorio"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_label": "Botox & Fillers",
+      "translated_label": "Botox e filler"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_label": "Breast Augmentation / Reduction",
+      "translated_label": "Aumento / Riduzione del Seno"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_label": "Cataract Surgery",
+      "translated_label": "Chirurgia della cataratta"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_label": "Chemical Peels & Microneedling",
+      "translated_label": "Peeling Chimico e Microneedling"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_label": "Chemotherapy",
+      "translated_label": "Chemioterapia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COLOSCOPY",
+      "english_label": "Colonoscopy",
+      "translated_label": "Colonscopia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_label": "Cosmetic Dentistry",
+      "translated_label": "Odontoiatria Estetica"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_label": "CT Scan",
+      "translated_label": "TAC / tomografia computerizzata"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_label": "Dental Aesthetics (Smile Design)",
+      "translated_label": "Estetica Dentale (Smile Design)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_label": "Dental Implants",
+      "translated_label": "Impianti Dentali"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DIALYSIS",
+      "english_label": "Dialysis",
+      "translated_label": "Dialisi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ENDOSCOPY",
+      "english_label": "Endoscopy",
+      "translated_label": "Endoscopia / Gastroscopia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_label": "Eyelid Surgery",
+      "translated_label": "Blefaroplastica"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_label": "Facelift & Neck Lift",
+      "translated_label": "Lifting del Viso e del Collo"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_label": "Fertility Treatment / IVF",
+      "translated_label": "Trattamento della fertilità / PMA"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_label": "Hair Transplant",
+      "translated_label": "Trapianto di capelli"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_label": "Health Check-up / Preventive Screening",
+      "translated_label": "Check-up Medico / Screening Preventivo"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HIP_REPLACEMENT",
+      "english_label": "Hip Replacement",
+      "translated_label": "Protesi d'Anca"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_label": "Homeopathy",
+      "translated_label": "Omeopatia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_KNEE_REPLACEMENT",
+      "english_label": "Knee Replacement",
+      "translated_label": "Protesi di ginocchio"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_label": "Laser Treatments",
+      "translated_label": "Trattamenti Laser"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_label": "LASIK / Refractive Surgery",
+      "translated_label": "LASIK / Chirurgia Refrattiva"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_label": "Lip Enhancement",
+      "translated_label": "Aumento delle Labbra"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_label": "Liposuction & Body Contouring",
+      "translated_label": "Liposuzione e Modellamento Corporeo"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_label": "Mammography",
+      "translated_label": "Mammografia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_label": "MRI",
+      "translated_label": "Risonanza magnetica (RM)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_label": "Naturopathy",
+      "translated_label": "Naturopatia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_label": "Orthodontics / Clear Aligners",
+      "translated_label": "Ortodonzia / allineatori trasparenti"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_label": "Psychotherapy / Counseling",
+      "translated_label": "Psicoterapia / Supporto Psicologico"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_label": "Radiotherapy",
+      "translated_label": "Radioterapia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_label": "Rehabilitation / Physiotherapy",
+      "translated_label": "Riabilitazione / Fisioterapia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_label": "Rhinoplasty",
+      "translated_label": "Rinoplastica"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_label": "Root Canal Treatment",
+      "translated_label": "Devitalizzazione / Terapia Canalare"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SKIN_CANCER_SCREENING",
+      "english_label": "Skin Cancer Screening",
+      "translated_label": "Screening del tumore cutaneo / mappatura dei nei"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_label": "Skin Rejuvenation / PRP",
+      "translated_label": "Ringiovanimento Cutaneo / PRP"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_label": "Tattoo Removal",
+      "translated_label": "Rimozione dei tatuaggi"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_label": "Teeth Whitening",
+      "translated_label": "Sbiancamento Dentale"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_label": "Traditional Chinese Medicine",
+      "translated_label": "Medicina Tradizionale Cinese"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_label": "Tummy Tuck",
+      "translated_label": "Addominoplastica"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_label": "Ultrasound",
+      "translated_label": "Ecografia"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_label": "Vaccination / Immunization",
+      "translated_label": "Vaccinazione / immunizzazione"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VARICOSE_VEIN_TREATMENT",
+      "english_label": "Varicose Vein Treatment",
+      "translated_label": "Trattamento delle Vene Varicose"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_label": "X-ray",
+      "translated_label": "Radiografia"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_AESTHETIC_COSMETIC_CLINIC",
+      "english_label": "Aesthetic / Cosmetic Clinic",
+      "translated_label": "Clinica Estetica"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_label": "Clinic / Medical Center",
+      "translated_label": "Ambulatorio / Centro Medico"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DENTAL_CLINIC",
+      "english_label": "Dental Clinic",
+      "translated_label": "Clinica odontoiatrica"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DIALYSIS_CENTER",
+      "english_label": "Dialysis Center",
+      "translated_label": "Centro di Dialisi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_label": "Eye Clinic",
+      "translated_label": "Centro Oculistico"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_FERTILITY_IVF_CLINIC",
+      "english_label": "Fertility / IVF Clinic",
+      "translated_label": "Centro fertilità / PMA"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_label": "Hospital (General)",
+      "translated_label": "Ospedale generale"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_IMAGING_DIAGNOSTIC_CENTER",
+      "english_label": "Imaging / Diagnostic Center",
+      "translated_label": "Centro di Diagnostica per Immagini"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_label": "Laboratory / Blood Tests",
+      "translated_label": "Laboratorio Analisi"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MATERNITY_WOMENS_HEALTH_CLINIC",
+      "english_label": "Maternity / Women's Health Clinic",
+      "translated_label": "Clinica per la salute della donna / maternità"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MENTAL_HEALTH_CLINIC",
+      "english_label": "Mental Health Clinic",
+      "translated_label": "Centro di salute mentale"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_ONCOLOGY_CENTER",
+      "english_label": "Oncology Center",
+      "translated_label": "Centro Oncologico"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PEDIATRIC_CLINIC",
+      "english_label": "Pediatric Clinic",
+      "translated_label": "Ambulatorio Pediatrico"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_label": "Pharmacy",
+      "translated_label": "Farmacia"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER",
+      "english_label": "Rehabilitation / Physiotherapy Center",
+      "translated_label": "Centro di Riabilitazione / Fisioterapia"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SPECIALTY_CLINIC",
+      "english_label": "Specialty Clinic",
+      "translated_label": "Ambulatorio Specialistico / Poliambulatorio"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SURGERY_CENTER_DAY_SURGERY",
+      "english_label": "Surgery Center / Day Surgery Center",
+      "translated_label": "Centro Chirurgico / Day Surgery"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_label": "Telehealth / Virtual Care",
+      "translated_label": "Telemedicina / Visita Online"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_label": "Urgent Care / Walk-in Clinic",
+      "translated_label": "Ambulatorio per cure urgenti / guardia medica"
+    }
+  ],
+  "taxonomy_aliases": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_aliases": [
+        "Allergist",
+        "Immunology"
+      ],
+      "translated_aliases": [
+        "Allergologo",
+        "Immunologia"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_aliases": [
+        "Anaesthesiology",
+        "Anesthesia"
+      ],
+      "translated_aliases": [
+        "Anestesia",
+        "Anestesista"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_aliases": [
+        "Genetic medicine",
+        "Genetics clinic"
+      ],
+      "translated_aliases": [
+        "Medicina genetica",
+        "Consulenza genetica"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_aliases": [
+        "Colon surgery",
+        "Rectal surgery"
+      ],
+      "translated_aliases": [
+        "Chirurgia del colon",
+        "Chirurgia del retto"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_aliases": [
+        "ICU",
+        "Intensive care"
+      ],
+      "translated_aliases": [
+        "Terapia intensiva",
+        "Rianimazione"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_aliases": [
+        "ENT",
+        "Ear nose throat",
+        "Otolaryngology"
+      ],
+      "translated_aliases": [
+        "ORL",
+        "otorino",
+        "orecchio-naso-gola"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_aliases": [
+        "Family doctor",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "medico di famiglia",
+        "cure primarie"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_aliases": [
+        "Dentist",
+        "General dentist"
+      ],
+      "translated_aliases": [
+        "Dentista",
+        "Odontoiatra"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_aliases": [
+        "GP",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "medico di base",
+        "medico di medicina generale",
+        "MMG"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_aliases": [
+        "Liver specialist"
+      ],
+      "translated_aliases": [
+        "Specialista del fegato"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_aliases": [
+        "Internist"
+      ],
+      "translated_aliases": [
+        "Internista"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_aliases": [
+        "OB-GYN",
+        "Gynecology",
+        "Obstetrics"
+      ],
+      "translated_aliases": [
+        "Ginecologo",
+        "Ginecologia",
+        "Ostetricia"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_aliases": [
+        "Jaw surgery",
+        "Maxillofacial surgery"
+      ],
+      "translated_aliases": [
+        "Chirurgia maxillo-facciale",
+        "Chirurgia della mascella"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_aliases": [
+        "PM&R",
+        "Physical medicine and rehabilitation"
+      ],
+      "translated_aliases": [
+        "fisiatria",
+        "riabilitazione"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Physical therapy",
+        "Physiotherapy",
+        "Physio"
+      ],
+      "translated_aliases": [
+        "fisioterapista",
+        "riabilitazione motoria"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_aliases": [
+        "Psychiatrist"
+      ],
+      "translated_aliases": [
+        "Psichiatra"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_aliases": [
+        "Psychology",
+        "Therapy",
+        "Psychotherapist",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "psicologia",
+        "psicoterapia",
+        "psicologo",
+        "psicoterapeuta",
+        "supporto psicologico"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_aliases": [
+        "IVF specialist",
+        "Fertility specialist",
+        "Reproductive endocrinology"
+      ],
+      "translated_aliases": [
+        "specialista PMA",
+        "specialista fertilità",
+        "endocrinologia riproduttiva",
+        "FIVET"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_aliases": [
+        "Retina",
+        "Retinal specialist"
+      ],
+      "translated_aliases": [
+        "retina",
+        "retinologo"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_aliases": [
+        "Sinus specialist",
+        "Nasal specialist"
+      ],
+      "translated_aliases": [
+        "specialista dei seni paranasali",
+        "specialista nasale"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_aliases": [
+        "Sports injury"
+      ],
+      "translated_aliases": [
+        "medico dello sport",
+        "infortuni sportivi"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_aliases": [
+        "Pelvic floor specialist"
+      ],
+      "translated_aliases": [
+        "Specialista del pavimento pelvico"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_aliases": [
+        "Acupuncture treatment"
+      ],
+      "translated_aliases": [
+        "Trattamento di agopuntura"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_aliases": [
+        "Allergy test"
+      ],
+      "translated_aliases": [
+        "test per le allergie",
+        "prick test"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_aliases": [
+        "Weight loss surgery"
+      ],
+      "translated_aliases": [
+        "chirurgia dell'obesità",
+        "sleeve gastrica",
+        "bypass gastrico"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_aliases": [
+        "Blood test",
+        "Lab work",
+        "Lab tests"
+      ],
+      "translated_aliases": [
+        "Esame del sangue",
+        "Analisi del sangue",
+        "Esami di laboratorio"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_aliases": [
+        "Botox",
+        "Fillers",
+        "Injectables"
+      ],
+      "translated_aliases": [
+        "Botox",
+        "Filler",
+        "Iniezioni estetiche"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_aliases": [
+        "Breast augmentation",
+        "Breast reduction"
+      ],
+      "translated_aliases": [
+        "Aumento del seno",
+        "Riduzione del seno"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_aliases": [
+        "Cataract operation"
+      ],
+      "translated_aliases": [
+        "Intervento cataratta",
+        "Operazione cataratta"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_aliases": [
+        "Chemical peel",
+        "Microneedling"
+      ],
+      "translated_aliases": [
+        "Peeling chimico",
+        "Microneedling"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_aliases": [
+        "Chemo"
+      ],
+      "translated_aliases": [
+        "terapia oncologica",
+        "trattamento chemioterapico"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_aliases": [
+        "Cosmetic dentist",
+        "Smile makeover"
+      ],
+      "translated_aliases": [
+        "dentista estetico",
+        "odontoiatria estetica",
+        "smile design"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_aliases": [
+        "CAT scan"
+      ],
+      "translated_aliases": [
+        "TAC",
+        "TC"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_aliases": [
+        "Smile design",
+        "Dental aesthetics"
+      ],
+      "translated_aliases": [
+        "Smile design",
+        "Estetica dentale"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_aliases": [
+        "Tooth implants"
+      ],
+      "translated_aliases": [
+        "Impianti dentali"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_aliases": [
+        "Blepharoplasty"
+      ],
+      "translated_aliases": [
+        "Blefaroplastica",
+        "Chirurgia delle palpebre"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_aliases": [
+        "Facelift",
+        "Neck lift"
+      ],
+      "translated_aliases": [
+        "Lifting facciale",
+        "Lifting del collo"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_aliases": [
+        "IVF",
+        "Fertility treatment"
+      ],
+      "translated_aliases": [
+        "FIVET",
+        "Fecondazione in vitro"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_aliases": [
+        "Hair restoration"
+      ],
+      "translated_aliases": [
+        "Trapianto capelli"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_aliases": [
+        "Check-up",
+        "Health screening",
+        "Preventive screening"
+      ],
+      "translated_aliases": [
+        "check-up medico",
+        "visita preventiva",
+        "esami di routine"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_aliases": [
+        "Homeopathic care"
+      ],
+      "translated_aliases": [
+        "Trattamento omeopatico"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_aliases": [
+        "Laser treatment",
+        "Laser therapy"
+      ],
+      "translated_aliases": [
+        "Trattamento laser",
+        "Terapia laser"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_aliases": [
+        "LASIK",
+        "Refractive surgery"
+      ],
+      "translated_aliases": [
+        "LASIK",
+        "Chirurgia refrattiva"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_aliases": [
+        "Lip filler",
+        "Lip augmentation"
+      ],
+      "translated_aliases": [
+        "Filler labbra",
+        "Aumento labbra"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_aliases": [
+        "Liposuction",
+        "Body contouring"
+      ],
+      "translated_aliases": [
+        "Liposuzione",
+        "Modellamento corporeo"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_aliases": [
+        "Mammogram"
+      ],
+      "translated_aliases": [
+        "Mammogramma"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_aliases": [
+        "Magnetic resonance imaging"
+      ],
+      "translated_aliases": [
+        "Risonanza magnetica"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_aliases": [
+        "Naturopathic care"
+      ],
+      "translated_aliases": [
+        "trattamento naturopatico"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_aliases": [
+        "Braces",
+        "Aligners",
+        "Invisalign"
+      ],
+      "translated_aliases": [
+        "Apparecchio dentale",
+        "Allineatori",
+        "Invisalign"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_aliases": [
+        "Therapy",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "Terapia psicologica",
+        "Sostegno psicologico"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_aliases": [
+        "Radiation therapy"
+      ],
+      "translated_aliases": [
+        "Radioterapia"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Rehab",
+        "Physiotherapy",
+        "Physical therapy"
+      ],
+      "translated_aliases": [
+        "Riabilitazione",
+        "Fisioterapia"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_aliases": [
+        "Nose job",
+        "Nose surgery"
+      ],
+      "translated_aliases": [
+        "Rinoplastica",
+        "Chirurgia del naso"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_aliases": [
+        "Root canal"
+      ],
+      "translated_aliases": [
+        "Devitalizzazione",
+        "Terapia canalare"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_aliases": [
+        "PRP",
+        "Skin rejuvenation"
+      ],
+      "translated_aliases": [
+        "PRP",
+        "Ringiovanimento cutaneo"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_aliases": [
+        "Laser tattoo removal"
+      ],
+      "translated_aliases": [
+        "Rimozione tatuaggi laser"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_aliases": [
+        "Tooth whitening"
+      ],
+      "translated_aliases": [
+        "sbiancamento dentale"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_aliases": [
+        "TCM",
+        "Chinese medicine"
+      ],
+      "translated_aliases": [
+        "MTC",
+        "Medicina cinese"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_aliases": [
+        "Abdominoplasty"
+      ],
+      "translated_aliases": [
+        "Addominoplastica"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_aliases": [
+        "Sonography"
+      ],
+      "translated_aliases": [
+        "Eco",
+        "Ecografia"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_aliases": [
+        "Vaccination",
+        "Immunization",
+        "Vaccine"
+      ],
+      "translated_aliases": [
+        "Vaccino",
+        "Vaccinazione"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_aliases": [
+        "Xray"
+      ],
+      "translated_aliases": [
+        "Rx",
+        "Raggi X"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_aliases": [
+        "Medical center",
+        "Clinic"
+      ],
+      "translated_aliases": [
+        "Centro medico",
+        "Ambulatorio"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_aliases": [
+        "Ophthalmology clinic"
+      ],
+      "translated_aliases": [
+        "Centro oculistico",
+        "Studio oculistico"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_aliases": [
+        "Hospital"
+      ],
+      "translated_aliases": [
+        "ospedale",
+        "ospedale generale"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_aliases": [
+        "Lab",
+        "Laboratory",
+        "Blood test center"
+      ],
+      "translated_aliases": [
+        "Laboratorio",
+        "Laboratorio analisi",
+        "Centro prelievi"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_aliases": [
+        "Drugstore"
+      ],
+      "translated_aliases": [
+        "Farmacia"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_aliases": [
+        "Online consultation",
+        "Virtual consultation"
+      ],
+      "translated_aliases": [
+        "Visita online",
+        "Teleconsulto"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_aliases": [
+        "Walk-in clinic",
+        "Urgent care"
+      ],
+      "translated_aliases": [
+        "guardia medica",
+        "cure urgenti"
+      ]
+    }
+  ],
+  "concern_labels": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_label": "Aesthetic & Cosmetic Care",
+      "translated_label": "Estetica e Medicina Cosmetica"
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_label": "Bones, Joints, Muscles & Sports Injuries",
+      "translated_label": "Ossa, Articolazioni, Muscoli e Infortuni Sportivi"
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_label": "Children's Health",
+      "translated_label": "Salute dei Bambini"
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_label": "Digestion & Liver",
+      "translated_label": "Digestione e Fegato"
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_label": "Ears, Nose & Throat",
+      "translated_label": "Orecchie, Naso e Gola"
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_label": "Emergency & Urgent Symptoms",
+      "translated_label": "Sintomi urgenti e d'emergenza"
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_label": "Eyes & Vision",
+      "translated_label": "Occhi e Vista"
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_label": "Head, Brain & Nerves",
+      "translated_label": "Testa, Cervello e Sistema Nervoso"
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_label": "Heart & Circulation",
+      "translated_label": "Cuore e Circolazione"
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_label": "Kidneys, Bladder & Urinary Health",
+      "translated_label": "Reni, Vescica e Vie Urinarie"
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_label": "Lungs & Breathing",
+      "translated_label": "Polmoni e Respirazione"
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_label": "Men's Health",
+      "translated_label": "Salute Maschile"
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_label": "Mental Health & Well-being",
+      "translated_label": "Salute Mentale e Benessere"
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_label": "Pain, Rehabilitation & Mobility",
+      "translated_label": "Dolore, Riabilitazione e Mobilità"
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_label": "Preventive Checks, Tests & Imaging",
+      "translated_label": "Prevenzione, esami e diagnostica per immagini"
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_label": "Skin, Hair & Nails",
+      "translated_label": "Pelle, Capelli e Unghie"
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_label": "Teeth, Jaw & Mouth",
+      "translated_label": "Denti, Mascella e Bocca"
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_label": "Women's Health, Pregnancy & Fertility",
+      "translated_label": "Salute Femminile, Gravidanza e Fertilità"
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_label": "Cancer & Tumor Care",
+      "translated_label": "Tumori e cure oncologiche"
+    }
+  ],
+  "concern_example_inputs": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_example_inputs": [
+        "botox",
+        "fillers",
+        "nose job",
+        "hair loss",
+        "skin rejuvenation"
+      ],
+      "translated_example_inputs": [
+        "botox",
+        "filler",
+        "rinoplastica",
+        "caduta dei capelli",
+        "ringiovanimento cutaneo"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_example_inputs": [
+        "knee pain",
+        "back pain",
+        "shoulder injury",
+        "sports injury"
+      ],
+      "translated_example_inputs": [
+        "dolore al ginocchio",
+        "mal di schiena",
+        "lesione alla spalla",
+        "infortunio sportivo"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_example_inputs": [
+        "child fever",
+        "newborn issue",
+        "pediatric checkup"
+      ],
+      "translated_example_inputs": [
+        "febbre nel bambino",
+        "problemi nel neonato",
+        "visita pediatrica"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_example_inputs": [
+        "stomach pain",
+        "acid reflux",
+        "liver problem"
+      ],
+      "translated_example_inputs": [
+        "dolore allo stomaco",
+        "reflusso gastrico",
+        "problema al fegato"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_example_inputs": [
+        "sinus pain",
+        "ear infection",
+        "tonsils",
+        "hearing issue"
+      ],
+      "translated_example_inputs": [
+        "sinusite",
+        "otite",
+        "tonsille",
+        "problemi all'udito"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_example_inputs": [
+        "chest pain",
+        "severe bleeding",
+        "shortness of breath",
+        "sudden weakness"
+      ],
+      "translated_example_inputs": [
+        "dolore al petto",
+        "emorragia grave",
+        "difficoltà respiratoria",
+        "debolezza improvvisa"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_example_inputs": [
+        "blurred vision",
+        "cataract",
+        "retina issue",
+        "eye pain"
+      ],
+      "translated_example_inputs": [
+        "vista offuscata",
+        "cataratta",
+        "problema alla retina",
+        "dolore agli occhi"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_example_inputs": [
+        "headache",
+        "migraine",
+        "dizziness",
+        "numbness"
+      ],
+      "translated_example_inputs": [
+        "mal di testa",
+        "emicrania",
+        "vertigini",
+        "intorpidimento"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_example_inputs": [
+        "palpitations",
+        "chest discomfort",
+        "high blood pressure",
+        "leg swelling"
+      ],
+      "translated_example_inputs": [
+        "palpitazioni",
+        "fastidio al petto",
+        "pressione alta",
+        "gambe gonfie"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_example_inputs": [
+        "kidney pain",
+        "urinary infection",
+        "blood in urine",
+        "dialysis"
+      ],
+      "translated_example_inputs": [
+        "dolore ai reni",
+        "infezione urinaria",
+        "sangue nelle urine",
+        "dialisi"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_example_inputs": [
+        "cough",
+        "shortness of breath",
+        "asthma",
+        "sleep apnea"
+      ],
+      "translated_example_inputs": [
+        "tosse",
+        "fiato corto",
+        "asma",
+        "apnea notturna"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_example_inputs": [
+        "fertility issue",
+        "testosterone",
+        "erectile dysfunction"
+      ],
+      "translated_example_inputs": [
+        "problemi di fertilità",
+        "testosterone",
+        "disfunzione erettile"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_example_inputs": [
+        "anxiety",
+        "depression",
+        "stress",
+        "therapy"
+      ],
+      "translated_example_inputs": [
+        "ansia",
+        "depressione",
+        "stress",
+        "terapia"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_example_inputs": [
+        "chronic pain",
+        "rehab",
+        "mobility issue",
+        "back rehabilitation"
+      ],
+      "translated_example_inputs": [
+        "dolore cronico",
+        "riabilitazione",
+        "problemi di mobilità",
+        "riabilitazione della schiena"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_example_inputs": [
+        "blood test",
+        "health checkup",
+        "xray",
+        "mri",
+        "screening"
+      ],
+      "translated_example_inputs": [
+        "esame del sangue",
+        "check-up medico",
+        "radiografia",
+        "risonanza magnetica",
+        "screening"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_example_inputs": [
+        "acne",
+        "rash",
+        "hair loss",
+        "mole check"
+      ],
+      "translated_example_inputs": [
+        "acne",
+        "eruzione cutanea",
+        "caduta dei capelli",
+        "mappatura dei nei"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_example_inputs": [
+        "tooth pain",
+        "braces",
+        "implants",
+        "root canal"
+      ],
+      "translated_example_inputs": [
+        "mal di denti",
+        "apparecchio dentale",
+        "impianti",
+        "devitalizzazione"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_example_inputs": [
+        "pregnancy",
+        "ivf",
+        "fertility",
+        "pelvic pain",
+        "period issues"
+      ],
+      "translated_example_inputs": [
+        "gravidanza",
+        "FIVET",
+        "fertilità",
+        "dolore pelvico",
+        "disturbi mestruali"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_example_inputs": [
+        "cancer treatment",
+        "tumor",
+        "chemotherapy",
+        "radiation"
+      ],
+      "translated_example_inputs": [
+        "cura del tumore",
+        "tumore",
+        "chemioterapia",
+        "radioterapia"
+      ]
+    }
+  ],
+  "ui_strings": [
+    {
+      "key": "my_reviews_empty_subtitle",
+      "english_label": "Be the first to share an experience and help others.",
+      "translated_label": "Sii il primo a condividere un'esperienza e ad aiutare gli altri."
+    }
+  ]
+}

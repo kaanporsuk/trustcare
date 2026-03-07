@@ -1,0 +1,2123 @@
+{
+  "meta": {
+    "project": "TrustCare",
+    "version": "taxonomy-v2.1-locale-template",
+    "locale": "ru",
+    "source": "trustcare_translation_source_master.json",
+    "generated_by": "OpenAI",
+    "rules": [
+      "Do not change canonical_id, entity_type, or key values.",
+      "Fill translated_label for every entry.",
+      "Translate aliases/example inputs naturally; keep arrays non-empty when English source has values.",
+      "If there is no natural alias, you may leave translated_aliases as an empty array.",
+      "Do not leave translated_label blank."
+    ]
+  },
+  "taxonomy_labels": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ADDICTION_MEDICINE",
+      "english_label": "Addiction Medicine",
+      "translated_label": "Наркология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AESTHETIC_MEDICINE",
+      "english_label": "Aesthetic Medicine",
+      "translated_label": "Эстетическая медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_label": "Allergy & Immunology",
+      "translated_label": "Аллергология и иммунология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANDROLOGY",
+      "english_label": "Andrology",
+      "translated_label": "Андрология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_label": "Anesthesiology",
+      "translated_label": "Анестезиология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AUDIOLOGY",
+      "english_label": "Audiology",
+      "translated_label": "Аудиология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Бариатрическая хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BREAST_SURGERY",
+      "english_label": "Breast Surgery",
+      "translated_label": "Хирургия молочной железы"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOLOGY",
+      "english_label": "Cardiology",
+      "translated_label": "Кардиология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOVASCULAR_SURGERY",
+      "english_label": "Cardiovascular Surgery",
+      "translated_label": "Сердечно-сосудистая хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+      "english_label": "Child & Adolescent Psychiatry",
+      "translated_label": "Детская и подростковая психиатрия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHIROPRACTIC",
+      "english_label": "Chiropractic",
+      "translated_label": "Мануальная терапия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_label": "Clinical Genetics",
+      "translated_label": "Клиническая генетика"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_label": "Colorectal Surgery",
+      "translated_label": "Колопроктология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_label": "Critical Care / Intensive Care",
+      "translated_label": "Реаниматология и интенсивная терапия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DERMATOLOGY",
+      "english_label": "Dermatology",
+      "translated_label": "Дерматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_EMERGENCY_MEDICINE",
+      "english_label": "Emergency Medicine",
+      "translated_label": "Неотложная медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDOCRINOLOGY",
+      "english_label": "Endocrinology",
+      "translated_label": "Эндокринология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDODONTICS",
+      "english_label": "Endodontics",
+      "translated_label": "Эндодонтия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_label": "ENT / Otolaryngology",
+      "translated_label": "Отоларингология / ЛОР"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_label": "Family Medicine",
+      "translated_label": "Семейная медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GASTROENTEROLOGY",
+      "english_label": "Gastroenterology",
+      "translated_label": "Гастроэнтерология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_label": "General Dentistry",
+      "translated_label": "Общая стоматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_label": "General Practice",
+      "translated_label": "Общая практика"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_SURGERY",
+      "english_label": "General Surgery",
+      "translated_label": "Общая хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENETICS_GENOMICS",
+      "english_label": "Genetics & Genomics",
+      "translated_label": "Генетика и геномика"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRIC_PSYCHIATRY",
+      "english_label": "Geriatric Psychiatry",
+      "translated_label": "Гериатрическая психиатрия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRICS",
+      "english_label": "Geriatrics",
+      "translated_label": "Гериатрия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEAD_NECK_SURGERY",
+      "english_label": "Head & Neck Surgery",
+      "translated_label": "Хирургия головы и шеи"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEMATOLOGY",
+      "english_label": "Hematology",
+      "translated_label": "Гематология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_label": "Hepatology",
+      "translated_label": "Гепатология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INFECTIOUS_DISEASE",
+      "english_label": "Infectious Disease",
+      "translated_label": "Инфекционные болезни"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_label": "Internal Medicine",
+      "translated_label": "Внутренняя медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERVENTIONAL_RADIOLOGY",
+      "english_label": "Interventional Radiology",
+      "translated_label": "Интервенционная радиология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_MATERNAL_FETAL_MEDICINE",
+      "english_label": "Maternal-Fetal Medicine",
+      "translated_label": "Медицина матери и плода"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEONATOLOGY",
+      "english_label": "Neonatology",
+      "translated_label": "Неонатология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEPHROLOGY",
+      "english_label": "Nephrology",
+      "translated_label": "Нефрология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROLOGY",
+      "english_label": "Neurology",
+      "translated_label": "Неврология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROPSYCHOLOGY",
+      "english_label": "Neuropsychology",
+      "translated_label": "Нейропсихология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROSURGERY",
+      "english_label": "Neurosurgery",
+      "translated_label": "Нейрохирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUCLEAR_MEDICINE",
+      "english_label": "Nuclear Medicine",
+      "translated_label": "Ядерная медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUTRITION_DIETETICS",
+      "english_label": "Nutrition & Dietetics",
+      "translated_label": "Диетология и нутрициология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_label": "Obstetrics & Gynecology",
+      "translated_label": "Акушерство и гинекология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OCCUPATIONAL_THERAPY",
+      "english_label": "Occupational Therapy",
+      "translated_label": "Эрготерапия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ONCOLOGY",
+      "english_label": "Oncology",
+      "translated_label": "Онкология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPHTHALMOLOGY",
+      "english_label": "Ophthalmology",
+      "translated_label": "Офтальмология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPTOMETRY",
+      "english_label": "Optometry",
+      "translated_label": "Оптометрия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_label": "Oral & Maxillofacial Surgery",
+      "translated_label": "Челюстно-лицевая хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_SURGERY",
+      "english_label": "Oral Surgery",
+      "translated_label": "Хирургическая стоматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHODONTICS",
+      "english_label": "Orthodontics",
+      "translated_label": "Ортодонтия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHOPEDIC_SURGERY",
+      "english_label": "Orthopedic Surgery",
+      "translated_label": "Травматология и ортопедия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OSTEOPATHY",
+      "english_label": "Osteopathy",
+      "translated_label": "Остеопатия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PAIN_MANAGEMENT",
+      "english_label": "Pain Management",
+      "translated_label": "Лечение боли (альгология)"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PALLIATIVE_CARE",
+      "english_label": "Palliative Care",
+      "translated_label": "Паллиативная помощь"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PATHOLOGY",
+      "english_label": "Pathology",
+      "translated_label": "Патология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_DENTISTRY",
+      "english_label": "Pediatric Dentistry",
+      "translated_label": "Детская стоматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_OPHTHALMOLOGY",
+      "english_label": "Pediatric Ophthalmology",
+      "translated_label": "Детская офтальмология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_SURGERY",
+      "english_label": "Pediatric Surgery",
+      "translated_label": "Детская хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_UROLOGY",
+      "english_label": "Pediatric Urology",
+      "translated_label": "Детская урология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRICS",
+      "english_label": "Pediatrics",
+      "translated_label": "Педиатрия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PERIODONTICS",
+      "english_label": "Periodontics",
+      "translated_label": "Пародонтология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_label": "Physical Medicine & Rehab",
+      "translated_label": "Физическая и реабилитационная медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_label": "Physical Therapy / Physiotherapy",
+      "translated_label": "Физиотерапия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+      "english_label": "Plastic & Reconstructive Surgery",
+      "translated_label": "Пластическая и реконструктивная хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PODIATRY",
+      "english_label": "Podiatry",
+      "translated_label": "Подология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PROSTHODONTICS",
+      "english_label": "Prosthodontics",
+      "translated_label": "Ортопедическая стоматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_label": "Psychiatry",
+      "translated_label": "Психиатрия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_label": "Psychology / Therapy",
+      "translated_label": "Психология / психотерапия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PULMONOLOGY",
+      "english_label": "Pulmonology",
+      "translated_label": "Пульмонология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RADIOLOGY",
+      "english_label": "Radiology",
+      "translated_label": "Радиология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_label": "Reproductive Endocrinology / IVF",
+      "translated_label": "Репродуктология / ЭКО"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_label": "Retina Specialist",
+      "translated_label": "Ретинология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHEUMATOLOGY",
+      "english_label": "Rheumatology",
+      "translated_label": "Ревматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_label": "Rhinology",
+      "translated_label": "Ринология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SLEEP_MEDICINE",
+      "english_label": "Sleep Medicine",
+      "translated_label": "Сомнология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPEECH_THERAPY",
+      "english_label": "Speech Therapy",
+      "translated_label": "Логопедия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_label": "Sports Medicine",
+      "translated_label": "Спортивная медицина"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_THORACIC_SURGERY",
+      "english_label": "Thoracic Surgery",
+      "translated_label": "Торакальная хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRANSPLANT_SURGERY",
+      "english_label": "Transplant Surgery",
+      "translated_label": "Трансплантационная хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRAUMA_SURGERY",
+      "english_label": "Trauma Surgery",
+      "translated_label": "Травматология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_label": "Urogynecology",
+      "translated_label": "Урогинекология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROLOGY",
+      "english_label": "Urology",
+      "translated_label": "Урология"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_VASCULAR_SURGERY",
+      "english_label": "Vascular Surgery",
+      "translated_label": "Сосудистая хирургия"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_WOUND_CARE",
+      "english_label": "Wound Care",
+      "translated_label": "Лечение ран"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_label": "Acupuncture",
+      "translated_label": "Акупунктура"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_label": "Allergy Testing",
+      "translated_label": "Аллергопробы"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_label": "Bariatric Surgery",
+      "translated_label": "Бариатрическая хирургия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_label": "Blood Tests / Lab Work",
+      "translated_label": "Анализы крови / лабораторные исследования"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_label": "Botox & Fillers",
+      "translated_label": "Ботокс и филлеры"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_label": "Breast Augmentation / Reduction",
+      "translated_label": "Увеличение / Уменьшение груди"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_label": "Cataract Surgery",
+      "translated_label": "Хирургия катаракты"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_label": "Chemical Peels & Microneedling",
+      "translated_label": "Химический пилинг и микронидлинг"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_label": "Chemotherapy",
+      "translated_label": "Химиотерапия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COLOSCOPY",
+      "english_label": "Colonoscopy",
+      "translated_label": "Колоноскопия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_label": "Cosmetic Dentistry",
+      "translated_label": "Эстетическая стоматология"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_label": "CT Scan",
+      "translated_label": "КТ (компьютерная томография)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_label": "Dental Aesthetics (Smile Design)",
+      "translated_label": "Эстетика зубов (Дизайн улыбки)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_label": "Dental Implants",
+      "translated_label": "Имплантация зубов"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DIALYSIS",
+      "english_label": "Dialysis",
+      "translated_label": "Диализ"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ENDOSCOPY",
+      "english_label": "Endoscopy",
+      "translated_label": "Эндоскопия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_label": "Eyelid Surgery",
+      "translated_label": "Блефаропластика (Пластика век)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_label": "Facelift & Neck Lift",
+      "translated_label": "Подтяжка лица и шеи"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_label": "Fertility Treatment / IVF",
+      "translated_label": "Лечение бесплодия / ЭКО"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_label": "Hair Transplant",
+      "translated_label": "Пересадка волос"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_label": "Health Check-up / Preventive Screening",
+      "translated_label": "Профилактический осмотр / скрининг"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HIP_REPLACEMENT",
+      "english_label": "Hip Replacement",
+      "translated_label": "Замена тазобедренного сустава"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_label": "Homeopathy",
+      "translated_label": "Гомеопатия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_KNEE_REPLACEMENT",
+      "english_label": "Knee Replacement",
+      "translated_label": "Замена коленного сустава"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_label": "Laser Treatments",
+      "translated_label": "Лазерные процедуры"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_label": "LASIK / Refractive Surgery",
+      "translated_label": "Лазерная коррекция зрения / LASIK"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_label": "Lip Enhancement",
+      "translated_label": "Увеличение губ"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_label": "Liposuction & Body Contouring",
+      "translated_label": "Липосакция и контурирование тела"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_label": "Mammography",
+      "translated_label": "Маммография"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_label": "MRI",
+      "translated_label": "МРТ (Магнитно-резонансная томография)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_label": "Натуропатия",
+      "translated_label": "Натуропатия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_label": "Orthodontics / Clear Aligners",
+      "translated_label": "Ортодонтия / элайнеры"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_label": "Psychotherapy / Counseling",
+      "translated_label": "Психотерапия / психологическое консультирование"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_label": "Radiotherapy",
+      "translated_label": "Лучевая терапия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_label": "Rehabilitation / Physiotherapy",
+      "translated_label": "Реабилитация / Физиотерапия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_label": "Rhinoplasty",
+      "translated_label": "Ринопластика"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_label": "Root Canal Treatment",
+      "translated_label": "Лечение корневых каналов"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SKIN_CANCER_SCREENING",
+      "english_label": "Skin Cancer Screening",
+      "translated_label": "Скрининг на рак кожи"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_label": "Skin Rejuvenation / PRP",
+      "translated_label": "Омоложение кожи / PRP-терапия"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_label": "Tattoo Removal",
+      "translated_label": "Удаление татуировок"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_label": "Teeth Whitening",
+      "translated_label": "Отбеливание зубов"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_label": "Traditional Chinese Medicine",
+      "translated_label": "Традиционная китайская медицина"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_label": "Tummy Tuck",
+      "translated_label": "Абдоминопластика"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_label": "Ultrasound",
+      "translated_label": "УЗИ (ультразвуковое исследование)"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_label": "Vaccination / Immunization",
+      "translated_label": "Вакцинация / Иммунизация"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VARICOSE_VEIN_TREATMENT",
+      "english_label": "Varicose Vein Treatment",
+      "translated_label": "Лечение варикоза"
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_label": "X-ray",
+      "translated_label": "Рентген"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_AESTHETIC_COSMETIC_CLINIC",
+      "english_label": "Aesthetic / Cosmetic Clinic",
+      "translated_label": "Клиника эстетической медицины / косметологии"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_label": "Clinic / Medical Center",
+      "translated_label": "Клиника / Медицинский центр"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DENTAL_CLINIC",
+      "english_label": "Dental Clinic",
+      "translated_label": "Стоматологическая клиника"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_DIALYSIS_CENTER",
+      "english_label": "Dialysis Center",
+      "translated_label": "Центр диализа"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_label": "Eye Clinic",
+      "translated_label": "Офтальмологическая клиника"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_FERTILITY_IVF_CLINIC",
+      "english_label": "Fertility / IVF Clinic",
+      "translated_label": "Клиника репродуктивной медицины / ЭКО"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_label": "Hospital (General)",
+      "translated_label": "Больница (многопрофильная)"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_IMAGING_DIAGNOSTIC_CENTER",
+      "english_label": "Imaging / Diagnostic Center",
+      "translated_label": "Диагностический центр"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_label": "Laboratory / Blood Tests",
+      "translated_label": "Лаборатория / Центр сдачи анализов"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MATERNITY_WOMENS_HEALTH_CLINIC",
+      "english_label": "Maternity / Women’s Health Clinic",
+      "translated_label": "Клиника женского здоровья / акушерства и гинекологии"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_MENTAL_HEALTH_CLINIC",
+      "english_label": "Mental Health Clinic",
+      "translated_label": "Клиника психического здоровья"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_ONCOLOGY_CENTER",
+      "english_label": "Oncology Center",
+      "translated_label": "Онкологический центр"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PEDIATRIC_CLINIC",
+      "english_label": "Pediatric Clinic",
+      "translated_label": "Детская клиника"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_label": "Pharmacy",
+      "translated_label": "Аптека"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER",
+      "english_label": "Rehabilitation / Physiotherapy Center",
+      "translated_label": "Реабилитационный центр"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SPECIALTY_CLINIC",
+      "english_label": "Specialty Clinic",
+      "translated_label": "Специализированная клиника"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_SURGERY_CENTER_DAY_SURGERY",
+      "english_label": "Surgery Center / Day Surgery Center",
+      "translated_label": "Хирургический центр / стационар одного дня"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_label": "Telehealth / Virtual Care",
+      "translated_label": "Телемедицина / Онлайн-консультации"
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_label": "Urgent Care / Walk-in Clinic",
+      "translated_label": "Центр неотложной помощи / травмпункт"
+    }
+  ],
+  "taxonomy_aliases": [
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "english_aliases": [
+        "Allergist",
+        "Immunology"
+      ],
+      "translated_aliases": [
+        "Аллерголог",
+        "Иммунолог"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANESTHESIOLOGY",
+      "english_aliases": [
+        "Anaesthesiology",
+        "Anesthesia"
+      ],
+      "translated_aliases": [
+        "Анестезиолог",
+        "Анестезия"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CLINICAL_GENETICS",
+      "english_aliases": [
+        "Genetic medicine",
+        "Genetics clinic"
+      ],
+      "translated_aliases": [
+        "Генетик",
+        "Клиника генетики"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_COLORECTAL_SURGERY",
+      "english_aliases": [
+        "Colon surgery",
+        "Rectal surgery"
+      ],
+      "translated_aliases": [
+        "Хирургия кишечника",
+        "Операция на прямой кишке"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+      "english_aliases": [
+        "ICU",
+        "Intensive care"
+      ],
+      "translated_aliases": [
+        "Реанимация",
+        "Интенсивная терапия"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "english_aliases": [
+        "ENT",
+        "Ear nose throat",
+        "Otolaryngology"
+      ],
+      "translated_aliases": [
+        "ЛОР",
+        "ухо-горло-нос",
+        "отоларинголог"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "english_aliases": [
+        "Family doctor",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "семейный врач",
+        "первичная медицинская помощь"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "english_aliases": [
+        "Dentist",
+        "General dentist"
+      ],
+      "translated_aliases": [
+        "Стоматолог",
+        "Зубной врач"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "english_aliases": [
+        "GP",
+        "Primary care"
+      ],
+      "translated_aliases": [
+        "терапевт",
+        "врач общей практики"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEPATOLOGY",
+      "english_aliases": [
+        "Liver specialist"
+      ],
+      "translated_aliases": [
+        "гепатолог",
+        "проблемы с печенью"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "english_aliases": [
+        "Internist"
+      ],
+      "translated_aliases": [
+        "Терапевт"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "english_aliases": [
+        "OB-GYN",
+        "Gynecology",
+        "Obstetrics"
+      ],
+      "translated_aliases": [
+        "Гинеколог",
+        "Акушер",
+        "Акушер-гинеколог"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+      "english_aliases": [
+        "Jaw surgery",
+        "Maxillofacial surgery"
+      ],
+      "translated_aliases": [
+        "Хирургия челюсти",
+        "Челюстно-лицевой хирург"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "english_aliases": [
+        "PM&R",
+        "Physical medicine and rehabilitation"
+      ],
+      "translated_aliases": [
+        "реабилитолог",
+        "врач-реабилитолог",
+        "физиатр"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Physical therapy",
+        "Physiotherapy",
+        "Physio"
+      ],
+      "translated_aliases": [
+        "физиотерапия",
+        "физиотерапевт",
+        "физическая терапия"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "english_aliases": [
+        "Psychiatrist"
+      ],
+      "translated_aliases": [
+        "Психиатр"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "english_aliases": [
+        "Psychology",
+        "Therapy",
+        "Psychotherapist",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "психолог",
+        "психотерапевт",
+        "психологическое консультирование"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "english_aliases": [
+        "IVF specialist",
+        "Fertility specialist",
+        "Reproductive endocrinology"
+      ],
+      "translated_aliases": [
+        "репродуктолог",
+        "специалист по ЭКО",
+        "лечение бесплодия"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "english_aliases": [
+        "Retina",
+        "Retinal specialist"
+      ],
+      "translated_aliases": [
+        "ретинолог",
+        "специалист по сетчатке"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "english_aliases": [
+        "Sinus specialist",
+        "Nasal specialist"
+      ],
+      "translated_aliases": [
+        "ринолог",
+        "синусит",
+        "заболевания носа"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "english_aliases": [
+        "Sports injury"
+      ],
+      "translated_aliases": [
+        "Спортивная травма",
+        "Спортивный врач"
+      ]
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "english_aliases": [
+        "Pelvic floor specialist"
+      ],
+      "translated_aliases": [
+        "Специалист по тазовому дну"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "english_aliases": [
+        "Acupuncture treatment"
+      ],
+      "translated_aliases": [
+        "Лечение иглоукалыванием"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ALLERGY_TESTING",
+      "english_aliases": [
+        "Allergy test"
+      ],
+      "translated_aliases": [
+        "Тест на аллергию"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BARIATRIC_SURGERY",
+      "english_aliases": [
+        "Weight loss surgery"
+      ],
+      "translated_aliases": [
+        "Операция для похудения",
+        "Уменьшение желудка"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BLOOD_TESTS_LAB_WORK",
+      "english_aliases": [
+        "Blood test",
+        "Lab work",
+        "Lab tests"
+      ],
+      "translated_aliases": [
+        "анализ крови",
+        "лабораторные анализы",
+        "анализы"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "english_aliases": [
+        "Botox",
+        "Fillers",
+        "Injectables"
+      ],
+      "translated_aliases": [
+        "ботокс",
+        "филлеры",
+        "ботулинотерапия"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "english_aliases": [
+        "Breast augmentation",
+        "Breast reduction"
+      ],
+      "translated_aliases": [
+        "Маммопластика",
+        "Увеличение груди",
+        "Уменьшение груди"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CATARACT_SURGERY",
+      "english_aliases": [
+        "Cataract operation"
+      ],
+      "translated_aliases": [
+        "Операция на катаракту"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "english_aliases": [
+        "Chemical peel",
+        "Microneedling"
+      ],
+      "translated_aliases": [
+        "Химический пилинг",
+        "Микронидлинг"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CHEMOTHERAPY",
+      "english_aliases": [
+        "Chemo"
+      ],
+      "translated_aliases": [
+        "Химия"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "english_aliases": [
+        "Cosmetic dentist",
+        "Smile makeover"
+      ],
+      "translated_aliases": [
+        "Эстетический стоматолог",
+        "Реставрация зубов"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CT_SCAN",
+      "english_aliases": [
+        "CAT scan"
+      ],
+      "translated_aliases": [
+        "КТ",
+        "компьютерная томография"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "english_aliases": [
+        "Smile design",
+        "Dental aesthetics"
+      ],
+      "translated_aliases": [
+        "Дизайн улыбки",
+        "Эстетика зубов"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_DENTAL_IMPLANTS",
+      "english_aliases": [
+        "Tooth implants"
+      ],
+      "translated_aliases": [
+        "Импланты зубов"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "english_aliases": [
+        "Blepharoplasty"
+      ],
+      "translated_aliases": [
+        "Блефаропластика",
+        "Пластика век"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "english_aliases": [
+        "Facelift",
+        "Neck lift"
+      ],
+      "translated_aliases": [
+        "Подтяжка лица",
+        "Подтяжка шеи"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_FERTILITY_TREATMENT_IVF",
+      "english_aliases": [
+        "IVF",
+        "Fertility treatment"
+      ],
+      "translated_aliases": [
+        "ЭКО",
+        "Искусственное оплодотворение"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "english_aliases": [
+        "Hair restoration"
+      ],
+      "translated_aliases": [
+        "Восстановление волос",
+        "Имплантация волос"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+      "english_aliases": [
+        "Check-up",
+        "Health screening",
+        "Preventive screening"
+      ],
+      "translated_aliases": [
+        "чек-ап",
+        "медосмотр",
+        "скрининг"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "english_aliases": [
+        "Homeopathic care"
+      ],
+      "translated_aliases": [
+        "Гомеопатическое лечение"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "english_aliases": [
+        "Laser treatment",
+        "Laser therapy"
+      ],
+      "translated_aliases": [
+        "Лазерное лечение",
+        "Лазеротерапия"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "english_aliases": [
+        "LASIK",
+        "Refractive surgery"
+      ],
+      "translated_aliases": [
+        "LASIK",
+        "лазерная коррекция зрения"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "english_aliases": [
+        "Lip filler",
+        "Lip augmentation"
+      ],
+      "translated_aliases": [
+        "Филлеры в губы",
+        "Увеличение губ"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "english_aliases": [
+        "Liposuction",
+        "Body contouring"
+      ],
+      "translated_aliases": [
+        "Липосакция",
+        "Коррекция фигуры"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MAMMOGRAPHY",
+      "english_aliases": [
+        "Mammogram"
+      ],
+      "translated_aliases": [
+        "Маммограмма"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_MRI",
+      "english_aliases": [
+        "Magnetic resonance imaging"
+      ],
+      "translated_aliases": [
+        "МРТ",
+        "Магнитно-резонансная томография"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_NATUROPATHY",
+      "english_aliases": [
+        "Naturopathic care"
+      ],
+      "translated_aliases": [
+        "Лечение у натуропата"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+      "english_aliases": [
+        "Braces",
+        "Aligners",
+        "Invisalign"
+      ],
+      "translated_aliases": [
+        "брекеты",
+        "элайнеры"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PSYCHOTHERAPY_COUNSELING",
+      "english_aliases": [
+        "Therapy",
+        "Counseling"
+      ],
+      "translated_aliases": [
+        "психотерапия",
+        "психологическое консультирование"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RADIOTHERAPY",
+      "english_aliases": [
+        "Radiation therapy"
+      ],
+      "translated_aliases": [
+        "Облучение",
+        "Радиотерапия"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_REHABILITATION_PHYSIOTHERAPY",
+      "english_aliases": [
+        "Rehab",
+        "Physiotherapy",
+        "Physical therapy"
+      ],
+      "translated_aliases": [
+        "Физиопроцедуры",
+        "Реабилитация",
+        "ЛФК"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "english_aliases": [
+        "Nose job",
+        "Nose surgery"
+      ],
+      "translated_aliases": [
+        "Пластика носа",
+        "Операция на нос"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ROOT_CANAL_TREATMENT",
+      "english_aliases": [
+        "Root canal"
+      ],
+      "translated_aliases": [
+        "Лечение каналов",
+        "Удаление нерва"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "english_aliases": [
+        "PRP",
+        "Skin rejuvenation"
+      ],
+      "translated_aliases": [
+        "PRP-терапия",
+        "омоложение кожи"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "english_aliases": [
+        "Laser tattoo removal"
+      ],
+      "translated_aliases": [
+        "Лазерное удаление татуировок"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TEETH_WHITENING",
+      "english_aliases": [
+        "Tooth whitening"
+      ],
+      "translated_aliases": [
+        "Отбеливание зубов"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TCM",
+      "english_aliases": [
+        "TCM",
+        "Chinese medicine"
+      ],
+      "translated_aliases": [
+        "ТКМ",
+        "Китайская медицина"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "english_aliases": [
+        "Abdominoplasty"
+      ],
+      "translated_aliases": [
+        "Абдоминопластика",
+        "Пластика живота"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_ULTRASOUND",
+      "english_aliases": [
+        "Sonography"
+      ],
+      "translated_aliases": [
+        "УЗИ",
+        "сонография"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_VACCINATION_IMMUNIZATION",
+      "english_aliases": [
+        "Vaccination",
+        "Immunization",
+        "Vaccine"
+      ],
+      "translated_aliases": [
+        "Вакцинация",
+        "Прививки",
+        "Вакцина"
+      ]
+    },
+    {
+      "entity_type": "treatment_procedure",
+      "canonical_id": "SERV_XRAY",
+      "english_aliases": [
+        "Xray"
+      ],
+      "translated_aliases": [
+        "рентген",
+        "рентгенография"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_CLINIC_MEDICAL_CENTER",
+      "english_aliases": [
+        "Medical center",
+        "Clinic"
+      ],
+      "translated_aliases": [
+        "Медицинский центр",
+        "Клиника"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_EYE_CLINIC",
+      "english_aliases": [
+        "Ophthalmology clinic"
+      ],
+      "translated_aliases": [
+        "Глазная клиника"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "english_aliases": [
+        "Hospital"
+      ],
+      "translated_aliases": [
+        "Больница",
+        "Госпиталь"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_LABORATORY",
+      "english_aliases": [
+        "Lab",
+        "Laboratory",
+        "Blood test center"
+      ],
+      "translated_aliases": [
+        "лаборатория",
+        "анализы",
+        "центр сдачи анализов"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_PHARMACY",
+      "english_aliases": [
+        "Drugstore"
+      ],
+      "translated_aliases": [
+        "Аптека"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_TELEHEALTH_VIRTUAL_CARE",
+      "english_aliases": [
+        "Online consultation",
+        "Virtual consultation"
+      ],
+      "translated_aliases": [
+        "Онлайн-консультация",
+        "Видеоконсультация врача"
+      ]
+    },
+    {
+      "entity_type": "facility_type",
+      "canonical_id": "FAC_URGENT_CARE",
+      "english_aliases": [
+        "Walk-in clinic",
+        "Urgent care"
+      ],
+      "translated_aliases": [
+        "неотложная помощь",
+        "травмпункт"
+      ]
+    }
+  ],
+  "concern_labels": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_label": "Aesthetic & Cosmetic Care",
+      "translated_label": "Эстетика и косметология"
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_label": "Bones, Joints, Muscles & Sports Injuries",
+      "translated_label": "Кости, суставы, мышцы и спортивные травмы"
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_label": "Children’s Health",
+      "translated_label": "Детское здоровье"
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_label": "Digestion & Liver",
+      "translated_label": "Пищеварение и печень"
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_label": "Ears, Nose & Throat",
+      "translated_label": "Ухо, горло и нос"
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_label": "Emergency & Urgent Symptoms",
+      "translated_label": "Экстренные и неотложные симптомы"
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_label": "Eyes & Vision",
+      "translated_label": "Глаза и зрение"
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_label": "Head, Brain & Nerves",
+      "translated_label": "Голова, мозг и нервная система"
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_label": "Heart & Circulation",
+      "translated_label": "Сердце и кровообращение"
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_label": "Kidneys, Bladder & Urinary Health",
+      "translated_label": "Почки, мочевой пузырь и мочевыводящие пути"
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_label": "Lungs & Breathing",
+      "translated_label": "Легкие и дыхание"
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_label": "Men’s Health",
+      "translated_label": "Мужское здоровье"
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_label": "Mental Health & Well-being",
+      "translated_label": "Психическое здоровье и самочувствие"
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_label": "Pain, Rehabilitation & Mobility",
+      "translated_label": "Боль, реабилитация и подвижность"
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_label": "Preventive Checks, Tests & Imaging",
+      "translated_label": "Профилактические осмотры, анализы и диагностика"
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_label": "Skin, Hair & Nails",
+      "translated_label": "Кожа, волосы и ногти"
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_label": "Teeth, Jaw & Mouth",
+      "translated_label": "Зубы, челюсть и полость рта"
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_label": "Women’s Health, Pregnancy & Fertility",
+      "translated_label": "Женское здоровье, беременность и фертильность"
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_label": "Cancer & Tumor Care",
+      "translated_label": "Рак и опухоли"
+    }
+  ],
+  "concern_example_inputs": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "english_example_inputs": [
+        "botox",
+        "fillers",
+        "nose job",
+        "hair loss",
+        "skin rejuvenation"
+      ],
+      "translated_example_inputs": [
+        "ботокс",
+        "филлеры",
+        "пластика носа",
+        "выпадение волос",
+        "омоложение кожи"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "english_example_inputs": [
+        "knee pain",
+        "back pain",
+        "shoulder injury",
+        "sports injury"
+      ],
+      "translated_example_inputs": [
+        "боль в колене",
+        "боль в спине",
+        "травма плеча",
+        "спортивная травма"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "english_example_inputs": [
+        "child fever",
+        "newborn issue",
+        "pediatric checkup"
+      ],
+      "translated_example_inputs": [
+        "температура у ребенка",
+        "проблемы у новорожденного",
+        "осмотр педиатра"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "english_example_inputs": [
+        "stomach pain",
+        "acid reflux",
+        "liver problem"
+      ],
+      "translated_example_inputs": [
+        "боль в желудке",
+        "изжога",
+        "проблемы с печенью"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "english_example_inputs": [
+        "sinus pain",
+        "ear infection",
+        "tonsils",
+        "hearing issue"
+      ],
+      "translated_example_inputs": [
+        "боль в пазухах",
+        "инфекция уха",
+        "гланды",
+        "проблемы со слухом"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "english_example_inputs": [
+        "chest pain",
+        "severe bleeding",
+        "shortness of breath",
+        "sudden weakness"
+      ],
+      "translated_example_inputs": [
+        "боль в груди",
+        "сильное кровотечение",
+        "одышка",
+        "внезапная слабость"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "english_example_inputs": [
+        "blurred vision",
+        "cataract",
+        "retina issue",
+        "eye pain"
+      ],
+      "translated_example_inputs": [
+        "размытое зрение",
+        "катаракта",
+        "проблемы с сетчаткой",
+        "боль в глазу"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "english_example_inputs": [
+        "headache",
+        "migraine",
+        "dizziness",
+        "numbness"
+      ],
+      "translated_example_inputs": [
+        "головная боль",
+        "мигрень",
+        "головокружение",
+        "онемение"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "english_example_inputs": [
+        "palpitations",
+        "chest discomfort",
+        "high blood pressure",
+        "leg swelling"
+      ],
+      "translated_example_inputs": [
+        "учащенное сердцебиение",
+        "дискомфорт в груди",
+        "высокое давление",
+        "отек ног"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "english_example_inputs": [
+        "kidney pain",
+        "urinary infection",
+        "blood in urine",
+        "dialysis"
+      ],
+      "translated_example_inputs": [
+        "боль в почках",
+        "инфекция мочевыводящих путей",
+        "кровь в моче",
+        "диализ"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "english_example_inputs": [
+        "cough",
+        "shortness of breath",
+        "asthma",
+        "sleep apnea"
+      ],
+      "translated_example_inputs": [
+        "кашель",
+        "одышка",
+        "астма",
+        "апноэ во сне"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "english_example_inputs": [
+        "fertility issue",
+        "testosterone",
+        "erectile dysfunction"
+      ],
+      "translated_example_inputs": [
+        "проблемы с фертильностью",
+        "тестостерон",
+        "эректильная дисфункция"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "english_example_inputs": [
+        "anxiety",
+        "depression",
+        "stress",
+        "therapy"
+      ],
+      "translated_example_inputs": [
+        "тревожность",
+        "депрессия",
+        "стресс",
+        "психотерапия"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "english_example_inputs": [
+        "chronic pain",
+        "rehab",
+        "mobility issue",
+        "back rehabilitation"
+      ],
+      "translated_example_inputs": [
+        "хроническая боль",
+        "реабилитация",
+        "проблемы с подвижностью",
+        "восстановление спины"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "english_example_inputs": [
+        "blood test",
+        "health checkup",
+        "xray",
+        "mri",
+        "screening"
+      ],
+      "translated_example_inputs": [
+        "анализ крови",
+        "медосмотр",
+        "рентген",
+        "МРТ",
+        "скрининг"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "english_example_inputs": [
+        "acne",
+        "rash",
+        "hair loss",
+        "mole check"
+      ],
+      "translated_example_inputs": [
+        "акне",
+        "сыпь",
+        "выпадение волос",
+        "проверка родинок"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "english_example_inputs": [
+        "tooth pain",
+        "braces",
+        "implants",
+        "root canal"
+      ],
+      "translated_example_inputs": [
+        "зубная боль",
+        "брекеты",
+        "импланты",
+        "лечение каналов"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "english_example_inputs": [
+        "pregnancy",
+        "ivf",
+        "fertility",
+        "pelvic pain",
+        "period issues"
+      ],
+      "translated_example_inputs": [
+        "беременность",
+        "ЭКО",
+        "фертильность",
+        "боль в тазу",
+        "проблемы с менструацией"
+      ]
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "english_example_inputs": [
+        "cancer treatment",
+        "tumor",
+        "chemotherapy",
+        "radiation"
+      ],
+      "translated_example_inputs": [
+        "лечение рака",
+        "опухоль",
+        "химиотерапия",
+        "облучение"
+      ]
+    }
+  ],
+  "ui_strings": [
+    {
+      "key": "my_reviews_empty_subtitle",
+      "english_label": "Be the first to share an experience and help others.",
+      "translated_label": "Станьте первым, кто поделится своим опытом и поможет другим."
+    }
+  ]
+}

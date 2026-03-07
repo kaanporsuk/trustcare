@@ -128,7 +128,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
             return
         }
 
-        guard let session = try? await SupabaseManager.shared.client.auth.session else {
+        guard (try? await SupabaseManager.shared.client.auth.session) != nil else {
             submissionErrorMessage = tcString("Please sign in to submit a review.", fallback: "Please sign in to submit a review.")
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             return
