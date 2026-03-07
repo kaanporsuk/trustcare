@@ -5,6 +5,14 @@ on:
   push:
     branches:
       - main
+  workflow_call:
+    secrets:
+      SUPABASE_URL:
+        required: false
+      SUPABASE_ANON_KEY:
+        required: false
+      SUPABASE_SERVICE_ROLE_KEY:
+        required: false
 
 jobs:
   verify:
@@ -14,6 +22,9 @@ jobs:
       PROJECT: TrustCare.xcodeproj
       SCHEME: TrustCare
       CONFIGURATION: Debug
+      SUPABASE_URL_SECRET_NAME: SUPABASE_URL
+      SUPABASE_ANON_KEY_SECRET_NAME: SUPABASE_ANON_KEY
+      SUPABASE_SERVICE_ROLE_KEY_SECRET_NAME: SUPABASE_SERVICE_ROLE_KEY
 
     steps:
       - name: Checkout
@@ -52,9 +63,13 @@ jobs:
 
       - name: Check Supabase Secrets
         id: secrets
+        env:
+          SUPABASE_URL: ${{ secrets[env.SUPABASE_URL_SECRET_NAME] }}
+          SUPABASE_ANON_KEY: ${{ secrets[env.SUPABASE_ANON_KEY_SECRET_NAME] }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets[env.SUPABASE_SERVICE_ROLE_KEY_SECRET_NAME] }}
         shell: bash
         run: |
-          echo "has=${{ secrets.SUPABASE_URL != '' && (secrets.SUPABASE_ANON_KEY != '' || secrets.SUPABASE_SERVICE_ROLE_KEY != '') }}" >> "$GITHUB_OUTPUT"
+          echo "has=${{ env.SUPABASE_URL != '' && (env.SUPABASE_ANON_KEY != '' || env.SUPABASE_SERVICE_ROLE_KEY != '') }}" >> "$GITHUB_OUTPUT"
 
       - name: Ontology audit (PR offline mode)
         if: github.event_name == 'pull_request'
@@ -65,9 +80,9 @@ jobs:
       - name: Ontology audit (main against Supabase)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.secrets.outputs.has == 'true'
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_URL: ${{ secrets[env.SUPABASE_URL_SECRET_NAME] }}
+          SUPABASE_ANON_KEY: ${{ secrets[env.SUPABASE_ANON_KEY_SECRET_NAME] }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets[env.SUPABASE_SERVICE_ROLE_KEY_SECRET_NAME] }}
         run: swift tools/ontology_audit.swift
 
       - name: Ontology audit skipped (missing secrets)
