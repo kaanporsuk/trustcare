@@ -3,100 +3,331 @@
     "version": "taxonomy_v2_1",
     "locale": "sv",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_sv.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "botox",
+      "fillers",
+      "näsplastik",
+      "håravfall",
+      "hudföryngring"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "knäont",
+      "ryggont",
+      "axelskada",
+      "idrottsskada"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "cancerbehandling",
+      "tumör",
+      "cellgifter",
+      "strålning"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "feber hos barn",
+      "problem hos nyfödd",
+      "barnkontroll"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "ont i magen",
+      "halsbränna",
+      "leverproblem"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "bihåleinflammation",
+      "öroninflammation",
+      "halsmandlar",
+      "hörselproblem"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "bröstsmärta",
+      "kraftig blödning",
+      "andnöd",
+      "plötslig svaghet"
+    ],
+    "CONCERN_EYES_VISION": [
+      "suddig syn",
+      "grå starr",
+      "näthinneavlossning",
+      "ont i ögat"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "huvudvärk",
+      "migrän",
+      "yrsel",
+      "domningar"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "hjärtklappning",
+      "obehag i bröstet",
+      "högt blodtryck",
+      "svullna ben"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "ont i njurarna",
+      "urinvägsinfektion",
+      "blod i urinen",
+      "dialys"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "hosta",
+      "andfåddhet",
+      "astma",
+      "sömnapné"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "fertilitetsproblem",
+      "testosteron",
+      "erektionsproblem"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "ångest",
+      "depression",
+      "stress",
+      "terapi"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "kronisk smärta",
+      "rehab",
+      "rörelsesvårigheter",
+      "ryggrehabilitering"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "blodprov",
+      "hälsokontroll",
+      "röntgen",
+      "magnetröntgen",
+      "screening"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "akne",
+      "hudutslag",
+      "håravfall",
+      "kontroll av födelsemärken"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "tandvärk",
+      "tandställning",
+      "tandimplantat",
+      "rotfyllning"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "graviditet",
+      "ivf",
+      "fertilitet",
+      "bäckensmärta",
+      "menstruationsproblem"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Vårdcentral",
+      "Mottagning"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Ögonmottagning"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "Lasarett"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Labb",
+      "Provtagning"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Apotek"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "digitalt läkarbesök",
+      "videokonsultation"
+    ],
+    "FAC_URGENT_CARE": [
+      "drop-in-mottagning",
+      "närakut"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Akupunkturbehandling"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "Allergitest",
+      "Pricktest"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "Magsäcksoperation",
+      "GBP",
+      "Gastric bypass"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "Blodprovtagning",
+      "Labbprov",
+      "Labbtest"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "Botox",
+      "fillers",
+      "injektionsbehandlingar"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Bröstförstoring",
+      "Bröstförminskning",
+      "Bröstplastik"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Starr-operation"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "Kemisk peeling",
+      "Microneedling"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "Cellgifter"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "Tandställning",
+      "Osynlig tandställning",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Skalfasader",
+      "Estetisk tandläkare"
+    ],
+    "SERV_CT_SCAN": [
+      "CT-röntgen",
+      "Datortomografi"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Tandimplantat",
+      "Titantand"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Ögonlocksoperation"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "Ansiktslyftning",
+      "Halslyft"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "Provrörsbefruktning"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "hårimplantat",
+      "behandling mot håravfall"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "Hälsoundersökning",
+      "Screening"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Homeopatisk behandling"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Laserbehandling"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "Ögonlaserkirurgi",
+      "Synfelskirurgi"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Fettsugning",
+      "Kroppsskulpturering"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "läppfillers",
+      "läppaugmentation"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "Bröströntgen",
+      "Mammografi"
+    ],
+    "SERV_MRI": [
+      "Magnetkamera",
+      "MR"
+    ],
+    "SERV_NATUROPATHY": [
+      "Naturmedicinsk behandling"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "PRP-behandling",
+      "hudföryngring"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "terapi",
+      "KBT",
+      "samtalsstöd"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Strålbehandling"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "Sjukgymnastik",
+      "Rehab"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Näsoperation"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "Rotfyllning"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Estetisk tandvård",
+      "Smile makeover"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "laserborttagning av tatuering"
+    ],
+    "SERV_TCM": [
+      "Kinesisk medicin"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Blekning av tänder"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Magplastik",
+      "Bukplastik"
+    ],
+    "SERV_ULTRASOUND": [
+      "Ultraljudsundersökning"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "vaccin",
+      "vaccinering"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "Slätröntgen",
+      "Röntgenbild"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Allergiläkare",
+      "Immunolog"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Narkosläkare",
+      "Narkos"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +335,53 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Genetisk medicin",
+      "Genetikmottagning"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Tjocktarmkirurgi",
+      "Ändtarmkirurgi"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "IVA",
+      "Intensivvård"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "Tandläkare",
+      "Allmäntandläkare"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "ÖNH",
+      "Öron näsa hals",
+      "Öronläkare"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Husläkare",
+      "Primärvård"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "Allmänläkare",
+      "Primärvård"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Leverspecialist"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Internmedicinare"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +391,19 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Gynekolog",
+      "Obstetrik",
+      "Kvinnosjukvård"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Käkoperation",
+      "Käkkirurg"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +417,54 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "Rehabiliteringsläkare",
+      "Fysikalisk medicin"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "Sjukgymnastik",
+      "Sjukgymnast",
+      "Fysioterapeut"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Psykiater"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Psykolog",
+      "Samtalsterapi",
+      "Psykoterapeut",
+      "Rådgivning"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "IVF-läkare",
+      "fertilitetsläkare"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "Näthinnespecialist",
+      "Retinaläkare"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "Bihålespecialist",
+      "Näsläkare"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Idrottsskada",
+      "Sportskada"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Bäckenbottenspecialist"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []

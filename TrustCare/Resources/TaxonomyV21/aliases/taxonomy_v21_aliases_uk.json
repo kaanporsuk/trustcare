@@ -3,100 +3,337 @@
     "version": "taxonomy_v2_1",
     "locale": "uk",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_uk.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "ботокс",
+      "філери",
+      "пластика носа",
+      "випадіння волосся",
+      "омолодження шкіри"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "біль у коліні",
+      "біль у спині",
+      "травма плеча",
+      "спортивна травма"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "лікування раку",
+      "пухлина",
+      "хіміотерапія",
+      "опромінення"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "температура у дитини",
+      "проблеми у новонародженого",
+      "огляд педіатра"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "біль у шлунку",
+      "печія",
+      "проблеми з печінкою"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "біль у пазухах",
+      "інфекція вуха",
+      "гланди",
+      "проблеми зі слухом"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "біль у грудях",
+      "сильна кровотеча",
+      "задишка",
+      "раптова слабкість"
+    ],
+    "CONCERN_EYES_VISION": [
+      "розмитий зір",
+      "катаракта",
+      "проблеми з сітківкою",
+      "біль в оці"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "головний біль",
+      "мігрень",
+      "запаморочення",
+      "оніміння"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "прискорене серцебиття",
+      "дискомфорт у грудях",
+      "високий тиск",
+      "набряк ніг"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "біль у нирках",
+      "інфекція сечовивідних шляхів",
+      "кров у сечі",
+      "діаліз"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "кашель",
+      "задишка",
+      "астма",
+      "апное уві сні"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "проблеми з фертильністю",
+      "тестостерон",
+      "еректильна дисфункція"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "тривожність",
+      "депресія",
+      "стрес",
+      "психотерапія"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "хронічний біль",
+      "реабілітація",
+      "проблеми з рухливістю",
+      "реабілітація спини"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "аналіз крові",
+      "профілактичний огляд",
+      "рентген",
+      "МРТ",
+      "скринінг"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "акне",
+      "висип",
+      "випадіння волосся",
+      "перевірка родимок"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "зубний біль",
+      "брекети",
+      "імпланти",
+      "лікування каналів"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "вагітність",
+      "ЕКЗ",
+      "безпліддя",
+      "біль у тазу",
+      "порушення менструального циклу"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Медичний центр",
+      "Клініка"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Офтальмологічна клініка"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "Лікарня",
+      "Шпиталь"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Лабораторія",
+      "Центр забору крові"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Аптека"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "Онлайн-консультація",
+      "Відеоконсультація лікаря"
+    ],
+    "FAC_URGENT_CARE": [
+      "Невідкладна допомога",
+      "Травмпункт"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Лікування голковколюванням"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "Алерготест",
+      "Аналіз на алергію"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "Хірургія для схуднення",
+      "Зменшення шлунка"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "Аналіз крові",
+      "Лабораторні аналізи"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "Ботокс",
+      "Філери",
+      "Контурна пластика"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Збільшення грудей",
+      "Зменшення грудей",
+      "Мамопластика"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Операція на катаракту"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "Хімічний пілінг",
+      "Мікронідлінг"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "Хіміотерапія"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "Брекети",
+      "Елайнери",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Естетичний стоматолог",
+      "Реставрація зубів"
+    ],
+    "SERV_CT_SCAN": [
+      "КТ",
+      "Комп'ютерна томографія"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Імпланти зубів"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Блефаропластика",
+      "Пластика повік"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "Підтяжка обличчя",
+      "Підтяжка шиї"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "ЕКЗ",
+      "Лікування безпліддя"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "Відновлення волосся",
+      "Пересадка волосся"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "Профілактичний огляд",
+      "Скринінг",
+      "Комплексне обстеження"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Гомеопатичне лікування"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Лазерне лікування",
+      "Лазеротерапія"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "Лазерна корекція зору"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Ліпосакція",
+      "Контурна пластика тіла"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "Збільшення губ",
+      "Філери в губи"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "Мамограма"
+    ],
+    "SERV_MRI": [
+      "Магнітно-резонансна томографія",
+      "МРТ"
+    ],
+    "SERV_NATUROPATHY": [
+      "Натуропатичне лікування"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "Плазмоліфтинг",
+      "Омолодження шкіри"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "Психотерапія",
+      "Консультація психолога"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Променева терапія",
+      "Опромінення"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "Реабілітація",
+      "Фізіотерапія",
+      "Фізична терапія"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Пластика носа",
+      "Операція на носі"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "Пломбування каналів",
+      "Видалення нерва"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Дизайн посмішки",
+      "Естетика зубів"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "Лазерне видалення татуювань"
+    ],
+    "SERV_TCM": [
+      "ТКМ",
+      "Китайська медицина"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Відбілювання зубів"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Абдомінопластика",
+      "Пластика живота"
+    ],
+    "SERV_ULTRASOUND": [
+      "УЗД",
+      "Сонографія"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "Вакцинація",
+      "Щеплення",
+      "Вакцина"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "Рентген",
+      "Рентгенографія"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Алерголог",
+      "Імунолог"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Анестезіолог",
+      "Анестезія"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +341,54 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Генетик",
+      "Клініка генетики"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Хірургія кишківника",
+      "Операція на прямій кишці"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "Реанімація",
+      "Інтенсивна терапія"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "Стоматолог",
+      "Зубний лікар"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "ЛОР",
+      "Вухо-горло-ніс",
+      "Отоларинголог"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Сімейний лікар",
+      "Первинна допомога"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "Терапевт",
+      "Сімейний лікар"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Гепатолог",
+      "Фахівець із захворювань печінки"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Терапевт"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +398,19 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Гінеколог",
+      "Акушер",
+      "Акушер-гінеколог"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Хірургія щелепи",
+      "Щелепно-лицьова хірургія"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +424,54 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "Фізіатр",
+      "Лікар-реабілітолог"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "Фізичний терапевт",
+      "Фізіотерапевт"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Психіатр"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Психолог",
+      "Психотерапевт",
+      "Психологічне консультування"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "Репродуктолог",
+      "Спеціаліст з ЕКЗ",
+      "Лікар з безпліддя"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "Спеціаліст по сітківці",
+      "Ретинолог"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "Ринолог",
+      "Синусит",
+      "Захворювання носа"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Спортивна травма",
+      "Спортивний лікар"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Спеціаліст тазового дна"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []

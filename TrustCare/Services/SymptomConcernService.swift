@@ -20,11 +20,12 @@ enum SymptomConcernService {
 
         let mapped = entries.map { entry in
             let label = TaxonomyCatalogStore.shared.localizedLabel(for: entry.canonicalID, locale: locale) ?? entry.displayEnglishLabel
+            let localizedAliases = TaxonomyCatalogStore.shared.aliases(for: entry.canonicalID, locale: locale)
 
             return SymptomConcernSuggestion(
                 canonicalID: entry.canonicalID,
                 label: label,
-                aliases: entry.aliasesEnglish,
+                aliases: localizedAliases,
                 likelySpecialtyIDs: entry.likelySpecialtyIDs,
                 likelyTreatmentProcedureIDs: entry.likelyTreatmentProcedureIDs,
                 likelyFacilityTypeIDs: entry.likelyFacilityTypeIDs,

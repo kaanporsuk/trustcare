@@ -161,20 +161,22 @@ final class ReviewSubmissionViewModel: ObservableObject {
             let derivedPriceLevel = max(1, min(4, Int(round(Double(overallRating) / 1.25))))
             let generatedTitle = String(trimmedComment.prefix(60)).trimmingCharacters(in: .whitespacesAndNewlines)
             let visitTypeEnum = mappedVisitType(for: visitType)
-            let surveyType = surveyConfig.type
             let title = generatedTitle.isEmpty ? nil : generatedTitle
 
             let targets = resolveSubmissionTargets()
             var submittedReviews: [Review] = []
 
             for (index, target) in targets.enumerated() {
+                let targetSurveyType = surveyType(for: target.type)
+                let targetMetricRatings = metricRatings(for: target.type)
+
                 let review = try await retry(times: 3) {
                     try await ReviewService.submitReview(
                         target: target,
                         visitDate: self.visitDate,
                         visitType: visitTypeEnum,
-                        surveyType: surveyType,
-                        metricRatings: self.metricRatings,
+                        surveyType: targetSurveyType,
+                        metricRatings: targetMetricRatings,
                         overallRating: self.overallRating,
                         priceLevel: derivedPriceLevel,
                         title: title,
@@ -256,6 +258,23 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     private func resetMetricRatings(for targetType: ReviewTargetType) {
         metricRatings = Dictionary(uniqueKeysWithValues: RatingCriterion.criteria(for: targetType).map { ($0.dbColumn, 0) })
+    }
+
+    private func metricRatings(for targetType: ReviewTargetType) -> [String: Int] {
+        let allowedColumns = Set(RatingCriterion.criteria(for: targetType).map(\.dbColumn))
+        return metricRatings.filter { allowedColumns.contains($0.key) }
+    }
+
+    private func surveyType(for targetType: ReviewTargetType) -> String {
+        switch targetType {
+        case .provider:
+            if let provider = selectedProvider {
+                return SpecialtyService.shared.surveyConfig(for: provider.specialty).type
+            }
+            return surveyConfig.type
+        case .facility:
+            return SurveyConfigurations.generalClinic.type
+        }
     }
 
     private func resolveSubmissionTargets() -> [ReviewTarget] {

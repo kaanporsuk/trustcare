@@ -472,7 +472,7 @@ struct HomeView: View {
 
                 if !recentSearches.isEmpty {
                     VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                        Text("Recent searches")
+                        Text(tcString("Recent searches", fallback: "Recent searches"))
                             .font(.caption)
                             .foregroundStyle(Color.tcTextSecondary)
                         ForEach(recentSearches, id: \.self) { query in
@@ -494,7 +494,7 @@ struct HomeView: View {
                 }
 
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                    Text("Browse by city")
+                    Text(tcString("Browse by city", fallback: "Browse by city"))
                         .font(.caption)
                         .foregroundStyle(Color.tcTextSecondary)
 
@@ -568,7 +568,7 @@ struct HomeView: View {
 
     private var popularNearYouSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            Text("Popular near you")
+            Text(tcString("Popular near you", fallback: "Popular near you"))
                 .font(.caption)
                 .foregroundStyle(Color.tcTextSecondary)
 
@@ -628,7 +628,7 @@ struct HomeView: View {
             Text(tcKey: "filter_distance", fallback: "Distance")
                 .font(.headline)
 
-            Picker("Distance", selection: $selectedDistanceKm) {
+            Picker(tcString("filter_distance", fallback: "Distance"), selection: $selectedDistanceKm) {
                 Text("5 km").tag(5)
                 Text("10 km").tag(10)
                 Text("25 km").tag(25)
@@ -712,7 +712,7 @@ struct HomeView: View {
             .toggleStyle(.switch)
 
             if verifiedOnly && displayedProviders.isEmpty {
-                Text("No verified providers match this area yet.")
+                Text(tcString("No verified providers match this area yet.", fallback: "No verified providers match this area yet."))
                     .font(.caption)
                     .foregroundStyle(Color.tcCoral)
                     .padding(.top, 6)

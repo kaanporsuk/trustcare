@@ -32,7 +32,7 @@ struct MyReviewsView: View {
                 TCEmptyState(
                     variant: .noReviews,
                     customTitle: tcString("reviews_empty_title", fallback: "No reviews yet"),
-                    customBody: tcString("empty_state_no_reviews_body", fallback: "Be the first to share an experience and help others."),
+                    customBody: tcString("my_reviews_empty_subtitle", fallback: "Be the first to share an experience and help others."),
                     primaryTitle: tcString("review_step_write_review", fallback: "Write review")
                 ) {
                     selectedTab = 2

@@ -3,100 +3,341 @@
     "version": "taxonomy_v2_1",
     "locale": "hu",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_hu.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "botox",
+      "ráncfeltöltés",
+      "orrplasztika",
+      "hajhullás",
+      "bőrfiatalítás"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "térdfájdalom",
+      "hátfájdalom",
+      "vállsérülés",
+      "sportsérülés"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "daganatkezelés",
+      "daganat",
+      "kemoterápia",
+      "sugárkezelés"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "gyermekkori láz",
+      "újszülött probléma",
+      "gyermekorvosi vizsgálat"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "gyomorfájás",
+      "gyomorégés",
+      "májprobléma"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "arcüregfájdalom",
+      "fülgyulladás",
+      "mandulagyulladás",
+      "hallásprobléma"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "mellkasi fájdalom",
+      "erős vérzés",
+      "légszomj",
+      "hirtelen gyengeség"
+    ],
+    "CONCERN_EYES_VISION": [
+      "homályos látás",
+      "szürkehályog",
+      "retinaprobléma",
+      "szemfájdalom"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "fejfájás",
+      "migrén",
+      "szédülés",
+      "zsibbadás"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "szívdobogásérzés",
+      "mellkasi diszkomfort",
+      "magas vérnyomás",
+      "lábdagadás"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "vesefájdalom",
+      "húgyúti fertőzés",
+      "véres vizelet",
+      "dialízis"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "köhögés",
+      "légszomj",
+      "asztma",
+      "alvási apnoe"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "meddőség",
+      "tesztoszteron",
+      "merevedési zavar"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "szorongás",
+      "depresszió",
+      "stressz",
+      "terápia"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "krónikus fájdalom",
+      "rehabilitáció",
+      "mozgásszervi probléma",
+      "gerincrehabilitáció"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "vérvétel",
+      "szűrővizsgálat",
+      "röntgen",
+      "MRI",
+      "kivizsgálás"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "pattanás",
+      "kiütés",
+      "hajhullás",
+      "anyajegyvizsgálat"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "fogfájás",
+      "fogszabályozó",
+      "fogimplantátum",
+      "gyökérkezelés"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "terhesség",
+      "lombik",
+      "termékenység",
+      "kismedencei fájdalom",
+      "menstruációs panaszok"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Orvosi rendelő",
+      "Klinika"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Szemészeti klinika",
+      "Szemészet"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "általános kórház",
+      "kórház"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Labor",
+      "Vérvételi hely"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Gyógyszertár",
+      "Patika"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "Online konzultáció",
+      "Távkonzultáció"
+    ],
+    "FAC_URGENT_CARE": [
+      "Sürgősségi ügyelet",
+      "Orvosi ügyelet"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Akupunktúrás kezelés"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "Allergiateszt",
+      "Prick-teszt"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "bariátriai műtét",
+      "gyomorszűkítő műtét"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "Vérvizsgálat",
+      "Labor",
+      "Vérkép"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "Botox",
+      "Ráncfeltöltés",
+      "Hialuronsav"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Mellnagyobbítás",
+      "Mellkisebbítés",
+      "Mellplasztika"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Szürkehályog műtét"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "kémiai hámlasztás",
+      "mikrotűs kezelés"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "kemoterápia",
+      "daganatellenes gyógyszeres kezelés"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "fogszabályozó",
+      "aligner",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Esztétikai fogászat",
+      "Mosolytervezés"
+    ],
+    "SERV_CT_SCAN": [
+      "CT",
+      "CT vizsgálat"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Fogbeültetés",
+      "Műfoggyökér"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Szemhéjplasztika"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "Arcfelvarrás",
+      "Nyakplasztika"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "Lombikprogram",
+      "IVF kezelés"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "Hajbeültetés",
+      "Hajpótlás"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "Menedzserszűrés",
+      "Általános szűrővizsgálat",
+      "Kivizsgálás"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Homeopátiás kezelés"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Lézeres kezelés",
+      "Lézerterápia"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "Lézeres szemműtét",
+      "Látásjavító műtét"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Zsírleszívás",
+      "Alakformálás"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "Ajaktöltés",
+      "Ajakfeltöltés"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "Mammográfia",
+      "Mellrákszűrés"
+    ],
+    "SERV_MRI": [
+      "MR",
+      "Mágneses rezonancia"
+    ],
+    "SERV_NATUROPATHY": [
+      "Természetgyógyászati kezelés"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "PRP",
+      "plazmaterápia"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "Terápia",
+      "Pszichológiai tanácsadás"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Sugárterápia",
+      "Besugárzás"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "Gyógytorna",
+      "Fizioterápia",
+      "Rehabilitáció"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Orrplasztika",
+      "Orrműtét"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "Gyökérkezelés",
+      "Fogbélkezelés"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Mosolytervezés",
+      "Fogászati esztétika"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "Lézeres tetoválás eltávolítás"
+    ],
+    "SERV_TCM": [
+      "Kínai medicina",
+      "Hagyományos kínai orvoslás"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Fogfehérítés"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Hasplasztika"
+    ],
+    "SERV_ULTRASOUND": [
+      "Ultrahang",
+      "UH"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "Védőoltás",
+      "Oltás"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "Röntgen",
+      "RTG"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Allergológus",
+      "Immunológia"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Altatóorvos",
+      "Altatás"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +345,54 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Klinikai genetika",
+      "Genetikai tanácsadás"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Kolorektális sebészet",
+      "Proktológia"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "ITO",
+      "Intenzív osztály"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "Fogorvos",
+      "Fogászat"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "Fül-orr-gégész",
+      "Otolaringológia"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Háziorvos",
+      "Alapellátás"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "Háziorvos",
+      "Körzeti orvos"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Hepatológia",
+      "májspecialista"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Belgyógyász",
+      "belgyógyászat"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +402,18 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Nőgyógyász",
+      "Szülész"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Állcsontsebészet",
+      "arckoponya-sebészet"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +427,56 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "PM&R",
+      "rehabilitációs szakorvos"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "Gyógytornász",
+      "Fizioterápia",
+      "Gyógytorna"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Pszichiáter"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Pszichológus",
+      "pszichoterápia",
+      "pszichoterapeuta",
+      "tanácsadás"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "IVF specialista",
+      "meddőségi specialista",
+      "reprodukciós endokrinológus"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "Retina specialista",
+      "retinaszakorvos"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "Rinológia",
+      "orrmelléküreg-specialista"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Sportorvos",
+      "Sportsérülés"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Kismedencei specialista",
+      "Urogynekológus"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []

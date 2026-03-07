@@ -3,100 +3,336 @@
     "version": "taxonomy_v2_1",
     "locale": "ro",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_ro.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "botox",
+      "filler",
+      "rinoplastie",
+      "căderea părului",
+      "rejuvenare cutanată"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "durere de genunchi",
+      "durere de spate",
+      "traumatism umăr",
+      "traumatism sportiv"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "tratament oncologic",
+      "tumoare",
+      "chimioterapie",
+      "radioterapie"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "febră la copil",
+      "probleme la nou-născut",
+      "control pediatric"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "durere de stomac",
+      "reflux gastric",
+      "problemă la ficat"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "sinuzită",
+      "otită",
+      "amigdale",
+      "probleme de auz"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "durere în piept",
+      "hemoragie severă",
+      "dificultăți de respirație",
+      "slăbiciune bruscă"
+    ],
+    "CONCERN_EYES_VISION": [
+      "vedere încetoșată",
+      "cataractă",
+      "problemă de retină",
+      "durere la ochi"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "durere de cap",
+      "migrenă",
+      "amețeli",
+      "amorțeală"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "palpitații",
+      "presiune în piept",
+      "tensiune arterială mare",
+      "picioare umflate"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "durere de rinichi",
+      "infecție urinară",
+      "sânge în urină",
+      "dializă"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "tuse",
+      "dificultăți de respirație",
+      "astm",
+      "apnee de somn"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "problemă de fertilitate",
+      "testosteron",
+      "disfuncție erectilă"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "anxietate",
+      "depresie",
+      "stres",
+      "terapie"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "durere cronică",
+      "recuperare medicală",
+      "probleme de mobilitate",
+      "recuperare pentru spate"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "analize de sânge",
+      "control medical",
+      "radiografie",
+      "RMN",
+      "screening"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "acnee",
+      "erupție cutanată",
+      "căderea părului",
+      "control pentru alunițe"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "durere de dinți",
+      "aparat dentar",
+      "implanturi",
+      "tratament de canal"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "sarcină",
+      "FIV",
+      "fertilitate",
+      "durere pelvină",
+      "probleme cu menstruația"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Centru medical",
+      "Clinică privată"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Clinică oftalmologică"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "spital",
+      "spital general"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Laborator",
+      "Punct de recoltare",
+      "Analize medicale"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Farmacie"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "Consultație online",
+      "Telemedicină"
+    ],
+    "FAC_URGENT_CARE": [
+      "îngrijiri urgente",
+      "consultație fără programare"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Tratament prin acupunctură"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "test de alergie",
+      "prick test"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "Operație de slăbire",
+      "Sleeve gastric"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "Analiză de sânge",
+      "Hemoleucogramă",
+      "Analize medicale"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "botox",
+      "fillere",
+      "injecții estetice"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Mărire de sân",
+      "Reducere de sân"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Operație cataractă"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "Peeling chimic",
+      "Microneedling"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "chimioterapie"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "Aparat dentar",
+      "Gutiere",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Stomatolog estetic",
+      "Smile design"
+    ],
+    "SERV_CT_SCAN": [
+      "CT",
+      "tomografie computerizată"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Implanturi dentare"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Blefaroplastie",
+      "Operație pleoape"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "Lifting facial",
+      "Lifting cervical"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "FIV",
+      "Fertilizare in vitro"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "Implant de păr"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "control medical",
+      "screening medical",
+      "investigații preventive"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Tratament homeopatic"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Tratament laser",
+      "Terapie laser"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "LASIK",
+      "Chirurgie refractivă"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Liposucție",
+      "Modelare corporală"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "Filler buze",
+      "Mărire buze"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "Mamogramă"
+    ],
+    "SERV_MRI": [
+      "RMN",
+      "Rezonanță magnetică"
+    ],
+    "SERV_NATUROPATHY": [
+      "Medicină naturistă"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "PRP",
+      "Rejuvenare cutanată"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "Terapie psihologică",
+      "Consiliere"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Radioterapie",
+      "Iradiere"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "Recuperare",
+      "Kinetoterapie",
+      "Fizioterapie"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Operație nas",
+      "Chirurgie estetică nas"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "Tratament de canal",
+      "Devitalizare"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Smile design",
+      "Estetică dentară"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "Eliminare tatuaj laser"
+    ],
+    "SERV_TCM": [
+      "MTC",
+      "Medicină chineză"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Albire dentară"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Abdominoplastie"
+    ],
+    "SERV_ULTRASOUND": [
+      "Eco",
+      "Ecografie"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "Vaccin",
+      "Vaccinare"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "Radiografie",
+      "Rx"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Alergolog",
+      "Imunologie"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Anestezie",
+      "ATI"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +340,54 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Medicină genetică",
+      "Consiliere genetică"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Chirurgie de colon",
+      "Chirurgie rectală"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "ATI",
+      "Terapie intensivă"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "stomatolog",
+      "dentist generalist"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "ORL",
+      "Otorinolaringolog",
+      "Urechi nas gât"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Medic de familie",
+      "Medicină primară"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "medic generalist",
+      "asistență medicală primară"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Specialist boli hepatice"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Internist",
+      "Medic internist"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +397,19 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Ginecolog",
+      "Ginecologie",
+      "Obstetrică"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Chirurgie maxilo-facială",
+      "Chirurgie de maxilar"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +423,53 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "Recuperare medicală",
+      "Medicină fizică"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "fizioterapeut",
+      "kinetoterapeut"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Psihiatru"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Psihologie",
+      "Terapie",
+      "Psihoterapeut",
+      "Consiliere psihologică"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "Specialist FIV",
+      "Specialist fertilitate",
+      "Endocrinologie reproductivă"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "retină",
+      "specialist în retină"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "sinusuri",
+      "specialist ORL pentru nas și sinusuri"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Traumatism sportiv"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Specialist planșeu pelvin"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []

@@ -3,6 +3,7 @@ import Foundation
 
 private let expectedTaxonomyCount = 150
 private let expectedConcernCount = 19
+private let shippedLocales = ["cs", "da", "de", "es", "fr", "hu", "it", "nl", "pl", "pt", "ro", "ru", "sv", "tr", "uk"]
 
 struct TaxonomyEntry: Decodable {
     let canonicalID: String
@@ -324,12 +325,75 @@ for concern in proposalPayload.symptomConcernDomains {
     }
 }
 
+// Locale coverage validation for imported shipped locales.
+for locale in shippedLocales {
+    let localeLabelsURL = repoRoot.appendingPathComponent("TrustCare/Resources/TaxonomyV21/labels/taxonomy_v21_locale_labels_\(locale).json")
+    let localeAliasesURL = repoRoot.appendingPathComponent("TrustCare/Resources/TaxonomyV21/aliases/taxonomy_v21_aliases_\(locale).json")
+
+    guard fileManager.fileExists(atPath: localeLabelsURL.path) else {
+        errors.append("Missing locale labels file: \(localeLabelsURL.path)")
+        continue
+    }
+    guard fileManager.fileExists(atPath: localeAliasesURL.path) else {
+        errors.append("Missing locale aliases file: \(localeAliasesURL.path)")
+        continue
+    }
+
+    let localeLabelsPayload: LabelsPayload
+    let localeAliasesPayload: AliasesPayload
+    do {
+        localeLabelsPayload = try decoder.decode(LabelsPayload.self, from: Data(contentsOf: localeLabelsURL))
+        localeAliasesPayload = try decoder.decode(AliasesPayload.self, from: Data(contentsOf: localeAliasesURL))
+    } catch {
+        errors.append("Unable to decode locale files for \(locale): \(error.localizedDescription)")
+        continue
+    }
+
+    let localeLabelIDs = Set(localeLabelsPayload.labels.keys)
+    let localeAliasIDs = Set(localeAliasesPayload.aliases.keys)
+
+    let missingLabelIDs = allowedAliasIDs.subtracting(localeLabelIDs).sorted()
+    let extraLabelIDs = localeLabelIDs.subtracting(allowedAliasIDs).sorted()
+    if !missingLabelIDs.isEmpty {
+        errors.append("Locale \(locale) missing label IDs: \(missingLabelIDs)")
+    }
+    if !extraLabelIDs.isEmpty {
+        errors.append("Locale \(locale) has unknown label IDs: \(extraLabelIDs)")
+    }
+
+    let missingAliasIDs = allowedAliasIDs.subtracting(localeAliasIDs).sorted()
+    let extraAliasIDs = localeAliasIDs.subtracting(allowedAliasIDs).sorted()
+    if !missingAliasIDs.isEmpty {
+        errors.append("Locale \(locale) missing alias IDs: \(missingAliasIDs)")
+    }
+    if !extraAliasIDs.isEmpty {
+        errors.append("Locale \(locale) has unknown alias IDs: \(extraAliasIDs)")
+    }
+
+    let emptyLocalizedLabels = localeLabelsPayload.labels
+        .filter { $0.value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        .map(\.key)
+        .sorted()
+    if !emptyLocalizedLabels.isEmpty {
+        errors.append("Locale \(locale) has empty localized labels: \(emptyLocalizedLabels)")
+    }
+
+    let emptyConcernAliases = concernIDs.filter { concernID in
+        let aliases = localeAliasesPayload.aliases[concernID] ?? []
+        return aliases.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }.isEmpty
+    }.sorted()
+    if !emptyConcernAliases.isEmpty {
+        errors.append("Locale \(locale) has empty concern example-input aliases: \(emptyConcernAliases)")
+    }
+}
+
 if errors.isEmpty {
     print("PASS: taxonomy_v2_1 validation succeeded")
     print("- taxonomy entries: \(canonicalPayload.taxonomy.count)")
     print("- concern entries: \(concernPayload.concernDomains.count)")
     print("- english labels: \(labelsPayload.labels.count)")
     print("- english alias groups: \(aliasesPayload.aliases.count)")
+    print("- locale coverage verified: \(shippedLocales.count) locales")
     exit(0)
 }
 

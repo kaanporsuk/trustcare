@@ -3,100 +3,338 @@
     "version": "taxonomy_v2_1",
     "locale": "fr",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_fr.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "botox",
+      "injections",
+      "rhinoplastie",
+      "chute des cheveux",
+      "rajeunissement cutané"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "douleur au genou",
+      "mal de dos",
+      "blessure à l’épaule",
+      "blessure sportive"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "traitement du cancer",
+      "tumeur",
+      "chimiothérapie",
+      "radiothérapie"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "fièvre chez l’enfant",
+      "problème chez le nourrisson",
+      "consultation pédiatrique"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "douleur d'estomac",
+      "reflux gastrique",
+      "problème de foie"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "sinusite",
+      "otite",
+      "amygdales",
+      "trouble de l’audition"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "douleur thoracique",
+      "saignement abondant",
+      "essoufflement",
+      "faiblesse soudaine"
+    ],
+    "CONCERN_EYES_VISION": [
+      "vue floue",
+      "cataracte",
+      "problème de rétine",
+      "douleur oculaire"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "mal de tête",
+      "migraine",
+      "vertiges",
+      "engourdissement"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "palpitations",
+      "gêne thoracique",
+      "hypertension",
+      "jambes gonflées"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "douleur rénale",
+      "infection urinaire",
+      "sang dans les urines",
+      "dialyse"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "toux",
+      "essoufflement",
+      "asthme",
+      "apnée du sommeil"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "problème de fertilité",
+      "testostérone",
+      "dysfonction érectile"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "anxiété",
+      "dépression",
+      "stress",
+      "soutien psychologique"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "douleur chronique",
+      "rééducation",
+      "problème de mobilité",
+      "rééducation du dos"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "prise de sang",
+      "bilan de santé",
+      "radiographie",
+      "IRM",
+      "dépistage"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "acné",
+      "éruption cutanée",
+      "chute des cheveux",
+      "contrôle d’un grain de beauté"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "mal aux dents",
+      "appareil dentaire",
+      "implants",
+      "dévitalisation"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "grossesse",
+      "FIV",
+      "fertilité",
+      "douleurs pelviennes",
+      "troubles menstruels"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Centre médical",
+      "Cabinet médical"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Clinique ophtalmologique",
+      "Cabinet d'ophtalmologie"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "Hôpital",
+      "CHU"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Labo",
+      "Laboratoire",
+      "Centre de prélèvement"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Pharmacie"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "Téléconsultation",
+      "Consultation en ligne"
+    ],
+    "FAC_URGENT_CARE": [
+      "Soins urgents",
+      "Clinique sans rendez-vous",
+      "Maison médicale de garde"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Séance d'acupuncture"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "Test allergologique"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "Chirurgie de l'obésité",
+      "Sleeve gastrectomie"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "Prise de sang",
+      "Bilan sanguin",
+      "Analyse biologique"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "Botox",
+      "Injections d’acide hyaluronique",
+      "Injections esthétiques"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Augmentation mammaire",
+      "Réduction mammaire"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Chirurgie de la cataracte"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "Peeling chimique",
+      "Microneedling"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "Chimio"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "Appareil dentaire",
+      "Gouttières",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Dentiste esthétique",
+      "Esthétique du sourire"
+    ],
+    "SERV_CT_SCAN": [
+      "Scanner",
+      "TDM"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Implants dentaires"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Blépharoplastie",
+      "Chirurgie des paupières"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "Lifting du visage",
+      "Lifting du cou"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "FIV",
+      "Fécondation in vitro"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "Implants capillaires",
+      "Greffe capillaire"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "Bilan de santé",
+      "Check-up médical",
+      "Dépistage préventif"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Traitement homéopathique"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Traitement laser",
+      "Thérapie laser"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "LASIK",
+      "Chirurgie réfractive"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Liposuccion",
+      "Remodelage corporel"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "Injection des lèvres",
+      "Augmentation des lèvres"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "Mammogramme"
+    ],
+    "SERV_MRI": [
+      "Imagerie par résonance magnétique"
+    ],
+    "SERV_NATUROPATHY": [
+      "Naturopathie"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "PRP",
+      "Rajeunissement cutané"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "Thérapie",
+      "Suivi psychologique"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Radiothérapie",
+      "Irradiation"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "Rééducation",
+      "Kiné",
+      "Kinésithérapie"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Rhinoplastie",
+      "Chirurgie du nez"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "Dévitalisation",
+      "Traitement endodontique"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Smile design",
+      "Esthétique dentaire"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "Détatouage laser"
+    ],
+    "SERV_TCM": [
+      "MTC",
+      "Médecine chinoise"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Blanchiment des dents"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Abdominoplastie",
+      "Plastie abdominale"
+    ],
+    "SERV_ULTRASOUND": [
+      "Echo",
+      "Échographie"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "Vaccin",
+      "Vaccination"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "Radio",
+      "Radiographie"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Allergologue",
+      "Immunologie"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Anesthésie",
+      "Anesthésiste"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +342,53 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Médecine génétique",
+      "Conseil génétique"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Chirurgie du côlon",
+      "Chirurgie rectale"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "Réanimation",
+      "Soins intensifs"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "Dentiste",
+      "Chirurgien-dentiste"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "ORL",
+      "Oto-rhino-laryngologiste",
+      "Otorhinolaryngologie"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Médecin de famille",
+      "Soins primaires"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "Généraliste",
+      "Médecin traitant"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Spécialiste du foie"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Interniste"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +398,19 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Gynécologue",
+      "Gynécologie",
+      "Obstétrique"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Chirurgie maxillo-faciale",
+      "Chirurgie de la mâchoire"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +424,54 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "MPR",
+      "Médecine de rééducation"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "Kiné",
+      "Kinésithérapeute"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Psychiatre"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Psychologie",
+      "Thérapie",
+      "Psychothérapeute",
+      "Accompagnement psychologique"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "Spécialiste FIV",
+      "Spécialiste de la fertilité",
+      "Endocrinologie de la reproduction"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "Rétine",
+      "Spécialiste de la rétine"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "Spécialiste des sinus",
+      "Spécialiste du nez"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Médecine du sport",
+      "Blessure sportive"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Spécialiste du plancher pelvien"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []

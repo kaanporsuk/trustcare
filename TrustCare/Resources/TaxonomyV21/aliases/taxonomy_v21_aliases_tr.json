@@ -3,100 +3,331 @@
     "version": "taxonomy_v2_1",
     "locale": "tr",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_tr.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "botoks",
+      "dolgu",
+      "rinoplasti",
+      "saç dökülmesi",
+      "cilt yenileme"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "diz ağrısı",
+      "bel ağrısı",
+      "omuz yaralanması",
+      "spor yaralanması"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "kanser tedavisi",
+      "tümör",
+      "kemoterapi",
+      "radyasyon"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "çocuk ateşi",
+      "yenidoğan sorunu",
+      "çocuk kontrolü"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "mide ağrısı",
+      "mide yanması",
+      "karaciğer sorunu"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "sinüs ağrısı",
+      "kulak enfeksiyonu",
+      "bademcik",
+      "işitme sorunu"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "göğüs ağrısı",
+      "şiddetli kanama",
+      "nefes darlığı",
+      "ani güçsüzlük"
+    ],
+    "CONCERN_EYES_VISION": [
+      "bulanık görme",
+      "katarakt",
+      "retina sorunu",
+      "göz ağrısı"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "baş ağrısı",
+      "migren",
+      "baş dönmesi",
+      "uyuşma"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "çarpıntı",
+      "göğüs rahatsızlığı",
+      "yüksek tansiyon",
+      "bacak şişliği"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "böbrek ağrısı",
+      "idrar yolu enfeksiyonu",
+      "idrarda kan",
+      "diyaliz"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "öksürük",
+      "nefes darlığı",
+      "astım",
+      "uyku apnesi"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "kısırlık sorunu",
+      "testosteron",
+      "erektil disfonksiyon"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "anksiyete",
+      "depresyon",
+      "stres",
+      "psikoterapi"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "kronik ağrı",
+      "rehabilitasyon",
+      "hareket kısıtlılığı",
+      "bel rehabilitasyonu"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "kan tahlili",
+      "check-up",
+      "röntgen",
+      "MR",
+      "tarama"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "akne",
+      "döküntü",
+      "saç dökülmesi",
+      "ben kontrolü"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "diş ağrısı",
+      "diş teli",
+      "implant",
+      "kanal tedavisi"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "gebelik",
+      "tüp bebek",
+      "kısırlık",
+      "pelvik ağrı",
+      "adet düzensizliği"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Tıp merkezi",
+      "Klinik"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Göz kliniği",
+      "Oftalmoloji kliniği"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "Hastane"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Laboratuvar",
+      "Kan tahlili merkezi"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Eczane"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "Online konsültasyon",
+      "Uzaktan muayene"
+    ],
+    "FAC_URGENT_CARE": [
+      "Acil bakım",
+      "Randevusuz klinik"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Akupunktur tedavisi"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "Alerji testi"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "Obezite ameliyatı"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "Kan tahlili",
+      "Laboratuvar testi",
+      "Laboratuvar tetkikleri"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "Botoks",
+      "Dolgu",
+      "Enjeksiyon uygulamaları"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Meme büyütme",
+      "Meme küçültme"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Katarakt ameliyatı"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "Kimyasal peeling",
+      "Mikro iğne tedavisi"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "Kemoterapi"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "Diş teli",
+      "Şeffaf plak",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Estetik diş hekimliği",
+      "Gülüş estetiği"
+    ],
+    "SERV_CT_SCAN": [
+      "BT",
+      "Bilgisayarlı tomografi",
+      "Tomografi"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Diş implantı"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Blefaroplasti"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "Yüz germe",
+      "Boyun germe"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "Tüp bebek",
+      "Kısırlık tedavisi"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "Saç transplantasyonu",
+      "Saç restorasyonu"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "Check-up",
+      "Sağlık taraması",
+      "Genel sağlık kontrolü"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Homeopatik tedavi"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Lazer tedavisi"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "LASIK",
+      "Refraktif cerrahi"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Liposuction",
+      "Vücut şekillendirme"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "Dudak dolgusu",
+      "Dudak büyütme"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "Mamogram"
+    ],
+    "SERV_MRI": [
+      "Manyetik rezonans görüntüleme"
+    ],
+    "SERV_NATUROPATHY": [
+      "Natüropati",
+      "Doğal tedavi"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "PRP tedavisi",
+      "Cilt yenileme"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "Terapi",
+      "Psikolojik danışmanlık"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Radyoterapi",
+      "Işın tedavisi"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "Rehabilitasyon",
+      "Fizyoterapi",
+      "Fizik tedavi"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Burun ameliyatı",
+      "Burun estetiği"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "Kanal tedavisi"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Gülüş tasarımı",
+      "Diş estetiği"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "Lazerle dövme silme"
+    ],
+    "SERV_TCM": [
+      "TCM",
+      "Geleneksel Çin tıbbı"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Diş beyazlatma"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Abdominoplasti"
+    ],
+    "SERV_ULTRASOUND": [
+      "USG",
+      "Sonografi"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "Aşılama",
+      "Bağışıklama"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "Röntgen"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Alerjist",
+      "İmmünoloji"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Anestezi",
+      "Anesteziyoloji"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +335,54 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Genetik tıp",
+      "Genetik kliniği"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Kolon cerrahisi",
+      "Rektum cerrahisi"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "Yoğun bakım",
+      "YBÜ",
+      "Yoğun bakım ünitesi"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "Diş hekimi",
+      "Genel diş hekimi"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "KBB",
+      "Kulak burun boğaz",
+      "Otolaringoloji"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Aile hekimi",
+      "Birinci basamak hekimi"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "Pratisyen hekim",
+      "Genel pratisyen"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Karaciğer uzmanı"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Dahiliye uzmanı"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +392,19 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Kadın doğum",
+      "Jinekoloji",
+      "Obstetrik"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Çene cerrahisi",
+      "Maksillofasiyal cerrahi"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +418,53 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "FTR",
+      "Fizik tedavi ve rehabilitasyon"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "Fizyoterapi",
+      "Fizik tedavi"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Psikiyatrist"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Psikoloji",
+      "Terapi",
+      "Psikoterapi",
+      "Psikolojik danışmanlık"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "Tüp bebek uzmanı",
+      "Kısırlık uzmanı",
+      "Üreme endokrinolojisi"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "Retina",
+      "Retina uzmanı"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "Sinüs uzmanı",
+      "Burun hastalıkları uzmanı"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Spor yaralanması"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Pelvik taban uzmanı"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []

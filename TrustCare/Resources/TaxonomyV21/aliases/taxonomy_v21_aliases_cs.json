@@ -3,100 +3,353 @@
     "version": "taxonomy_v2_1",
     "locale": "cs",
     "entry_count": 169,
-    "status": "scaffold",
-    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+    "status": "imported",
+    "source": "docs/7Feb_Translations/_generated_import_payloads/taxonomy_v21_import_cs.json",
+    "source_tag": "7feb_perfected_import"
   },
   "aliases": {
-    "CONCERN_AESTHETIC_COSMETIC": [],
-    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [],
-    "CONCERN_CANCER_TUMOR_CARE": [],
-    "CONCERN_CHILDRENS_HEALTH": [],
-    "CONCERN_DIGESTION_LIVER": [],
-    "CONCERN_EARS_NOSE_THROAT": [],
-    "CONCERN_EMERGENCY_URGENT": [],
-    "CONCERN_EYES_VISION": [],
-    "CONCERN_HEAD_BRAIN_NERVES": [],
-    "CONCERN_HEART_CIRCULATION": [],
-    "CONCERN_KIDNEY_URINARY": [],
-    "CONCERN_LUNGS_BREATHING": [],
-    "CONCERN_MENS_HEALTH": [],
-    "CONCERN_MENTAL_HEALTH_WELLBEING": [],
-    "CONCERN_PAIN_REHAB_MOBILITY": [],
-    "CONCERN_PREVENTIVE_TESTS_SCREENING": [],
-    "CONCERN_SKIN_HAIR_NAILS": [],
-    "CONCERN_TEETH_JAW_MOUTH": [],
-    "CONCERN_WOMENS_HEALTH_FERTILITY": [],
+    "CONCERN_AESTHETIC_COSMETIC": [
+      "botox",
+      "výplně",
+      "plastika nosu",
+      "padání vlasů",
+      "omlazení pleti"
+    ],
+    "CONCERN_BONES_JOINTS_MUSCLES_SPORTS": [
+      "bolest kolene",
+      "bolest zad",
+      "zranění ramene",
+      "sportovní úraz"
+    ],
+    "CONCERN_CANCER_TUMOR_CARE": [
+      "léčba rakoviny",
+      "nádor",
+      "chemoterapie",
+      "ozařování"
+    ],
+    "CONCERN_CHILDRENS_HEALTH": [
+      "horečka u dítěte",
+      "problém u novorozence",
+      "prohlídka u pediatra"
+    ],
+    "CONCERN_DIGESTION_LIVER": [
+      "bolest břicha",
+      "pálení žáhy",
+      "problém s játry"
+    ],
+    "CONCERN_EARS_NOSE_THROAT": [
+      "bolest dutin",
+      "zánět středního ucha",
+      "mandle",
+      "problém se sluchem"
+    ],
+    "CONCERN_EMERGENCY_URGENT": [
+      "bolest na hrudi",
+      "silné krvácení",
+      "dušnost",
+      "náhlá slabost"
+    ],
+    "CONCERN_EYES_VISION": [
+      "rozmazané vidění",
+      "šedý zákal",
+      "problém se sítnicí",
+      "bolest oka"
+    ],
+    "CONCERN_HEAD_BRAIN_NERVES": [
+      "bolest hlavy",
+      "migréna",
+      "závratě",
+      "brnění"
+    ],
+    "CONCERN_HEART_CIRCULATION": [
+      "bušení srdce",
+      "nepříjemný pocit na hrudi",
+      "vysoký krevní tlak",
+      "otoky nohou"
+    ],
+    "CONCERN_KIDNEY_URINARY": [
+      "bolest ledvin",
+      "infekce močových cest",
+      "krev v moči",
+      "dialýza"
+    ],
+    "CONCERN_LUNGS_BREATHING": [
+      "kašel",
+      "dušnost",
+      "astma",
+      "spánková apnoe"
+    ],
+    "CONCERN_MENS_HEALTH": [
+      "problém s plodností",
+      "testosteron",
+      "porucha erekce"
+    ],
+    "CONCERN_MENTAL_HEALTH_WELLBEING": [
+      "úzkost",
+      "deprese",
+      "stres",
+      "terapie"
+    ],
+    "CONCERN_PAIN_REHAB_MOBILITY": [
+      "chronická bolest",
+      "rehabilitace",
+      "problém s pohyblivostí",
+      "rehabilitace zad"
+    ],
+    "CONCERN_PREVENTIVE_TESTS_SCREENING": [
+      "odběr krve",
+      "preventivní prohlídka",
+      "rentgen",
+      "magnetická rezonance",
+      "screening"
+    ],
+    "CONCERN_SKIN_HAIR_NAILS": [
+      "akné",
+      "vyrážka",
+      "padání vlasů",
+      "kontrola znamének"
+    ],
+    "CONCERN_TEETH_JAW_MOUTH": [
+      "bolest zubu",
+      "rovnátka",
+      "implantáty",
+      "čištění kanálků"
+    ],
+    "CONCERN_WOMENS_HEALTH_FERTILITY": [
+      "těhotenství",
+      "IVF",
+      "plodnost",
+      "bolest v podbřišku",
+      "problémy s menstruací"
+    ],
     "FAC_AESTHETIC_COSMETIC_CLINIC": [],
-    "FAC_CLINIC_MEDICAL_CENTER": [],
+    "FAC_CLINIC_MEDICAL_CENTER": [
+      "Zdravotnické centrum",
+      "Klinika",
+      "Poliklinika"
+    ],
     "FAC_DENTAL_CLINIC": [],
     "FAC_DIALYSIS_CENTER": [],
-    "FAC_EYE_CLINIC": [],
+    "FAC_EYE_CLINIC": [
+      "Oční klinika",
+      "Oční ordinace"
+    ],
     "FAC_FERTILITY_IVF_CLINIC": [],
-    "FAC_HOSPITAL_GENERAL": [],
+    "FAC_HOSPITAL_GENERAL": [
+      "Nemocnice"
+    ],
     "FAC_IMAGING_DIAGNOSTIC_CENTER": [],
-    "FAC_LABORATORY": [],
+    "FAC_LABORATORY": [
+      "Laboratoř",
+      "Odběrové místo",
+      "Laboratorní vyšetření"
+    ],
     "FAC_MATERNITY_WOMENS_HEALTH_CLINIC": [],
     "FAC_MENTAL_HEALTH_CLINIC": [],
     "FAC_ONCOLOGY_CENTER": [],
     "FAC_PEDIATRIC_CLINIC": [],
-    "FAC_PHARMACY": [],
+    "FAC_PHARMACY": [
+      "Lékárna"
+    ],
     "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER": [],
     "FAC_SPECIALTY_CLINIC": [],
     "FAC_SURGERY_CENTER_DAY_SURGERY": [],
-    "FAC_TELEHEALTH_VIRTUAL_CARE": [],
-    "FAC_URGENT_CARE": [],
-    "SERV_ACUPUNCTURE": [],
-    "SERV_ALLERGY_TESTING": [],
-    "SERV_BARIATRIC_SURGERY": [],
-    "SERV_BLOOD_TESTS_LAB_WORK": [],
-    "SERV_BOTOX_FILLERS": [],
-    "SERV_BREAST_AUGMENTATION_REDUCTION": [],
-    "SERV_CATARACT_SURGERY": [],
-    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [],
-    "SERV_CHEMOTHERAPY": [],
-    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [],
+    "FAC_TELEHEALTH_VIRTUAL_CARE": [
+      "online konzultace",
+      "virtuální konzultace",
+      "telemedicína"
+    ],
+    "FAC_URGENT_CARE": [
+      "Pohotovost",
+      "Urgentní příjem",
+      "Ambulantní pohotovost"
+    ],
+    "SERV_ACUPUNCTURE": [
+      "Léčba akupunkturou"
+    ],
+    "SERV_ALLERGY_TESTING": [
+      "test na alergii",
+      "alergologické vyšetření"
+    ],
+    "SERV_BARIATRIC_SURGERY": [
+      "Operace na hubnutí",
+      "Zmenšení žaludku",
+      "Banding žaludku"
+    ],
+    "SERV_BLOOD_TESTS_LAB_WORK": [
+      "odběr krve",
+      "krevní testy",
+      "laboratorní vyšetření"
+    ],
+    "SERV_BOTOX_FILLERS": [
+      "Botox",
+      "výplně",
+      "estetické injekce"
+    ],
+    "SERV_BREAST_AUGMENTATION_REDUCTION": [
+      "Zvětšení prsou",
+      "Zmenšení prsou",
+      "Plastika prsou"
+    ],
+    "SERV_CATARACT_SURGERY": [
+      "Operace šedého zákalu"
+    ],
+    "SERV_CHEMICAL_PEEL_MICRONEEDLING": [
+      "chemický peeling",
+      "microneedling"
+    ],
+    "SERV_CHEMOTHERAPY": [
+      "chemoterapie",
+      "onkologická léčba"
+    ],
+    "SERV_CLEAR_ALIGNERS_ORTHODONTICS": [
+      "Rovnátka",
+      "Neviditelná rovnátka",
+      "Invisalign"
+    ],
     "SERV_COLOSCOPY": [],
-    "SERV_COSMETIC_DENTISTRY": [],
-    "SERV_CT_SCAN": [],
-    "SERV_DENTAL_IMPLANTS": [],
+    "SERV_COSMETIC_DENTISTRY": [
+      "Estetický zubař",
+      "Proměna úsměvu",
+      "Fazety"
+    ],
+    "SERV_CT_SCAN": [
+      "CT",
+      "počítačová tomografie"
+    ],
+    "SERV_DENTAL_IMPLANTS": [
+      "Zubní implantáty",
+      "implantát"
+    ],
     "SERV_DIALYSIS": [],
     "SERV_ENDOSCOPY": [],
-    "SERV_EYELID_SURGERY": [],
-    "SERV_FACELIFT_NECKLIFT": [],
-    "SERV_FERTILITY_TREATMENT_IVF": [],
-    "SERV_HAIR_TRANSPLANT": [],
-    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [],
+    "SERV_EYELID_SURGERY": [
+      "Blefaroplastika",
+      "Plastika víček"
+    ],
+    "SERV_FACELIFT_NECKLIFT": [
+      "facelift",
+      "lifting krku"
+    ],
+    "SERV_FERTILITY_TREATMENT_IVF": [
+      "IVF",
+      "Umělé oplodnění",
+      "Léčba neplodnosti"
+    ],
+    "SERV_HAIR_TRANSPLANT": [
+      "Transplantace vlasů",
+      "obnova vlasů"
+    ],
+    "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING": [
+      "check-up",
+      "preventivní prohlídka",
+      "preventivní screening"
+    ],
     "SERV_HIP_REPLACEMENT": [],
-    "SERV_HOMEOPATHY": [],
+    "SERV_HOMEOPATHY": [
+      "Homeopatická léčba"
+    ],
     "SERV_KNEE_REPLACEMENT": [],
-    "SERV_LASER_TREATMENTS": [],
-    "SERV_LASIK_REFRACTIVE": [],
-    "SERV_LIPOSUCTION_BODY_CONTOURING": [],
-    "SERV_LIP_ENHANCEMENT": [],
-    "SERV_MAMMOGRAPHY": [],
-    "SERV_MRI": [],
-    "SERV_NATUROPATHY": [],
-    "SERV_PRP_SKIN_REJUVENATION": [],
-    "SERV_PSYCHOTHERAPY_COUNSELING": [],
-    "SERV_RADIOTHERAPY": [],
-    "SERV_REHABILITATION_PHYSIOTHERAPY": [],
-    "SERV_RHINOPLASTY": [],
-    "SERV_ROOT_CANAL_TREATMENT": [],
+    "SERV_LASER_TREATMENTS": [
+      "Laserové ošetření",
+      "Laserová terapie"
+    ],
+    "SERV_LASIK_REFRACTIVE": [
+      "LASIK",
+      "Laserová operace očí"
+    ],
+    "SERV_LIPOSUCTION_BODY_CONTOURING": [
+      "Liposukce",
+      "Formování postavy"
+    ],
+    "SERV_LIP_ENHANCEMENT": [
+      "Výplň rtů",
+      "Zvětšení rtů"
+    ],
+    "SERV_MAMMOGRAPHY": [
+      "mamografie",
+      "mamografické vyšetření"
+    ],
+    "SERV_MRI": [
+      "Magnetická rezonance",
+      "MR"
+    ],
+    "SERV_NATUROPATHY": [
+      "Naturopatická léčba",
+      "Přírodní léčba"
+    ],
+    "SERV_PRP_SKIN_REJUVENATION": [
+      "PRP",
+      "omlazení pleti",
+      "plazmaterapie"
+    ],
+    "SERV_PSYCHOTHERAPY_COUNSELING": [
+      "Psychoterapie",
+      "psychologické poradenství"
+    ],
+    "SERV_RADIOTHERAPY": [
+      "Ozařování",
+      "Radiační terapie"
+    ],
+    "SERV_REHABILITATION_PHYSIOTHERAPY": [
+      "rehabilitace",
+      "fyzioterapie",
+      "rehabilitační cvičení"
+    ],
+    "SERV_RHINOPLASTY": [
+      "Plastika nosu",
+      "Operace nosu"
+    ],
+    "SERV_ROOT_CANAL_TREATMENT": [
+      "kořenové kanálky",
+      "endodontické ošetření"
+    ],
     "SERV_SKIN_CANCER_SCREENING": [],
-    "SERV_SMILE_DESIGN": [],
-    "SERV_TATTOO_REMOVAL": [],
-    "SERV_TCM": [],
-    "SERV_TEETH_WHITENING": [],
-    "SERV_TUMMY_TUCK": [],
-    "SERV_ULTRASOUND": [],
-    "SERV_VACCINATION_IMMUNIZATION": [],
+    "SERV_SMILE_DESIGN": [
+      "Design úsměvu",
+      "Dentální estetika"
+    ],
+    "SERV_TATTOO_REMOVAL": [
+      "Odstranění tetování laserem"
+    ],
+    "SERV_TCM": [
+      "tradiční čínská medicína",
+      "TČM",
+      "čínská medicína"
+    ],
+    "SERV_TEETH_WHITENING": [
+      "Bělení zubů"
+    ],
+    "SERV_TUMMY_TUCK": [
+      "Abdominoplastika",
+      "Plastika břicha"
+    ],
+    "SERV_ULTRASOUND": [
+      "ultrazvuk",
+      "sono"
+    ],
+    "SERV_VACCINATION_IMMUNIZATION": [
+      "Očkování",
+      "Vakcinace",
+      "Vakcína"
+    ],
     "SERV_VARICOSE_VEIN_TREATMENT": [],
-    "SERV_XRAY": [],
+    "SERV_XRAY": [
+      "rentgen",
+      "RTG"
+    ],
     "SPEC_ADDICTION_MEDICINE": [],
     "SPEC_AESTHETIC_MEDICINE": [],
-    "SPEC_ALLERGY_IMMUNOLOGY": [],
+    "SPEC_ALLERGY_IMMUNOLOGY": [
+      "Alergolog",
+      "Imunolog",
+      "Alergologie"
+    ],
     "SPEC_ANDROLOGY": [],
-    "SPEC_ANESTHESIOLOGY": [],
+    "SPEC_ANESTHESIOLOGY": [
+      "Anesteziolog",
+      "Anestezie"
+    ],
     "SPEC_AUDIOLOGY": [],
     "SPEC_BARIATRIC_SURGERY": [],
     "SPEC_BREAST_SURGERY": [],
@@ -104,27 +357,57 @@
     "SPEC_CARDIOVASCULAR_SURGERY": [],
     "SPEC_CHILD_ADOLESCENT_PSYCHIATRY": [],
     "SPEC_CHIROPRACTIC": [],
-    "SPEC_CLINICAL_GENETICS": [],
-    "SPEC_COLORECTAL_SURGERY": [],
-    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [],
-    "SPEC_DENTISTRY_GENERAL": [],
+    "SPEC_CLINICAL_GENETICS": [
+      "Lékařská genetika",
+      "Genetická poradna"
+    ],
+    "SPEC_COLORECTAL_SURGERY": [
+      "Kolorektální chirurgie",
+      "Proktologie",
+      "Chirurgie konečníku"
+    ],
+    "SPEC_CRITICAL_CARE_INTENSIVE_CARE": [
+      "JIP",
+      "ARO",
+      "Intenzivní péče"
+    ],
+    "SPEC_DENTISTRY_GENERAL": [
+      "Zubař",
+      "Zubní lékař"
+    ],
     "SPEC_DERMATOLOGY": [],
     "SPEC_EMERGENCY_MEDICINE": [],
     "SPEC_ENDOCRINOLOGY": [],
     "SPEC_ENDODONTICS": [],
-    "SPEC_ENT": [],
-    "SPEC_FAMILY_MEDICINE": [],
+    "SPEC_ENT": [
+      "ORL",
+      "Ušní nosní krční",
+      "Otorinolaryngolog"
+    ],
+    "SPEC_FAMILY_MEDICINE": [
+      "Praktický lékař pro dospělé",
+      "Rodinný lékař",
+      "Primární péče"
+    ],
     "SPEC_GASTROENTEROLOGY": [],
-    "SPEC_GENERAL_PRACTICE": [],
+    "SPEC_GENERAL_PRACTICE": [
+      "Praktický lékař",
+      "Obvodní lékař"
+    ],
     "SPEC_GENERAL_SURGERY": [],
     "SPEC_GENETICS_GENOMICS": [],
     "SPEC_GERIATRICS": [],
     "SPEC_GERIATRIC_PSYCHIATRY": [],
     "SPEC_HEAD_NECK_SURGERY": [],
     "SPEC_HEMATOLOGY": [],
-    "SPEC_HEPATOLOGY": [],
+    "SPEC_HEPATOLOGY": [
+      "Jaterní specialista",
+      "Hepatolog"
+    ],
     "SPEC_INFECTIOUS_DISEASE": [],
-    "SPEC_INTERNAL_MEDICINE": [],
+    "SPEC_INTERNAL_MEDICINE": [
+      "Internista"
+    ],
     "SPEC_INTERVENTIONAL_RADIOLOGY": [],
     "SPEC_MATERNAL_FETAL_MEDICINE": [],
     "SPEC_NEONATOLOGY": [],
@@ -134,12 +417,19 @@
     "SPEC_NEUROSURGERY": [],
     "SPEC_NUCLEAR_MEDICINE": [],
     "SPEC_NUTRITION_DIETETICS": [],
-    "SPEC_OBGYN": [],
+    "SPEC_OBGYN": [
+      "Gynekolog",
+      "Gynekologie",
+      "Porodnictví"
+    ],
     "SPEC_OCCUPATIONAL_THERAPY": [],
     "SPEC_ONCOLOGY": [],
     "SPEC_OPHTHALMOLOGY": [],
     "SPEC_OPTOMETRY": [],
-    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [],
+    "SPEC_ORAL_MAXILLOFACIAL_SURGERY": [
+      "Čelistní chirurgie",
+      "Maxilofaciální chirurgie"
+    ],
     "SPEC_ORAL_SURGERY": [],
     "SPEC_ORTHODONTICS": [],
     "SPEC_ORTHOPEDIC_SURGERY": [],
@@ -153,26 +443,58 @@
     "SPEC_PEDIATRIC_SURGERY": [],
     "SPEC_PEDIATRIC_UROLOGY": [],
     "SPEC_PERIODONTICS": [],
-    "SPEC_PHYSICAL_MEDICINE_REHAB": [],
-    "SPEC_PHYSIOTHERAPY": [],
+    "SPEC_PHYSICAL_MEDICINE_REHAB": [
+      "Rehabilitační lékař",
+      "Fyzikální a rehabilitační medicína",
+      "Fyziatr"
+    ],
+    "SPEC_PHYSIOTHERAPY": [
+      "Fyzioterapie",
+      "Fyzio",
+      "Fyzioterapeut"
+    ],
     "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY": [],
     "SPEC_PODIATRY": [],
     "SPEC_PROSTHODONTICS": [],
-    "SPEC_PSYCHIATRY": [],
-    "SPEC_PSYCHOLOGY_THERAPY": [],
+    "SPEC_PSYCHIATRY": [
+      "Psychiatr"
+    ],
+    "SPEC_PSYCHOLOGY_THERAPY": [
+      "Psycholog",
+      "Psychoterapie",
+      "Psychoterapeut",
+      "Psychologické poradenství"
+    ],
     "SPEC_PULMONOLOGY": [],
     "SPEC_RADIOLOGY": [],
-    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [],
-    "SPEC_RETINA_SPECIALIST": [],
+    "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF": [
+      "Specialista na IVF",
+      "Odborník na neplodnost",
+      "Reprodukční endokrinolog"
+    ],
+    "SPEC_RETINA_SPECIALIST": [
+      "Sítnice",
+      "Specialista na sítnici"
+    ],
     "SPEC_RHEUMATOLOGY": [],
-    "SPEC_RHINOLOGY": [],
+    "SPEC_RHINOLOGY": [
+      "Rinologie",
+      "Vedlejší nosní dutiny",
+      "Nosní specialista"
+    ],
     "SPEC_SLEEP_MEDICINE": [],
     "SPEC_SPEECH_THERAPY": [],
-    "SPEC_SPORTS_MEDICINE": [],
+    "SPEC_SPORTS_MEDICINE": [
+      "Sportovní úraz",
+      "Tělovýchovný lékař"
+    ],
     "SPEC_THORACIC_SURGERY": [],
     "SPEC_TRANSPLANT_SURGERY": [],
     "SPEC_TRAUMA_SURGERY": [],
-    "SPEC_UROGYNECOLOGY": [],
+    "SPEC_UROGYNECOLOGY": [
+      "Specialista na pánevní dno",
+      "Urogynekolog"
+    ],
     "SPEC_UROLOGY": [],
     "SPEC_VASCULAR_SURGERY": [],
     "SPEC_WOUND_CARE": []
