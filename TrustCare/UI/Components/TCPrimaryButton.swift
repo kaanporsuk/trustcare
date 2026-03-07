@@ -12,9 +12,12 @@ struct TCPrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.system(.headline, design: .default).weight(.semibold))
+                .lineLimit(2)
+                .minimumScaleFactor(0.82)
+                .multilineTextAlignment(.center)
                 .foregroundStyle(isEnabled ? Color.white : Color.tcTextSecondary)
                 .frame(maxWidth: fullWidth ? .infinity : nil)
-                .frame(height: 50)
+                .frame(minHeight: 50)
                 .padding(.horizontal, fullWidth ? 0 : 16)
                 .background(isEnabled ? Color.tcCoral : Color.tcBorder)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))

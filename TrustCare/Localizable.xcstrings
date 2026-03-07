@@ -113,16 +113,6 @@
         }
       }
     },
-    "%@ + %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ + %2$@"
-          }
-        }
-      }
-    },
     "%@ 1.0.0" : {
 
     },
@@ -59352,6 +59342,9 @@
           }
         }
       }
+    },
+    "UI Fit Preview" : {
+
     },
     "Unable to submit claim. Please try again." : {
 

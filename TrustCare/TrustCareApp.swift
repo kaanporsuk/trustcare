@@ -28,6 +28,11 @@ enum AppState {
 enum AppRoute: Hashable {
     case provider(UUID)
     case facility(UUID)
+#if DEBUG
+    case reviewHub
+    case myReviews
+    case uiFitPreview
+#endif
 }
 
 @main
@@ -70,6 +75,15 @@ struct TrustCareApp: App {
                         ProviderDetailView(providerId: id)
                     case .facility(let id):
                         FacilityDetailView(facilityId: id)
+#if DEBUG
+                    case .reviewHub:
+                        ReviewHubView()
+                    case .myReviews:
+                        MyReviewsView(selectedTab: .constant(3))
+                            .environmentObject(ProfileViewModel())
+                    case .uiFitPreview:
+                        LocalizationFitPreviewView()
+#endif
                     }
                 }
             }
@@ -135,6 +149,7 @@ struct TrustCareApp: App {
         let pathComponents = url.pathComponents.filter { $0 != "/" }
 
         if host == "provider", let idString = pathComponents.first, let id = UUID(uuidString: idString) {
+            applyLocaleOverride(from: url)
             appState = .main
             path = NavigationPath()
             path.append(AppRoute.provider(id))
@@ -142,13 +157,43 @@ struct TrustCareApp: App {
         }
 
         if host == "facility", let idString = pathComponents.first, let id = UUID(uuidString: idString) {
+            applyLocaleOverride(from: url)
             appState = .main
             path = NavigationPath()
             path.append(AppRoute.facility(id))
             return
         }
 
+#if DEBUG
+        if host == "reviewhub" {
+            applyLocaleOverride(from: url)
+            appState = .main
+            appRouter.setSelectedTab(2)
+            path = NavigationPath()
+            path.append(AppRoute.reviewHub)
+            return
+        }
+
+        if host == "myreviews" {
+            applyLocaleOverride(from: url)
+            appState = .main
+            appRouter.setSelectedTab(3)
+            path = NavigationPath()
+            path.append(AppRoute.myReviews)
+            return
+        }
+
+        if host == "uifit" {
+            applyLocaleOverride(from: url)
+            appState = .main
+            path = NavigationPath()
+            path.append(AppRoute.uiFitPreview)
+            return
+        }
+#endif
+
         if host == "review", let idString = pathComponents.first, let reviewId = UUID(uuidString: idString) {
+            applyLocaleOverride(from: url)
             Task {
                 do {
                     let review = try await ReviewService.fetchReviewById(reviewId)
@@ -161,5 +206,18 @@ struct TrustCareApp: App {
                 }
             }
         }
+    }
+
+    private func applyLocaleOverride(from url: URL) {
+        guard
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let localeItem = components.queryItems?.first(where: { $0.name == "locale" }),
+            let localeCode = localeItem.value?.lowercased(),
+            LocalizationManager.supportedCodes.contains(localeCode)
+        else {
+            return
+        }
+
+        localizationManager.changeLanguage(to: localeCode)
     }
 }

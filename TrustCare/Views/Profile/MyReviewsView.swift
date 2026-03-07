@@ -16,14 +16,11 @@ struct MyReviewsView: View {
 
     var body: some View {
         VStack(spacing: AppSpacing.md) {
-            Picker("filter_button", selection: $profileVM.reviewFilter) {
-                Text(tcString("filter_all", fallback: "All")).tag("all")
-                Text(tcString("status_verified", fallback: "Verified")).tag("verified")
-                Text(tcString("status_pending", fallback: "Pending")).tag("pending")
-                Text(tcString("status_unverified", fallback: "Unverified")).tag("unverified")
-            }
-            .pickerStyle(.segmented)
-            .padding(.horizontal, AppSpacing.lg)
+            TCFlexibleSegmentedControl(
+                options: reviewFilterOptions,
+                selection: $profileVM.reviewFilter
+            )
+            .padding(.horizontal, AppSpacing.md)
 
             if profileVM.isLoadingReviews {
                 ProgressView()
@@ -108,6 +105,15 @@ struct MyReviewsView: View {
         } message: {
             Text(profileVM.errorMessage ?? "")
         }
+    }
+
+    private var reviewFilterOptions: [TCFlexibleSegmentOption<String>] {
+        [
+            TCFlexibleSegmentOption(id: "all", value: "all", title: tcString("filter_all", fallback: "All")),
+            TCFlexibleSegmentOption(id: "verified", value: "verified", title: tcString("status_verified", fallback: "Verified")),
+            TCFlexibleSegmentOption(id: "pending", value: "pending", title: tcString("status_pending", fallback: "Pending")),
+            TCFlexibleSegmentOption(id: "unverified", value: "unverified", title: tcString("status_unverified", fallback: "Unverified")),
+        ]
     }
 
     private func reviewRow(_ review: Review) -> some View {

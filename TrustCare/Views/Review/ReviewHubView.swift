@@ -203,19 +203,13 @@ struct ReviewHubView: View {
             Text(tcKey: "review_who", fallback: "Who are you reviewing?")
                 .font(AppFont.title3)
 
-            Picker(
-                tcString("review_target_mode", fallback: "Review target"),
+            TCFlexibleSegmentedControl(
+                options: targetModeSegmentOptions,
                 selection: Binding(
                     get: { viewModel.targetMode },
                     set: { viewModel.setTargetMode($0) }
                 )
-            ) {
-                Text(tcString("claim_provider_label", fallback: "Provider")).tag(ReviewSubmissionViewModel.TargetMode.provider)
-                Text(tcString("chip_facility", fallback: "Facility")).tag(ReviewSubmissionViewModel.TargetMode.facility)
-                Text("\(tcString("claim_provider_label", fallback: "Provider")) + \(tcString("chip_facility", fallback: "Facility"))")
-                    .tag(ReviewSubmissionViewModel.TargetMode.both)
-            }
-            .pickerStyle(.segmented)
+            )
 
             if viewModel.targetMode == .provider || viewModel.targetMode == .both {
                 providerSelectionSection
@@ -413,12 +407,36 @@ struct ReviewHubView: View {
             DatePicker(tcString("review_visit_date", fallback: "Visit date"), selection: $viewModel.visitDate, in: ...Date(), displayedComponents: .date)
                 .datePickerStyle(.compact)
 
-            Picker(tcString("review_visit_type", fallback: "Visit type"), selection: $viewModel.visitType) {
-                ForEach(ReviewVisitType.all) { type in
-                    Text(type.label(for: lang)).tag(type.id)
-                }
-            }
-            .pickerStyle(.segmented)
+            TCFlexibleSegmentedControl(
+                options: visitTypeSegmentOptions(for: lang),
+                selection: $viewModel.visitType
+            )
+        }
+    }
+
+    private var targetModeSegmentOptions: [TCFlexibleSegmentOption<ReviewSubmissionViewModel.TargetMode>] {
+        [
+            TCFlexibleSegmentOption(
+                id: "provider",
+                value: .provider,
+                title: tcString("claim_provider_label", fallback: "Provider")
+            ),
+            TCFlexibleSegmentOption(
+                id: "facility",
+                value: .facility,
+                title: tcString("chip_facility", fallback: "Facility")
+            ),
+            TCFlexibleSegmentOption(
+                id: "both",
+                value: .both,
+                title: "\(tcString("claim_provider_label", fallback: "Provider")) + \(tcString("chip_facility", fallback: "Facility"))"
+            ),
+        ]
+    }
+
+    private func visitTypeSegmentOptions(for language: String) -> [TCFlexibleSegmentOption<String>] {
+        ReviewVisitType.all.map { type in
+            TCFlexibleSegmentOption(id: type.id, value: type.id, title: type.label(for: language))
         }
     }
 

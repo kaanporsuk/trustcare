@@ -90,11 +90,14 @@ struct TCEmptyState: View {
             Text(customTitle ?? tcString(variant.titleKey, fallback: variant.titleFallback))
                 .font(.system(.title3, design: .default).weight(.semibold))
                 .foregroundStyle(Color.tcTextPrimary)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
 
             Text(customBody ?? tcString(variant.bodyKey, fallback: variant.bodyFallback))
                 .font(.system(.body, design: .default))
                 .foregroundStyle(Color.tcTextSecondary)
                 .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
 
             VStack(spacing: 10) {
                 TCPrimaryButton(title: primaryTitle, fullWidth: true, action: onPrimary)
@@ -103,9 +106,12 @@ struct TCEmptyState: View {
                     Button(action: onSecondary) {
                         Text(secondaryTitle)
                             .font(.system(.headline, design: .default).weight(.semibold))
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.82)
+                            .multilineTextAlignment(.center)
                             .foregroundStyle(Color.tcOcean)
                             .frame(maxWidth: .infinity)
-                            .frame(height: 50)
+                            .frame(minHeight: 50)
                             .background(Color.tcSurface)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 14, style: .continuous)
