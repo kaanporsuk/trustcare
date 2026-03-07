@@ -423,7 +423,7 @@ struct TaxonomyPickerView: View {
                     HStack(spacing: AppSpacing.sm) {
                         Image(systemName: "cross.case")
                             .foregroundStyle(.secondary)
-                        Text(suggestion.label)
+                        Text(displayLabel(for: suggestion))
                             .font(AppFont.body)
                             .foregroundStyle(.primary)
                         Spacer()
@@ -460,5 +460,12 @@ struct TaxonomyPickerView: View {
             .components(separatedBy: ["-", "_"])
             .first?
             .lowercased() ?? "en"
+    }
+
+    private func displayLabel(for suggestion: TaxonomySuggestion) -> String {
+        TaxonomyCatalogStore.shared.localizedLabel(
+            for: suggestion.entityId,
+            locale: currentLocaleCode()
+        ) ?? suggestion.label
     }
 }

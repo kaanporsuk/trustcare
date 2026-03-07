@@ -210,9 +210,10 @@ struct ReviewHubView: View {
                     set: { viewModel.setTargetMode($0) }
                 )
             ) {
-                Text(tcString("review_target_provider", fallback: "Provider")).tag(ReviewSubmissionViewModel.TargetMode.provider)
-                Text(tcString("review_target_facility", fallback: "Facility")).tag(ReviewSubmissionViewModel.TargetMode.facility)
-                Text(tcString("review_target_both", fallback: "Both")).tag(ReviewSubmissionViewModel.TargetMode.both)
+                Text(tcString("claim_provider_label", fallback: "Provider")).tag(ReviewSubmissionViewModel.TargetMode.provider)
+                Text(tcString("chip_facility", fallback: "Facility")).tag(ReviewSubmissionViewModel.TargetMode.facility)
+                Text("\(tcString("claim_provider_label", fallback: "Provider")) + \(tcString("chip_facility", fallback: "Facility"))")
+                    .tag(ReviewSubmissionViewModel.TargetMode.both)
             }
             .pickerStyle(.segmented)
 
@@ -228,7 +229,7 @@ struct ReviewHubView: View {
 
     private var providerSelectionSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(tcString("review_provider_label", fallback: "Provider"))
+            Text(tcString("claim_provider_label", fallback: "Provider"))
                 .font(AppFont.headline)
 
             if let provider = viewModel.selectedProvider {
@@ -326,7 +327,7 @@ struct ReviewHubView: View {
 
     private var facilitySelectionSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text(tcString("review_facility_label", fallback: "Facility"))
+            Text(tcString("chip_facility", fallback: "Facility"))
                 .font(AppFont.headline)
 
             if let facility = viewModel.selectedFacility {
@@ -363,7 +364,7 @@ struct ReviewHubView: View {
                 HStack(spacing: AppSpacing.sm) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(.secondary)
-                    TextField(tcString("search_facility_placeholder", fallback: "Search facility"), text: $facilitySearchText)
+                    TextField(tcString("search_facilities", fallback: "Search facilities"), text: $facilitySearchText)
                         .font(AppFont.body)
                         .textInputAutocapitalization(.words)
                         .autocorrectionDisabled()
@@ -649,7 +650,7 @@ struct ReviewHubView: View {
                 .cornerRadius(AppRadius.button)
 
                 if currentStep == .provider && !canGoNext {
-                    Text(tcString("review_select_target_to_continue", fallback: "Select who you are reviewing to continue"))
+                    Text(tcString("review_who", fallback: "Who are you reviewing?"))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)

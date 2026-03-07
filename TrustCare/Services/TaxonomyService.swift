@@ -347,11 +347,12 @@ enum TaxonomyService {
 
     private static func applyLocalBundleOverrides(to suggestions: [TaxonomySuggestion], locale: String) -> [TaxonomySuggestion] {
         suggestions.map { suggestion in
-            let label = TaxonomyI18nLoader.shared.localizedLabel(
-                for: suggestion.entityId,
-                locale: locale,
-                fallback: suggestion.label
-            )
+            let label = TaxonomyCatalogStore.shared.localizedLabel(for: suggestion.entityId, locale: locale)
+                ?? TaxonomyI18nLoader.shared.localizedLabel(
+                    for: suggestion.entityId,
+                    locale: locale,
+                    fallback: suggestion.label
+                )
             let canonicalType = TaxonomyEntityType.fromBackend(suggestion.entityType)?.rawValue ?? suggestion.entityType
             return TaxonomySuggestion(
                 entityId: suggestion.entityId,

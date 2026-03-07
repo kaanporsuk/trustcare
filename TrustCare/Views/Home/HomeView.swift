@@ -912,10 +912,18 @@ private struct TaxonomyMultiSelectFilterSheet: View {
             guard !normalizedEntityID.isEmpty else { continue }
             guard seenEntityIDs.insert(normalizedEntityID).inserted else { continue }
 
-            let displayKey = "\(suggestion.entityType.lowercased())|\(normalizedLabel(suggestion.label))"
+            let displayLabel = localizedLabel(for: suggestion)
+            let displayKey = "\(suggestion.entityType.lowercased())|\(normalizedLabel(displayLabel))"
             guard seenDisplayKeys.insert(displayKey).inserted else { continue }
 
-            ordered.append(suggestion)
+            ordered.append(
+                TaxonomySuggestion(
+                    entityId: suggestion.entityId,
+                    entityType: suggestion.entityType,
+                    label: displayLabel,
+                    score: suggestion.score
+                )
+            )
         }
 
         return ordered
@@ -933,14 +941,14 @@ private struct TaxonomyMultiSelectFilterSheet: View {
 
     private var groupedItems: [(String, [TaxonomySuggestion])] {
         let grouped = Dictionary(grouping: filteredItems) { suggestion in
-            String(suggestion.label.prefix(1)).uppercased(with: activeLocale)
+            String(localizedLabel(for: suggestion).prefix(1)).uppercased(with: activeLocale)
         }
         return grouped
             .map { key, values in
                 (
                     key,
                     values.sorted {
-                        $0.label.localizedCaseInsensitiveCompare($1.label) == .orderedAscending
+                        localizedLabel(for: $0).localizedCaseInsensitiveCompare(localizedLabel(for: $1)) == .orderedAscending
                     }
                 )
             }
@@ -994,7 +1002,7 @@ private struct TaxonomyMultiSelectFilterSheet: View {
                                 HStack {
                                     Image(systemName: iconName(for: suggestion))
                                         .foregroundStyle(Color.tcTextSecondary)
-                                    Text(suggestion.label)
+                                    Text(localizedLabel(for: suggestion))
                                         .foregroundStyle(Color.tcTextPrimary)
                                     Spacer()
                                     if selectedIDs.contains(suggestion.entityId) {
@@ -1034,9 +1042,21 @@ private struct TaxonomyMultiSelectFilterSheet: View {
         defer { loading = false }
         do {
             items = try await TaxonomyService.browseTaxonomy(entityType: entityType, locale: languageCode, limit: 200)
+                .map { suggestion in
+                    TaxonomySuggestion(
+                        entityId: suggestion.entityId,
+                        entityType: suggestion.entityType,
+                        label: TaxonomyCatalogStore.shared.localizedLabel(for: suggestion.entityId, locale: languageCode) ?? suggestion.label,
+                        score: suggestion.score
+                    )
+                }
         } catch {
             items = []
         }
+    }
+
+    private func localizedLabel(for suggestion: TaxonomySuggestion) -> String {
+        TaxonomyCatalogStore.shared.localizedLabel(for: suggestion.entityId, locale: languageCode) ?? suggestion.label
     }
 
     private func normalizedLabel(_ value: String) -> String {

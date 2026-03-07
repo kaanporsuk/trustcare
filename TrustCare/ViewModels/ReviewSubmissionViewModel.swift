@@ -124,7 +124,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     func submitReview() async {
         guard hasValidTargetSelection else {
-            submissionErrorMessage = tcString("review_select_target_to_continue", fallback: "Select who you are reviewing to continue.")
+            submissionErrorMessage = tcString("review_who", fallback: "Who are you reviewing?")
             return
         }
 

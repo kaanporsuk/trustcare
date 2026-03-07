@@ -158,7 +158,7 @@ final class TaxonomyCatalogStore {
     private init() {}
 
     func localizedLabel(for canonicalID: String, locale: String) -> String? {
-        let normalizedID = canonicalID.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedID = normalizedCanonicalID(canonicalID)
         guard !normalizedID.isEmpty else { return nil }
 
         let localeCode = normalizedLocale(locale)
@@ -177,7 +177,7 @@ final class TaxonomyCatalogStore {
     }
 
     func aliases(for canonicalID: String, locale: String) -> [String] {
-        let normalizedID = canonicalID.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedID = normalizedCanonicalID(canonicalID)
         guard !normalizedID.isEmpty else { return [] }
 
         let localeCode = normalizedLocale(locale)
@@ -190,11 +190,13 @@ final class TaxonomyCatalogStore {
     }
 
     func containsCanonicalID(_ canonicalID: String) -> Bool {
-        canonicalEntry(by: canonicalID) != nil || symptomConcerns().contains(where: { $0.canonicalID == canonicalID })
+        let normalizedID = normalizedCanonicalID(canonicalID)
+        guard !normalizedID.isEmpty else { return false }
+        return canonicalEntry(by: normalizedID) != nil || symptomConcerns().contains(where: { $0.canonicalID == normalizedID })
     }
 
     func canonicalEntry(by canonicalID: String) -> TaxonomyCanonicalEntry? {
-        let normalizedID = canonicalID.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedID = normalizedCanonicalID(canonicalID)
         guard !normalizedID.isEmpty else { return nil }
         return canonicalPayload().taxonomy.first(where: { $0.canonicalID == normalizedID })
     }
@@ -410,5 +412,11 @@ final class TaxonomyCatalogStore {
             .components(separatedBy: ["-", "_"])
             .first?
             .lowercased() ?? "en"
+    }
+
+    private func normalizedCanonicalID(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .uppercased()
     }
 }

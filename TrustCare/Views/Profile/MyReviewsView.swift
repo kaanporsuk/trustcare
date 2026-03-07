@@ -17,10 +17,10 @@ struct MyReviewsView: View {
     var body: some View {
         VStack(spacing: AppSpacing.md) {
             Picker("filter_button", selection: $profileVM.reviewFilter) {
-                Text("filter_all").tag("all")
-                Text("status_verified").tag("verified")
-                Text("status_pending").tag("pending")
-                Text("status_unverified").tag("unverified")
+                Text(tcString("filter_all", fallback: "All")).tag("all")
+                Text(tcString("status_verified", fallback: "Verified")).tag("verified")
+                Text(tcString("status_pending", fallback: "Pending")).tag("pending")
+                Text(tcString("status_unverified", fallback: "Unverified")).tag("unverified")
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, AppSpacing.lg)
