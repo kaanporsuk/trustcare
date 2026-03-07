@@ -12,6 +12,10 @@ final class TaxonomyI18nLoader {
         let normalizedID = entityID.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !normalizedID.isEmpty else { return fallback }
 
+        if let canonicalLabel = TaxonomyCatalogStore.shared.localizedLabel(for: normalizedID, locale: locale) {
+            return canonicalLabel
+        }
+
         let localeCode = normalizedLocale(locale)
         let localeMap = mapping(for: localeCode)
 
@@ -45,7 +49,10 @@ final class TaxonomyI18nLoader {
     }
 
     private func loadMapping(for locale: String) -> [String: String] {
-        guard let url = Bundle.main.url(forResource: locale, withExtension: "json", subdirectory: "TaxonomyI18n") else {
+        // Keep legacy mapping scoped to dedicated taxonomy resources only.
+        let url = Bundle.main.url(forResource: locale, withExtension: "json", subdirectory: "TaxonomyI18n")
+
+        guard let url else {
             return [:]
         }
 

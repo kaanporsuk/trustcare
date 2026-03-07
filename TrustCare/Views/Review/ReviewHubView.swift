@@ -10,9 +10,12 @@ struct ReviewHubView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var providerSearchText: String = ""
+    @State private var facilitySearchText: String = ""
     @State private var providerResults: [Provider] = []
+    @State private var facilityResults: [Facility] = []
     @State private var specialtyResults: [Specialty] = []
     @State private var isSearchingProviders: Bool = false
+    @State private var isSearchingFacilities: Bool = false
     @State private var showAddProviderSheet: Bool = false
     @State private var photoItems: [PhotosPickerItem] = []
     @State private var proofItem: PhotosPickerItem?
@@ -52,7 +55,7 @@ struct ReviewHubView: View {
     private var canGoNext: Bool {
         switch currentStep {
         case .provider:
-            return viewModel.selectedProvider != nil
+            return viewModel.hasValidTargetSelection
         case .visit:
             return true
         case .overall:
@@ -66,10 +69,21 @@ struct ReviewHubView: View {
         }
     }
 
-    init(initialProvider: Provider? = nil) {
-        _viewModel = StateObject(wrappedValue: ReviewSubmissionViewModel(provider: initialProvider))
+    init(initialProvider: Provider? = nil, initialFacility: Facility? = nil) {
+        let vm = ReviewSubmissionViewModel(provider: initialProvider)
+        if let initialFacility {
+            vm.selectFacility(initialFacility)
+            if initialProvider != nil {
+                vm.setTargetMode(.both)
+            } else {
+                vm.setTargetMode(.facility)
+            }
+        }
+
+        _viewModel = StateObject(wrappedValue: vm)
         _providerSearchText = State(initialValue: initialProvider?.name ?? "")
-        _currentStep = State(initialValue: initialProvider != nil ? .visit : .provider)
+        _facilitySearchText = State(initialValue: initialFacility?.name ?? "")
+        _currentStep = State(initialValue: (initialProvider != nil || initialFacility != nil) ? .visit : .provider)
         launchedFromProviderDetail = initialProvider != nil
     }
 
@@ -92,6 +106,9 @@ struct ReviewHubView: View {
             .task(id: providerSearchText) {
                 await searchProvidersAndSpecialties()
             }
+            .task(id: facilitySearchText) {
+                await searchFacilities()
+            }
             .onChange(of: photoItems) { _, items in
                 Task { await loadPhotos(items) }
             }
@@ -108,12 +125,14 @@ struct ReviewHubView: View {
             .fullScreenCover(isPresented: $viewModel.isComplete) {
                 ReviewConfirmationView(
                     hasProof: viewModel.didUploadProof,
-                    onViewProvider: {
+                    onViewTarget: {
                         routeToProviderDetailAfterSubmit()
                     },
+                    viewTargetTitle: confirmationViewTargetTitle,
                     onAnotherReview: {
                         viewModel.resetForm(keepProvider: false)
                         providerSearchText = ""
+                        facilitySearchText = ""
                         currentStep = .provider
                     },
                     onGoHome: {
@@ -134,6 +153,16 @@ struct ReviewHubView: View {
                 }
             }
         }
+    }
+
+    private var confirmationViewTargetTitle: String {
+        if viewModel.lastSubmittedProviderID != nil {
+            return tcString("review_view_provider", fallback: "View provider")
+        }
+        if viewModel.lastSubmittedFacilityID != nil {
+            return tcString("review_view_facility", fallback: "View facility")
+        }
+        return tcString("button_done", fallback: "Done")
     }
 
     private var stepHeader: some View {
@@ -173,6 +202,34 @@ struct ReviewHubView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Text(tcKey: "review_who", fallback: "Who are you reviewing?")
                 .font(AppFont.title3)
+
+            Picker(
+                tcString("review_target_mode", fallback: "Review target"),
+                selection: Binding(
+                    get: { viewModel.targetMode },
+                    set: { viewModel.setTargetMode($0) }
+                )
+            ) {
+                Text(tcString("review_target_provider", fallback: "Provider")).tag(ReviewSubmissionViewModel.TargetMode.provider)
+                Text(tcString("review_target_facility", fallback: "Facility")).tag(ReviewSubmissionViewModel.TargetMode.facility)
+                Text(tcString("review_target_both", fallback: "Both")).tag(ReviewSubmissionViewModel.TargetMode.both)
+            }
+            .pickerStyle(.segmented)
+
+            if viewModel.targetMode == .provider || viewModel.targetMode == .both {
+                providerSelectionSection
+            }
+
+            if viewModel.targetMode == .facility || viewModel.targetMode == .both {
+                facilitySelectionSection
+            }
+        }
+    }
+
+    private var providerSelectionSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text(tcString("review_provider_label", fallback: "Provider"))
+                .font(AppFont.headline)
 
             if let provider = viewModel.selectedProvider {
                 VStack(spacing: AppSpacing.sm) {
@@ -267,6 +324,85 @@ struct ReviewHubView: View {
         }
     }
 
+    private var facilitySelectionSection: some View {
+        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+            Text(tcString("review_facility_label", fallback: "Facility"))
+                .font(AppFont.headline)
+
+            if let facility = viewModel.selectedFacility {
+                VStack(spacing: AppSpacing.sm) {
+                    FacilityMiniCard(facility: facility)
+
+                    Button {
+                        NotificationCenter.default.post(name: .trustCareRouteToFacilityDetail, object: facility.id)
+                    } label: {
+                        Text(tcString("review_view_selected_facility", fallback: "View facility page"))
+                            .font(AppFont.caption)
+                            .foregroundStyle(Color.tcOcean)
+                    }
+                    .buttonStyle(.plain)
+
+                    Button {
+                        viewModel.selectedFacility = nil
+                        facilitySearchText = ""
+                        facilityResults = []
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text(tcString("review_change_facility", fallback: "Change facility"))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .foregroundStyle(.white)
+                        .background(Color.tcOcean)
+                        .cornerRadius(AppRadius.button)
+                    }
+                    .buttonStyle(.plain)
+                }
+            } else {
+                HStack(spacing: AppSpacing.sm) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.secondary)
+                    TextField(tcString("search_facility_placeholder", fallback: "Search facility"), text: $facilitySearchText)
+                        .font(AppFont.body)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                }
+                .padding(.horizontal, AppSpacing.md)
+                .frame(height: 44)
+                .background(Color.tcSurface)
+                .cornerRadius(AppRadius.button)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppRadius.button)
+                        .stroke(Color.tcBorder, lineWidth: 1)
+                )
+
+                if isSearchingFacilities {
+                    ProgressView()
+                        .padding(.top, AppSpacing.xs)
+                }
+
+                if !facilitySearchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                        ForEach(facilityResults.prefix(8)) { facility in
+                            Button {
+                                viewModel.selectFacility(facility)
+                                facilitySearchText = facility.name
+                                facilityResults = []
+                            } label: {
+                                FacilityMiniRow(facility: facility)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(AppSpacing.md)
+                    .background(Color.tcSurface)
+                    .cornerRadius(AppRadius.card)
+                }
+            }
+        }
+    }
+
     private var visitDetailsSection: some View {
         let lang = localizationManager.effectiveLanguage
         return VStack(alignment: .leading, spacing: AppSpacing.sm) {
@@ -302,7 +438,7 @@ struct ReviewHubView: View {
             Text(tcKey: "review_detailed", fallback: "Detailed ratings")
                 .font(AppFont.title3)
 
-            ForEach(RatingCriterion.all) { criterion in
+            ForEach(viewModel.availableCriteria) { criterion in
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
                     HStack(spacing: AppSpacing.xs) {
                         Image(systemName: criterion.icon)
@@ -513,7 +649,7 @@ struct ReviewHubView: View {
                 .cornerRadius(AppRadius.button)
 
                 if currentStep == .provider && !canGoNext {
-                    Text(tcKey: "review_select_provider_to_continue", fallback: "Select a provider to continue")
+                    Text(tcString("review_select_target_to_continue", fallback: "Select who you are reviewing to continue"))
                         .font(AppFont.caption)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -526,33 +662,50 @@ struct ReviewHubView: View {
     }
 
     private func routeToProviderDetailAfterSubmit() {
-        guard let providerId = viewModel.lastSubmittedProviderID,
-              let reviewId = viewModel.lastSubmittedReviewID else {
+        guard let reviewId = viewModel.lastSubmittedReviewID else {
             viewModel.isComplete = false
             return
         }
 
-        NotificationCenter.default.post(
-            name: .trustCareReviewSubmitted,
-            object: nil,
-            userInfo: [
-                "providerId": providerId,
-                "reviewId": reviewId,
-            ]
-        )
+        if let providerId = viewModel.lastSubmittedProviderID {
+            NotificationCenter.default.post(
+                name: .trustCareReviewSubmitted,
+                object: nil,
+                userInfo: [
+                    "providerId": providerId,
+                    "reviewId": reviewId,
+                ]
+            )
 
-        viewModel.isComplete = false
+            viewModel.isComplete = false
 
-        if launchedFromProviderDetail {
-            dismiss()
+            if launchedFromProviderDetail {
+                dismiss()
+                return
+            }
+
+            NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
+            NotificationCenter.default.post(name: .trustCareRouteToProviderDetail, object: providerId)
             return
         }
 
-        NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
-        NotificationCenter.default.post(name: .trustCareRouteToProviderDetail, object: providerId)
+        if let facilityId = viewModel.lastSubmittedFacilityID {
+            viewModel.isComplete = false
+            NotificationCenter.default.post(name: .trustCareSwitchTab, object: 0)
+            NotificationCenter.default.post(name: .trustCareRouteToFacilityDetail, object: facilityId)
+            return
+        }
+
+        viewModel.isComplete = false
     }
 
     private func searchProvidersAndSpecialties() async {
+        guard viewModel.targetMode == .provider || viewModel.targetMode == .both else {
+            providerResults = []
+            specialtyResults = []
+            return
+        }
+
         let trimmed = providerSearchText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             providerResults = []
@@ -578,6 +731,29 @@ struct ReviewHubView: View {
             .sorted { $0.displayOrder < $1.displayOrder }
     }
 
+    private func searchFacilities() async {
+        guard viewModel.targetMode == .facility || viewModel.targetMode == .both else {
+            facilityResults = []
+            return
+        }
+
+        let trimmed = facilitySearchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            facilityResults = []
+            return
+        }
+
+        isSearchingFacilities = true
+        defer { isSearchingFacilities = false }
+
+        do {
+            try await Task.sleep(nanoseconds: 300_000_000)
+            facilityResults = try await FacilityService.searchFacilities(query: trimmed, limit: 12)
+        } catch {
+            facilityResults = []
+        }
+    }
+
     private func loadPhotos(_ items: [PhotosPickerItem]) async {
         var images: [UIImage] = []
         for item in items.prefix(5) {
@@ -595,6 +771,58 @@ struct ReviewHubView: View {
            let image = UIImage(data: data) {
             viewModel.proofImage = image
         }
+    }
+}
+
+private struct FacilityMiniCard: View {
+    let facility: Facility
+
+    var body: some View {
+        HStack(spacing: AppSpacing.sm) {
+            Image(systemName: "building.2")
+                .font(.title3)
+                .foregroundStyle(Color.tcOcean)
+                .frame(width: 48, height: 48)
+                .background(Color.tcOcean.opacity(0.12))
+                .clipShape(Circle())
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(facility.name)
+                    .font(AppFont.body)
+                if let city = facility.city, !city.isEmpty {
+                    Text(city)
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Spacer()
+        }
+        .padding(AppSpacing.md)
+        .background(Color.tcSurface)
+        .cornerRadius(AppRadius.card)
+    }
+}
+
+private struct FacilityMiniRow: View {
+    let facility: Facility
+
+    var body: some View {
+        HStack(spacing: AppSpacing.sm) {
+            Image(systemName: "building.2")
+                .foregroundStyle(Color.tcOcean)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(facility.name)
+                    .font(AppFont.body)
+                    .foregroundStyle(.primary)
+                if let city = facility.city, !city.isEmpty {
+                    Text(city)
+                        .font(AppFont.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Spacer()
+        }
+        .padding(.vertical, 4)
     }
 }
 

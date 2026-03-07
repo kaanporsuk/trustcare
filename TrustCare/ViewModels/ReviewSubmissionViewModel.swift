@@ -5,9 +5,19 @@ import Supabase
 
 @MainActor
 final class ReviewSubmissionViewModel: ObservableObject {
+    enum TargetMode: String, CaseIterable, Identifiable {
+        case provider
+        case facility
+        case both
+
+        var id: String { rawValue }
+    }
+
     private static let hasSubmittedReviewKey = "has_submitted_review_v1"
 
     @Published var selectedProvider: Provider?
+    @Published var selectedFacility: Facility?
+    @Published var targetMode: TargetMode = .provider
     @Published var surveyConfig: SurveyConfig = SurveyConfigurations.generalClinic
     @Published var visitDate: Date = Date()
     @Published var visitType: String = "examination"
@@ -24,15 +34,42 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published var didUploadProof: Bool = false
     @Published var lastSubmittedReviewID: UUID?
     @Published var lastSubmittedProviderID: UUID?
+    @Published var lastSubmittedFacilityID: UUID?
 
     static var shouldShowFirstReviewNudge: Bool {
         !UserDefaults.standard.bool(forKey: hasSubmittedReviewKey)
     }
 
     var canSubmit: Bool {
-        selectedProvider != nil
+        hasValidTargetSelection
             && overallRating > 0
             && comment.trimmingCharacters(in: .whitespacesAndNewlines).count >= 50
+    }
+
+    var hasValidTargetSelection: Bool {
+        switch targetMode {
+        case .provider:
+            return selectedProvider != nil
+        case .facility:
+            return selectedFacility != nil
+        case .both:
+            return selectedProvider != nil && selectedFacility != nil
+        }
+    }
+
+    var activeTargetType: ReviewTargetType {
+        targetMode == .facility ? .facility : .provider
+    }
+
+    var availableCriteria: [RatingCriterion] {
+        switch targetMode {
+        case .provider:
+            return RatingCriterion.provider
+        case .facility:
+            return RatingCriterion.facility
+        case .both:
+            return RatingCriterion.provider + RatingCriterion.facility
+        }
     }
 
     var commentCharCount: Int { comment.count }
@@ -45,10 +82,38 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     func selectProvider(_ provider: Provider) {
         selectedProvider = provider
-        surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
-        metricRatings = [:]
-        for criterion in RatingCriterion.all {
-            metricRatings[criterion.dbColumn] = 0
+        if targetMode == .provider {
+            surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
+            resetMetricRatings(for: .provider)
+        }
+    }
+
+    func selectFacility(_ facility: Facility) {
+        selectedFacility = facility
+        if targetMode == .facility {
+            surveyConfig = SurveyConfigurations.generalClinic
+            resetMetricRatings(for: .facility)
+        }
+    }
+
+    func setTargetMode(_ mode: TargetMode) {
+        targetMode = mode
+        switch mode {
+        case .provider:
+            if let provider = selectedProvider {
+                surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
+            }
+            resetMetricRatings(for: .provider)
+        case .facility:
+            surveyConfig = SurveyConfigurations.generalClinic
+            resetMetricRatings(for: .facility)
+        case .both:
+            if let provider = selectedProvider {
+                surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
+            }
+            metricRatings = Dictionary(
+                uniqueKeysWithValues: (RatingCriterion.provider + RatingCriterion.facility).map { ($0.dbColumn, 0) }
+            )
         }
     }
 
@@ -58,8 +123,8 @@ final class ReviewSubmissionViewModel: ObservableObject {
     }
 
     func submitReview() async {
-        guard let provider = selectedProvider else {
-            submissionErrorMessage = tcString("Please select a provider.", fallback: "Please select a provider.")
+        guard hasValidTargetSelection else {
+            submissionErrorMessage = tcString("review_select_target_to_continue", fallback: "Select who you are reviewing to continue.")
             return
         }
 
@@ -93,182 +158,46 @@ final class ReviewSubmissionViewModel: ObservableObject {
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 
         do {
-            let reviewId = UUID()
-            var uploadedPhotoUrls: [String] = []
             let derivedPriceLevel = max(1, min(4, Int(round(Double(overallRating) / 1.25))))
             let generatedTitle = String(trimmedComment.prefix(60)).trimmingCharacters(in: .whitespacesAndNewlines)
+            let visitTypeEnum = mappedVisitType(for: visitType)
+            let surveyType = surveyConfig.type
+            let title = generatedTitle.isEmpty ? nil : generatedTitle
 
-            let photoCount = min(photos.count, 5)
-            let totalSteps = Double(photoCount + (proofImage != nil ? 1 : 0) + 1)
-            var completedSteps = 0.0
+            let targets = resolveSubmissionTargets()
+            var submittedReviews: [Review] = []
 
-            func step() {
-                completedSteps += 1
-                mediaUploadProgress = min(1.0, completedSteps / max(totalSteps, 1))
-            }
-
-            for image in photos.prefix(5) {
-                guard let data = ImageService.compressImage(image, maxSizeKB: 1024) else { continue }
-                let path = "\(session.user.id.uuidString)/\(reviewId.uuidString)/\(UUID().uuidString).jpg"
-                let url = try await ImageService.uploadToStorage(
-                    bucket: "review-photos",
-                    path: path,
-                    data: data,
-                    contentType: "image/jpeg"
-                )
-                uploadedPhotoUrls.append(url)
-                step()
-            }
-
-            var proofURL: String?
-            if let proofImage,
-               let data = ImageService.compressImage(proofImage, maxSizeKB: 1024) {
-                let path = "\(session.user.id.uuidString)/\(reviewId.uuidString)/proof_\(UUID().uuidString).jpg"
-                proofURL = try await ImageService.uploadToStorage(
-                    bucket: "verification-proofs",
-                    path: path,
-                    data: data,
-                    contentType: "image/jpeg"
-                )
-                didUploadProof = true
-                step()
-            }
-
-            struct ReviewInsert: Encodable {
-                let id: String
-                let userId: String
-                let providerId: String
-                let ratingOverall: Double
-                let priceLevel: Int
-                let title: String?
-                let comment: String
-                let wouldRecommend: Bool
-                let visitDate: Date
-                let visitType: String
-                let surveyType: String
-                let ratingWaitTime: Int?
-                let ratingBedside: Int?
-                let ratingEfficacy: Int?
-                let ratingCleanliness: Int?
-                let ratingPainMgmt: Int?
-                let ratingAccuracy: Int?
-                let ratingKnowledge: Int?
-                let ratingCourtesy: Int?
-                let ratingCareQuality: Int?
-                let ratingAdmin: Int?
-                let ratingComfort: Int?
-                let ratingTurnaround: Int?
-                let ratingEmpathy: Int?
-                let ratingEnvironment: Int?
-                let ratingCommunication: Int?
-                let ratingEffectiveness: Int?
-                let ratingAttentiveness: Int?
-                let ratingEquipment: Int?
-                let ratingConsultation: Int?
-                let ratingResults: Int?
-                let ratingAftercare: Int?
-                let photoUrls: [String]
-                let proofImageUrl: String?
-                let status: String
-
-                enum CodingKeys: String, CodingKey {
-                    case id
-                    case userId = "user_id"
-                    case providerId = "provider_id"
-                    case ratingOverall = "rating_overall"
-                    case priceLevel = "price_level"
-                    case title
-                    case comment
-                    case wouldRecommend = "would_recommend"
-                    case visitDate = "visit_date"
-                    case visitType = "visit_type"
-                    case surveyType = "survey_type"
-                    case ratingWaitTime = "rating_wait_time"
-                    case ratingBedside = "rating_bedside"
-                    case ratingEfficacy = "rating_efficacy"
-                    case ratingCleanliness = "rating_cleanliness"
-                    case ratingPainMgmt = "rating_pain_mgmt"
-                    case ratingAccuracy = "rating_accuracy"
-                    case ratingKnowledge = "rating_knowledge"
-                    case ratingCourtesy = "rating_courtesy"
-                    case ratingCareQuality = "rating_care_quality"
-                    case ratingAdmin = "rating_admin"
-                    case ratingComfort = "rating_comfort"
-                    case ratingTurnaround = "rating_turnaround"
-                    case ratingEmpathy = "rating_empathy"
-                    case ratingEnvironment = "rating_environment"
-                    case ratingCommunication = "rating_communication"
-                    case ratingEffectiveness = "rating_effectiveness"
-                    case ratingAttentiveness = "rating_attentiveness"
-                    case ratingEquipment = "rating_equipment"
-                    case ratingConsultation = "rating_consultation"
-                    case ratingResults = "rating_results"
-                    case ratingAftercare = "rating_aftercare"
-                    case photoUrls = "photo_urls"
-                    case proofImageUrl = "proof_image_url"
-                    case status
+            for (index, target) in targets.enumerated() {
+                let review = try await retry(times: 3) {
+                    try await ReviewService.submitReview(
+                        target: target,
+                        visitDate: self.visitDate,
+                        visitType: visitTypeEnum,
+                        surveyType: surveyType,
+                        metricRatings: self.metricRatings,
+                        overallRating: self.overallRating,
+                        priceLevel: derivedPriceLevel,
+                        title: title,
+                        comment: trimmedComment,
+                        wouldRecommend: self.overallRating >= 4,
+                        proofImage: self.proofImage,
+                        images: index == 0 ? self.photos : [],
+                        videoURL: nil,
+                        statusOverride: nil,
+                        progressHandler: { progress in
+                            let total = Double(max(targets.count, 1))
+                            self.mediaUploadProgress = min(1.0, (Double(index) + progress) / total)
+                        }
+                    )
                 }
+                submittedReviews.append(review)
             }
 
-            func value(_ key: String) -> Int? {
-                guard let value = metricRatings[key], value > 0 else { return nil }
-                return value
-            }
-
-            let dbVisitType = mappedVisitType(for: visitType)
-            let submissionStatus = proofURL != nil ? "pending_verification" : "active"
-
-            let payload = ReviewInsert(
-                id: reviewId.uuidString,
-                userId: session.user.id.uuidString,
-                providerId: provider.id.uuidString,
-                ratingOverall: Double(overallRating),
-                priceLevel: derivedPriceLevel,
-                title: generatedTitle.isEmpty ? nil : generatedTitle,
-                comment: trimmedComment,
-                wouldRecommend: overallRating >= 4,
-                visitDate: visitDate,
-                visitType: dbVisitType,
-                surveyType: surveyConfig.type,
-                ratingWaitTime: value("rating_wait_time"),
-                ratingBedside: value("rating_bedside"),
-                ratingEfficacy: value("rating_efficacy"),
-                ratingCleanliness: value("rating_cleanliness"),
-                ratingPainMgmt: value("rating_pain_mgmt"),
-                ratingAccuracy: value("rating_accuracy"),
-                ratingKnowledge: value("rating_knowledge"),
-                ratingCourtesy: value("rating_courtesy"),
-                ratingCareQuality: value("rating_care_quality"),
-                ratingAdmin: value("rating_admin"),
-                ratingComfort: value("rating_comfort"),
-                ratingTurnaround: value("rating_turnaround"),
-                ratingEmpathy: value("rating_empathy"),
-                ratingEnvironment: value("rating_environment"),
-                ratingCommunication: value("rating_communication"),
-                ratingEffectiveness: value("rating_effectiveness"),
-                ratingAttentiveness: value("rating_attentiveness"),
-                ratingEquipment: value("rating_equipment"),
-                ratingConsultation: value("rating_consultation"),
-                ratingResults: value("rating_results"),
-                ratingAftercare: value("rating_aftercare"),
-                photoUrls: uploadedPhotoUrls,
-                proofImageUrl: proofURL,
-                status: submissionStatus
-            )
-
-            _ = try await retry(times: 3) {
-                try await SupabaseManager.shared.client
-                    .from("reviews")
-                    .insert(payload)
-                    .select()
-                    .single()
-                    .execute()
-            }
-
-            step()
             mediaUploadProgress = 1.0
-            lastSubmittedReviewID = reviewId
-            lastSubmittedProviderID = provider.id
+            lastSubmittedReviewID = submittedReviews.last?.id
+            lastSubmittedProviderID = submittedReviews.last(where: { $0.reviewTargetType == .provider })?.providerId
+            lastSubmittedFacilityID = submittedReviews.last(where: { $0.reviewTargetType == .facility })?.facilityId
+            didUploadProof = proofImage != nil
             markFirstSubmissionCompleted()
             isComplete = true
             UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -283,13 +212,17 @@ final class ReviewSubmissionViewModel: ObservableObject {
     func resetForm(keepProvider: Bool = false) {
         let provider = keepProvider ? selectedProvider : nil
         selectedProvider = provider
+        if !keepProvider {
+            selectedFacility = nil
+        }
         if let provider {
             surveyConfig = SpecialtyService.shared.surveyConfig(for: provider.specialty)
-            metricRatings = Dictionary(uniqueKeysWithValues: RatingCriterion.all.map { ($0.dbColumn, 0) })
+            resetMetricRatings(for: .provider)
         } else {
             surveyConfig = SurveyConfigurations.generalClinic
-            metricRatings = [:]
+            resetMetricRatings(for: .provider)
         }
+        targetMode = keepProvider ? .provider : .provider
         visitDate = Date()
         visitType = "examination"
         overallRating = 0
@@ -303,6 +236,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
         isComplete = false
         lastSubmittedReviewID = nil
         lastSubmittedProviderID = nil
+        lastSubmittedFacilityID = nil
     }
 
     private func markFirstSubmissionCompleted() {
@@ -310,15 +244,36 @@ final class ReviewSubmissionViewModel: ObservableObject {
         NotificationCenter.default.post(name: .trustCareReviewNudgeUpdated, object: nil)
     }
 
-    private func mappedVisitType(for uiValue: String) -> String {
-        // Tags are now canonical English keys that map directly to DB values
-        let mapping: [String: String] = [
-            "examination": "consultation",
-            "procedure": "procedure",
-            "checkup": "checkup",
-            "emergency": "emergency"
+    private func mappedVisitType(for uiValue: String) -> VisitType {
+        let mapping: [String: VisitType] = [
+            "examination": .consultation,
+            "procedure": .procedure,
+            "checkup": .checkup,
+            "emergency": .emergency,
         ]
-        return mapping[uiValue] ?? "consultation"
+        return mapping[uiValue] ?? .consultation
+    }
+
+    private func resetMetricRatings(for targetType: ReviewTargetType) {
+        metricRatings = Dictionary(uniqueKeysWithValues: RatingCriterion.criteria(for: targetType).map { ($0.dbColumn, 0) })
+    }
+
+    private func resolveSubmissionTargets() -> [ReviewTarget] {
+        switch targetMode {
+        case .provider:
+            if let provider = selectedProvider {
+                return [.provider(provider.id)]
+            }
+        case .facility:
+            if let facility = selectedFacility {
+                return [.facility(facility.id)]
+            }
+        case .both:
+            if let provider = selectedProvider, let facility = selectedFacility {
+                return [.provider(provider.id), .facility(facility.id)]
+            }
+        }
+        return []
     }
 
     private func localizedErrorMessage(_ error: Error) -> String {

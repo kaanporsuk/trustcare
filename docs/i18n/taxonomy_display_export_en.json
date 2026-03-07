@@ -1,0 +1,626 @@
+{
+  "meta": {
+    "source": "trustcare_repo",
+    "generated_by": "copilot",
+    "languages": [
+      "en",
+      "tr",
+      "de",
+      "pl",
+      "nl",
+      "da",
+      "es",
+      "fr",
+      "it",
+      "ro",
+      "pt",
+      "uk",
+      "ru",
+      "sv",
+      "cs",
+      "hu"
+    ]
+  },
+  "taxonomy": [
+    {
+      "entity_type": "facility",
+      "canonical_id": "FAC_HOSPITAL_GENERAL",
+      "canonical_english_label": "Hospital General",
+      "display_english_label": "Hospital General"
+    },
+    {
+      "entity_type": "facility",
+      "canonical_id": "FAC_LABORATORY",
+      "canonical_english_label": "Laboratory",
+      "display_english_label": "Laboratory"
+    },
+    {
+      "entity_type": "facility",
+      "canonical_id": "FAC_PHARMACY",
+      "canonical_english_label": "Pharmacy",
+      "display_english_label": "Pharmacy"
+    },
+    {
+      "entity_type": "facility",
+      "canonical_id": "FAC_URGENT_CARE",
+      "canonical_english_label": "Urgent Care",
+      "display_english_label": "Urgent Care"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_ACUPUNCTURE",
+      "canonical_english_label": "Acupuncture",
+      "display_english_label": "Acupuncture"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_BOTOX_FILLERS",
+      "canonical_english_label": "Botox Fillers",
+      "display_english_label": "Botox Fillers"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_BREAST_AUGMENTATION_REDUCTION",
+      "canonical_english_label": "Breast Augmentation Reduction",
+      "display_english_label": "Breast Augmentation Reduction"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_CHEMICAL_PEEL_MICRONEEDLING",
+      "canonical_english_label": "Chemical Peel Microneedling",
+      "display_english_label": "Chemical Peel Microneedling"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_COSMETIC_DENTISTRY",
+      "canonical_english_label": "Cosmetic Dentistry",
+      "display_english_label": "Cosmetic Dentistry"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_EYELID_SURGERY",
+      "canonical_english_label": "Eyelid Surgery",
+      "display_english_label": "Eyelid Surgery"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_FACELIFT_NECKLIFT",
+      "canonical_english_label": "Facelift Necklift",
+      "display_english_label": "Facelift Necklift"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_HAIR_TRANSPLANT",
+      "canonical_english_label": "Hair Transplant",
+      "display_english_label": "Hair Transplant"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_HOMEOPATHY",
+      "canonical_english_label": "Homeopathy",
+      "display_english_label": "Homeopathy"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_LASER_TREATMENTS",
+      "canonical_english_label": "Laser Treatments",
+      "display_english_label": "Laser Treatments"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_LASIK_REFRACTIVE",
+      "canonical_english_label": "LASIK Refractive",
+      "display_english_label": "LASIK Refractive"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_LIPOSUCTION_BODY_CONTOURING",
+      "canonical_english_label": "Liposuction Body Contouring",
+      "display_english_label": "Liposuction Body Contouring"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_LIP_ENHANCEMENT",
+      "canonical_english_label": "Lip Enhancement",
+      "display_english_label": "Lip Enhancement"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_NATUROPATHY",
+      "canonical_english_label": "Naturopathy",
+      "display_english_label": "Naturopathy"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_PRP_SKIN_REJUVENATION",
+      "canonical_english_label": "PRP Skin Rejuvenation",
+      "display_english_label": "PRP Skin Rejuvenation"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_RHINOPLASTY",
+      "canonical_english_label": "Rhinoplasty",
+      "display_english_label": "Rhinoplasty"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_SMILE_DESIGN",
+      "canonical_english_label": "Smile Design",
+      "display_english_label": "Smile Design"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_TATTOO_REMOVAL",
+      "canonical_english_label": "Tattoo Removal",
+      "display_english_label": "Tattoo Removal"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_TCM",
+      "canonical_english_label": "TCM",
+      "display_english_label": "TCM"
+    },
+    {
+      "entity_type": "service",
+      "canonical_id": "SERV_TUMMY_TUCK",
+      "canonical_english_label": "Tummy Tuck",
+      "display_english_label": "Tummy Tuck"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ADDICTION_MEDICINE",
+      "canonical_english_label": "Addiction Medicine",
+      "display_english_label": "Addiction Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AESTHETIC_MEDICINE",
+      "canonical_english_label": "Aesthetic Medicine",
+      "display_english_label": "Aesthetic Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ALLERGY_IMMUNOLOGY",
+      "canonical_english_label": "Allergy Immunology",
+      "display_english_label": "Allergy Immunology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ANDROLOGY",
+      "canonical_english_label": "Andrology",
+      "display_english_label": "Andrology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_AUDIOLOGY",
+      "canonical_english_label": "Audiology",
+      "display_english_label": "Audiology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BARIATRIC_SURGERY",
+      "canonical_english_label": "Bariatric Surgery",
+      "display_english_label": "Bariatric Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_BREAST_SURGERY",
+      "canonical_english_label": "Breast Surgery",
+      "display_english_label": "Breast Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOLOGY",
+      "canonical_english_label": "Cardiology",
+      "display_english_label": "Cardiology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CARDIOVASCULAR_SURGERY",
+      "canonical_english_label": "Cardiovascular Surgery",
+      "display_english_label": "Cardiovascular Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+      "canonical_english_label": "Child Adolescent Psychiatry",
+      "display_english_label": "Child Adolescent Psychiatry"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_CHIROPRACTIC",
+      "canonical_english_label": "Chiropractic",
+      "display_english_label": "Chiropractic"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DENTISTRY_GENERAL",
+      "canonical_english_label": "Dentistry General",
+      "display_english_label": "Dentistry General"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_DERMATOLOGY",
+      "canonical_english_label": "Dermatology",
+      "display_english_label": "Dermatology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_EMERGENCY_MEDICINE",
+      "canonical_english_label": "Emergency Medicine",
+      "display_english_label": "Emergency Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDOCRINOLOGY",
+      "canonical_english_label": "Endocrinology",
+      "display_english_label": "Endocrinology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENDODONTICS",
+      "canonical_english_label": "Endodontics",
+      "display_english_label": "Endodontics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ENT",
+      "canonical_english_label": "ENT",
+      "display_english_label": "ENT"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_FAMILY_MEDICINE",
+      "canonical_english_label": "Family Medicine",
+      "display_english_label": "Family Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GASTROENTEROLOGY",
+      "canonical_english_label": "Gastroenterology",
+      "display_english_label": "Gastroenterology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_PRACTICE",
+      "canonical_english_label": "General Practice",
+      "display_english_label": "General Practice"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENERAL_SURGERY",
+      "canonical_english_label": "General Surgery",
+      "display_english_label": "General Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GENETICS_GENOMICS",
+      "canonical_english_label": "Genetics Genomics",
+      "display_english_label": "Genetics Genomics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_GERIATRICS",
+      "canonical_english_label": "Geriatrics",
+      "display_english_label": "Geriatrics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEAD_NECK_SURGERY",
+      "canonical_english_label": "Head Neck Surgery",
+      "display_english_label": "Head Neck Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_HEMATOLOGY",
+      "canonical_english_label": "Hematology",
+      "display_english_label": "Hematology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INFECTIOUS_DISEASE",
+      "canonical_english_label": "Infectious Disease",
+      "display_english_label": "Infectious Disease"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_INTERNAL_MEDICINE",
+      "canonical_english_label": "Internal Medicine",
+      "display_english_label": "Internal Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_MATERNAL_FETAL_MEDICINE",
+      "canonical_english_label": "Maternal Fetal Medicine",
+      "display_english_label": "Maternal Fetal Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEPHROLOGY",
+      "canonical_english_label": "Nephrology",
+      "display_english_label": "Nephrology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROLOGY",
+      "canonical_english_label": "Neurology",
+      "display_english_label": "Neurology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROPSYCHOLOGY",
+      "canonical_english_label": "Neuropsychology",
+      "display_english_label": "Neuropsychology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NEUROSURGERY",
+      "canonical_english_label": "Neurosurgery",
+      "display_english_label": "Neurosurgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUCLEAR_MEDICINE",
+      "canonical_english_label": "Nuclear Medicine",
+      "display_english_label": "Nuclear Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_NUTRITION_DIETETICS",
+      "canonical_english_label": "Nutrition Dietetics",
+      "display_english_label": "Nutrition Dietetics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OBGYN",
+      "canonical_english_label": "OBGYN",
+      "display_english_label": "OBGYN"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OCCUPATIONAL_THERAPY",
+      "canonical_english_label": "Occupational Therapy",
+      "display_english_label": "Occupational Therapy"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ONCOLOGY",
+      "canonical_english_label": "Oncology",
+      "display_english_label": "Oncology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPHTHALMOLOGY",
+      "canonical_english_label": "Ophthalmology",
+      "display_english_label": "Ophthalmology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OPTOMETRY",
+      "canonical_english_label": "Optometry",
+      "display_english_label": "Optometry"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORAL_SURGERY",
+      "canonical_english_label": "Oral Surgery",
+      "display_english_label": "Oral Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHODONTICS",
+      "canonical_english_label": "Orthodontics",
+      "display_english_label": "Orthodontics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_ORTHOPEDIC_SURGERY",
+      "canonical_english_label": "Orthopedic Surgery",
+      "display_english_label": "Orthopedic Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_OSTEOPATHY",
+      "canonical_english_label": "Osteopathy",
+      "display_english_label": "Osteopathy"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PAIN_MANAGEMENT",
+      "canonical_english_label": "Pain Management",
+      "display_english_label": "Pain Management"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PALLIATIVE_CARE",
+      "canonical_english_label": "Palliative Care",
+      "display_english_label": "Palliative Care"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PATHOLOGY",
+      "canonical_english_label": "Pathology",
+      "display_english_label": "Pathology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRICS",
+      "canonical_english_label": "Pediatrics",
+      "display_english_label": "Pediatrics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_DENTISTRY",
+      "canonical_english_label": "Pediatric Dentistry",
+      "display_english_label": "Pediatric Dentistry"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_OPHTHALMOLOGY",
+      "canonical_english_label": "Pediatric Ophthalmology",
+      "display_english_label": "Pediatric Ophthalmology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_SURGERY",
+      "canonical_english_label": "Pediatric Surgery",
+      "display_english_label": "Pediatric Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PEDIATRIC_UROLOGY",
+      "canonical_english_label": "Pediatric Urology",
+      "display_english_label": "Pediatric Urology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PERIODONTICS",
+      "canonical_english_label": "Periodontics",
+      "display_english_label": "Periodontics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSICAL_MEDICINE_REHAB",
+      "canonical_english_label": "Physical Medicine Rehab",
+      "display_english_label": "Physical Medicine Rehab"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PHYSIOTHERAPY",
+      "canonical_english_label": "Physiotherapy",
+      "display_english_label": "Physiotherapy"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+      "canonical_english_label": "Plastic Reconstructive Surgery",
+      "display_english_label": "Plastic Reconstructive Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PODIATRY",
+      "canonical_english_label": "Podiatry",
+      "display_english_label": "Podiatry"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PROSTHODONTICS",
+      "canonical_english_label": "Prosthodontics",
+      "display_english_label": "Prosthodontics"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHIATRY",
+      "canonical_english_label": "Psychiatry",
+      "display_english_label": "Psychiatry"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PSYCHOLOGY_THERAPY",
+      "canonical_english_label": "Psychology Therapy",
+      "display_english_label": "Psychology Therapy"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_PULMONOLOGY",
+      "canonical_english_label": "Pulmonology",
+      "display_english_label": "Pulmonology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RADIOLOGY",
+      "canonical_english_label": "Radiology",
+      "display_english_label": "Radiology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+      "canonical_english_label": "Reproductive Endocrinology IVF",
+      "display_english_label": "Reproductive Endocrinology IVF"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RETINA_SPECIALIST",
+      "canonical_english_label": "Retina Specialist",
+      "display_english_label": "Retina Specialist"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHEUMATOLOGY",
+      "canonical_english_label": "Rheumatology",
+      "display_english_label": "Rheumatology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_RHINOLOGY",
+      "canonical_english_label": "Rhinology",
+      "display_english_label": "Rhinology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SLEEP_MEDICINE",
+      "canonical_english_label": "Sleep Medicine",
+      "display_english_label": "Sleep Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPEECH_THERAPY",
+      "canonical_english_label": "Speech Therapy",
+      "display_english_label": "Speech Therapy"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_SPORTS_MEDICINE",
+      "canonical_english_label": "Sports Medicine",
+      "display_english_label": "Sports Medicine"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_THORACIC_SURGERY",
+      "canonical_english_label": "Thoracic Surgery",
+      "display_english_label": "Thoracic Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRANSPLANT_SURGERY",
+      "canonical_english_label": "Transplant Surgery",
+      "display_english_label": "Transplant Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_TRAUMA_SURGERY",
+      "canonical_english_label": "Trauma Surgery",
+      "display_english_label": "Trauma Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROGYNECOLOGY",
+      "canonical_english_label": "Urogynecology",
+      "display_english_label": "Urogynecology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_UROLOGY",
+      "canonical_english_label": "Urology",
+      "display_english_label": "Urology"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_VASCULAR_SURGERY",
+      "canonical_english_label": "Vascular Surgery",
+      "display_english_label": "Vascular Surgery"
+    },
+    {
+      "entity_type": "specialty",
+      "canonical_id": "SPEC_WOUND_CARE",
+      "canonical_english_label": "Wound Care",
+      "display_english_label": "Wound Care"
+    }
+  ],
+  "ui_strings": [
+    {
+      "key": "my_reviews_empty_subtitle",
+      "english_label": "Be the first to share an experience and help others."
+    }
+  ]
+}

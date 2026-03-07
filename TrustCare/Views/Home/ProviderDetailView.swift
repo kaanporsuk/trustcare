@@ -252,8 +252,23 @@ struct ProviderDetailView: View {
                 .foregroundStyle(.secondary)
 
             if let clinic = detailVM.provider?.clinicName {
-                Text(clinic)
-                    .font(AppFont.body)
+                if let facilityId = detailVM.provider?.facilityId {
+                    NavigationLink {
+                        FacilityDetailView(facilityId: facilityId)
+                    } label: {
+                        HStack(spacing: AppSpacing.xs) {
+                            Image(systemName: "building.2")
+                                .foregroundStyle(Color.tcOcean)
+                            Text(clinic)
+                                .font(AppFont.body)
+                                .foregroundStyle(Color.tcOcean)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    Text(clinic)
+                        .font(AppFont.body)
+                }
             }
 
             HStack(spacing: AppSpacing.sm) {

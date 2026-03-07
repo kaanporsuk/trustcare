@@ -13,6 +13,7 @@ extension Notification.Name {
     static let trustCareApplySpecialtyFilter = Notification.Name("trustCareApplySpecialtyFilter")
     static let trustCareApplyCanonicalSpecialtyFilter = Notification.Name("trustCareApplyCanonicalSpecialtyFilter")
     static let trustCareRouteToProviderDetail = Notification.Name("trustCareRouteToProviderDetail")
+    static let trustCareRouteToFacilityDetail = Notification.Name("trustCareRouteToFacilityDetail")
     static let trustCareReviewSubmitted = Notification.Name("trustCareReviewSubmitted")
     static let trustCareReviewNudgeUpdated = Notification.Name("trustCareReviewNudgeUpdated")
 }
@@ -26,6 +27,7 @@ enum AppState {
 
 enum AppRoute: Hashable {
     case provider(UUID)
+    case facility(UUID)
 }
 
 @main
@@ -66,6 +68,8 @@ struct TrustCareApp: App {
                     switch route {
                     case .provider(let id):
                         ProviderDetailView(providerId: id)
+                    case .facility(let id):
+                        FacilityDetailView(facilityId: id)
                     }
                 }
             }
@@ -102,6 +106,13 @@ struct TrustCareApp: App {
                 path = NavigationPath()
                 path.append(AppRoute.provider(providerId))
             }
+            .onReceive(NotificationCenter.default.publisher(for: .trustCareRouteToFacilityDetail)) { note in
+                guard let facilityId = note.object as? UUID else { return }
+                appState = .main
+                appRouter.setSelectedTab(0)
+                path = NavigationPath()
+                path.append(AppRoute.facility(facilityId))
+            }
             .id(localizationManager.effectiveLanguage)
         }
     }
@@ -130,13 +141,21 @@ struct TrustCareApp: App {
             return
         }
 
+        if host == "facility", let idString = pathComponents.first, let id = UUID(uuidString: idString) {
+            appState = .main
+            path = NavigationPath()
+            path.append(AppRoute.facility(id))
+            return
+        }
+
         if host == "review", let idString = pathComponents.first, let reviewId = UUID(uuidString: idString) {
             Task {
                 do {
                     let review = try await ReviewService.fetchReviewById(reviewId)
+                    guard let providerId = review.providerId else { return }
                     appState = .main
                     path = NavigationPath()
-                    path.append(AppRoute.provider(review.providerId))
+                    path.append(AppRoute.provider(providerId))
                 } catch {
                     return
                 }

@@ -206,7 +206,9 @@ enum ProviderService {
         struct ReviewRow: Decodable {
             let id: UUID
             let userId: UUID
-            let providerId: UUID
+            let providerId: UUID?
+            let facilityId: UUID?
+            let reviewTargetType: ReviewTargetType?
             let visitDate: Date
             let visitType: VisitType
             let surveyType: String?
@@ -274,6 +276,8 @@ enum ProviderService {
                 case id, title, comment, status
                 case userId = "user_id"
                 case providerId = "provider_id"
+                case facilityId = "facility_id"
+                case reviewTargetType = "review_target_type"
                 case visitDate = "visit_date"
                 case visitType = "visit_type"
                 case surveyType = "survey_type"
@@ -349,6 +353,7 @@ enum ProviderService {
         let response: PostgrestResponse<[ReviewProfileRow]> = try await client
             .from("reviews_public")
             .select("*, profiles(full_name, avatar_url)")
+            .eq("review_target_type", value: ReviewTargetType.provider.rawValue)
             .eq("provider_id", value: id.uuidString)
             .is("deleted_at", value: nil)
             .in("status", values: ["active", "pending_verification"])
@@ -366,6 +371,8 @@ enum ProviderService {
                 id: review.id,
                 userId: review.userId,
                 providerId: review.providerId,
+                facilityId: review.facilityId,
+                reviewTargetType: review.reviewTargetType,
                 visitDate: review.visitDate,
                 visitType: review.visitType,
                 surveyType: review.surveyType,
@@ -432,7 +439,8 @@ enum ProviderService {
                 reviewerAvatar: row.profile?.avatarUrl,
                 media: reviewMedia,
                 providerName: nil,
-                providerSpecialty: nil
+                providerSpecialty: nil,
+                facilityName: nil
             )
         }
     }
@@ -593,7 +601,7 @@ enum ProviderService {
         UserDefaults.standard.object(forKey: specialtiesCacheDateKey) as? Date
     }
 
-    private static func fetchReviewMedia(_ reviewIds: [UUID]) async throws -> [UUID: [ReviewMedia]] {
+    static func fetchReviewMedia(_ reviewIds: [UUID]) async throws -> [UUID: [ReviewMedia]] {
         guard !reviewIds.isEmpty else { return [:] }
 
         let ids = reviewIds.map { $0.uuidString }
@@ -613,6 +621,7 @@ enum ProviderService {
             name: provider.name,
             specialty: provider.specialty,
             clinicName: provider.clinicName,
+            facilityId: provider.facilityId,
             address: provider.address,
             city: provider.city,
             countryCode: provider.countryCode,

@@ -1,0 +1,613 @@
+{
+  "meta": {
+    "project": "TrustCare",
+    "artifact": "Implementation Backlog",
+    "version": "v1.0",
+    "based_on": "trustcare_taxonomy_v2_1_proposal.json",
+    "date": "2026-03-07",
+    "launch_decisions": {
+      "pharmacy_in_core_scope": true,
+      "launch_strategy": "Exhaustive launch"
+    }
+  },
+  "summary": {
+    "epic_count": 6,
+    "task_count": 26,
+    "p0_tasks": 16,
+    "p1_tasks": 9,
+    "p2_tasks": 1,
+    "launch_scope_counts": {
+      "specialties": 84,
+      "treatments_procedures": 47,
+      "facility_types": 19,
+      "symptom_concern_domains": 19
+    }
+  },
+  "recommended_build_order": [
+    "E1 Canonical Taxonomy and Content Assets",
+    "E3 Review Architecture: Provider vs Facility",
+    "E4 Provider and Facility Onboarding",
+    "E2 Search Experience and Discovery",
+    "E5 Localization and UX Hardening",
+    "E6 Launch Readiness, Analytics, and Quality"
+  ],
+  "epics": [
+    {
+      "epic_id": "E1",
+      "title": "Canonical Taxonomy and Content Assets",
+      "objective": "Finalize and ship the exhaustive launch taxonomy, aliases, and localized content assets for Specialty, Treatment / Procedure, Facility Type, and Symptom / Concern.",
+      "priority": "P0",
+      "dependencies": [],
+      "deliverables": [
+        "Frozen English source of truth",
+        "Localized taxonomy resource files for all launch languages",
+        "Alias graph and search synonyms",
+        "Coverage validation script"
+      ],
+      "tasks": [
+        {
+          "task_id": "E1-T1",
+          "title": "Freeze canonical taxonomy v2.1",
+          "description": "Lock the launch set at 84 specialties, 47 treatments / procedures, 19 facility types, and 19 symptom / concern domains. Preserve canonical IDs and display labels.",
+          "priority": "P0",
+          "depends_on": [],
+          "acceptance_criteria": [
+            "Canonical JSON is versioned and marked launch-frozen.",
+            "Every taxonomy item has canonical_id, entity_type, display label, and optional aliases.",
+            "No cross-layer leakage: specialty contains specialties only, treatment contains treatments / procedures only, facility contains facilities only."
+          ],
+          "outputs": [
+            "trustcare_taxonomy_v2_1_proposal.json",
+            "launch-freeze changelog"
+          ]
+        },
+        {
+          "task_id": "E1-T2",
+          "title": "Create multilingual taxonomy resources",
+          "description": "Generate locale files for every shipped language using the polished UI-facing English labels as the translation base. Keep canonical IDs unchanged.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T1"
+          ],
+          "acceptance_criteria": [
+            "Locale files exist for en, tr, de, pl, nl, da, es, fr, it, ro, pt, uk, ru, sv, cs, hu.",
+            "Every taxonomy item has a non-empty localized display value in every shipped locale.",
+            "Translation review resolves medically sensitive or ambiguous terms before import."
+          ],
+          "outputs": [
+            "taxonomy_<locale>.json files",
+            "translation review sheet"
+          ]
+        },
+        {
+          "task_id": "E1-T3",
+          "title": "Build alias graph and synonym coverage",
+          "description": "Add patient-friendly synonyms, abbreviations, and alternate spellings for specialties, treatments, facility types, and symptom domains.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T1"
+          ],
+          "acceptance_criteria": [
+            "Top patient intents map to at least one canonical entity.",
+            "Common abbreviations and variants are covered (e.g., ENT, OB-GYN, IVF, PRP, LASIK).",
+            "Aliases are locale-aware where appropriate."
+          ],
+          "outputs": [
+            "taxonomy_aliases.json or equivalent resource"
+          ]
+        },
+        {
+          "task_id": "E1-T4",
+          "title": "Add taxonomy coverage validation",
+          "description": "Implement a lightweight validation command that fails when any canonical item is missing from any launch locale or when any localized display value is blank.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T2"
+          ],
+          "acceptance_criteria": [
+            "Validation reports missing locale file, missing key, and empty value precisely.",
+            "Validation runs locally and in CI.",
+            "Build/release cannot proceed with incomplete coverage."
+          ],
+          "outputs": [
+            "tools/taxonomy_coverage_validate.swift or equivalent",
+            "CI step"
+          ]
+        }
+      ]
+    },
+    {
+      "epic_id": "E2",
+      "title": "Search Experience and Discovery",
+      "objective": "Ship the two-mode search model: Symptom / Concern AI search and Direct search across provider, specialty, treatment / procedure, and facility.",
+      "priority": "P0",
+      "dependencies": [
+        "E1"
+      ],
+      "deliverables": [
+        "Symptom / Concern entry flow",
+        "Direct search/autocomplete flow",
+        "Mapped result ranking and fallback behavior",
+        "Urgency-sensitive routing"
+      ],
+      "tasks": [
+        {
+          "task_id": "E2-T1",
+          "title": "Implement direct search index",
+          "description": "Build a unified search index over provider names, specialties, treatments / procedures, facility types, facility names, and aliases.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T1",
+            "E1-T3"
+          ],
+          "acceptance_criteria": [
+            "Search returns relevant matches across all indexed entity types.",
+            "Autocomplete supports exact, prefix, alias, and typo-tolerant matching.",
+            "Results can be filtered by entity type and location."
+          ],
+          "outputs": [
+            "Unified search index",
+            "search API/view model updates"
+          ]
+        },
+        {
+          "task_id": "E2-T2",
+          "title": "Implement symptom / concern intake flow",
+          "description": "Create the patient-first search mode where a user enters a complaint or symptom and receives likely specialties, treatments, and facility recommendations.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T1",
+            "E1-T3"
+          ],
+          "acceptance_criteria": [
+            "User can enter free text and receive mapped concern results.",
+            "UI clearly frames outputs as guidance, not diagnosis.",
+            "Concern flow supports both typed input and suggestion chips."
+          ],
+          "outputs": [
+            "Symptom search UI",
+            "mapping service"
+          ]
+        },
+        {
+          "task_id": "E2-T3",
+          "title": "Integrate AI mapping backend",
+          "description": "Use the AI backend to interpret symptom text, detect intent, rank candidate specialties/treatments/facilities, and flag urgency-sensitive patterns.",
+          "priority": "P0",
+          "depends_on": [
+            "E2-T2"
+          ],
+          "acceptance_criteria": [
+            "AI returns structured candidates with confidence and rationale metadata for internal use.",
+            "Urgency-sensitive inputs route toward urgent care / emergency recommendations without diagnostic claims.",
+            "Fallback rules exist when AI confidence is low."
+          ],
+          "outputs": [
+            "AI symptom mapping contract",
+            "backend prompt/spec",
+            "confidence thresholds"
+          ]
+        },
+        {
+          "task_id": "E2-T4",
+          "title": "Design ranked result orchestration",
+          "description": "Define how direct search and symptom search rank providers, facilities, specialties, and treatments based on relevance, trust, location, availability, and review separation.",
+          "priority": "P1",
+          "depends_on": [
+            "E2-T1",
+            "E2-T3",
+            "E3-T1"
+          ],
+          "acceptance_criteria": [
+            "Ranking policy is explicit and testable.",
+            "Provider and facility scores remain separate in ranking inputs.",
+            "Complementary/alternative care can be surfaced but visually bucketed and de-emphasized where appropriate."
+          ],
+          "outputs": [
+            "ranking policy doc",
+            "ranking config/tests"
+          ]
+        },
+        {
+          "task_id": "E2-T5",
+          "title": "Localize search behavior",
+          "description": "Ensure search works against localized display names while retaining alias support for English and common variants.",
+          "priority": "P1",
+          "depends_on": [
+            "E1-T2",
+            "E1-T3",
+            "E2-T1"
+          ],
+          "acceptance_criteria": [
+            "Users can search successfully in launch locales.",
+            "Search uses localized labels in suggestions and results.",
+            "Alias matching does not reintroduce English-only UX in localized mode."
+          ],
+          "outputs": [
+            "localized search tests"
+          ]
+        }
+      ]
+    },
+    {
+      "epic_id": "E3",
+      "title": "Review Architecture: Provider vs Facility",
+      "objective": "Build separate trust objects, capture flows, dimensions, storage, and UI for provider reviews and facility reviews.",
+      "priority": "P0",
+      "dependencies": [],
+      "deliverables": [
+        "Separate provider review model",
+        "Separate facility review model",
+        "Visit flow that can generate one or both reviews",
+        "Separate public ratings and review cards"
+      ],
+      "tasks": [
+        {
+          "task_id": "E3-T1",
+          "title": "Define review domain models",
+          "description": "Create explicit schemas, aggregation logic, and API boundaries for provider reviews and facility reviews. Public scores must never be merged.",
+          "priority": "P0",
+          "depends_on": [],
+          "acceptance_criteria": [
+            "Provider and facility reviews have different review_target types.",
+            "Separate aggregation pipelines exist for provider and facility scores.",
+            "Data model supports a single care episode linking both targets without merging their public ratings."
+          ],
+          "outputs": [
+            "review schema",
+            "aggregation spec",
+            "API contracts"
+          ]
+        },
+        {
+          "task_id": "E3-T2",
+          "title": "Define rating dimensions",
+          "description": "Finalize rating dimensions for providers and facilities separately, including pharmacy-specific dimensions in facility scope.",
+          "priority": "P0",
+          "depends_on": [
+            "E3-T1"
+          ],
+          "acceptance_criteria": [
+            "Provider review dimensions focus on expertise, communication, trust, explanation, bedside manner, and outcomes.",
+            "Facility review dimensions focus on cleanliness, operations, waiting time, organization, staff, transparency, infrastructure, and pharmacy-relevant service quality where applicable.",
+            "UI text is localized and category-specific."
+          ],
+          "outputs": [
+            "dimension dictionary",
+            "localized labels"
+          ]
+        },
+        {
+          "task_id": "E3-T3",
+          "title": "Build review submission flows",
+          "description": "Allow users to submit a provider review, facility review, or both after a care episode. Keep the targets separate in UI and backend.",
+          "priority": "P0",
+          "depends_on": [
+            "E3-T1",
+            "E3-T2"
+          ],
+          "acceptance_criteria": [
+            "User can review provider only, facility only, or both.",
+            "Review forms clearly state what is being reviewed.",
+            "Submission flow prevents target confusion and preserves separate ratings."
+          ],
+          "outputs": [
+            "review screens",
+            "submission endpoints"
+          ]
+        },
+        {
+          "task_id": "E3-T4",
+          "title": "Build public trust surfaces",
+          "description": "Update provider profiles and facility profiles to display separate review counts, scores, category breakdowns, and linked practice relationships.",
+          "priority": "P1",
+          "depends_on": [
+            "E3-T3"
+          ],
+          "acceptance_criteria": [
+            "Provider cards show provider rating and provider review count only.",
+            "Facility cards show facility rating and facility review count only.",
+            "Relationship text like 'Practices at X' or 'Available at X' does not imply shared score."
+          ],
+          "outputs": [
+            "profile UI updates",
+            "public review components"
+          ]
+        },
+        {
+          "task_id": "E3-T5",
+          "title": "Moderation and abuse policy",
+          "description": "Define moderation rules, reporting, abuse detection, and dispute pathways for both provider and facility reviews.",
+          "priority": "P1",
+          "depends_on": [
+            "E3-T1"
+          ],
+          "acceptance_criteria": [
+            "Report/review moderation works independently for provider and facility content.",
+            "Internal tooling can hide, review, or reinstate reviews.",
+            "Audit trail exists for moderation actions."
+          ],
+          "outputs": [
+            "moderation spec",
+            "admin backlog"
+          ]
+        }
+      ]
+    },
+    {
+      "epic_id": "E4",
+      "title": "Provider and Facility Onboarding",
+      "objective": "Make onboarding and profile maintenance support the full taxonomy, separate review architecture, and exhaustive launch scope including pharmacy.",
+      "priority": "P0",
+      "dependencies": [
+        "E1",
+        "E3"
+      ],
+      "deliverables": [
+        "Expanded onboarding forms",
+        "Facility-linked provider relationships",
+        "Pharmacy onboarding",
+        "Validation rules"
+      ],
+      "tasks": [
+        {
+          "task_id": "E4-T1",
+          "title": "Expand provider onboarding taxonomy selection",
+          "description": "Allow providers to select multiple specialties, treatments/procedures offered, languages, and linked facilities from the exhaustive launch taxonomy.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T1",
+            "E1-T2"
+          ],
+          "acceptance_criteria": [
+            "Provider onboarding supports multi-select specialty and treatment/procedure assignment.",
+            "Selection UI is localized and searchable.",
+            "Validation prevents semantically impossible or irrelevant combinations where needed."
+          ],
+          "outputs": [
+            "provider onboarding form updates"
+          ]
+        },
+        {
+          "task_id": "E4-T2",
+          "title": "Expand facility onboarding",
+          "description": "Support facility type, supported specialties, available treatments/procedures, pharmacy-specific capability flags, and linked providers.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T1",
+            "E1-T2"
+          ],
+          "acceptance_criteria": [
+            "Facilities can be onboarded as hospitals, clinics, labs, pharmacies, telehealth, and other launch types.",
+            "Facility profile can list supported specialties, treatments, and providers.",
+            "Pharmacy-specific data fields exist if pharmacy is in core scope."
+          ],
+          "outputs": [
+            "facility onboarding form updates",
+            "facility data model updates"
+          ]
+        },
+        {
+          "task_id": "E4-T3",
+          "title": "Relationship model between providers and facilities",
+          "description": "Model how providers practice at one or more facilities and how a facility lists one or more providers.",
+          "priority": "P0",
+          "depends_on": [
+            "E3-T1"
+          ],
+          "acceptance_criteria": [
+            "Provider-to-facility relationship is explicit and many-to-many if required.",
+            "Provider and facility profiles can reference each other without score leakage.",
+            "Search and result cards can surface relationship context."
+          ],
+          "outputs": [
+            "relationship schema",
+            "linking UI"
+          ]
+        },
+        {
+          "task_id": "E4-T4",
+          "title": "Admin taxonomy management",
+          "description": "Create an internal workflow for adding, deprecating, aliasing, or relabeling taxonomy nodes without breaking canonical IDs.",
+          "priority": "P1",
+          "depends_on": [
+            "E1-T1"
+          ],
+          "acceptance_criteria": [
+            "Canonical IDs are stable.",
+            "Admin can update display labels and aliases safely.",
+            "Deprecated items can be hidden without corrupting historical data."
+          ],
+          "outputs": [
+            "admin spec",
+            "future backlog"
+          ]
+        }
+      ]
+    },
+    {
+      "epic_id": "E5",
+      "title": "Localization and UX Hardening",
+      "objective": "Finish the multilingual UX so exhaustive launch taxonomy, search, onboarding, and reviews work cleanly across all shipped languages and long-label scenarios.",
+      "priority": "P0",
+      "dependencies": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "deliverables": [
+        "Complete translation coverage",
+        "Long-label-safe controls",
+        "Locale-aware sorting/grouping/search",
+        "Regression guardrails"
+      ],
+      "tasks": [
+        {
+          "task_id": "E5-T1",
+          "title": "Complete UI string coverage",
+          "description": "Audit and fill all missing localized UI strings, including review empty states and search/help/legal content.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T2"
+          ],
+          "acceptance_criteria": [
+            "No English leakage remains in launch locales for the TrustCare search, review, help, and legal flows.",
+            "All missing keys are added to the translation source of truth.",
+            "Coverage checks pass in CI."
+          ],
+          "outputs": [
+            "updated translation files",
+            "localization audit report"
+          ]
+        },
+        {
+          "task_id": "E5-T2",
+          "title": "Replace truncation-prone controls",
+          "description": "Update any segmented controls or fixed-width label containers that fail with longer translations. Use adaptive pills, scrolling chips, or other localization-safe patterns.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T2"
+          ],
+          "acceptance_criteria": [
+            "Status filters and taxonomy controls remain readable in long-string languages such as Polish, German, and French.",
+            "No awkward mid-word truncation on key filter/search surfaces.",
+            "Accessibility and tap targets remain acceptable."
+          ],
+          "outputs": [
+            "UI component updates",
+            "snapshot tests"
+          ]
+        },
+        {
+          "task_id": "E5-T3",
+          "title": "Localized taxonomy grouping and search QA",
+          "description": "Verify that taxonomy browsing, search, grouping, and selected chips behave correctly in every launch language.",
+          "priority": "P0",
+          "depends_on": [
+            "E1-T2",
+            "E2-T5"
+          ],
+          "acceptance_criteria": [
+            "Picker rows, chips, summaries, grouping, and search are localized consistently.",
+            "No duplicate rows appear due to localized label collisions unless intentionally handled.",
+            "Fallback-to-English is only used for genuinely missing entries and is caught by validation."
+          ],
+          "outputs": [
+            "QA matrix",
+            "locale test cases"
+          ]
+        },
+        {
+          "task_id": "E5-T4",
+          "title": "Add regression guards",
+          "description": "Extend existing validation and linting to catch hardcoded user-facing strings, missing taxonomy locale coverage, and locale-specific UI overflows.",
+          "priority": "P1",
+          "depends_on": [
+            "E5-T1",
+            "E5-T2"
+          ],
+          "acceptance_criteria": [
+            "Localization checks run in local verify and CI.",
+            "Taxonomy coverage validation is mandatory.",
+            "At least one automated UI/snapshot test exists for long-label languages."
+          ],
+          "outputs": [
+            "verify/CI updates",
+            "snapshot baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "epic_id": "E6",
+      "title": "Launch Readiness, Analytics, and Quality",
+      "objective": "Make the exhaustive launch measurable, safe, and operationally ready.",
+      "priority": "P1",
+      "dependencies": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5"
+      ],
+      "deliverables": [
+        "QA matrix",
+        "Instrumentation",
+        "Launch gates",
+        "Fallback and rollback plan"
+      ],
+      "tasks": [
+        {
+          "task_id": "E6-T1",
+          "title": "Define launch acceptance gates",
+          "description": "Specify the mandatory pass criteria for taxonomy coverage, search quality, review separation, localization, and onboarding completeness.",
+          "priority": "P1",
+          "depends_on": [],
+          "acceptance_criteria": [
+            "Go-live gates are explicit and measurable.",
+            "No launch without full locale coverage and separate review targets.",
+            "Owner assigned for each gate."
+          ],
+          "outputs": [
+            "launch checklist"
+          ]
+        },
+        {
+          "task_id": "E6-T2",
+          "title": "Instrument search and review funnels",
+          "description": "Track symptom search usage, direct search usage, result engagement, provider-vs-facility review submission rates, and taxonomy miss queries.",
+          "priority": "P1",
+          "depends_on": [
+            "E2-T1",
+            "E2-T2",
+            "E3-T3"
+          ],
+          "acceptance_criteria": [
+            "Key events are defined and implemented.",
+            "Taxonomy gaps and zero-result searches are visible in analytics.",
+            "Review target confusion can be detected through funnel metrics."
+          ],
+          "outputs": [
+            "event schema",
+            "analytics dashboard spec"
+          ]
+        },
+        {
+          "task_id": "E6-T3",
+          "title": "Create exhaustive QA matrix",
+          "description": "Build a test matrix covering languages, taxonomy layers, search modes, provider/facility review targets, onboarding, and top symptom intents.",
+          "priority": "P1",
+          "depends_on": [
+            "E5-T3"
+          ],
+          "acceptance_criteria": [
+            "Matrix covers all shipped locales and critical user journeys.",
+            "Top 50 symptom/concern intents are manually spot-checked.",
+            "Provider/facility review separation is validated in QA."
+          ],
+          "outputs": [
+            "qa_matrix",
+            "test cases"
+          ]
+        },
+        {
+          "task_id": "E6-T4",
+          "title": "Rollout and rollback plan",
+          "description": "Plan staged rollout, feature flags if needed, and rollback paths for taxonomy/search/review changes.",
+          "priority": "P2",
+          "depends_on": [],
+          "acceptance_criteria": [
+            "Critical launch features can be disabled independently if needed.",
+            "Rollback path does not corrupt taxonomy or review data.",
+            "Operational runbook exists."
+          ],
+          "outputs": [
+            "runbook",
+            "flag matrix"
+          ]
+        }
+      ]
+    }
+  ]
+}

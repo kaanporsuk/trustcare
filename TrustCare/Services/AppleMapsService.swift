@@ -21,6 +21,7 @@ enum AppleMapsService {
                 name: name,
                 specialty: "General",
                 clinicName: nil,
+                facilityId: nil,
                 address: address,
                 city: mapItem.placemark.locality,
                 countryCode: mapItem.placemark.country ?? "GB",

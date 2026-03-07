@@ -57,10 +57,16 @@ final class ProfileViewModel: ObservableObject {
                 let specialty: String
             }
 
+            struct FacilityRow: Decodable {
+                let name: String
+            }
+
             struct ReviewProviderRow: Decodable {
                 let id: UUID
                 let userId: UUID
-                let providerId: UUID
+                let providerId: UUID?
+                let facilityId: UUID?
+                let reviewTargetType: ReviewTargetType?
                 let visitDate: Date
                 let visitType: VisitType
                 let surveyType: String?
@@ -124,11 +130,14 @@ final class ProfileViewModel: ObservableObject {
                 let resultSatisfaction: Int?
                 let aftercareSupport: Int?
                 let providers: ProviderRow?
+                let facilities: FacilityRow?
 
                 enum CodingKeys: String, CodingKey {
-                    case id, title, comment, status, providers
+                    case id, title, comment, status, providers, facilities
                     case userId = "user_id"
                     case providerId = "provider_id"
+                    case facilityId = "facility_id"
+                    case reviewTargetType = "review_target_type"
                     case visitDate = "visit_date"
                     case visitType = "visit_type"
                     case surveyType = "survey_type"
@@ -193,7 +202,7 @@ final class ProfileViewModel: ObservableObject {
 
             var query = SupabaseManager.shared.client
                 .from("reviews")
-                .select("*, providers(name, specialty)")
+                .select("*, providers(name, specialty), facilities(name)")
                 .eq("user_id", value: session.user.id.uuidString)
 
             if selectedFilter == "verified" {
@@ -214,6 +223,8 @@ final class ProfileViewModel: ObservableObject {
                     id: row.id,
                     userId: row.userId,
                     providerId: row.providerId,
+                    facilityId: row.facilityId,
+                    reviewTargetType: row.reviewTargetType,
                     visitDate: row.visitDate,
                     visitType: row.visitType,
                     surveyType: row.surveyType,
@@ -280,7 +291,8 @@ final class ProfileViewModel: ObservableObject {
                     reviewerAvatar: nil,
                     media: nil,
                     providerName: row.providers?.name,
-                    providerSpecialty: row.providers?.specialty
+                    providerSpecialty: row.providers?.specialty,
+                    facilityName: row.facilities?.name
                 )
             }
         } catch {

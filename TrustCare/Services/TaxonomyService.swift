@@ -71,6 +71,16 @@ enum TaxonomyService {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return [] }
 
+        let localMatches = localSearchTaxonomy(
+            query: trimmed,
+            locale: locale,
+            entityTypeFilter: entityTypeFilter,
+            limit: limit
+        )
+        if !localMatches.isEmpty {
+            return localMatches
+        }
+
         var params: [String: AnyJSON] = [
             "search_query": .string(trimmed),
             "current_locale": .string(locale),
@@ -78,14 +88,17 @@ enum TaxonomyService {
         ]
 
         if let entityTypeFilter {
-            params["entity_type_filter"] = .string(entityTypeFilter.rawValue)
+            if let backendEntityType = entityTypeFilter.backendEntityType {
+                params["entity_type_filter"] = .string(backendEntityType)
+            }
         }
 
         let response: PostgrestResponse<[TaxonomySuggestion]> = try await client
             .rpc("search_taxonomy", params: params)
             .execute()
 
-        let localized = applyLocalBundleOverrides(to: response.value, locale: locale)
+        let filtered = filterToCanonicalV21IfAvailable(response.value)
+        let localized = applyLocalBundleOverrides(to: filtered, locale: locale)
         let deduped = dedupeSuggestions(localized)
         return Array(deduped.prefix(limit))
     }
@@ -120,10 +133,23 @@ enum TaxonomyService {
     }
 
     static func browseTaxonomy(entityType: TaxonomyEntityType, locale: String, limit: Int = 120) async throws -> [TaxonomySuggestion] {
+        let localSuggestions = TaxonomyCatalogStore.shared.localSuggestions(
+            entityType: entityType,
+            locale: locale,
+            limit: limit
+        )
+        if !localSuggestions.isEmpty {
+            return dedupeSuggestions(localSuggestions)
+        }
+
+        guard let backendEntityType = entityType.backendEntityType else {
+            return []
+        }
+
         let response: PostgrestResponse<[TaxonomyEntityRow]> = try await client
             .from("taxonomy_entities")
             .select("id,entity_type,default_name,sort_priority")
-            .eq("entity_type", value: entityType.rawValue)
+            .eq("entity_type", value: backendEntityType)
             .order("sort_priority", ascending: true)
             .order("default_name", ascending: true)
             .limit(limit)
@@ -133,6 +159,7 @@ enum TaxonomyService {
         let labels = try await labelsByEntityID(entityIDs: entityIDs, locale: locale)
 
         let mapped = response.value.map { row in
+            let mappedType = TaxonomyEntityType.fromBackend(row.entityType ?? backendEntityType)?.rawValue ?? entityType.rawValue
             let resolvedLabel = TaxonomyI18nLoader.shared.localizedLabel(
                 for: row.id,
                 locale: locale,
@@ -140,7 +167,7 @@ enum TaxonomyService {
             )
             return TaxonomySuggestion(
                 entityId: row.id,
-                entityType: row.entityType ?? entityType.rawValue,
+                entityType: mappedType,
                 label: resolvedLabel,
                 score: nil
             )
@@ -173,13 +200,26 @@ enum TaxonomyService {
         guard !normalized.isEmpty else { return [] }
 
         let uniqueInput = Array(Set(normalized))
+        let localValidSet = Set(uniqueInput.filter { TaxonomyCatalogStore.shared.containsCanonicalID($0) })
+
+        if localValidSet.count == uniqueInput.count {
+            var seen = Set<String>()
+            var orderedValid: [String] = []
+            for entityID in normalized where localValidSet.contains(entityID) {
+                if seen.insert(entityID).inserted {
+                    orderedValid.append(entityID)
+                }
+            }
+            return orderedValid
+        }
+
         let response: PostgrestResponse<[TaxonomyEntityRow]> = try await client
             .from("taxonomy_entities")
             .select("id")
             .in("id", values: uniqueInput)
             .execute()
 
-        let validSet = Set(response.value.map(\.id))
+        let validSet = localValidSet.union(Set(response.value.map(\.id)))
         var seen = Set<String>()
         var orderedValid: [String] = []
 
@@ -207,6 +247,11 @@ enum TaxonomyService {
         var missing: [String] = []
 
         for entityID in normalizedIDs {
+            if let localLabel = TaxonomyCatalogStore.shared.localizedLabel(for: entityID, locale: normalizedLocale) {
+                result[entityID] = localLabel
+                continue
+            }
+
             if let cached = await labelCache.value(locale: normalizedLocale, entityId: entityID) {
                 result[entityID] = cached
             } else {
@@ -242,10 +287,34 @@ enum TaxonomyService {
         var defaultFallback: [String: String] = [:]
 
         if !unresolvedAfterEnglish.isEmpty {
+            // Only use database default names for IDs that are unknown to canonical v2.1 resources.
+            let nonCanonicalIDs = unresolvedAfterEnglish.filter { !TaxonomyCatalogStore.shared.containsCanonicalID($0) }
+            if nonCanonicalIDs.isEmpty {
+                let merged = localized.merging(englishFallback) { current, _ in current }
+                await labelCache.set(locale: normalizedLocale, mapping: merged)
+                for entityID in missing {
+                    if let value = merged[entityID] {
+                        result[entityID] = TaxonomyI18nLoader.shared.localizedLabel(
+                            for: entityID,
+                            locale: normalizedLocale,
+                            fallback: value
+                        )
+                    }
+                }
+                for (entityID, value) in result {
+                    result[entityID] = TaxonomyI18nLoader.shared.localizedLabel(
+                        for: entityID,
+                        locale: normalizedLocale,
+                        fallback: value
+                    )
+                }
+                return result
+            }
+
             let fallbackResponse: PostgrestResponse<[TaxonomyEntityRow]> = try await client
                 .from("taxonomy_entities")
                 .select("id,default_name")
-                .in("id", values: unresolvedAfterEnglish)
+                .in("id", values: nonCanonicalIDs)
                 .execute()
             defaultFallback = Dictionary(uniqueKeysWithValues: fallbackResponse.value.map { ($0.id, $0.defaultName) })
         }
@@ -283,12 +352,24 @@ enum TaxonomyService {
                 locale: locale,
                 fallback: suggestion.label
             )
+            let canonicalType = TaxonomyEntityType.fromBackend(suggestion.entityType)?.rawValue ?? suggestion.entityType
             return TaxonomySuggestion(
                 entityId: suggestion.entityId,
-                entityType: suggestion.entityType,
+                entityType: canonicalType,
                 label: label,
                 score: suggestion.score
             )
+        }
+    }
+
+    private static func filterToCanonicalV21IfAvailable(_ suggestions: [TaxonomySuggestion]) -> [TaxonomySuggestion] {
+        // If local corpus is present, v2.1 resources are the authoritative set.
+        guard TaxonomyCatalogStore.shared.hasLocalTaxonomyCorpus() else {
+            return suggestions
+        }
+
+        return suggestions.filter { suggestion in
+            TaxonomyCatalogStore.shared.containsCanonicalID(suggestion.entityId)
         }
     }
 
@@ -322,5 +403,30 @@ enum TaxonomyService {
         label
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "en_US_POSIX"))
+    }
+
+    private static func localSearchTaxonomy(
+        query: String,
+        locale: String,
+        entityTypeFilter: TaxonomyEntityType?,
+        limit: Int
+    ) -> [TaxonomySuggestion] {
+        let normalizedQuery = normalizedDisplayLabel(query)
+        guard !normalizedQuery.isEmpty else { return [] }
+
+        var candidates = TaxonomyCatalogStore.shared.localSuggestions(entityType: entityTypeFilter, locale: locale, limit: 1000)
+        if candidates.isEmpty {
+            return []
+        }
+
+        candidates = candidates.compactMap { suggestion in
+            let aliases = TaxonomyCatalogStore.shared.aliases(for: suggestion.entityId, locale: locale)
+            let searchable = [suggestion.label, suggestion.entityId] + aliases
+            let matched = searchable.contains { normalizedDisplayLabel($0).contains(normalizedQuery) }
+            guard matched else { return nil }
+            return suggestion
+        }
+
+        return Array(dedupeSuggestions(candidates).prefix(limit))
     }
 }

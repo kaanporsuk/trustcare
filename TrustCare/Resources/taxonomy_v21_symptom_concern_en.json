@@ -1,0 +1,532 @@
+{
+  "meta": {
+    "version": "taxonomy_v2_1",
+    "editorial_locale": "en",
+    "entry_count": 19,
+    "source": "docs/taxonomy/trustcare_taxonomy_v2_1_proposal.json"
+  },
+  "symptom_concerns": [
+    {
+      "canonical_id": "CONCERN_AESTHETIC_COSMETIC",
+      "display_english_label": "Aesthetic & Cosmetic Care",
+      "example_inputs": [
+        "botox",
+        "fillers",
+        "nose job",
+        "hair loss",
+        "skin rejuvenation"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_AESTHETIC_MEDICINE",
+        "SPEC_DERMATOLOGY",
+        "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+        "SPEC_DENTISTRY_GENERAL"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_BOTOX_FILLERS",
+        "SERV_PRP_SKIN_REJUVENATION",
+        "SERV_RHINOPLASTY",
+        "SERV_HAIR_TRANSPLANT",
+        "SERV_SMILE_DESIGN"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_AESTHETIC_COSMETIC_CLINIC",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": false,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_BONES_JOINTS_MUSCLES_SPORTS",
+      "display_english_label": "Bones, Joints, Muscles & Sports Injuries",
+      "example_inputs": [
+        "knee pain",
+        "back pain",
+        "shoulder injury",
+        "sports injury"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_ORTHOPEDIC_SURGERY",
+        "SPEC_SPORTS_MEDICINE",
+        "SPEC_PHYSICAL_MEDICINE_REHAB",
+        "SPEC_PHYSIOTHERAPY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_REHABILITATION_PHYSIOTHERAPY",
+        "SERV_KNEE_REPLACEMENT",
+        "SERV_HIP_REPLACEMENT"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_HOSPITAL_GENERAL"
+      ],
+      "urgency_sensitive": false,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_CANCER_TUMOR_CARE",
+      "display_english_label": "Cancer & Tumor Care",
+      "example_inputs": [
+        "cancer treatment",
+        "tumor",
+        "chemotherapy",
+        "radiation"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_ONCOLOGY",
+        "SPEC_HEMATOLOGY",
+        "SPEC_RADIOLOGY",
+        "SPEC_GENERAL_SURGERY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_CHEMOTHERAPY",
+        "SERV_RADIOTHERAPY",
+        "SERV_CT_SCAN",
+        "SERV_MRI"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_ONCOLOGY_CENTER",
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_IMAGING_DIAGNOSTIC_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_CHILDRENS_HEALTH",
+      "display_english_label": "Children’s Health",
+      "example_inputs": [
+        "child fever",
+        "newborn issue",
+        "pediatric checkup"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_PEDIATRICS",
+        "SPEC_NEONATOLOGY",
+        "SPEC_PEDIATRIC_SURGERY",
+        "SPEC_CHILD_ADOLESCENT_PSYCHIATRY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_VACCINATION_IMMUNIZATION",
+        "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_PEDIATRIC_CLINIC",
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_URGENT_CARE"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_DIGESTION_LIVER",
+      "display_english_label": "Digestion & Liver",
+      "example_inputs": [
+        "stomach pain",
+        "acid reflux",
+        "liver problem"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_GASTROENTEROLOGY",
+        "SPEC_HEPATOLOGY",
+        "SPEC_GENERAL_PRACTICE",
+        "SPEC_INTERNAL_MEDICINE"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_ENDOSCOPY",
+        "SERV_COLOSCOPY"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_EARS_NOSE_THROAT",
+      "display_english_label": "Ears, Nose & Throat",
+      "example_inputs": [
+        "sinus pain",
+        "ear infection",
+        "tonsils",
+        "hearing issue"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_ENT",
+        "SPEC_AUDIOLOGY",
+        "SPEC_RHINOLOGY",
+        "SPEC_HEAD_NECK_SURGERY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_RHINOPLASTY"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_EYE_CLINIC",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": false,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_EMERGENCY_URGENT",
+      "display_english_label": "Emergency & Urgent Symptoms",
+      "example_inputs": [
+        "chest pain",
+        "severe bleeding",
+        "shortness of breath",
+        "sudden weakness"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_EMERGENCY_MEDICINE",
+        "SPEC_CRITICAL_CARE_INTENSIVE_CARE",
+        "SPEC_CARDIOLOGY",
+        "SPEC_NEUROLOGY"
+      ],
+      "likely_treatment_procedure_ids": [],
+      "likely_facility_type_ids": [
+        "FAC_URGENT_CARE",
+        "FAC_HOSPITAL_GENERAL"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_EYES_VISION",
+      "display_english_label": "Eyes & Vision",
+      "example_inputs": [
+        "blurred vision",
+        "cataract",
+        "retina issue",
+        "eye pain"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_OPHTHALMOLOGY",
+        "SPEC_RETINA_SPECIALIST",
+        "SPEC_OPTOMETRY",
+        "SPEC_PEDIATRIC_OPHTHALMOLOGY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_LASIK_REFRACTIVE",
+        "SERV_CATARACT_SURGERY"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_EYE_CLINIC",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_HOSPITAL_GENERAL"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_HEAD_BRAIN_NERVES",
+      "display_english_label": "Head, Brain & Nerves",
+      "example_inputs": [
+        "headache",
+        "migraine",
+        "dizziness",
+        "numbness"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_NEUROLOGY",
+        "SPEC_NEUROSURGERY",
+        "SPEC_INTERNAL_MEDICINE",
+        "SPEC_GENERAL_PRACTICE"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_MRI",
+        "SERV_CT_SCAN"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_IMAGING_DIAGNOSTIC_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_HEART_CIRCULATION",
+      "display_english_label": "Heart & Circulation",
+      "example_inputs": [
+        "palpitations",
+        "chest discomfort",
+        "high blood pressure",
+        "leg swelling"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_CARDIOLOGY",
+        "SPEC_VASCULAR_SURGERY",
+        "SPEC_CARDIOVASCULAR_SURGERY",
+        "SPEC_INTERNAL_MEDICINE"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+        "SERV_CT_SCAN"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_IMAGING_DIAGNOSTIC_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_KIDNEY_URINARY",
+      "display_english_label": "Kidneys, Bladder & Urinary Health",
+      "example_inputs": [
+        "kidney pain",
+        "urinary infection",
+        "blood in urine",
+        "dialysis"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_NEPHROLOGY",
+        "SPEC_UROLOGY",
+        "SPEC_PEDIATRIC_UROLOGY",
+        "SPEC_UROGYNECOLOGY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_DIALYSIS",
+        "SERV_ULTRASOUND"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_DIALYSIS_CENTER",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_HOSPITAL_GENERAL"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_LUNGS_BREATHING",
+      "display_english_label": "Lungs & Breathing",
+      "example_inputs": [
+        "cough",
+        "shortness of breath",
+        "asthma",
+        "sleep apnea"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_PULMONOLOGY",
+        "SPEC_ALLERGY_IMMUNOLOGY",
+        "SPEC_SLEEP_MEDICINE",
+        "SPEC_EMERGENCY_MEDICINE"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_XRAY",
+        "SERV_CT_SCAN"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_IMAGING_DIAGNOSTIC_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_MENS_HEALTH",
+      "display_english_label": "Men’s Health",
+      "example_inputs": [
+        "fertility issue",
+        "testosterone",
+        "erectile dysfunction"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_ANDROLOGY",
+        "SPEC_UROLOGY",
+        "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_FERTILITY_TREATMENT_IVF"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_FERTILITY_IVF_CLINIC",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": false,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_MENTAL_HEALTH_WELLBEING",
+      "display_english_label": "Mental Health & Well-being",
+      "example_inputs": [
+        "anxiety",
+        "depression",
+        "stress",
+        "therapy"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_PSYCHIATRY",
+        "SPEC_PSYCHOLOGY_THERAPY",
+        "SPEC_CHILD_ADOLESCENT_PSYCHIATRY",
+        "SPEC_GERIATRIC_PSYCHIATRY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_PSYCHOTHERAPY_COUNSELING"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_MENTAL_HEALTH_CLINIC",
+        "FAC_CLINIC_MEDICAL_CENTER",
+        "FAC_TELEHEALTH_VIRTUAL_CARE"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_PAIN_REHAB_MOBILITY",
+      "display_english_label": "Pain, Rehabilitation & Mobility",
+      "example_inputs": [
+        "chronic pain",
+        "rehab",
+        "mobility issue",
+        "back rehabilitation"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_PAIN_MANAGEMENT",
+        "SPEC_PHYSICAL_MEDICINE_REHAB",
+        "SPEC_PHYSIOTHERAPY",
+        "SPEC_SPORTS_MEDICINE"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_REHABILITATION_PHYSIOTHERAPY"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_REHABILITATION_PHYSIOTHERAPY_CENTER",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_TELEHEALTH_VIRTUAL_CARE"
+      ],
+      "urgency_sensitive": false,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_PREVENTIVE_TESTS_SCREENING",
+      "display_english_label": "Preventive Checks, Tests & Imaging",
+      "example_inputs": [
+        "blood test",
+        "health checkup",
+        "xray",
+        "mri",
+        "screening"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_GENERAL_PRACTICE",
+        "SPEC_INTERNAL_MEDICINE",
+        "SPEC_RADIOLOGY",
+        "SPEC_PATHOLOGY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_BLOOD_TESTS_LAB_WORK",
+        "SERV_HEALTH_CHECKUP_PREVENTIVE_SCREENING",
+        "SERV_MRI",
+        "SERV_CT_SCAN",
+        "SERV_ULTRASOUND",
+        "SERV_XRAY",
+        "SERV_MAMMOGRAPHY"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_LABORATORY",
+        "FAC_IMAGING_DIAGNOSTIC_CENTER",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": false,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_SKIN_HAIR_NAILS",
+      "display_english_label": "Skin, Hair & Nails",
+      "example_inputs": [
+        "acne",
+        "rash",
+        "hair loss",
+        "mole check"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_DERMATOLOGY",
+        "SPEC_AESTHETIC_MEDICINE"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_HAIR_TRANSPLANT",
+        "SERV_PRP_SKIN_REJUVENATION",
+        "SERV_SKIN_CANCER_SCREENING",
+        "SERV_CHEMICAL_PEEL_MICRONEEDLING"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_AESTHETIC_COSMETIC_CLINIC",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_TEETH_JAW_MOUTH",
+      "display_english_label": "Teeth, Jaw & Mouth",
+      "example_inputs": [
+        "tooth pain",
+        "braces",
+        "implants",
+        "root canal"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_DENTISTRY_GENERAL",
+        "SPEC_ENDODONTICS",
+        "SPEC_ORTHODONTICS",
+        "SPEC_ORAL_SURGERY",
+        "SPEC_ORAL_MAXILLOFACIAL_SURGERY",
+        "SPEC_PROSTHODONTICS",
+        "SPEC_PERIODONTICS"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_DENTAL_IMPLANTS",
+        "SERV_ROOT_CANAL_TREATMENT",
+        "SERV_CLEAR_ALIGNERS_ORTHODONTICS",
+        "SERV_SMILE_DESIGN",
+        "SERV_TEETH_WHITENING"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_DENTAL_CLINIC",
+        "FAC_SPECIALTY_CLINIC",
+        "FAC_CLINIC_MEDICAL_CENTER"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    },
+    {
+      "canonical_id": "CONCERN_WOMENS_HEALTH_FERTILITY",
+      "display_english_label": "Women’s Health, Pregnancy & Fertility",
+      "example_inputs": [
+        "pregnancy",
+        "ivf",
+        "fertility",
+        "pelvic pain",
+        "period issues"
+      ],
+      "likely_specialty_ids": [
+        "SPEC_OBGYN",
+        "SPEC_MATERNAL_FETAL_MEDICINE",
+        "SPEC_REPRODUCTIVE_ENDOCRINOLOGY_IVF",
+        "SPEC_UROGYNECOLOGY"
+      ],
+      "likely_treatment_procedure_ids": [
+        "SERV_FERTILITY_TREATMENT_IVF",
+        "SERV_MAMMOGRAPHY"
+      ],
+      "likely_facility_type_ids": [
+        "FAC_MATERNITY_WOMENS_HEALTH_CLINIC",
+        "FAC_FERTILITY_IVF_CLINIC",
+        "FAC_HOSPITAL_GENERAL",
+        "FAC_SPECIALTY_CLINIC"
+      ],
+      "urgency_sensitive": true,
+      "launch_scope": "v2_1_core"
+    }
+  ]
+}

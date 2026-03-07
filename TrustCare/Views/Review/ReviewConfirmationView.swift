@@ -2,7 +2,8 @@ import SwiftUI
 
 struct ReviewConfirmationView: View {
     let hasProof: Bool
-    let onViewProvider: () -> Void
+    let onViewTarget: () -> Void
+    let viewTargetTitle: String
     let onAnotherReview: () -> Void
     let onGoHome: () -> Void
 
@@ -70,9 +71,9 @@ struct ReviewConfirmationView: View {
             VStack(spacing: AppSpacing.md) {
                 Button {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    onViewProvider()
+                    onViewTarget()
                 } label: {
-                    Text(tcKey: "review_view_provider", fallback: "View provider")
+                    Text(viewTargetTitle)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .foregroundStyle(.white)

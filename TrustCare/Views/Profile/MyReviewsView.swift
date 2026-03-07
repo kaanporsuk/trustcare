@@ -114,7 +114,7 @@ struct MyReviewsView: View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(review.providerName ?? "unknown_provider")
+                    Text(reviewDisplayName(review))
                         .font(AppFont.headline)
                     Text(formattedDate(review.createdAt))
                         .font(AppFont.caption)
@@ -163,6 +163,13 @@ struct MyReviewsView: View {
 
     private func localizedSurveyTypeKey(_ slug: String) -> LocalizedStringKey {
         LocalizedStringKey("survey_\(slug)")
+    }
+
+    private func reviewDisplayName(_ review: Review) -> String {
+        if review.reviewTargetType == .facility {
+            return review.facilityName ?? tcString("unknown_facility", fallback: "Unknown Facility")
+        }
+        return review.providerName ?? tcString("unknown_provider", fallback: "Unknown Provider")
     }
 
     @ViewBuilder

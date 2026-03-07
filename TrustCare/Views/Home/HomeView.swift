@@ -188,9 +188,9 @@ struct HomeView: View {
                 case .specialty:
                     taxonomyFilterSheet(titleKey: "filter_specialty_title", titleFallback: "Specialty", entityType: .specialty, selectedIDs: $selectedSpecialtyIDs)
                 case .treatment:
-                    taxonomyFilterSheet(titleKey: "filter_treatment_title", titleFallback: "Treatment", entityType: .service, selectedIDs: $selectedServiceIDs)
+                    taxonomyFilterSheet(titleKey: "filter_treatment_title", titleFallback: "Treatment", entityType: .treatmentProcedure, selectedIDs: $selectedServiceIDs)
                 case .facility:
-                    taxonomyFilterSheet(titleKey: "filter_facility_title", titleFallback: "Facility", entityType: .facility, selectedIDs: $selectedFacilityIDs)
+                    taxonomyFilterSheet(titleKey: "filter_facility_title", titleFallback: "Facility", entityType: .facilityType, selectedIDs: $selectedFacilityIDs)
                 case .distance:
                     distanceFilterSheet
                 case .language:
@@ -784,10 +784,12 @@ struct HomeView: View {
         switch entityType.lowercased() {
         case "specialty":
             return tcString("filter_specialty", fallback: "Specialty")
-        case "service":
+        case "service", "treatment_procedure":
             return tcString("filter_treatment", fallback: "Treatment")
-        case "facility":
+        case "facility", "facility_type":
             return tcString("filter_facility", fallback: "Facility")
+        case "symptom_concern":
+            return tcString("taxonomy_segment_symptoms", fallback: "Symptoms")
         default:
             return tcString("filter_specialty", fallback: "Specialty")
         }

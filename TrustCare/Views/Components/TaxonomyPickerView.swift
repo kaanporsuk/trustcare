@@ -200,7 +200,7 @@ final class TaxonomyPickerViewModel: ObservableObject {
                 "SPEC_ORTHOPEDIC_SURGERY",
                 "SPEC_PSYCHIATRY"
             ]
-        case .service:
+        case .treatmentProcedure:
             return [
                 "SERV_BOTOX_FILLERS",
                 "SERV_LASIK_REFRACTIVE",
@@ -208,30 +208,32 @@ final class TaxonomyPickerViewModel: ObservableObject {
                 "SERV_PRP_SKIN_REJUVENATION",
                 "SERV_LASER_TREATMENTS"
             ]
-        case .facility:
+        case .facilityType:
             return [
                 "FAC_HOSPITAL_GENERAL",
                 "FAC_URGENT_CARE",
                 "FAC_LABORATORY",
                 "FAC_PHARMACY"
             ]
+        case .symptomConcern:
+            return []
         }
     }
 
     private func recentEntityIDs(for type: TaxonomyEntityType) -> [String] {
         let storage = loadRecentStorage()
-        return storage[type.rawValue] ?? []
+        return storage[type.storageKey] ?? []
     }
 
     private func saveRecentEntityID(_ entityID: String, for type: TaxonomyEntityType) {
         var storage = loadRecentStorage()
-        var current = storage[type.rawValue] ?? []
+        var current = storage[type.storageKey] ?? []
         current.removeAll { $0 == entityID }
         current.insert(entityID, at: 0)
         if current.count > Self.maxRecentCount {
             current = Array(current.prefix(Self.maxRecentCount))
         }
-        storage[type.rawValue] = current
+        storage[type.storageKey] = current
 
         if let data = try? JSONEncoder().encode(storage) {
             UserDefaults.standard.set(data, forKey: Self.recentStorageKey)
@@ -314,7 +316,7 @@ struct TaxonomyPickerView: View {
                 }
 
                 Picker("", selection: $viewModel.selectedEntityType) {
-                    ForEach(TaxonomyEntityType.allCases) { entityType in
+                    ForEach(TaxonomyEntityType.pickerCases) { entityType in
                         Text(LocalizedStringKey(entityType.segmentTitleKey))
                             .tag(entityType)
                     }

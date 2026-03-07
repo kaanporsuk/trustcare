@@ -3,7 +3,9 @@ import Foundation
 struct Review: Identifiable, Codable {
     let id: UUID
     let userId: UUID
-    let providerId: UUID
+    let providerId: UUID?
+    let facilityId: UUID?
+    let reviewTargetType: ReviewTargetType?
     let visitDate: Date
     let visitType: VisitType
     let surveyType: String?
@@ -73,11 +75,14 @@ struct Review: Identifiable, Codable {
     let media: [ReviewMedia]?
     let providerName: String?
     let providerSpecialty: String?
+    let facilityName: String?
 
     enum CodingKeys: String, CodingKey {
         case id, title, comment, status, media
         case userId = "user_id"
         case providerId = "provider_id"
+        case facilityId = "facility_id"
+        case reviewTargetType = "review_target_type"
         case visitDate = "visit_date"
         case visitType = "visit_type"
         case surveyType = "survey_type"
@@ -141,12 +146,15 @@ struct Review: Identifiable, Codable {
         case reviewerAvatar = "reviewer_avatar"
         case providerName = "provider_name"
         case providerSpecialty = "provider_specialty"
+        case facilityName = "facility_name"
     }
 
     init(
         id: UUID,
         userId: UUID,
-        providerId: UUID,
+        providerId: UUID? = nil,
+        facilityId: UUID? = nil,
+        reviewTargetType: ReviewTargetType? = .provider,
         visitDate: Date,
         visitType: VisitType,
         surveyType: String? = nil,
@@ -213,11 +221,14 @@ struct Review: Identifiable, Codable {
         reviewerAvatar: String?,
         media: [ReviewMedia]?,
         providerName: String?,
-        providerSpecialty: String?
+        providerSpecialty: String?,
+        facilityName: String? = nil
     ) {
         self.id = id
         self.userId = userId
         self.providerId = providerId
+        self.facilityId = facilityId
+        self.reviewTargetType = reviewTargetType
         self.visitDate = visitDate
         self.visitType = visitType
         self.surveyType = surveyType
@@ -285,6 +296,7 @@ struct Review: Identifiable, Codable {
         self.media = media
         self.providerName = providerName
         self.providerSpecialty = providerSpecialty
+        self.facilityName = facilityName
     }
 }
 

@@ -20,6 +20,61 @@ enum ReviewService {
         let displayOrder: Int
     }
 
+    private static let providerMetricColumns: Set<String> = [
+        "rating_knowledge",
+        "rating_communication",
+        "rating_courtesy",
+        "rating_consultation",
+        "rating_aftercare"
+    ]
+
+    private static let facilityMetricColumns: Set<String> = [
+        "rating_cleanliness",
+        "rating_admin",
+        "rating_wait_time",
+        "rating_staff",
+        "rating_comfort",
+        "rating_value"
+    ]
+
+    static func submitReview(
+        target: ReviewTarget,
+        visitDate: Date,
+        visitType: VisitType,
+        surveyType: String,
+        metricRatings: [String: Int],
+        overallRating: Int,
+        priceLevel: Int,
+        title: String?,
+        comment: String,
+        wouldRecommend: Bool,
+        proofImage: UIImage?,
+        images: [UIImage],
+        videoURL: URL?,
+        statusOverride: String? = nil,
+        progressHandler: ((Double) -> Void)? = nil
+    ) async throws -> Review {
+        try await submitReview(
+            targetType: target.type,
+            providerId: target.type == .provider ? target.id : nil,
+            facilityId: target.type == .facility ? target.id : nil,
+            visitDate: visitDate,
+            visitType: visitType,
+            surveyType: surveyType,
+            metricRatings: metricRatings,
+            overallRating: overallRating,
+            priceLevel: priceLevel,
+            title: title,
+            comment: comment,
+            wouldRecommend: wouldRecommend,
+            proofImage: proofImage,
+            images: images,
+            videoURL: videoURL,
+            statusOverride: statusOverride,
+            progressHandler: progressHandler
+        )
+    }
+
     static func submitReview(
         providerId: UUID,
         visitDate: Date,
@@ -37,6 +92,53 @@ enum ReviewService {
         statusOverride: String? = nil,
         progressHandler: ((Double) -> Void)? = nil
     ) async throws -> Review {
+        try await submitReview(
+            targetType: .provider,
+            providerId: providerId,
+            facilityId: nil,
+            visitDate: visitDate,
+            visitType: visitType,
+            surveyType: surveyType,
+            metricRatings: metricRatings,
+            overallRating: overallRating,
+            priceLevel: priceLevel,
+            title: title,
+            comment: comment,
+            wouldRecommend: wouldRecommend,
+            proofImage: proofImage,
+            images: images,
+            videoURL: videoURL,
+            statusOverride: statusOverride,
+            progressHandler: progressHandler
+        )
+    }
+
+    private static func submitReview(
+        targetType: ReviewTargetType,
+        providerId: UUID?,
+        facilityId: UUID?,
+        visitDate: Date,
+        visitType: VisitType,
+        surveyType: String,
+        metricRatings: [String: Int],
+        overallRating: Int,
+        priceLevel: Int,
+        title: String?,
+        comment: String,
+        wouldRecommend: Bool,
+        proofImage: UIImage?,
+        images: [UIImage],
+        videoURL: URL?,
+        statusOverride: String? = nil,
+        progressHandler: ((Double) -> Void)? = nil
+    ) async throws -> Review {
+        if targetType == .provider, providerId == nil {
+            throw AppError.validationError(tcString("review_select_provider_to_continue", fallback: "Select a provider to continue"))
+        }
+        if targetType == .facility, facilityId == nil {
+            throw AppError.validationError(tcString("review_select_facility_to_continue", fallback: "Select a facility to continue"))
+        }
+
         // Check if user is authenticated
         guard let session = try? await client.auth.session else {
             throw AppError.authError(
@@ -46,7 +148,9 @@ enum ReviewService {
         let userId = session.user.id
 
         print("🔵 ReviewService.submitReview started")
-        print("  Provider ID: \(providerId)")
+        print("  Target type: \(targetType.rawValue)")
+        print("  Provider ID: \(providerId?.uuidString ?? "nil")")
+        print("  Facility ID: \(facilityId?.uuidString ?? "nil")")
         print("  User ID: \(userId)")
         print("  Visit date: \(visitDate)")
         print("  Visit type: \(visitType.rawValue)")
@@ -99,7 +203,9 @@ enum ReviewService {
             advanceProgress()
         }
 
-        let validMetricValues = metricRatings.values.filter { (1...5).contains($0) }
+        let allowedMetricSet = targetType == .provider ? providerMetricColumns : facilityMetricColumns
+        let sanitizedMetricRatings = metricRatings.filter { allowedMetricSet.contains($0.key) }
+        let validMetricValues = sanitizedMetricRatings.values.filter { (1...5).contains($0) }
         let derivedOverall = validMetricValues.isEmpty
             ? Double(overallRating)
             : Double(validMetricValues.reduce(0, +)) / Double(validMetricValues.count)
@@ -108,7 +214,7 @@ enum ReviewService {
         let status = statusOverride ?? (proofImage != nil ? "pending_verification" : "active")
 
         func metric(_ key: String) -> Int? {
-            guard let value = metricRatings[key], (1...5).contains(value) else {
+            guard let value = sanitizedMetricRatings[key], (1...5).contains(value) else {
                 return nil
             }
             return value
@@ -116,7 +222,9 @@ enum ReviewService {
 
         struct ReviewInsert: Encodable {
             let id: String
-            let providerId: String
+            let providerId: String?
+            let facilityId: String?
+            let reviewTargetType: String
             let userId: String
             let visitDate: Date
             let visitType: String
@@ -156,6 +264,8 @@ enum ReviewService {
             enum CodingKeys: String, CodingKey {
                 case id
                 case providerId = "provider_id"
+                case facilityId = "facility_id"
+                case reviewTargetType = "review_target_type"
                 case userId = "user_id"
                 case visitDate = "visit_date"
                 case visitType = "visit_type"
@@ -196,7 +306,9 @@ enum ReviewService {
 
         let insertPayload = ReviewInsert(
             id: pendingReviewId.uuidString,
-            providerId: providerId.uuidString,
+            providerId: providerId?.uuidString,
+            facilityId: facilityId?.uuidString,
+            reviewTargetType: targetType.rawValue,
             userId: userId.uuidString,
             visitDate: visitDate,
             visitType: visitType.rawValue,
@@ -205,8 +317,8 @@ enum ReviewService {
             ratingBedside: metric("rating_bedside"),
             ratingEfficacy: metric("rating_efficacy"),
             ratingCleanliness: metric("rating_cleanliness"),
-            ratingStaff: max(1, min(5, overallRating)),
-            ratingValue: max(1, min(5, overallRating)),
+            ratingStaff: metric("rating_staff") ?? max(1, min(5, overallRating)),
+            ratingValue: metric("rating_value") ?? max(1, min(5, overallRating)),
             ratingPainMgmt: metric("rating_pain_mgmt"),
             ratingAccuracy: metric("rating_accuracy"),
             ratingKnowledge: metric("rating_knowledge"),

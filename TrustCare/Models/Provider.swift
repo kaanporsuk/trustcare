@@ -5,6 +5,7 @@ struct Provider: Identifiable, Codable, Hashable {
     let name: String
     let specialty: String
     let clinicName: String?
+    let facilityId: UUID?
     let address: String
     let city: String?
     let countryCode: String
@@ -61,6 +62,7 @@ struct Provider: Identifiable, Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case id, name, specialty, address, latitude, longitude, phone, email, website
         case clinicName = "clinic_name"
+        case facilityId = "facility_id"
         case city
         case countryCode = "country_code"
         case photoUrl = "photo_url"
