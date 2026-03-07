@@ -40,7 +40,9 @@ WHERE p.clinic_name IS NOT NULL
         AND COALESCE(lower(f.country_code), '') = COALESCE(lower(NULLIF(trim(p.country_code), '')), '')
   );
 
-CREATE OR REPLACE VIEW public.reviews_public
+DROP VIEW IF EXISTS public.reviews_public;
+
+CREATE VIEW public.reviews_public
 WITH (security_invoker = true)
 AS
 SELECT
